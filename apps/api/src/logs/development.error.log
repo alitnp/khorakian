@@ -1,0 +1,340 @@
+{
+type : ERROR,
+timestamp : 1676628683070,
+date : Fri Feb 17 2023 13:41:23 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"دسته یندی 12"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1676628770803,
+date : Fri Feb 17 2023 13:42:50 GMT+0330 (وقت عادی ایران),
+ip : undefined{
+type : ERROR,
+timestamp : 1676628779186,
+date : Fri Feb 17 2023 13:42:59 GMT+0330 (وقت عادی ایران),
+ip : undefined{
+type : ERROR,
+timestamp : 1676628788436,
+date : Fri Feb 17 2023 13:43:08 GMT+0330 (وقت عادی ایران),
+ip : undefined{
+type : ERROR,
+timestamp : 1676628872961,
+date : Fri Feb 17 2023 13:44:32 GMT+0330 (وقت عادی ایران),
+ip : undefined{
+type : ERROR,
+timestamp : 1676628940323,
+date : Fri Feb 17 2023 13:45:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"دسته یندی 12"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1676629262702,
+date : Fri Feb 17 2023 13:51:02 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"دسته یندی 12"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677214510661,
+date : Fri Feb 24 2023 08:25:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"errors":{"title":{"name":"ValidatorError","message":"عنوان حداقل باید ۲ کاراکتر باشد.","properties":{"message":"عنوان حداقل باید ۲ کاراکتر باشد.","type":"minlength","minlength":2,"path":"title","value":"a"},"kind":"minlength","path":"title","value":"a"}},"_message":"Category validation failed","name":"ValidationError","message":"Category validation failed: title: عنوان حداقل باید ۲ کاراکتر باشد."}
+},
+{
+type : ERROR,
+timestamp : 1677214520105,
+date : Fri Feb 24 2023 08:25:20 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"errors":{"title":{"name":"ValidatorError","message":"عنوان حداقل باید ۲ کاراکتر باشد.","properties":{"message":"عنوان حداقل باید ۲ کاراکتر باشد.","type":"minlength","minlength":2,"path":"title","value":"a"},"kind":"minlength","path":"title","value":"a"}},"_message":"Category validation failed","name":"ValidationError","message":"Category validation failed: title: عنوان حداقل باید ۲ کاراکتر باشد."}
+},
+{
+type : ERROR,
+timestamp : 1677214529183,
+date : Fri Feb 24 2023 08:25:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"status":400,"message":"نام دسته یندی اجباری است.","details":{"title":"نام دسته یندی اجباری است."},"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677214572439,
+date : Fri Feb 24 2023 08:26:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"status":400,"message":"نام دسته بندی حداقل ۲ کاراکتر.","details":{"title":"نام دسته بندی حداقل ۲ کاراکتر."},"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677214591998,
+date : Fri Feb 24 2023 08:26:31 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"errors":{"title":{"name":"ValidatorError","message":"عنوان حداقل باید ۲ کاراکتر باشد.","properties":{"message":"عنوان حداقل باید ۲ کاراکتر باشد.","type":"minlength","minlength":2,"path":"title","value":"a"},"kind":"minlength","path":"title","value":"a"}},"_message":"Category validation failed","name":"ValidationError","message":"Category validation failed: title: عنوان حداقل باید ۲ کاراکتر باشد."}
+},
+{
+type : ERROR,
+timestamp : 1677214643358,
+date : Fri Feb 24 2023 08:27:23 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"errors":{"title":{"name":"ValidatorError","message":"عنوان حداقل باید ۲ کاراکتر باشد.","properties":{"message":"عنوان حداقل باید ۲ کاراکتر باشد.","type":"minlength","minlength":2,"path":"title","value":"a"},"kind":"minlength","path":"title","value":"a"}},"_message":"Category validation failed","name":"ValidationError","message":"Category validation failed: title: عنوان حداقل باید ۲ کاراکتر باشد."}
+},
+{
+type : ERROR,
+timestamp : 1677215041729,
+date : Fri Feb 24 2023 08:34:01 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"asdf"}
+},
+Response : {"status":400,"message":"نام دسته بندی حداقل ۲ کاراکتر.","details":{"title":"نام دسته بندی حداقل ۲ کاراکتر."},"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677215073598,
+date : Fri Feb 24 2023 08:34:33 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"errors":{"title":{"name":"ValidatorError","message":"عنوان حداقل باید ۲ کاراکتر باشد.","properties":{"message":"عنوان حداقل باید ۲ کاراکتر باشد.","type":"minlength","minlength":2,"path":"title","value":"a"},"kind":"minlength","path":"title","value":"a"}},"_message":"Category validation failed","name":"ValidationError","message":"Category validation failed: title: عنوان حداقل باید ۲ کاراکتر باشد."}
+},
+{
+type : ERROR,
+timestamp : 1677216527546,
+date : Fri Feb 24 2023 08:58:47 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"status":400,"message":"نام دسته بندی حداقل ۲ کاراکتر.","details":{"title":"نام دسته بندی حداقل ۲ کاراکتر."},"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677216659189,
+date : Fri Feb 24 2023 09:00:59 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677216672550,
+date : Fri Feb 24 2023 09:01:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677216688686,
+date : Fri Feb 24 2023 09:01:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677216711822,
+date : Fri Feb 24 2023 09:01:51 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"index":0,"code":11000,"keyPattern":{"title":1},"keyValue":{"title":"abc"}}
+},
+{
+type : ERROR,
+timestamp : 1677216748634,
+date : Fri Feb 24 2023 09:02:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677217071204,
+date : Fri Feb 24 2023 09:07:51 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677859145242,
+date : Fri Mar 03 2023 19:29:05 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677859249000,
+date : Fri Mar 03 2023 19:30:49 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+Response : {"status":400,"message":"نام دسته بندی حداقل ۲ کاراکتر.","details":{"title":"نام دسته بندی حداقل ۲ کاراکتر."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1677859271213,
+date : Fri Mar 03 2023 19:31:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677860159151,
+date : Fri Mar 03 2023 19:45:59 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category/63e947d82674f09740b4c3a2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677860636044,
+date : Fri Mar 03 2023 19:53:56 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"ab2c"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677860651125,
+date : Fri Mar 03 2023 19:54:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/category/63ddea8d0265823d63c3284b,
+body : {"title":"update test2"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677860662909,
+date : Fri Mar 03 2023 19:54:22 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/category/63ddea8d0265823d63c3284b,
+body : {"title":"update test2"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1677860666911,
+date : Fri Mar 03 2023 19:54:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/category/63dc1c0dd34dea25635ee457,
+body : {}
+},
+Response : {"status":400,"message":"نام دسته بندی حداقل ۲ کاراکتر.","details":{"title":"نام دسته بندی حداقل ۲ کاراکتر."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1677860768883,
+date : Fri Mar 03 2023 19:56:08 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/category/63dc1c0dd34dea25635ee457,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

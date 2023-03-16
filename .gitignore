@@ -1,0 +1,22 @@
+# node_modules
+node_modules
+apps/api/node_modules
+apps/web/node_modules
+apps/panel/node_modules
+
+# build folders
+shared/types/dist
+shared/helpers/dist
+apps/api/dist
+apps/panel/build
+apps/web/out
+apps/web/.next
+
+.DS_Store
+**/.DS_Store
+**/.env
+**/.env.development
+**/.env.test
+
+yarn.lock
+yarn-error.log

@@ -1,0 +1,2900 @@
+{
+type : INFO,
+timestamp : 1676628940306,
+date : Fri Feb 17 2023 13:45:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"دسته یندی 12"}
+},
+{
+type : INFO,
+timestamp : 1676629262685,
+date : Fri Feb 17 2023 13:51:02 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"دسته یندی 12"}
+},
+{
+type : INFO,
+timestamp : 1676631758138,
+date : Fri Feb 17 2023 14:32:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1676631850092,
+date : Fri Feb 17 2023 14:34:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1676632178669,
+date : Fri Feb 17 2023 14:39:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1676633183304,
+date : Fri Feb 17 2023 14:56:23 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1676633255268,
+date : Fri Feb 17 2023 14:57:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1676633302514,
+date : Fri Feb 17 2023 14:58:22 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1676633553503,
+date : Fri Feb 17 2023 15:02:33 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/iforgot,
+body : {"mobileNumber":"09308297880"}
+},
+{
+type : INFO,
+timestamp : 1677214505956,
+date : Fri Feb 24 2023 08:25:05 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"asdf"}
+},
+{
+type : INFO,
+timestamp : 1677214510657,
+date : Fri Feb 24 2023 08:25:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677214520100,
+date : Fri Feb 24 2023 08:25:20 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677214529176,
+date : Fri Feb 24 2023 08:25:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677214572433,
+date : Fri Feb 24 2023 08:26:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677214591979,
+date : Fri Feb 24 2023 08:26:31 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677214643336,
+date : Fri Feb 24 2023 08:27:23 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215041723,
+date : Fri Feb 24 2023 08:34:01 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"asdf"}
+},
+{
+type : INFO,
+timestamp : 1677215073578,
+date : Fri Feb 24 2023 08:34:33 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215355064,
+date : Fri Feb 24 2023 08:39:15 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215439443,
+date : Fri Feb 24 2023 08:40:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215532072,
+date : Fri Feb 24 2023 08:42:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215599748,
+date : Fri Feb 24 2023 08:43:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215716014,
+date : Fri Feb 24 2023 08:45:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215783247,
+date : Fri Feb 24 2023 08:46:23 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215833795,
+date : Fri Feb 24 2023 08:47:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215912131,
+date : Fri Feb 24 2023 08:48:32 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215913558,
+date : Fri Feb 24 2023 08:48:33 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215914780,
+date : Fri Feb 24 2023 08:48:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215951237,
+date : Fri Feb 24 2023 08:49:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677215965412,
+date : Fri Feb 24 2023 08:49:25 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677216015385,
+date : Fri Feb 24 2023 08:50:15 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677216044451,
+date : Fri Feb 24 2023 08:50:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677216485533,
+date : Fri Feb 24 2023 08:58:05 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677216527539,
+date : Fri Feb 24 2023 08:58:47 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677216592270,
+date : Fri Feb 24 2023 08:59:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677216657747,
+date : Fri Feb 24 2023 09:00:57 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677216659179,
+date : Fri Feb 24 2023 09:00:59 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677216672545,
+date : Fri Feb 24 2023 09:01:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677216688670,
+date : Fri Feb 24 2023 09:01:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677216711802,
+date : Fri Feb 24 2023 09:01:51 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677216730865,
+date : Fri Feb 24 2023 09:02:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677216748617,
+date : Fri Feb 24 2023 09:02:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677217071187,
+date : Fri Feb 24 2023 09:07:51 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677859037212,
+date : Fri Mar 03 2023 19:27:17 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677859145222,
+date : Fri Mar 03 2023 19:29:05 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677859195510,
+date : Fri Mar 03 2023 19:29:55 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677859234493,
+date : Fri Mar 03 2023 19:30:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677859236107,
+date : Fri Mar 03 2023 19:30:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677859237072,
+date : Fri Mar 03 2023 19:30:37 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677859248993,
+date : Fri Mar 03 2023 19:30:48 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"a"}
+},
+{
+type : INFO,
+timestamp : 1677859271198,
+date : Fri Mar 03 2023 19:31:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"abc"}
+},
+{
+type : INFO,
+timestamp : 1677859276835,
+date : Fri Mar 03 2023 19:31:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"ab2c"}
+},
+{
+type : INFO,
+timestamp : 1677860159126,
+date : Fri Mar 03 2023 19:45:59 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category/63e947d82674f09740b4c3a2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860163532,
+date : Fri Mar 03 2023 19:46:03 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860171950,
+date : Fri Mar 03 2023 19:46:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category/63ef1c2ad308bda1a2785f02,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860633185,
+date : Fri Mar 03 2023 19:53:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"ab2c"}
+},
+{
+type : INFO,
+timestamp : 1677860636040,
+date : Fri Mar 03 2023 19:53:56 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/category,
+body : {"title":"ab2c"}
+},
+{
+type : INFO,
+timestamp : 1677860651121,
+date : Fri Mar 03 2023 19:54:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/category/63ddea8d0265823d63c3284b,
+body : {"title":"update test2"}
+},
+{
+type : INFO,
+timestamp : 1677860662906,
+date : Fri Mar 03 2023 19:54:22 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/category/63ddea8d0265823d63c3284b,
+body : {"title":"update test2"}
+},
+{
+type : INFO,
+timestamp : 1677860666909,
+date : Fri Mar 03 2023 19:54:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/category/63dc1c0dd34dea25635ee457,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860768869,
+date : Fri Mar 03 2023 19:56:08 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/category/63dc1c0dd34dea25635ee457,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860772862,
+date : Fri Mar 03 2023 19:56:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860779313,
+date : Fri Mar 03 2023 19:56:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/category/64021f19e9ac29b8dba44a65,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860785830,
+date : Fri Mar 03 2023 19:56:25 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860803626,
+date : Fri Mar 03 2023 19:56:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/category/63ef1ca568a4dab09d6f4d2f,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860808096,
+date : Fri Mar 03 2023 19:56:48 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860836627,
+date : Fri Mar 03 2023 19:57:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?=pageNumber=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860848393,
+date : Fri Mar 03 2023 19:57:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?=pagenumber=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860887286,
+date : Fri Mar 03 2023 19:58:07 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?=pageNumber=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677860961394,
+date : Fri Mar 03 2023 19:59:21 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?=pageNumber=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677861007027,
+date : Fri Mar 03 2023 20:00:07 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?=pageNumber=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677861018496,
+date : Fri Mar 03 2023 20:00:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageNumber=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677861068634,
+date : Fri Mar 03 2023 20:01:08 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageNumber=2&pageSize=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677861147018,
+date : Fri Mar 03 2023 20:02:27 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677861281348,
+date : Fri Mar 03 2023 20:04:41 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?sort=creationDate,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862329816,
+date : Fri Mar 03 2023 20:22:09 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?sort=creationDate,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862345664,
+date : Fri Mar 03 2023 20:22:25 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?sort=creationDate&desc=true,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862355332,
+date : Fri Mar 03 2023 20:22:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?sort=creationDate,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862369914,
+date : Fri Mar 03 2023 20:22:49 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862380378,
+date : Fri Mar 03 2023 20:23:00 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?desc=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862385453,
+date : Fri Mar 03 2023 20:23:05 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?desc=-1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862388211,
+date : Fri Mar 03 2023 20:23:08 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?desc=true,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862391586,
+date : Fri Mar 03 2023 20:23:11 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?desc=false,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862394522,
+date : Fri Mar 03 2023 20:23:14 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?desc=asfasf,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862399155,
+date : Fri Mar 03 2023 20:23:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862652479,
+date : Fri Mar 03 2023 20:27:32 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862682085,
+date : Fri Mar 03 2023 20:28:02 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?sort=creationDate,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862690732,
+date : Fri Mar 03 2023 20:28:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?sort=hdfghdfh,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862700271,
+date : Fri Mar 03 2023 20:28:20 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862760695,
+date : Fri Mar 03 2023 20:29:20 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862776559,
+date : Fri Mar 03 2023 20:29:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862795454,
+date : Fri Mar 03 2023 20:29:55 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862816609,
+date : Fri Mar 03 2023 20:30:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862847141,
+date : Fri Mar 03 2023 20:30:47 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862866055,
+date : Fri Mar 03 2023 20:31:06 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862880578,
+date : Fri Mar 03 2023 20:31:20 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100&sort=isPublished,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862888240,
+date : Fri Mar 03 2023 20:31:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100&desc=true,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862904922,
+date : Fri Mar 03 2023 20:31:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100&desc=true&sort=creationDate,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862919273,
+date : Fri Mar 03 2023 20:31:59 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100&sort=creationDate,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862926332,
+date : Fri Mar 03 2023 20:32:06 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100&sort=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862929658,
+date : Fri Mar 03 2023 20:32:09 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677862984906,
+date : Fri Mar 03 2023 20:33:04 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/author,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1677863019153,
+date : Fri Mar 03 2023 20:33:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/author,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678902465237,
+date : Wed Mar 15 2023 21:17:45 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/author,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024222,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024233,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024290,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024295,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024296,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024299,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944024700,
+date : Thu Mar 16 2023 08:50:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944324867,
+date : Thu Mar 16 2023 08:55:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944324885,
+date : Thu Mar 16 2023 08:55:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944324889,
+date : Thu Mar 16 2023 08:55:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944324893,
+date : Thu Mar 16 2023 08:55:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944324896,
+date : Thu Mar 16 2023 08:55:24 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944325051,
+date : Thu Mar 16 2023 08:55:25 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944326859,
+date : Thu Mar 16 2023 08:55:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944326871,
+date : Thu Mar 16 2023 08:55:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944326875,
+date : Thu Mar 16 2023 08:55:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944326876,
+date : Thu Mar 16 2023 08:55:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944326876,
+date : Thu Mar 16 2023 08:55:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678944327002,
+date : Thu Mar 16 2023 08:55:27 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945004661,
+date : Thu Mar 16 2023 09:06:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945004682,
+date : Thu Mar 16 2023 09:06:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945004683,
+date : Thu Mar 16 2023 09:06:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945004693,
+date : Thu Mar 16 2023 09:06:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945004694,
+date : Thu Mar 16 2023 09:06:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945004862,
+date : Thu Mar 16 2023 09:06:44 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945123348,
+date : Thu Mar 16 2023 09:08:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945123366,
+date : Thu Mar 16 2023 09:08:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945123372,
+date : Thu Mar 16 2023 09:08:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945123377,
+date : Thu Mar 16 2023 09:08:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945123378,
+date : Thu Mar 16 2023 09:08:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945123541,
+date : Thu Mar 16 2023 09:08:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945234955,
+date : Thu Mar 16 2023 09:10:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945234972,
+date : Thu Mar 16 2023 09:10:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945234979,
+date : Thu Mar 16 2023 09:10:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945234980,
+date : Thu Mar 16 2023 09:10:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945234983,
+date : Thu Mar 16 2023 09:10:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945235132,
+date : Thu Mar 16 2023 09:10:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945236974,
+date : Thu Mar 16 2023 09:10:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945236985,
+date : Thu Mar 16 2023 09:10:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945236991,
+date : Thu Mar 16 2023 09:10:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945236992,
+date : Thu Mar 16 2023 09:10:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945236993,
+date : Thu Mar 16 2023 09:10:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945237132,
+date : Thu Mar 16 2023 09:10:37 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945535456,
+date : Thu Mar 16 2023 09:15:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945535481,
+date : Thu Mar 16 2023 09:15:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945535487,
+date : Thu Mar 16 2023 09:15:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945535488,
+date : Thu Mar 16 2023 09:15:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945535489,
+date : Thu Mar 16 2023 09:15:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945535810,
+date : Thu Mar 16 2023 09:15:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945538901,
+date : Thu Mar 16 2023 09:15:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945538915,
+date : Thu Mar 16 2023 09:15:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945538918,
+date : Thu Mar 16 2023 09:15:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945538921,
+date : Thu Mar 16 2023 09:15:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945538922,
+date : Thu Mar 16 2023 09:15:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945539067,
+date : Thu Mar 16 2023 09:15:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945613292,
+date : Thu Mar 16 2023 09:16:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945613309,
+date : Thu Mar 16 2023 09:16:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945613314,
+date : Thu Mar 16 2023 09:16:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945613318,
+date : Thu Mar 16 2023 09:16:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945613319,
+date : Thu Mar 16 2023 09:16:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945613471,
+date : Thu Mar 16 2023 09:16:53 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945654477,
+date : Thu Mar 16 2023 09:17:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945654495,
+date : Thu Mar 16 2023 09:17:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945654500,
+date : Thu Mar 16 2023 09:17:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945654506,
+date : Thu Mar 16 2023 09:17:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945654507,
+date : Thu Mar 16 2023 09:17:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945654687,
+date : Thu Mar 16 2023 09:17:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945756379,
+date : Thu Mar 16 2023 09:19:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945756395,
+date : Thu Mar 16 2023 09:19:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945756402,
+date : Thu Mar 16 2023 09:19:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945756403,
+date : Thu Mar 16 2023 09:19:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945756406,
+date : Thu Mar 16 2023 09:19:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945756560,
+date : Thu Mar 16 2023 09:19:16 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945757942,
+date : Thu Mar 16 2023 09:19:17 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945757954,
+date : Thu Mar 16 2023 09:19:17 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945757954,
+date : Thu Mar 16 2023 09:19:17 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945757959,
+date : Thu Mar 16 2023 09:19:17 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945757960,
+date : Thu Mar 16 2023 09:19:17 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945758082,
+date : Thu Mar 16 2023 09:19:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759013,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759024,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759028,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759029,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759029,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759153,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759653,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759665,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759667,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759670,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759671,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945759797,
+date : Thu Mar 16 2023 09:19:19 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945888108,
+date : Thu Mar 16 2023 09:21:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945888126,
+date : Thu Mar 16 2023 09:21:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945888129,
+date : Thu Mar 16 2023 09:21:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945888133,
+date : Thu Mar 16 2023 09:21:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945888137,
+date : Thu Mar 16 2023 09:21:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945888287,
+date : Thu Mar 16 2023 09:21:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945889895,
+date : Thu Mar 16 2023 09:21:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945889908,
+date : Thu Mar 16 2023 09:21:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945889912,
+date : Thu Mar 16 2023 09:21:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945889916,
+date : Thu Mar 16 2023 09:21:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945889917,
+date : Thu Mar 16 2023 09:21:29 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945890064,
+date : Thu Mar 16 2023 09:21:30 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945998356,
+date : Thu Mar 16 2023 09:23:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945998374,
+date : Thu Mar 16 2023 09:23:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945998382,
+date : Thu Mar 16 2023 09:23:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945998383,
+date : Thu Mar 16 2023 09:23:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945998386,
+date : Thu Mar 16 2023 09:23:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678945998572,
+date : Thu Mar 16 2023 09:23:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946032372,
+date : Thu Mar 16 2023 09:23:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946032393,
+date : Thu Mar 16 2023 09:23:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946032394,
+date : Thu Mar 16 2023 09:23:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946032402,
+date : Thu Mar 16 2023 09:23:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946032404,
+date : Thu Mar 16 2023 09:23:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946032589,
+date : Thu Mar 16 2023 09:23:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946092709,
+date : Thu Mar 16 2023 09:24:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946092730,
+date : Thu Mar 16 2023 09:24:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946092731,
+date : Thu Mar 16 2023 09:24:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946092731,
+date : Thu Mar 16 2023 09:24:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946092738,
+date : Thu Mar 16 2023 09:24:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678946092904,
+date : Thu Mar 16 2023 09:24:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955559139,
+date : Thu Mar 16 2023 12:02:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955559141,
+date : Thu Mar 16 2023 12:02:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955559153,
+date : Thu Mar 16 2023 12:02:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955559154,
+date : Thu Mar 16 2023 12:02:39 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955562010,
+date : Thu Mar 16 2023 12:02:42 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955562022,
+date : Thu Mar 16 2023 12:02:42 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955562025,
+date : Thu Mar 16 2023 12:02:42 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955562026,
+date : Thu Mar 16 2023 12:02:42 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955562031,
+date : Thu Mar 16 2023 12:02:42 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955562178,
+date : Thu Mar 16 2023 12:02:42 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955630740,
+date : Thu Mar 16 2023 12:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955630754,
+date : Thu Mar 16 2023 12:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955630759,
+date : Thu Mar 16 2023 12:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955630760,
+date : Thu Mar 16 2023 12:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955630765,
+date : Thu Mar 16 2023 12:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955630899,
+date : Thu Mar 16 2023 12:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955738083,
+date : Thu Mar 16 2023 12:05:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955738097,
+date : Thu Mar 16 2023 12:05:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955738102,
+date : Thu Mar 16 2023 12:05:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955738103,
+date : Thu Mar 16 2023 12:05:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955738103,
+date : Thu Mar 16 2023 12:05:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955738252,
+date : Thu Mar 16 2023 12:05:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955740075,
+date : Thu Mar 16 2023 12:05:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955740086,
+date : Thu Mar 16 2023 12:05:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955740089,
+date : Thu Mar 16 2023 12:05:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955740090,
+date : Thu Mar 16 2023 12:05:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955740094,
+date : Thu Mar 16 2023 12:05:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955740218,
+date : Thu Mar 16 2023 12:05:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955810533,
+date : Thu Mar 16 2023 12:06:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955810554,
+date : Thu Mar 16 2023 12:06:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955810560,
+date : Thu Mar 16 2023 12:06:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955810564,
+date : Thu Mar 16 2023 12:06:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955810565,
+date : Thu Mar 16 2023 12:06:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955810709,
+date : Thu Mar 16 2023 12:06:50 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955812586,
+date : Thu Mar 16 2023 12:06:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955812599,
+date : Thu Mar 16 2023 12:06:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955812602,
+date : Thu Mar 16 2023 12:06:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955812603,
+date : Thu Mar 16 2023 12:06:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955812604,
+date : Thu Mar 16 2023 12:06:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955812760,
+date : Thu Mar 16 2023 12:06:52 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955863640,
+date : Thu Mar 16 2023 12:07:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955863660,
+date : Thu Mar 16 2023 12:07:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955863664,
+date : Thu Mar 16 2023 12:07:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955863669,
+date : Thu Mar 16 2023 12:07:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955863670,
+date : Thu Mar 16 2023 12:07:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955863946,
+date : Thu Mar 16 2023 12:07:43 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955893488,
+date : Thu Mar 16 2023 12:08:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955893507,
+date : Thu Mar 16 2023 12:08:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955893512,
+date : Thu Mar 16 2023 12:08:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955893513,
+date : Thu Mar 16 2023 12:08:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955893516,
+date : Thu Mar 16 2023 12:08:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955893767,
+date : Thu Mar 16 2023 12:08:13 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955914802,
+date : Thu Mar 16 2023 12:08:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955914829,
+date : Thu Mar 16 2023 12:08:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955914834,
+date : Thu Mar 16 2023 12:08:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955914835,
+date : Thu Mar 16 2023 12:08:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955914839,
+date : Thu Mar 16 2023 12:08:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955915087,
+date : Thu Mar 16 2023 12:08:35 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955952284,
+date : Thu Mar 16 2023 12:09:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955952302,
+date : Thu Mar 16 2023 12:09:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui.css,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955952305,
+date : Thu Mar 16 2023 12:09:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-bundle.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955952311,
+date : Thu Mar 16 2023 12:09:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-standalone-preset.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955952312,
+date : Thu Mar 16 2023 12:09:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/swagger-ui-init.js,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678955952587,
+date : Thu Mar 16 2023 12:09:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api-docs/favicon-32x32.png,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1678985128841,
+date : Thu Mar 16 2023 20:15:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/category?pageSize=100,
+body : {}
+},
