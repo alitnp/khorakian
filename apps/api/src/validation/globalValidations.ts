@@ -145,3 +145,11 @@ export const titleValidations = [
     maxLength: 255,
   }),
 ];
+export const shortTitleValidations = [
+  ...existsStringValidation({
+    key: "title",
+    name: "عنوان",
+    minLength: 2,
+    maxLength: 50,
+  }),
+];

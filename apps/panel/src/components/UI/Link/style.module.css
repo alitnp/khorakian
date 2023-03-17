@@ -1,0 +1,53 @@
+.link {
+    position: relative;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.link p {
+    margin: 0;
+    padding: 0 4px;
+}
+
+.icon {
+    transition: all 0.3s ease-out;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%) scale(0);
+    border-radius: 50px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    background-color: var(--body-bg);
+    z-index: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.link:hover .icon {
+    top: -150%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.content {
+    transition: all 0.3s ease-out;
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    background-color: var(--body-bg);
+    border-radius: 50px;
+    width: fit-content;
+    padding: 0 4px;
+    opacity: 0;
+}
+
+.link:hover .content {
+    opacity: 1;
+}

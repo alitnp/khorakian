@@ -1,0 +1,31 @@
+.selected {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+@keyframes appear {
+    from {
+        bottom: 0px
+    }
+    to {
+        bottom: -4px;
+    }
+}
+
+.selected::before {
+    animation: appear 0.2s ease-out;
+    content: " ";
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -4px;
+    right: 50%;
+    transform: translateX(50%) rotate(45deg) translateZ(-1px);
+}
+
+.selected-text,
+.selected-text * {
+    color: var(--opposite-text-color) !important;
+    transition: none !important;
+}

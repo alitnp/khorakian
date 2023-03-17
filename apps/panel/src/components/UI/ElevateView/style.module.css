@@ -1,0 +1,16 @@
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.t-elevate-view {
+  background-color: #000e3544;
+}
+
+.t-elevate-view-wrapper {
+  animation: appear 0.2s linear;
+}

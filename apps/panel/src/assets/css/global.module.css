@@ -1,0 +1,154 @@
+.t-form-item__input {
+    border-color: inherit;
+    box-shadow: inherit;
+}
+
+.t-form-item__input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgb(24 144 255 / 20%);
+}
+
+.t-form-item__input--error {
+    border-color: var(--error-color);
+}
+
+.t-form-item__input--error:hover {
+    border-color: var(--error-color);
+}
+
+.t-form-item__input--error:focus {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px rgb(255 77 79 / 20%);
+}
+
+.t-sidebar-collapse-icon {
+    font-size: 22px !important;
+    padding-right: 5px !important;
+    color: var(--primary-color) !important;
+}
+
+.t-sidebar-collapse {
+    width: 30px !important;
+}
+
+.t-sidebar-menu-lists {
+    margin-top: 7px !important;
+}
+
+.t-sidebar {
+    position: sticky !important;
+    height: 100vh !important;
+    right: 0 !important;
+    top: 0 !important;
+    z-index: 999;
+    transition: 0.2s all !important;
+}
+
+.t-sidebar img {
+    padding-top: 8px;
+    max-width: 80px;
+    margin: 0 auto;
+}
+
+
+/* header */
+
+.t-header-logo {
+    width: 220px !important;
+    background-color: var(--bg-color) !important;
+}
+
+.t-header {
+    position: fixed !important;
+    width: 100% !important;
+    z-index: 100;
+    top: 0 !important;
+    padding: 0 48px !important;
+}
+
+
+/* content */
+
+.t-content {
+    width: 90% !important;
+    max-width: 1100px;
+    margin: 75px auto !important;
+    padding: 24px !important;
+    transition: 0.2s all !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 75px !important;
+}
+
+.t-footer {
+    width: 100% !important;
+    background-color: unset !important;
+}
+
+.t-content-collapse {
+    padding: 24px !important;
+    transition: 0.2s all !important;
+    padding-top: 75px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    @media (max-width: 600px) {
+        width: 95% !important;
+    }
+}
+
+
+/* content animation onChange route*/
+
+.fadeIn {
+    animation: 0.5s fadeIn forwards;
+}
+
+.fadeOut {
+    animation: 0.5s fadeOut forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-20px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+    to {
+        transform: translate(-20px, 0);
+        opacity: 0;
+    }
+}
+
+
+/* table */
+
+.t-TcPagination-li-btn>li>button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* national code search */
+
+.t-national-id-search {
+    display: flex;
+    width: 100%;
+    @media (max-width: 575px) {
+        flex-direction: column;
+    }
+}
+

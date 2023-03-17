@@ -1,0 +1,7 @@
+.green-icon * {
+    color: var(--primary-color) !important;
+}
+
+.red-icon * {
+    color: var(--error-color) !important;
+}

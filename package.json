@@ -14,6 +14,9 @@
 	"scripts": {
 		"start": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/panel start\" \"yarn workspace @my/web start\"",
 		"start:back-web": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/web start\"",
-		"start:back-panel": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/panel start\""
+		"start:back-panel": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/panel start\"",
+		"start:back": "yarn workspace @my/api start",
+		"start:web": "yarn workspace @my/web start",
+		"start:panel": "yarn workspace @my/panel start"
 	}
 }
