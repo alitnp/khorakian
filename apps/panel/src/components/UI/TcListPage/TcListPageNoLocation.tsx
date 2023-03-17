@@ -21,7 +21,7 @@ interface ITcListPageNoLocation {
 const TcListPageNoLocation: FC<ITcListPageNoLocation> = ({ payload = {}, columns, getList, loading, list, filterItems }) => {
   //hooks
   const [form] = Form.useForm();
-  const { setQuery, query, recordsPerPage, pageNumber, resetQuery, handlePagination } = useQueryNoLocation();
+  const { setQuery, query, pageSize, pageNumber, resetQuery, handlePagination } = useQueryNoLocation();
 
   //effect
   useEffect(() => {
@@ -31,7 +31,7 @@ const TcListPageNoLocation: FC<ITcListPageNoLocation> = ({ payload = {}, columns
 
   //functions
   const handleSubmit = (values: object): void => {
-    setQuery({ ...values, recordsPerPage });
+    setQuery({ ...values, pageSize });
   };
 
   return (
@@ -44,8 +44,8 @@ const TcListPageNoLocation: FC<ITcListPageNoLocation> = ({ payload = {}, columns
           </TcForm>
         </CollapseWrapper>
       )}
-      <TcTable count={list?.totalItemCount} refetch={() => getList({ ...query, ...payload })} dataSource={list?.data || []} columns={columns} loading={loading} />
-      <TcPagination current={pageNumber} pageSize={recordsPerPage} total={list?.totalItemCount} onPaginationHandler={handlePagination} />
+      <TcTable count={list?.totalItems} refetch={() => getList({ ...query, ...payload })} dataSource={list?.data || []} columns={columns} loading={loading} />
+      <TcPagination current={pageNumber} pageSize={pageSize} total={list?.totalItems} onPaginationHandler={handlePagination} />
     </>
   );
 };

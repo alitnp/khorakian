@@ -7,11 +7,12 @@ import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import useQuery from 'global/helperFunctions/useQuery';
 import { FC, ReactNode, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import queryString from 'query-string';
 
 interface ITcPageListWrapper {
   getListEndpoint: string;
-  deleteEndpoint: string;
-  columns: (_handleDelete: (_id: number) => void) => any;
+  deleteEndpoint: (_id: number | string) => string;
+  columns: (_handleDelete: (_id: number | string) => void) => any;
   filterItems: ReactNode;
   title: string;
   createRoute: string;
@@ -29,15 +30,16 @@ const TcPageListWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndp
 
   //functions
   const getList = async (query: any) => {
+    const payload = queryString.stringify(query);
     setLoading(true);
-    await ApiService.post(getListEndpoint, query).then((res: any) =>
+    await ApiService.get(getListEndpoint + '?' + payload).then((res: any) =>
       handleApiThen({ res, dispatch, onSuccess: setList, onFailed: () => setList(undefined), notifFail: false, notifSuccess: false })
     );
     setLoading(false);
   };
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: number | string) => {
     setLoading(true);
-    await ApiService.delete(deleteEndpoint + '?id=' + id)
+    await ApiService.delete(deleteEndpoint(id))
       .then((res: any) => handleApiThen({ res, onSuccess: () => getList(query), dispatch, notifFail: true, notifSuccess: true }))
       .then(() => apiCatcher(errorResponse));
     setLoading(false);

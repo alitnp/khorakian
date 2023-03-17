@@ -10,13 +10,9 @@ import TcPageListWrapper from 'components/UI/TcPageListWrapper/TcPageListWrapper
 import TcCreatePage from 'components/UI/TcCreatePage/TcCreatePage';
 import TcEditPage from 'components/UI/TcEditPage/TcEditPage';
 import genericModels from 'global/Models/genericRoutesModels';
-import signalRoutes from 'components/Routes/signalRoutes';
-import paymentRoutes from 'components/Routes/paymentRoutes';
-import userRoutes from 'components/Routes/userRoutes';
-import contentRoutes from 'components/Routes/contentRoutes';
+import postRoutes from 'components/Routes/postRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
-const Register = React.lazy(() => import('./pages/Register/Register'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
 const Profile = React.lazy(() => import('./pages/Profile/Profile'));
 const Setting = React.lazy(() => import('./pages/Setting/Setting'));
@@ -65,17 +61,8 @@ function MainRouter() {
       accessRole: true,
     },
 
-    //signals
-    ...signalRoutes(),
-
-    //payment
-    ...paymentRoutes(),
-
-    //user
-    ...userRoutes(),
-
-    //content
-    ...contentRoutes(),
+    //post
+    ...postRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];
@@ -93,7 +80,7 @@ function MainRouter() {
     genericRoute.push({
       path: model.editRoute,
       component: (
-        <TcEditPage backRoute={model.ListRoute} getEndpoint={model.listEndpoint} submitEndpoint={model.editEndpoint} title={model.title}>
+        <TcEditPage backRoute={model.ListRoute} getEndpoint={model.detailEndpoint} submitEndpoint={model.editEndpoint} title={model.title}>
           {model.inputs}
         </TcEditPage>
       ),
@@ -121,12 +108,6 @@ function MainRouter() {
     {
       path: routes.login.path,
       component: LoginForm,
-      type: 'guest',
-      accessRole: true,
-    },
-    {
-      path: routes.register.path,
-      component: Register,
       type: 'guest',
       accessRole: true,
     },

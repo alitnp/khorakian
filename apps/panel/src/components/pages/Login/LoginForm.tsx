@@ -9,15 +9,12 @@ import endpointUrls from 'global/Constants/endpointUrls';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { FC, useState } from 'react';
 import cookie from 'js-cookie';
-import { backendReponse, loginResponse } from 'global/Models/globalModels';
-import { luLogo } from 'global/Constants/icons';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/reducer/Login/loginReducer';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import TcDevider from 'components/UI/Devider/TcDevider';
-import { Link } from 'react-router-dom';
-import routes from 'global/Constants/routes';
 import { handleApiThen } from 'global/helperFunctions/handleApiThen';
+import { ApiDataResponse } from '@my/types';
 
 const LoginForm: FC = () => {
   //states
@@ -32,13 +29,13 @@ const LoginForm: FC = () => {
   const onFinish = async (values: { username: string }) => {
     setLoading(true);
 
-    await ApiService.post(endpointUrls.login, { ...values, grant_type: 'password' })
-      .then((res: backendReponse<loginResponse>) => {
+    await ApiService.post(endpointUrls.login, values)
+      .then((res: ApiDataResponse<{ token: string }>) => {
         handleApiThen({
           res,
           dispatch,
           onSuccess: (res) => {
-            cookie.set('token', 'bearer ' + res.data.access_token);
+            cookie.set('token', 'Bearer ' + res.data.token);
             dispatch(login({ isLoggedIn: true }));
           },
           notifFail: true,
@@ -56,19 +53,22 @@ const LoginForm: FC = () => {
     <TcCard className='w-full'>
       <>
         <div className='flex flex-col items-center justify-center mb-12'>
-          {luLogo('120', '80')}
-          <h1 className='text-2xl font-bold text-t-primary-color'>Level Up Dashboard</h1>
+          <h1 className='text-2xl font-bold text-center text-t-primary-color'>
+            پنل مدیریت محتوا سایت
+            <br />
+            امیر خوراکیان
+          </h1>
         </div>
         <TcDevider orientation='center'>ورود به حساب کاربری</TcDevider>
         <TcForm form={form} onFinish={onFinish}>
           <TcFormWrapper singleColumn>
             <TcFormItem
-              label='نام کاربری'
-              name='username'
+              label='شماره همراه'
+              name='mobileNumber'
               rules={[
                 {
                   required: true,
-                  message: 'نام کاربری خود را وارد کنید',
+                  message: 'شماره همراه خود را وارد کنید',
                 },
               ]}>
               <Input />
@@ -83,7 +83,7 @@ const LoginForm: FC = () => {
                 },
                 {
                   min: 8,
-                  message: 'رمز عبور باید بیشتر از 8 کاراکتر باشد',
+                  message: 'رمز عبور باید حداقل 8 کاراکتر باشد',
                 },
               ]}>
               <Input.Password />
@@ -91,11 +91,10 @@ const LoginForm: FC = () => {
 
             <div></div>
           </TcFormWrapper>
-          <div className='flex justify-between mt-6'>
-            <Link to={routes.register.path}>
-              <TcButton>ایجاد حساب</TcButton>
-            </Link>
-            <TcButton htmlType='submit'>ورود</TcButton>
+          <div className='flex justify-end mt-6'>
+            <TcButton htmlType='submit' type='primary'>
+              ورود
+            </TcButton>
           </div>
         </TcForm>
         {loading && <TcCoverLoading />}

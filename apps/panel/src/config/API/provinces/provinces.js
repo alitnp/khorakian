@@ -5,7 +5,7 @@ function provinces() {
   return {
     getProvinces: () => {
       const url = baseUrl;
-      return ApiService.get(url, { recordsPerPage: 50 });
+      return ApiService.get(url, { pageSize: 50 });
     },
   };
 }

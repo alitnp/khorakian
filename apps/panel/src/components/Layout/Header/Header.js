@@ -10,10 +10,10 @@ import { UserOutlined, SettingOutlined } from '@ant-design/icons';
 
 const TcHeader = () => {
   //states
-  const { userProfile } = useSelector((state) => state.profile.value);
+  const { userProfile } = useSelector((state) => state.profile);
 
   //hooks
-  const { hasAccessTo } = useHasAccess();
+
   const dispatch = useDispatch();
 
   //effect

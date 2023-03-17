@@ -10,6 +10,16 @@ const routes = {
   dashboard: { path: '/dashboard', isPrivate: true },
   setting: { path: '/setting', isPrivate: true },
 
+  //post
+  post: { path: '/post', isPrivate: true },
+  postCreate: { path: '/post/create', isPrivate: true },
+
+  //postCategory
+  postCategory: { path: '/postcategory', isPrivate: true },
+  postCategoryCreate: { path: '/postcategory/create', isPrivate: true },
+  postCategoryEdit: { path: '/postcategory/edit', isPrivate: true },
+  postCategoryDetail: { path: '/postcategory/detail', isPrivate: true },
+
   //payment
   payment: { path: '/payment', isPrivate: true },
 

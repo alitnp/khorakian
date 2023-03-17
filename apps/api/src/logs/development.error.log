@@ -338,3 +338,279 @@ body : {}
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1679032381092,
+date : Fri Mar 17 2023 09:23:01 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+Response : {"status":409,"message":"فردی با این شماره همراه در سیستم وجود دارد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679033327479,
+date : Fri Mar 17 2023 09:38:47 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679033354553,
+date : Fri Mar 17 2023 09:39:14 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"su","password":"12345678"}
+},
+Response : {"status":400,"message":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹","details":{"mobileNumber":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679033710449,
+date : Fri Mar 17 2023 09:45:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"su","password":"12345678"}
+},
+Response : {"status":400,"message":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹","details":{"mobileNumber":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679033805051,
+date : Fri Mar 17 2023 09:46:45 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"superadmin","password":"T!p@x2021"}
+},
+Response : {"status":400,"message":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹","details":{"mobileNumber":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679033830460,
+date : Fri Mar 17 2023 09:47:10 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308207880","password":"T!p@x2021"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679033837699,
+date : Fri Mar 17 2023 09:47:17 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308207880","password":"T!p@x2021"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679033842946,
+date : Fri Mar 17 2023 09:47:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"T!p@x2021"}
+},
+Response : {"status":400,"message":"رمز عبور وارد شده صحیح نیست.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679033979287,
+date : Fri Mar 17 2023 09:49:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679037361339,
+date : Fri Mar 17 2023 10:46:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679037391952,
+date : Fri Mar 17 2023 10:46:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037422993,
+date : Fri Mar 17 2023 10:47:02 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037508389,
+date : Fri Mar 17 2023 10:48:28 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"undefined"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037576027,
+date : Fri Mar 17 2023 10:49:36 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"undefined"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037584831,
+date : Fri Mar 17 2023 10:49:44 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"undefined"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037613920,
+date : Fri Mar 17 2023 10:50:13 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"ëx×Ü{ßëWßw¯uu½"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037665636,
+date : Fri Mar 17 2023 10:51:05 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"ëx×Ü{ßëWßw¯uu½"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037680717,
+date : Fri Mar 17 2023 10:51:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"6414143ce5bf61ffd691db2d"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037783464,
+date : Fri Mar 17 2023 10:53:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/NaN,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037786890,
+date : Fri Mar 17 2023 10:53:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/NaN,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679037973242,
+date : Fri Mar 17 2023 10:56:13 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/undefined,
+body : {"_id":"6414143ce5bf61ffd691db2d","title":"تست2","isPublished":true,"creationDate":"2023-03-17T07:18:20.511Z","__v":0}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679038650798,
+date : Fri Mar 17 2023 11:07:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/undefined,
+body : {"_id":"6414143ce5bf61ffd691db2d","title":"تست2","isPublished":true,"creationDate":"2023-03-17T07:18:20.511Z","__v":0}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679058731447,
+date : Fri Mar 17 2023 16:42:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"recordsPerPage":"10","title":"آموزش و پرورش"}
+},
+Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},

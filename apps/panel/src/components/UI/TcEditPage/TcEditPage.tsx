@@ -19,8 +19,8 @@ interface ITcEditPage {
   subTitle?: string;
   backRoute: string;
   onValuesChange?: (_value: any, _values: any) => void;
-  submitEndpoint: string;
-  getEndpoint: string;
+  submitEndpoint: (_id: number | string) => string;
+  getEndpoint: (_id: number | string) => string;
 }
 
 const TcEditPage: FC<ITcEditPage> = ({ children, title, subTitle, backRoute, onValuesChange, submitEndpoint, getEndpoint }) => {
@@ -33,7 +33,7 @@ const TcEditPage: FC<ITcEditPage> = ({ children, title, subTitle, backRoute, onV
   const dispatch = useDispatch();
   const { push } = useHistory();
   const apiCatcher = useApiCatcher();
-  const { decryptedPathnameLastPart: id } = useQuery();
+  const { pathnameLastPart: id } = useQuery();
 
   //effect
   useEffect(() => {
@@ -41,16 +41,16 @@ const TcEditPage: FC<ITcEditPage> = ({ children, title, subTitle, backRoute, onV
   }, [id]);
 
   //functions
-  const handleGet = async (id: number) => {
+  const handleGet = async (id: number | string) => {
     setLoading(true);
-    await ApiService.post(getEndpoint, { id })
+    await ApiService.get(getEndpoint(id), { id })
       .then((res: any) =>
         handleApiThen({
           res,
           dispatch,
           onSuccess: (data) => {
-            setFetchedData(data[0]);
-            form.setFieldsValue(data[0]);
+            setFetchedData(data);
+            form.setFieldsValue(data);
           },
           dataOnly: true,
           notifFail: true,
@@ -62,7 +62,8 @@ const TcEditPage: FC<ITcEditPage> = ({ children, title, subTitle, backRoute, onV
   };
   const handleSubmit = async (values: any) => {
     setLoading(true);
-    await ApiService.put(submitEndpoint, { ...fetchedData, ...values })
+
+    await ApiService.put(submitEndpoint(fetchedData._id), { ...fetchedData, ...values })
       .then((res: any) => handleApiThen({ res, dispatch, onSuccess: () => push(backRoute), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);

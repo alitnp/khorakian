@@ -1,5 +1,4 @@
 import { Form, FormInstance } from 'antd';
-import TcActorFilters from 'components/UI/ActorFilters/TcActorFilters';
 import CollapseWrapper from 'components/UI/CollapseWrapper/CollapseWrapper';
 import TcForm from 'components/UI/Form/TcForm';
 import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
@@ -9,7 +8,7 @@ import TcTable from 'components/UI/Table/TcTable';
 import { ApiService } from 'config/API/ApiService';
 import useQuery from 'global/helperFunctions/useQuery';
 import { ITableColumn } from 'global/Models/globalModels';
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import TcFormWrapper from '../FormWrapper/TcFormWrapper';
 
 interface ITcListPage {
@@ -40,18 +39,14 @@ const TcListPage: FC<ITcListPage> = ({
   rowKey,
   noPagination,
 }) => {
-  //states
-  const [isAdvanceOpen, setIsAdvanceOpen] = useState<boolean>(false);
-
   //hooks
   const [form] = Form.useForm();
-  const { query, search, setQuery, resetQuary, pageNumber, recordsPerPage, handlePagination } = useQuery();
+  const { query, search, setQuery, resetQuary, pageNumber, pageSize, handlePagination } = useQuery();
   const apiService = new ApiService();
 
   //effect
   useEffect(() => {
     handleSearchChange(query, apiService);
-    handleOpenAdvanceFilters(query);
     return () => apiService.abort();
   }, [search]);
 
@@ -66,10 +61,7 @@ const TcListPage: FC<ITcListPage> = ({
     }
     getList(values, apiService);
   };
-  const handleOpenAdvanceFilters = (query: any) => {
-    if (query?.creationDate || query?.modificationDate || query?.modifierId || query?.creatorId) setIsAdvanceOpen(true);
-  };
-  const handleSubmit = (values: object): void => setQuery({ ...defaultQuery, ...values, recordsPerPage });
+  const handleSubmit = (values: object): void => setQuery({ ...defaultQuery, ...values, pageSize });
 
   return (
     <>
@@ -77,27 +69,23 @@ const TcListPage: FC<ITcListPage> = ({
         <CollapseWrapper>
           <TcForm form={customForm || form} onFinish={handleSubmit}>
             <TcFormWrapper>{filterItems}</TcFormWrapper>
-            <TcFormButtons
-              onCancel={() => resetQuary(defaultQuery)}
-              advanceContent={<TcActorFilters />}
-              isAdvanceOpen={isAdvanceOpen}
-              onAdvanceClick={() => setIsAdvanceOpen((prevState) => !prevState)}
-            />
+            <TcFormButtons onCancel={() => resetQuary(defaultQuery)} />
           </TcForm>
         </CollapseWrapper>
       )}
       <>{additionalContent}</>
 
       <TcTable
-        count={list?.totalItemCount}
+        count={list?.totalItems}
         refetch={() => getList(query, apiService)}
         dataSource={list?.data || []}
         columns={columns}
         loading={loading}
         current={pageNumber}
+        pageSize={pageSize}
         rowKey={rowKey}
       />
-      {!noPagination && <TcPagination current={+pageNumber} pageSize={recordsPerPage} total={list?.totalItemCount} onPaginationHandler={handlePagination} showLessItems={false} />}
+      {!noPagination && <TcPagination current={+pageNumber} pageSize={pageSize} total={list?.totalItems} onPaginationHandler={handlePagination} showLessItems={false} />}
 
       <>{additionalMoreContent}</>
     </>

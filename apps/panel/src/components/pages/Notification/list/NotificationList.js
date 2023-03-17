@@ -12,7 +12,7 @@ import { getNotificationList } from 'redux/reducer/Notification/getNotificationL
 const NotificationList = () => {
   //states
   const { notificationList, loading } = useSelector((state) => state.notification);
-  const [recordsPerPage, setRecordsPerPage] = useState(10);
+  const [pageSize, setPageSize] = useState(10);
   const [pageNumber, setPageNumber] = useState(notificationList?.pageNumber || 1);
   const [showDetail, setShowDetail] = useState();
 
@@ -26,13 +26,13 @@ const NotificationList = () => {
   }, []);
 
   //functions
-  const handlePagination = (pageNumber, recordsPerPage) => {
-    setRecordsPerPage(recordsPerPage);
+  const handlePagination = (pageNumber, pageSize) => {
+    setPageSize(pageSize);
     setPageNumber(pageNumber);
-    handleSearch(pageNumber, recordsPerPage);
+    handleSearch(pageNumber, pageSize);
   };
-  const handleSearch = (pageNumber, recordsPerPage) => {
-    const payload = { ...form.getFieldsValue(), pageNumber, recordsPerPage };
+  const handleSearch = (pageNumber, pageSize) => {
+    const payload = { ...form.getFieldsValue(), pageNumber, pageSize };
     dispatch(getNotificationList(payload));
   };
 
@@ -67,10 +67,10 @@ const NotificationList = () => {
   return (
     <div className=''>
       <CollapseWrapper>
-        <NotificationsFilters form={form} handleSubmit={() => handleSearch(pageNumber, recordsPerPage)} />
+        <NotificationsFilters form={form} handleSubmit={() => handleSearch(pageNumber, pageSize)} />
       </CollapseWrapper>
-      <TcTable dataSource={notificationList?.data} columns={columns} loading={loading} count={notificationList?.totalItemCount} pageSize={recordsPerPage} current={pageNumber} />
-      <TcPagination pageSize={recordsPerPage} current={pageNumber} total={notificationList?.totalItemCount} onPaginationHandler={handlePagination} showSizeChanger />
+      <TcTable dataSource={notificationList?.data} columns={columns} loading={loading} count={notificationList?.totalItems} pageSize={pageSize} current={pageNumber} />
+      <TcPagination pageSize={pageSize} current={pageNumber} total={notificationList?.totalItems} onPaginationHandler={handlePagination} showSizeChanger />
       <NotificationDetail close={() => setShowDetail()} detail={showDetail} />
     </div>
   );

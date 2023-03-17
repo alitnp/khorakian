@@ -1,6 +1,6 @@
 //@ts-ignore
 import TrezSMSClient from "trez-sms-client";
-import { IUser } from "@/components/user/userModel";
+import { IUser } from "@my/types";
 import { apiDataResponse } from "@/helpers/apiResponse";
 import BaseController from "@/controller/globalControllers";
 import UserData from "@/components/user/userData";

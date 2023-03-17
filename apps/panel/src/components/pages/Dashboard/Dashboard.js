@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <>
       <Helmet>
-        <title>داشبورد | سامانه Level Up</title>
+        <title>داشبورد | سامانه مدیریت محتوا سایت امیر خوراکیان</title>
       </Helmet>
       <TcCard>
         <TcPageTitle title='داشبورد' />
@@ -25,7 +25,7 @@ const Dashboard = () => {
   // return (
   //   <div className='relative flex-grow-0 pt-6 mx-auto mb-8 text-right'>
   //     <Helmet>
-  //       <title>داشبورد | سامانه Level Up</title>
+  //       <title>داشبورد | سامانه مدیریت محتوا سایت امیر خوراکیان</title>
   //     </Helmet>
   //     {hasAccessTo(false) && <AdminDashboard />}
   //     {hasAccessTo(roles.ticket?.dashboard) && <TicketDashboard />}

@@ -1,28 +1,10 @@
-import { Model, model, Schema, Types } from "mongoose";
-import { DefaultModelProperties } from "@my/types";
+import { Model, model, Schema } from "mongoose";
+import { IUser } from "@my/types";
 import jwt from "jsonwebtoken";
 import CONFIG from "@/config";
 import { compare, hash } from "@/utils/crypt";
 
-export interface IUser extends DefaultModelProperties {
-  _id?: Types.ObjectId;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  mobileNumber: string;
-  password: string;
-  isAdmin: boolean;
-}
-export interface IUserRead extends DefaultModelProperties {
-  _id: Types.ObjectId;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  mobileNumber: string;
-  isAdmin: boolean;
-}
-
-interface IUserMethods {
+export interface IUserMethods {
   generateAuthToken(): string;
   comparePassword(_password: string): Promise<boolean>;
   setFullName(): void;

@@ -1,17 +1,15 @@
 import { Router } from "express";
 
-import categoryRoutes from "@/components/category/categoryRoutes";
-import authorRoutes from "@/components/author/authorRoutes";
-import bookRoutes from "@/components/book/bookRoutes";
 import userRoutes from "@/components/user/userRoutes";
+import postCategoryRoutes from "@/components/postCategory/postCategoryRoutes";
+import imageRoutes from "@/components/image/imageRoutes";
 
 const router = Router();
 
 // router.get("/", sanitizer(appKeyValidator), HomeController.getAppInfo);
 
-router.use("/category", categoryRoutes);
-router.use("/author", authorRoutes);
-router.use("/book", bookRoutes);
 router.use("/user", userRoutes);
+router.use("/postcategory", postCategoryRoutes);
+router.use("/image", imageRoutes);
 
 export default router;

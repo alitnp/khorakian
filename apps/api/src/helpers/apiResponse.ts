@@ -2,7 +2,7 @@ import { OK } from "http-status/lib";
 import { ApiDataListResponse, ApiDataResponse } from "@my/types";
 
 export const apiDataResponse = <T>(
-  data?: T,
+  data: T,
   message?: string,
 ): ApiDataResponse<T> => {
   return {

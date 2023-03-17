@@ -5,3 +5,4 @@ declare global {
   type Res = Response;
   type NextFn = NextFunction;
 }
+declare module "multer";

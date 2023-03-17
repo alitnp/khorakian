@@ -63,7 +63,7 @@ const TcPageTitle: FC<ITcPageTitle> = ({
   return (
     <div className={`${!haveTabs && 'mb-4'} border-t-border-color-base print:m-0 print:p-0`}>
       <Helmet>
-        <title>{pageTitle || ''} | سامانه Level Up</title>
+        <title>{pageTitle || ''} | سامانه مدیریت محتوا سایت امیر خوراکیان</title>
       </Helmet>
       <div className={` pb-4  ${!haveTabs && 'border-b'} shrink-0 print:p-0`}>
         <div className='flex flex-col gap-4 print:gap-0 sm:flex-row sm:justify-between sm:items-center'>
@@ -77,7 +77,7 @@ const TcPageTitle: FC<ITcPageTitle> = ({
             )}
           </div>
           <div className='hidden text-xs print:block'>
-            <p className='m-0'>پنل مدیریتی - Level Up</p>
+            <p className='m-0'>پنل مدیریتی - محتوا سایت امیر خوراکیان</p>
             <p className='m-0'>{new DateObject({ calendar: persian, locale: persian_fa }).format('HH:mm dddd YYYY/MM/DD')}</p>
           </div>
           <div className='print:hidden'>

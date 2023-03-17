@@ -13,7 +13,7 @@ const HeaderNotification = () => {
   //states
   const [connection, setConnection] = useState(null);
   const [showNotificationDetail, setShowNotificationDetail] = useState();
-  const { userProfile } = useSelector((state) => state.profile.value);
+  const { userProfile } = useSelector((state) => state.profile);
   const { myNotifications } = useSelector((state) => state.notification);
   const [unSeenNotificationCount, setUnSeenNotificationCount] = useState(0);
 

@@ -5,7 +5,7 @@ import { setMyNotifications, setNotificationLoading } from 'redux/reducer/Notifi
 
 export const getMyNotifications = (userId) => async (dispatch) => {
   dispatch(setNotificationLoading(true));
-  await ApiService.post(endpointUrls.getMyNotifications, { userId, recordsPerPage: 50 })
+  await ApiService.post(endpointUrls.getMyNotifications, { userId, pageSize: 50 })
     .then((res) => {
       if (res.isSuccess) dispatch(setMyNotifications(res));
       else dispatch(setMyNotifications(null));

@@ -14,9 +14,10 @@ import {
 } from "@/validation/globalValidations";
 import UserData from "@/components/user/userData";
 import UserController from "@/components/user/userController";
+import { User } from "@/components/user/userModel";
 
 const router = Router();
-const userData = new UserData();
+const userData = new UserData(User);
 const userController = new UserController(userData);
 
 //get

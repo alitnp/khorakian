@@ -2898,3 +2898,1633 @@ method : GET,
 url : /api/v1/category?pageSize=100,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1679032337728,
+date : Fri Mar 17 2023 09:22:17 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679032376461,
+date : Fri Mar 17 2023 09:22:56 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679032381085,
+date : Fri Mar 17 2023 09:23:01 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679032414137,
+date : Fri Mar 17 2023 09:23:34 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679032446239,
+date : Fri Mar 17 2023 09:24:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/Users/LoginWithoutToken,
+body : {"username":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678","grant_type":"password"}
+},
+{
+type : INFO,
+timestamp : 1679032564512,
+date : Fri Mar 17 2023 09:26:04 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/Users/LoginWithoutToken,
+body : {"password":"12345678","mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","grant_type":"password"}
+},
+{
+type : INFO,
+timestamp : 1679033223901,
+date : Fri Mar 17 2023 09:37:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"superadmin","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033249162,
+date : Fri Mar 17 2023 09:37:29 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"superadmin","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033315445,
+date : Fri Mar 17 2023 09:38:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"superadmin","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033327468,
+date : Fri Mar 17 2023 09:38:47 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679033354547,
+date : Fri Mar 17 2023 09:39:14 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"su","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033489839,
+date : Fri Mar 17 2023 09:41:29 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033522714,
+date : Fri Mar 17 2023 09:42:02 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033603053,
+date : Fri Mar 17 2023 09:43:23 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"0912210","password":"456745674567"}
+},
+{
+type : INFO,
+timestamp : 1679033625832,
+date : Fri Mar 17 2023 09:43:45 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033710446,
+date : Fri Mar 17 2023 09:45:10 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"su","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033731269,
+date : Fri Mar 17 2023 09:45:31 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033805042,
+date : Fri Mar 17 2023 09:46:45 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"superadmin","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033830446,
+date : Fri Mar 17 2023 09:47:10 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308207880","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033837694,
+date : Fri Mar 17 2023 09:47:17 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308207880","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033842877,
+date : Fri Mar 17 2023 09:47:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"T!p@x2021"}
+},
+{
+type : INFO,
+timestamp : 1679033915524,
+date : Fri Mar 17 2023 09:48:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679033915703,
+date : Fri Mar 17 2023 09:48:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679033979286,
+date : Fri Mar 17 2023 09:49:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679034040720,
+date : Fri Mar 17 2023 09:50:40 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679034040858,
+date : Fri Mar 17 2023 09:50:40 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679034168905,
+date : Fri Mar 17 2023 09:52:48 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679034219672,
+date : Fri Mar 17 2023 09:53:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679034986142,
+date : Fri Mar 17 2023 10:06:26 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679035125936,
+date : Fri Mar 17 2023 10:08:45 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679035423041,
+date : Fri Mar 17 2023 10:13:43 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679035521674,
+date : Fri Mar 17 2023 10:15:21 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679035881935,
+date : Fri Mar 17 2023 10:21:21 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679035894851,
+date : Fri Mar 17 2023 10:21:34 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679035948895,
+date : Fri Mar 17 2023 10:22:28 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679036966867,
+date : Fri Mar 17 2023 10:39:26 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037002258,
+date : Fri Mar 17 2023 10:40:02 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037175509,
+date : Fri Mar 17 2023 10:42:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037272126,
+date : Fri Mar 17 2023 10:44:32 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037352474,
+date : Fri Mar 17 2023 10:45:52 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037361336,
+date : Fri Mar 17 2023 10:46:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037389908,
+date : Fri Mar 17 2023 10:46:29 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679037391948,
+date : Fri Mar 17 2023 10:46:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037407911,
+date : Fri Mar 17 2023 10:46:47 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679037416126,
+date : Fri Mar 17 2023 10:46:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037422991,
+date : Fri Mar 17 2023 10:47:02 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037472385,
+date : Fri Mar 17 2023 10:47:52 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037472471,
+date : Fri Mar 17 2023 10:47:52 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037500505,
+date : Fri Mar 17 2023 10:48:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"تست"}
+},
+{
+type : INFO,
+timestamp : 1679037500613,
+date : Fri Mar 17 2023 10:48:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037508387,
+date : Fri Mar 17 2023 10:48:28 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"undefined"}
+},
+{
+type : INFO,
+timestamp : 1679037515795,
+date : Fri Mar 17 2023 10:48:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037576025,
+date : Fri Mar 17 2023 10:49:36 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"undefined"}
+},
+{
+type : INFO,
+timestamp : 1679037579016,
+date : Fri Mar 17 2023 10:49:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037582489,
+date : Fri Mar 17 2023 10:49:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037582597,
+date : Fri Mar 17 2023 10:49:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037584829,
+date : Fri Mar 17 2023 10:49:44 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"undefined"}
+},
+{
+type : INFO,
+timestamp : 1679037586840,
+date : Fri Mar 17 2023 10:49:46 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037613918,
+date : Fri Mar 17 2023 10:50:13 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"ëx×Ü{ßëWßw¯uu½"}
+},
+{
+type : INFO,
+timestamp : 1679037665634,
+date : Fri Mar 17 2023 10:51:05 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"ëx×Ü{ßëWßw¯uu½"}
+},
+{
+type : INFO,
+timestamp : 1679037680715,
+date : Fri Mar 17 2023 10:51:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"id":"6414143ce5bf61ffd691db2d"}
+},
+{
+type : INFO,
+timestamp : 1679037767865,
+date : Fri Mar 17 2023 10:52:47 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037767929,
+date : Fri Mar 17 2023 10:52:47 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory/NaN,
+body : {"id":"6414143ce5bf61ffd691db2d"}
+},
+{
+type : INFO,
+timestamp : 1679037783462,
+date : Fri Mar 17 2023 10:53:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/NaN,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037786826,
+date : Fri Mar 17 2023 10:53:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037786889,
+date : Fri Mar 17 2023 10:53:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/NaN,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037828499,
+date : Fri Mar 17 2023 10:53:48 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/6414143ce5bf61ffd691db2d,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037973240,
+date : Fri Mar 17 2023 10:56:13 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/undefined,
+body : {"_id":"6414143ce5bf61ffd691db2d","title":"تست2","isPublished":true,"creationDate":"2023-03-17T07:18:20.511Z","__v":0}
+},
+{
+type : INFO,
+timestamp : 1679037982299,
+date : Fri Mar 17 2023 10:56:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679037982346,
+date : Fri Mar 17 2023 10:56:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/6414143ce5bf61ffd691db2d,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679038650796,
+date : Fri Mar 17 2023 11:07:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/undefined,
+body : {"_id":"6414143ce5bf61ffd691db2d","title":"تست2","isPublished":true,"creationDate":"2023-03-17T07:18:20.511Z","__v":0}
+},
+{
+type : INFO,
+timestamp : 1679038684210,
+date : Fri Mar 17 2023 11:08:04 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/6414143ce5bf61ffd691db2d,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679038688392,
+date : Fri Mar 17 2023 11:08:08 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/6414143ce5bf61ffd691db2d,
+body : {"_id":"6414143ce5bf61ffd691db2d","title":"تست2","isPublished":true,"creationDate":"2023-03-17T07:18:20.511Z","__v":0}
+},
+{
+type : INFO,
+timestamp : 1679038688549,
+date : Fri Mar 17 2023 11:08:08 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679038692782,
+date : Fri Mar 17 2023 11:08:12 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/postcategory/6414143ce5bf61ffd691db2d,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679038692808,
+date : Fri Mar 17 2023 11:08:12 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679038697940,
+date : Fri Mar 17 2023 11:08:17 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"تست"}
+},
+{
+type : INFO,
+timestamp : 1679038698032,
+date : Fri Mar 17 2023 11:08:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679039610032,
+date : Fri Mar 17 2023 11:23:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"ترابری"}
+},
+{
+type : INFO,
+timestamp : 1679039610122,
+date : Fri Mar 17 2023 11:23:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679039623977,
+date : Fri Mar 17 2023 11:23:43 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/64141c7ae5bf61ffd691db52,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679039643157,
+date : Fri Mar 17 2023 11:24:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/64141c7ae5bf61ffd691db52,
+body : {"_id":"64141c7ae5bf61ffd691db52","title":"فرهنگ","isPublished":true,"creationDate":"2023-03-17T07:53:30.034Z","__v":0}
+},
+{
+type : INFO,
+timestamp : 1679039643249,
+date : Fri Mar 17 2023 11:24:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679057928519,
+date : Fri Mar 17 2023 16:28:48 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679057928669,
+date : Fri Mar 17 2023 16:28:48 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679057942186,
+date : Fri Mar 17 2023 16:29:02 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679057993753,
+date : Fri Mar 17 2023 16:29:53 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"فرهنگ"}
+},
+{
+type : INFO,
+timestamp : 1679057993885,
+date : Fri Mar 17 2023 16:29:53 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058015710,
+date : Fri Mar 17 2023 16:30:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"آموزش و پرورش"}
+},
+{
+type : INFO,
+timestamp : 1679058015818,
+date : Fri Mar 17 2023 16:30:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058099615,
+date : Fri Mar 17 2023 16:31:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058099679,
+date : Fri Mar 17 2023 16:31:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058140766,
+date : Fri Mar 17 2023 16:32:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"فرهنگ"}
+},
+{
+type : INFO,
+timestamp : 1679058140885,
+date : Fri Mar 17 2023 16:32:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058155261,
+date : Fri Mar 17 2023 16:32:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"آموزش و پرورش"}
+},
+{
+type : INFO,
+timestamp : 1679058155363,
+date : Fri Mar 17 2023 16:32:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058159669,
+date : Fri Mar 17 2023 16:32:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058217074,
+date : Fri Mar 17 2023 16:33:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058217174,
+date : Fri Mar 17 2023 16:33:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058500484,
+date : Fri Mar 17 2023 16:38:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058528173,
+date : Fri Mar 17 2023 16:38:48 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058538509,
+date : Fri Mar 17 2023 16:38:58 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058538594,
+date : Fri Mar 17 2023 16:38:58 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058595029,
+date : Fri Mar 17 2023 16:39:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058595106,
+date : Fri Mar 17 2023 16:39:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058625681,
+date : Fri Mar 17 2023 16:40:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058625754,
+date : Fri Mar 17 2023 16:40:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058731361,
+date : Fri Mar 17 2023 16:42:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058731442,
+date : Fri Mar 17 2023 16:42:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"recordsPerPage":"10","title":"آموزش و پرورش"}
+},
+{
+type : INFO,
+timestamp : 1679058776681,
+date : Fri Mar 17 2023 16:42:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058786646,
+date : Fri Mar 17 2023 16:43:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058786730,
+date : Fri Mar 17 2023 16:43:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058816540,
+date : Fri Mar 17 2023 16:43:36 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058895862,
+date : Fri Mar 17 2023 16:44:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058900295,
+date : Fri Mar 17 2023 16:45:00 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679058925892,
+date : Fri Mar 17 2023 16:45:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059023968,
+date : Fri Mar 17 2023 16:47:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059038737,
+date : Fri Mar 17 2023 16:47:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059038796,
+date : Fri Mar 17 2023 16:47:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059056312,
+date : Fri Mar 17 2023 16:47:36 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059144887,
+date : Fri Mar 17 2023 16:49:04 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059144986,
+date : Fri Mar 17 2023 16:49:04 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=10&title=%D8%A2%D9%85%D9%88%D8%B2%D8%B4%20%D9%88%20%D9%BE%D8%B1%D9%88%D8%B1%D8%B4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059186647,
+date : Fri Mar 17 2023 16:49:46 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059189845,
+date : Fri Mar 17 2023 16:49:49 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=10&title=%D8%AA%D8%B1%D8%A7%D8%A8%D8%B1%DB%8C,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059190868,
+date : Fri Mar 17 2023 16:49:50 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059201060,
+date : Fri Mar 17 2023 16:50:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059201143,
+date : Fri Mar 17 2023 16:50:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059323115,
+date : Fri Mar 17 2023 16:52:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059363448,
+date : Fri Mar 17 2023 16:52:43 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?recordsPerPage=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059370745,
+date : Fri Mar 17 2023 16:52:50 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059370825,
+date : Fri Mar 17 2023 16:52:50 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059373714,
+date : Fri Mar 17 2023 16:52:53 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=10&title=%D8%AA%D8%B3%D8%AA,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059380984,
+date : Fri Mar 17 2023 16:53:00 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059381094,
+date : Fri Mar 17 2023 16:53:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059585298,
+date : Fri Mar 17 2023 16:56:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059641079,
+date : Fri Mar 17 2023 16:57:21 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059642891,
+date : Fri Mar 17 2023 16:57:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=1&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059651965,
+date : Fri Mar 17 2023 16:57:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059654945,
+date : Fri Mar 17 2023 16:57:34 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059655015,
+date : Fri Mar 17 2023 16:57:35 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059930261,
+date : Fri Mar 17 2023 17:02:10 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059936364,
+date : Fri Mar 17 2023 17:02:16 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059936453,
+date : Fri Mar 17 2023 17:02:16 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679059998647,
+date : Fri Mar 17 2023 17:03:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060000769,
+date : Fri Mar 17 2023 17:03:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=1&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060001919,
+date : Fri Mar 17 2023 17:03:21 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060022249,
+date : Fri Mar 17 2023 17:03:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=1&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060030925,
+date : Fri Mar 17 2023 17:03:50 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060031705,
+date : Fri Mar 17 2023 17:03:51 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=1&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060065331,
+date : Fri Mar 17 2023 17:04:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=1&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060066293,
+date : Fri Mar 17 2023 17:04:26 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060120323,
+date : Fri Mar 17 2023 17:05:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060120394,
+date : Fri Mar 17 2023 17:05:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=1,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060130893,
+date : Fri Mar 17 2023 17:05:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679060131006,
+date : Fri Mar 17 2023 17:05:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageNumber=2&pageSize=2,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679088221472,
+date : Sat Mar 18 2023 00:53:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679088233053,
+date : Sat Mar 18 2023 00:53:53 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679088391073,
+date : Sat Mar 18 2023 00:56:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679088391133,
+date : Sat Mar 18 2023 00:56:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679089236475,
+date : Sat Mar 18 2023 01:10:36 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679089727919,
+date : Sat Mar 18 2023 01:18:47 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679089904743,
+date : Sat Mar 18 2023 01:21:44 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679089964660,
+date : Sat Mar 18 2023 01:22:44 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},

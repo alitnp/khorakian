@@ -5,7 +5,6 @@ import TableColumnFilter from 'components/UI/Table/TableColumnFilter';
 import { RedoOutlined, PrinterOutlined } from '@ant-design/icons';
 import { separator } from 'global/default';
 import { ITableColumn } from 'global/Models/globalModels';
-import { DateObject } from 'react-multi-date-picker';
 import { dateObjectFormatter } from 'global/helperFunctions/dateFormatter';
 
 interface ITcTable {
@@ -35,11 +34,11 @@ const TcTable: FC<ITcTable> = ({
   refetch,
   noInfoBar,
   noCreationDate,
-  rowKey = 'id',
+  rowKey = '_id',
   ...props
 }) => {
   //status
-  const [hiddenColumns, setHiddenColumns] = useState<string[]>(['فرد ثبت کننده', 'تاریخ آخرین ویرایش', 'فرد ویرایش کننده']);
+  const [hiddenColumns, setHiddenColumns] = useState<string[]>([]);
 
   const defaultColumns: ITableColumn[] = [
     {
@@ -49,11 +48,11 @@ const TcTable: FC<ITcTable> = ({
     },
   ];
 
-  if (!noCreationDate && dataSource && (dataSource[0]?.creationDate || dataSource[0]?.creationTime))
+  if (!noCreationDate && dataSource && dataSource[0]?.creationDate)
     defaultColumns.push({
       title: 'تاریخ ثبت',
       key: 'creationDate',
-      render: (_text: any, record: any): string => (record?.creationDate || '') + ' ' + (record?.creationTime || ''),
+      render: (_text: any, record: any): string => (record?.creationDate ? dateObjectFormatter(record.creationDate, 'HH:mm YYYY/MM/DD') : ''),
     });
 
   const tableColumns = [
@@ -63,33 +62,6 @@ const TcTable: FC<ITcTable> = ({
       dataIndex: col.key,
     })),
   ];
-
-  if (
-    dataSource &&
-    (dataSource[0]?.creationDate ||
-      dataSource[0]?.creationTime ||
-      dataSource[0]?.creator ||
-      dataSource[0]?.modificationDate ||
-      dataSource[0]?.modificationTime ||
-      dataSource[0]?.modifier)
-  )
-    tableColumns.push(
-      {
-        title: 'فرد ثبت کننده',
-        key: 'creator',
-        render: (_text, record: any): string => `${record?.creator || ''}`,
-      },
-      {
-        title: 'تاریخ آخرین ویرایش',
-        key: 'modificationDate',
-        render: (_text, record: any) => (record?.modificationDate || '') + ' ' + (record?.modificationTime || ''),
-      },
-      {
-        title: 'فرد ویرایش کننده',
-        key: 'modifier',
-        render: (_text, record: any) => `${record?.modifier || ''}`,
-      }
-    );
 
   const handleColumnVisiblityChange = (title: string) => {
     if (hiddenColumns.includes(title)) setHiddenColumns(hiddenColumns.filter((item) => item !== title));

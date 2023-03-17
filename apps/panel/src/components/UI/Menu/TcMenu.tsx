@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, FC, useState, ReactNode } from 'react';
+import { FC, memo, useEffect, useState, ReactElement } from 'react';
 import { Popover } from 'antd';
 import useHasAccess from 'global/helperFunctions/useHasAccess';
 import SubmenuItem from 'components/UI/Menu/components/SubmenuItem';
@@ -8,25 +8,24 @@ import SubmenuWrapper from 'components/UI/Menu/components/SubmenuWrapper';
 import MenuHoverContentWrapper from 'components/UI/Menu/components/MenuHoverContent';
 import MenuHoverItem from 'components/UI/Menu/components/MenuHoverItem';
 
-interface subMenu {
+type submenu = {
   name: string;
   to: string;
   role: boolean;
-}
-
+};
 interface ITcMenu {
   name: string;
-  open?: boolean;
+  icon?: ReactElement;
   to?: string;
-  icon?: ReactNode;
+  subMenu: submenu[];
+  open: boolean;
   role?: boolean;
-  subMenu?: subMenu[];
   horizental: boolean;
 }
 
 const TcMenu: FC<ITcMenu> = ({ name, icon, to, subMenu, open, role, horizental }) => {
   //state
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   //hooks
   const { pathname } = useLocation();
@@ -49,7 +48,7 @@ const TcMenu: FC<ITcMenu> = ({ name, icon, to, subMenu, open, role, horizental }
     result.shift();
     return result.slice(0, getLinklength(to || customLink)).join('');
   };
-  const isAnySubMenusSelected: () => boolean = () => !!subMenu?.some((item) => item.to.replaceAll('/', '') === getImportantPartOfPathname(item.to));
+  const isAnySubMenusSelected = () => !!subMenu?.some((item) => item?.to?.replaceAll('/', '') === getImportantPartOfPathname(item.to));
   const isSelected = (customLink?: string) => {
     if (customLink) return customLink.replaceAll('/', '') === getImportantPartOfPathname(customLink);
     if (!to) return false;
@@ -75,9 +74,9 @@ const TcMenu: FC<ITcMenu> = ({ name, icon, to, subMenu, open, role, horizental }
       </MenuHoverContentWrapper>
     );
   };
-  const subMenuIsEmpty = (items: subMenu[]) => {
+  const subMenuIsEmpty = (items: submenu[]) => {
     if (!items || items?.length === 0) return true;
-    return items.every((item: subMenu) => !hasAccessTo(item.role));
+    return items.every((item) => !hasAccessTo(item.role));
   };
 
   //conditions
@@ -88,9 +87,9 @@ const TcMenu: FC<ITcMenu> = ({ name, icon, to, subMenu, open, role, horizental }
     return <MenuItem horizental={horizental} open={open} to={to} isSelected={isSelected()} icon={icon} name={name} />;
   }
 
-  if (subMenu)
+  if (subMenu && !open)
     return (
-      <Popover overlayStyle={{ position: 'fixed' }} destroyTooltipOnHide content={getSubmenuHoverContent()} placement='left' trigger={!open ? 'hover' : ''}>
+      <Popover overlayStyle={{ position: 'fixed' }} destroyTooltipOnHide content={getSubmenuHoverContent()} placement='left' trigger={'hover'}>
         <div>
           <SubmenuWrapper
             horizental={horizental}
@@ -107,8 +106,25 @@ const TcMenu: FC<ITcMenu> = ({ name, icon, to, subMenu, open, role, horizental }
         </div>
       </Popover>
     );
+  if (subMenu && open)
+    return (
+      <div>
+        <SubmenuWrapper
+          horizental={horizental}
+          open={open}
+          itemsCount={subMenu.length}
+          isWrapperOpen={isOpen}
+          setIsWrapperOpen={setIsOpen}
+          haveSubmenu={!!subMenu}
+          icon={icon}
+          name={name}
+          submenuSelected={isAnySubMenusSelected()}>
+          <> {open && subMenuItems()}</>
+        </SubmenuWrapper>
+      </div>
+    );
 
   return <></>;
 };
 
-export default TcMenu;
+export default memo(TcMenu);
