@@ -35,7 +35,7 @@ const singleton = Symbol();
 const singletonEnforcer = Symbol();
 
 const defaultOptions = {
-  baseURL: BASE_URL,
+  baseURL: 'http://127.0.0.1:8082/api/v1',
   method: METHOD.GET,
   headers: {
     'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export class ApiService {
     //   throw new Error('Cannot construct singleton');
     // }
     const defaultOptions = {
-      baseURL: BASE_URL,
+      baseURL: 'http://127.0.0.1:8082/api/v1',
       method: METHOD.GET,
       headers: {
         'Content-Type': 'application/json',

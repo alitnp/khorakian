@@ -4528,3 +4528,213 @@ method : GET,
 url : /api/v1/user/getCurrentUser,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1679160880008,
+date : Sat Mar 18 2023 21:04:40 GMT+0330 (Iran Standard Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161259977,
+date : Sat Mar 18 2023 21:10:59 GMT+0330 (Iran Standard Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679161404353,
+date : Sat Mar 18 2023 21:13:24 GMT+0330 (Iran Standard Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679161899618,
+date : Sat Mar 18 2023 21:21:39 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"vahid@tipax.ir","password":"P@ssw0rd"}
+},
+{
+type : INFO,
+timestamp : 1679161909309,
+date : Sat Mar 18 2023 21:21:49 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1679161909718,
+date : Sat Mar 18 2023 21:21:49 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161919815,
+date : Sat Mar 18 2023 21:21:59 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161925548,
+date : Sat Mar 18 2023 21:22:05 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"تست"}
+},
+{
+type : INFO,
+timestamp : 1679161925769,
+date : Sat Mar 18 2023 21:22:05 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161927929,
+date : Sat Mar 18 2023 21:22:07 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/6415fa45b01507c959c4a8e3,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161930608,
+date : Sat Mar 18 2023 21:22:10 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/6415fa45b01507c959c4a8e3,
+body : {"_id":"6415fa45b01507c959c4a8e3","title":"تست2","isPublished":true,"creationDate":"2023-03-18T17:52:05.561Z","__v":0}
+},
+{
+type : INFO,
+timestamp : 1679161930796,
+date : Sat Mar 18 2023 21:22:10 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161934593,
+date : Sat Mar 18 2023 21:22:14 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/postcategory/6415fa45b01507c959c4a8e3,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679161934634,
+date : Sat Mar 18 2023 21:22:14 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679162684511,
+date : Sat Mar 18 2023 21:34:44 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"تست2"}
+},
+{
+type : INFO,
+timestamp : 1679162684728,
+date : Sat Mar 18 2023 21:34:44 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679162687001,
+date : Sat Mar 18 2023 21:34:47 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/6415fd3cb01507c959c4a8f4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679162691561,
+date : Sat Mar 18 2023 21:34:51 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/6415fd3cb01507c959c4a8f4,
+body : {"_id":"6415fd3cb01507c959c4a8f4","title":"تست4","isPublished":true,"creationDate":"2023-03-18T18:04:44.520Z","__v":0}
+},
+{
+type : INFO,
+timestamp : 1679162691790,
+date : Sat Mar 18 2023 21:34:51 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679162695780,
+date : Sat Mar 18 2023 21:34:55 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/postcategory/6415fd3cb01507c959c4a8f4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679162695818,
+date : Sat Mar 18 2023 21:34:55 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},

@@ -614,3 +614,15 @@ body : {"recordsPerPage":"10","title":"آموزش و پرورش"}
 },
 Response : {"status":409,"message":"دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1679161899670,
+date : Sat Mar 18 2023 21:21:39 GMT+0330 (Iran Standard Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"vahid@tipax.ir","password":"P@ssw0rd"}
+},
+Response : {"status":400,"message":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹","details":{"mobileNumber":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹"},"isSuccess":false,"data":null}
+},

@@ -14,9 +14,9 @@ apps/web/.next
 
 .DS_Store
 **/.DS_Store
-**/.env
-**/.env.development
-**/.env.test
+# **/.env
+# **/.env.development
+# **/.env.test
 
 yarn.lock
 yarn-error.log
