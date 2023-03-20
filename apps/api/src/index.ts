@@ -5,7 +5,9 @@ require("module-alias").addAlias("@", __dirname);
 import mongoose from "mongoose";
 import { createApp } from "./app";
 import { startServer } from "./server";
-import CONFIG from "@/config";
+import CONFIG, { setAppRoot } from "@/config";
+
+setAppRoot(__dirname);
 
 mongoose.set("strictQuery", false);
 mongoose

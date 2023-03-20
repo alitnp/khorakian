@@ -23,7 +23,7 @@ export const createApp = (): express.Application => {
       extended: true,
     }),
   );
-  app.use(express.static("public"));
+  app.use(express.static(CONFIG.APP.STATIC_FILES_PATH));
 
   if (CONFIG.APP.ENV !== "test") {
     app.use(morgan("dev"));

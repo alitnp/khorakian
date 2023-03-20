@@ -58,8 +58,9 @@ export interface IPostCategory
 export interface IImage extends DefaultModelProperties {
 	_id?: Types.ObjectId;
 	fileName: string;
-	formart: string;
+	format: string;
 	size: number;
 	temp: boolean;
+	pathname: string;
 }
 /* #endregion */

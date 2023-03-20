@@ -7,6 +7,15 @@ require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 console.log("------", process.env.NODE_ENV);
 console.log("------", process.env.APP_HOST);
 
+export const appRoot = { path: "" };
+export const publicFolder = { path: "" };
+export const setAppRoot = (path: string) => {
+  appRoot.path = path;
+  const appRootArr = path.split("\\");
+  appRootArr.pop();
+  publicFolder.path = appRootArr.join("\\") + "\\public";
+};
+
 const CONFIG = {
   APP: {
     NAME: pkg.name,
@@ -18,6 +27,8 @@ const CONFIG = {
     BASE_URL: process.env.API_BASE_URL,
     PORT: process.env.NODE_ENV === "test" ? 8888 : process.env.PORT || 8080,
     ENV: process.env.NODE_ENV,
+    STATIC_FILES_PATH: "public",
+    APPROOT: "",
   },
   DATABASE: {
     DB_HOST: process.env.DB_HOST,
