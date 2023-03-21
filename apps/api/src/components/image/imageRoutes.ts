@@ -15,5 +15,7 @@ const imageController = new ImageController(imageData);
 
 //post
 router.post("/upload", [auth, ...imageForm()], imageController.create);
+router.post("/imageWasUsed/:id", [auth], imageController.imageWasUsed);
+router.post("/manyImageWasUsed", [auth], imageController.manyImageWasUsed);
 
 export default router;

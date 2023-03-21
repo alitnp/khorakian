@@ -4,9 +4,9 @@ import { model, Schema } from "mongoose";
 export const imageSchema = new Schema<IImage>({
   fileName: String,
   format: String,
-  size: Number,
   temp: Boolean,
   pathname: String,
+  thumbnailPathname: String,
   creationDate: { type: Date, default: Date.now },
   isPublished: { type: Boolean, default: true },
 });

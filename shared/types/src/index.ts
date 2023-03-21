@@ -56,11 +56,11 @@ export interface IPostCategory
 
 /* #region image */
 export interface IImage extends DefaultModelProperties {
-	_id?: Types.ObjectId;
+	_id: Types.ObjectId;
 	fileName: string;
 	format: string;
-	size: number;
 	temp: boolean;
 	pathname: string;
+	thumbnailPathname?: string;
 }
 /* #endregion */

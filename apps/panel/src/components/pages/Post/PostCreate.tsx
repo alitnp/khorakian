@@ -1,12 +1,12 @@
 import { ApiDataResponse } from '@my/types';
 import TcButton from 'components/UI/Button/TcButton';
 import TcCard from 'components/UI/Card/TcCard';
-import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import ApiService, { errorResponse } from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
+import 'filepond/dist/filepond.min.css';
 
 const PostCreate = () => {
   //states
@@ -30,7 +30,8 @@ const PostCreate = () => {
   return (
     <TcCard>
       <TcPageTitle title='ایجاد پست' />
-      <input type='file' onChange={(e: ChangeEvent<HTMLInputElement>) => setFile(e.target.files && e.target.files[0])} multiple={false} />
+
+      {/* <input type='file' onChange={(e: ChangeEvent<HTMLInputElement>) => setFile(e.target.files && e.target.files[0])} multiple={false} /> */}
       <TcButton onClick={handleSubmit}>asdf</TcButton>
     </TcCard>
   );

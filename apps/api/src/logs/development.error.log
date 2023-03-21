@@ -842,3 +842,27 @@ body : {"title":"asdfasdf"}
 },
 Response : {"status":408,"message":"Request Time-out","timeout":60000,"path":"/api/v1/image/upload","isSuccess":false,"data":null}
 },
+{
+type : ERROR,
+timestamp : 1679382486419,
+date : Tue Mar 21 2023 10:38:06 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679382508755,
+date : Tue Mar 21 2023 10:38:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
