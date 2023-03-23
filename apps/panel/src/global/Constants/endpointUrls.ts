@@ -17,6 +17,10 @@ const endpointUrls = {
 
   //image
   imageUpload: '/image/upload',
+
+  //video
+  videoUpload: '/video/upload',
+  videoDetail: '/video',
 };
 
 export default endpointUrls;

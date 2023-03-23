@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { IImage } from "@my/types";
-import { imageForm } from "@/middlewares/imageForm";
+import { fileForm } from "@/middlewares/fileForm";
 import { publicFolder } from "@/config";
 import { fileDelete, fileRename } from "@/utils/file";
 import { convertImageToWebp, convertImageToSmallWebp } from "@/utils/image";
@@ -13,7 +13,7 @@ class ImageData {
     this.Image = Image;
   }
 
-  createImageFile = async (file: imageForm): Promise<IImage> => {
+  createImageFile = async (file: fileForm): Promise<IImage> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const imageFormat = file.mimetype.split("/")[1];
     const image = new this.Image({

@@ -16,7 +16,21 @@ export const createApp = (): express.Application => {
   const app = express();
 
   app.use(cors());
-  app.use(helmet());
+  app.options(
+    "*",
+    cors({
+      preflightContinue: true,
+      allowedHeaders: [
+        "Content-Type, Authorization, Content-Length, X-Requested-With",
+        "x-content-type-options",
+      ],
+    }),
+  );
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: false,
+    }),
+  );
   app.use(express.json());
   app.use(
     express.urlencoded({

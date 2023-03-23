@@ -34,7 +34,7 @@ const CONFIG = {
     DB_HOST: process.env.DB_HOST,
   },
   SERVER: {
-    TIMEOUT: 60000, // 1m
+    TIMEOUT: 180000, // 3m
   },
   LOG: {
     PATH: process.env.LOGGING_DIR || "logs",

@@ -7,6 +7,7 @@ export const imageSchema = new Schema<IImage>({
   temp: Boolean,
   pathname: String,
   thumbnailPathname: String,
+  title: String,
   creationDate: { type: Date, default: Date.now },
   isPublished: { type: Boolean, default: true },
 });

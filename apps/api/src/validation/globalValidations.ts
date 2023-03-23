@@ -19,6 +19,9 @@ export const paramIdValidations = [
       else return Promise.resolve();
     }),
 ];
+export const paramValidations = (paramName = "id") => [
+  param(paramName, "شناسه مشخص نشده است.").exists().isString(),
+];
 
 type existsStringValidation = {
   key: string;
