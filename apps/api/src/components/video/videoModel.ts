@@ -13,7 +13,7 @@ export const videoSchema = new Schema<IVideo>({
       format: String,
     },
   ],
-  creationDate: { type: Date, default: Date.now },
+  creationDate: { type: Number, default: Date.now },
   isPublished: { type: Boolean, default: true },
 });
 

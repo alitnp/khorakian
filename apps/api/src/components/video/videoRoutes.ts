@@ -5,7 +5,10 @@ import { videoForm } from "@/middlewares/fileForm";
 import VideoData from "@/components/video/videoData";
 import VideoController from "@/components/video/videoController";
 import { Video } from "@/components/video/videoModel";
-import { getVideoValidations } from "@/components/video/videoValidations";
+import {
+  createVideoValidations,
+  getVideoValidations,
+} from "@/components/video/videoValidations";
 import { validate } from "@/helpers";
 
 const router = Router();
@@ -16,6 +19,10 @@ const videoController = new VideoController(videoData);
 router.get("/:filename", validate(getVideoValidations), videoController.get);
 
 //post
-router.post("/upload", [auth, ...videoForm()], videoController.create);
+router.post(
+  "/upload",
+  [auth, ...videoForm(), ...validate(createVideoValidations)],
+  videoController.create,
+);
 
 export default router;

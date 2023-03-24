@@ -3,10 +3,11 @@ import cookie from 'js-cookie';
 import { trackPromise } from 'react-promise-tracker';
 
 // urls
-export const BASE_URL =
-  (process.env.REACT_APP_NOD_ENV === 'development' && process.env.REACT_APP_DEVELOPMENT_BASE_URL) ||
-  (process.env.REACT_APP_NOD_ENV === 'production' && process.env.REACT_APP_PRODUCTION_BASE_URL) ||
-  (process.env.REACT_APP_NOD_ENV === 'local' && process.env.REACT_APP_LOCAL_BASE_URL);
+export const BASE_URL = 'http://127.0.0.1:8082/api/v1';
+// export const BASE_URL =
+//   (process.env.REACT_APP_NOD_ENV === 'development' && process.env.REACT_APP_DEVELOPMENT_BASE_URL) ||
+//   (process.env.REACT_APP_NOD_ENV === 'production' && process.env.REACT_APP_PRODUCTION_BASE_URL) ||
+//   (process.env.REACT_APP_NOD_ENV === 'local' && process.env.REACT_APP_LOCAL_BASE_URL);
 
 export const DOMAIN =
   (process.env.REACT_APP_NOD_ENV === 'development' && process.env.REACT_APP_DEVELOPMENT_DOMAIN) ||
@@ -35,7 +36,7 @@ const singleton = Symbol();
 const singletonEnforcer = Symbol();
 
 const defaultOptions = {
-  baseURL: 'http://127.0.0.1:8082/api/v1',
+  baseURL: BASE_URL,
   method: METHOD.GET,
   headers: {
     'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ export class ApiService {
     //   throw new Error('Cannot construct singleton');
     // }
     const defaultOptions = {
-      baseURL: 'http://127.0.0.1:8082/api/v1',
+      baseURL: BASE_URL,
       method: METHOD.GET,
       headers: {
         'Content-Type': 'application/json',

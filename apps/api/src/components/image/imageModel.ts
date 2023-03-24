@@ -1,5 +1,6 @@
 import { IImage } from "@my/types";
 import { model, Schema } from "mongoose";
+import { defaultSchemaProps } from "@/utils/constants";
 
 export const imageSchema = new Schema<IImage>({
   fileName: String,
@@ -8,8 +9,7 @@ export const imageSchema = new Schema<IImage>({
   pathname: String,
   thumbnailPathname: String,
   title: String,
-  creationDate: { type: Date, default: Date.now },
-  isPublished: { type: Boolean, default: true },
+  ...defaultSchemaProps,
 });
 
 export const Image = model<IImage>("Image", imageSchema);

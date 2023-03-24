@@ -1418,3 +1418,75 @@ body : {}
 },
 Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
 },
+{
+type : ERROR,
+timestamp : 1679595411511,
+date : Thu Mar 23 2023 21:46:51 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679595420050,
+date : Thu Mar 23 2023 21:47:00 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"تست"}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679595426780,
+date : Thu Mar 23 2023 21:47:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679595682983,
+date : Thu Mar 23 2023 21:51:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"تست2"}
+},
+Response : {"status":400,"message":"عنوان ویدیو تعیین نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679595706653,
+date : Thu Mar 23 2023 21:51:46 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"تست2"}
+},
+Response : {"status":400,"message":"عنوان ویدیو تعیین نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679595753091,
+date : Thu Mar 23 2023 21:52:33 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"تست2"}
+},
+Response : {"status":400,"message":"عنوان ویدیو تعیین نشد.","data":null,"isSuccess":false}
+},

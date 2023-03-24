@@ -3,6 +3,7 @@ import { IPost } from "@my/types";
 import { imageSchema } from "@/components/image/imageModel";
 import { postCategorySchema } from "@/components/postCategory/postCategoryModel";
 import { videoSchema } from "@/components/video/videoModel";
+import { defaultSchemaProps } from "@/utils/constants";
 
 export const postSchema = new Schema<IPost>({
   title: {
@@ -18,8 +19,7 @@ export const postSchema = new Schema<IPost>({
     type: postCategorySchema,
     required: [true, "عنوان تعیین نشده."],
   },
-  creationDate: { type: Date, default: Date.now },
-  isPublished: { type: Boolean, default: true },
+  ...defaultSchemaProps,
 });
 
 export const Post = model<IPost>("Post", postSchema);

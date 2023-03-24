@@ -1,5 +1,3 @@
-import { Types } from "mongoose";
-
 /* #region global */
 export interface ApiDataResponse<T> {
 	status?: number;
@@ -21,14 +19,14 @@ export interface ApiDataListResponse<T> {
 }
 
 export type DefaultModelProperties = {
-	creationDate: Date;
+	creationDate: number;
 	isPublished: boolean;
 };
 /* #endregion */
 
 /* #region user */
 export interface IUser extends DefaultModelProperties {
-	_id?: Types.ObjectId;
+	_id?: string;
 	firstName: string;
 	lastName: string;
 	fullName: string;
@@ -37,7 +35,7 @@ export interface IUser extends DefaultModelProperties {
 	isAdmin: boolean;
 }
 export interface IUserRead extends DefaultModelProperties {
-	_id: Types.ObjectId;
+	_id: string;
 	firstName: string;
 	lastName: string;
 	fullName: string;
@@ -49,14 +47,14 @@ export interface IUserRead extends DefaultModelProperties {
 /* #region post */
 export interface IPostCategory
 	extends DefaultModelProperties {
-	_id?: Types.ObjectId;
+	_id?: string;
 	title: string;
 }
 /* #endregion */
 
 /* #region media */
 export interface IImage extends DefaultModelProperties {
-	_id: Types.ObjectId;
+	_id: string;
 	fileName: string;
 	format: string;
 	temp: boolean;
@@ -65,7 +63,7 @@ export interface IImage extends DefaultModelProperties {
 	title: string;
 }
 export interface IVideo extends DefaultModelProperties {
-	_id: Types.ObjectId;
+	_id: string;
 	temp: boolean;
 	thumbnailPathname?: string;
 	qualityVariations: qualityVariation[];
@@ -82,7 +80,7 @@ export type qualityVariation = {
 
 /* #region video */
 export interface IPost extends DefaultModelProperties {
-	_id: Types.ObjectId;
+	_id: string;
 	title: string;
 	text: string;
 	images: IImage[];

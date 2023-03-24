@@ -1,5 +1,6 @@
 import { IPostCategory } from "@my/types";
 import { model, Schema } from "mongoose";
+import { defaultSchemaProps } from "@/utils/constants";
 
 export const postCategorySchema = new Schema<IPostCategory>({
   title: {
@@ -17,8 +18,7 @@ export const postCategorySchema = new Schema<IPostCategory>({
       message: "این عنوان تکراری است.",
     },
   },
-  creationDate: { type: Date, default: Date.now },
-  isPublished: { type: Boolean, default: true },
+  ...defaultSchemaProps,
 });
 
 export const PostCategory = model<IPostCategory>(

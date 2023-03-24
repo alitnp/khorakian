@@ -22,9 +22,10 @@ class VideoData {
     console.log(videoSize);
   };
 
-  createVideoFile = async (file: fileForm): Promise<IVideo> => {
+  createVideoFile = async (file: fileForm, title: string): Promise<IVideo> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const video = new this.Video({
+      title,
       temp: true,
       thumbnailPathname: "",
       qualityVariations: [],
