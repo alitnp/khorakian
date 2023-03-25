@@ -1,4 +1,4 @@
-import { ApiDataResponse, IVideo } from '@my/types';
+import { ApiDataResponse, IImage } from '@my/types';
 import TcCard from 'components/UI/Card/TcCard';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcForm from 'components/UI/Form/TcForm';
@@ -11,7 +11,7 @@ import endpointUrls from 'global/Constants/endpointUrls';
 import routes from 'global/Constants/routes';
 import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
-import videoModel from 'global/Models/videoModel';
+import imageModel from 'global/Models/ImageModel';
 import { FC, useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -21,8 +21,6 @@ import { AppDispatch } from 'redux/store';
 const ImageCreate: FC = () => {
   //states
   const [title, setTitle] = useState<string>('');
-  const [videoFiles, setVideoFiles] = useState<FileList | null>(null);
-  const [imageTitle, setImageTitle] = useState<string>('');
   const [imageFiles, setImageFiles] = useState<FileList | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -33,30 +31,28 @@ const ImageCreate: FC = () => {
 
   //functions
   const handleFinish = async () => {
-    if (!videoFiles || videoFiles.length === 0) return dispatch(setNotificationData({ type: 'error', message: 'فایل انتخاب نشده' }));
+    if (!imageFiles || imageFiles.length === 0) return dispatch(setNotificationData({ type: 'error', message: 'فایل انتخاب نشده' }));
 
     const formData = new FormData();
-    formData.append('file', videoFiles[0]);
+    formData.append('file', imageFiles[0]);
     formData.append('title', title);
-    imageFiles && formData.append('image', imageFiles[0]);
-    formData.append('imageTitle', imageTitle);
     setLoading(true);
-    await ApiService.post(endpointUrls.videoUpload, formData)
-      .then((res: ApiDataResponse<IVideo>) =>
-        handleApiThenGeneric<ApiDataResponse<IVideo>, IVideo>({ res, onSuccessData: () => push(routes.video.path), notifFail: true, notifSuccess: true })
+    await ApiService.post(endpointUrls.imageUpload, formData)
+      .then((res: ApiDataResponse<IImage>) =>
+        handleApiThenGeneric<ApiDataResponse<IImage>, IImage>({ res, onSuccessData: () => push(routes.image.path), notifFail: true, notifSuccess: true })
       )
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
   };
   return (
-    <TcCard back={{ to: routes.video.path }}>
-      <TcPageTitle title={'ایجاد ' + videoModel.title} />
+    <TcCard back={{ to: routes.image.path }}>
+      <TcPageTitle title={'ایجاد ' + imageModel.title} />
       <TcForm onFinish={handleFinish}>
         <TcFormItem label='عنوان SEO'>
           <TcInput placeholder='عنوان عکس برای بهبود SEO استفاده می شود' value={title} onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} />
         </TcFormItem>
         <TcFormItem label='فایل عکس'>
-          <TcInput type='file' accept='video/*' onChange={(e: ChangeEvent<HTMLInputElement>) => setVideoFiles(e.target.files)} />
+          <TcInput type='file' accept='image/*' onChange={(e: ChangeEvent<HTMLInputElement>) => setImageFiles(e.target.files)} />
         </TcFormItem>
         <TcFormButtons noCancel submitButtonText='ثبت' />
       </TcForm>

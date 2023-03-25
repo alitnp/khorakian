@@ -9,10 +9,10 @@ export const BASE_URL = 'http://127.0.0.1:8082/api/v1';
 //   (process.env.REACT_APP_NOD_ENV === 'production' && process.env.REACT_APP_PRODUCTION_BASE_URL) ||
 //   (process.env.REACT_APP_NOD_ENV === 'local' && process.env.REACT_APP_LOCAL_BASE_URL);
 
-export const DOMAIN =
-  (process.env.REACT_APP_NOD_ENV === 'development' && process.env.REACT_APP_DEVELOPMENT_DOMAIN) ||
-  (process.env.REACT_APP_NOD_ENV === 'production' && process.env.REACT_APP_PRODUCTION_DOMAIN) ||
-  (process.env.REACT_APP_NOD_ENV === 'local' && process.env.REACT_APP_LOCAL_DOMAIN);
+export const DOMAIN = 'http://localhost:8082';
+// (process.env.REACT_APP_NOD_ENV === 'development' && process.env.REACT_APP_DEVELOPMENT_DOMAIN) ||
+// (process.env.REACT_APP_NOD_ENV === 'production' && process.env.REACT_APP_PRODUCTION_DOMAIN) ||
+// (process.env.REACT_APP_NOD_ENV === 'local' && process.env.REACT_APP_LOCAL_DOMAIN);
 
 //imagesrep.tipax.ir/
 // export const IMAGESREP =

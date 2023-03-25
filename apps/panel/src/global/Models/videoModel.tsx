@@ -17,7 +17,7 @@ const filterInputs = (
   </>
 );
 
-const columns = (handleDelete: (_id: number) => void) => [
+const columns = (handleDelete: (_id: string) => void) => [
   {
     title: 'ویدیو',
     key: 'video',
@@ -25,7 +25,7 @@ const columns = (handleDelete: (_id: number) => void) => [
     render: (_text: string, record: IVideo) => <VideoItem video={record} />,
   },
   {
-    title: 'عنوان',
+    title: 'عنوان SEO',
     key: 'title',
     dataIndex: 'title',
   },
@@ -47,7 +47,7 @@ const columns = (handleDelete: (_id: number) => void) => [
     render: (_text: any, record: any) => (
       <div className='flex'>
         {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
-        <TcEditIcon to={routes.postCategoryEdit.path + '/' + record._id} />
+        <TcEditIcon to={routes.videoUpdate.path + '/' + record._id} />
         <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
       </div>
     ),

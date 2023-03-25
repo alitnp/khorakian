@@ -1,10 +1,9 @@
 import { IImage } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcFormItem from 'components/UI/Form/TcFormItem';
+import ImageThumbnail from 'components/UI/Image/ImageThumbnail';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
-import VideoItem from 'components/UI/Video/VideoItem';
-import { BASE_URL } from 'config/API/ApiService';
 import routes from 'global/Constants/routes';
 
 const title = 'عکس';
@@ -23,10 +22,11 @@ const columns = (handleDelete: (_id: string) => void) => [
     title: 'عکس',
     key: 'video',
     dataIndex: 'video',
-    render: (_text: string, record: IImage) => <img src={BASE_URL + record.pathname} />,
+    width: 170,
+    render: (_text: string, record: IImage) => <ImageThumbnail image={record} />,
   },
   {
-    title: 'عنوان',
+    title: 'عنوان SEO',
     key: 'title',
     dataIndex: 'title',
   },
@@ -48,7 +48,7 @@ const columns = (handleDelete: (_id: string) => void) => [
     render: (_text: any, record: IImage) => (
       <div className='flex'>
         {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
-        <TcEditIcon to={routes.postCategoryEdit.path + '/' + record._id} />
+        <TcEditIcon to={routes.imageUpdate.path + '/' + record._id} />
         <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
       </div>
     ),

@@ -1,16 +1,36 @@
 import fs from "fs";
-import ServerError from "@/helpers/error/ServerError";
 
 export const fileRename = async (
   originPathname: string,
   destinationPathname: string,
 ) => {
-  return await fs.rename(originPathname, destinationPathname, (error: any) => {
-    if (error) throw new ServerError();
+  const correctOriginPathname = originPathname.replaceAll("/", "\\");
+  const correctDestinationPathname = destinationPathname.replaceAll("/", "\\");
+  return new Promise((resolve: any, reject: any) => {
+    fs.rename(
+      correctOriginPathname,
+      correctDestinationPathname,
+      (error: any) => {
+        if (error) {
+          console.log(error.message);
+          return reject(error.message);
+        }
+        return resolve();
+      },
+    );
   });
 };
 
-export const fileDelete = async (pathname: string) =>
-  await fs.unlink(pathname, (error: any) => {
-    if (error) throw new ServerError();
+export const fileDelete = async (pathname: string) => {
+  const correctPathname = pathname.replaceAll("/", "\\");
+
+  return new Promise((resolve: any, reject: any) => {
+    fs.rm(correctPathname, { recursive: true, force: true }, (error: any) => {
+      if (error) {
+        console.log(error.message);
+        reject(error.message);
+      }
+      resolve();
+    });
   });
+};

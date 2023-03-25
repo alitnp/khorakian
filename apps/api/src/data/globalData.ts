@@ -26,14 +26,14 @@ export const getAllData = async <T>(
   const totalItems = await model.countDocuments(searchQuery);
   const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
   if (pageNumber > totalPages) pageNumber = totalPages;
-  const sortBy = getSortBy(req) || "creationDate";
+  const sortBy = getSortBy(req) || "";
   const desc = getSortByDescending(req);
 
   const data = await model
     .find(searchQuery)
     .limit(pageSize)
     .skip((pageNumber - 1) * pageSize)
-    .sort({ [sortBy]: desc });
+    .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 });
 
   return {
     data,

@@ -1622,3 +1622,207 @@ body : {"title":"تست"}
 },
 Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
 },
+{
+type : ERROR,
+timestamp : 1679758484946,
+date : Sat Mar 25 2023 19:04:44 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"status":400,"message":"فرمت ویدیو ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679758507453,
+date : Sat Mar 25 2023 19:05:07 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"سالار"}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679758696273,
+date : Sat Mar 25 2023 19:08:16 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/image/IMG-641f14eb540c220a7aa09e69.webp,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679760626490,
+date : Sat Mar 25 2023 19:40:26 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/image/641f1710540c220a7aa09e7d,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679764097005,
+date : Sat Mar 25 2023 20:38:17 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f2a7b7b81d88aa4bda368,
+body : {}
+},
+Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f2a7b7b81d88aa4bda368.webp"}
+},
+{
+type : ERROR,
+timestamp : 1679770112845,
+date : Sat Mar 25 2023 22:18:32 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f41fe87f09bdc1ce07e11,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f41fe87f09bdc1ce07e11.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679770227182,
+date : Sat Mar 25 2023 22:20:27 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f426ed75385387e4b1bd9,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, rename 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f426ed75385387e4b1bd9.webp' -> 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f426ed75385387e4b1bd9.webpdel'"
+},
+{
+type : ERROR,
+timestamp : 1679770421733,
+date : Sat Mar 25 2023 22:23:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f43320625bf35a9bdfe4b,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f43320625bf35a9bdfe4b.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679770463180,
+date : Sat Mar 25 2023 22:24:23 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f435c75a5ece53c097dc5,
+body : {}
+},
+Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"\\\\?\\D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f435c75a5ece53c097dc5.webp"}
+},
+{
+type : ERROR,
+timestamp : 1679770597573,
+date : Sat Mar 25 2023 22:26:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f43e1f2978d79fc7a5504,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f43e1f2978d79fc7a5504.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679770837725,
+date : Sat Mar 25 2023 22:30:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f44d3708ea191c95e5c8b,
+body : {}
+},
+Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"\\\\?\\D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f44d3708ea191c95e5c8b.webp"}
+},
+{
+type : ERROR,
+timestamp : 1679770926479,
+date : Sat Mar 25 2023 22:32:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f4529d96f23ee812b48e2,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f4529d96f23ee812b48e2.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679770959189,
+date : Sat Mar 25 2023 22:32:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f4545d96f23ee812b48eb,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f4545d96f23ee812b48eb.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679770965014,
+date : Sat Mar 25 2023 22:32:45 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f454cd96f23ee812b48ef,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f454cd96f23ee812b48ef.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679771001626,
+date : Sat Mar 25 2023 22:33:21 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f456e6f491fff6e62b6f1,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f456e6f491fff6e62b6f1.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679771017686,
+date : Sat Mar 25 2023 22:33:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f45766f491fff6e62b6f5,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f45766f491fff6e62b6f5.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679771127407,
+date : Sat Mar 25 2023 22:35:27 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641f45ef767219fc705ba2b4,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f45ef767219fc705ba2b4.webp'"
+},

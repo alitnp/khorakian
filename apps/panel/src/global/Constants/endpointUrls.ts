@@ -18,16 +18,16 @@ const endpointUrls = {
   //video
   videoGetList: '/video',
   videoUpload: '/video/upload',
-  videoDetail: '/video',
-  videoEdit: (id: number | string) => '/video/' + id,
-  videoDelete: (id: number | string) => '/video/' + id,
+  videoDetail: (id: string) => '/video/' + id,
+  videoEdit: (id: string) => '/video/' + id,
+  videoDelete: (id: string) => '/video/' + id,
 
   //image
   imageGetList: '/image',
   imageUpload: '/image/upload',
-  imageDetail: '/image',
-  imageEdit: (id: number | string) => '/image/' + id,
-  imageDelete: (id: number | string) => '/image/' + id,
+  imageDetail: (id: string) => '/image/' + id,
+  imageEdit: (id: string) => '/image/' + id,
+  imageDelete: (id: string) => '/image/' + id,
 };
 
 export default endpointUrls;

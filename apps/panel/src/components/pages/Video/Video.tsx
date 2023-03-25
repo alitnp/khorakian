@@ -32,7 +32,7 @@ const Video: FC = () => {
     );
     setLoading(false);
   };
-  const handleDelete = async (id: number | string) => {
+  const handleDelete = async (id: string) => {
     setLoading(true);
     await ApiService.delete(endpointUrls.videoDelete(id))
       .then((res: any) => handleApiThen({ res, onSuccess: () => getList(query), dispatch, notifFail: true, notifSuccess: true }))

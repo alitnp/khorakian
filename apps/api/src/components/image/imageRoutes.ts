@@ -25,13 +25,8 @@ router.get("/", imageController.getAll);
 //post
 router.post(
   "/upload",
-  [auth, ...imageForm(), ...validate(updateImageValidations)],
+  [auth, ...imageForm(), ...validate(createImageValidations)],
   imageController.createImageFile,
-);
-router.post(
-  "/",
-  [isAdmin, ...validate(createImageValidations)],
-  imageController.create,
 );
 
 //put

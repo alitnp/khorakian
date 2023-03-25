@@ -48,14 +48,18 @@ class ImageData implements IData<IImage> {
   };
 
   remove = async (id: string): Promise<IImage> => {
-    const postCategory = await this.Image.findById(id);
-    if (!postCategory) throw new NotFoundError();
+    const image = await this.Image.findById(id);
+    if (!image) throw new NotFoundError();
 
     //check if image is used
 
     await this.Image.findByIdAndDelete(id);
 
-    return postCategory;
+    if (image.thumbnailPathname)
+      await fileDelete(publicFolder.path + image.thumbnailPathname);
+    await fileDelete(publicFolder.path + image.pathname);
+
+    return image;
   };
 
   createImageFile = async (file: fileForm, title?: string): Promise<IImage> => {
