@@ -1,4 +1,4 @@
-import { DoubleRightOutlined, DownloadOutlined, DashboardOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { DoubleRightOutlined, DownloadOutlined, DashboardOutlined, InfoCircleOutlined, YoutubeOutlined, PictureOutlined } from '@ant-design/icons';
 import TcMenu from 'components/UI/Menu/TcMenu';
 import useScreenWidth from 'global/helperFunctions/useScreenWidth';
 import { memo, useEffect, useState } from 'react';
@@ -25,6 +25,8 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
   const sidebarMenus = [
     { name: 'داشبورد', icon: <DashboardOutlined />, to: routes.dashboard.path, open: open, role: true },
     { name: 'پست', icon: <DashboardOutlined />, to: routes.post.path, open: open, role: true },
+    { name: 'ویدیو', icon: <YoutubeOutlined />, to: routes.video.path, open: open, role: true },
+    { name: 'عکس', icon: <PictureOutlined />, to: routes.image.path, open: open, role: true },
     {
       name: 'اطلاعات پایه',
       icon: <InfoCircleOutlined />,

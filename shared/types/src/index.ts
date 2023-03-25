@@ -57,15 +57,13 @@ export interface IImage extends DefaultModelProperties {
 	_id: string;
 	fileName: string;
 	format: string;
-	temp: boolean;
 	pathname: string;
 	thumbnailPathname?: string;
 	title: string;
 }
 export interface IVideo extends DefaultModelProperties {
 	_id: string;
-	temp: boolean;
-	thumbnailPathname?: string;
+	thumbnail?: string;
 	qualityVariations: qualityVariation[];
 	title: string;
 }
@@ -80,6 +78,14 @@ export type qualityVariation = {
 
 /* #region video */
 export interface IPost extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	text: string;
+	images: string[];
+	videos: string[];
+	postCategory: IPostCategory;
+}
+export interface IPostRead extends DefaultModelProperties {
 	_id: string;
 	title: string;
 	text: string;

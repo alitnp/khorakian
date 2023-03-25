@@ -15,12 +15,19 @@ const endpointUrls = {
   postCategoryEdit: (id: number | string) => '/postcategory/' + id,
   postCategoryDelete: (id: number | string) => '/postcategory/' + id,
 
-  //image
-  imageUpload: '/image/upload',
-
   //video
+  videoGetList: '/video',
   videoUpload: '/video/upload',
   videoDetail: '/video',
+  videoEdit: (id: number | string) => '/video/' + id,
+  videoDelete: (id: number | string) => '/video/' + id,
+
+  //image
+  imageGetList: '/image',
+  imageUpload: '/image/upload',
+  imageDetail: '/image',
+  imageEdit: (id: number | string) => '/image/' + id,
+  imageDelete: (id: number | string) => '/image/' + id,
 };
 
 export default endpointUrls;

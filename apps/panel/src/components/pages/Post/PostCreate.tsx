@@ -6,41 +6,11 @@ import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { useState, useEffect, useCallback } from 'react';
-import { BASE_URL } from 'config/API/ApiService';
 import VideoItem from 'components/UI/Video/VideoItem';
 
 const PostCreate = () => {
   //states
-  const [videos, setVideos] = useState<IVideo[]>([
-    {
-      title: 'تست2',
-      temp: true,
-      thumbnailPathname: '',
-      qualityVariations: [
-        {
-          fileName: 'VID-641c998e92d15627b43ef321-240.mp4',
-          size: '240',
-          pathname: '/video/VID-641c998e92d15627b43ef321-240.mp4',
-          format: 'mp4',
-        },
-        {
-          fileName: 'VID-641c998e92d15627b43ef321-480.mp4',
-          size: '480',
-          pathname: '/video/VID-641c998e92d15627b43ef321-480.mp4',
-          format: 'mp4',
-        },
-        {
-          fileName: 'VID-641c998e92d15627b43ef321-720.mp4',
-          size: '720',
-          pathname: '/video/VID-641c998e92d15627b43ef321-720.mp4',
-          format: 'mp4',
-        },
-      ],
-      isPublished: true,
-      _id: '641c998e92d15627b43ef321',
-      creationDate: 1679595918063,
-    },
-  ]);
+  const [videos, setVideos] = useState<IVideo[]>([]);
   const [showAddVideoModal, setShowAddVideoModal] = useState<boolean>(false);
   console.log(videos);
   //hooks
@@ -62,6 +32,10 @@ const PostCreate = () => {
     //   .then((res: ApiDataResponse<any>) => console.log(res))
     //   .catch(() => apiCatcher(errorResponse));
   };
+  const handleRemoveVideo = useCallback((_id: string) => {
+    const tempVideos = videos.filter((vid) => vid._id !== _id);
+    setVideos([...tempVideos]);
+  }, []);
 
   return (
     <TcCard>
@@ -73,9 +47,11 @@ const PostCreate = () => {
           افزودن ویدیو
         </TcButton>
       </div>
-      {videos.map((vid) => (
-        <VideoItem video={vid} key={vid._id} />
-      ))}
+      <div className='flex flex-wrap gap-4 my-6'>
+        {videos.map((vid) => (
+          <VideoItem video={vid} key={vid._id} removeItem={handleRemoveVideo} />
+        ))}
+      </div>
       <AddVideo visible={showAddVideoModal} close={toggleShowAddVideo} addVideo={addVideo} />
     </TcCard>
   );

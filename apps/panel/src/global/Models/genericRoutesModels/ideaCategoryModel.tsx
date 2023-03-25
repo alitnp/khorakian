@@ -7,7 +7,7 @@ import routes from 'global/Constants/routes';
 import { routeModel } from 'global/Models/globalModels';
 import { ReactNode } from 'react';
 
-const title = 'دسته بندی ایده ها';
+const title = 'دسته بندی ایده';
 const englishTitle = 'ideaCategory';
 
 const inputs: ReactNode = (

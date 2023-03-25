@@ -3,7 +3,7 @@ import { IVideo } from "@my/types";
 //@ts-ignore
 import BadRequestError from "@/helpers/error/BadRequestError";
 import { fileForm } from "@/middlewares/fileForm";
-import { apiDataResponse } from "@/helpers/apiResponse";
+import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 import VideoData from "@/components/video/videoData";
 import { publicFolder } from "@/config";
 import { NotFoundError } from "@/helpers/error";
@@ -14,10 +14,20 @@ class VideoController {
     this.data = data;
   }
 
+  getAll = async (req: Req, res: Res) => {
+    const result = await this.data.getAll(req);
+    return res.send(apiDataListResponse<IVideo>(result));
+  };
   get = async (req: Req, res: Res) => {
     const filename = req.params.filename;
     const videoPath = publicFolder.path + "\\video\\" + filename;
-    const videoStat = fs.statSync(videoPath);
+    const videoStat: any = await new Promise((resolve: any, reject: any) => {
+      fs.stat(videoPath, (err: any, stat: any) => {
+        if (err) return reject(null);
+        return resolve(stat);
+      });
+    });
+
     if (!videoStat) throw new NotFoundError("ویدیو مورد نظر یافت نشد.");
     const fileSize = videoStat.size;
     const range = req.headers.range;
@@ -47,15 +57,29 @@ class VideoController {
   };
 
   create = async (req: Req, res: Res) => {
-    console.log(req.body);
-    const tempReq = req as Req & { file: fileForm };
+    console.log(req);
+    const tempReq = req as Req & { file: fileForm; image: fileForm };
     if (!tempReq.file) throw new BadRequestError("فایل ویدیو یافت نشد.");
     if (!tempReq.body.title)
       throw new BadRequestError("عنوان ویدیو تعیین نشد.");
     const video = await this.data.createVideoFile(
       tempReq.file,
       tempReq.body.title,
+      tempReq.image,
+      tempReq.body.imageTitle,
     );
+    return res.send(apiDataResponse<IVideo>(video));
+  };
+
+  remove = async (req: Req, res: Res): Promise<Res> => {
+    const result = await this.data.remove(req.params.id);
+    return res.send(apiDataResponse<IVideo>(result));
+  };
+
+  updateVideoImage = async (req: Req, res: Res) => {
+    const tempReq = req as Req & { file: fileForm };
+    if (!tempReq.file) throw new BadRequestError("فایل عکس یافت نشد.");
+    const video = await this.data.updateVideoImage(req.params.id, tempReq.file);
     return res.send(apiDataResponse<IVideo>(video));
   };
 }

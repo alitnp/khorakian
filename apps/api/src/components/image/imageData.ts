@@ -1,27 +1,72 @@
 import { Model } from "mongoose";
-import { IImage } from "@my/types";
+import { ApiDataListResponse, IImage } from "@my/types";
 import { fileForm } from "@/middlewares/fileForm";
 import { publicFolder } from "@/config";
 import { fileDelete, fileRename } from "@/utils/file";
 import { convertImageToWebp, convertImageToSmallWebp } from "@/utils/image";
-import { NotFoundError } from "@/helpers/error";
+import { getAllData, IData } from "@/data/globalData";
+import { ConflictError, NotFoundError } from "@/helpers/error";
 
-class ImageData {
+class ImageData implements IData<IImage> {
   private Image: Model<IImage, {}, {}, {}, any>;
 
   constructor(Image: Model<IImage, {}, {}, {}, any>) {
     this.Image = Image;
   }
 
-  createImageFile = async (file: fileForm): Promise<IImage> => {
+  getAll = async (req: Req): Promise<ApiDataListResponse<IImage>> => {
+    const searchQuery: any = {};
+    if (req.query.title)
+      searchQuery.title = { $regex: req.query.title, $options: "i" };
+    if (req.query._id) searchQuery._id = req.query._id;
+
+    return getAllData<IImage>(searchQuery, req, this.Image);
+  };
+
+  get = async (id: string): Promise<IImage> => {
+    const postCategory = await this.Image.findById(id);
+    if (!postCategory) throw new NotFoundError();
+
+    return postCategory;
+  };
+
+  //! fake data : dont use it
+  create = async (image: IImage): Promise<IImage> => {
+    return image;
+  };
+
+  update = async ({ _id, title }: IImage): Promise<IImage> => {
+    const image = await this.Image.findById(_id);
+    if (!image) throw new NotFoundError();
+
+    const existingContentType = await this.Image.findOne({ title });
+    if (!!existingContentType) throw new ConflictError();
+
+    image.title = title;
+
+    return await image.save();
+  };
+
+  remove = async (id: string): Promise<IImage> => {
+    const postCategory = await this.Image.findById(id);
+    if (!postCategory) throw new NotFoundError();
+
+    //check if image is used
+
+    await this.Image.findByIdAndDelete(id);
+
+    return postCategory;
+  };
+
+  createImageFile = async (file: fileForm, title?: string): Promise<IImage> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const imageFormat = file.mimetype.split("/")[1];
     const image = new this.Image({
       fileName: "temp",
       format: imageFormat,
       pathname: "temp",
-      temp: true,
     });
+    if (title) image.title = title;
 
     //pathname and filename variables
     const imageDir = publicFolder.path + "/image/";
@@ -80,28 +125,6 @@ class ImageData {
       image.pathname = "/image/" + newOriginFormatFileName;
     }
     return await image.save();
-  };
-
-  imageWasUsed = async (id: string): Promise<IImage> => {
-    const image = await this.Image.findByIdAndUpdate(id, {
-      $set: { temp: false },
-    });
-    if (!image) throw new NotFoundError("عکس مورد نظر یافت نشد.");
-
-    return await image.save();
-  };
-  manyImageWasUsed = async (idArray: string[]): Promise<IImage[]> => {
-    const updatedImages: IImage[] = [];
-
-    for (let i = 0; i < idArray.length; i++) {
-      const id = idArray[i];
-      const image = await this.Image.findByIdAndUpdate(id, {
-        $set: { temp: false },
-      });
-      image && updatedImages.push(image);
-    }
-
-    return updatedImages;
   };
 }
 

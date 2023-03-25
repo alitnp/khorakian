@@ -1490,3 +1490,135 @@ body : {"title":"تست2"}
 },
 Response : {"status":400,"message":"عنوان ویدیو تعیین نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1679726604332,
+date : Sat Mar 25 2023 11:13:24 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-641c998e92d15627b43ef321-720.mp4,
+body : {}
+},
+Response : {"errno":-4058,"syscall":"stat","code":"ENOENT","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\VID-641c998e92d15627b43ef321-720.mp4"}
+},
+{
+type : ERROR,
+timestamp : 1679726677932,
+date : Sat Mar 25 2023 11:14:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-641c998e92d15627b43ef321-720.mp4,
+body : {}
+},
+Response : {"errno":-4058,"syscall":"stat","code":"ENOENT","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\VID-641c998e92d15627b43ef321-720.mp4"}
+},
+{
+type : ERROR,
+timestamp : 1679726701459,
+date : Sat Mar 25 2023 11:15:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-641c998e92d15627b43ef321-720.mp4,
+body : {}
+},
+Response : {"errno":-4058,"syscall":"stat","code":"ENOENT","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\VID-641c998e92d15627b43ef321-720.mp4"}
+},
+{
+type : ERROR,
+timestamp : 1679727041169,
+date : Sat Mar 25 2023 11:20:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\085abaa84ac5bdb38a7df39e7e78482c","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679727046188,
+date : Sat Mar 25 2023 11:20:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\a35839c1ebcd44f7f90f1071d2e7e0fb","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679727180102,
+date : Sat Mar 25 2023 11:23:00 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\9076bbf1c8b6d041a50fe212567929a6","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679727457559,
+date : Sat Mar 25 2023 11:27:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\3609e2576d5aaf3b621c0f6ff57112ac","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679727462593,
+date : Sat Mar 25 2023 11:27:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\video\\a409df274871c3906105b4de12c7372b","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679745428149,
+date : Sat Mar 25 2023 16:27:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"تست"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679745443989,
+date : Sat Mar 25 2023 16:27:23 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"تست"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679745569118,
+date : Sat Mar 25 2023 16:29:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"تست"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},

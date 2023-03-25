@@ -1,8 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IPost } from "@my/types";
-import { imageSchema } from "@/components/image/imageModel";
 import { postCategorySchema } from "@/components/postCategory/postCategoryModel";
-import { videoSchema } from "@/components/video/videoModel";
 import { defaultSchemaProps } from "@/utils/constants";
 
 export const postSchema = new Schema<IPost>({
@@ -13,8 +11,8 @@ export const postSchema = new Schema<IPost>({
     maxlength: [50, "عنوان حداکثر ۵۰ کاراکتر."],
   },
   text: String,
-  images: [imageSchema],
-  videos: [videoSchema],
+  images: [{ type: Schema.Types.ObjectId, ref: "Image" }],
+  videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
   postCategory: {
     type: postCategorySchema,
     required: [true, "عنوان تعیین نشده."],

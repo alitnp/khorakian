@@ -10,7 +10,10 @@ export const startServer = (app: e.Application): Server => {
     .on("SIGINT", () => exitLog(null, "SIGINT"))
     .on("SIGQUIT", () => exitLog(null, "SIGQUIT"))
     .on("SIGTERM", () => exitLog(null, "SIGTERM"))
-    .on("uncaughtException", (err) => exitLog(err, "uncaughtException"))
+    .on("uncaughtException", (err) => {
+      console.log("uncaughtException : ", err.message);
+      return exitLog(err, "uncaughtException");
+    })
     .on("beforeExit", () => exitLog(null, "beforeExit"))
     .on("exit", () => exitLog(null, "exit"));
 
@@ -18,7 +21,7 @@ export const startServer = (app: e.Application): Server => {
     process.stdout.write(`⚙️ Application Environment: ${CONFIG.APP.ENV}\n`);
     process.stdout.write(`⏱ Started on: ${Date.now()}\n`);
     process.stdout.write(
-      `🚀 TEN-STACK-API Server ready at http://localhost:${CONFIG.APP.PORT}\n`,
+      `🚀 @my/API Server ready at http://localhost:${CONFIG.APP.PORT}\n`,
     );
   });
 };

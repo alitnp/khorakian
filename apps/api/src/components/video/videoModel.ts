@@ -3,8 +3,7 @@ import { model, Schema } from "mongoose";
 
 export const videoSchema = new Schema<IVideo>({
   title: String,
-  temp: Boolean,
-  thumbnailPathname: String,
+  thumbnail: { type: Schema.Types.ObjectId, ref: "Image" },
   qualityVariations: [
     {
       fileName: String,

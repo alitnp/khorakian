@@ -26,22 +26,23 @@ export const handleApiThen = ({ res, onSuccess, dispatch, dataOnly = false, noti
   setLoading && setLoading(false);
 };
 interface genericProps<T, D> {
-  res: T & { isSuccess?: boolean; message: string; data: D };
-  onSuccess(_a: T | D): void;
+  res: T & { isSuccess?: boolean; message?: string; data: D };
+  onSuccess?: (_res: T) => void;
+  onSuccessData?: (_data: D) => void;
   dispatch?: AppDispatch;
   notifSuccess?: boolean;
   notifFail?: boolean;
   onFailed?: () => void;
   setLoading?: (_a: boolean) => void;
-  dataOnly?: boolean;
 }
-export const handleApiThenGeneric = <T, D>({ res, onSuccess, dispatch, notifSuccess = true, notifFail = true, dataOnly = false, onFailed, setLoading }: genericProps<T, D>) => {
+export const handleApiThenGeneric = <T, D>({ res, onSuccess, onSuccessData, dispatch, notifSuccess = true, notifFail = true, onFailed, setLoading }: genericProps<T, D>) => {
   if (res.isSuccess) {
     if (dispatch && notifSuccess) {
       const message = typeof notifSuccess === 'string' ? notifSuccess : 'عملیات با موفقیت انجام شد.';
       dispatch(setNotificationData({ message, type: 'success' }));
     }
-    onSuccess(dataOnly ? res.data : res);
+    onSuccess && onSuccess(res);
+    onSuccessData && onSuccessData(res.data);
   } else {
     dispatch && notifFail && dispatch(setNotificationData({ message: res.message, type: 'warning' }));
     onFailed && onFailed();

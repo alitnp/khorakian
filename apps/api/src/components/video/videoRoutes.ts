@@ -7,22 +7,34 @@ import VideoController from "@/components/video/videoController";
 import { Video } from "@/components/video/videoModel";
 import {
   createVideoValidations,
+  deleteVideoValidations,
   getVideoValidations,
 } from "@/components/video/videoValidations";
 import { validate } from "@/helpers";
+import { Image } from "@/components/image/imageModel";
+import ImageData from "@/components/image/imageData";
+import isAdmin from "@/middlewares/isAdmin";
 
 const router = Router();
-const videoData = new VideoData(Video);
+const videoData = new VideoData(Video, new ImageData(Image));
 const videoController = new VideoController(videoData);
 
 //get
 router.get("/:filename", validate(getVideoValidations), videoController.get);
+router.get("/", videoController.getAll);
 
 //post
 router.post(
   "/upload",
   [auth, ...videoForm(), ...validate(createVideoValidations)],
   videoController.create,
+);
+
+//delete
+router.delete(
+  "/:id",
+  [isAdmin, ...validate(deleteVideoValidations)],
+  videoController.remove,
 );
 
 export default router;

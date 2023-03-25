@@ -11,6 +11,8 @@ import TcCreatePage from 'components/UI/TcCreatePage/TcCreatePage';
 import TcEditPage from 'components/UI/TcEditPage/TcEditPage';
 import genericModels from 'global/Models/genericRoutesModels';
 import postRoutes from 'components/Routes/postRoutes';
+import videoRoutes from 'components/Routes/videoRoutes';
+import imageRoutes from 'components/Routes/imageRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -63,6 +65,12 @@ function MainRouter() {
 
     //post
     ...postRoutes(),
+
+    //video
+    ...videoRoutes(),
+
+    //image
+    ...imageRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];

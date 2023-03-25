@@ -13,6 +13,7 @@ export interface IData<Model, CreateModel = {}, UpdateModel = {}> {
   create(prop: CreateModel | Model): Promise<Model>;
   update(prop: UpdateModel | Model): Promise<Model>;
   remove(_id: string): Promise<Model>;
+  [key: string]: any;
 }
 
 export const getAllData = async <T>(

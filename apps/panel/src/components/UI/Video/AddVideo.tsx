@@ -40,9 +40,7 @@ const AddVideo: FC<IAddVideo> = ({ visible, addVideo, close }) => {
     formData.append('title', title);
     setLoading(true);
     await ApiService.post(endpointUrls.videoUpload, formData)
-      .then((res: ApiDataResponse<IVideo>) =>
-        handleApiThenGeneric<ApiDataResponse<IVideo>, IVideo>({ res, onSuccess: addVideo, dataOnly: true, notifFail: true, notifSuccess: true })
-      )
+      .then((res: ApiDataResponse<IVideo>) => handleApiThenGeneric<ApiDataResponse<IVideo>, IVideo>({ res, onSuccessData: addVideo, notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
     close();

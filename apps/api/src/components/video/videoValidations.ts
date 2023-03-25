@@ -6,7 +6,7 @@ import {
 
 export const getVideoValidations = [...paramValidations("filename")];
 
-export const createVideoValidations = [...titleValidations];
+export const createVideoValidations = [];
 
 export const updateVideoValidations = [
   ...paramIdValidations,
