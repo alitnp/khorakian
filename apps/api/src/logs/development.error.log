@@ -1826,3 +1826,27 @@ body : {}
 },
 Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641f45ef767219fc705ba2b4.webp'"
 },
+{
+type : ERROR,
+timestamp : 1679812031791,
+date : Sun Mar 26 2023 10:57:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641fe5baf16d5346ecf61763,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641fe5baf16d5346ecf61763.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679813187539,
+date : Sun Mar 26 2023 11:16:27 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641fea3f68d7d958f16c5228,
+body : {}
+},
+Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641fea3f68d7d958f16c5228.webp"}
+},

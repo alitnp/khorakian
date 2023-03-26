@@ -1,3 +1,4 @@
+import fs from "fs";
 import { Model } from "mongoose";
 import { ApiDataListResponse, IImage } from "@my/types";
 import { fileForm } from "@/middlewares/fileForm";
@@ -55,9 +56,20 @@ class ImageData implements IData<IImage> {
 
     await this.Image.findByIdAndDelete(id);
 
-    if (image.thumbnailPathname)
-      await fileDelete(publicFolder.path + image.thumbnailPathname);
-    await fileDelete(publicFolder.path + image.pathname);
+    if (image.thumbnailPathname) {
+      fs.unwatchFile(
+        (publicFolder.path + image.thumbnailPathname).replaceAll("/", "\\"),
+      );
+      fs.unlinkSync(
+        (publicFolder.path + image.thumbnailPathname).replaceAll("/", "\\"),
+      );
+    }
+
+    fs.unwatchFile((publicFolder.path + image.pathname).replaceAll("/", "\\"));
+    fs.unlinkSync((publicFolder.path + image.pathname).replaceAll("/", "\\"));
+    // if (image.thumbnailPathname)
+    //   await fileDelete(publicFolder.path + image.thumbnailPathname);
+    // await fileDelete(publicFolder.path + image.pathname);
 
     return image;
   };
