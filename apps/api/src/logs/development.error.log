@@ -1850,3 +1850,183 @@ body : {}
 },
 Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641fea3f68d7d958f16c5228.webp"}
 },
+{
+type : ERROR,
+timestamp : 1679817122580,
+date : Sun Mar 26 2023 12:22:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641ff99463655c8d5554c7c8,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641ff99463655c8d5554c7c8.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679818186715,
+date : Sun Mar 26 2023 12:39:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679818207601,
+date : Sun Mar 26 2023 12:40:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679820453579,
+date : Sun Mar 26 2023 13:17:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"file","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679820581921,
+date : Sun Mar 26 2023 13:19:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679820619549,
+date : Sun Mar 26 2023 13:20:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679824694868,
+date : Sun Mar 26 2023 14:28:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"status":400,"message":"فرمت ویدیو ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679825061692,
+date : Sun Mar 26 2023 14:34:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"status":400,"message":"فرمت ویدیو ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679825165593,
+date : Sun Mar 26 2023 14:36:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825212729,
+date : Sun Mar 26 2023 14:36:52 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825389681,
+date : Sun Mar 26 2023 14:39:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فرمت عکس ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679825489559,
+date : Sun Mar 26 2023 14:41:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825533682,
+date : Sun Mar 26 2023 14:42:13 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825639185,
+date : Sun Mar 26 2023 14:43:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825696264,
+date : Sun Mar 26 2023 14:44:56 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {}
+},

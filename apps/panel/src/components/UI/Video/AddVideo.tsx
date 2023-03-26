@@ -1,4 +1,4 @@
-import { ApiDataResponse, IVideo } from '@my/types';
+import { ApiDataResponse, IVideoRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcForm from 'components/UI/Form/TcForm';
 import TcFormItem from 'components/UI/Form/TcFormItem';
@@ -16,7 +16,7 @@ import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 
 interface IAddVideo {
   visible: boolean;
-  addVideo: (_video: IVideo) => void;
+  addVideo: (_video: IVideoRead) => void;
   close(): void;
 }
 
@@ -40,7 +40,9 @@ const AddVideo: FC<IAddVideo> = ({ visible, addVideo, close }) => {
     formData.append('title', title);
     setLoading(true);
     await ApiService.post(endpointUrls.videoUpload, formData)
-      .then((res: ApiDataResponse<IVideo>) => handleApiThenGeneric<ApiDataResponse<IVideo>, IVideo>({ res, onSuccessData: addVideo, notifFail: true, notifSuccess: true }))
+      .then((res: ApiDataResponse<IVideoRead>) =>
+        handleApiThenGeneric<ApiDataResponse<IVideoRead>, IVideoRead>({ res, onSuccessData: addVideo, notifFail: true, notifSuccess: true })
+      )
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
     close();

@@ -1,5 +1,5 @@
-import { IVideo, ApiDataResponse } from '@my/types';
-import ApiService, { BASE_URL } from 'config/API/ApiService';
+import { IVideo, ApiDataResponse, IVideoRead } from '@my/types';
+import ApiService, { BASE_URL, DOMAIN } from 'config/API/ApiService';
 import { FC, memo, useState, useEffect, useRef, useCallback } from 'react';
 import { PlayCircleTwoTone } from '@ant-design/icons';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
@@ -11,13 +11,14 @@ import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
 
 interface IVideoItem {
-  video: IVideo;
+  video: IVideoRead;
   removeItem?: (_id: string) => void;
+  size?: 'small' | 'normal';
 }
 
 type videoSrc = { pathname: string; label: number };
 
-const VideoItem: FC<IVideoItem> = ({ video, removeItem }) => {
+const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
   //state
   const [srcs, setSrcs] = useState<videoSrc[]>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -60,10 +61,12 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem }) => {
   }, []);
 
   return (
-    <div className='w-full sm:w-80'>
-      <div className='relative flex items-center w-full overflow-hidden bg-black sm:w-80 rounded-xl aspect-video group'>
+    <div className={`w-full ${size === 'normal' && 'sm:w-80'} ${size === 'small' && 'sm:w-40'}`}>
+      <div
+        className={`relative flex items-center w-full overflow-hidden bg-black rounded-xl aspect-video group ${size === 'normal' && 'sm:w-80'} ${size === 'small' && 'sm:w-40'}`}>
         {srcs.length > 0 && (
           <video
+            poster={video.thumbnail && DOMAIN + video.thumbnail.thumbnailPathname}
             controlsList='nodownload'
             disablePictureInPicture
             controls={isPlaying}

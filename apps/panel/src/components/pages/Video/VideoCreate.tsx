@@ -36,7 +36,7 @@ const VideoCreate: FC = () => {
     if (!videoFiles || videoFiles.length === 0) return dispatch(setNotificationData({ type: 'error', message: 'فایل انتخاب نشده' }));
 
     const formData = new FormData();
-    formData.append('file', videoFiles[0]);
+    formData.append('video', videoFiles[0]);
     formData.append('title', title);
     imageFiles && formData.append('image', imageFiles[0]);
     formData.append('imageTitle', imageTitle);

@@ -20,6 +20,7 @@ export const getAllData = async <T>(
   searchQuery: any,
   req: Req,
   model: Model<T>,
+  populate = "",
 ): Promise<ApiDataListResponse<T>> => {
   let pageNumber = getPageNumber(req);
   const pageSize = getPageSize(req);
@@ -31,6 +32,7 @@ export const getAllData = async <T>(
 
   const data = await model
     .find(searchQuery)
+    .populate(populate)
     .limit(pageSize)
     .skip((pageNumber - 1) * pageSize)
     .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 });

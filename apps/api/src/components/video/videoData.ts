@@ -1,4 +1,3 @@
-import fs from "fs";
 import { Model } from "mongoose";
 import { ApiDataListResponse, IVideo } from "@my/types";
 import { fileForm } from "@/middlewares/fileForm";
@@ -13,9 +12,9 @@ import {
 } from "@/utils/video";
 import BadRequestError from "@/helpers/error/BadRequestError";
 import ImageData from "@/components/image/imageData";
-import { getAllData } from "@/data/globalData";
+import { getAllData, IData } from "@/data/globalData";
 
-class VideoData {
+class VideoData implements IData<IVideo> {
   private Video: Model<IVideo, {}, {}, {}, any>;
   private Image: ImageData;
 
@@ -30,14 +29,18 @@ class VideoData {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IVideo>(searchQuery, req, this.Video);
+    return getAllData<IVideo>(searchQuery, req, this.Video, "thumbnail");
   };
 
-  get = async () => {
-    const videoPath =
-      publicFolder + "/video/" + "VID-6419ecbc066234cd4cab1dd6.mp4";
-    const videoSize = fs.statSync(videoPath).size;
-    console.log(videoSize);
+  get = async (id: string) => {
+    const video = await this.Video.findById(id);
+    if (!video) throw new NotFoundError();
+    return video;
+  };
+
+  //! fake data : dont use it
+  create = async (video: IVideo): Promise<IVideo> => {
+    return video;
   };
 
   createVideoFile = async (
@@ -116,8 +119,14 @@ class VideoData {
     const video = await this.Video.findById(id);
     if (!video) throw new NotFoundError();
 
-    //check if video is temp or not
-    // const postsWithThisVideo
+    const videoPaths = video.qualityVariations.map((vid) => vid.pathname);
+
+    for (let i = 0; i < videoPaths.length; i++) {
+      const pathname = videoPaths[i];
+      await fileDelete(publicFolder.path + pathname);
+    }
+
+    if (video.thumbnail) await this.Image.remove(video.thumbnail);
 
     await this.Video.findByIdAndDelete(id);
 
@@ -128,12 +137,14 @@ class VideoData {
   };
 
   updateVideoImage = async (id: string, file: fileForm) => {
+    const isExixtVideo = await this.Video.findById(id);
+    if (!isExixtVideo) throw new NotFoundError("ویدیو مورد نظر یافت نشد");
+
     const image = await this.Image.createImageFile(file);
     const video = await this.Video.findOneAndUpdate(
       { _id: id },
       { $set: { thumbnail: image._id } },
     );
-
     if (!video) throw new NotFoundError("ویدیو مورد نظر یافت نشد");
 
     return video;

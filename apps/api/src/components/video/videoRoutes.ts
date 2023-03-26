@@ -1,7 +1,7 @@
 import { Router } from "express";
 // import sharp from "sharp";
 import auth from "@/middlewares/athenticate";
-import { videoForm } from "@/middlewares/fileForm";
+import { imageAndVideoForm } from "@/middlewares/fileForm";
 import VideoData from "@/components/video/videoData";
 import VideoController from "@/components/video/videoController";
 import { Video } from "@/components/video/videoModel";
@@ -26,7 +26,7 @@ router.get("/", videoController.getAll);
 //post
 router.post(
   "/upload",
-  [auth, ...videoForm(), ...validate(createVideoValidations)],
+  [auth, ...imageAndVideoForm(), ...validate(createVideoValidations)],
   videoController.create,
 );
 
