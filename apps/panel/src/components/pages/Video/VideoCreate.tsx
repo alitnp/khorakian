@@ -1,9 +1,14 @@
-import { ApiDataResponse, IVideo } from '@my/types';
+import { ApiDataResponse, IImage, IVideo } from '@my/types';
+import TcButton from 'components/UI/Button/TcButton';
 import TcCard from 'components/UI/Card/TcCard';
+import TcDevider from 'components/UI/Devider/TcDevider';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcForm from 'components/UI/Form/TcForm';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
+import ImageItem from 'components/UI/Image/ImageItem';
+import ImagePicker from 'components/UI/Image/ImagePicker';
+import ImagePickerModal from 'components/UI/Image/ImagePickerModal';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import ApiService, { errorResponse } from 'config/API/ApiService';
@@ -12,7 +17,7 @@ import routes from 'global/Constants/routes';
 import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import videoModel from 'global/Models/videoModel';
-import { FC, useState, ChangeEvent } from 'react';
+import { FC, useState, ChangeEvent, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { setNotificationData } from 'redux/reducer/Toast/toastReducer';
@@ -22,9 +27,9 @@ const VideoCreate: FC = () => {
   //states
   const [title, setTitle] = useState<string>('');
   const [videoFiles, setVideoFiles] = useState<FileList | null>(null);
-  const [imageTitle, setImageTitle] = useState<string>('');
-  const [imageFiles, setImageFiles] = useState<FileList | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [showImagePicker, setShowImagePicker] = useState<boolean>(false);
+  const [image, setImage] = useState<IImage>();
 
   //hooks
   const dispatch: AppDispatch = useDispatch();
@@ -38,8 +43,9 @@ const VideoCreate: FC = () => {
     const formData = new FormData();
     formData.append('video', videoFiles[0]);
     formData.append('title', title);
-    imageFiles && formData.append('image', imageFiles[0]);
-    formData.append('imageTitle', imageTitle);
+    image && formData.append('image', image._id);
+    // imageFiles && formData.append('image', imageFiles[0]);
+    // formData.append('imageTitle', imageTitle);
     setLoading(true);
     await ApiService.post(endpointUrls.videoUpload, formData)
       .then((res: ApiDataResponse<IVideo>) =>
@@ -48,6 +54,8 @@ const VideoCreate: FC = () => {
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
   };
+  const toggleShowImagePicker = useCallback(() => setShowImagePicker((prevState) => !prevState), []);
+
   return (
     <TcCard back={{ to: routes.video.path }}>
       <TcPageTitle title={'ایجاد ' + videoModel.title} />
@@ -58,14 +66,20 @@ const VideoCreate: FC = () => {
         <TcFormItem label='فایل ویدیو'>
           <TcInput type='file' accept='video/*' onChange={(e: ChangeEvent<HTMLInputElement>) => setVideoFiles(e.target.files)} />
         </TcFormItem>
-        <TcFormItem label='عنوان عکس SEO'>
+        {/* <TcFormItem label='عنوان عکس SEO'>
           <TcInput placeholder='عنوان عکس برای بهبود SEO استفاده می شود' value={imageTitle} onChange={(e: ChangeEvent<HTMLInputElement>) => setImageTitle(e.target.value)} />
         </TcFormItem>
         <TcFormItem label='فایل عکس'>
           <TcInput type='file' accept='image/*' onChange={(e: ChangeEvent<HTMLInputElement>) => setImageFiles(e.target.files)} />
-        </TcFormItem>
-        <TcFormButtons noCancel submitButtonText='ثبت' />
+        </TcFormItem> */}
       </TcForm>
+      <TcDevider>عکس ویدیو</TcDevider>
+      <TcButton className='mb-4' onClick={toggleShowImagePicker}>
+        + انتخاب عکس
+      </TcButton>
+      {image && <ImageItem image={image} size='large' />}
+      <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={handleFinish} />
+      <ImagePickerModal visible={showImagePicker} close={toggleShowImagePicker} handlePick={setImage} />
       {loading && <TcCoverLoading />}
     </TcCard>
   );

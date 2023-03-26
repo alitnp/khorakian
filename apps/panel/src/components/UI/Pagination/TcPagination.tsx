@@ -1,7 +1,7 @@
 import { Pagination, PaginationProps } from 'antd';
 import classes from 'assets/css/global.module.css';
 import { separator } from 'global/default';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 interface ITcPagination extends PaginationProps {
   onPaginationHandler: (a?: number, b?: number) => void;
@@ -44,4 +44,4 @@ const TcPagination: FC<ITcPagination> = ({ className, responsive, total = 0, cur
   );
 };
 
-export default TcPagination;
+export default memo(TcPagination);

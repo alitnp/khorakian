@@ -10,10 +10,10 @@ class ImageController extends BaseController<IImage> {
     super(data);
   }
   createImageFile = async (req: Req, res: Res) => {
-    const tempReq = req as Req & { image: fileForm };
-    if (!tempReq.image) throw new BadRequestError("فایل عکس یافت نشد.");
+    const tempReq = req as Req & { file: fileForm };
+    if (!tempReq.file) throw new BadRequestError("فایل عکس یافت نشد.");
     const image = await this.data.createImageFile(
-      tempReq.image,
+      tempReq.file,
       tempReq.body.title,
     );
     return res.send(apiDataResponse<IImage>(image));

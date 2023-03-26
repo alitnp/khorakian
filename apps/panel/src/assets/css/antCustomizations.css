@@ -463,7 +463,7 @@
 
 .ant-segmented {
     background-color: var(--layer-bg-color) !important;
-    direction: ltr !important;
+    /* direction: ltr !important; */
 }
 
 .ant-checkbox-inner {

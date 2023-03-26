@@ -2030,3 +2030,39 @@ body : {"title":"fdgh","imageTitle":"fgj"}
 },
 Response : {}
 },
+{
+type : ERROR,
+timestamp : 1679855355971,
+date : Sun Mar 26 2023 21:59:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"file","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679855385934,
+date : Sun Mar 26 2023 21:59:45 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"علیین حسنی ناظر"}
+},
+Response : {"status":400,"message":"فایل عکس یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679855427538,
+date : Sun Mar 26 2023 22:00:27 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"علیین حسنی ناظر"}
+},
+Response : {"status":400,"message":"فایل عکس یافت نشد.","data":null,"isSuccess":false}
+},

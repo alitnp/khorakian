@@ -46,19 +46,19 @@ class VideoData implements IData<IVideo> {
   createVideoFile = async (
     file: fileForm,
     title?: string,
-    image?: fileForm,
-    imageTitle?: string,
+    imageId?: string,
   ): Promise<IVideo> => {
-    //if image sended create Image
-    let thumbnail;
-    if (image) thumbnail = await this.Image.createImageFile(image, imageTitle);
-
     //create a temp mongoose object from multer file to generate a valid _id
     const video = new this.Video({
       qualityVariations: [],
     });
     if (title) video.title = title;
-    if (thumbnail) video.thumbnail = thumbnail._id;
+
+    //check if image sent and exists
+    if (imageId) {
+      const image = await this.Image.get(imageId);
+      video.thumbnail = image._id;
+    }
 
     //pathname and filename variables
     // const videoPath =
@@ -119,33 +119,10 @@ class VideoData implements IData<IVideo> {
     const video = await this.Video.findById(id);
     if (!video) throw new NotFoundError();
 
-    const videoPaths = video.qualityVariations.map((vid) => vid.pathname);
-
-    for (let i = 0; i < videoPaths.length; i++) {
-      const pathname = videoPaths[i];
-      await fileDelete(publicFolder.path + pathname);
-    }
-
-    if (video.thumbnail) await this.Image.remove(video.thumbnail);
-
     await this.Video.findByIdAndDelete(id);
 
     //delete files from server
     deleteVideoFiles(video);
-
-    return video;
-  };
-
-  updateVideoImage = async (id: string, file: fileForm) => {
-    const isExixtVideo = await this.Video.findById(id);
-    if (!isExixtVideo) throw new NotFoundError("ویدیو مورد نظر یافت نشد");
-
-    const image = await this.Image.createImageFile(file);
-    const video = await this.Video.findOneAndUpdate(
-      { _id: id },
-      { $set: { thumbnail: image._id } },
-    );
-    if (!video) throw new NotFoundError("ویدیو مورد نظر یافت نشد");
 
     return video;
   };

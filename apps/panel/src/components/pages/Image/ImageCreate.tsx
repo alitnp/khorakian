@@ -34,7 +34,7 @@ const ImageCreate: FC = () => {
     if (!imageFiles || imageFiles.length === 0) return dispatch(setNotificationData({ type: 'error', message: 'فایل انتخاب نشده' }));
 
     const formData = new FormData();
-    formData.append('file', imageFiles[0]);
+    formData.append('image', imageFiles[0]);
     formData.append('title', title);
     setLoading(true);
     await ApiService.post(endpointUrls.imageUpload, formData)

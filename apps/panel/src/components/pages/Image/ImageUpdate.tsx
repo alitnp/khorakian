@@ -12,7 +12,7 @@ import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
-import ImageThumbnail from 'components/UI/Image/ImageThumbnail';
+import ImageItem from 'components/UI/Image/ImageItem';
 import TcForm from 'components/UI/Form/TcForm';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
@@ -73,7 +73,7 @@ const ImageUpdate: FC = () => {
       {imageDetail && (
         <>
           <div className='flex justify-center'>
-            <ImageThumbnail image={imageDetail} />
+            <ImageItem image={imageDetail} />
           </div>
           <TcForm onFinish={handleSubmit} form={form}>
             <TcFormItem label='عنوان SEO' name='title' rules={[{ required: true, message: 'عنوان تعیین نشده' }]}>

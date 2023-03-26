@@ -5,10 +5,10 @@ import { PlayCircleTwoTone } from '@ant-design/icons';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcLoading from 'components/UI/Loading/TcLoading';
-import endpointUrls from './../../../global/Constants/endpointUrls';
 import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
+import endpointUrls from 'global/Constants/endpointUrls';
 
 interface IVideoItem {
   video: IVideoRead;
@@ -74,8 +74,7 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
             ref={videoPlayer}
             key={srcs[activeIndex].pathname}
             onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onMouseOver={() => console.log(videoPlayer)}>
+            onPause={() => setIsPlaying(false)}>
             <source src={srcs[activeIndex].pathname} type='video/mp4' />{' '}
           </video>
         )}
@@ -86,7 +85,7 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
               setIsPlaying(true);
               if (videoPlayer.current !== null) videoPlayer.current.play();
             }}>
-            <PlayCircleTwoTone className='text-5xl cursor-pointer' />
+            <PlayCircleTwoTone className={`cursor-pointer ${size === 'small' ? 'text-3xl' : 'text-5xl'}`} />
           </div>
         )}
         {!isPlaying && <div className='absolute bottom-0 left-0 flex gap-4'>{removeItem && <TcDeleteIcon onConfirm={handleDelete} />}</div>}

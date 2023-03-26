@@ -25,7 +25,7 @@ class ImageData implements IData<IImage> {
 
   get = async (id: string): Promise<IImage> => {
     const postCategory = await this.Image.findById(id);
-    if (!postCategory) throw new NotFoundError();
+    if (!postCategory) throw new NotFoundError("عکس مورد نظر یافت نشد.");
 
     return postCategory;
   };
