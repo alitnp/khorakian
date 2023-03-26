@@ -1850,3 +1850,39 @@ body : {}
 },
 Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641fea3f68d7d958f16c5228.webp"}
 },
+{
+type : ERROR,
+timestamp : 1679810723156,
+date : Sun Mar 26 2023 10:35:23 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\a2567e5a0a549121845706914b9f237b","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679811571336,
+date : Sun Mar 26 2023 10:49:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\f0409aaeac9ca52c5ccbd8985dfebaf1","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679811610893,
+date : Sun Mar 26 2023 10:50:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\4c7f4a48ade46184ce232e499cae4946","storageErrors":[]}
+},
