@@ -9,6 +9,8 @@ import {
   createVideoValidations,
   deleteVideoValidations,
   getVideoValidations,
+  playVideoValidations,
+  updateVideoValidations,
 } from "@/components/video/videoValidations";
 import { validate } from "@/helpers";
 import { Image } from "@/components/image/imageModel";
@@ -20,7 +22,8 @@ const videoData = new VideoData(Video, new ImageData(Image));
 const videoController = new VideoController(videoData);
 
 //get
-router.get("/:filename", validate(getVideoValidations), videoController.get);
+router.get("/detail/:id", validate(getVideoValidations), videoController.get);
+router.get("/:filename", validate(playVideoValidations), videoController.play);
 router.get("/", videoController.getAll);
 
 //post
@@ -28,6 +31,13 @@ router.post(
   "/upload",
   [auth, ...videoForm(), ...validate(createVideoValidations)],
   videoController.create,
+);
+
+//put
+router.put(
+  "/:id",
+  [isAdmin, ...validate(updateVideoValidations)],
+  videoController.update,
 );
 
 //delete

@@ -1,6 +1,5 @@
 import { IUserRead } from '@my/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import cookie from 'js-cookie';
 
 type initialState = { userProfile: null | IUserRead };
 const initialStateValue: initialState = { userProfile: null };

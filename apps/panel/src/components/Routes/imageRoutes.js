@@ -7,7 +7,7 @@ const ImageUpdate = React.lazy(() => import('../pages/Image/ImageUpdate'));
 
 const imageRoutes = () => [
   {
-    path: routes.imageUpdate.path,
+    path: routes.imageEdit.path,
     component: ImageUpdate,
     type: 'private',
     accessRole: true,

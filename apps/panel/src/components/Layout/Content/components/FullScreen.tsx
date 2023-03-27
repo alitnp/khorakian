@@ -3,13 +3,14 @@ import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 import { setSettingFullScreen } from 'redux/reducer/Setting/settingReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import TcTooltip from 'components/UI/Tooltip/TcTooltip';
+import { AppDispatch, RootState } from 'redux/store';
 
 const FullScreen: FC = () => {
   //state
-  const { fullScreen } = useSelector((state: any) => state.setting);
+  const { fullScreen } = useSelector((state: RootState) => state.setting);
 
   //hooks
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   //function
   const toggleFullScreen = () => dispatch(setSettingFullScreen(!fullScreen));

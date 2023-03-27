@@ -8,29 +8,29 @@ class BaseController<Model, CreateModel = {}, UpdateModel = {}> {
     this.data = data;
   }
 
-  getAll = async (req: Req, res: Res): Promise<Res> => {
+  getAll = async (req: Req, res: Res) => {
     const result = await this.data.getAll(req);
-    return res.send(apiDataListResponse<Model>(result));
+    res.send(apiDataListResponse<Model>(result));
   };
 
-  get = async (req: Req, res: Res): Promise<Res> => {
+  get = async (req: Req, res: Res) => {
     const result = await this.data.get(req.params.id);
-    return res.send(apiDataResponse<Model>(result));
+    res.send(apiDataResponse<Model>(result));
   };
 
-  create = async (req: Req, res: Res): Promise<Res> => {
+  create = async (req: Req, res: Res) => {
     const result = await this.data.create(req.body);
-    return res.send(apiDataResponse<Model>(result));
+    res.send(apiDataResponse<Model>(result));
   };
 
-  update = async (req: Req, res: Res): Promise<Res> => {
+  update = async (req: Req, res: Res) => {
     const result = await this.data.update({ _id: req.params.id, ...req.body });
-    return res.send(apiDataResponse<Model>(result));
+    res.send(apiDataResponse<Model>(result));
   };
 
-  remove = async (req: Req, res: Res): Promise<Res> => {
+  remove = async (req: Req, res: Res) => {
     const result = await this.data.remove(req.params.id);
-    return res.send(apiDataResponse<Model>(result));
+    res.send(apiDataResponse<Model>(result));
   };
 }
 

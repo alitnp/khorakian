@@ -16,7 +16,7 @@ class ImageController extends BaseController<IImage> {
       tempReq.file,
       tempReq.body.title,
     );
-    return res.send(apiDataResponse<IImage>(image));
+    res.send(apiDataResponse<IImage>(image));
   };
 }
 

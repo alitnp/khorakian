@@ -48,7 +48,7 @@ const columns = (handleDelete: (_id: string) => void) => [
     render: (_text: any, record: any) => (
       <div className='flex'>
         {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
-        <TcEditIcon to={routes.videoUpdate.path + '/' + record._id} />
+        <TcEditIcon to={routes.videoEdit.path + '/' + record._id} />
         <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
       </div>
     ),

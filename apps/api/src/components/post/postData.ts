@@ -1,78 +1,127 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse, IPost } from "@my/types";
+import { ApiDataListResponse, IPost, IPostCreate } from "@my/types";
 import { getAllData, IData } from "@/data/globalData";
-import { ConflictError, NotFoundError } from "@/helpers/error";
+import { NotFoundError } from "@/helpers/error";
+import PostCategoryData from "@/components/postCategory/postCategoryData";
+import VideoData from "@/components/video/videoData";
+import ImageData from "@/components/image/imageData";
 
 class PostData implements IData<IPost> {
   Post: Model<IPost, {}, {}, {}, any>;
+  PostCategory: PostCategoryData;
+  Video: VideoData;
+  Image: ImageData;
 
-  constructor(PostCategory: Model<IPost, {}, {}, {}, any>) {
-    this.Post = PostCategory;
+  constructor(
+    Post: Model<IPost, {}, {}, {}, any>,
+    PostCategory: PostCategoryData,
+    Video: VideoData,
+    Image: ImageData,
+  ) {
+    this.Post = Post;
+    this.PostCategory = PostCategory;
+    this.Video = Video;
+    this.Image = Image;
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IPost>> => {
     const searchQuery: any = {};
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
+    if (req.query.text)
+      searchQuery.text = { $regex: req.query.text, $options: "i" };
+    if (req.query.postCategory)
+      searchQuery.postCategory._id = { $regex: req.query.postCategory };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IPost>(searchQuery, req, this.Post);
+    return getAllData<IPost>(searchQuery, req, this.Post, ["images", "videos"]);
   };
 
   get = async (id: string): Promise<IPost> => {
-    const postCategory = await this.Post.findById(id);
-    if (!postCategory) throw new NotFoundError();
+    const post = await this.Post.findById(id)
+      .populate("images")
+      .populate("videos");
+    if (!post) throw new NotFoundError();
 
-    return postCategory;
+    return post;
   };
 
-  create = async ({ title }: IPost): Promise<IPost> => {
-    const existingCategory = await this.Post.findOne({ title });
-    if (!!existingCategory)
-      throw new ConflictError("دسته بندی با این نام قبلا ثبت شده است.");
+  create = async ({
+    title,
+    postCategory,
+    images,
+    videos,
+    text,
+  }: IPostCreate): Promise<IPost> => {
+    const existingPostCategory = await this.PostCategory.get(postCategory);
 
-    const postCategory = new this.Post({
+    const existingImageIds = [];
+    for (let i = 0; i < images.length; i++) {
+      const imageId = images[i];
+      const existingImage = await this.Image.get(imageId);
+      if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
+
+    const existingVideoIds = [];
+    for (let i = 0; i < videos.length; i++) {
+      const videoId = videos[i];
+      const existingVideo = await this.Video.get(videoId);
+      if (!!existingVideo) existingVideoIds.push(existingVideo._id);
+    }
+
+    const post = new this.Post({
       title,
+      postCategory: existingPostCategory,
+      images: existingImageIds,
+      video: existingVideoIds,
+      text,
     });
-    return await postCategory.save();
+    return await post.save();
   };
 
-  update = async ({ _id, title }: IPost): Promise<IPost> => {
-    const postCategory = await this.Post.findById(_id);
-    if (!postCategory) throw new NotFoundError();
+  update = async ({
+    id,
+    title,
+    postCategory,
+    images,
+    videos,
+    text,
+  }: IPostCreate & { id: string }): Promise<IPost> => {
+    const existingPostCategory = await this.PostCategory.get(postCategory);
 
-    const existingContentType = await this.Post.findOne({ title });
-    if (!!existingContentType) throw new ConflictError();
+    const existingImageIds = [];
+    for (let i = 0; i < images.length; i++) {
+      const imageId = images[i];
+      const existingImage = await this.Image.get(imageId);
+      if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
 
-    postCategory.title = title;
+    const existingVideoIds = [];
+    for (let i = 0; i < videos.length; i++) {
+      const videoId = videos[i];
+      const existingVideo = await this.Video.get(videoId);
+      if (!!existingVideo) existingVideoIds.push(existingVideo._id);
+    }
 
-    // await Post.updateMany(
-    //   {
-    //     "category._id": _id,
-    //   },
-    //   {
-    //     $set: {
-    //       "category.title": title,
-    //     },
-    //   },
-    // );
+    const post = await this.Post.findByIdAndUpdate(id, {
+      $set: {
+        title,
+        postCategory: existingPostCategory,
+        images: existingImageIds,
+        video: existingVideoIds,
+        text,
+      },
+    }).populate(["videos", "images"]);
+    if (!post) throw new NotFoundError();
 
-    return await postCategory.save();
+    return post;
   };
 
   remove = async (id: string): Promise<IPost> => {
-    const postCategory = await this.Post.findById(id);
-    if (!postCategory) throw new NotFoundError();
-
-    // const postsWithThisCategory = await Post.find({ "category._id": id });
-    // if (postsWithThisCategory.length > 0)
-    //   throw new ConflictError(
-    //     "این دسته بندی در جای دیگر درحال استفاده می باشد.",
-    //   );
-
+    const post = await this.get(id);
     await this.Post.findByIdAndDelete(id);
 
-    return postCategory;
+    return post;
   };
 }
 

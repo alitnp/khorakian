@@ -19,6 +19,16 @@ export const paramIdValidations = [
       else return Promise.resolve();
     }),
 ];
+export const bodyIdValidations = (propertyName = "_id") => [
+  body(propertyName, "شناسه مشخص نشده است.")
+    .isString()
+    .isLength({ min: 24, max: 24 })
+    .custom((value) => {
+      if (!isValidObjectId(value))
+        return Promise.reject("شناسه به درستی وارد نشده است.");
+      else return Promise.resolve();
+    }),
+];
 export const paramValidations = (paramName = "id") => [
   param(paramName, "شناسه مشخص نشده است.").exists().isString(),
 ];

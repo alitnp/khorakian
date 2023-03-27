@@ -3,7 +3,7 @@ import { ApiDataListResponse, IVideo } from "@my/types";
 import { fileForm } from "@/middlewares/fileForm";
 import { publicFolder } from "@/config";
 import { fileDelete, fileRename } from "@/utils/file";
-import { ConflictError, NotFoundError } from "@/helpers/error";
+import { NotFoundError } from "@/helpers/error";
 import {
   getVideoInfo,
   getVideoHeight,
@@ -29,11 +29,11 @@ class VideoData implements IData<IVideo> {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IVideo>(searchQuery, req, this.Video, "thumbnail");
+    return getAllData<IVideo>(searchQuery, req, this.Video, ["thumbnail"]);
   };
 
   get = async (id: string) => {
-    const video = await this.Video.findById(id);
+    const video = await this.Video.findById(id).populate("thumbnail");
     if (!video) throw new NotFoundError();
     return video;
   };
@@ -61,8 +61,6 @@ class VideoData implements IData<IVideo> {
     }
 
     //pathname and filename variables
-    // const videoPath =
-    //   publicFolder.path + "\\video\\" + "VID-6419ecbc066234cd4cab1dd6.mp4";
     const videoDir = publicFolder.path + "\\video\\";
     const videoId = video._id;
     const inputFormat = file.mimetype.split("/")[1];
@@ -104,9 +102,6 @@ class VideoData implements IData<IVideo> {
   update = async ({ _id, title }: IVideo): Promise<IVideo> => {
     const video = await this.Video.findById(_id);
     if (!video) throw new NotFoundError();
-
-    const existingContentType = await this.Video.findOne({ title });
-    if (!!existingContentType) throw new ConflictError();
 
     video.title = title;
 

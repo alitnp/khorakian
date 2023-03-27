@@ -1852,6 +1852,10 @@ Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"D:\\projects
 },
 {
 type : ERROR,
+<<<<<<< HEAD
+timestamp : 1679810723156,
+date : Sun Mar 26 2023 10:35:23 GMT+0430 (Iran Daylight Time),
+=======
 timestamp : 1679817122580,
 date : Sun Mar 26 2023 12:22:02 GMT+0430 (Iran Daylight Time),
 ip : ::ffff:127.0.0.1,
@@ -2034,10 +2038,21 @@ Response : {}
 type : ERROR,
 timestamp : 1679855355971,
 date : Sun Mar 26 2023 21:59:15 GMT+0330 (وقت عادی ایران),
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
 url : /api/v1/image/upload,
+<<<<<<< HEAD
+body : {"title":"تستی"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\a2567e5a0a549121845706914b9f237b","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679811571336,
+date : Sun Mar 26 2023 10:49:31 GMT+0430 (Iran Daylight Time),
+=======
 body : {}
 },
 Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"file","storageErrors":[]}
@@ -2046,10 +2061,21 @@ Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEX
 type : ERROR,
 timestamp : 1679855385934,
 date : Sun Mar 26 2023 21:59:45 GMT+0330 (وقت عادی ایران),
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
 url : /api/v1/image/upload,
+<<<<<<< HEAD
+body : {"title":"تستی"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\f0409aaeac9ca52c5ccbd8985dfebaf1","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679811610893,
+date : Sun Mar 26 2023 10:50:10 GMT+0430 (Iran Daylight Time),
+=======
 body : {"title":"علیین حسنی ناظر"}
 },
 Response : {"status":400,"message":"فایل عکس یافت نشد.","data":null,"isSuccess":false}
@@ -2058,11 +2084,534 @@ Response : {"status":400,"message":"فایل عکس یافت نشد.","data":nul
 type : ERROR,
 timestamp : 1679855427538,
 date : Sun Mar 26 2023 22:00:27 GMT+0330 (وقت عادی ایران),
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
 url : /api/v1/image/upload,
+<<<<<<< HEAD
+body : {"title":"تستی"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\4c7f4a48ade46184ce232e499cae4946","storageErrors":[]}
+=======
 body : {"title":"علیین حسنی ناظر"}
 },
 Response : {"status":400,"message":"فایل عکس یافت نشد.","data":null,"isSuccess":false}
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
+},
+{
+type : ERROR,
+timestamp : 1679892481925,
+date : Mon Mar 27 2023 09:18:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی دوو"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\13473ab2e555c344d0129d57a76a0249","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679892489518,
+date : Mon Mar 27 2023 09:18:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی دوو"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\32f6dcf140dbdf6030d34aea763893a8","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679892494908,
+date : Mon Mar 27 2023 09:18:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی دوو"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\a1739538517701840effc50485c2fe38","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679893567163,
+date : Mon Mar 27 2023 09:36:07 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"test"}
+},
+Response : {"status":409,"message":" این ایده قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679893687507,
+date : Mon Mar 27 2023 09:38:07 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/63ef1ca568a4dab09d6f4d2f,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894401633,
+date : Mon Mar 27 2023 09:50:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"تستیز"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894418575,
+date : Mon Mar 27 2023 09:50:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/64212449e4dbd7c1f7d6a014,
+body : {"_id":"64212449e4dbd7c1f7d6a014","title":"update test245","isPublished":true,"creationDate":1679893577230,"__v":0}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894421809,
+date : Mon Mar 27 2023 09:50:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/64212429e4dbd7c1f7d6a00b,
+body : {}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894537511,
+date : Mon Mar 27 2023 09:52:17 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/64212438e4dbd7c1f7d6a00f,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894558541,
+date : Mon Mar 27 2023 09:52:38 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/64212449e4dbd7c1f7d6a014,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894948130,
+date : Mon Mar 27 2023 09:59:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"hjhkfjhk"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894959613,
+date : Mon Mar 27 2023 09:59:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"hjhkfjhk"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679895043778,
+date : Mon Mar 27 2023 10:00:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"جددددییید"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679897068775,
+date : Mon Mar 27 2023 10:34:28 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/experienceCategory,
+body : {"title":"testii ex 3"}
+},
+Response : {"status":409,"message":" تجربه دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679897164393,
+date : Mon Mar 27 2023 10:36:04 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/experienceCategory/642131eb13d9f5525f86053e,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679900587196,
+date : Mon Mar 27 2023 11:33:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900622867,
+date : Mon Mar 27 2023 11:33:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900628274,
+date : Mon Mar 27 2023 11:33:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900661322,
+date : Mon Mar 27 2023 11:34:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900729784,
+date : Mon Mar 27 2023 11:35:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900734814,
+date : Mon Mar 27 2023 11:35:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679902768535,
+date : Mon Mar 27 2023 12:09:28 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user/toggleUserAdminAccess/,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679906412748,
+date : Mon Mar 27 2023 13:10:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679906449063,
+date : Mon Mar 27 2023 13:10:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679906458461,
+date : Mon Mar 27 2023 13:10:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679906458677,
+date : Mon Mar 27 2023 13:10:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679907432911,
+date : Mon Mar 27 2023 13:27:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/toggleUserAdminAccess/:641fde80c6cab1ecf468fd23,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679907452908,
+date : Mon Mar 27 2023 13:27:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/toggleUserAdminAccess/id:641fde80c6cab1ecf468fd23,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679907582938,
+date : Mon Mar 27 2023 13:29:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/toggleUserAdminAccess/:641fde80c6cab1ecf468fd23,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679911572567,
+date : Mon Mar 27 2023 14:36:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679911937225,
+date : Mon Mar 27 2023 14:42:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912098698,
+date : Mon Mar 27 2023 14:44:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912178270,
+date : Mon Mar 27 2023 14:46:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912189353,
+date : Mon Mar 27 2023 14:46:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912219331,
+date : Mon Mar 27 2023 14:46:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679899871900,
+date : Mon Mar 27 2023 11:21:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679899990015,
+date : Mon Mar 27 2023 11:23:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900013852,
+date : Mon Mar 27 2023 11:23:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900042446,
+date : Mon Mar 27 2023 11:24:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900054837,
+date : Mon Mar 27 2023 11:24:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900062747,
+date : Mon Mar 27 2023 11:24:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900073399,
+date : Mon Mar 27 2023 11:24:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900078193,
+date : Mon Mar 27 2023 11:24:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/64212cb98552f9485df47aae,
+body : {}
+},
+Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
 },

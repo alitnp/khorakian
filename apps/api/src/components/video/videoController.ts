@@ -3,22 +3,18 @@ import { IVideo } from "@my/types";
 //@ts-ignore
 import BadRequestError from "@/helpers/error/BadRequestError";
 import { fileForm } from "@/middlewares/fileForm";
-import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
-import VideoData from "@/components/video/videoData";
+import { apiDataResponse } from "@/helpers/apiResponse";
 import { publicFolder } from "@/config";
 import { NotFoundError } from "@/helpers/error";
+import { IData } from "@/data/globalData";
+import BaseController from "@/controller/globalControllers";
 
-class VideoController {
-  private data: VideoData;
-  constructor(data: VideoData) {
-    this.data = data;
+class VideoController extends BaseController<IVideo> {
+  constructor(data: IData<IVideo>) {
+    super(data);
   }
 
-  getAll = async (req: Req, res: Res) => {
-    const result = await this.data.getAll(req);
-    return res.send(apiDataListResponse<IVideo>(result));
-  };
-  get = async (req: Req, res: Res) => {
+  play = async (req: Req, res: Res) => {
     const filename = req.params.filename;
     const videoPath = publicFolder.path + "\\video\\" + filename;
     const videoStat: any = await new Promise((resolve: any, reject: any) => {
@@ -68,12 +64,7 @@ class VideoController {
       tempReq.body.title,
       tempReq.body.image,
     );
-    return res.send(apiDataResponse<IVideo>(video));
-  };
-
-  remove = async (req: Req, res: Res): Promise<Res> => {
-    const result = await this.data.remove(req.params.id);
-    return res.send(apiDataResponse<IVideo>(result));
+    res.send(apiDataResponse<IVideo>(video));
   };
 }
 

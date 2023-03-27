@@ -10,7 +10,10 @@ export const postSchema = new Schema<IPost>({
     minlength: [2, "عنوان حداقل باید ۲ کاراکتر باشد."],
     maxlength: [50, "عنوان حداکثر ۵۰ کاراکتر."],
   },
-  text: String,
+  text: {
+    type: String,
+    maxlength: [1000000, "حجم متن ارسال شده بیش از حد مجاز است"],
+  },
   images: [{ type: Schema.Types.ObjectId, ref: "Image" }],
   videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
   postCategory: {

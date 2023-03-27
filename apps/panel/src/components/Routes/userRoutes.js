@@ -1,15 +1,15 @@
-// import routes from 'global/Constants/routes';
-// import React from 'react';
+import routes from 'global/Constants/routes';
+import React from 'react';
 
-// const User = React.lazy(() => import('../pages/User/User'));
+const User = React.lazy(() => import('../pages/User/User'));
 
-// const userRoutes = () => [
-//   {
-//     path: routes.user.path,
-//     component: User,
-//     type: 'private',
-//     accessRole: true,
-//   },
-// ];
+const userRoutes = () => [
+  {
+    path: routes.user.path,
+    component: User,
+    type: 'private',
+    accessRole: true,
+  },
+];
 
-// export default userRoutes;
+export default userRoutes;

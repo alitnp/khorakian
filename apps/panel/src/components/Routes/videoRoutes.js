@@ -7,7 +7,7 @@ const VideoUpdate = React.lazy(() => import('../pages/Video/VideoUpdate'));
 
 const videoRoutes = () => [
   {
-    path: routes.videoUpdate.path,
+    path: routes.videoEdit.path,
     component: VideoUpdate,
     type: 'private',
     accessRole: true,

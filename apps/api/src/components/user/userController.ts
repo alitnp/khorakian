@@ -30,7 +30,6 @@ class UserController extends BaseController<IUser> {
 
   toggleUserAdminAccess = async (req: Req, res: Res): Promise<Res> => {
     const result = await this.data.toggleUserAdminAccess(req.params.id);
-
     return res.send(apiDataResponse<IUser>(result));
   };
 

@@ -19,7 +19,7 @@ export const getPageSize = (req: Req): number => {
 
   try {
     const intPageSize = parseInt(pageSize as string) || 10;
-    return intPageSize > 50 ? 50 : intPageSize;
+    return intPageSize > 100 ? 100 : intPageSize;
   } catch {
     return 10;
   }

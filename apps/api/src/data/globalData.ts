@@ -20,7 +20,7 @@ export const getAllData = async <T>(
   searchQuery: any,
   req: Req,
   model: Model<T>,
-  populate = "",
+  populate: string[] = [],
 ): Promise<ApiDataListResponse<T>> => {
   let pageNumber = getPageNumber(req);
   const pageSize = getPageSize(req);
