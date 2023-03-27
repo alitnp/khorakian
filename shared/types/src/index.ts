@@ -73,6 +73,12 @@ export interface IVideo extends DefaultModelProperties {
   qualityVariations: qualityVariation[];
   title: string;
 }
+export interface IVideoRead extends DefaultModelProperties {
+	_id: string;
+	thumbnail?: IImage;
+	qualityVariations: qualityVariation[];
+	title: string;
+}
 export type qualityVariation = {
   fileName: string;
   size: number | string;

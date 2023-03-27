@@ -1,4 +1,4 @@
-import { IVideo } from '@my/types';
+import { IVideoRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
@@ -22,7 +22,8 @@ const columns = (handleDelete: (_id: string) => void) => [
     title: 'ویدیو',
     key: 'video',
     dataIndex: 'video',
-    render: (_text: string, record: IVideo) => <VideoItem video={record} />,
+    width: 170,
+    render: (_text: string, record: IVideoRead) => <VideoItem video={record} size='small' />,
   },
   {
     title: 'عنوان SEO',
@@ -33,7 +34,7 @@ const columns = (handleDelete: (_id: string) => void) => [
     title: 'کیفیت ها',
     key: 'qualities',
     dataIndex: 'qualities',
-    render: (_text: string, record: IVideo) => (
+    render: (_text: string, record: IVideoRead) => (
       <p className='flex gap-2'>
         {record.qualityVariations.map((vid) => (
           <span key={vid.size}>{vid.size}</span>

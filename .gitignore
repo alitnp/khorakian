@@ -9,6 +9,7 @@ shared/types/dist
 shared/helpers/dist
 apps/api/dist
 apps/api/public
+apps/api/src/logs
 apps/panel/build
 apps/web/out
 apps/web/.next

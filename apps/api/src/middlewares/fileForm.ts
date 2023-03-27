@@ -8,15 +8,18 @@ const multerImageStorage = multer.diskStorage({
   destination: (_req: Req, _file: any, cb: DestinationCallback) => {
     cb(null, CONFIG.APP.STATIC_FILES_PATH + "/image");
   },
-  // filename: (_req: Req, file: any, cb: DestinationCallback) => {
-  //   const ext = file.mimetype.split("/")[1];
-
-  //   cb(null, `image/temp-image-${Date.now()}.${ext}`);
-  // },
 });
 const multerVideoStorage = multer.diskStorage({
   destination: (_req: Req, _file: any, cb: DestinationCallback) => {
     cb(null, CONFIG.APP.STATIC_FILES_PATH + "/video");
+  },
+});
+const multerImageAndVideoStorage = multer.diskStorage({
+  destination: (_req: Req, file: any, cb: DestinationCallback) => {
+    if (file.fieldname === "video")
+      cb(null, CONFIG.APP.STATIC_FILES_PATH + "/video");
+    if (file.fieldname === "image")
+      cb(null, CONFIG.APP.STATIC_FILES_PATH + "/image");
   },
 });
 // Multer Filter
@@ -34,6 +37,15 @@ const multerVideoFilter = (_req: Req, file: any, cb: any) => {
     cb(new BadRequestError("فرمت ویدیو ارسال شده قابل قبول نیست."), false);
   }
 };
+const multerImageAndVideoFilter = (_req: Req, file: any, cb: any) => {
+  if (file.fieldname === "video" && !file.mimetype.startsWith("video")) {
+    cb(new BadRequestError("فرمت ویدیو ارسال شده قابل قبول نیست."), false);
+  } else if (file.fieldname === "image" && !file.mimetype.startsWith("image")) {
+    cb(new BadRequestError("فرمت عکس ارسال شده قابل قبول نیست."), false);
+  } else {
+    cb(null, true);
+  }
+};
 
 //multerMiddleware
 const imageUpload = multer({
@@ -44,6 +56,11 @@ const imageUpload = multer({
 const videoUpload = multer({
   storage: multerVideoStorage,
   fileFilter: multerVideoFilter,
+  limits: { fileSize: 400000000 },
+});
+const imageAndVideoUpload = multer({
+  storage: multerImageAndVideoStorage,
+  fileFilter: multerImageAndVideoFilter,
   limits: { fileSize: 400000000 },
 });
 
@@ -59,5 +76,11 @@ export type fileForm = {
   size: number;
 };
 
-export const imageForm = () => [imageUpload.single("file")];
-export const videoForm = () => [videoUpload.single("file")];
+export const imageForm = () => [imageUpload.single("image")];
+export const videoForm = () => [videoUpload.single("video")];
+export const imageAndVideoForm = () => [
+  imageAndVideoUpload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "video", maxCount: 1 },
+  ]),
+];

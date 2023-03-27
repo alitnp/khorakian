@@ -15,6 +15,13 @@ const endpointUrls = {
   postCategoryEdit: (id: number | string) => '/postcategory/' + id,
   postCategoryDelete: (id: number | string) => '/postcategory/' + id,
 
+  //ideaCategory
+  ideaCategoryGetList: '/ideaCategory',
+  ideaCategoryDetail: (id: number | string) => '/ideaCategory/' + id,
+  ideaCategoryCreate: '/ideaCategory',
+  ideaCategoryEdit: (id: number | string) => '/ideaCategory/' + id,
+  ideaCategoryDelete: (id: number | string) => '/ideaCategory/' + id,
+
   //video
   videoGetList: '/video',
   videoUpload: '/video/upload',

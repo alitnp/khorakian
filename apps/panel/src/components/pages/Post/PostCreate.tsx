@@ -1,4 +1,4 @@
-import { IVideo } from '@my/types';
+import { IVideoRead } from '@my/types';
 import AddVideo from 'components/UI/Video/AddVideo';
 import TcButton from 'components/UI/Button/TcButton';
 import TcCard from 'components/UI/Card/TcCard';
@@ -10,7 +10,7 @@ import VideoItem from 'components/UI/Video/VideoItem';
 
 const PostCreate = () => {
   //states
-  const [videos, setVideos] = useState<IVideo[]>([]);
+  const [videos, setVideos] = useState<IVideoRead[]>([]);
   const [showAddVideoModal, setShowAddVideoModal] = useState<boolean>(false);
   console.log(videos);
   //hooks
@@ -21,7 +21,7 @@ const PostCreate = () => {
 
   //function
   const toggleShowAddVideo = useCallback(() => setShowAddVideoModal((prevState) => !prevState), []);
-  const addVideo = useCallback((video: IVideo) => setVideos((videos) => [...videos, video]), []);
+  const addVideo = useCallback((video: IVideoRead) => setVideos((videos) => [...videos, video]), []);
   const handleSubmit = async () => {
     // console.log(file);
     // if (!file) return;

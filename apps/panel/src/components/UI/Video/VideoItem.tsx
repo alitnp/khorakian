@@ -1,23 +1,24 @@
-import { IVideo, ApiDataResponse } from '@my/types';
-import ApiService, { BASE_URL } from 'config/API/ApiService';
+import { IVideo, ApiDataResponse, IVideoRead } from '@my/types';
+import ApiService, { BASE_URL, DOMAIN } from 'config/API/ApiService';
 import { FC, memo, useState, useEffect, useRef, useCallback } from 'react';
 import { PlayCircleTwoTone } from '@ant-design/icons';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcLoading from 'components/UI/Loading/TcLoading';
-import endpointUrls from './../../../global/Constants/endpointUrls';
 import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
+import endpointUrls from 'global/Constants/endpointUrls';
 
 interface IVideoItem {
-  video: IVideo;
+  video: IVideoRead;
   removeItem?: (_id: string) => void;
+  size?: 'small' | 'normal';
 }
 
 type videoSrc = { pathname: string; label: number };
 
-const VideoItem: FC<IVideoItem> = ({ video, removeItem }) => {
+const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
   //state
   const [srcs, setSrcs] = useState<videoSrc[]>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -60,10 +61,12 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem }) => {
   }, []);
 
   return (
-    <div className='w-full sm:w-80'>
-      <div className='relative flex items-center w-full overflow-hidden bg-black sm:w-80 rounded-xl aspect-video group'>
+    <div className={`w-full ${size === 'normal' && 'sm:w-80'} ${size === 'small' && 'sm:w-40'}`}>
+      <div
+        className={`relative flex items-center w-full overflow-hidden bg-black rounded-xl aspect-video group ${size === 'normal' && 'sm:w-80'} ${size === 'small' && 'sm:w-40'}`}>
         {srcs.length > 0 && (
           <video
+            poster={video.thumbnail && DOMAIN + video.thumbnail.thumbnailPathname}
             controlsList='nodownload'
             disablePictureInPicture
             controls={isPlaying}
@@ -71,8 +74,7 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem }) => {
             ref={videoPlayer}
             key={srcs[activeIndex].pathname}
             onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onMouseOver={() => console.log(videoPlayer)}>
+            onPause={() => setIsPlaying(false)}>
             <source src={srcs[activeIndex].pathname} type='video/mp4' />{' '}
           </video>
         )}
@@ -83,7 +85,7 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem }) => {
               setIsPlaying(true);
               if (videoPlayer.current !== null) videoPlayer.current.play();
             }}>
-            <PlayCircleTwoTone className='text-5xl cursor-pointer' />
+            <PlayCircleTwoTone className={`cursor-pointer ${size === 'small' ? 'text-3xl' : 'text-5xl'}`} />
           </div>
         )}
         {!isPlaying && <div className='absolute bottom-0 left-0 flex gap-4'>{removeItem && <TcDeleteIcon onConfirm={handleDelete} />}</div>}

@@ -1852,12 +1852,198 @@ Response : {"errno":-4082,"syscall":"unlink","code":"EBUSY","path":"D:\\projects
 },
 {
 type : ERROR,
+<<<<<<< HEAD
 timestamp : 1679810723156,
 date : Sun Mar 26 2023 10:35:23 GMT+0430 (Iran Daylight Time),
+=======
+timestamp : 1679817122580,
+date : Sun Mar 26 2023 12:22:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/image/641ff99463655c8d5554c7c8,
+body : {}
+},
+Response : "EBUSY: resource busy or locked, unlink 'D:\\projects\\khorakian\\apps\\api\\public\\image\\IMG-641ff99463655c8d5554c7c8.webp'"
+},
+{
+type : ERROR,
+timestamp : 1679818186715,
+date : Sun Mar 26 2023 12:39:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679818207601,
+date : Sun Mar 26 2023 12:40:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679820453579,
+date : Sun Mar 26 2023 13:17:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"file","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679820581921,
+date : Sun Mar 26 2023 13:19:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679820619549,
+date : Sun Mar 26 2023 13:20:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"image","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679824694868,
+date : Sun Mar 26 2023 14:28:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"status":400,"message":"فرمت ویدیو ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679825061692,
+date : Sun Mar 26 2023 14:34:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh"}
+},
+Response : {"status":400,"message":"فرمت ویدیو ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679825165593,
+date : Sun Mar 26 2023 14:36:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825212729,
+date : Sun Mar 26 2023 14:36:52 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825389681,
+date : Sun Mar 26 2023 14:39:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فرمت عکس ارسال شده قابل قبول نیست.","data":null,"isSuccess":false,"storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679825489559,
+date : Sun Mar 26 2023 14:41:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825533682,
+date : Sun Mar 26 2023 14:42:13 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825639185,
+date : Sun Mar 26 2023 14:43:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679825696264,
+date : Sun Mar 26 2023 14:44:56 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"fdgh","imageTitle":"fgj"}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1679855355971,
+date : Sun Mar 26 2023 21:59:15 GMT+0330 (وقت عادی ایران),
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
 url : /api/v1/image/upload,
+<<<<<<< HEAD
 body : {"title":"تستی"}
 },
 Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\a2567e5a0a549121845706914b9f237b","storageErrors":[]}
@@ -1866,10 +2052,21 @@ Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\
 type : ERROR,
 timestamp : 1679811571336,
 date : Sun Mar 26 2023 10:49:31 GMT+0430 (Iran Daylight Time),
+=======
+body : {}
+},
+Response : {"name":"MulterError","message":"Unexpected field","code":"LIMIT_UNEXPECTED_FILE","field":"file","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679855385934,
+date : Sun Mar 26 2023 21:59:45 GMT+0330 (وقت عادی ایران),
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
 url : /api/v1/image/upload,
+<<<<<<< HEAD
 body : {"title":"تستی"}
 },
 Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\f0409aaeac9ca52c5ccbd8985dfebaf1","storageErrors":[]}
@@ -1878,11 +2075,183 @@ Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\
 type : ERROR,
 timestamp : 1679811610893,
 date : Sun Mar 26 2023 10:50:10 GMT+0430 (Iran Daylight Time),
+=======
+body : {"title":"علیین حسنی ناظر"}
+},
+Response : {"status":400,"message":"فایل عکس یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679855427538,
+date : Sun Mar 26 2023 22:00:27 GMT+0330 (وقت عادی ایران),
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
 url : /api/v1/image/upload,
+<<<<<<< HEAD
 body : {"title":"تستی"}
 },
 Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\4c7f4a48ade46184ce232e499cae4946","storageErrors":[]}
+=======
+body : {"title":"علیین حسنی ناظر"}
+},
+Response : {"status":400,"message":"فایل عکس یافت نشد.","data":null,"isSuccess":false}
+>>>>>>> d6a4bdd4139cf69f5a9c1ed9199b6d92f4ae5190
+},
+{
+type : ERROR,
+timestamp : 1679892481925,
+date : Mon Mar 27 2023 09:18:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی دوو"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\13473ab2e555c344d0129d57a76a0249","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679892489518,
+date : Mon Mar 27 2023 09:18:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی دوو"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\32f6dcf140dbdf6030d34aea763893a8","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679892494908,
+date : Mon Mar 27 2023 09:18:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {"title":"تستی دوو"}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\a1739538517701840effc50485c2fe38","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1679893567163,
+date : Mon Mar 27 2023 09:36:07 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"test"}
+},
+Response : {"status":409,"message":" این ایده قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679893687507,
+date : Mon Mar 27 2023 09:38:07 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/63ef1ca568a4dab09d6f4d2f,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894401633,
+date : Mon Mar 27 2023 09:50:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"تستیز"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894418575,
+date : Mon Mar 27 2023 09:50:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/64212449e4dbd7c1f7d6a014,
+body : {"_id":"64212449e4dbd7c1f7d6a014","title":"update test245","isPublished":true,"creationDate":1679893577230,"__v":0}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894421809,
+date : Mon Mar 27 2023 09:50:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/64212429e4dbd7c1f7d6a00b,
+body : {}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894537511,
+date : Mon Mar 27 2023 09:52:17 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/64212438e4dbd7c1f7d6a00f,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894558541,
+date : Mon Mar 27 2023 09:52:38 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/64212449e4dbd7c1f7d6a014,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894948130,
+date : Mon Mar 27 2023 09:59:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"hjhkfjhk"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679894959613,
+date : Mon Mar 27 2023 09:59:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"hjhkfjhk"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679895043778,
+date : Mon Mar 27 2023 10:00:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"جددددییید"}
+},
+Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
 },

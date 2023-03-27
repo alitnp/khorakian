@@ -38,23 +38,23 @@ const columns = (handleDelete: (_id: number) => void) => [
     render: (_text: any, record: any) => (
       <div className='flex'>
         {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
-        <TcEditIcon to={routes.postCategoryEdit.path + '/' + record._id} />
+        <TcEditIcon to={routes.ideaCategoryEdit.path + '/' + record._id} />
         <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
       </div>
     ),
   },
 ];
 
-const ListRoute = routes.postCategory.path;
-const createRoute = routes.postCategoryCreate.path;
-const editRoute = routes.postCategoryEdit.path;
-const detailRoute = routes.postCategoryDetail.path;
+const ListRoute = routes.ideaCategory.path;
+const createRoute = routes.ideaCategoryCreate.path;
+const editRoute = routes.ideaCategoryEdit.path;
+const detailRoute = routes.ideaCategoryDetail.path;
 
-const listEndpoint = endpointUrls.postCategoryGetList;
-const createEndpoint = endpointUrls.postCategoryCreate;
-const editEndpoint = endpointUrls.postCategoryEdit;
-const detailEndpoint = endpointUrls.postCategoryDetail;
-const deleteEndpoint = endpointUrls.postCategoryDelete;
+const listEndpoint = endpointUrls.ideaCategoryGetList;
+const createEndpoint = endpointUrls.ideaCategoryCreate;
+const editEndpoint = endpointUrls.ideaCategoryEdit;
+const detailEndpoint = endpointUrls.ideaCategoryDetail;
+const deleteEndpoint = endpointUrls.ideaCategoryDelete;
 
 const ideaCategoryModel: routeModel = {
   title,

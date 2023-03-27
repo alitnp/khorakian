@@ -20,6 +20,12 @@ const routes = {
   postCategoryEdit: { path: '/postcategory/edit', isPrivate: true },
   postCategoryDetail: { path: '/postcategory/detail', isPrivate: true },
 
+  //ideaCategory
+  ideaCategory: { path: '/ideacategory', isPrivate: true },
+  ideaCategoryCreate: { path: '/ideacategory/create', isPrivate: true },
+  ideaCategoryEdit: { path: '/ideacategory/edit', isPrivate: true },
+  ideaCategoryDetail: { path: '/ideacategory/detail', isPrivate: true },
+
   //payment
   payment: { path: '/payment', isPrivate: true },
 

@@ -57,16 +57,16 @@ class VideoController {
   };
 
   create = async (req: Req, res: Res) => {
-    console.log(req);
-    const tempReq = req as Req & { file: fileForm; image: fileForm };
+    const tempReq = req as Req & {
+      file: fileForm;
+    };
     if (!tempReq.file) throw new BadRequestError("فایل ویدیو یافت نشد.");
     if (!tempReq.body.title)
       throw new BadRequestError("عنوان ویدیو تعیین نشد.");
     const video = await this.data.createVideoFile(
       tempReq.file,
       tempReq.body.title,
-      tempReq.image,
-      tempReq.body.imageTitle,
+      tempReq.body.image,
     );
     return res.send(apiDataResponse<IVideo>(video));
   };
@@ -74,13 +74,6 @@ class VideoController {
   remove = async (req: Req, res: Res): Promise<Res> => {
     const result = await this.data.remove(req.params.id);
     return res.send(apiDataResponse<IVideo>(result));
-  };
-
-  updateVideoImage = async (req: Req, res: Res) => {
-    const tempReq = req as Req & { file: fileForm };
-    if (!tempReq.file) throw new BadRequestError("فایل عکس یافت نشد.");
-    const video = await this.data.updateVideoImage(req.params.id, tempReq.file);
-    return res.send(apiDataResponse<IVideo>(video));
   };
 }
 
