@@ -18908,3 +18908,53 @@ method : GET,
 url : /api/v1/image?,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1679817362058,
+date : Sun Mar 26 2023 12:26:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679817493928,
+date : Sun Mar 26 2023 12:28:13 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679817496543,
+date : Sun Mar 26 2023 12:28:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/image?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679817501157,
+date : Sun Mar 26 2023 12:28:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1679818070053,
+date : Sun Mar 26 2023 12:37:50 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
