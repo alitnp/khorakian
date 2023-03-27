@@ -51,7 +51,13 @@ export interface IPostCategory extends DefaultModelProperties {
 }
 /* #endregion */
 
-/* region ideaCategory */
+/* #region experienceCategory */
+export interface IExperienceCategory extends DefaultModelProperties {
+  _id?: string;
+  title: string;
+}
+
+/* region experienceCategory */
 export interface IIdeaCategory extends DefaultModelProperties {
   _id?: string;
   title: string;
@@ -74,10 +80,10 @@ export interface IVideo extends DefaultModelProperties {
   title: string;
 }
 export interface IVideoRead extends DefaultModelProperties {
-	_id: string;
-	thumbnail?: IImage;
-	qualityVariations: qualityVariation[];
-	title: string;
+  _id: string;
+  thumbnail?: IImage;
+  qualityVariations: qualityVariation[];
+  title: string;
 }
 export type qualityVariation = {
   fileName: string;

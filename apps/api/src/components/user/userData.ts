@@ -21,6 +21,8 @@ class UserData implements IData<IUser> {
       searchQuery.firstName = { $regex: req.query.firstName, $options: "i" };
     if (req.query.lastName)
       searchQuery.lastName = { $regex: req.query.lastName, $options: "i" };
+    if (req.query.mobileNumber)
+      searchQuery.mobileNumber = { $regex: req.query.mobileNumber };
     if (req.query._id) searchQuery._id = req.query._id;
     if (req.query.idAdmin) searchQuery.isAdmin = !!req.query.isAdmin;
 
@@ -81,11 +83,14 @@ class UserData implements IData<IUser> {
   };
 
   toggleUserAdminAccess = async (id: string): Promise<IUser> => {
-    const user = await this.User.findById(id);
+    console.log("admin data");
+    const userTemp = await this.User.findById(id);
+    if (!userTemp) throw new NotFoundError();
+    const user = await this.User.findByIdAndUpdate(id, {
+      $set: { isAdmin: !userTemp?.isAdmin },
+    });
     if (!user) throw new NotFoundError();
 
-    user.isAdmin = !user.isAdmin;
-    await user.save();
     return user;
   };
 

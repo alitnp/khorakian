@@ -2255,3 +2255,267 @@ body : {"title":"جددددییید"}
 },
 Response : {"status":403,"message":"شما دسترسی به این بخش ندارید.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1679897068775,
+date : Mon Mar 27 2023 10:34:28 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/experienceCategory,
+body : {"title":"testii ex 3"}
+},
+Response : {"status":409,"message":" تجربه دسته بندی با این نام قبلا ثبت شده است.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679897164393,
+date : Mon Mar 27 2023 10:36:04 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : DELETE,
+url : /api/v1/experienceCategory/642131eb13d9f5525f86053e,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1679900587196,
+date : Mon Mar 27 2023 11:33:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900622867,
+date : Mon Mar 27 2023 11:33:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900628274,
+date : Mon Mar 27 2023 11:33:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900661322,
+date : Mon Mar 27 2023 11:34:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900729784,
+date : Mon Mar 27 2023 11:35:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679900734814,
+date : Mon Mar 27 2023 11:35:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679902768535,
+date : Mon Mar 27 2023 12:09:28 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user/toggleUserAdminAccess/,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679906412748,
+date : Mon Mar 27 2023 13:10:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679906449063,
+date : Mon Mar 27 2023 13:10:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679906458461,
+date : Mon Mar 27 2023 13:10:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679906458677,
+date : Mon Mar 27 2023 13:10:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","servers":{},"stale":false,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"setName":null,"maxElectionId":null,"maxSetVersion":null,"commonWireVersion":0,"logicalSessionTimeoutMinutes":null}}
+},
+{
+type : ERROR,
+timestamp : 1679907432911,
+date : Mon Mar 27 2023 13:27:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/toggleUserAdminAccess/:641fde80c6cab1ecf468fd23,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679907452908,
+date : Mon Mar 27 2023 13:27:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/toggleUserAdminAccess/id:641fde80c6cab1ecf468fd23,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679907582938,
+date : Mon Mar 27 2023 13:29:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/toggleUserAdminAccess/:641fde80c6cab1ecf468fd23,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679911572567,
+date : Mon Mar 27 2023 14:36:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679911937225,
+date : Mon Mar 27 2023 14:42:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912098698,
+date : Mon Mar 27 2023 14:44:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912178270,
+date : Mon Mar 27 2023 14:46:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912189353,
+date : Mon Mar 27 2023 14:46:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1679912219331,
+date : Mon Mar 27 2023 14:46:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است.","mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},

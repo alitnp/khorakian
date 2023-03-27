@@ -30,12 +30,12 @@ router.get(
 router.get("/", isAdmin, userController.getAll);
 
 //post
-router.post("/login", validate(loginValidations), userController.login);
 router.post(
   "/toggleUserAdminAccess/:id",
   [isAdmin, ...validate(paramIdValidations)],
   userController.toggleUserAdminAccess,
 );
+router.post("/login", validate(loginValidations), userController.login);
 router.post(
   "/iforgot",
   validate(mobileNumberValidations),

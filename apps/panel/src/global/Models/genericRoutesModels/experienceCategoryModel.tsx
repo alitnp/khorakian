@@ -7,7 +7,7 @@ import routes from 'global/Constants/routes';
 import { routeModel } from 'global/Models/globalModels';
 import { ReactNode } from 'react';
 
-const title = 'دسته بندی ایده ها';
+const title = 'دسته بندی تجربه ها';
 const englishTitle = 'ideaCategory';
 
 const inputs: ReactNode = (
@@ -38,25 +38,25 @@ const columns = (handleDelete: (_id: number) => void) => [
     render: (_text: any, record: any) => (
       <div className='flex'>
         {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
-        <TcEditIcon to={routes.ideaCategoryEdit.path + '/' + record._id} />
+        <TcEditIcon to={routes.experienceCategoryEdit.path + '/' + record._id} />
         <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
       </div>
     ),
   },
 ];
 
-const ListRoute = routes.ideaCategory.path;
-const createRoute = routes.ideaCategoryCreate.path;
-const editRoute = routes.ideaCategoryEdit.path;
-const detailRoute = routes.ideaCategoryDetail.path;
+const ListRoute = routes.experienceCategory.path;
+const createRoute = routes.experienceCategoryCreate.path;
+const editRoute = routes.experienceCategoryEdit.path;
+const detailRoute = routes.experienceCategoryDetail.path;
 
-const listEndpoint = endpointUrls.ideaCategoryGetList;
-const createEndpoint = endpointUrls.ideaCategoryCreate;
-const editEndpoint = endpointUrls.ideaCategoryEdit;
-const detailEndpoint = endpointUrls.ideaCategoryDetail;
-const deleteEndpoint = endpointUrls.ideaCategoryDelete;
+const listEndpoint = endpointUrls.experienceCategoryGetList;
+const createEndpoint = endpointUrls.experienceCategoryCreate;
+const editEndpoint = endpointUrls.experienceCategoryEdit;
+const detailEndpoint = endpointUrls.experienceCategoryDetail;
+const deleteEndpoint = endpointUrls.experienceCategoryDelete;
 
-const ideaCategoryModel: routeModel = {
+const experienceCategoryModel: routeModel = {
   title,
   englishTitle,
   inputs,
@@ -73,4 +73,4 @@ const ideaCategoryModel: routeModel = {
   createEndpoint,
 };
 
-export default ideaCategoryModel;
+export default experienceCategoryModel;

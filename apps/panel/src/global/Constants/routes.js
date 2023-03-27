@@ -26,6 +26,12 @@ const routes = {
   ideaCategoryEdit: { path: '/ideacategory/edit', isPrivate: true },
   ideaCategoryDetail: { path: '/ideacategory/detail', isPrivate: true },
 
+  //experienceCategory
+  experienceCategory: { path: '/experienceCategory', isPrivate: true },
+  experienceCategoryCreate: { path: '/experienceCategory/create', isPrivate: true },
+  experienceCategoryEdit: { path: '/experienceCategory/edit', isPrivate: true },
+  experienceCategoryDetail: { path: '/experienceCategory/detail', isPrivate: true },
+
   //payment
   payment: { path: '/payment', isPrivate: true },
 

@@ -22,6 +22,13 @@ const endpointUrls = {
   ideaCategoryEdit: (id: number | string) => '/ideaCategory/' + id,
   ideaCategoryDelete: (id: number | string) => '/ideaCategory/' + id,
 
+  //experienceCategory
+  experienceCategoryGetList: '/experienceCategory',
+  experienceCategoryDetail: (id: number | string) => '/experienceCategory/' + id,
+  experienceCategoryCreate: '/experienceCategory',
+  experienceCategoryEdit: (id: number | string) => '/experienceCategory/' + id,
+  experienceCategoryDelete: (id: number | string) => '/experienceCategory/' + id,
+
   //video
   videoGetList: '/video',
   videoUpload: '/video/upload',
@@ -35,6 +42,10 @@ const endpointUrls = {
   imageDetail: (id: string) => '/image/' + id,
   imageEdit: (id: string) => '/image/' + id,
   imageDelete: (id: string) => '/image/' + id,
+
+  //user
+  userGetList: '/user',
+  setUserIsAdmin: (id: string | number) => '/user/toggleUserAdminAccess/' + id,
 };
 
 export default endpointUrls;

@@ -7,4 +7,11 @@ video:
     - add poster image to video
     - edit video
 
+user:
+  - front:
+    -userList
+    -userToggleAdmin
+    -userSearch
+  - backend
+    -experienceCategory 
 

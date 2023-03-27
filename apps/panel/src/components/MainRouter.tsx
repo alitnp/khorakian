@@ -11,6 +11,7 @@ import TcCreatePage from 'components/UI/TcCreatePage/TcCreatePage';
 import TcEditPage from 'components/UI/TcEditPage/TcEditPage';
 import genericModels from 'global/Models/genericRoutesModels';
 import postRoutes from 'components/Routes/postRoutes';
+import userRoutes from 'components/Routes/userRoutes';
 import videoRoutes from 'components/Routes/videoRoutes';
 import imageRoutes from 'components/Routes/imageRoutes';
 
@@ -62,6 +63,9 @@ function MainRouter() {
       type: 'private',
       accessRole: true,
     },
+
+    //user
+    ...userRoutes(),
 
     //post
     ...postRoutes(),
