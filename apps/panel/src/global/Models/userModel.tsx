@@ -25,18 +25,18 @@ const columns = (handleDelete?: (_id: string) => void) => {
     { title: 'نام ونام خانوادگی', key: 'fullName', dataIndex: 'fullName' },
     { title: 'شماره همراه', key: 'mobileNumber', dataIndex: 'mobileNumber' },
   ];
-  handleDelete &&
-    columns.push({
-      title: 'عملیات',
-      key: 'operation',
-      render: (_text: any, record: IImage) => (
-        <div className='flex'>
-          {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
-          <TcEditIcon to={routes.imageUpdate.path + '/' + record._id} />
-          <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
-        </div>
-      ),
-    });
+  // handleDelete &&
+  //   columns.push({
+  //     title: 'عملیات',
+  //     key: 'operation',
+  //     render: (_text: any, record: IImage) => (
+  //       <div className='flex'>
+  //         {/* <TcDetailIcon to={routes.effectivePointTypesDetail.path + '/' + record.id} /> */}
+  //         <TcEditIcon to={routes.imageUpdate.path + '/' + record._id} />
+  //         <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
+  //       </div>
+  //     ),
+  //   });
   return columns;
 };
 
