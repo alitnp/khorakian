@@ -1,33 +1,27 @@
-import { IVideo, ApiDataResponse, IVideoRead } from '@my/types';
-import ApiService, { BASE_URL, DOMAIN } from 'config/API/ApiService';
+import { IVideoRead } from '@my/types';
+import { BASE_URL, DOMAIN } from 'config/API/ApiService';
 import { FC, memo, useState, useEffect, useRef, useCallback } from 'react';
 import { PlayCircleTwoTone } from '@ant-design/icons';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
-import TcLoading from 'components/UI/Loading/TcLoading';
-import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
-import { AppDispatch } from 'redux/store';
-import { useDispatch } from 'react-redux';
-import endpointUrls from 'global/Constants/endpointUrls';
 
 interface IVideoItem {
   video: IVideoRead;
   removeItem?: (_id: string) => void;
   size?: 'small' | 'normal';
+  onSelect?: (_video: IVideoRead) => void;
 }
 
 type videoSrc = { pathname: string; label: number };
 
-const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
+const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal', onSelect }) => {
   //state
   const [srcs, setSrcs] = useState<videoSrc[]>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
 
   //hooks
   const videoPlayer = useRef<HTMLVideoElement>(null);
-  const dispatch: AppDispatch = useDispatch();
 
   //effect
   useEffect(() => {
@@ -53,12 +47,9 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
     }, 1000);
   }, []);
   const handleDelete = useCallback(async () => {
-    setLoading(true);
-    await ApiService.delete(endpointUrls.videoDelete(video._id)).then((res: ApiDataResponse<IVideo>) =>
-      handleApiThenGeneric<ApiDataResponse<IVideo>, IVideo>({ res, dispatch, onSuccessData: (data) => removeItem && removeItem(data._id) })
-    );
-    setLoading(false);
-  }, []);
+    if (!removeItem) return;
+    removeItem(video._id);
+  }, [video]);
 
   return (
     <div className={`w-full ${size === 'normal' && 'sm:w-80'} ${size === 'small' && 'sm:w-40'}`}>
@@ -94,9 +85,13 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal' }) => {
             <TcSelect options={srcs.map((src, index) => ({ label: src.label, value: index }))} value={activeIndex} onChange={handleSizeChange} size='small' />
           </div>
         )}
-        {loading && <TcLoading className='absolute top-2 left-2' />}
       </div>
       <p className='text-center'>{video.title}</p>
+      {onSelect && (
+        <p className='text-center cursor-pointer text-t-secondary-color hover:underline' onClick={() => onSelect(video)}>
+          انتخاب
+        </p>
+      )}
     </div>
   );
 };

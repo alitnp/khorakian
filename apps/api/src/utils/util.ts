@@ -10,9 +10,7 @@ export const getPropertyFromRequest = (
   );
 };
 
-export const stringToBoolean = (
-  string: string | number | null | undefined,
-): boolean => {
+export const stringToBoolean = (string: any): boolean => {
   string = string + "";
   switch (string?.toLowerCase()?.trim()) {
     case "true":

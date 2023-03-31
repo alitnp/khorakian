@@ -21,7 +21,8 @@ class PostCategoryData implements IData<IPostCategory> {
 
   get = async (id: string): Promise<IPostCategory> => {
     const postCategory = await this.PostCategory.findById(id);
-    if (!postCategory) throw new NotFoundError();
+    if (!postCategory)
+      throw new NotFoundError("دسته بندی پست مورد نظر یافت نشد.");
 
     return postCategory;
   };

@@ -105,6 +105,7 @@ export interface IPost extends DefaultModelProperties {
 	images: string[];
 	videos: string[];
 	postCategory: IPostCategory;
+	featured: boolean;
 }
 export interface IPostCreate
 	extends DefaultModelProperties {
@@ -113,6 +114,7 @@ export interface IPostCreate
 	images: string[];
 	videos: string[];
 	postCategory: string;
+	featured: boolean;
 }
 
 export interface IPostRead extends DefaultModelProperties {
@@ -122,5 +124,6 @@ export interface IPostRead extends DefaultModelProperties {
 	images: IImage[];
 	videos: IVideo[];
 	postCategory: IPostCategory;
+	featured: boolean;
 }
 /* #endregion */

@@ -6,8 +6,8 @@ const englishTitle = 'user';
 
 const filterInputs = (
   <>
-    <TcFormItem name='fullName' label='نام ونام خانوادگی'>
-      <TcInput placeholder='نام ونام خانوادگی' />
+    <TcFormItem name='fullName' label='نام و نام خانوادگی'>
+      <TcInput placeholder='نام و نام خانوادگی' />
     </TcFormItem>
     <TcFormItem name='mobileNumber' label='شماره همراه'>
       <TcInput placeholder='شماره همراه' />
@@ -20,7 +20,7 @@ const columns = () =>
   {
     const columns: any[] = [
       { title: 'نام', key: 'firstName', dataIndex: 'firstName' },
-      { title: 'نام ونام خانوادگی', key: 'fullName', dataIndex: 'fullName' },
+      { title: 'نام و نام خانوادگی', key: 'fullName', dataIndex: 'fullName' },
       { title: 'شماره همراه', key: 'mobileNumber', dataIndex: 'mobileNumber' },
     ];
     // handleDelete &&

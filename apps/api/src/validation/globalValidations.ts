@@ -19,18 +19,21 @@ export const paramIdValidations = [
       else return Promise.resolve();
     }),
 ];
-export const bodyIdValidations = (propertyName = "_id") => [
-  body(propertyName, "شناسه مشخص نشده است.")
+export const bodyIdValidations = (
+  propertyName = "_id",
+  persianName = "شناسه",
+) => [
+  body(propertyName, `${persianName} ارسال نشده`)
     .isString()
     .isLength({ min: 24, max: 24 })
     .custom((value) => {
       if (!isValidObjectId(value))
-        return Promise.reject("شناسه به درستی وارد نشده است.");
+        return Promise.reject(`${persianName} ارسال نشده`);
       else return Promise.resolve();
     }),
 ];
-export const paramValidations = (paramName = "id") => [
-  param(paramName, "شناسه مشخص نشده است.").exists().isString(),
+export const paramValidations = (paramName = "id", persianName = "شناسه") => [
+  param(paramName, `${persianName} ارسال نشده`).exists().isString(),
 ];
 
 type existsStringValidation = {

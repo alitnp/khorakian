@@ -5,6 +5,7 @@ import { NotFoundError } from "@/helpers/error";
 import PostCategoryData from "@/components/postCategory/postCategoryData";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
+import { stringToBoolean } from "@/utils/util";
 
 class PostData implements IData<IPost> {
   Post: Model<IPost, {}, {}, {}, any>;
@@ -33,6 +34,8 @@ class PostData implements IData<IPost> {
     if (req.query.postCategory)
       searchQuery.postCategory._id = { $regex: req.query.postCategory };
     if (req.query._id) searchQuery._id = req.query._id;
+    if (req.query.featured !== undefined)
+      searchQuery.featured = stringToBoolean(req.query.featured);
 
     return getAllData<IPost>(searchQuery, req, this.Post, ["images", "videos"]);
   };
@@ -52,9 +55,9 @@ class PostData implements IData<IPost> {
     images,
     videos,
     text,
+    featured,
   }: IPostCreate): Promise<IPost> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
-
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
       const imageId = images[i];
@@ -68,15 +71,18 @@ class PostData implements IData<IPost> {
       const existingVideo = await this.Video.get(videoId);
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
+    console.log("videos", existingVideoIds);
+    console.log("images", existingImageIds);
 
     const post = new this.Post({
       title,
       postCategory: existingPostCategory,
       images: existingImageIds,
-      video: existingVideoIds,
+      videos: existingVideoIds,
       text,
+      featured: !!featured,
     });
-    return await post.save();
+    return await await (await post.save()).populate(["videos", "images"]);
   };
 
   update = async ({
@@ -86,6 +92,7 @@ class PostData implements IData<IPost> {
     images,
     videos,
     text,
+    featured,
   }: IPostCreate & { id: string }): Promise<IPost> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
 
@@ -110,6 +117,7 @@ class PostData implements IData<IPost> {
         images: existingImageIds,
         video: existingVideoIds,
         text,
+        featured: !!featured,
       },
     }).populate(["videos", "images"]);
     if (!post) throw new NotFoundError();

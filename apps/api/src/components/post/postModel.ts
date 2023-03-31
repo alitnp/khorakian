@@ -20,6 +20,7 @@ export const postSchema = new Schema<IPost>({
     type: postCategorySchema,
     required: [true, "عنوان تعیین نشده."],
   },
+  featured: { type: Boolean, default: false },
   ...defaultSchemaProps,
 });
 

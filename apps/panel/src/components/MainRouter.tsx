@@ -6,7 +6,7 @@ import LoginLayout from './Layout/Login/LoginLayout';
 import TcLoading from 'components/UI/Loading/TcLoading';
 import TcLayout from 'components/Layout/TcLayout';
 import routes from 'global/Constants/routes';
-import TcPageListWrapper from 'components/UI/TcPageListWrapper/TcPageListWrapper';
+import TcListPageWrapper from 'components/UI/TcListPageWrapper/TcListPageWrapper';
 import TcCreatePage from 'components/UI/TcCreatePage/TcCreatePage';
 import TcEditPage from 'components/UI/TcEditPage/TcEditPage';
 import genericModels from 'global/Models/genericRoutesModels';
@@ -102,7 +102,7 @@ function MainRouter() {
     genericRoute.push({
       path: model.ListRoute,
       component: (
-        <TcPageListWrapper
+        <TcListPageWrapper
           columns={model.columns}
           createRoute={model.createRoute}
           deleteEndpoint={model.deleteEndpoint}

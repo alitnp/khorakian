@@ -2402,3 +2402,75 @@ body : {}
 },
 Response : {"status":400,"message":"شناسه مشخص نشده است.","details":{"filename":"شناسه مشخص نشده است."},"isSuccess":false,"data":null}
 },
+{
+type : ERROR,
+timestamp : 1680284033386,
+date : Fri Mar 31 2023 21:03:53 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680284037430,
+date : Fri Mar 31 2023 21:03:57 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"P@Assword123"}
+},
+Response : {"status":400,"message":"رمز عبور وارد شده صحیح نیست.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680285494725,
+date : Fri Mar 31 2023 21:28:14 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {"title":"gfjh","featured":true,"text":"fgjhf","videos":[{"_id":"6422b550160c1c7fe6ab18bf","qualityVariations":[{"fileName":"VID-6422b550160c1c7fe6ab18bf-240.mp4","size":"240","pathname":"/video/VID-6422b550160c1c7fe6ab18bf-240.mp4","format":"mp4","_id":"6422b55b160c1c7fe6ab18c1"},{"fileName":"VID-6422b550160c1c7fe6ab18bf-480.mp4","size":"480","pathname":"/video/VID-6422b550160c1c7fe6ab18bf-480.mp4","format":"mp4","_id":"6422b56e160c1c7fe6ab18c2"},{"fileName":"VID-6422b550160c1c7fe6ab18bf-720.mp4","size":"720","pathname":"/video/VID-6422b550160c1c7fe6ab18bf-720.mp4","format":"mp4","_id":"6422b593160c1c7fe6ab18c3"}],"isPublished":true,"creationDate":1679996240890,"title":"علیی حسنی ناظر 2","thumbnail":{"_id":"64208a44c0ca5d944e9af24f","fileName":"IMG-64208a44c0ca5d944e9af24f.webp","format":"webp","pathname":"/image/IMG-64208a44c0ca5d944e9af24f.webp","isPublished":true,"creationDate":1679854148076,"title":"hdf","thumbnailPathname":"/image/IMG-64208a44c0ca5d944e9af24f-s.webp","__v":0},"__v":0}],"images":[{"_id":"64208f8eb32edcb5e6ad3c6e","fileName":"IMG-64208f8eb32edcb5e6ad3c6e.webp","format":"webp","pathname":"/image/IMG-64208f8eb32edcb5e6ad3c6e.webp","isPublished":true,"creationDate":1679855502956,"title":"4","thumbnailPathname":"/image/IMG-64208f8eb32edcb5e6ad3c6e-s.webp","__v":0}]}
+},
+Response : {"status":400,"message":"فایل ویدیو یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680285532385,
+date : Fri Mar 31 2023 21:28:52 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/post,
+body : {"title":"hsdf","featured":true,"text":"sdfg sdfgsdg ","videos":[{"_id":"6422b550160c1c7fe6ab18bf","qualityVariations":[{"fileName":"VID-6422b550160c1c7fe6ab18bf-240.mp4","size":"240","pathname":"/video/VID-6422b550160c1c7fe6ab18bf-240.mp4","format":"mp4","_id":"6422b55b160c1c7fe6ab18c1"},{"fileName":"VID-6422b550160c1c7fe6ab18bf-480.mp4","size":"480","pathname":"/video/VID-6422b550160c1c7fe6ab18bf-480.mp4","format":"mp4","_id":"6422b56e160c1c7fe6ab18c2"},{"fileName":"VID-6422b550160c1c7fe6ab18bf-720.mp4","size":"720","pathname":"/video/VID-6422b550160c1c7fe6ab18bf-720.mp4","format":"mp4","_id":"6422b593160c1c7fe6ab18c3"}],"isPublished":true,"creationDate":1679996240890,"title":"علیی حسنی ناظر 2","thumbnail":{"_id":"64208a44c0ca5d944e9af24f","fileName":"IMG-64208a44c0ca5d944e9af24f.webp","format":"webp","pathname":"/image/IMG-64208a44c0ca5d944e9af24f.webp","isPublished":true,"creationDate":1679854148076,"title":"hdf","thumbnailPathname":"/image/IMG-64208a44c0ca5d944e9af24f-s.webp","__v":0},"__v":0}],"images":[{"_id":"64208a44c0ca5d944e9af24f","fileName":"IMG-64208a44c0ca5d944e9af24f.webp","format":"webp","pathname":"/image/IMG-64208a44c0ca5d944e9af24f.webp","isPublished":true,"creationDate":1679854148076,"title":"hdf","thumbnailPathname":"/image/IMG-64208a44c0ca5d944e9af24f-s.webp","__v":0}]}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"postCategory":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1680285802508,
+date : Fri Mar 31 2023 21:33:22 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/post,
+body : {"title":"sdfg","featured":true,"text":"sfgs dfgs dfgs dg","videos":["6422b550160c1c7fe6ab18bf"],"images":["64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"postCategory":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1680286911087,
+date : Fri Mar 31 2023 21:51:51 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/63ef1c2ad308bda1a2785f02,
+body : {}
+},
+Response : {"status":404,"message":"دسته بندی پست مورد نظر یافت نشد.","data":null,"isSuccess":false}
+},

@@ -41,8 +41,8 @@ const TcSelectReduxSearch: FC<ITcSelectReduxSearch> = ({
   const handleChange = (e: any) => {
     onChange && onChange(e);
     if (onChangeFullInfo) {
-      const item = optionsList?.find((item: any) => item.id === e);
-      onChangeFullInfo({ ...item, label: item.title, value: item.id });
+      const item = optionsList?.find((item: any) => item._id === e);
+      onChangeFullInfo({ ...item, label: item.title, value: item._id });
     }
   };
 
@@ -53,10 +53,10 @@ const TcSelectReduxSearch: FC<ITcSelectReduxSearch> = ({
       loading={!optionsList}
       placeholder='انتخاب کنید'
       optionFilterProp='children'
-      options={optionsList?.map((item: any) => ({ label: item[labelPropertyName], value: item.id }))}
+      options={optionsList?.map((item: any) => ({ label: item[labelPropertyName], value: item._id }))}
       {...props}
       onChange={handleChange}
-      value={value && +value}
+      value={value}
     />
   );
 };

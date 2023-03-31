@@ -2,26 +2,26 @@ import { Segmented } from 'antd';
 import { FC, useState, useEffect, useCallback } from 'react';
 import { AppstoreOutlined, BarsOutlined, SearchOutlined } from '@ant-design/icons';
 import { SegmentedValue } from 'antd/es/segmented';
-import { ApiDataListResponse, IImage } from '@my/types';
+import { ApiDataListResponse, IVideoRead } from '@my/types';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import ApiService from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
 import queryString from 'query-string';
 import { handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
-import ImageItem from 'components/UI/Image/ImageItem';
 import TcTable from 'components/UI/Table/TcTable';
-import imageModel from 'global/Models/ImageModel';
 import TcPagination from 'components/UI/Pagination/TcPagination';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
+import VideoItem from 'components/UI/Video/VideoItem';
+import videoModel from 'global/Models/videoModel';
 
-interface IImagePicker {
-  handlePick: (_image: IImage) => void;
+interface IVideoPicker {
+  handlePick: (_video: IVideoRead) => void;
 }
 
-const ImagePicker: FC<IImagePicker> = ({ handlePick }) => {
+const VideoPicker: FC<IVideoPicker> = ({ handlePick }) => {
   //states
   const [listType, setListType] = useState<SegmentedValue>('grid');
-  const [list, setList] = useState<ApiDataListResponse<IImage>>();
+  const [list, setList] = useState<ApiDataListResponse<IVideoRead>>();
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
@@ -34,16 +34,16 @@ const ImagePicker: FC<IImagePicker> = ({ handlePick }) => {
   //functions
   const getList = async (pageNumber: number, title: string) => {
     setLoading(true);
-    await ApiService.get(endpointUrls.imageGetList + '?' + queryString.stringify({ pageNumber, pageSize: 50, title }))
-      .then((res: ApiDataListResponse<IImage>) => handleApiThenGeneric<ApiDataListResponse<IImage>, IImage[]>({ res, onSuccess: setList }))
+    await ApiService.get(endpointUrls.videoGetList + '?' + queryString.stringify({ pageNumber, pageSize: 50, title }))
+      .then((res: ApiDataListResponse<IVideoRead>) => handleApiThenGeneric<ApiDataListResponse<IVideoRead>, IVideoRead[]>({ res, onSuccess: setList }))
       .catch(() => {});
     setLoading(false);
   };
   const renderGrid = useCallback(
     () => (
       <div className='flex flex-wrap items-center gap-4 my-4'>
-        {list?.data.map((image) => (
-          <ImageItem image={image} key={image._id} imagePicker onSelect={handlePick} />
+        {list?.data.map((video) => (
+          <VideoItem video={video} key={video._id} onSelect={handlePick} size='small' />
         ))}
       </div>
     ),
@@ -54,12 +54,12 @@ const ImagePicker: FC<IImagePicker> = ({ handlePick }) => {
       <TcTable
         dataSource={list?.data || []}
         columns={[
-          ...imageModel.columns(),
+          ...videoModel.columns(),
           {
             title: 'انتخاب',
             key: 'choose',
             dataIndex: '_id',
-            render: (_text: string, record: IImage) => (
+            render: (_text: string, record: IVideoRead) => (
               <p className='cursor-pointer text-t-secondary-color hover:underline' onClick={() => handlePick(record)}>
                 انتخاب
               </p>
@@ -90,7 +90,7 @@ const ImagePicker: FC<IImagePicker> = ({ handlePick }) => {
         ]}
       />
       <TcInput
-        placeholder='عنوان عکس'
+        placeholder='عنوان ویدیو'
         suffix={<SearchOutlined />}
         value={title}
         className='my-4'
@@ -106,4 +106,4 @@ const ImagePicker: FC<IImagePicker> = ({ handlePick }) => {
   );
 };
 
-export default ImagePicker;
+export default VideoPicker;

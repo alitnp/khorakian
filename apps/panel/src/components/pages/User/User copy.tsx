@@ -64,7 +64,7 @@ const User: FC = () => {
 
   const columns = [
     { title: 'نام', key: 'firstName', dataIndex: 'firstName' },
-    { title: 'نام ونام خانوادگی', key: 'fullName', dataIndex: 'fullName' },
+    { title: 'نام و نام خانوادگی', key: 'fullName', dataIndex: 'fullName' },
     { title: 'شماره همراه', key: 'mobileNumber', dataIndex: 'mobileNumber' },
     {
       title: ' ادمین',

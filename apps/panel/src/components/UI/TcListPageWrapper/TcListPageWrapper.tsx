@@ -18,7 +18,7 @@ interface ITcPageListWrapper {
   createRoute: string;
 }
 
-const TcPageListWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndpoint, columns, filterItems, title, createRoute }) => {
+const TcListPageWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndpoint, columns, filterItems, title, createRoute }) => {
   //states
   const [list, setList] = useState();
   const [loading, setLoading] = useState<boolean>(false);
@@ -53,4 +53,4 @@ const TcPageListWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndp
   );
 };
 
-export default TcPageListWrapper;
+export default TcListPageWrapper;

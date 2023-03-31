@@ -1,50 +1,19 @@
-import useApiCatcher from 'global/helperFunctions/useApiCatcher';
-import useQuery from 'global/helperFunctions/useQuery';
-import { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import queryString from 'query-string';
-import ApiService, { errorResponse } from 'config/API/ApiService';
+import { FC } from 'react';
 import endpointUrls from 'global/Constants/endpointUrls';
-import { handleApiThen, handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
-import { ApiDataListResponse, IImage } from '@my/types';
-import TcCard from 'components/UI/Card/TcCard';
-import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import routes from 'global/Constants/routes';
-import TcListPage from 'components/UI/TcListPage/TcListPage';
-import imageModel from 'global/Models/ImageModel';
+import postModel from 'global/Models/postModel';
+import TcListPageWrapper from 'components/UI/TcListPageWrapper/TcListPageWrapper';
 
 const Post: FC = () => {
-  //states
-  const [list, setList] = useState<ApiDataListResponse<IImage>>();
-  const [loading, setLoading] = useState<boolean>(false);
-
-  //dispatch
-  const dispatch = useDispatch();
-  const { query } = useQuery();
-  const apiCatcher = useApiCatcher();
-
-  //functions
-  const getList = async (query: any) => {
-    const payload = queryString.stringify(query);
-    setLoading(true);
-    await ApiService.get(endpointUrls.imageGetList + '?' + payload).then((res: ApiDataListResponse<IImage>) =>
-      handleApiThenGeneric<ApiDataListResponse<IImage>, IImage[]>({ res, dispatch, onSuccess: setList, onFailed: () => setList(undefined), notifFail: false, notifSuccess: false })
-    );
-    setLoading(false);
-  };
-  const handleDelete = async (id: string) => {
-    setLoading(true);
-    await ApiService.delete(endpointUrls.imageDelete(id))
-      .then((res: any) => handleApiThen({ res, onSuccess: () => getList(query), dispatch, notifFail: true, notifSuccess: true }))
-      .then(() => apiCatcher(errorResponse));
-    setLoading(false);
-  };
-
   return (
-    <TcCard>
-      <TcPageTitle title={imageModel.title} to={routes.imageCreate.path} />
-      <TcListPage list={list} getList={getList} columns={imageModel.columns(handleDelete)} filterItems={imageModel.filterInputs} loading={loading} />
-    </TcCard>
+    <TcListPageWrapper
+      columns={postModel.columns}
+      createRoute={routes.postCreate.path}
+      deleteEndpoint={endpointUrls.postDelete}
+      filterItems={postModel.filterInputs}
+      getListEndpoint={endpointUrls.postGetList}
+      title={postModel.title}
+    />
   );
 };
 

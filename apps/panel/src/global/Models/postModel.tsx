@@ -1,20 +1,46 @@
 import { IImage, IPostRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
+import TcSelect from 'components/UI/Form/Inputs/TcSelect';
+import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
+import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
-import ImageItem from 'components/UI/Image/ImageItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
+import { getAllPostCategories } from 'redux/reducer/PostCategory/getAllPostCategories';
 
 const title = 'پست';
 const englishTitle = 'post';
 
+const inputs = (
+  <>
+    <TcFormItem name='title' label='عنوان' rules={[{ required: true, message: 'عنوان پست تعیین نشده' }]}>
+      <TcInput />
+    </TcFormItem>
+    <TcFormItem label='دسته بندی' name='postCategory' rules={[{ required: true, message: 'دسته بندی پست تعیین نشده' }]}>
+      <TcSelectReduxSearch reducerListProperty='list' getlist={getAllPostCategories} reducerName='postCategory' />
+    </TcFormItem>
+    <TcFormItem label='برجسته (Featured)' name='featured' initialValue={false}>
+      <TcSelect
+        options={[
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          { label: 'بله', value: true },
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          { label: 'خیر', value: false },
+        ]}
+      />
+    </TcFormItem>
+    <TcFormItem label='متن' name='text' full>
+      <TcTextarea placeholder='متن' />
+    </TcFormItem>
+  </>
+);
+
 const filterInputs = (
   <>
     <TcFormItem name='title' label='عنوان'>
-      <TcInput />
-    </TcFormItem>
-    <TcFormItem name='text' label='عنوان'>
       <TcInput />
     </TcFormItem>
   </>
@@ -27,8 +53,24 @@ const columns = (handleDelete?: (_id: string) => void) => {
       key: 'title',
       dataIndex: 'title',
     },
-    { title: 'عکس', key: 'images', dataIndex: 'images', render: (_text: string, record: IPostRead) => (record.images.length > 0 ? record.images.length : 'ندارد') },
-    { title: 'ویدیو', key: 'videos', dataIndex: 'videos', render: (_text: string, record: IPostRead) => (record.videos.length > 0 ? record.videos.length : 'ندارد') },
+    {
+      title: 'برجسته',
+      key: 'featured',
+      dataIndex: 'featured',
+      render: (_text: string, record: IPostRead) => (record.featured ? 'بله' : 'خیر'),
+    },
+    {
+      title: 'عکس',
+      key: 'images',
+      dataIndex: 'images',
+      render: (_text: string, record: IPostRead) => (record.images?.length && record.images?.length > 0 ? record.images.length : 'ندارد'),
+    },
+    {
+      title: 'ویدیو',
+      key: 'videos',
+      dataIndex: 'videos',
+      render: (_text: string, record: IPostRead) => (record.videos.length && record.videos.length > 0 ? record.videos.length : 'ندارد'),
+    },
   ];
   handleDelete &&
     columns.push({
@@ -45,11 +87,12 @@ const columns = (handleDelete?: (_id: string) => void) => {
   return columns;
 };
 
-const imageModel = {
+const postModel = {
   title,
   englishTitle,
   filterInputs,
   columns,
+  inputs,
 };
 
-export default imageModel;
+export default postModel;
