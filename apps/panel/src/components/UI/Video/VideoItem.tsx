@@ -10,11 +10,12 @@ interface IVideoItem {
   removeItem?: (_id: string) => void;
   size?: 'small' | 'normal';
   onSelect?: (_video: IVideoRead) => void;
+  hideTitle?: boolean;
 }
 
 type videoSrc = { pathname: string; label: number };
 
-const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal', onSelect }) => {
+const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal', onSelect, hideTitle }) => {
   //state
   const [srcs, setSrcs] = useState<videoSrc[]>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -86,7 +87,7 @@ const VideoItem: FC<IVideoItem> = ({ video, removeItem, size = 'normal', onSelec
           </div>
         )}
       </div>
-      <p className='text-center'>{video.title}</p>
+      {!hideTitle && <p className='text-center'>{video.title}</p>}
       {onSelect && (
         <p className='text-center cursor-pointer text-t-secondary-color hover:underline' onClick={() => onSelect(video)}>
           انتخاب

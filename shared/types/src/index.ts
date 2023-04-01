@@ -106,6 +106,9 @@ export interface IPost extends DefaultModelProperties {
 	videos: string[];
 	postCategory: IPostCategory;
 	featured: boolean;
+	viewCount: number;
+	likeCount: number;
+	commentCount: number;
 }
 export interface IPostCreate
 	extends DefaultModelProperties {
@@ -115,6 +118,9 @@ export interface IPostCreate
 	videos: string[];
 	postCategory: string;
 	featured: boolean;
+	viewCount: number;
+	likeCount: number;
+	commentCount: number;
 }
 
 export interface IPostRead extends DefaultModelProperties {
@@ -122,8 +128,11 @@ export interface IPostRead extends DefaultModelProperties {
 	title: string;
 	text: string;
 	images: IImage[];
-	videos: IVideo[];
+	videos: IVideoRead[];
 	postCategory: IPostCategory;
 	featured: boolean;
+	viewCount: number;
+	likeCount: number;
+	commentCount: number;
 }
 /* #endregion */

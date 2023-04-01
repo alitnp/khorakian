@@ -21,6 +21,9 @@ export const postSchema = new Schema<IPost>({
     required: [true, "عنوان تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
+  viewCount: Number,
+  likeCount: Number,
+  commentCount: Number,
   ...defaultSchemaProps,
 });
 

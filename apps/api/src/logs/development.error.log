@@ -2474,3 +2474,27 @@ body : {}
 },
 Response : {"status":404,"message":"دسته بندی پست مورد نظر یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1680325789388,
+date : Sat Apr 01 2023 08:39:49 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/post/6427bc000811b7e22822581f,
+body : {"title":"sadf sqwert33","postCategory":"641c987a11686575beabb5b3","featured":true,"text":"asdf asdfasg fasdf","videos":["6422b550160c1c7fe6ab18bf"],"images":["6420a24186ecfa74141331b7","64208a44c0ca5d944e9af24f","64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680325944253,
+date : Sat Apr 01 2023 08:42:24 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/post/6427bc000811b7e22822581f,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

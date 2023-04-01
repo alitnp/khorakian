@@ -43,9 +43,9 @@ class PostData implements IData<IPost> {
   get = async (id: string): Promise<IPost> => {
     const post = await this.Post.findById(id)
       .populate("images")
-      .populate("videos");
+      .populate({ path: "videos", populate: { path: "thumbnail" } });
     if (!post) throw new NotFoundError();
-
+    await this.Post.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
     return post;
   };
 
@@ -71,8 +71,6 @@ class PostData implements IData<IPost> {
       const existingVideo = await this.Video.get(videoId);
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
-    console.log("videos", existingVideoIds);
-    console.log("images", existingImageIds);
 
     const post = new this.Post({
       title,
@@ -81,19 +79,23 @@ class PostData implements IData<IPost> {
       videos: existingVideoIds,
       text,
       featured: !!featured,
+      viewCount: 0,
+      likeCount: 0,
+      commentCount: 0,
     });
-    return await await (await post.save()).populate(["videos", "images"]);
+    await post.save();
+    return await this.get(post._id);
   };
 
   update = async ({
-    id,
+    _id,
     title,
     postCategory,
     images,
     videos,
     text,
     featured,
-  }: IPostCreate & { id: string }): Promise<IPost> => {
+  }: IPostCreate & { _id: string }): Promise<IPost> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
 
     const existingImageIds = [];
@@ -110,19 +112,19 @@ class PostData implements IData<IPost> {
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
 
-    const post = await this.Post.findByIdAndUpdate(id, {
+    const post = await this.Post.findByIdAndUpdate(_id, {
       $set: {
         title,
         postCategory: existingPostCategory,
         images: existingImageIds,
-        video: existingVideoIds,
+        videos: existingVideoIds,
         text,
         featured: !!featured,
       },
-    }).populate(["videos", "images"]);
+    });
     if (!post) throw new NotFoundError();
 
-    return post;
+    return await this.get(post._id);
   };
 
   remove = async (id: string): Promise<IPost> => {

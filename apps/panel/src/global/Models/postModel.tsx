@@ -1,4 +1,4 @@
-import { IImage, IPostRead } from '@my/types';
+import { IImage, IPostCategory, IPostRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
@@ -41,7 +41,25 @@ const inputs = (
 const filterInputs = (
   <>
     <TcFormItem name='title' label='عنوان'>
-      <TcInput />
+      <TcInput placeholder='عنوان' />
+    </TcFormItem>
+    <TcFormItem label='دسته بندی' name='postCategory'>
+      <TcSelectReduxSearch reducerListProperty='list' getlist={getAllPostCategories} reducerName='postCategory' />
+    </TcFormItem>
+    <TcFormItem label='برجسته (Featured)' name='featured'>
+      <TcSelect
+        options={[
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          { label: 'بله', value: true },
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          { label: 'خیر', value: false },
+        ]}
+      />
+    </TcFormItem>
+    <TcFormItem label='متن' name='text'>
+      <TcInput placeholder='متن' />
     </TcFormItem>
   </>
 );
@@ -54,10 +72,31 @@ const columns = (handleDelete?: (_id: string) => void) => {
       dataIndex: 'title',
     },
     {
+      title: 'دسته بندی',
+      key: 'postCategory',
+      dataIndex: 'postCategory',
+      render: (text: IPostCategory) => text.title,
+    },
+    {
       title: 'برجسته',
       key: 'featured',
       dataIndex: 'featured',
       render: (_text: string, record: IPostRead) => (record.featured ? 'بله' : 'خیر'),
+    },
+    {
+      title: 'تعداد بازدید',
+      key: 'viewCount',
+      dataIndex: 'viewCount',
+    },
+    {
+      title: 'تعداد پسند',
+      key: 'likeCount',
+      dataIndex: 'likeCount',
+    },
+    {
+      title: 'تعداد نظر',
+      key: 'commentCount',
+      dataIndex: 'commentCount',
     },
     {
       title: 'عکس',

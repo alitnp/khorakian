@@ -1,27 +1,54 @@
 import { IImage } from '@my/types';
+import { moveItemInArray } from '@my/helpers';
 import { FC, memo, useState, useCallback } from 'react';
 import PlusBox from 'components/UI/PlusBox/PlusBox';
 import ImagePickerModal from 'components/UI/Image/ImagePickerModal';
 import ImageItem from 'components/UI/Image/ImageItem';
+import TcCount from 'components/UI/Count/TcCount';
+import { HomeOutlined } from '@ant-design/icons';
 
 interface IAddVideo {
-  addImage: (_image: IImage) => void;
   images: IImage[];
-  removeImage: (_id: string) => void;
+  setImages: React.Dispatch<React.SetStateAction<IImage[]>>;
 }
 
-const AddVideo: FC<IAddVideo> = ({ addImage, images, removeImage }) => {
+const AddVideo: FC<IAddVideo> = ({ images, setImages }) => {
   //states
   const [showImagePicker, setShowImagePicker] = useState<boolean>(false);
 
   //functions
   const toggleShowVideoPicker = useCallback(() => setShowImagePicker((prevState) => !prevState), []);
+  const addImage = useCallback(
+    (image: IImage) =>
+      setImages((images) => {
+        if (images.some((vid) => vid._id === image._id)) return images;
+        return [...images, image];
+      }),
+    [images]
+  );
+  const removeImage = useCallback(
+    (_id: string) => {
+      const tempImages = images.filter((img) => img._id !== _id);
+      setImages([...tempImages]);
+    },
+    [images]
+  );
+  const handleReArrange = useCallback((oldIndex: number, newIndex: number) => setImages((images: IImage[]) => [...moveItemInArray(images, oldIndex, newIndex)]), [images]);
 
   return (
     <>
       <div className='flex flex-wrap items-center gap-4 my-4'>
-        {images.map((img) => (
-          <ImageItem image={img} key={img._id} onRemove={removeImage} size='large' />
+        {images.map((img, index) => (
+          <div key={img._id} className='flex flex-col items-center gap-1'>
+            <div className={`${index === 0 && 'border border-t-secondary-color rounded-xl p-1'}`}>
+              <TcCount count={index} setCount={(newIndex: number) => handleReArrange(index, newIndex)} />
+              <ImageItem image={img} onRemove={removeImage} />
+            </div>
+
+            <span className={`text-t-secondary-color color-inherit ${index !== 0 ? 'opacity-0' : ''}`}>
+              <HomeOutlined />
+            </span>
+          </div>
         ))}
         <PlusBox onClick={toggleShowVideoPicker} />
       </div>

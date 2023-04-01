@@ -1,10 +1,10 @@
 video:
   - backend
-    - add poster image to video
+    - add poster image to video @done
     - edit video @done
     - video validation needs to be checked @done
   - front
-    - add poster image to video
+    - add poster image to video @done
     - edit video @done
 
 user:
@@ -16,8 +16,13 @@ user:
     -experienceCategory 
 
 post:
-  - backend crud
-  - front crud
+  - backend 
+    - crud @done
+    - validations
+    - handleLike
+    - handleComment
+  - front
+    - crud @done
 
 user:
   - front
@@ -25,3 +30,8 @@ user:
     - user admin
     - user search
 
+comments:
+  - back
+    - create Comments
+    - reply comment
+    - like comment
