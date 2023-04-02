@@ -16,6 +16,10 @@ import PostCategoryData from "@/components/postCategory/postCategoryData";
 import { PostCategory } from "@/components/postCategory/postCategoryModel";
 import { Video } from "@/components/video/videoModel";
 import { Image } from "@/components/image/imageModel";
+import { paramIdValidations } from "@/validation/globalValidations";
+import auth from "@/middlewares/athenticate";
+import { PostLike } from "@/components/Like/postLikeModel";
+import LikeData from "@/components/Like/likeData";
 
 const router = Router();
 const postData = new PostData(
@@ -23,14 +27,30 @@ const postData = new PostData(
   new PostCategoryData(PostCategory),
   new VideoData(Video, new ImageData(Image)),
   new ImageData(Image),
+  new LikeData(PostLike),
 );
 const postController = new PostController(postData);
 
 //get
+// get a signgle post with id
 router.get("/:id", validate(getPostValidations), postController.get);
+// get a list of posts
 router.get("/", postController.getAll);
 
 //post
+//like a post with post id and user id
+router.post(
+  "/like/:id",
+  [auth, ...validate(paramIdValidations)],
+  postController.like,
+);
+//dislike a post with post id and user id
+router.post(
+  "/dislike/:id",
+  [auth, ...validate(paramIdValidations)],
+  postController.disLike,
+);
+//create a new post - admin only
 router.post(
   "/",
   [isAdmin, ...validate(createPostValidations)],
@@ -38,6 +58,7 @@ router.post(
 );
 
 //put
+//edit an existing post - admin only
 router.put(
   "/:id",
   [isAdmin, ...validate(updatePostValidations)],
@@ -45,6 +66,7 @@ router.put(
 );
 
 //delete
+//delete a post - admin only
 router.delete(
   "/:id",
   [isAdmin, ...validate(deletePostValidations)],

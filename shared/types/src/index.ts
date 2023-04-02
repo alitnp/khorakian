@@ -26,7 +26,7 @@ export type DefaultModelProperties = {
 
 /* #region user */
 export interface IUser extends DefaultModelProperties {
-	_id?: string;
+	_id: string;
 	firstName: string;
 	lastName: string;
 	fullName: string;
@@ -47,7 +47,7 @@ export interface IUserRead extends DefaultModelProperties {
 /* #region post */
 export interface IPostCategory
 	extends DefaultModelProperties {
-	_id?: string;
+	_id: string;
 	title: string;
 }
 /* #endregion */
@@ -55,14 +55,14 @@ export interface IPostCategory
 /* #region experienceCategory */
 export interface IExperienceCategory
 	extends DefaultModelProperties {
-	_id?: string;
+	_id: string;
 	title: string;
 }
 
 /* region experienceCategory */
 export interface IIdeaCategory
 	extends DefaultModelProperties {
-	_id?: string;
+	_id: string;
 	title: string;
 }
 /* region ideaCategory */
@@ -95,9 +95,9 @@ export type qualityVariation = {
 	format: string;
 };
 
-/* #endregion */
+/* #endregion media */
 
-/* #region video */
+/* #region post */
 export interface IPost extends DefaultModelProperties {
 	_id: string;
 	title: string;
@@ -118,9 +118,6 @@ export interface IPostCreate
 	videos: string[];
 	postCategory: string;
 	featured: boolean;
-	viewCount: number;
-	likeCount: number;
-	commentCount: number;
 }
 
 export interface IPostRead extends DefaultModelProperties {
@@ -134,5 +131,41 @@ export interface IPostRead extends DefaultModelProperties {
 	viewCount: number;
 	likeCount: number;
 	commentCount: number;
+	liked?: boolean;
 }
-/* #endregion */
+
+export interface IPostLike extends DefaultModelProperties {
+	content?: string;
+	user?: string;
+}
+export interface IPostLikeCreate {
+	content: string;
+	user: string;
+}
+export interface IPostLikeRead
+	extends DefaultModelProperties {
+	content: IPost;
+	user: IUser;
+}
+
+export interface IPostComment
+	extends DefaultModelProperties {
+	content?: string;
+	user?: string;
+	text: string;
+	replies?: ICommentReply[];
+}
+export interface IPostCommentRead
+	extends DefaultModelProperties {
+	content: string;
+	user: IUserRead;
+	text: string;
+	replies: ICommentReply[];
+}
+export interface ICommentReply
+	extends DefaultModelProperties {
+	user?: string;
+	text: string;
+}
+
+/* #endregion post*/

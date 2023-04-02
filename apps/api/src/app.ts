@@ -11,6 +11,7 @@ import * as errorHandler from "@/middlewares/errorHandler";
 import routes from "@/routes";
 import { logInfoHandler } from "@/helpers/loggers";
 import swaggerOptions from "@/config/swaggerOptions";
+import addTokenDataToHeader from "@/middlewares/addTokenDataToHeader";
 
 export const createApp = (): express.Application => {
   const app = express();
@@ -47,6 +48,9 @@ export const createApp = (): express.Application => {
 
   //Logger
   app.use(logInfoHandler);
+
+  //process token data
+  app.use(addTokenDataToHeader);
 
   // API Routes
   app.use(`/api/${CONFIG.APP.VER}`, routes);

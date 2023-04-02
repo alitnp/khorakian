@@ -10,6 +10,11 @@ export const getPropertyFromRequest = (
   );
 };
 
+export const getUserIdFromReq = (req: Req): string | undefined => {
+  if (!req.headers.tokenData) return undefined;
+  return JSON.parse(req.headers.tokenData as string)._id;
+};
+
 export const stringToBoolean = (string: any): boolean => {
   string = string + "";
   switch (string?.toLowerCase()?.trim()) {

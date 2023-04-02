@@ -24,7 +24,7 @@ const videoController = new VideoController(videoData);
 //get
 router.get("/detail/:id", validate(getVideoValidations), videoController.get);
 router.get("/:filename", validate(playVideoValidations), videoController.play);
-router.get("/", videoController.getAll);
+router.get("/", auth, videoController.getAll);
 
 //post
 router.post(

@@ -1,31 +1,52 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse, IPost, IPostCreate } from "@my/types";
-import { getAllData, IData } from "@/data/globalData";
+import {
+  ApiDataListResponse,
+  IImage,
+  IPost,
+  IPostComment,
+  IPostCreate,
+  IPostLike,
+  IPostRead,
+  IVideoRead,
+} from "@my/types";
+import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import PostCategoryData from "@/components/postCategory/postCategoryData";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
 import { stringToBoolean } from "@/utils/util";
+import LikeData from "@/components/Like/likeData";
+import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import CommentData from "@/components/comment/commentData";
 
-class PostData implements IData<IPost> {
+class PostData {
   Post: Model<IPost, {}, {}, {}, any>;
   PostCategory: PostCategoryData;
   Video: VideoData;
   Image: ImageData;
+  PostLike: LikeData<IPostLike>;
+  PostComment: CommentData<IPostComment>;
 
   constructor(
     Post: Model<IPost, {}, {}, {}, any>,
     PostCategory: PostCategoryData,
     Video: VideoData,
     Image: ImageData,
+    PostLike: LikeData<IPostLike>,
+    PostComment: CommentData<IPostComment>,
   ) {
     this.Post = Post;
     this.PostCategory = PostCategory;
     this.Video = Video;
     this.Image = Image;
+    this.PostLike = PostLike;
+    this.PostComment = PostComment;
   }
 
-  getAll = async (req: Req): Promise<ApiDataListResponse<IPost>> => {
+  getAll = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IPostRead>> => {
     const searchQuery: any = {};
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
@@ -37,16 +58,53 @@ class PostData implements IData<IPost> {
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 
-    return getAllData<IPost>(searchQuery, req, this.Post, ["images", "videos"]);
+    const { pageNumber, pageSize, totalItems, totalPages, sortBy, desc } =
+      await paginationProps(searchQuery, req, this.Post);
+
+    const data: IPostRead[] = await this.Post.find(searchQuery)
+      .populate<{ images: IImage[]; videos: IVideoRead[] }>([
+        "videos",
+        "images",
+      ])
+      .limit(pageSize)
+      .skip((pageNumber - 1) * pageSize)
+      .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
+      .lean();
+
+    //add liked to each post
+    for (let i = 0; i < data.length; i++) {
+      const post = data[i];
+      if (!userId) data[i].liked = false;
+      else data[i].liked = await this.PostLike.isUserLiked(post._id, userId);
+    }
+
+    return {
+      data,
+      pageNumber,
+      pageSize,
+      totalItems,
+      totalPages,
+      sortBy,
+      desc: desc === -1 ? true : false,
+    };
   };
 
-  get = async (id: string): Promise<IPost> => {
+  get = async (id: string, userId?: string): Promise<IPostRead> => {
     const post = await this.Post.findById(id)
-      .populate("images")
-      .populate({ path: "videos", populate: { path: "thumbnail" } });
+      .populate<{ images: IImage[] }>("images")
+      .populate<{ videos: IVideoRead[] }>({
+        path: "videos",
+        populate: { path: "thumbnail" },
+      })
+      .lean();
+
     if (!post) throw new NotFoundError();
     await this.Post.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
-    return post;
+
+    const postRead: IPostRead = { ...post, liked: false };
+    if (userId) postRead.liked = await this.PostLike.isUserLiked(id, userId);
+
+    return postRead;
   };
 
   create = async ({
@@ -56,7 +114,7 @@ class PostData implements IData<IPost> {
     videos,
     text,
     featured,
-  }: IPostCreate): Promise<IPost> => {
+  }: IPostCreate): Promise<IPostRead> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
@@ -95,7 +153,7 @@ class PostData implements IData<IPost> {
     videos,
     text,
     featured,
-  }: IPostCreate & { _id: string }): Promise<IPost> => {
+  }: IPostCreate & { _id: string }): Promise<IPostRead> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
 
     const existingImageIds = [];
@@ -127,11 +185,52 @@ class PostData implements IData<IPost> {
     return await this.get(post._id);
   };
 
-  remove = async (id: string): Promise<IPost> => {
+  remove = async (id: string): Promise<IPostRead> => {
     const post = await this.get(id);
     await this.Post.findByIdAndDelete(id);
 
     return post;
+  };
+
+  like = async (postId: string, userId?: string): Promise<IPostRead> => {
+    if (!userId) throw new UnauthenticatedError();
+
+    await this.PostLike.like(postId, userId);
+
+    const post = await this.Post.findByIdAndUpdate(postId, {
+      $inc: { likeCount: 1 },
+    });
+    if (!post) throw new NotFoundError();
+
+    return await this.get(postId, userId);
+  };
+
+  dislike = async (postId: string, userId?: string): Promise<IPostRead> => {
+    if (!userId) throw new UnauthenticatedError();
+
+    await this.PostLike.disLike(postId, userId);
+
+    const post = await this.get(postId, userId);
+
+    const updatedPost = await this.Post.findByIdAndUpdate(postId, {
+      $inc: { likeCount: post.likeCount > 0 ? -1 : 0 },
+    });
+    if (!updatedPost) throw new NotFoundError();
+
+    return await this.get(postId);
+  };
+
+  comment = async (postId: string, userId: string, text: string) => {
+    if (!userId) throw new UnauthenticatedError();
+
+    const post = await this.Post.findById(postId);
+    if (!post) throw new NotFoundError();
+
+    const comment = this.PostComment.create(postId, userId, text);
+
+    await this.Post.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
+
+    return comment;
   };
 }
 

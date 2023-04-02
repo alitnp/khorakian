@@ -22,13 +22,8 @@ export const getAllData = async <T>(
   model: Model<T>,
   populate: string[] = [],
 ): Promise<ApiDataListResponse<T>> => {
-  let pageNumber = getPageNumber(req);
-  const pageSize = getPageSize(req);
-  const totalItems = await model.countDocuments(searchQuery);
-  const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
-  if (pageNumber > totalPages) pageNumber = totalPages;
-  const sortBy = getSortBy(req) || "";
-  const desc = getSortByDescending(req);
+  const { pageNumber, pageSize, totalItems, totalPages, sortBy, desc } =
+    await paginationProps(searchQuery, req, model);
 
   const data = await model
     .find(searchQuery)
@@ -45,5 +40,29 @@ export const getAllData = async <T>(
     totalPages,
     sortBy,
     desc: desc === -1 ? true : false,
+  };
+};
+
+export const paginationProps = async <T>(
+  searchQuery: any,
+  req: Req,
+  model: Model<T>,
+) => {
+  let pageNumber = getPageNumber(req);
+  const pageSize = getPageSize(req);
+  const totalItems = await model.countDocuments(searchQuery);
+  const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
+  if (pageNumber > totalPages) pageNumber = totalPages;
+  const sortBy = getSortBy(req) || "";
+  const desc = getSortByDescending(req);
+
+  return {
+    pageNumber,
+    pageSize,
+    totalItems,
+    totalPages,
+    sortBy,
+    desc,
+    descBoolean: desc === -1 ? true : false,
   };
 };

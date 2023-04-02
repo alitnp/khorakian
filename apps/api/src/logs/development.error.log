@@ -2498,3 +2498,255 @@ body : {}
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1680411432965,
+date : Sun Apr 02 2023 08:27:12 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680412635478,
+date : Sun Apr 02 2023 08:47:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680412638032,
+date : Sun Apr 02 2023 08:47:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680412645229,
+date : Sun Apr 02 2023 08:47:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680412685046,
+date : Sun Apr 02 2023 08:48:05 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680412717091,
+date : Sun Apr 02 2023 08:48:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680412765738,
+date : Sun Apr 02 2023 08:49:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680412803094,
+date : Sun Apr 02 2023 08:50:03 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680413550170,
+date : Sun Apr 02 2023 09:02:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680413559648,
+date : Sun Apr 02 2023 09:02:39 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680413589473,
+date : Sun Apr 02 2023 09:03:09 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680426318841,
+date : Sun Apr 02 2023 12:35:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680426880113,
+date : Sun Apr 02 2023 12:44:40 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680427592361,
+date : Sun Apr 02 2023 12:56:32 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680427657440,
+date : Sun Apr 02 2023 12:57:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680427680069,
+date : Sun Apr 02 2023 12:58:00 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680427736121,
+date : Sun Apr 02 2023 12:58:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680427813432,
+date : Sun Apr 02 2023 13:00:13 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+Response : {"path":"videos,images"}
+},
+{
+type : ERROR,
+timestamp : 1680428172985,
+date : Sun Apr 02 2023 13:06:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/video/detail/63ef1c2ad308bda1a2785f02,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680428178661,
+date : Sun Apr 02 2023 13:06:18 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/video?pageSize=100,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680444280103,
+date : Sun Apr 02 2023 17:34:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/dislike/6427c8fa96c9e2ef396fe6c4,
+body : {"title":"یب لا 2","postCategory":"641c987a11686575beabb5b3","featured":true,"text":"یبلا یبلا یلا ","videos":["6427ccb196c9e2ef396fe6f0","6422b550160c1c7fe6ab18bf"],"images":["64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
