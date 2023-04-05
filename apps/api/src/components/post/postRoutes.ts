@@ -20,6 +20,8 @@ import { paramIdValidations } from "@/validation/globalValidations";
 import auth from "@/middlewares/athenticate";
 import { PostLike } from "@/components/Like/postLikeModel";
 import LikeData from "@/components/Like/likeData";
+import CommentData from "@/components/comment/commentData";
+import { PostComment } from "@/components/comment/postCommentModel";
 
 const router = Router();
 const postData = new PostData(
@@ -28,6 +30,7 @@ const postData = new PostData(
   new VideoData(Video, new ImageData(Image)),
   new ImageData(Image),
   new LikeData(PostLike),
+  new CommentData(PostComment),
 );
 const postController = new PostController(postData);
 

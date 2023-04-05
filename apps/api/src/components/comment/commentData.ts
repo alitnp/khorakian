@@ -53,10 +53,12 @@ class CommentData<commentModel> {
     return await comment.save();
   };
 
-  reply = async (commentId: string, userId: string, text: string) => {
-    const comment = await this.Comment.findByIdAndUpdate(commentId, {
-      $push: { replies: { user: userId, text } },
-    });
+  update = async (commentId: string, text: string) => {
+    const comment = await this.Comment.findByIdAndUpdate(
+      commentId,
+      { text },
+      { new: true },
+    );
     if (!comment) throw new NotFoundError("نظر یافت نشد");
     return comment;
   };
@@ -67,7 +69,27 @@ class CommentData<commentModel> {
     return comment;
   };
 
-  // removeReply = async (replyId: string) => {};
+  reply = async (commentId: string, userId: string, text: string) => {
+    const comment = await this.Comment.findByIdAndUpdate(commentId, {
+      $push: { replies: { user: userId, text } },
+    });
+    if (!comment) throw new NotFoundError("نظر یافت نشد");
+    return comment;
+  };
+
+  // updateReply = async (commentId: string, replyId: string, text: string) => {
+  //   const comment = await this.Comment.findByIdAndUpdate(commentId, {
+  //     $set: { replies: {  } },
+  //   });
+  // };
+
+  removeReply = async (commentId: string, replyId: string) => {
+    const comment = await this.Comment.findByIdAndUpdate(commentId, {
+      $pull: { replies: { _id: replyId } },
+    });
+    if (!comment) throw new NotFoundError("نظر یافت نشد");
+    return comment;
+  };
 }
 
 export default CommentData;
