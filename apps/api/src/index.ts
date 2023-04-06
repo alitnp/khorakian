@@ -9,6 +9,7 @@ import CONFIG, { setAppRoot } from "@/config";
 
 setAppRoot(__dirname);
 
+console.log("DataBaseStrgin : ", CONFIG.DATABASE.DB_HOST);
 mongoose.set("strictQuery", false);
 mongoose
   .connect(CONFIG.DATABASE.DB_HOST as string)
