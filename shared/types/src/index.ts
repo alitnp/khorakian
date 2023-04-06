@@ -174,6 +174,8 @@ export interface ICommentReply
 
 //#region Home
 export interface ISlider extends DefaultModelProperties {
+	_id: string;
+	index: number;
 	title?: string;
 	subTitle?: string;
 	shortDesc?: string;

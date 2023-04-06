@@ -33103,3 +33103,43 @@ method : GET,
 url : /api/v1/postcategory?pageSize=100,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1680779918848,
+date : Thu Apr 06 2023 14:48:38 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1680779980912,
+date : Thu Apr 06 2023 14:49:40 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/histroy?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1680780012972,
+date : Thu Apr 06 2023 14:50:12 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/histroy?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1680780038458,
+date : Thu Apr 06 2023 14:50:38 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/history?pageSize=100,
+body : {}
+},

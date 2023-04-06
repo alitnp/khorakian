@@ -118,6 +118,13 @@ export const existsStringValidation = ({
   return validations;
 };
 
+export const isNumberInBody = (name: string, persianName: string) => [
+  ...englishNumbersSanitization(name),
+  body(name, `${persianName} ارسال نشده است.`)
+    .isNumeric()
+    .withMessage(`فقط اعداد برای ${persianName} قابل قبول است.`),
+];
+
 export const mobileNumberValidations = [
   ...englishNumbersSanitization("mobileNumber"),
   body("mobileNumber", "شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹")

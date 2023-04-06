@@ -1,7 +1,7 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IHistory } from "@my/types";
 import { getAllData, IData } from "@/data/globalData";
-import { ConflictError, NotFoundError } from "@/helpers/error";
+import { NotFoundError } from "@/helpers/error";
 
 class HistoryData implements IData<IHistory> {
   History: Model<IHistory>;
@@ -27,10 +27,6 @@ class HistoryData implements IData<IHistory> {
   };
 
   create = async ({ title }: IHistory): Promise<IHistory> => {
-    const existingHistory = await this.History.findOne({ title });
-    if (!!existingHistory)
-      throw new ConflictError(" تجربه دسته بندی با این نام قبلا ثبت شده است.");
-
     const History = new this.History({
       title,
     });
@@ -38,24 +34,21 @@ class HistoryData implements IData<IHistory> {
   };
 
   update = async ({ _id, title }: IHistory): Promise<IHistory> => {
-    const history = await this.History.findById(_id);
+    const history = await this.History.findByIdAndUpdate(
+      _id,
+      {
+        $set: { title },
+      },
+      { new: true },
+    );
     if (!history) throw new NotFoundError();
 
-    const existingHistory = await this.History.findOne({
-      title,
-    });
-    if (!!existingHistory) throw new ConflictError();
-
-    history.title = title;
-
-    return await history.save();
+    return await history;
   };
 
   remove = async (id: string): Promise<IHistory> => {
-    const history = await this.History.findById(id);
+    const history = await this.History.findByIdAndDelete(id);
     if (!history) throw new NotFoundError();
-
-    await this.History.findByIdAndDelete(id);
 
     return history;
   };

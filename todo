@@ -9,18 +9,19 @@ video:
 
 user:
   - front:
-    -userList
-    -userToggleAdmin
-    -userSearch
+    -userList @done
+    -userToggleAdmin @done
+    -userSearch @done
+    -user profile image
   - backend
-    -experienceCategory 
+    -experienceCategory @done
 
 post:
   - backend 
     - crud @done
-    - validations
-    - handleLike
-    - handleComment
+    - validations @done
+    - handleLike @done
+    - handleComment @done
   - front
     - crud @done
 
@@ -32,6 +33,6 @@ user:
 
 comments:
   - back
-    - create Comments
-    - reply comment
-    - like comment
+    - create Comments @done
+    - reply comment @done
+    - like comment @done
