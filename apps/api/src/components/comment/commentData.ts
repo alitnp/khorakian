@@ -14,16 +14,14 @@ class CommentData<commentModel> {
     const searchQuery: any = {};
     if (req.query.user) searchQuery.user = req.query.user;
     if (req.query.content) searchQuery.content = req.query.content;
+    const populate = ["replies.user"];
+    if (req.query.content) populate.push("user");
+    if (req.query.user) populate.push("content");
+    if (!req.query.content && !req.query.user)
+      populate.push(...["user", "content"]);
 
-    return getAllData<commentModel>(searchQuery, req, this.Comment, [
-      "content",
-      "user",
-    ]);
+    return getAllData<commentModel>(searchQuery, req, this.Comment, populate);
   };
-
-  // getContentComments = async (contentId: string):Promise<ApiDataListResponse<commentModel>> => {}
-
-  // }
 
   isUserCommented = async (
     contentId: string,
@@ -77,11 +75,18 @@ class CommentData<commentModel> {
     return comment;
   };
 
-  // updateReply = async (commentId: string, replyId: string, text: string) => {
-  //   const comment = await this.Comment.findByIdAndUpdate(commentId, {
-  //     $set: { replies: {  } },
-  //   });
-  // };
+  updateReply = async (commentId: string, replyId: string, text: string) => {
+    const comment = await this.Comment.updateOne(
+      {
+        _id: commentId,
+        "replies._id": replyId,
+      },
+      { $set: { "replies.$.text": text } },
+    );
+    if (!comment) throw new NotFoundError("نظر یافت نشد");
+
+    return comment;
+  };
 
   removeReply = async (commentId: string, replyId: string) => {
     const comment = await this.Comment.findByIdAndUpdate(commentId, {

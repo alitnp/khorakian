@@ -35,12 +35,28 @@ const postData = new PostData(
 const postController = new PostController(postData);
 
 //get
+//get all post likes
+router.get("/like", postController.getAllLikes);
+//get all post comments
+router.get("/comment", postController.getAllComments);
 // get a signgle post with id
 router.get("/:id", validate(getPostValidations), postController.get);
 // get a list of posts
 router.get("/", postController.getAll);
 
 //post
+//add a reply to comment by comment id
+router.post(
+  "/reply/:id",
+  [auth, ...validate(paramIdValidations)],
+  postController.reply,
+);
+//add a comment to post with post id and user id
+router.post(
+  "/comment/:id",
+  [auth, ...validate(paramIdValidations)],
+  postController.comment,
+);
 //like a post with post id and user id
 router.post(
   "/like/:id",

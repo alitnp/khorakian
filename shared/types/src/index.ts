@@ -144,6 +144,7 @@ export interface IPostLikeCreate {
 }
 export interface IPostLikeRead
 	extends DefaultModelProperties {
+	_id: string;
 	content: IPost;
 	user: IUser;
 }
@@ -157,6 +158,7 @@ export interface IPostComment
 }
 export interface IPostCommentRead
 	extends DefaultModelProperties {
+	_id: string;
 	content: string;
 	user: IUserRead;
 	text: string;
@@ -169,3 +171,21 @@ export interface ICommentReply
 }
 
 /* #endregion post*/
+
+//#region Home
+export interface ISlider extends DefaultModelProperties {
+	title?: string;
+	subTitle?: string;
+	shortDesc?: string;
+	desc?: string;
+	image?: string;
+	url?: string;
+	direction: "right" | "left" | "center";
+}
+export interface IHistory extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	from: number;
+	to: number;
+}
+//#endregion Home

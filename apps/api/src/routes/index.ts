@@ -6,6 +6,7 @@ import videoRoutes from "@/components/video/videoRoutes";
 import ideaCategoryRoutes from "@/components/ideaCategory/ideaCategoryRoutes";
 import experienceCategory from "@/components/experienceCategory/experienceRoutes";
 import postRoutes from "@/components/post/postRoutes";
+import historyRoutes from "@/components/Home/history/historyRoutes";
 
 const router = Router();
 
@@ -13,6 +14,9 @@ const router = Router();
 
 //!E-e
 router.use("/experienceCategory", experienceCategory);
+
+//!H-i
+router.use("/history", historyRoutes);
 
 //!I-i
 router.use("/ideaCategory", ideaCategoryRoutes);

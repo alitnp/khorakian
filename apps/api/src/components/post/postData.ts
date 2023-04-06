@@ -90,18 +90,18 @@ class PostData {
   };
 
   get = async (id: string, userId?: string): Promise<IPostRead> => {
-    const post = await this.Post.findById(id)
+    const post = (await this.Post.findById(id)
       .populate<{ images: IImage[] }>("images")
       .populate<{ videos: IVideoRead[] }>({
         path: "videos",
         populate: { path: "thumbnail" },
       })
-      .lean();
+      .lean()) as IPostRead;
 
     if (!post) throw new NotFoundError();
     await this.Post.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
-    const postRead: IPostRead = { ...post, liked: false };
+    const postRead = { ...post, liked: false };
     if (userId) postRead.liked = await this.PostLike.isUserLiked(id, userId);
 
     return postRead;
@@ -220,17 +220,47 @@ class PostData {
     return await this.get(postId);
   };
 
-  comment = async (postId: string, userId: string, text: string) => {
+  getAllLikes = async (req: Req): Promise<ApiDataListResponse<IPostLike>> => {
+    const comments = await this.PostLike.getAll(req);
+
+    return comments;
+  };
+
+  getAllComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<IPostComment>> => {
+    const comments = await this.PostComment.getAll(req);
+
+    return comments;
+  };
+
+  comment = async (
+    postId: string,
+    userId: string | undefined,
+    text: string,
+  ) => {
     if (!userId) throw new UnauthenticatedError();
 
     const post = await this.Post.findById(postId);
     if (!post) throw new NotFoundError();
 
-    const comment = this.PostComment.create(postId, userId, text);
+    await this.PostComment.create(postId, userId, text);
 
     await this.Post.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
 
-    return comment;
+    return await this.get(post._id);
+  };
+
+  reply = async (
+    commentId: string,
+    userId: string | undefined,
+    text: string,
+  ) => {
+    if (!userId) throw new UnauthenticatedError();
+
+    const comment = await this.PostComment.reply(commentId, userId, text);
+
+    return await this.get(comment.content as string);
   };
 }
 

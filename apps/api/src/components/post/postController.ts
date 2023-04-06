@@ -1,4 +1,4 @@
-import { IPostRead } from "@my/types";
+import { IPostComment, IPostLike, IPostRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 import PostData from "@/components/post/postData";
 import { getUserIdFromReq } from "@/utils/util";
@@ -11,6 +11,16 @@ class PostController {
   getAll = async (req: Req, res: Res) => {
     const result = await this.data.getAll(req, getUserIdFromReq(req));
     res.send(apiDataListResponse<IPostRead>(result));
+  };
+
+  getAllComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAllComments(req);
+    res.send(apiDataListResponse<IPostComment>(result));
+  };
+
+  getAllLikes = async (req: Req, res: Res) => {
+    const result = await this.data.getAllLikes(req);
+    res.send(apiDataListResponse<IPostLike>(result));
   };
 
   get = async (req: Req, res: Res) => {
@@ -32,10 +42,30 @@ class PostController {
     const result = await this.data.remove(req.params.id);
     res.send(apiDataResponse<IPostRead>(result));
   };
+
+  comment = async (req: Req, res: Res) => {
+    const result = await this.data.comment(
+      req.params.id,
+      getUserIdFromReq(req),
+      req.body.text,
+    );
+    res.send(apiDataResponse<IPostRead>(result));
+  };
+
+  reply = async (req: Req, res: Res) => {
+    const result = await this.data.reply(
+      req.params.id,
+      getUserIdFromReq(req),
+      req.body.text,
+    );
+    res.send(apiDataResponse<IPostRead>(result));
+  };
+
   like = async (req: Req, res: Res) => {
     const result = await this.data.like(req.params.id, getUserIdFromReq(req));
     res.send(apiDataResponse<IPostRead>(result));
   };
+
   disLike = async (req: Req, res: Res) => {
     const result = await this.data.dislike(
       req.params.id,
