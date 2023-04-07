@@ -1,7 +1,17 @@
 import { IData } from "@/data/globalData";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 
-class BaseController<Model, CreateModel = {}, UpdateModel = {}> {
+export interface IBasicController {
+  getAll: (req: Req, res: Res) => void;
+  get: (req: Req, res: Res) => void;
+  create: (req: Req, res: Res) => void;
+  update: (req: Req, res: Res) => void;
+  remove: (req: Req, res: Res) => void;
+}
+
+class BaseController<Model, CreateModel = {}, UpdateModel = {}>
+  implements IBasicController
+{
   data: IData<Model, CreateModel, UpdateModel>;
 
   constructor(data: IData<Model, CreateModel, UpdateModel>) {

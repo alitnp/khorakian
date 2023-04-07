@@ -14,6 +14,9 @@ class HistoryData implements IData<IHistory> {
     const searchQuery: any = {};
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
+    if (req.query.from)
+      searchQuery.from = { $regex: req.query.from, $options: "i" };
+    if (req.query.to) searchQuery.to = { $regex: req.query.to, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
     return getAllData<IHistory>(searchQuery, req, this.History);
@@ -26,18 +29,20 @@ class HistoryData implements IData<IHistory> {
     return history;
   };
 
-  create = async ({ title }: IHistory): Promise<IHistory> => {
+  create = async ({ title, from, to }: IHistory): Promise<IHistory> => {
     const History = new this.History({
       title,
+      from,
+      to,
     });
     return await History.save();
   };
 
-  update = async ({ _id, title }: IHistory): Promise<IHistory> => {
+  update = async ({ _id, title, from, to }: IHistory): Promise<IHistory> => {
     const history = await this.History.findByIdAndUpdate(
       _id,
       {
-        $set: { title },
+        $set: { title, from, to },
       },
       { new: true },
     );

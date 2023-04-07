@@ -58,10 +58,17 @@ class PostData {
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 
-    const { pageNumber, pageSize, totalItems, totalPages, sortBy, desc } =
-      await paginationProps(searchQuery, req, this.Post);
+    const {
+      fixedSearchQuery,
+      pageNumber,
+      pageSize,
+      totalItems,
+      totalPages,
+      sortBy,
+      desc,
+    } = await paginationProps(searchQuery, req, this.Post);
 
-    const data: IPostRead[] = await this.Post.find(searchQuery)
+    const data: IPostRead[] = await this.Post.find(fixedSearchQuery)
       .populate<{ images: IImage[]; videos: IVideoRead[] }>([
         "videos",
         "images",

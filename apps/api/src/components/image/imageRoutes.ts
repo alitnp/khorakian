@@ -15,32 +15,32 @@ import { validate } from "@/helpers";
 import isAdmin from "@/middlewares/isAdmin";
 
 const router = Router();
-const imageData = new ImageData(Image);
-const imageController = new ImageController(imageData);
+const data = new ImageData(Image);
+const controller = new ImageController(data);
 
 //get
-router.get("/:id", validate(getImageValidations), imageController.get);
-router.get("/", imageController.getAll);
+router.get("/:id", validate(getImageValidations), controller.get);
+router.get("/", controller.getAll);
 
 //post
 router.post(
   "/upload",
   [auth, ...imageForm(), ...validate(createImageValidations)],
-  imageController.createImageFile,
+  controller.createImageFile,
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateImageValidations)],
-  imageController.update,
+  controller.update,
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteImageValidations)],
-  imageController.remove,
+  controller.remove,
 );
 
 export default router;

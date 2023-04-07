@@ -1,4 +1,4 @@
-import { ISlider } from "@my/types";
+import { ISlider, ISliderRead } from "@my/types";
 import SliderData from "@/components/Home/silder/sliderData";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 
@@ -27,6 +27,11 @@ class SliderController {
   update = async (req: Req, res: Res) => {
     const result = await this.data.update({ _id: req.params.id, ...req.body });
     res.send(apiDataResponse<ISlider>(result));
+  };
+
+  setIndex = async (req: Req, res: Res) => {
+    const result = await this.data.setIndex(req.params.id, req.body.index);
+    res.send(apiDataResponse<ISliderRead>(result));
   };
 
   remove = async (req: Req, res: Res) => {

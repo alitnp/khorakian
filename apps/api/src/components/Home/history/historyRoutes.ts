@@ -12,32 +12,32 @@ import {
 } from "@/components/Home/history/historyValidations";
 
 const router = Router();
-const historyData = new HistoryData(History);
-const historyController = new HistoryController(historyData);
+const data = new HistoryData(History);
+const controller = new HistoryController(data);
 
 //get
-router.get("/:id", validate(getHistoryValidations), historyController.get);
-router.get("/", historyController.getAll);
+router.get("/:id", validate(getHistoryValidations), controller.get);
+router.get("/", controller.getAll);
 
 //post
 router.post(
   "/",
   [isAdmin, ...validate(createHistoryValidations)],
-  historyController.create,
+  controller.create,
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateHistoryValidations)],
-  historyController.update,
+  controller.update,
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteHistoryValidations)],
-  historyController.remove,
+  controller.remove,
 );
 
 export default router;

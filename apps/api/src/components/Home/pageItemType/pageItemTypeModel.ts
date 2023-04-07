@@ -1,10 +1,10 @@
-import { IIdeaCategory } from "@my/types";
+import { IPageItemType } from "@my/types";
 import { model, Schema } from "mongoose";
 import { defaultSchemaProps } from "@/utils/constants";
 
-export const ideaCategoryPersianName = "دسته بندی ایده";
+export const pageItemTypePersianName = "نوع المان صفحه";
 
-export const ideaCategorySchema = new Schema<IIdeaCategory>({
+export const pageItemTypeSchema = new Schema<IPageItemType>({
   title: {
     type: String,
     required: [true, "عنوان تعیین نشده."],
@@ -14,7 +14,7 @@ export const ideaCategorySchema = new Schema<IIdeaCategory>({
   ...defaultSchemaProps,
 });
 
-export const IdeaCategory = model<IIdeaCategory>(
-  "IdeaCategory",
-  ideaCategorySchema,
+export const PageItemType = model<IPageItemType>(
+  "PageItemType",
+  pageItemTypeSchema,
 );

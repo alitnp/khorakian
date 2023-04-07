@@ -1,7 +1,8 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse, ISlider } from "@my/types";
+import { ApiDataListResponse, IImage, ISlider, ISliderRead } from "@my/types";
 import { getAllData, IData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
+import { getSortBy } from "@/utils/pagination";
 
 class SliderData implements IData<ISlider> {
   Slider: Model<ISlider>;
@@ -12,7 +13,6 @@ class SliderData implements IData<ISlider> {
 
   getAll = async (req: Req): Promise<ApiDataListResponse<ISlider>> => {
     const searchQuery: any = {};
-    searchQuery.sortBy = "index";
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.subTitle)
@@ -27,11 +27,14 @@ class SliderData implements IData<ISlider> {
       searchQuery.url = { $regex: req.query.url, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
+    //if theres no custom sortBy then sort by index
+    if (!getSortBy(req)) req.query.sortBy = "index";
+
     return getAllData<ISlider>(searchQuery, req, this.Slider, ["image"]);
   };
 
   get = async (id: string): Promise<ISlider> => {
-    const slider = await this.Slider.findById(id);
+    const slider = await this.Slider.findById(id).populate("image");
     if (!slider) throw new NotFoundError();
 
     return slider;
@@ -77,6 +80,18 @@ class SliderData implements IData<ISlider> {
     if (!slider) throw new NotFoundError();
 
     return await slider.save();
+  };
+
+  setIndex = async (_id: string, index: number): Promise<ISliderRead> => {
+    const slider = await this.Slider.findByIdAndUpdate(
+      _id,
+      { $set: { index } },
+      { new: true },
+    ).populate<{ image: IImage }>("image");
+
+    if (!slider) throw new NotFoundError();
+
+    return slider;
   };
 
   remove = async (id: string): Promise<ISlider> => {

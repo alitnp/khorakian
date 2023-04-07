@@ -15,6 +15,11 @@ export const getUserIdFromReq = (req: Req): string | undefined => {
   return JSON.parse(req.headers.tokenData as string)._id;
 };
 
+export const getUserIsAdminFromReq = (req: Req): boolean => {
+  if (!req.headers.tokenData) return false;
+  return JSON.parse(req.headers.tokenData as string).isAdmin;
+};
+
 export const stringToBoolean = (string: any): boolean => {
   string = string + "";
   switch (string?.toLowerCase()?.trim()) {

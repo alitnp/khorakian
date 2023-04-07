@@ -24,7 +24,7 @@ import CommentData from "@/components/comment/commentData";
 import { PostComment } from "@/components/comment/postCommentModel";
 
 const router = Router();
-const postData = new PostData(
+const data = new PostData(
   Post,
   new PostCategoryData(PostCategory),
   new VideoData(Video, new ImageData(Image)),
@@ -32,48 +32,48 @@ const postData = new PostData(
   new LikeData(PostLike),
   new CommentData(PostComment),
 );
-const postController = new PostController(postData);
+const controller = new PostController(data);
 
 //get
 //get all post likes
-router.get("/like", postController.getAllLikes);
+router.get("/like", controller.getAllLikes);
 //get all post comments
-router.get("/comment", postController.getAllComments);
+router.get("/comment", controller.getAllComments);
 // get a signgle post with id
-router.get("/:id", validate(getPostValidations), postController.get);
+router.get("/:id", validate(getPostValidations), controller.get);
 // get a list of posts
-router.get("/", postController.getAll);
+router.get("/", controller.getAll);
 
 //post
 //add a reply to comment by comment id
 router.post(
   "/reply/:id",
   [auth, ...validate(paramIdValidations)],
-  postController.reply,
+  controller.reply,
 );
 //add a comment to post with post id and user id
 router.post(
   "/comment/:id",
   [auth, ...validate(paramIdValidations)],
-  postController.comment,
+  controller.comment,
 );
 //like a post with post id and user id
 router.post(
   "/like/:id",
   [auth, ...validate(paramIdValidations)],
-  postController.like,
+  controller.like,
 );
 //dislike a post with post id and user id
 router.post(
   "/dislike/:id",
   [auth, ...validate(paramIdValidations)],
-  postController.disLike,
+  controller.disLike,
 );
 //create a new post - admin only
 router.post(
   "/",
   [isAdmin, ...validate(createPostValidations)],
-  postController.create,
+  controller.create,
 );
 
 //put
@@ -81,7 +81,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updatePostValidations)],
-  postController.update,
+  controller.update,
 );
 
 //delete
@@ -89,7 +89,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deletePostValidations)],
-  postController.remove,
+  controller.remove,
 );
 
 export default router;

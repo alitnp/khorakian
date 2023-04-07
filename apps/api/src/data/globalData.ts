@@ -6,6 +6,8 @@ import {
   getSortBy,
   getSortByDescending,
 } from "@/utils/pagination";
+import { ConflictError, NotFoundError } from "@/helpers/error";
+import { getUserIsAdminFromReq } from "@/utils/util";
 
 export interface IData<Model, CreateModel = {}, UpdateModel = {}> {
   getAll(req: Req): Promise<ApiDataListResponse<Model>>;
@@ -16,17 +18,90 @@ export interface IData<Model, CreateModel = {}, UpdateModel = {}> {
   [key: string]: any;
 }
 
+export class BasicData<entityModel> implements IData<entityModel> {
+  model: Model<entityModel>;
+  persianName: string;
+  constructor(model: Model<entityModel>, persianName = "") {
+    this.model = model;
+    this.persianName = persianName;
+  }
+
+  getAll = async (req: Req): Promise<ApiDataListResponse<entityModel>> => {
+    const searchQuery: any = {};
+    if (req.query.title)
+      searchQuery.title = { $regex: req.query.title, $options: "i" };
+    if (req.query._id) searchQuery._id = { $regex: req.query._id };
+    return getAllData<entityModel>(searchQuery, req, this.model);
+  };
+
+  get = async (id: string): Promise<entityModel> => {
+    const item = await this.model.findById(id);
+    if (!item) throw new NotFoundError();
+    return item;
+  };
+
+  create = async ({ title }: { title: string }): Promise<entityModel> => {
+    const existingItem = await this.model.findOne({ title });
+    if (!!existingItem)
+      throw new ConflictError(
+        `یک ${this.persianName} با این نام قبلا ثبت شده.`,
+      );
+    const item = new this.model({
+      title,
+    });
+    return await item.save();
+  };
+
+  update = async ({
+    _id,
+    title,
+  }: {
+    _id: string;
+    title: string;
+  }): Promise<entityModel> => {
+    const existingItem = await this.model.findOne({ title });
+    console.log("existing Item : ", existingItem);
+    if (!!existingItem)
+      throw new ConflictError(
+        `یک ${this.persianName} با این نام قبلا ثبت شده.`,
+      );
+
+    const item = await this.model.findByIdAndUpdate(
+      _id,
+      { $set: { title } },
+      { new: true },
+    );
+    if (!item) throw new NotFoundError();
+
+    return await item.save();
+  };
+
+  remove = async (id: string): Promise<entityModel> => {
+    const item = await this.model.findByIdAndRemove(id);
+    if (!item) throw new NotFoundError();
+
+    return item;
+  };
+}
+
 export const getAllData = async <T>(
   searchQuery: any,
   req: Req,
   model: Model<T>,
   populate: string[] = [],
 ): Promise<ApiDataListResponse<T>> => {
-  const { pageNumber, pageSize, totalItems, totalPages, sortBy, desc } =
-    await paginationProps(searchQuery, req, model);
+  const {
+    fixedSearchQuery,
+    pageNumber,
+    pageSize,
+    totalItems,
+    totalPages,
+    sortBy,
+    desc,
+  } = await paginationProps(searchQuery, req, model);
 
   const data = await model
-    .find(searchQuery)
+    .find(fixedSearchQuery)
     .populate(populate)
     .limit(pageSize)
     .skip((pageNumber - 1) * pageSize)
@@ -56,7 +131,11 @@ export const paginationProps = async <T>(
   const sortBy = getSortBy(req) || "";
   const desc = getSortByDescending(req);
 
+  //if the user is not admin then return only published content
+  if (!getUserIsAdminFromReq(req)) searchQuery.isPublished = true;
+
   return {
+    fixedSearchQuery: searchQuery,
     pageNumber,
     pageSize,
     totalItems,

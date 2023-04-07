@@ -2750,3 +2750,99 @@ body : {"title":"یب لا 2","postCategory":"641c987a11686575beabb5b3","feature
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1680843858988,
+date : Fri Apr 07 2023 08:34:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/642fa446f2473d01e21a75de,
+body : {"_id":"642fa446f2473d01e21a75de","title":"تیکت2","isPublished":true,"creationDate":1680843846209,"__v":0}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680843886471,
+date : Fri Apr 07 2023 08:34:46 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/642fa446f2473d01e21a75de,
+body : {"_id":"642fa446f2473d01e21a75de","title":"تیکت2","isPublished":true,"creationDate":1680843846209,"__v":0}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680843966320,
+date : Fri Apr 07 2023 08:36:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/642fa446f2473d01e21a75de,
+body : {"_id":"642fa446f2473d01e21a75de","title":"تیکت22","isPublished":true,"creationDate":1680843846209,"__v":0}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680844039498,
+date : Fri Apr 07 2023 08:37:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/642fa446f2473d01e21a75de,
+body : {"_id":"642fa446f2473d01e21a75de","title":"تیکت22","isPublished":true,"creationDate":1680843846209,"__v":0}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680844043505,
+date : Fri Apr 07 2023 08:37:23 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/642fa446f2473d01e21a75de,
+body : {"_id":"642fa446f2473d01e21a75de","title":"تیکت22","isPublished":true,"creationDate":1680843846209,"__v":0}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680844090535,
+date : Fri Apr 07 2023 08:38:10 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/642fa446f2473d01e21a75de,
+body : {"_id":"642fa446f2473d01e21a75de","title":"تیکت22","isPublished":true,"creationDate":1680843846209,"__v":0}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680857796881,
+date : Fri Apr 07 2023 12:26:36 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/slider,
+body : {"title":"ab2c","subTitle":"ab2c","shortDesc":"ab2c","desc":"ab2c","image":"6420a24186ecfa74141331b7","url":"/post/asdflkj","direction":"right","index":""}
+},
+Response : {"status":400,"message":"فقط اعداد برای ترتیب قابل قبول است.","details":{"index":"فقط اعداد برای ترتیب قابل قبول است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1680857848584,
+date : Fri Apr 07 2023 12:27:28 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/slider/63ddea8d0265823d63c3284b,
+body : {"title":"ab2c","subTitle":"ab2c","shortDesc":"ab2c","desc":"ab2c","image":"6420a24186ecfa74141331b7","url":"/post/asdflkj","direction":"right","index":"0"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

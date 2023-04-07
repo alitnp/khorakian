@@ -1,4 +1,4 @@
-import { DoubleRightOutlined, DownloadOutlined, DashboardOutlined, InfoCircleOutlined, YoutubeOutlined, PictureOutlined, UserOutlined } from '@ant-design/icons';
+import { DoubleRightOutlined, DashboardOutlined, InfoCircleOutlined, YoutubeOutlined, PictureOutlined, UserOutlined } from '@ant-design/icons';
 import TcMenu from 'components/UI/Menu/TcMenu';
 import useScreenWidth from 'global/helperFunctions/useScreenWidth';
 import { memo, useEffect, useState } from 'react';
@@ -43,10 +43,10 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
       ))}
 
       <div className='px-2 mt-auto cursor-pointer'>
-        <div onClick={() => setIsShowModal(true)} className='flex items-center justify-center gap-1 py-1 mt-6 mb-1 text-sm rounded-md hover:bg-t-layer-bg-color'>
+        {/* <div onClick={() => setIsShowModal(true)} className='flex items-center justify-center gap-1 py-1 mt-6 mb-1 text-sm rounded-md hover:bg-t-layer-bg-color'>
           <DownloadOutlined />
           <span className={`${open ? 'max-w-[100px]' : 'max-w-0'} overflow-hidden transition-all whitespace-nowrap`}>دانلود اپلیکیشن</span>
-        </div>
+        </div> */}
 
         {!horizental && (
           <div

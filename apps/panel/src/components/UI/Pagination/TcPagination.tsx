@@ -4,7 +4,7 @@ import { separator } from 'global/default';
 import { FC, memo } from 'react';
 
 interface ITcPagination extends PaginationProps {
-  onPaginationHandler: (a?: number, b?: number) => void;
+  onPaginationHandler: (_pageNumber?: number, _pageSize?: number) => void;
 }
 
 type pageItemType = 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next';

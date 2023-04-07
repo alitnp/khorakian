@@ -18,33 +18,33 @@ import ImageData from "@/components/image/imageData";
 import isAdmin from "@/middlewares/isAdmin";
 
 const router = Router();
-const videoData = new VideoData(Video, new ImageData(Image));
-const videoController = new VideoController(videoData);
+const data = new VideoData(Video, new ImageData(Image));
+const controller = new VideoController(data);
 
 //get
-router.get("/detail/:id", validate(getVideoValidations), videoController.get);
-router.get("/:filename", validate(playVideoValidations), videoController.play);
-router.get("/", auth, videoController.getAll);
+router.get("/detail/:id", validate(getVideoValidations), controller.get);
+router.get("/:filename", validate(playVideoValidations), controller.play);
+router.get("/", auth, controller.getAll);
 
 //post
 router.post(
   "/upload",
   [auth, ...videoForm(), ...validate(createVideoValidations)],
-  videoController.create,
+  controller.create,
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateVideoValidations)],
-  videoController.update,
+  controller.update,
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteVideoValidations)],
-  videoController.remove,
+  controller.remove,
 );
 
 export default router;

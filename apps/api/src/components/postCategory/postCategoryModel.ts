@@ -8,15 +8,6 @@ export const postCategorySchema = new Schema<IPostCategory>({
     required: [true, "عنوان تعیین نشده."],
     minlength: [2, "عنوان حداقل باید ۲ کاراکتر باشد."],
     maxlength: [50, "عنوان حداکثر ۵۰ کاراکتر."],
-    // unique: true,
-    // validate: {
-    //   validator: async (title: string) => {
-    //     const postCategory = await PostCategory.findOne({ title });
-    //     if (!postCategory) return true;
-    //     else return false;
-    //   },
-    //   message: "این عنوان تکراری است.",
-    // },
   },
   ...defaultSchemaProps,
 });

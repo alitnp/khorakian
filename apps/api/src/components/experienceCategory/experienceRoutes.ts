@@ -1,49 +1,11 @@
-import { Router } from "express";
-import isAdmin from "@/middlewares/isAdmin";
-import { validate } from "@/helpers";
 import ExperienceCategoryController from "@/components/experienceCategory/experienceController";
 import ExperienceCategoryData from "@/components/experienceCategory/experienceData";
 import { ExperienceCategory } from "@/components/experienceCategory/experienceModel";
-import {
-  createExperienceCategoryValidations,
-  deleteExperienceCategoryValidations,
-  getExperienceCategoryValidations,
-  updateExperienceCategoryValidations,
-} from "@/components/experienceCategory/experienceValidations";
+import { basicCrud } from "@/routes/globalRouter";
 
-const router = Router();
-const experienceCategoryData = new ExperienceCategoryData(ExperienceCategory);
-const experienceCategoryController = new ExperienceCategoryController(
-  experienceCategoryData,
-);
+const data = new ExperienceCategoryData(ExperienceCategory);
+const controller = new ExperienceCategoryController(data);
 
-//get
-router.get(
-  "/:id",
-  validate(getExperienceCategoryValidations),
-  experienceCategoryController.get,
-);
-router.get("/", experienceCategoryController.getAll);
-
-//post
-router.post(
-  "/",
-  [isAdmin, ...validate(createExperienceCategoryValidations)],
-  experienceCategoryController.create,
-);
-
-//put
-router.put(
-  "/:id",
-  [isAdmin, ...validate(updateExperienceCategoryValidations)],
-  experienceCategoryController.update,
-);
-
-//delete
-router.delete(
-  "/:id",
-  [isAdmin, ...validate(deleteExperienceCategoryValidations)],
-  experienceCategoryController.remove,
-);
+const router = basicCrud(controller, true);
 
 export default router;

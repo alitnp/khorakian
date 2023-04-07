@@ -184,10 +184,40 @@ export interface ISlider extends DefaultModelProperties {
 	url?: string;
 	direction: "right" | "left" | "center";
 }
+export interface ISliderRead
+	extends DefaultModelProperties {
+	_id: string;
+	index: number;
+	title?: string;
+	subTitle?: string;
+	shortDesc?: string;
+	desc?: string;
+	image?: IImage;
+	url?: string;
+	direction: "right" | "left" | "center";
+}
 export interface IHistory extends DefaultModelProperties {
 	_id: string;
 	title: string;
 	from: number;
 	to: number;
+}
+
+export interface IPageItemType
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+}
+
+export interface IPageItemSorting
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+}
+
+export interface IPageItemStyle
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
 }
 //#endregion Home

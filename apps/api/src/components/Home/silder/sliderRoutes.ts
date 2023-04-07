@@ -28,6 +28,11 @@ router.post(
 
 //put
 router.put(
+  "/setIndex/:id",
+  [isAdmin, ...validate(updateSliderValidations)],
+  sliderController.setIndex,
+);
+router.put(
   "/:id",
   [isAdmin, ...validate(updateSliderValidations)],
   sliderController.update,
