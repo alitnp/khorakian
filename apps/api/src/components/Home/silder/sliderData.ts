@@ -34,10 +34,10 @@ class SliderData implements IData<ISlider> {
   };
 
   get = async (id: string): Promise<ISlider> => {
-    const slider = await this.Slider.findById(id).populate("image");
-    if (!slider) throw new NotFoundError();
+    const item = await this.Slider.findById(id).populate("image");
+    if (!item) throw new NotFoundError();
 
-    return slider;
+    return item;
   };
 
   create = async ({
@@ -50,7 +50,7 @@ class SliderData implements IData<ISlider> {
     url,
     direction = "right",
   }: ISlider): Promise<ISlider> => {
-    const slider = new this.Slider({
+    const item = new this.Slider({
       title,
       subTitle,
       shortDesc,
@@ -60,7 +60,7 @@ class SliderData implements IData<ISlider> {
       url,
       direction,
     });
-    return await slider.save();
+    return await item.save();
   };
 
   update = async ({
@@ -74,31 +74,31 @@ class SliderData implements IData<ISlider> {
     url,
     direction = "right",
   }: ISlider): Promise<ISlider> => {
-    const slider = await this.Slider.findByIdAndUpdate(_id, {
+    const item = await this.Slider.findByIdAndUpdate(_id, {
       $set: { title, subTitle, shortDesc, desc, index, image, url, direction },
     });
-    if (!slider) throw new NotFoundError();
+    if (!item) throw new NotFoundError();
 
-    return await slider.save();
+    return await item.save();
   };
 
   setIndex = async (_id: string, index: number): Promise<ISliderRead> => {
-    const slider = await this.Slider.findByIdAndUpdate(
+    const item = await this.Slider.findByIdAndUpdate(
       _id,
       { $set: { index } },
       { new: true },
     ).populate<{ image: IImage }>("image");
 
-    if (!slider) throw new NotFoundError();
+    if (!item) throw new NotFoundError();
 
-    return slider;
+    return item;
   };
 
   remove = async (id: string): Promise<ISlider> => {
-    const history = await this.Slider.findByIdAndDelete(id);
-    if (!history) throw new NotFoundError();
+    const item = await this.Slider.findByIdAndDelete(id);
+    if (!item) throw new NotFoundError();
 
-    return history;
+    return item;
   };
 }
 

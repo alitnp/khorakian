@@ -11,6 +11,7 @@ import pageItemTypeRoutes from "@/components/Home/pageItemType/pageItemTypeRoute
 import pageItemSortingRoutes from "@/components/Home/pageItemSorting/pageItemSortingRoutes";
 import pageItemStyleRoutes from "@/components/Home/pageItemStyle/pageItemStyleRoutes";
 import sliderRoutes from "@/components/Home/silder/sliderRoutes";
+import pageItemRoutes from "@/components/Home/pageItem/pageItemRoutes";
 
 const router = Router();
 
@@ -30,6 +31,7 @@ router.use("/image", imageRoutes);
 router.use("/pageItemSorting", pageItemSortingRoutes);
 router.use("/pageItemStyle", pageItemStyleRoutes);
 router.use("/pageItemType", pageItemTypeRoutes);
+router.use("/pageItem", pageItemRoutes);
 router.use("/post", postRoutes);
 router.use("/postcategory", postCategoryRoutes);
 

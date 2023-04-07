@@ -2,7 +2,7 @@ import { IPageItemStyle } from "@my/types";
 import { model, Schema } from "mongoose";
 import { defaultSchemaProps } from "@/utils/constants";
 
-export const pageItemStylePersianName = "نوع المان صفحه";
+export const pageItemStylePersianName = "طریقه نمایش المان";
 
 export const pageItemStyleSchema = new Schema<IPageItemStyle>({
   title: {

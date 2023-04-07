@@ -1,4 +1,5 @@
 /* #region global */
+
 export interface ApiDataResponse<T> {
 	status?: number;
 	message: string;
@@ -220,4 +221,42 @@ export interface IPageItemStyle
 	_id: string;
 	title: string;
 }
+
+export interface IPageItem extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	subTitle?: string;
+	type?: string;
+	sorting?: string;
+	style?: string;
+	index: number;
+}
+
+export interface IPageItemRead
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	subTitle?: string;
+	type: IPageItemType;
+	sorting: IPageItemSorting;
+	style: IPageItemStyle;
+	index: number;
+}
+
+export interface ISocialMedia
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	url: string;
+	image?: string;
+}
+
+export interface ISocialMediaRead
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	url: string;
+	image: IImage;
+}
+
 //#endregion Home

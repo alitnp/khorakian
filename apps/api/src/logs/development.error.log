@@ -2846,3 +2846,27 @@ body : {"title":"ab2c","subTitle":"ab2c","shortDesc":"ab2c","desc":"ab2c","image
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1680871758994,
+date : Fri Apr 07 2023 16:19:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1680885026082,
+date : Fri Apr 07 2023 20:00:26 GMT+0330 (وقت عادی ایران),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/pageitem,
+body : {"title":"ab2c","subTitle":"ab2c","type":"642fd58a3ee982f48470bb68","sorting":"642fad373f147ae58fdfaa9c","style":"642faf1edfda66cf153cae20","index":"0"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
