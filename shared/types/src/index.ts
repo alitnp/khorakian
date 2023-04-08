@@ -1,262 +1,295 @@
+import { defaultSchemaProps } from '@/utils/constants';
 /* #region global */
 
 export interface ApiDataResponse<T> {
-	status?: number;
-	message: string;
-	data: T;
-	isSuccess?: boolean;
+  status?: number;
+  message: string;
+  data: T;
+  isSuccess?: boolean;
 }
 export interface ApiDataListResponse<T> {
-	status?: number;
-	message?: string;
-	pageNumber: number;
-	pageSize: number;
-	totalItems: number;
-	totalPages: number;
-	data: T[];
-	isSuccess?: boolean;
-	sortBy: string;
-	desc: boolean;
+  status?: number;
+  message?: string;
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+  data: T[];
+  isSuccess?: boolean;
+  sortBy: string;
+  desc: boolean;
 }
 
 export type DefaultModelProperties = {
-	creationDate: number;
-	isPublished: boolean;
+  creationDate: number;
+  isPublished: boolean;
 };
 /* #endregion */
 
 /* #region user */
 export interface IUser extends DefaultModelProperties {
-	_id: string;
-	firstName: string;
-	lastName: string;
-	fullName: string;
-	mobileNumber: string;
-	password: string;
-	isAdmin: boolean;
+  _id: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  mobileNumber: string;
+  password: string;
+  isAdmin: boolean;
 }
 export interface IUserRead extends DefaultModelProperties {
-	_id: string;
-	firstName: string;
-	lastName: string;
-	fullName: string;
-	mobileNumber: string;
-	isAdmin: boolean;
+  _id: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  mobileNumber: string;
+  isAdmin: boolean;
 }
 /* #endregion */
 
-/* #region post */
-export interface IPostCategory
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
+/* #region postCategory */
+export interface IPostCategory extends DefaultModelProperties {
+  _id: string;
+  title: string;
 }
 /* #endregion */
 
 /* #region experienceCategory */
-export interface IExperienceCategory
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
+export interface IExperienceCategory extends DefaultModelProperties {
+  _id: string;
+  title: string;
 }
-
-/* region experienceCategory */
-export interface IIdeaCategory
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
-}
-/* region ideaCategory */
 
 /* #region media */
 export interface IImage extends DefaultModelProperties {
-	_id: string;
-	fileName: string;
-	format: string;
-	pathname: string;
-	thumbnailPathname?: string;
-	title: string;
+  _id: string;
+  fileName: string;
+  format: string;
+  pathname: string;
+  thumbnailPathname?: string;
+  title: string;
 }
 export interface IVideo extends DefaultModelProperties {
-	_id: string;
-	thumbnail?: string;
-	qualityVariations: qualityVariation[];
-	title: string;
+  _id: string;
+  thumbnail?: string;
+  qualityVariations: qualityVariation[];
+  title: string;
 }
 export interface IVideoRead extends DefaultModelProperties {
-	_id: string;
-	thumbnail?: IImage;
-	qualityVariations: qualityVariation[];
-	title: string;
+  _id: string;
+  thumbnail?: IImage;
+  qualityVariations: qualityVariation[];
+  title: string;
 }
 export type qualityVariation = {
-	fileName: string;
-	size: number | string;
-	pathname: string;
-	format: string;
+  fileName: string;
+  size: number | string;
+  pathname: string;
+  format: string;
 };
 
 /* #endregion media */
 
+/* region ideaCategory */
+export interface IIdeaCategory extends DefaultModelProperties {
+  _id: string;
+  title: string;
+}
+/* region ideaCategory */
+
+/* #region idea */
+export interface IIdea extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  text: string;
+  ideaCategory: IIdeaCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  isAdminSubmitted: boolean;
+  isAdminApproved: boolean;
+}
+
+export interface IIdeaLike extends defaultSchemaProps {
+  content?: string;
+  user?: string;
+}
+export interface IIdeaComment extends defaultSchemaProps {
+  content?: string;
+  user?: string;
+  text: string;
+  replies?: ICommentReply[];
+}
+
+export interface IIdeaRead extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  text: string;
+  ideaCategory: IIdeaCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  liked?: boolean;
+  isAdminSubmitted: boolean;
+  isAdminApproved: boolean;
+}
+
+export interface IIdeaCreate extends DefaultModelProperties {
+  title: string;
+  text: string;
+  ideaCategory: string;
+  featured: boolean;
+}
+/* #endregion idea */
+
 /* #region post */
 export interface IPost extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	text: string;
-	images: string[];
-	videos: string[];
-	postCategory: IPostCategory;
-	featured: boolean;
-	viewCount: number;
-	likeCount: number;
-	commentCount: number;
+  _id: string;
+  title: string;
+  text: string;
+  images: string[];
+  videos: string[];
+  postCategory: IPostCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
 }
-export interface IPostCreate
-	extends DefaultModelProperties {
-	title: string;
-	text: string;
-	images: string[];
-	videos: string[];
-	postCategory: string;
-	featured: boolean;
+export interface IPostCreate extends DefaultModelProperties {
+  title: string;
+  text: string;
+  images: string[];
+  videos: string[];
+  postCategory: string;
+  featured: boolean;
 }
 
 export interface IPostRead extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	text: string;
-	images: IImage[];
-	videos: IVideoRead[];
-	postCategory: IPostCategory;
-	featured: boolean;
-	viewCount: number;
-	likeCount: number;
-	commentCount: number;
-	liked?: boolean;
+  _id: string;
+  title: string;
+  text: string;
+  images: IImage[];
+  videos: IVideoRead[];
+  postCategory: IPostCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  liked?: boolean;
 }
 
 export interface IPostLike extends DefaultModelProperties {
-	content?: string;
-	user?: string;
+  content?: string;
+  user?: string;
 }
 export interface IPostLikeCreate {
-	content: string;
-	user: string;
+  content: string;
+  user: string;
 }
-export interface IPostLikeRead
-	extends DefaultModelProperties {
-	_id: string;
-	content: IPost;
-	user: IUser;
+export interface IPostLikeRead extends DefaultModelProperties {
+  _id: string;
+  content: IPost;
+  user: IUser;
 }
 
-export interface IPostComment
-	extends DefaultModelProperties {
-	content?: string;
-	user?: string;
-	text: string;
-	replies?: ICommentReply[];
+export interface IPostComment extends DefaultModelProperties {
+  content?: string;
+  user?: string;
+  text: string;
+  replies?: ICommentReply[];
 }
-export interface IPostCommentRead
-	extends DefaultModelProperties {
-	_id: string;
-	content: string;
-	user: IUserRead;
-	text: string;
-	replies: ICommentReply[];
+export interface IPostCommentRead extends DefaultModelProperties {
+  _id: string;
+  content: string;
+  user: IUserRead;
+  text: string;
+  replies: ICommentReply[];
 }
-export interface ICommentReply
-	extends DefaultModelProperties {
-	user?: string;
-	text: string;
+export interface ICommentReply extends DefaultModelProperties {
+  user?: string;
+  text: string;
 }
 
 /* #endregion post*/
 
 //#region Home
 export interface ISlider extends DefaultModelProperties {
-	_id: string;
-	index: number;
-	title?: string;
-	subTitle?: string;
-	shortDesc?: string;
-	desc?: string;
-	image?: string;
-	url?: string;
-	direction: "right" | "left" | "center";
+  _id: string;
+  index: number;
+  title?: string;
+  subTitle?: string;
+  shortDesc?: string;
+  desc?: string;
+  image?: string;
+  url?: string;
+  direction: 'right' | 'left' | 'center';
 }
-export interface ISliderRead
-	extends DefaultModelProperties {
-	_id: string;
-	index: number;
-	title?: string;
-	subTitle?: string;
-	shortDesc?: string;
-	desc?: string;
-	image?: IImage;
-	url?: string;
-	direction: "right" | "left" | "center";
+export interface ISliderRead extends DefaultModelProperties {
+  _id: string;
+  index: number;
+  title?: string;
+  subTitle?: string;
+  shortDesc?: string;
+  desc?: string;
+  image?: IImage;
+  url?: string;
+  direction: 'right' | 'left' | 'center';
 }
 export interface IHistory extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	from: number;
-	to: number;
+  _id: string;
+  title: string;
+  from: number;
+  to: number;
 }
 
-export interface IPageItemType
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
+export interface IPageItemType extends DefaultModelProperties {
+  _id: string;
+  title: string;
 }
 
-export interface IPageItemSorting
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
+export interface IPageItemSorting extends DefaultModelProperties {
+  _id: string;
+  title: string;
 }
 
-export interface IPageItemStyle
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
+export interface IPageItemStyle extends DefaultModelProperties {
+  _id: string;
+  title: string;
 }
 
 export interface IPageItem extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	subTitle?: string;
-	type?: string;
-	sorting?: string;
-	style?: string;
-	index: number;
+  _id: string;
+  title: string;
+  subTitle?: string;
+  type?: string;
+  sorting?: string;
+  style?: string;
+  index: number;
 }
 
-export interface IPageItemRead
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	subTitle?: string;
-	type: IPageItemType;
-	sorting: IPageItemSorting;
-	style: IPageItemStyle;
-	index: number;
+export interface IPageItemRead extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  subTitle?: string;
+  type: IPageItemType;
+  sorting: IPageItemSorting;
+  style: IPageItemStyle;
+  index: number;
 }
 
-export interface ISocialMedia
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	url: string;
-	image?: string;
+export interface ISocialMedia extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  url: string;
+  image?: string;
 }
 
-export interface ISocialMediaRead
-	extends DefaultModelProperties {
-	_id: string;
-	title: string;
-	url: string;
-	image: IImage;
+export interface ISocialMediaRead extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  url: string;
+  image: IImage;
 }
 
 //#endregion Home

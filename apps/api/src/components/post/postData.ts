@@ -177,16 +177,20 @@ class PostData {
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
 
-    const post = await this.Post.findByIdAndUpdate(_id, {
-      $set: {
-        title,
-        postCategory: existingPostCategory,
-        images: existingImageIds,
-        videos: existingVideoIds,
-        text,
-        featured: !!featured,
+    const post = await this.Post.findByIdAndUpdate(
+      _id,
+      {
+        $set: {
+          title,
+          postCategory: existingPostCategory,
+          images: existingImageIds,
+          videos: existingVideoIds,
+          text,
+          featured: !!featured,
+        },
       },
-    });
+      { new: true },
+    );
     if (!post) throw new NotFoundError();
 
     return await this.get(post._id);
