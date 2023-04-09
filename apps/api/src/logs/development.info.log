@@ -35053,3 +35053,13 @@ method : GET,
 url : /api/v1/post?,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1680959603995,
+date : Sat Apr 08 2023 17:43:23 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},

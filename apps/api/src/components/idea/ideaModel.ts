@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 import { IIdea } from "@my/types";
 import { defaultSchemaProps } from "@/utils/constants";
 import { ideaCategorySchema } from "@/components/ideaCategory/ideaCategoryModel";
@@ -26,3 +26,5 @@ export const ideaSchema = new Schema<IIdea>({
   commentCount: Number,
   ...defaultSchemaProps,
 });
+
+export const Idea = model<IIdea>("Idea", ideaSchema);
