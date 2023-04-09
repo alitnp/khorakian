@@ -2,8 +2,8 @@ import { Model } from "mongoose";
 import {
   ApiDataListResponse,
   IIdea,
+  IIdeaCategory,
   IIdeaComment,
-  IIdeaCreate,
   IIdeaLike,
   IIdeaRead,
 } from "@my/types";
@@ -50,8 +50,7 @@ class IdeaData {
     if (req.query.ideaCategory) {
       searchQuery.ideaCategory._id = { $regex: req.query.ideaCategory };
     }
-    if (req.query.isAdminApproved)
-      searchQuery.isAdminApproved = !!req.query.isAdminApproved;
+    if (req.query.isApprove) searchQuery.isApprove = !!req.query.isApprove;
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 
@@ -89,7 +88,9 @@ class IdeaData {
   };
 
   get = async (id: string, userId?: string): Promise<IIdeaRead> => {
-    const idea = await this.Idea.findById(id);
+    const idea = await this.Idea.findById(id).populate<{
+      ideaCategory: IIdeaCategory;
+    }>(["ideaCategory"]);
 
     if (!idea) throw new NotFoundError();
     await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
@@ -105,17 +106,20 @@ class IdeaData {
     ideaCategory,
     text,
     featured,
-  }: IIdeaCreate): Promise<IIdeaRead> => {
+    isAdminSubmitted,
+  }: IIdea): Promise<IIdeaRead> => {
+    if (!ideaCategory) throw new NotFoundError();
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
 
     const idea = new this.Idea({
       title,
-      postCategory: existingIdeaCategory,
+      ideaCategory: existingIdeaCategory,
       text,
       featured: !!featured,
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      isAdminSubmitted,
     });
     await idea.save();
     return await this.get(idea._id);
@@ -127,7 +131,8 @@ class IdeaData {
     ideaCategory,
     text,
     featured,
-  }: IIdeaCreate & { _id: string }): Promise<IIdeaRead> => {
+  }: IIdea & { _id: string }): Promise<IIdeaRead> => {
+    if (!ideaCategory) throw new NotFoundError();
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
 
     const idea = await this.Idea.findByIdAndUpdate(
@@ -148,18 +153,18 @@ class IdeaData {
   };
 
   remove = async (id: string): Promise<IIdeaRead> => {
-    const idea = await this.get(id);
+    const item = await this.get(id);
     await this.Idea.findByIdAndDelete(id);
-    return idea;
+    return item;
   };
 
   like = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
     if (!userId) throw new UnauthenticatedError();
     await this.IdeaLike.like(ideaId, userId);
-    const idea = await this.Idea.findByIdAndUpdate(ideaId, {
+    const item = await this.Idea.findByIdAndUpdate(ideaId, {
       $inc: { likeCount: 1 },
     });
-    if (!idea) throw new NotFoundError();
+    if (!item) throw new NotFoundError();
 
     return await this.get(ideaId, userId);
   };
@@ -167,9 +172,9 @@ class IdeaData {
   dislike = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
     if (!userId) throw new UnauthenticatedError();
     await this.IdeaLike.disLike(ideaId, userId);
-    const idea = await this.get(ideaId, userId);
+    const item = await this.get(ideaId, userId);
     const updatedIdea = await this.Idea.findByIdAndUpdate(ideaId, {
-      $inc: { likeCount: idea.likeCount > 0 ? -1 : 0 },
+      $inc: { likeCount: item.likeCount > 0 ? -1 : 0 },
     });
     if (!updatedIdea) throw new NotFoundError();
 
@@ -195,11 +200,11 @@ class IdeaData {
     text: string,
   ) => {
     if (!userId) throw new UnauthenticatedError();
-    const idea = await this.Idea.findById(ideaId);
-    if (!idea) throw new NotFoundError();
+    const item = await this.Idea.findById(ideaId);
+    if (!item) throw new NotFoundError();
     await this.IdeaComment.create(ideaId, userId, text);
     await this.Idea.findByIdAndUpdate(ideaId, { $inc: { commentCount: 1 } });
-    return await this.get(idea._id);
+    return await this.get(item._id);
   };
 
   reply = async (
@@ -211,6 +216,32 @@ class IdeaData {
 
     const comment = await this.IdeaComment.reply(commentId, userId, text);
     return await this.get(comment.content as string);
+  };
+
+  approve = async (id: string): Promise<IIdeaRead> => {
+    const item = await this.Idea.findByIdAndUpdate(
+      id,
+      {
+        $set: { isApprove: true },
+      },
+      { new: true },
+    );
+    if (!item) throw new NotFoundError();
+
+    return await this.get(id);
+  };
+
+  disApprove = async (id: string): Promise<IIdeaRead> => {
+    const item = await this.Idea.findByIdAndUpdate(
+      id,
+      {
+        $set: { isApprove: false },
+      },
+      { new: true },
+    );
+    if (!item) throw new NotFoundError();
+
+    return await this.get(id);
   };
 }
 

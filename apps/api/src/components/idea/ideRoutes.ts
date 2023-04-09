@@ -71,6 +71,19 @@ router.post(
   controller.create,
 );
 
+//approve a idea -admin only
+router.post(
+  "/approve/:id",
+  [isAdmin, ...validate(paramIdValidations)],
+  controller.approve,
+);
+//disapprove a idea -admin only
+router.post(
+  "/disapprove/:id",
+  [isAdmin, ...validate(paramIdValidations)],
+  controller.disApprove,
+);
+
 //put
 //edit an existing idea - admin only
 router.put(

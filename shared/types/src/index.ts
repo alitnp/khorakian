@@ -101,13 +101,13 @@ export interface IIdea extends DefaultModelProperties {
   _id: string;
   title: string;
   text: string;
-  ideaCategory: IIdeaCategory;
+  ideaCategory?: string;
   featured: boolean;
   viewCount: number;
   likeCount: number;
   commentCount: number;
   isAdminSubmitted: boolean;
-  isAdminApproved: boolean;
+  isApprove: boolean;
 }
 
 export interface IIdeaLike extends defaultSchemaProps {
@@ -132,15 +132,9 @@ export interface IIdeaRead extends DefaultModelProperties {
   commentCount: number;
   liked?: boolean;
   isAdminSubmitted: boolean;
-  isAdminApproved: boolean;
+  isApprove: boolean;
 }
 
-export interface IIdeaCreate extends DefaultModelProperties {
-  title: string;
-  text: string;
-  ideaCategory: string;
-  featured: boolean;
-}
 /* #endregion idea */
 
 /* #region post */

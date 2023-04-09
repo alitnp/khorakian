@@ -1,7 +1,7 @@
 import { IIdeaComment, IIdeaLike, IIdeaRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 import IdeaData from "@/components/idea/ideaData";
-import { getUserIdFromReq } from "@/utils/util";
+import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
 
 class IdeaController {
   data: IdeaData;
@@ -29,7 +29,10 @@ class IdeaController {
   };
 
   create = async (req: Req, res: Res) => {
-    const result = await this.data.create(req.body);
+    const result = await this.data.create({
+      ...req.body,
+      isAdminSubmitted: getUserIsAdminFromReq(req),
+    });
     res.send(apiDataResponse<IIdeaRead>(result));
   };
 
@@ -71,6 +74,18 @@ class IdeaController {
       req.params.id,
       getUserIdFromReq(req),
     );
+    res.send(apiDataResponse<IIdeaRead>(result));
+  };
+
+  //approve idea bye user or admin
+  approve = async (req: Req, res: Res) => {
+    const result = await this.data.approve(req.params.id);
+    res.send(apiDataResponse<IIdeaRead>(result));
+  };
+
+  //approve idea bye user or admin
+  disApprove = async (req: Req, res: Res) => {
+    const result = await this.data.disApprove(req.params.id);
     res.send(apiDataResponse<IIdeaRead>(result));
   };
 }

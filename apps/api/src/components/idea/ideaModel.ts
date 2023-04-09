@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import { IIdea } from "@my/types";
 import { defaultSchemaProps } from "@/utils/constants";
-import { ideaCategorySchema } from "@/components/ideaCategory/ideaCategoryModel";
 
 export const ideaSchema = new Schema<IIdea>({
   title: {
@@ -15,11 +14,12 @@ export const ideaSchema = new Schema<IIdea>({
     maxlength: [1000000, "حجم متن ارسال شده بیش از حد مجاز است"],
   },
   ideaCategory: {
-    type: ideaCategorySchema,
+    type: Schema.Types.ObjectId,
+    ref: "IdeaCategory",
     required: [true, "عنوان تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
-  isAdminApproved: { type: Boolean, default: false },
+  isApprove: { type: Boolean, default: false },
   isAdminSubmitted: { type: Boolean, default: false },
   viewCount: Number,
   likeCount: Number,
