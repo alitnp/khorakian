@@ -1,27 +1,27 @@
 import { Router } from "express";
 import isAdmin from "@/middlewares/isAdmin";
 import { validate } from "@/helpers";
-import { Post } from "@/components/post/postModel";
-import PostData from "@/components/post/postData";
-import PostController from "@/components/post/postController";
+import ImageData from "@/components/image/imageData";
+import VideoData from "@/components/video/videoData";
+import { Video } from "@/components/video/videoModel";
+import { Image } from "@/components/image/imageModel";
+import { paramIdValidations } from "@/validation/globalValidations";
+import auth from "@/middlewares/athenticate";
+import LikeData from "@/components/Like/likeData";
+import CommentData from "@/components/comment/commentData";
+import { PostComment } from "@/components/Post/postComment/postCommentModel";
+import PostData from "@/components/Post/post/postData";
+import { Post } from "@/components/Post/post/postModel";
+import { PostCategory } from "@/components/Post/postCategory/postCategoryModel";
+import PostCategoryData from "@/components/Post/postCategory/postCategoryData";
+import { PostLike } from "@/components/Post/postLike/postLikeModel";
+import PostController from "@/components/Post/post/postController";
 import {
   createPostValidations,
   deletePostValidations,
   getPostValidations,
   updatePostValidations,
-} from "@/components/post/postValidations";
-import ImageData from "@/components/image/imageData";
-import VideoData from "@/components/video/videoData";
-import PostCategoryData from "@/components/postCategory/postCategoryData";
-import { PostCategory } from "@/components/postCategory/postCategoryModel";
-import { Video } from "@/components/video/videoModel";
-import { Image } from "@/components/image/imageModel";
-import { paramIdValidations } from "@/validation/globalValidations";
-import auth from "@/middlewares/athenticate";
-import { PostLike } from "@/components/Like/postLikeModel";
-import LikeData from "@/components/Like/likeData";
-import CommentData from "@/components/comment/commentData";
-import { PostComment } from "@/components/comment/postCommentModel";
+} from "@/components/Post/post/postValidations";
 
 const router = Router();
 const data = new PostData(

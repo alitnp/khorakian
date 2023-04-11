@@ -1,18 +1,18 @@
-import { IdeaLike } from "@/components/Like/ideaLikeModel";
-import LikeData from "@/components/Like/likeData";
-import CommentData from "@/components/comment/commentData";
-import { IdeaComment } from "@/components/comment/ideaCommentModel";
-import IdeaController from "@/components/idea/ideaController";
-import IdeaData from "@/components/idea/ideaData";
-import { Idea } from "@/components/idea/ideaModel";
+import IdeaController from "@/components/Idea/idea/ideaController";
+import IdeaData from "@/components/Idea/idea/ideaData";
+import { Idea } from "@/components/Idea/idea/ideaModel";
 import {
   createIdeaValidations,
   deleteIdeaValidations,
   getIdeaValidations,
   updateIdeaValidations,
-} from "@/components/idea/ideaValidation";
-import IdeaCategoryData from "@/components/ideaCategory/ideaCategoryData";
-import { IdeaCategory } from "@/components/ideaCategory/ideaCategoryModel";
+} from "@/components/Idea/idea/ideaValidation";
+import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
+import { IdeaCategory } from "@/components/Idea/ideaCategory/ideaCategoryModel";
+import { IdeaLike } from "@/components/Idea/ideaLike/ideaLikeModel";
+import LikeData from "@/components/Like/likeData";
+import CommentData from "@/components/comment/commentData";
+import { IdeaComment } from "@/components/Idea/ideaComment/ideaCommentModel";
 import { validate } from "@/helpers";
 import auth from "@/middlewares/athenticate";
 import isAdmin from "@/middlewares/isAdmin";

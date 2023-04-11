@@ -1,4 +1,3 @@
-import { defaultSchemaProps } from '@/utils/constants';
 /* #region global */
 
 export interface ApiDataResponse<T> {
@@ -110,11 +109,11 @@ export interface IIdea extends DefaultModelProperties {
   isApprove: boolean;
 }
 
-export interface IIdeaLike extends defaultSchemaProps {
+export interface IIdeaLike extends DefaultModelProperties {
   content?: string;
   user?: string;
 }
-export interface IIdeaComment extends defaultSchemaProps {
+export interface IIdeaComment extends DefaultModelProperties {
   content?: string;
   user?: string;
   text: string;

@@ -11,13 +11,13 @@ import {
 } from "@my/types";
 import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
-import PostCategoryData from "@/components/postCategory/postCategoryData";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
 import { stringToBoolean } from "@/utils/util";
 import LikeData from "@/components/Like/likeData";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import CommentData from "@/components/comment/commentData";
+import PostCategoryData from "@/components/Post/postCategory/postCategoryData";
 
 class PostData {
   Post: Model<IPost, {}, {}, {}, any>;

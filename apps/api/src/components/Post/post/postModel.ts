@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 import { IPost } from "@my/types";
-import { postCategorySchema } from "@/components/postCategory/postCategoryModel";
 import { defaultSchemaProps } from "@/utils/constants";
+import { postCategorySchema } from "@/components/Post/postCategory/postCategoryModel";
 
 export const postSchema = new Schema<IPost>({
   title: {

@@ -2870,3 +2870,207 @@ body : {"title":"ab2c","subTitle":"ab2c","type":"642fd58a3ee982f48470bb68","sort
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1681033098750,
+date : Sun Apr 09 2023 14:08:18 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/idea/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681033106139,
+date : Sun Apr 09 2023 14:08:26 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/idea/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681033122616,
+date : Sun Apr 09 2023 14:08:42 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/idea/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681033147607,
+date : Sun Apr 09 2023 14:09:07 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/idea/6432872331b590e04015230a,
+body : {"title":"testii"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034028017,
+date : Sun Apr 09 2023 14:23:48 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/643288cb31b590e040152320,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034170899,
+date : Sun Apr 09 2023 14:26:10 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034173315,
+date : Sun Apr 09 2023 14:26:13 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034173702,
+date : Sun Apr 09 2023 14:26:13 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034174096,
+date : Sun Apr 09 2023 14:26:14 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034174471,
+date : Sun Apr 09 2023 14:26:14 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/6432872331b590e04015230a,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034265079,
+date : Sun Apr 09 2023 14:27:45 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : PUT,
+url : /api/v1/idea/6432872331b590e04015230a,
+body : {"title":"testii"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681034641136,
+date : Sun Apr 09 2023 14:34:01 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/dislike/64328c7e31b590e0401523b4,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681035185388,
+date : Sun Apr 09 2023 14:43:05 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/reply/64328c7e31b590e0401523b4,
+body : {}
+},
+Response : {"status":404,"message":"نظر یافت نشد","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681035215763,
+date : Sun Apr 09 2023 14:43:35 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/reply/643288cb31b590e040152320,
+body : {}
+},
+Response : {"status":404,"message":"نظر یافت نشد","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681035225138,
+date : Sun Apr 09 2023 14:43:45 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/reply/642e49ba08710a2b3d6d9e85,
+body : {"text":"Asdfasdf"}
+},
+Response : {"status":404,"message":"نظر یافت نشد","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681035253662,
+date : Sun Apr 09 2023 14:44:13 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/reply/643288cb31b590e040152320,
+body : {"text":"replyyyyyyy"}
+},
+Response : {"status":404,"message":"نظر یافت نشد","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681035386960,
+date : Sun Apr 09 2023 14:46:26 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea/reply/643288cb31b590e040152320,
+body : {"commentId":"64328ec831b590e040152425","text":"replyyyy"}
+},
+Response : {"status":404,"message":"نظر یافت نشد","data":null,"isSuccess":false}
+},

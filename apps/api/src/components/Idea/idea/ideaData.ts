@@ -7,13 +7,13 @@ import {
   IIdeaLike,
   IIdeaRead,
 } from "@my/types";
-import IdeaCategoryData from "@/components/ideaCategory/ideaCategoryData";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
 import { stringToBoolean } from "@/utils/util";
 import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
 
 class IdeaData {
   Idea: Model<IIdea, {}, {}, {}, any>;
@@ -88,9 +88,11 @@ class IdeaData {
   };
 
   get = async (id: string, userId?: string): Promise<IIdeaRead> => {
-    const idea = await this.Idea.findById(id).populate<{
-      ideaCategory: IIdeaCategory;
-    }>(["ideaCategory"]);
+    const idea = await this.Idea.findById(id)
+      .populate<{
+        ideaCategory: IIdeaCategory;
+      }>(["ideaCategory"])
+      .lean();
 
     if (!idea) throw new NotFoundError();
     await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });

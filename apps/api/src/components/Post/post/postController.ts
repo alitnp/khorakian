@@ -1,49 +1,46 @@
-import { IIdeaComment, IIdeaLike, IIdeaRead } from "@my/types";
+import { IPostComment, IPostLike, IPostRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
-import IdeaData from "@/components/idea/ideaData";
-import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
+import { getUserIdFromReq } from "@/utils/util";
+import PostData from "@/components/Post/post/postData";
 
-class IdeaController {
-  data: IdeaData;
-  constructor(data: IdeaData) {
+class PostController {
+  data: PostData;
+  constructor(data: PostData) {
     this.data = data;
   }
   getAll = async (req: Req, res: Res) => {
     const result = await this.data.getAll(req, getUserIdFromReq(req));
-    res.send(apiDataListResponse<IIdeaRead>(result));
+    res.send(apiDataListResponse<IPostRead>(result));
   };
 
   getAllComments = async (req: Req, res: Res) => {
     const result = await this.data.getAllComments(req);
-    res.send(apiDataListResponse<IIdeaComment>(result));
+    res.send(apiDataListResponse<IPostComment>(result));
   };
 
   getAllLikes = async (req: Req, res: Res) => {
     const result = await this.data.getAllLikes(req);
-    res.send(apiDataListResponse<IIdeaLike>(result));
+    res.send(apiDataListResponse<IPostLike>(result));
   };
 
   get = async (req: Req, res: Res) => {
     const result = await this.data.get(req.params.id, getUserIdFromReq(req));
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   create = async (req: Req, res: Res) => {
-    const result = await this.data.create({
-      ...req.body,
-      isAdminSubmitted: getUserIsAdminFromReq(req),
-    });
-    res.send(apiDataResponse<IIdeaRead>(result));
+    const result = await this.data.create(req.body);
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   update = async (req: Req, res: Res) => {
     const result = await this.data.update({ _id: req.params.id, ...req.body });
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   remove = async (req: Req, res: Res) => {
     const result = await this.data.remove(req.params.id);
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   comment = async (req: Req, res: Res) => {
@@ -52,7 +49,7 @@ class IdeaController {
       getUserIdFromReq(req),
       req.body.text,
     );
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   reply = async (req: Req, res: Res) => {
@@ -61,12 +58,12 @@ class IdeaController {
       getUserIdFromReq(req),
       req.body.text,
     );
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   like = async (req: Req, res: Res) => {
     const result = await this.data.like(req.params.id, getUserIdFromReq(req));
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 
   disLike = async (req: Req, res: Res) => {
@@ -74,20 +71,8 @@ class IdeaController {
       req.params.id,
       getUserIdFromReq(req),
     );
-    res.send(apiDataResponse<IIdeaRead>(result));
-  };
-
-  //approve idea bye user or admin
-  approve = async (req: Req, res: Res) => {
-    const result = await this.data.approve(req.params.id);
-    res.send(apiDataResponse<IIdeaRead>(result));
-  };
-
-  //approve idea bye user or admin
-  disApprove = async (req: Req, res: Res) => {
-    const result = await this.data.disApprove(req.params.id);
-    res.send(apiDataResponse<IIdeaRead>(result));
+    res.send(apiDataResponse<IPostRead>(result));
   };
 }
 
-export default IdeaController;
+export default PostController;

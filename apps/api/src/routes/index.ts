@@ -1,11 +1,12 @@
 import { Router } from "express";
 import userRoutes from "@/components/user/userRoutes";
-import postCategoryRoutes from "@/components/postCategory/postCategoryRoutes";
+import postCategoryRoutes from "@/components/Post/postCategory/postCategoryRoutes";
 import imageRoutes from "@/components/image/imageRoutes";
 import videoRoutes from "@/components/video/videoRoutes";
-import ideaCategoryRoutes from "@/components/ideaCategory/ideaCategoryRoutes";
+import ideaCategoryRoutes from "@/components/Idea/ideaCategory/ideaCategoryRoutes";
+import ideaRoutes from "@/components/Idea/idea/ideaRoutes";
 import experienceCategory from "@/components/experienceCategory/experienceRoutes";
-import postRoutes from "@/components/post/postRoutes";
+import postRoutes from "@/components/Post/post/postRoutes";
 import historyRoutes from "@/components/Home/history/historyRoutes";
 import pageItemTypeRoutes from "@/components/Home/pageItemType/pageItemTypeRoutes";
 import pageItemSortingRoutes from "@/components/Home/pageItemSorting/pageItemSortingRoutes";
@@ -26,6 +27,7 @@ router.use("/history", historyRoutes);
 //!I-i
 router.use("/ideaCategory", ideaCategoryRoutes);
 router.use("/image", imageRoutes);
+router.use("/idea", ideaRoutes);
 
 //!P-p
 router.use("/pageItemSorting", pageItemSortingRoutes);
