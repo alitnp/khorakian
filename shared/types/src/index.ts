@@ -136,6 +136,72 @@ export interface IIdeaRead extends DefaultModelProperties {
 
 /* #endregion idea */
 
+/* #region EXPERIRNCE */
+export interface IExperience extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  text: string;
+  images: string[];
+  videos: string[];
+  experienceCategory: IExperienceCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+}
+export interface IExperienceCreate extends DefaultModelProperties {
+  title: string;
+  text: string;
+  images: string[];
+  videos: string[];
+  experienceCategory: string;
+  featured: boolean;
+}
+
+export interface IExperienceRead extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  text: string;
+  images: IImage[];
+  videos: IVideoRead[];
+  experienceCategory: IExperienceCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  liked?: boolean;
+}
+
+export interface IExperienceLike extends DefaultModelProperties {
+  content?: string;
+  user?: string;
+}
+export interface IExperienceLikeCreate {
+  content: string;
+  user: string;
+}
+export interface IExperienceLikeRead extends DefaultModelProperties {
+  _id: string;
+  content: IExperience;
+  user: IUser;
+}
+
+export interface IExperienceComment extends DefaultModelProperties {
+  content?: string;
+  user?: string;
+  text: string;
+  replies?: ICommentReply[];
+}
+export interface IExperienceCommentRead extends DefaultModelProperties {
+  _id: string;
+  content: string;
+  user: IUserRead;
+  text: string;
+  replies: ICommentReply[];
+}
+
+/* #END region EXPERIRNCE */
+
 /* #region post */
 export interface IPost extends DefaultModelProperties {
   _id: string;
