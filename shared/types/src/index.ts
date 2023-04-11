@@ -88,6 +88,54 @@ export type qualityVariation = {
 
 /* #endregion media */
 
+/* region userExperienceCategory */
+export interface IUserExperienceCategory extends DefaultModelProperties {
+  _id: string;
+  title: string;
+}
+/* region UserExperienceCategory */
+
+/* #region UserExperience */
+export interface IUserExperience extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  text: string;
+  userExperienceCategory?: string;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  isAdminSubmitted: boolean;
+  isApprove: boolean;
+}
+
+export interface IUserExperienceLike extends DefaultModelProperties {
+  content?: string;
+  user?: string;
+}
+export interface IUserExperienceComment extends DefaultModelProperties {
+  content?: string;
+  user?: string;
+  text: string;
+  replies?: ICommentReply[];
+}
+
+export interface IUserExperienceRead extends DefaultModelProperties {
+  _id: string;
+  title: string;
+  text: string;
+  userExperienceCategory: IUserExperienceCategory;
+  featured: boolean;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  liked?: boolean;
+  isAdminSubmitted: boolean;
+  isApprove: boolean;
+}
+
+/* #endregion UserExperience */
+
 /* region ideaCategory */
 export interface IIdeaCategory extends DefaultModelProperties {
   _id: string;
