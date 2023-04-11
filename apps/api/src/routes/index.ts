@@ -5,7 +5,7 @@ import imageRoutes from "@/components/image/imageRoutes";
 import videoRoutes from "@/components/video/videoRoutes";
 import ideaCategoryRoutes from "@/components/Idea/ideaCategory/ideaCategoryRoutes";
 import ideaRoutes from "@/components/Idea/idea/ideaRoutes";
-import experienceCategory from "@/components/experienceCategory/experienceRoutes";
+import experienceCategory from "@/components/experience/experienceCategory/experienceCategoryRoutes";
 import postRoutes from "@/components/Post/post/postRoutes";
 import historyRoutes from "@/components/Home/history/historyRoutes";
 import pageItemTypeRoutes from "@/components/Home/pageItemType/pageItemTypeRoutes";

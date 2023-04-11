@@ -36033,3 +36033,13 @@ method : GET,
 url : /api/v1/idea/64328c7e31b590e0401523b4,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1681212464467,
+date : Tue Apr 11 2023 15:57:44 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/pageItemType?pageSize=100,
+body : {}
+},
