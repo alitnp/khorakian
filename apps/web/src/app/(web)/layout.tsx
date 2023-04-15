@@ -1,5 +1,7 @@
-import { iranSans } from "@/assets/fonts/iranSansFont";
+import { vazir } from "@/assets/fonts/vazirFont";
 import "@/assets/style/global.css";
+import Header from "@/components/Header/Header";
+import { Providers } from "@/components/Providers/Providers";
 
 export const metadata = {
 	title: "2Create Next App",
@@ -12,10 +14,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={`${iranSans.variable} font-iransans`}>
-				<div>asd;lfkjasd;flkjj</div>
-				{children}
+		<html lang="fa" dir="rtl">
+			<body className={`${vazir.variable} font-vazir pt-14`}>
+				<Providers>
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);

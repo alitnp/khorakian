@@ -12,7 +12,14 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				iransans: ["var(--font-iransans)", ...fontFamily.sans],
+				vazir: ["var(--font-vazir)", ...fontFamily.sans],
+			},
+			colors: {
+				"k-bg-color": "var(--bg-color)",
+			},
+			borderColor: {
+				"default": "var(--border-1-color)",
+				"k-border-2-color": "var(--border-2-color)",
 			},
 		},
 	},
