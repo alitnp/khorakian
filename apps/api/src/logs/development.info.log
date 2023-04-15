@@ -36043,3 +36043,63 @@ method : GET,
 url : /api/v1/pageItemType?pageSize=100,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1681558945895,
+date : Sat Apr 15 2023 16:12:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681559012723,
+date : Sat Apr 15 2023 16:13:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"۰۹۳۰۸۲۹۷۸۸۰","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1681559014820,
+date : Sat Apr 15 2023 16:13:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681559014825,
+date : Sat Apr 15 2023 16:13:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681559014938,
+date : Sat Apr 15 2023 16:13:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681559616703,
+date : Sat Apr 15 2023 16:23:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
