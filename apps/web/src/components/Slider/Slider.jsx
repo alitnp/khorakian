@@ -3,7 +3,7 @@
 import Carousel from "re-carousel";
 import IndicatorDots from "./indicator-dots";
 import SliderButtons from "./slider-bottons";
-import SliderHistory from "@/components/Home/Slider/SliderHistory";
+import SliderHistory from "@/components/Slider/SliderHistory";
 
 const slides = [
 	{
@@ -16,33 +16,36 @@ const slides = [
 
 const Slider = () => {
 	return (
-		<div className="relative w-full h-96">
-			<Carousel
-				loop={false}
-				auto={false}
-				widgets={[IndicatorDots, SliderButtons]}
-				interval={0}
-				duration={300}
-			>
-				{slides.map((item, key) => (
-					<div
-						key={key}
-						className="relative flex items-center justify-center w-full h-full bg-slate-700"
-					>
-						<div className="absolute top-0 right-0 flex flex-col items-center justify-center w-full h-full sm:w-1/2 sm:items-start">
-							<h1 className="text-4xl font-bold text-k-opposite-text-color">
-								{item.title}
-							</h1>
-							<h3 className="text-lg font-medium text-k-opposite-text-color">
-								{item.subTitle}
-							</h3>
-							<p className=" text-k-opposite-text-color line-clamp-3">
-								{item.description}
-							</p>
+		<div className="relative">
+			<div className="relative w-full h-96">
+				<Carousel
+					loop={false}
+					auto={false}
+					widgets={[IndicatorDots, SliderButtons]}
+					interval={0}
+					duration={300}
+					style={{ zIndex: 0 }}
+				>
+					{slides.map((item, key) => (
+						<div
+							key={key}
+							className="relative flex items-center justify-center w-full h-full bg-slate-700/80"
+						>
+							<div className="absolute top-0 right-0 flex flex-col items-center justify-center w-full h-full sm:w-1/2 sm:items-start">
+								<h1 className="text-4xl font-bold text-k-opposite-text-color">
+									{item.title}
+								</h1>
+								<h3 className="text-lg font-medium text-k-opposite-text-color">
+									{item.subTitle}
+								</h3>
+								<p className=" text-k-opposite-text-color line-clamp-3">
+									{item.description}
+								</p>
+							</div>
 						</div>
-					</div>
-				))}
-			</Carousel>
+					))}
+				</Carousel>
+			</div>
 			<SliderHistory />
 		</div>
 	);

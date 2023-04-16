@@ -15,6 +15,8 @@ module.exports = {
 				vazir: ["var(--font-vazir)", ...fontFamily.sans],
 			},
 			colors: {
+				"k-primary-color": "var(--primary-1-color)",
+				"k-primary-2-color": "var(--primary-2-color)",
 				"k-bg-color": "var(--bg-color)",
 				"k-text-color": "var(--text-color)",
 				"k-opposite-text-color": "var(--opposite-text-color)",

@@ -14,7 +14,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="fa" dir="rtl">
+		<html lang="fa" dir="rtl" style={{ fontSize: "16px" }}>
 			<body className={`${vazir.variable} font-vazir pt-14`}>
 				<Providers>
 					<Header />
