@@ -16,6 +16,8 @@ module.exports = {
 			},
 			colors: {
 				"k-bg-color": "var(--bg-color)",
+				"k-text-color": "var(--text-color)",
+				"k-opposite-text-color": "var(--opposite-text-color)",
 			},
 			borderColor: {
 				"default": "var(--border-1-color)",
