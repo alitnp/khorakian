@@ -36043,3 +36043,3063 @@ method : GET,
 url : /api/v1/pageItemType?pageSize=100,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1681563470236,
+date : Sat Apr 15 2023 17:27:50 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09105371653","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1681563470476,
+date : Sat Apr 15 2023 17:27:50 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563491608,
+date : Sat Apr 15 2023 17:28:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563494237,
+date : Sat Apr 15 2023 17:28:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563496854,
+date : Sat Apr 15 2023 17:28:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experienceCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563538830,
+date : Sat Apr 15 2023 17:28:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/experienceCategory,
+body : {"title":"llll"}
+},
+{
+type : INFO,
+timestamp : 1681563538953,
+date : Sat Apr 15 2023 17:28:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experienceCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563540384,
+date : Sat Apr 15 2023 17:29:00 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experienceCategory/643a9f92d0c5e185c395b88f,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563542970,
+date : Sat Apr 15 2023 17:29:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/experienceCategory/643a9f92d0c5e185c395b88f,
+body : {"_id":"643a9f92d0c5e185c395b88f","title":"llll8","isPublished":true,"creationDate":1681563538840,"__v":0}
+},
+{
+type : INFO,
+timestamp : 1681563543049,
+date : Sat Apr 15 2023 17:29:03 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experienceCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563547051,
+date : Sat Apr 15 2023 17:29:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/experienceCategory/643a9f92d0c5e185c395b88f,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563547068,
+date : Sat Apr 15 2023 17:29:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experienceCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563550612,
+date : Sat Apr 15 2023 17:29:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563556737,
+date : Sat Apr 15 2023 17:29:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"8"}
+},
+{
+type : INFO,
+timestamp : 1681563560792,
+date : Sat Apr 15 2023 17:29:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"8kkkk"}
+},
+{
+type : INFO,
+timestamp : 1681563560871,
+date : Sat Apr 15 2023 17:29:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563562453,
+date : Sat Apr 15 2023 17:29:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory/643a9fa8d0c5e185c395b8a0,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563565257,
+date : Sat Apr 15 2023 17:29:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/ideaCategory/643a9fa8d0c5e185c395b8a0,
+body : {"_id":"643a9fa8d0c5e185c395b8a0","title":"8kkkk8","isPublished":true,"creationDate":1681563560798,"__v":0}
+},
+{
+type : INFO,
+timestamp : 1681563565341,
+date : Sat Apr 15 2023 17:29:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563567310,
+date : Sat Apr 15 2023 17:29:27 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/ideaCategory/643a9fa8d0c5e185c395b8a0,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563567321,
+date : Sat Apr 15 2023 17:29:27 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563569153,
+date : Sat Apr 15 2023 17:29:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563575617,
+date : Sat Apr 15 2023 17:29:35 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/postcategory,
+body : {"title":"kkkkkkkkkkkkkkk"}
+},
+{
+type : INFO,
+timestamp : 1681563575697,
+date : Sat Apr 15 2023 17:29:35 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563577221,
+date : Sat Apr 15 2023 17:29:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory/643a9fb7d0c5e185c395b8b0,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563582808,
+date : Sat Apr 15 2023 17:29:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/postcategory/643a9fb7d0c5e185c395b8b0,
+body : {"_id":"643a9fb7d0c5e185c395b8b0","title":"kkkkkkkkkkkkkkk44","isPublished":true,"creationDate":1681563575620,"__v":0}
+},
+{
+type : INFO,
+timestamp : 1681563582889,
+date : Sat Apr 15 2023 17:29:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563585360,
+date : Sat Apr 15 2023 17:29:45 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/postcategory/641ec0d2eb21592fe5817537,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681563585379,
+date : Sat Apr 15 2023 17:29:45 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681575154882,
+date : Sat Apr 15 2023 20:42:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09105371653","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1681575155410,
+date : Sat Apr 15 2023 20:42:35 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681576255727,
+date : Sat Apr 15 2023 21:00:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681576451757,
+date : Sat Apr 15 2023 21:04:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681577192008,
+date : Sat Apr 15 2023 21:16:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681577346134,
+date : Sat Apr 15 2023 21:19:06 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681578168138,
+date : Sat Apr 15 2023 21:32:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681578181046,
+date : Sat Apr 15 2023 21:33:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"dcfsdfvsf"}
+},
+{
+type : INFO,
+timestamp : 1681578197429,
+date : Sat Apr 15 2023 21:33:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681578202387,
+date : Sat Apr 15 2023 21:33:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681578550858,
+date : Sat Apr 15 2023 21:39:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"hhhhh"}
+},
+{
+type : INFO,
+timestamp : 1681579497423,
+date : Sat Apr 15 2023 21:54:57 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681579527403,
+date : Sat Apr 15 2023 21:55:27 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"values":{"title":"dfgdfgdg","ideaCategory":"64212429e4dbd7c1f7d6a00b","text":"dfsdvsfv","featured":1},"isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681579650229,
+date : Sat Apr 15 2023 21:57:30 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681579656587,
+date : Sat Apr 15 2023 21:57:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681579656947,
+date : Sat Apr 15 2023 21:57:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681579698253,
+date : Sat Apr 15 2023 21:58:18 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681580018649,
+date : Sat Apr 15 2023 22:03:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681580018969,
+date : Sat Apr 15 2023 22:03:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681580201854,
+date : Sat Apr 15 2023 22:06:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681580424602,
+date : Sat Apr 15 2023 22:10:24 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681580424912,
+date : Sat Apr 15 2023 22:10:24 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681648932957,
+date : Sun Apr 16 2023 17:12:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09105371653","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1681648933220,
+date : Sun Apr 16 2023 17:12:13 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681648963637,
+date : Sun Apr 16 2023 17:12:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681649407686,
+date : Sun Apr 16 2023 17:20:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681649407682,
+date : Sun Apr 16 2023 17:20:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681649407729,
+date : Sun Apr 16 2023 17:20:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681649529049,
+date : Sun Apr 16 2023 17:22:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651498084,
+date : Sun Apr 16 2023 17:54:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651503805,
+date : Sun Apr 16 2023 17:55:03 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651504158,
+date : Sun Apr 16 2023 17:55:04 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651533829,
+date : Sun Apr 16 2023 17:55:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651542483,
+date : Sun Apr 16 2023 17:55:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651555599,
+date : Sun Apr 16 2023 17:55:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651636717,
+date : Sun Apr 16 2023 17:57:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651645299,
+date : Sun Apr 16 2023 17:57:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651657146,
+date : Sun Apr 16 2023 17:57:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651665121,
+date : Sun Apr 16 2023 17:57:45 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651677323,
+date : Sun Apr 16 2023 17:57:57 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651677576,
+date : Sun Apr 16 2023 17:57:57 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651707025,
+date : Sun Apr 16 2023 17:58:27 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651719484,
+date : Sun Apr 16 2023 17:58:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651746582,
+date : Sun Apr 16 2023 17:59:06 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651755242,
+date : Sun Apr 16 2023 17:59:15 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"values":{"title":"jtujtuy","ideaCategory":"64212429e4dbd7c1f7d6a00b","featured":false,"text":"yjtyjtujty"},"isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681651789674,
+date : Sun Apr 16 2023 17:59:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651792256,
+date : Sun Apr 16 2023 17:59:52 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"jtujtuy","ideaCategory":"64212429e4dbd7c1f7d6a00b","featured":false,"text":"yjtyjtujty","isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681651792523,
+date : Sun Apr 16 2023 17:59:52 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651811058,
+date : Sun Apr 16 2023 18:00:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651837047,
+date : Sun Apr 16 2023 18:00:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"ایده تستی","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"بسبسبیبسیبس","isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681651837162,
+date : Sun Apr 16 2023 18:00:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651868425,
+date : Sun Apr 16 2023 18:01:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651893903,
+date : Sun Apr 16 2023 18:01:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681651894037,
+date : Sun Apr 16 2023 18:01:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651959513,
+date : Sun Apr 16 2023 18:02:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681651966577,
+date : Sun Apr 16 2023 18:02:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"jhhj","ideaCategory":"64212834e4dbd7c1f7d6a05f","featured":false,"text":"hhh","isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681651966680,
+date : Sun Apr 16 2023 18:02:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652017488,
+date : Sun Apr 16 2023 18:03:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652023321,
+date : Sun Apr 16 2023 18:03:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"lllllllllllllllll","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"llllllllllll","isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681652023442,
+date : Sun Apr 16 2023 18:03:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652577232,
+date : Sun Apr 16 2023 18:12:57 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652577518,
+date : Sun Apr 16 2023 18:12:57 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652581815,
+date : Sun Apr 16 2023 18:13:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652582119,
+date : Sun Apr 16 2023 18:13:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652583752,
+date : Sun Apr 16 2023 18:13:03 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652584068,
+date : Sun Apr 16 2023 18:13:04 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652591113,
+date : Sun Apr 16 2023 18:13:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652591424,
+date : Sun Apr 16 2023 18:13:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652596460,
+date : Sun Apr 16 2023 18:13:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652596769,
+date : Sun Apr 16 2023 18:13:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652598102,
+date : Sun Apr 16 2023 18:13:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652598404,
+date : Sun Apr 16 2023 18:13:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652665988,
+date : Sun Apr 16 2023 18:14:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652666375,
+date : Sun Apr 16 2023 18:14:26 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652694062,
+date : Sun Apr 16 2023 18:14:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/undefined,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652705049,
+date : Sun Apr 16 2023 18:15:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/idea/undefined,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652739694,
+date : Sun Apr 16 2023 18:15:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/idea/643288cb31b590e040152320,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652739754,
+date : Sun Apr 16 2023 18:15:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652742741,
+date : Sun Apr 16 2023 18:15:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/idea/643bf8fe59d4e04ef25253b3,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652742768,
+date : Sun Apr 16 2023 18:15:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652754012,
+date : Sun Apr 16 2023 18:15:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652765195,
+date : Sun Apr 16 2023 18:16:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652839812,
+date : Sun Apr 16 2023 18:17:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681652979329,
+date : Sun Apr 16 2023 18:19:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681726278963,
+date : Mon Apr 17 2023 14:41:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09105371653","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1681726279181,
+date : Mon Apr 17 2023 14:41:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727619888,
+date : Mon Apr 17 2023 15:03:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727622943,
+date : Mon Apr 17 2023 15:03:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727719191,
+date : Mon Apr 17 2023 15:05:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727719193,
+date : Mon Apr 17 2023 15:05:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727737947,
+date : Mon Apr 17 2023 15:05:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727914134,
+date : Mon Apr 17 2023 15:08:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681727914142,
+date : Mon Apr 17 2023 15:08:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728021120,
+date : Mon Apr 17 2023 15:10:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728021129,
+date : Mon Apr 17 2023 15:10:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728035837,
+date : Mon Apr 17 2023 15:10:35 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728036045,
+date : Mon Apr 17 2023 15:10:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728036047,
+date : Mon Apr 17 2023 15:10:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728036091,
+date : Mon Apr 17 2023 15:10:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728036969,
+date : Mon Apr 17 2023 15:10:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728040398,
+date : Mon Apr 17 2023 15:10:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728040402,
+date : Mon Apr 17 2023 15:10:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728040450,
+date : Mon Apr 17 2023 15:10:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728340167,
+date : Mon Apr 17 2023 15:15:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728340339,
+date : Mon Apr 17 2023 15:15:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728340341,
+date : Mon Apr 17 2023 15:15:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728340395,
+date : Mon Apr 17 2023 15:15:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728342843,
+date : Mon Apr 17 2023 15:15:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728350260,
+date : Mon Apr 17 2023 15:15:50 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728350270,
+date : Mon Apr 17 2023 15:15:50 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728370348,
+date : Mon Apr 17 2023 15:16:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728370355,
+date : Mon Apr 17 2023 15:16:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728541199,
+date : Mon Apr 17 2023 15:19:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728541238,
+date : Mon Apr 17 2023 15:19:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728679227,
+date : Mon Apr 17 2023 15:21:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728679271,
+date : Mon Apr 17 2023 15:21:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728889610,
+date : Mon Apr 17 2023 15:24:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728889622,
+date : Mon Apr 17 2023 15:24:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728889669,
+date : Mon Apr 17 2023 15:24:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681728889716,
+date : Mon Apr 17 2023 15:24:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729285164,
+date : Mon Apr 17 2023 15:31:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729285166,
+date : Mon Apr 17 2023 15:31:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729285201,
+date : Mon Apr 17 2023 15:31:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729295905,
+date : Mon Apr 17 2023 15:31:35 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729890845,
+date : Mon Apr 17 2023 15:41:30 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729891126,
+date : Mon Apr 17 2023 15:41:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729891131,
+date : Mon Apr 17 2023 15:41:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729891217,
+date : Mon Apr 17 2023 15:41:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729914180,
+date : Mon Apr 17 2023 15:41:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729914182,
+date : Mon Apr 17 2023 15:41:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729914234,
+date : Mon Apr 17 2023 15:41:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729920957,
+date : Mon Apr 17 2023 15:42:00 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729921219,
+date : Mon Apr 17 2023 15:42:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729921223,
+date : Mon Apr 17 2023 15:42:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729921305,
+date : Mon Apr 17 2023 15:42:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729962532,
+date : Mon Apr 17 2023 15:42:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729962781,
+date : Mon Apr 17 2023 15:42:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729962786,
+date : Mon Apr 17 2023 15:42:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681729962864,
+date : Mon Apr 17 2023 15:42:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730002137,
+date : Mon Apr 17 2023 15:43:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730002139,
+date : Mon Apr 17 2023 15:43:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730002194,
+date : Mon Apr 17 2023 15:43:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730011395,
+date : Mon Apr 17 2023 15:43:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730011691,
+date : Mon Apr 17 2023 15:43:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730011695,
+date : Mon Apr 17 2023 15:43:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730011773,
+date : Mon Apr 17 2023 15:43:31 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730114554,
+date : Mon Apr 17 2023 15:45:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730114590,
+date : Mon Apr 17 2023 15:45:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730188936,
+date : Mon Apr 17 2023 15:46:28 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730188975,
+date : Mon Apr 17 2023 15:46:28 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730259346,
+date : Mon Apr 17 2023 15:47:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730259379,
+date : Mon Apr 17 2023 15:47:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730264352,
+date : Mon Apr 17 2023 15:47:44 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730265520,
+date : Mon Apr 17 2023 15:47:45 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+{
+type : INFO,
+timestamp : 1681730515124,
+date : Mon Apr 17 2023 15:51:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+{
+type : INFO,
+timestamp : 1681730639871,
+date : Mon Apr 17 2023 15:53:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+{
+type : INFO,
+timestamp : 1681730652813,
+date : Mon Apr 17 2023 15:54:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+{
+type : INFO,
+timestamp : 1681730679532,
+date : Mon Apr 17 2023 15:54:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730679803,
+date : Mon Apr 17 2023 15:54:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730683190,
+date : Mon Apr 17 2023 15:54:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730683196,
+date : Mon Apr 17 2023 15:54:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730683274,
+date : Mon Apr 17 2023 15:54:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730782246,
+date : Mon Apr 17 2023 15:56:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730782250,
+date : Mon Apr 17 2023 15:56:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730823969,
+date : Mon Apr 17 2023 15:57:03 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730831952,
+date : Mon Apr 17 2023 15:57:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730887139,
+date : Mon Apr 17 2023 15:58:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730887420,
+date : Mon Apr 17 2023 15:58:07 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730889824,
+date : Mon Apr 17 2023 15:58:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730889829,
+date : Mon Apr 17 2023 15:58:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf87d59d4e04ef25253a3,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730889912,
+date : Mon Apr 17 2023 15:58:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681730941832,
+date : Mon Apr 17 2023 15:59:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/643bf87d59d4e04ef25253a3,
+body : {"title":"ایده تستی","ideaCategory":{"_id":"6421282ee4dbd7c1f7d6a05b","title":"test 2","isPublished":true,"creationDate":1679894574492,"__v":0},"featured":false,"text":"بسبسبیبسیبس","_id":"643bf87d59d4e04ef25253a3"}
+},
+{
+type : INFO,
+timestamp : 1681730941960,
+date : Mon Apr 17 2023 15:59:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731009180,
+date : Mon Apr 17 2023 16:00:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf93759d4e04ef25253bb,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731009182,
+date : Mon Apr 17 2023 16:00:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731009254,
+date : Mon Apr 17 2023 16:00:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731014929,
+date : Mon Apr 17 2023 16:00:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731020967,
+date : Mon Apr 17 2023 16:00:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731158530,
+date : Mon Apr 17 2023 16:02:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731158887,
+date : Mon Apr 17 2023 16:02:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10&title=%D9%84%D8%A7%D8%AA%D9%84%D8%A7%D8%AA%D9%84%D8%A7,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731594443,
+date : Mon Apr 17 2023 16:09:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731596695,
+date : Mon Apr 17 2023 16:09:56 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/idea/64328c7e31b590e0401523b4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681731596716,
+date : Mon Apr 17 2023 16:09:56 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732035410,
+date : Mon Apr 17 2023 16:17:15 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732041725,
+date : Mon Apr 17 2023 16:17:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732041943,
+date : Mon Apr 17 2023 16:17:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732070167,
+date : Mon Apr 17 2023 16:17:50 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10&title=lllllllllllllllll,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732071176,
+date : Mon Apr 17 2023 16:17:51 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732073077,
+date : Mon Apr 17 2023 16:17:53 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/idea/643bf8b559d4e04ef25253ab,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732073103,
+date : Mon Apr 17 2023 16:17:53 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?pageSize=10,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732074945,
+date : Mon Apr 17 2023 16:17:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732078284,
+date : Mon Apr 17 2023 16:17:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732081406,
+date : Mon Apr 17 2023 16:18:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"ikuilkuijluluo","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":true,"text":"uiuuui","isAdminSubmitted":true}
+},
+{
+type : INFO,
+timestamp : 1681732081529,
+date : Mon Apr 17 2023 16:18:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732085529,
+date : Mon Apr 17 2023 16:18:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732085532,
+date : Mon Apr 17 2023 16:18:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643d31f127487bbf4fb0e0fa,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732085584,
+date : Mon Apr 17 2023 16:18:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732097157,
+date : Mon Apr 17 2023 16:18:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732098008,
+date : Mon Apr 17 2023 16:18:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/643d31f127487bbf4fb0e0fa,
+body : {"title":"hellooioooo","ideaCategory":"64212429e4dbd7c1f7d6a00b","featured":false,"text":"nooooooooooooooo","_id":"643d31f127487bbf4fb0e0fa"}
+},
+{
+type : INFO,
+timestamp : 1681732098111,
+date : Mon Apr 17 2023 16:18:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732135195,
+date : Mon Apr 17 2023 16:18:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732135488,
+date : Mon Apr 17 2023 16:18:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732600785,
+date : Mon Apr 17 2023 16:26:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732600994,
+date : Mon Apr 17 2023 16:26:40 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732628851,
+date : Mon Apr 17 2023 16:27:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732637060,
+date : Mon Apr 17 2023 16:27:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681732779795,
+date : Mon Apr 17 2023 16:29:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681733966644,
+date : Mon Apr 17 2023 16:49:26 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681733966904,
+date : Mon Apr 17 2023 16:49:26 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/ideaCategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681733972095,
+date : Mon Apr 17 2023 16:49:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681733973383,
+date : Mon Apr 17 2023 16:49:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643bf87d59d4e04ef25253a3,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734014800,
+date : Mon Apr 17 2023 16:50:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734014801,
+date : Mon Apr 17 2023 16:50:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734014827,
+date : Mon Apr 17 2023 16:50:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/postcategory?pageSize=100,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734023112,
+date : Mon Apr 17 2023 16:50:23 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734131341,
+date : Mon Apr 17 2023 16:52:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=%D9%84%D8%A7%D8%AA%D9%84%D8%A7%D8%AA%D9%84%D8%A7,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734144193,
+date : Mon Apr 17 2023 16:52:24 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734149998,
+date : Mon Apr 17 2023 16:52:29 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734152639,
+date : Mon Apr 17 2023 16:52:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=o,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734152745,
+date : Mon Apr 17 2023 16:52:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=ol,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734152873,
+date : Mon Apr 17 2023 16:52:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olh,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734152975,
+date : Mon Apr 17 2023 16:52:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhl,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734153077,
+date : Mon Apr 17 2023 16:52:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhlh,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734153104,
+date : Mon Apr 17 2023 16:52:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhlhj,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734153226,
+date : Mon Apr 17 2023 16:52:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhlhjl,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734153308,
+date : Mon Apr 17 2023 16:52:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhlhjlu,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734153406,
+date : Mon Apr 17 2023 16:52:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhlhjluo,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734153426,
+date : Mon Apr 17 2023 16:52:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=olhlhjluol,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734156951,
+date : Mon Apr 17 2023 16:52:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=ol,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734158480,
+date : Mon Apr 17 2023 16:52:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=col,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734158846,
+date : Mon Apr 17 2023 16:52:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=caol,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734159119,
+date : Mon Apr 17 2023 16:52:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=casol,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734159314,
+date : Mon Apr 17 2023 16:52:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=cassol,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734162641,
+date : Mon Apr 17 2023 16:52:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734163192,
+date : Mon Apr 17 2023 16:52:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=c,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734163577,
+date : Mon Apr 17 2023 16:52:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=ca,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734163975,
+date : Mon Apr 17 2023 16:52:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=cas,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734165850,
+date : Mon Apr 17 2023 16:52:45 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=cass,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734166531,
+date : Mon Apr 17 2023 16:52:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=casse,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734166839,
+date : Mon Apr 17 2023 16:52:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=casset,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734166995,
+date : Mon Apr 17 2023 16:52:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=cassett,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734169083,
+date : Mon Apr 17 2023 16:52:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=cassette,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734188445,
+date : Mon Apr 17 2023 16:53:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734210024,
+date : Mon Apr 17 2023 16:53:30 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734218676,
+date : Mon Apr 17 2023 16:53:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/image?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734221691,
+date : Mon Apr 17 2023 16:53:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/video/upload,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734248124,
+date : Mon Apr 17 2023 16:54:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734248212,
+date : Mon Apr 17 2023 16:54:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734248232,
+date : Mon Apr 17 2023 16:54:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734253229,
+date : Mon Apr 17 2023 16:54:13 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734256166,
+date : Mon Apr 17 2023 16:54:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734257787,
+date : Mon Apr 17 2023 16:54:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734257821,
+date : Mon Apr 17 2023 16:54:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734257854,
+date : Mon Apr 17 2023 16:54:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734259467,
+date : Mon Apr 17 2023 16:54:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=j,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734259512,
+date : Mon Apr 17 2023 16:54:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jm,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734259575,
+date : Mon Apr 17 2023 16:54:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jmg,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734259711,
+date : Mon Apr 17 2023 16:54:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jmgj,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734259842,
+date : Mon Apr 17 2023 16:54:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jmgjg,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734259919,
+date : Mon Apr 17 2023 16:54:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jmgjgh,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734260023,
+date : Mon Apr 17 2023 16:54:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jmgjghj,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734260054,
+date : Mon Apr 17 2023 16:54:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=jmgjghjg,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734263644,
+date : Mon Apr 17 2023 16:54:23 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734268701,
+date : Mon Apr 17 2023 16:54:28 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/image?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734276570,
+date : Mon Apr 17 2023 16:54:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/post,
+body : {"title":"aaaaa","postCategory":"643a9fb7d0c5e185c395b8b0","featured":false,"text":"a","videos":["643d3a4e27487bbf4fb0e186"],"images":["642d52e3c614daffa23ec181"]}
+},
+{
+type : INFO,
+timestamp : 1681734276721,
+date : Mon Apr 17 2023 16:54:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734282849,
+date : Mon Apr 17 2023 16:54:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734288891,
+date : Mon Apr 17 2023 16:54:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734288946,
+date : Mon Apr 17 2023 16:54:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734300662,
+date : Mon Apr 17 2023 16:55:00 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734346301,
+date : Mon Apr 17 2023 16:55:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/643d31f127487bbf4fb0e0fa,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734348499,
+date : Mon Apr 17 2023 16:55:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734349887,
+date : Mon Apr 17 2023 16:55:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734351314,
+date : Mon Apr 17 2023 16:55:51 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post/643d3a8427487bbf4fb0e1b9,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734351378,
+date : Mon Apr 17 2023 16:55:51 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734351384,
+date : Mon Apr 17 2023 16:55:51 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/video/VID-643d3a4e27487bbf4fb0e186-720.mp4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1681734398771,
+date : Mon Apr 17 2023 16:56:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea?,
+body : {}
+},

@@ -14,6 +14,7 @@ import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
+import BadRequestError from "@/helpers/error/BadRequestError";
 
 class IdeaData {
   Idea: Model<IIdea, {}, {}, {}, any>;
@@ -110,7 +111,7 @@ class IdeaData {
     featured,
     isAdminSubmitted,
   }: IIdea): Promise<IIdeaRead> => {
-    if (!ideaCategory) throw new NotFoundError();
+    if (!ideaCategory) throw new BadRequestError("ygfug");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
 
     const idea = new this.Idea({
@@ -136,7 +137,6 @@ class IdeaData {
   }: IIdea & { _id: string }): Promise<IIdeaRead> => {
     if (!ideaCategory) throw new NotFoundError();
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
-
     const idea = await this.Idea.findByIdAndUpdate(
       _id,
       {

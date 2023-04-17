@@ -5,6 +5,7 @@ import notification from 'redux/reducer/Notification/notificationReducer';
 import setting from 'redux/reducer/Setting/settingReducer';
 import toast from 'redux/reducer/Toast/toastReducer';
 import postCategory from 'redux/reducer/PostCategory/postCategoryReducer';
+import ideaCategory from 'redux/reducer/IdeaCategory/ideaCategoryReducer';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -18,6 +19,7 @@ export const store = configureStore({
     setting,
     toast,
     postCategory,
+    ideaCategory,
   },
 });
 

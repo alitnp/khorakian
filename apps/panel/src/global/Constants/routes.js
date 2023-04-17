@@ -48,6 +48,19 @@ const routes = {
   post: { path: '/post', isPrivate: true },
   postCreate: { path: '/post/create', isPrivate: true },
   postEdit: { path: '/post/edit', isPrivate: true },
+
+  //idea
+  idea: { path: '/idea', isPrivate: true },
+  ideaCreate: { path: '/idea/create', isPrivate: true },
+  ideaEdit: { path: '/idea/edit', isPrivate: true },
+  ideaDetail: { path: '/idea/detail', isPrivate: true },
+  //user idea
+  userIdea: { path: '/userIdea', isPrivate: true },
+
+  //Experience
+  experience: { path: '/Experience', isPrivate: true },
+  //user idea
+  userExperience: { path: '/userExperience', isPrivate: true },
 };
 
 export default routes;

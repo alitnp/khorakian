@@ -22,6 +22,13 @@ const endpointUrls = {
   //!H-h
 
   //!I-i
+  //idea
+  ideaGetList: '/idea',
+  ideaDetail: (id: number | string) => '/idea/' + id,
+  ideaCreate: '/idea',
+  ideaEdit: (id: number | string) => '/idea/' + id,
+  ideaDelete: (id: number | string) => '/idea/' + id,
+
   //ideaCategory
   ideaCategoryGetList: '/ideaCategory',
   ideaCategoryDetail: (id: number | string) => '/ideaCategory/' + id,

@@ -1,4 +1,13 @@
-import { DoubleRightOutlined, DashboardOutlined, InfoCircleOutlined, YoutubeOutlined, PictureOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  DoubleRightOutlined,
+  ExceptionOutlined,
+  QuestionCircleOutlined as BulbOutlined,
+  DashboardOutlined,
+  InfoCircleOutlined,
+  YoutubeOutlined,
+  PictureOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import TcMenu from 'components/UI/Menu/TcMenu';
 import useScreenWidth from 'global/helperFunctions/useScreenWidth';
 import { memo, useEffect, useState } from 'react';
@@ -28,6 +37,10 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
     { name: 'پست', icon: <DashboardOutlined />, to: routes.post.path, open: open, role: true },
     { name: 'ویدیو', icon: <YoutubeOutlined />, to: routes.video.path, open: open, role: true },
     { name: 'عکس', icon: <PictureOutlined />, to: routes.image.path, open: open, role: true },
+    { name: 'ایده ها', icon: <BulbOutlined />, to: routes.idea.path, open: open, role: true },
+    { name: 'ایده ی کاربران', icon: <BulbOutlined />, to: routes.userIdea.path, open: open, role: true },
+    { name: 'تجربیات', icon: <ExceptionOutlined />, to: routes.experience.path, open: open, role: true },
+    { name: 'تجربیات کاربران', icon: <ExceptionOutlined />, to: routes.userExperience.path, open: open, role: true },
     {
       name: 'اطلاعات پایه',
       icon: <InfoCircleOutlined />,

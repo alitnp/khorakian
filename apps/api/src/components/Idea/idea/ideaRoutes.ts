@@ -64,12 +64,6 @@ router.post(
   [auth, ...validate(paramIdValidations)],
   controller.disLike,
 );
-//create a new idea - admin only
-router.post(
-  "/",
-  [isAdmin, ...validate(createIdeaValidations)],
-  controller.create,
-);
 
 //approve a idea -admin only
 router.post(
@@ -83,6 +77,8 @@ router.post(
   [isAdmin, ...validate(paramIdValidations)],
   controller.disApprove,
 );
+//create a new idea - admin only
+router.post("/", [auth, ...validate(createIdeaValidations)], controller.create);
 
 //put
 //edit an existing idea - admin only

@@ -3074,3 +3074,471 @@ body : {"commentId":"64328ec831b590e040152425","text":"replyyyy"}
 },
 Response : {"status":404,"message":"نظر یافت نشد","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1681563556739,
+date : Sat Apr 15 2023 17:29:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {"title":"8"}
+},
+Response : {"status":400,"message":"عنوان باید حداقل 2 کاراکتر باشد.","details":{"title":"عنوان باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681578168153,
+date : Sat Apr 15 2023 21:32:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681578181050,
+date : Sat Apr 15 2023 21:33:01 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"dcfsdfvsf"}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681578197433,
+date : Sat Apr 15 2023 21:33:17 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681578202391,
+date : Sat Apr 15 2023 21:33:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681578550861,
+date : Sat Apr 15 2023 21:39:10 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"hhhhh"}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681579527406,
+date : Sat Apr 15 2023 21:55:27 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"values":{"title":"dfgdfgdg","ideaCategory":"64212429e4dbd7c1f7d6a00b","text":"dfsdvsfv","featured":1},"isAdminSubmitted":true}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681579650231,
+date : Sat Apr 15 2023 21:57:30 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681579656950,
+date : Sat Apr 15 2023 21:57:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681580018971,
+date : Sat Apr 15 2023 22:03:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681580201856,
+date : Sat Apr 15 2023 22:06:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681580424914,
+date : Sat Apr 15 2023 22:10:24 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681648963641,
+date : Sun Apr 16 2023 17:12:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681649184643,
+date : Sun Apr 16 2023 17:16:24 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"expose":true,"statusCode":400,"status":400,"body":"{\r\n     title:\"rgvgfdgd\",\r\n    ideaCategory:\"64212429e4dbd7c1f7d6a00b\",\r\n    text:\"fghfthfth\",\r\n    featured:true,\r\n    isAdminSubmitted:true,\r\n}","type":"entity.parse.failed"}
+},
+{
+type : ERROR,
+timestamp : 1681649529052,
+date : Sun Apr 16 2023 17:22:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651498085,
+date : Sun Apr 16 2023 17:54:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651504162,
+date : Sun Apr 16 2023 17:55:04 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651533830,
+date : Sun Apr 16 2023 17:55:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651542484,
+date : Sun Apr 16 2023 17:55:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/ideaCategory,
+body : {}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651755243,
+date : Sun Apr 16 2023 17:59:15 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"values":{"title":"jtujtuy","ideaCategory":"64212429e4dbd7c1f7d6a00b","featured":false,"text":"yjtyjtujty"},"isAdminSubmitted":true}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651792525,
+date : Sun Apr 16 2023 17:59:52 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651837164,
+date : Sun Apr 16 2023 18:00:37 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651894038,
+date : Sun Apr 16 2023 18:01:34 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681651966681,
+date : Sun Apr 16 2023 18:02:46 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652023443,
+date : Sun Apr 16 2023 18:03:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652577531,
+date : Sun Apr 16 2023 18:12:57 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652582122,
+date : Sun Apr 16 2023 18:13:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652584070,
+date : Sun Apr 16 2023 18:13:04 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652591428,
+date : Sun Apr 16 2023 18:13:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652596771,
+date : Sun Apr 16 2023 18:13:16 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652598408,
+date : Sun Apr 16 2023 18:13:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"ideaCategory":"شناسه ارسال نشده","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652694065,
+date : Sun Apr 16 2023 18:14:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/undefined,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است.","title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681652705051,
+date : Sun Apr 16 2023 18:15:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : DELETE,
+url : /api/v1/idea/undefined,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681730265525,
+date : Mon Apr 17 2023 15:47:45 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681730515126,
+date : Mon Apr 17 2023 15:51:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681730639887,
+date : Mon Apr 17 2023 15:53:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681730652821,
+date : Mon Apr 17 2023 15:54:12 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {"title":"لاتلاتلا","ideaCategory":"6421282ee4dbd7c1f7d6a05b","featured":false,"text":"لالالالالا","_id":"643bf8b559d4e04ef25253ab"}
+},
+Response : {"status":400,"message":"شناسه بvgujvgujه درستی وارد نشده است.","details":{"id":"شناسه بvgujvgujه درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681730782248,
+date : Mon Apr 17 2023 15:56:22 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681730823971,
+date : Mon Apr 17 2023 15:57:03 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/idea/NjQzYmY4YjU1OWQ0ZTA0ZWYyNTI1M2Fi,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},

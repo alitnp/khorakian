@@ -14,6 +14,7 @@ import postRoutes from 'components/Routes/postRoutes';
 import userRoutes from 'components/Routes/userRoutes';
 import videoRoutes from 'components/Routes/videoRoutes';
 import imageRoutes from 'components/Routes/imageRoutes';
+import ideaRoutes from 'components/Routes//ideaRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -75,6 +76,9 @@ function MainRouter() {
 
     //image
     ...imageRoutes(),
+
+    //idea
+    ...ideaRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];
