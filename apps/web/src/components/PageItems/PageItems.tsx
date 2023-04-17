@@ -1,4 +1,5 @@
 import Card from "@/components/Card/Card";
+import WideCard from "@/components/Card/WideCard";
 import { FC } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
@@ -17,7 +18,14 @@ const PageItems: FC<IPageItems> = ({}) => {
 					<BiArrowBack className="text-xl" />
 				</div>
 			</div>
-			<div className="flex gap-4 mt-4">
+			<div className="gap-4 my-6 ">
+				<WideCard />
+				<Card />
+				<WideCard />
+				<Card />
+				<WideCard />
+				<Card />
+				<WideCard />
 				<Card />
 			</div>
 		</div>

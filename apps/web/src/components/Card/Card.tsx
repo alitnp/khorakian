@@ -1,3 +1,4 @@
+import CardLikeCommentCount from "@/components/Card/CardLikeCommentCount";
 import Image from "next/image";
 import { FC } from "react";
 
@@ -5,15 +6,30 @@ interface ICard {}
 
 const Card: FC<ICard> = ({}) => {
 	return (
-		<article className="overflow-hidden rounded-md shadow-md">
+		<article className="overflow-hidden rounded-md shadow-md w-fit">
 			<Image
 				src="/image.png"
 				width={200}
 				height={200}
 				alt="sdfgsdfg "
 			/>
-			<span>آلبوم</span>
-			<h2>مراسم پیاده روی اربعین</h2>
+			<span className="text-sm font-light text-k-grey-text-color">
+				آلبوم
+			</span>
+			<h2 className="text-base font-medium">
+				مراسم پیاده روی اربعین
+			</h2>
+			<div className="flex items-center justify-between py-2 mt-4 border-t">
+				<span className="text-sm text-k-grey-text-color">
+					۱۶ مهر ۱۴۰۰
+				</span>
+				<CardLikeCommentCount
+					likeCount={10}
+					commentCount={21}
+					isLiked={false}
+					isCommented={false}
+				/>
+			</div>
 		</article>
 	);
 };
