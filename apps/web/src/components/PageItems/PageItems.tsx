@@ -3,30 +3,33 @@ import WideCard from "@/components/Card/WideCard";
 import { FC } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
-interface IPageItems {}
+interface IPageItems { }
 
-const PageItems: FC<IPageItems> = ({}) => {
+const PageItems: FC<IPageItems> = ({ }) => {
 	return (
-		<div>
+		<div className="py-14 k-container">
 			<div className="flex justify-between border-b">
 				<div>
 					<h3 className="text-2xl font-black">تازه ها</h3>
-					<span>آخرین محتوای اضافه شده به سامانه</span>
+					<span className="text-sm">
+						آخرین محتوای اضافه شده به سامانه
+					</span>
 				</div>
 				<div className="flex items-center gap-2 cursor-pointer text-k-primary-color hover:text-k-primary-2-color">
 					<span>۱۴ مورد دیگر</span>
 					<BiArrowBack className="text-xl" />
-				</div>
-			</div>
-			<div className="gap-4 my-6 ">
-				<WideCard />
+				</div></div>
+			<div className="flex w-full gap-4 my-6 overflow-x-auto">
+				<Card />
+				<Card />
+				<Card />
 				<Card />
 				<WideCard />
 				<Card />
-				<WideCard />
+				<Card />
+				<Card />
 				<Card />
 				<WideCard />
-				<Card />
 			</div>
 		</div>
 	);

@@ -6,7 +6,7 @@ interface ICard {}
 
 const WideCard: FC<ICard> = ({}) => {
 	return (
-		<article className="flex w-full overflow-hidden rounded-md shadow-md">
+		<article className="flex w-full overflow-hidden rounded-md shadow-md h-fit">
 			<Image
 				src="/image.png"
 				width={225}

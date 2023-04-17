@@ -28,7 +28,7 @@ const Header: FC = () => {
 	);
 
 	return (
-		<header className="fixed top-0 left-0 flex items-center justify-between w-full border-b h-14 bg-k-bg-color">
+		<header className="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-12 bg-k-faded-dark-bg-color text-k-opposite-text-color k-container">
 			<div className="hidden md:block">
 				<Navigation />
 			</div>

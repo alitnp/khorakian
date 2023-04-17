@@ -6,7 +6,7 @@ interface ICard {}
 
 const Card: FC<ICard> = ({}) => {
 	return (
-		<article className="overflow-hidden rounded-md shadow-md w-fit">
+		<article className="items-stretch overflow-hidden rounded-md shadow-md w-fit shrink-0">
 			<Image
 				src="/image.png"
 				width={200}

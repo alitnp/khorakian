@@ -19,6 +19,8 @@ module.exports = {
 				"k-primary-2-color": "var(--primary-2-color)",
 				"k-secondary-color": "var(--secondary-1-color)",
 				"k-bg-color": "var(--bg-color)",
+				"k-dark-bg-color": "var(--dark-bg-color)",
+				"k-faded-dark-bg-color": "var(--faded-dark-bg-color)",
 				"k-text-color": "var(--text-color)",
 				"k-opposite-text-color": "var(--opposite-text-color)",
 				"k-grey-text-color": "var(--grey-text-1-color)",

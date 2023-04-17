@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="fa" dir="rtl" style={{ fontSize: "16px" }}>
-			<body className={`${vazir.variable} font-vazir pt-14`}>
+			<body className={`${vazir.variable} font-vazir`}>
 				<Providers>
 					<Header />
 					{children}
