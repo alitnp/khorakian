@@ -52,7 +52,8 @@ class UserExperienceData {
         $regex: req.query.userExperienceCategory,
       };
     }
-    if (req.query.isApprove) searchQuery.isApprove = !!req.query.isApprove;
+    if (req.query.isApprove)
+      searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 

@@ -13,6 +13,7 @@ const Idea: FC = () => {
       filterItems={ideaModel.filterInputs}
       getListEndpoint={endpointUrls.ideaGetList}
       title={ideaModel.title}
+      additionalPayload={{ isAdminSubmitted: true }}
     />
   );
 };

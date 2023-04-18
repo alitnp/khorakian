@@ -28,6 +28,8 @@ const endpointUrls = {
   ideaCreate: '/idea',
   ideaEdit: (id: number | string) => '/idea/' + id,
   ideaDelete: (id: number | string) => '/idea/' + id,
+  //UserIdea
+  setUserIdeaApprove: '/idea/approve',
 
   //ideaCategory
   ideaCategoryGetList: '/ideaCategory',

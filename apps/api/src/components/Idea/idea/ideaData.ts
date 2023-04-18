@@ -47,11 +47,14 @@ class IdeaData {
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
     if (req.query.isAdminSubmitted)
-      searchQuery.isAdminSubmitted = !!req.query.isAdminSubmitted;
+      searchQuery.isAdminSubmitted = stringToBoolean(
+        req.query.isAdminSubmitted,
+      );
     if (req.query.ideaCategory) {
       searchQuery.ideaCategory._id = { $regex: req.query.ideaCategory };
     }
-    if (req.query.isApprove) searchQuery.isApprove = !!req.query.isApprove;
+    if (req.query.isApprove)
+      searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 

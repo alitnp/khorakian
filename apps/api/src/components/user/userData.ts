@@ -5,6 +5,7 @@ import { ConflictError, NotFoundError } from "@/helpers/error";
 import { IUserMethods } from "@/components/user/userModel";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import BadRequestError from "@/helpers/error/BadRequestError";
+import { stringToBoolean } from "@/utils/util";
 
 class UserData implements IData<IUser> {
   User: Model<IUser, {}, IUserMethods>;
@@ -24,7 +25,8 @@ class UserData implements IData<IUser> {
     if (req.query.mobileNumber)
       searchQuery.mobileNumber = { $regex: req.query.mobileNumber };
     if (req.query._id) searchQuery._id = req.query._id;
-    if (req.query.idAdmin) searchQuery.isAdmin = !!req.query.isAdmin;
+    if (req.query.idAdmin)
+      searchQuery.isAdmin = stringToBoolean(req.query.isAdmin);
 
     return getAllData<IUser>(searchQuery, req, this.User);
   };
