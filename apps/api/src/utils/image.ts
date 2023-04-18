@@ -14,7 +14,7 @@ export const convertImageToSmallWebp = async (
 ) => {
   sharp.cache(false);
   return await sharp(imagePathname)
-    .resize({ width: 300 })
+    .resize({ width: 300, height: 300, fit: "cover" })
     .webp()
     .toFile(outputPathname);
 };

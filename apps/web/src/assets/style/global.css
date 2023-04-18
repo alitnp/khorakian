@@ -43,3 +43,16 @@
   padding-left: 4rem;
 }
 }
+
+
+.no-scroll::-webkit-scrollbar{
+display: none;
+}
+
+.snap-scroll{
+    scroll-snap-type: y mandatory;
+}
+
+.snap-scroll> * {
+  scroll-snap-align: start;
+}

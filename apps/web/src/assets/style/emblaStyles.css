@@ -19,3 +19,18 @@
   position: relative; 
   direction:rtl;
 }
+
+
+/* free */
+.embla__container__free {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide__free {
+  flex: 0 0 30%;
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+}

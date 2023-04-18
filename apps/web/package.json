@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"react-use-draggable-scroll": "^0.4.7",
 		"@chakra-ui/next-js": "^2.1.2",
 		"@chakra-ui/react": "^2.5.5",
 		"@emotion/cache": "^11.10.7",

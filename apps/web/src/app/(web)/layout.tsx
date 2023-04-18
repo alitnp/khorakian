@@ -1,4 +1,4 @@
-import { vazir } from "@/assets/fonts/vazirFont";
+import { iranSans } from "@/assets/fonts/iransansFont";
 import "@/assets/style/global.css";
 import Header from "@/components/Header/Header";
 import { Providers } from "@/components/Providers/Providers";
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="fa" dir="rtl" style={{ fontSize: "16px" }}>
-			<body className={`${vazir.variable} font-vazir`}>
+			<body className={`${iranSans.variable} font-iransans`}>
 				<Providers>
 					<Header />
 					{children}
