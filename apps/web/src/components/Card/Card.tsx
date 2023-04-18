@@ -7,13 +7,13 @@ interface ICard {}
 const Card: FC<ICard> = ({}) => {
 	return (
 		<article className="items-stretch overflow-hidden shadow-md rounded-xl w-fit shrink-0 snap-start">
-			<div className="relative w-[300px] h-[300px]">
+			<div className="relative w-[300px] h-[300px] overflow-hidden">
 				<Image
 					src="/slider.png"
 					alt="sdfgsdfg"
 					width={300}
 					height={300}
-					className="object-cover w-[300px] h-[300px]"
+					className="object-cover w-[300px] h-[300px] hover:scale-110 transition-transform duration-500 ease-out"
 				/>
 			</div>
 			<div className="w-[300px] px-4 py-2">

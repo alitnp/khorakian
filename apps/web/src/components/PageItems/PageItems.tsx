@@ -31,11 +31,11 @@ const PageItems: FC<IPageItems> = ({}) => {
 				</div>
 			</div>
 			<div
-				className="overflow-x-scroll gap-x-6 scrollbar-hide no-scroll"
+				className="overflow-x-scroll scrollbar-hide no-scroll"
 				ref={ref2}
 				{...events}
 			>
-				<div className="flex">
+				<div className="flex px-2 py-6 gap-x-6">
 					{[1, 2, 3, 4, 5, 6, 7, 8, 9].map((_item, idx) => (
 						<Card key={idx} />
 					))}
