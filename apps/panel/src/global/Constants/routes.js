@@ -22,16 +22,31 @@ const routes = {
   ideaCategoryEdit: { path: '/ideacategory/edit', isPrivate: true },
   ideaCategoryDetail: { path: '/ideacategory/detail', isPrivate: true },
 
+  //idea
+  idea: { path: '/idea', isPrivate: true },
+  ideaCreate: { path: '/idea/create', isPrivate: true },
+  ideaEdit: { path: '/idea/edit', isPrivate: true },
+  ideaDetail: { path: '/idea/detail', isPrivate: true },
+  //user idea
+  userIdea: { path: '/userIdea', isPrivate: true },
+
+  //Experience
+  experience: { path: '/experience', isPrivate: true },
+  experienceCreate: { path: '/experience/create', isPrivate: true },
+  experienceEdit: { path: '/experience/edit', isPrivate: true },
+
+  //UserExperience
+  userExperience: { path: '/userExperience', isPrivate: true },
+  userExperienceCreate: { path: '/userExperience/create', isPrivate: true },
+  userExperienceEdit: { path: '/userExperience/edit', isPrivate: true },
+
   //experienceCategory
   experienceCategory: { path: '/experienceCategory', isPrivate: true },
   experienceCategoryCreate: { path: '/experienceCategory/create', isPrivate: true },
   experienceCategoryEdit: { path: '/experienceCategory/edit', isPrivate: true },
   experienceCategoryDetail: { path: '/experienceCategory/detail', isPrivate: true },
 
-  //payment
-  payment: { path: '/payment', isPrivate: true },
-
-  //user
+  //USER
   user: { path: '/user', isPrivate: true },
 
   //video
@@ -48,19 +63,6 @@ const routes = {
   post: { path: '/post', isPrivate: true },
   postCreate: { path: '/post/create', isPrivate: true },
   postEdit: { path: '/post/edit', isPrivate: true },
-
-  //idea
-  idea: { path: '/idea', isPrivate: true },
-  ideaCreate: { path: '/idea/create', isPrivate: true },
-  ideaEdit: { path: '/idea/edit', isPrivate: true },
-  ideaDetail: { path: '/idea/detail', isPrivate: true },
-  //user idea
-  userIdea: { path: '/userIdea', isPrivate: true },
-
-  //Experience
-  experience: { path: '/Experience', isPrivate: true },
-  //user idea
-  userExperience: { path: '/userExperience', isPrivate: true },
 };
 
 export default routes;

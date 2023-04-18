@@ -10,6 +10,13 @@ const endpointUrls = {
   //!D-d
 
   //! E-e
+  ////experience
+  experienceGetList: '/experience',
+  experienceDetail: (id: number | string) => '/experience/' + id,
+  experienceCreate: '/experience',
+  experienceEdit: (id: number | string) => '/experience/' + id,
+  experienceDelete: (id: number | string) => '/experience/' + id,
+
   //experienceCategory
   experienceCategoryGetList: '/experienceCategory',
   experienceCategoryDetail: (id: number | string) => '/experienceCategory/' + id,
@@ -81,6 +88,19 @@ const endpointUrls = {
   //user
   userGetList: '/user',
   setUserIsAdmin: (id: string | number) => '/user/toggleUserAdminAccess/' + id,
+  //UserExperience
+  userExperienceGetList: '/userExperience',
+  userExperienceDetail: (id: number | string) => '/userExperience/' + id,
+  userExperienceCreate: '/userExperience',
+  userExperienceEdit: (id: number | string) => '/userExperience/' + id,
+  userExperienceDelete: (id: number | string) => '/userExperience/' + id,
+
+  //userExperienceCategory
+  userExperienceCategoryGetList: '/userExperienceCategory',
+  userExperienceCategoryDetail: (id: number | string) => '/userExperienceCategory/' + id,
+  userExperienceCategoryCreate: '/userExperienceCategory',
+  userExperienceCategoryEdit: (id: number | string) => '/userExperienceCategory/' + id,
+  userExperienceCategoryDelete: (id: number | string) => '/userExperienceCategory/' + id,
 
   //!V-v
   //video

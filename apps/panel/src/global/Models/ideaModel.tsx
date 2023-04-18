@@ -1,3 +1,4 @@
+import { IPostCategory } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
@@ -44,7 +45,27 @@ const filterInputs = (
 const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
     { title: 'عنوان', key: 'title', dataIndex: 'title' },
-    { title: 'دسته بندی ایده', key: 'ideaCategory', dataIndex: 'ideaCategory' },
+    {
+      title: 'دسته بندی',
+      key: 'postCategory',
+      dataIndex: 'postCategory',
+      render: (text: IPostCategory) => text?.title,
+    },
+    {
+      title: 'تعداد بازدید',
+      key: 'viewCount',
+      dataIndex: 'viewCount',
+    },
+    {
+      title: 'تعداد پسند',
+      key: 'likeCount',
+      dataIndex: 'likeCount',
+    },
+    {
+      title: 'تعداد نظر',
+      key: 'commentCount',
+      dataIndex: 'commentCount',
+    },
     { title: 'توضیحات', key: 'text', dataIndex: 'text' },
     { title: 'وضعیت', render: (_text: any, record: Record<string, any>) => (record.isApprove ? 'تایید شده' : 'تایید نشده') },
   ];

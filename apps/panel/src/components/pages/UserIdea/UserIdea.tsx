@@ -9,7 +9,7 @@ import { handleApiThen } from 'global/helperFunctions/handleApiThen';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IIdea } from '@my/types';
+import { IIdea, IPostCategory } from '@my/types';
 import TcPopconfirm from 'components/UI/Popconfirm/TcPopconfirm';
 import queryString from 'query-string';
 import useQuery from 'global/helperFunctions/useQuery';
@@ -74,6 +74,27 @@ const UserIdea: FC = () => {
     {
       title: 'وضعیت تایید',
       render: (_text: any, record: Record<string, any>) => (record?.isApprove === true ? <span className='text-t-success-color'>تایید شده</span> : 'در انتظار تایید'),
+    },
+    {
+      title: 'دسته بندی',
+      key: 'postCategory',
+      dataIndex: 'postCategory',
+      render: (text: IPostCategory) => text.title,
+    },
+    {
+      title: 'تعداد بازدید',
+      key: 'viewCount',
+      dataIndex: 'viewCount',
+    },
+    {
+      title: 'تعداد پسند',
+      key: 'likeCount',
+      dataIndex: 'likeCount',
+    },
+    {
+      title: 'تعداد نظر',
+      key: 'commentCount',
+      dataIndex: 'commentCount',
     },
     {
       title: 'وضعیت انتشار',

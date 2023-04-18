@@ -6,6 +6,8 @@ import setting from 'redux/reducer/Setting/settingReducer';
 import toast from 'redux/reducer/Toast/toastReducer';
 import postCategory from 'redux/reducer/PostCategory/postCategoryReducer';
 import ideaCategory from 'redux/reducer/IdeaCategory/ideaCategoryReducer';
+import experienceCategory from 'redux/reducer/ExperienceCategory/experienceCategoryReducer';
+import userExperienceCategory from 'redux/reducer/UserExperienceCategory/UserExperienceCategoryReducer';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -20,6 +22,8 @@ export const store = configureStore({
     toast,
     postCategory,
     ideaCategory,
+    experienceCategory,
+    userExperienceCategory,
   },
 });
 

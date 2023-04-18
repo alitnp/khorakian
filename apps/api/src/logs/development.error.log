@@ -3542,3 +3542,231 @@ body : {}
 },
 Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
 },
+{
+type : ERROR,
+timestamp : 1681810094948,
+date : Tue Apr 18 2023 13:58:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experience?experienceCategory=64213ae213d9f5525f86057b&pageSize=10,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681810113129,
+date : Tue Apr 18 2023 13:58:33 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experience?experienceCategory=642131e813d9f5525f86053a&pageSize=10,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681814395322,
+date : Tue Apr 18 2023 15:09:55 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/userExperience,
+body : {"title":"DDDDD","experienceCategory":"64213ae813d9f5525f860581","featured":true,"text":"DDDDD"}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"userExperienceCategory":"شناسه ارسال نشده"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681814929788,
+date : Tue Apr 18 2023 15:18:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/userExperience,
+body : {"title":"hhhhh","experienceCategory":"64213ae813d9f5525f860581","featured":true,"text":"HHHHHHHH"}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"userExperienceCategory":"شناسه ارسال نشده"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681814978395,
+date : Tue Apr 18 2023 15:19:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/userExperience,
+body : {"title":"hhhhh","experienceCategory":"64213ae813d9f5525f860581","featured":true,"text":"HHHHHHHH"}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"userExperienceCategory":"شناسه ارسال نشده"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681815229397,
+date : Tue Apr 18 2023 15:23:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/userExperience,
+body : {"title":"CCCC","experienceCategory":"64213ae213d9f5525f86057b","featured":false}
+},
+Response : {"status":400,"message":"شناسه ارسال نشده","details":{"userExperienceCategory":"شناسه ارسال نشده"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1681815899145,
+date : Tue Apr 18 2023 15:34:59 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/userExperience,
+body : {}
+},
+Response : {"expose":true,"statusCode":400,"status":400,"body":"{\r\n    \"title\": \"یب لا 2\",\r\n    \"userExperienceCategory\": \"641c987a11686575beabb5b3\",\r\n    \"featured\": true,\r\n    \"text\": \"یبلا یبلا یلا \",\r\n  \r\n}","type":"entity.parse.failed"}
+},
+{
+type : ERROR,
+timestamp : 1681815928001,
+date : Tue Apr 18 2023 15:35:28 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/userExperience,
+body : {"title":"یب لا 2","userExperienceCategory":"641c987a11686575beabb5b3","featured":true,"text":"یبلا یبلا یلا "}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681816242618,
+date : Tue Apr 18 2023 15:40:42 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/userExperienceCategory?title=test%201,
+body : {"title":"یب لا 2","postCategory":"641c987a11686575beabb5b3","featured":true,"text":"یبلا یبلا یلا ","videos":["6427ccb196c9e2ef396fe6f0","6422b550160c1c7fe6ab18bf"],"images":["64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681816245743,
+date : Tue Apr 18 2023 15:40:45 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/userExperienceCategory?title=test%201,
+body : {"title":"یب لا 2","postCategory":"641c987a11686575beabb5b3","featured":true,"text":"یبلا یبلا یلا ","videos":["6427ccb196c9e2ef396fe6f0","6422b550160c1c7fe6ab18bf"],"images":["64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681816252753,
+date : Tue Apr 18 2023 15:40:52 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/userExperienceCategory?title=test%201,
+body : {"title":"یب لا 2","postCategory":"641c987a11686575beabb5b3","featured":true,"text":"یبلا یبلا یلا ","videos":["6427ccb196c9e2ef396fe6f0","6422b550160c1c7fe6ab18bf"],"images":["64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681816271191,
+date : Tue Apr 18 2023 15:41:11 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/userExperienceCategory?title=test%201,
+body : {"title":"یب لا 2","postCategory":"641c987a11686575beabb5b3","featured":true,"text":"یبلا یبلا یلا ","videos":["6427ccb196c9e2ef396fe6f0","6422b550160c1c7fe6ab18bf"],"images":["64208f8eb32edcb5e6ad3c6e"]}
+},
+Response : {"status":409,"message":"یک دسته بندی ایده با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1681816340969,
+date : Tue Apr 18 2023 15:42:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&userExperienceCategory=643e7ae79e3a7b2706c045ed,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681817978540,
+date : Tue Apr 18 2023 16:09:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&text=helloooooooo,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681817994271,
+date : Tue Apr 18 2023 16:09:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&text=helloooooooo,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681818018475,
+date : Tue Apr 18 2023 16:10:18 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&text=helloooooooo,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681818051065,
+date : Tue Apr 18 2023 16:10:51 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&text=helloooooooo,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681818095042,
+date : Tue Apr 18 2023 16:11:35 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&text=helloooooooo,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1681818141598,
+date : Tue Apr 18 2023 16:12:21 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&text=helloooooooo,
+body : {}
+},
+Response : {}
+},

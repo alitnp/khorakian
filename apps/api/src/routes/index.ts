@@ -6,6 +6,9 @@ import videoRoutes from "@/components/video/videoRoutes";
 import ideaCategoryRoutes from "@/components/Idea/ideaCategory/ideaCategoryRoutes";
 import ideaRoutes from "@/components/Idea/idea/ideaRoutes";
 import experienceCategory from "@/components/experience/experienceCategory/experienceCategoryRoutes";
+import experience from "@/components/experience/experience/experienceRoutes";
+import userExperienceCategory from "@/components/userExperience/userExperienceCategory/userExperienceCategoryRoutes";
+import userExperience from "@/components/userExperience/userExperience/userExperienceRoutes";
 import postRoutes from "@/components/Post/post/postRoutes";
 import historyRoutes from "@/components/Home/history/historyRoutes";
 import pageItemTypeRoutes from "@/components/Home/pageItemType/pageItemTypeRoutes";
@@ -19,7 +22,10 @@ const router = Router();
 // router.get("/", sanitizer(appKeyValidator), HomeController.getAppInfo);
 
 //!E-e
+router.use("/userExperience", userExperience);
 router.use("/experienceCategory", experienceCategory);
+router.use("/experience", experience);
+router.use("/userExperienceCategory", userExperienceCategory);
 
 //!H-i
 router.use("/history", historyRoutes);
