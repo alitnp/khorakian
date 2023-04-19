@@ -1,4 +1,4 @@
-import { IPostCategory } from '@my/types';
+import { IIdeaRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
@@ -49,7 +49,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       title: 'دسته بندی',
       key: 'postCategory',
       dataIndex: 'postCategory',
-      render: (text: IPostCategory) => text?.title,
+      render: (_text: string, record: IIdeaRead) => record.ideaCategory.title,
     },
     {
       title: 'تعداد بازدید',

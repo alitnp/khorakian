@@ -5,11 +5,11 @@ import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import TcListPage from 'components/UI/TcListPage/TcListPage';
 import ApiService, { errorResponse } from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
-import { handleApiThen } from 'global/helperFunctions/handleApiThen';
+import { handleApiThen, handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IIdea, IPostCategory } from '@my/types';
+import { ApiDataListResponse, IIdeaRead } from '@my/types';
 import TcPopconfirm from 'components/UI/Popconfirm/TcPopconfirm';
 import queryString from 'query-string';
 import useQuery from 'global/helperFunctions/useQuery';
@@ -17,7 +17,7 @@ import useQuery from 'global/helperFunctions/useQuery';
 const UserIdea: FC = () => {
   //state
   const [loading, setLoading] = useState<boolean>(false);
-  const [userIdeaList, setUserIdeaList] = useState<IIdea | null>(null);
+  const [userIdeaList, setUserIdeaList] = useState<ApiDataListResponse<IIdeaRead>>();
 
   // hooks
   const dispatch = useDispatch();
@@ -29,14 +29,14 @@ const UserIdea: FC = () => {
     const payload = queryString.stringify({ ...query, isAdminSubmitted: false });
     setLoading(true);
     await ApiService.get(endpointUrls.ideaGetList + '?' + payload)
-      .then((res: any) =>
-        handleApiThen({
+      .then((res: ApiDataListResponse<IIdeaRead>) =>
+        handleApiThenGeneric<ApiDataListResponse<IIdeaRead>, IIdeaRead[]>({
           res,
           dispatch,
           onSuccess: setUserIdeaList,
           notifFail: false,
           notifSuccess: false,
-          onFailed: () => setUserIdeaList(null),
+          onFailed: () => setUserIdeaList(undefined),
         })
       )
       .catch(() => apiCatcher(errorResponse));
@@ -77,9 +77,9 @@ const UserIdea: FC = () => {
     },
     {
       title: 'دسته بندی',
-      key: 'postCategory',
-      dataIndex: 'postCategory',
-      render: (text: IPostCategory) => text.title,
+      key: 'ideaCategory',
+      dataIndex: 'ideaCategory',
+      render: (_text: string, record: IIdeaRead) => record.ideaCategory.title,
     },
     {
       title: 'تعداد بازدید',
@@ -104,11 +104,19 @@ const UserIdea: FC = () => {
       title: 'تایید ایده',
       render: (_text: any, record: Record<string, any>) =>
         record?.isApprove === true ? (
-          ''
+          <div>
+            <p>توسط ادمین تایید شده</p>
+            <TcPopconfirm onConfirm={() => ApproveUserIdea(record?._id)} title='ایده ی کاربر رد تایید شود؟'>
+              <span className='cursor-pointer text-t-secondary-color'>رد ایده</span>
+            </TcPopconfirm>
+          </div>
         ) : (
-          <TcPopconfirm onConfirm={() => ApproveUserIdea(record?._id)} title='ایده ی کاربر تایید شود؟'>
-            <span className='cursor-pointer text-t-secondary-color'>تایید ایده</span>
-          </TcPopconfirm>
+          <div>
+            <p>در انتظار تایید ادمین</p>
+            <TcPopconfirm onConfirm={() => ApproveUserIdea(record?._id)} title='ایده ی کاربر تایید شود؟'>
+              <span className='cursor-pointer text-t-secondary-color'>تایید ایده</span>
+            </TcPopconfirm>
+          </div>
         ),
     },
   ];

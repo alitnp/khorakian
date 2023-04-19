@@ -31,7 +31,7 @@ const TcListPageWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, additional
 
   //functions
   const getList = async (query: any) => {
-    const payload = queryString.stringify({ ...query, additionalPayload });
+    const payload = queryString.stringify({ ...query, ...additionalPayload });
     setLoading(true);
     await ApiService.get(getListEndpoint + '?' + payload).then((res: any) =>
       handleApiThen({ res, dispatch, onSuccess: setList, onFailed: () => setList(undefined), notifFail: false, notifSuccess: false })

@@ -106,7 +106,10 @@ class UserExperienceData {
     if (!userExperience) throw new NotFoundError();
     await this.UserExperience.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
-    const userExperienceRead = { ...userExperience, liked: false };
+    const userExperienceRead = {
+      ...userExperience,
+      liked: false,
+    } as IUserExperienceRead;
     if (userId)
       userExperienceRead.liked = await this.UserExperienceLike.isUserLiked(
         id,

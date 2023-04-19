@@ -5,7 +5,7 @@ import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import ApiService, { errorResponse } from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
 import routes from 'global/Constants/routes';
-import { handleApiThen } from 'global/helperFunctions/handleApiThen';
+import { handleApiThen, handleApiThenGeneric } from 'global/helperFunctions/handleApiThen';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ import TcFormWrapper from 'components/UI/FormWrapper/TcFormWrapper';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import TcButton from 'components/UI/Button/TcButton';
 import { Form } from 'antd';
-import { ApiDataListResponse, IIdea } from '@my/types';
+import { ApiDataListResponse, ApiDataResponse, IIdeaRead } from '@my/types';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
@@ -24,7 +24,7 @@ import { getAllIdeaCategories } from 'redux/reducer/IdeaCategory/getAllIdeaCateg
 const SurveyUpdate: FC = () => {
   //states
   const [loading, setLoading] = useState(true);
-  const [_ideaDetail, setIdeaDetail] = useState<IIdea>();
+  const [_ideaDetail, setIdeaDetail] = useState<IIdeaRead>();
 
   //hooks
 
@@ -42,17 +42,16 @@ const SurveyUpdate: FC = () => {
   const getIdeaDetail = async (id: string) => {
     setLoading(true);
     await ApiService.get(endpointUrls.ideaDetail(id))
-      .then((res: ApiDataListResponse<IIdea>) =>
-        handleApiThen({
+      .then((res: ApiDataResponse<IIdeaRead>) =>
+        handleApiThenGeneric<ApiDataResponse<IIdeaRead>, IIdeaRead>({
           res,
           dispatch,
           notifSuccess: false,
           notifFail: true,
-          onSuccess: (data: IIdea) => {
-            form.setFieldsValue(data);
+          onSuccessData: (data) => {
+            form.setFieldsValue({ ...data, ideaCategory: data.ideaCategory?._id });
             setIdeaDetail(data);
           },
-          dataOnly: true,
         })
       )
       .catch(() => apiCatcher(errorResponse));

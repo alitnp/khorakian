@@ -69,6 +69,7 @@ class IdeaData {
     } = await paginationProps(searchQuery, req, this.Idea);
 
     const data: IIdeaRead[] = await this.Idea.find(fixedSearchQuery)
+      .populate<{ ideaCategory: IIdeaCategory }>("ideaCategory")
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -101,7 +102,7 @@ class IdeaData {
     if (!idea) throw new NotFoundError();
     await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
-    const ideaRead = { ...idea, liked: false };
+    const ideaRead = { ...idea, liked: false } as IIdeaRead;
     if (userId) ideaRead.liked = await this.IdeaLike.isUserLiked(id, userId);
 
     return ideaRead;
@@ -114,12 +115,14 @@ class IdeaData {
     featured,
     isAdminSubmitted,
   }: IIdea): Promise<IIdeaRead> => {
-    if (!ideaCategory) throw new BadRequestError("ygfug");
+    if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
+    if (!existingIdeaCategory)
+      throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
 
     const idea = new this.Idea({
       title,
-      ideaCategory: existingIdeaCategory,
+      ideaCategory,
       text,
       featured: !!featured,
       viewCount: 0,
@@ -138,14 +141,16 @@ class IdeaData {
     text,
     featured,
   }: IIdea & { _id: string }): Promise<IIdeaRead> => {
-    if (!ideaCategory) throw new NotFoundError();
+    if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
+    if (!existingIdeaCategory)
+      throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
     const idea = await this.Idea.findByIdAndUpdate(
       _id,
       {
         $set: {
           title,
-          postCategory: existingIdeaCategory,
+          ideaCategory,
           text,
           featured: !!featured,
         },
