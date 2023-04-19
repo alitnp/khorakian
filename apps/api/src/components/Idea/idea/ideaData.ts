@@ -14,6 +14,7 @@ import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
+import BadRequestError from "@/helpers/error/BadRequestError";
 
 class IdeaData {
   Idea: Model<IIdea, {}, {}, {}, any>;
@@ -46,11 +47,14 @@ class IdeaData {
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
     if (req.query.isAdminSubmitted)
-      searchQuery.isAdminSubmitted = !!req.query.isAdminSubmitted;
+      searchQuery.isAdminSubmitted = stringToBoolean(
+        req.query.isAdminSubmitted,
+      );
     if (req.query.ideaCategory) {
       searchQuery.ideaCategory._id = { $regex: req.query.ideaCategory };
     }
-    if (req.query.isApprove) searchQuery.isApprove = !!req.query.isApprove;
+    if (req.query.isApprove)
+      searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 
@@ -110,7 +114,7 @@ class IdeaData {
     featured,
     isAdminSubmitted,
   }: IIdea): Promise<IIdeaRead> => {
-    if (!ideaCategory) throw new NotFoundError();
+    if (!ideaCategory) throw new BadRequestError("ygfug");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
 
     const idea = new this.Idea({
@@ -136,7 +140,6 @@ class IdeaData {
   }: IIdea & { _id: string }): Promise<IIdeaRead> => {
     if (!ideaCategory) throw new NotFoundError();
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
-
     const idea = await this.Idea.findByIdAndUpdate(
       _id,
       {

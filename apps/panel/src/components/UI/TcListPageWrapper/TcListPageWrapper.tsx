@@ -11,14 +11,15 @@ import queryString from 'query-string';
 
 interface ITcPageListWrapper {
   getListEndpoint: string;
-  deleteEndpoint: (_id: number | string) => string;
+  deleteEndpoint?: (_id: number | string) => string;
   columns: (_handleDelete: (_id: number | string) => void) => any;
-  filterItems: ReactNode;
+  filterItems?: ReactNode;
   title: string;
-  createRoute: string;
+  createRoute?: string;
+  additionalPayload?: Record<string, any>;
 }
 
-const TcListPageWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndpoint, columns, filterItems, title, createRoute }) => {
+const TcListPageWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, additionalPayload, deleteEndpoint, columns, filterItems, title, createRoute }) => {
   //states
   const [list, setList] = useState();
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,7 +31,7 @@ const TcListPageWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndp
 
   //functions
   const getList = async (query: any) => {
-    const payload = queryString.stringify(query);
+    const payload = queryString.stringify({ ...query, additionalPayload });
     setLoading(true);
     await ApiService.get(getListEndpoint + '?' + payload).then((res: any) =>
       handleApiThen({ res, dispatch, onSuccess: setList, onFailed: () => setList(undefined), notifFail: false, notifSuccess: false })
@@ -38,6 +39,7 @@ const TcListPageWrapper: FC<ITcPageListWrapper> = ({ getListEndpoint, deleteEndp
     setLoading(false);
   };
   const handleDelete = async (id: number | string) => {
+    if (!deleteEndpoint) return;
     setLoading(true);
     await ApiService.delete(deleteEndpoint(id))
       .then((res: any) => handleApiThen({ res, onSuccess: () => getList(query), dispatch, notifFail: true, notifSuccess: true }))
