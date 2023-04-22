@@ -3770,3 +3770,171 @@ body : {}
 },
 Response : {}
 },
+{
+type : ERROR,
+timestamp : 1682187956287,
+date : Sat Apr 22 2023 22:55:56 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/useIdea,
+body : {}
+},
+Response : {"expose":true,"statusCode":400,"status":400,"body":"{\r\n     title:\"rgvgfdgd\",\r\n    ideaCategory:\"64212429e4dbd7c1f7d6a00b\",\r\n    text:\"fghfthfth\",\r\n    featured:true,\r\n    isAdminSubmitted:true\r\n}","type":"entity.parse.failed"}
+},
+{
+type : ERROR,
+timestamp : 1682188074830,
+date : Sat Apr 22 2023 22:57:54 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {"title":"u","ideaCategory":"64212834e4dbd7c1f7d6a05f","featured":false,"text":"u","isAdminSubmitted":true}
+},
+Response : {"status":400,"message":"عنوان باید حداقل 2 کاراکتر باشد.","details":{"title":"عنوان باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682188837866,
+date : Sat Apr 22 2023 23:10:37 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/idea,
+body : {}
+},
+Response : {"expose":true,"statusCode":400,"status":400,"body":"{\r\n     \"title\":\"test userIdea\",\r\n    \"ideaCategory\":\"64212429e4dbd7c1f7d6a00b\",\r\n    \"text\":\"test userIdea\",\r\n    \"featured\":true,\r\n    \"isAdminSubmitted\":false,\r\n\r\n}","type":"entity.parse.failed"}
+},
+{
+type : ERROR,
+timestamp : 1682189432294,
+date : Sat Apr 22 2023 23:20:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experience?experienceCategory=64213ae813d9f5525f860581&pageSize=10,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682189468218,
+date : Sat Apr 22 2023 23:21:08 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experience?experienceCategory=64213ae213d9f5525f86057b&pageSize=10,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682189848870,
+date : Sat Apr 22 2023 23:27:28 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experience?experienceCategory=64213ae213d9f5525f86057b&featured=false&pageSize=10,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682190074140,
+date : Sat Apr 22 2023 23:31:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/experience?experienceCategory=64213ae813d9f5525f860581&pageSize=10,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682190416036,
+date : Sat Apr 22 2023 23:36:56 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&userExperienceCategory=643e7a579e3a7b2706c045c9,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682190425218,
+date : Sat Apr 22 2023 23:37:05 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&userExperienceCategory=643e7ae79e3a7b2706c045ed,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682190704910,
+date : Sat Apr 22 2023 23:41:44 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?pageSize=10&postCategory=643a9fb7d0c5e185c395b8b0,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682190712919,
+date : Sat Apr 22 2023 23:41:52 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?pageSize=10&postCategory=643a9fb7d0c5e185c395b8b0,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682192471064,
+date : Sun Apr 23 2023 00:11:11 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?featured=true&pageSize=10&userExperienceCategory=643e7a579e3a7b2706c045c9,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682192474885,
+date : Sun Apr 23 2023 00:11:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/userExperience?pageSize=10&userExperienceCategory=643e7ae79e3a7b2706c045ed,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682192616445,
+date : Sun Apr 23 2023 00:13:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?pageSize=10&postCategory=643a9fb7d0c5e185c395b8b0,
+body : {}
+},
+Response : {}
+},

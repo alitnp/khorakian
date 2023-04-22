@@ -70,6 +70,9 @@ class UserExperienceData {
     const data: IUserExperienceRead[] = await this.UserExperience.find(
       fixedSearchQuery,
     )
+      .populate<{ userExperienceCategory: IUserExperienceCategory }>(
+        "userExperienceCategory",
+      )
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })

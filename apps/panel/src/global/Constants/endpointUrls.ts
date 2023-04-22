@@ -37,6 +37,7 @@ const endpointUrls = {
   ideaDelete: (id: number | string) => '/idea/' + id,
   //UserIdea
   setUserIdeaApprove: '/idea/approve',
+  setUserIdeaDisApprove: '/idea/disApprove',
 
   //ideaCategory
   ideaCategoryGetList: '/ideaCategory',
@@ -94,6 +95,8 @@ const endpointUrls = {
   userExperienceCreate: '/userExperience',
   userExperienceEdit: (id: number | string) => '/userExperience/' + id,
   userExperienceDelete: (id: number | string) => '/userExperience/' + id,
+  setUserExperienceApprove: '/userExperience/approve',
+  setUserExperienceDisApprove: '/userExperience/disApprove',
 
   //userExperienceCategory
   userExperienceCategoryGetList: '/userExperienceCategory',

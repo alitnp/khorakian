@@ -80,7 +80,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       title: 'دسته بندی',
       key: 'experienceCategory',
       dataIndex: 'experienceCategory',
-      render: (text: IExperienceCategory) => text?.title,
+      render: (text: IExperienceRead) => text?.title,
     },
     {
       title: 'برجسته',
