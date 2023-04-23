@@ -1,5 +1,5 @@
-import { iranSans } from "@/assets/fonts/iransansFont";
 import "@/assets/style/global.css";
+import { iranSans } from "@/assets/fonts/iransansFont";
 import Header from "@/components/Header/Header";
 import { Providers } from "@/components/Providers/Providers";
 

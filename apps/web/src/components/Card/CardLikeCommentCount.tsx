@@ -6,20 +6,22 @@ import { replaceNumbersWithPersian } from "@my/helpers";
 interface ICardLikeCommentCount {
 	likeCount: number;
 	commentCount: number;
-	isLiked: boolean;
-	isCommented: boolean;
+	isLiked?: boolean;
+	isCommented?: boolean;
+	lightColor?: boolean;
 }
 
 const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 	likeCount,
 	commentCount,
-	isLiked,
-	isCommented,
+	isLiked = false,
+	isCommented = false,
+	lightColor = false,
 }) => {
 	return (
-		<div className="flex items-center text-k-grey-text-color gap-x-1">
+		<div className={`flex items-center gap-x-1 ${lightColor ? "text-k-opposite-text-color" : "text-k-grey-text-color"}`}>
 			<span className={isLiked ? "text-k-primary-color" : ""}>
-				<AiFillHeart />
+				<AiFillHeart className="k-like-icon" />
 			</span>
 			<span className="text-sm">
 				{replaceNumbersWithPersian(likeCount)}
@@ -27,7 +29,7 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 			<span
 				className={isCommented ? "text-k-secondary-color" : ""}
 			>
-				<TbMessageCircle2Filled />
+				<TbMessageCircle2Filled className="k-comment-icon " />
 			</span>
 			<span className="text-sm">
 				{replaceNumbersWithPersian(commentCount)}
