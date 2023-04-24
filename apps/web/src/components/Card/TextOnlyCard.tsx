@@ -1,10 +1,10 @@
 import CardLikeCommentCount from "@/components/Card/CardLikeCommentCount";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-interface ITextOnlyCard { }
+interface ITextOnlyCard {}
 
-const TextOnlyCard: FC<ITextOnlyCard> = ({ }) => {
+const TextOnlyCard: FC<ITextOnlyCard> = ({}) => {
 	return (
 		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 snap-start">
 			<div className="w-full sm:w-[400px] px-4 py-2">
@@ -38,4 +38,4 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({ }) => {
 	);
 };
 
-export default TextOnlyCard;
+export default memo(TextOnlyCard);

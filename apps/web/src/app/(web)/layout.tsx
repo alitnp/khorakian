@@ -17,7 +17,7 @@ export default function RootLayout({
 		<html lang="fa" dir="rtl" style={{ fontSize: "16px" }}>
 			<body className={`${iranSans.variable} font-iransans`}>
 				<Providers>
-					<Header />
+					{/* <Header /> */}
 					{children}
 				</Providers>
 			</body>

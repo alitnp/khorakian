@@ -1,10 +1,10 @@
 import CardLikeCommentCount from "@/components/Card/CardLikeCommentCount";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-interface ICard { }
+interface ICard {}
 
-const Card: FC<ICard> = ({ }) => {
+const Card: FC<ICard> = ({}) => {
 	return (
 		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 snap-start">
 			<div className="relative overflow-hidden w-full aspect-video md:aspect-auto  md:w-[355.55px] md:h-[200px]">
@@ -40,4 +40,4 @@ const Card: FC<ICard> = ({ }) => {
 	);
 };
 
-export default Card;
+export default memo(Card);

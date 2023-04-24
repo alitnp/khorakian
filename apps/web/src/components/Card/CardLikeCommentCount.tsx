@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { TbMessageCircle2Filled } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import { replaceNumbersWithPersian } from "@my/helpers";
@@ -19,7 +19,13 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 	lightColor = false,
 }) => {
 	return (
-		<div className={`flex items-center gap-x-1 ${lightColor ? "text-k-opposite-text-color" : "text-k-grey-text-color"}`}>
+		<div
+			className={`flex items-center gap-x-1 ${
+				lightColor
+					? "text-k-opposite-text-color"
+					: "text-k-grey-text-color"
+			}`}
+		>
 			<span className={isLiked ? "text-k-primary-color" : ""}>
 				<AiFillHeart className="k-like-icon" />
 			</span>
@@ -38,4 +44,4 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 	);
 };
 
-export default CardLikeCommentCount;
+export default memo(CardLikeCommentCount);

@@ -2,28 +2,36 @@
 
 import "@/assets/style/emblaStyles.css";
 import KSwiper from "@/components/KSwipper/KSwiper";
+import { FC, ReactNode, memo } from "react";
 import { SwiperSlide } from "swiper/react";
-import { FC } from 'react';
-import PageItemTitle from "@/components/PageItems/PageItemTitle";
-import TextOnlyCard from "@/components/Card/TextOnlyCard";
 
 interface ITextOnlyCardsRow {
 	greyBg?: boolean;
+	items: ReactNode[];
+	title: ReactNode;
 }
 
-const TextOnlyCardsRow: FC<ITextOnlyCardsRow> = ({ greyBg = false }) => {
+const TextOnlyCardsRow: FC<ITextOnlyCardsRow> = ({
+	greyBg = false,
+	title,
+	items,
+}) => {
 	return (
-		<div className={`py-14 k-container ${greyBg && "bg-k-grey-bg-1-color"}`}>
-			<PageItemTitle title="تازه ها" desc="آخرین محتوای اضافه شده به سامانه" moreText="۱۴ مورد دیگر" moreUrl="/" />
+		<div
+			className={`py-14 k-container ${
+				greyBg && "bg-k-grey-bg-1-color"
+			}`}
+		>
+			{title}
 
 			<KSwiper
 				slidesPerView={"auto"}
 				spaceBetween={40}
 				wrapperClassName="pb-4"
 			>
-				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_item, index) => (
+				{items.map((item, index) => (
 					<SwiperSlide key={index} className="py-2 w-fit">
-						<TextOnlyCard />
+						{item}
 					</SwiperSlide>
 				))}
 			</KSwiper>
@@ -31,4 +39,4 @@ const TextOnlyCardsRow: FC<ITextOnlyCardsRow> = ({ greyBg = false }) => {
 	);
 };
 
-export default TextOnlyCardsRow;
+export default memo(TextOnlyCardsRow);

@@ -1,20 +1,28 @@
 "use client";
 
 import "@/assets/style/emblaStyles.css";
-import Card from "@/components/Card/Card";
 import KSwiper from "@/components/KSwipper/KSwiper";
+import { FC, ReactNode, memo } from "react";
 import { SwiperSlide } from "swiper/react";
-import { FC } from 'react';
-import PageItemTitle from "@/components/PageItems/PageItemTitle";
 
 interface ICardsRow {
 	greyBg?: boolean;
+	items: ReactNode[];
+	title: ReactNode;
 }
 
-const CardsRow: FC<ICardsRow> = ({ greyBg = false }) => {
+const CardsRow: FC<ICardsRow> = ({
+	greyBg = false,
+	title,
+	items,
+}) => {
 	return (
-		<div className={`py-14 k-container ${greyBg && "bg-k-grey-bg-1-color"}`}>
-			<PageItemTitle title="تازه ها" desc="آخرین محتوای اضافه شده به سامانه" moreText="۱۴ مورد دیگر" moreUrl="/" />
+		<div
+			className={`py-14 k-container ${
+				greyBg && "bg-k-grey-bg-1-color"
+			}`}
+		>
+			{title}
 
 			<KSwiper
 				slidesPerView={1.2}
@@ -22,9 +30,9 @@ const CardsRow: FC<ICardsRow> = ({ greyBg = false }) => {
 				wrapperClassName="pb-4"
 				breakpoints={{ 768: { slidesPerView: "auto" } }}
 			>
-				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_item, index) => (
+				{items.map((item, index) => (
 					<SwiperSlide key={index} className="py-2 w-fit">
-						<Card />
+						{item}
 					</SwiperSlide>
 				))}
 			</KSwiper>
@@ -32,4 +40,4 @@ const CardsRow: FC<ICardsRow> = ({ greyBg = false }) => {
 	);
 };
 
-export default CardsRow;
+export default memo(CardsRow);

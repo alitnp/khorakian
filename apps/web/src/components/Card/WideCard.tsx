@@ -1,11 +1,11 @@
 import CardLikeCommentCount from "@/components/Card/CardLikeCommentCount";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-interface ICard { }
+interface ICard {}
 
-const WideCard: FC<ICard> = ({ }) => {
+const WideCard: FC<ICard> = ({}) => {
 	return (
 		<article className="flex flex-col w-full overflow-hidden border rounded-md shadow-lg md:flex-row h-fit bg-k-bg-color">
 			<div className="relative w-full aspect-video md:aspect-auto  md:w-[355.55px] md:h-[200px] shrink-0">
@@ -43,11 +43,14 @@ const WideCard: FC<ICard> = ({ }) => {
 					<span className="text-sm text-k-grey-text-color">
 						۱۶ مهر ۱۴۰۰
 					</span>
-					<CardLikeCommentCount commentCount={3} likeCount={12} />
+					<CardLikeCommentCount
+						commentCount={3}
+						likeCount={12}
+					/>
 				</div>
 			</div>
 		</article>
 	);
 };
 
-export default WideCard;
+export default memo(WideCard);
