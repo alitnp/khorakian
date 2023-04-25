@@ -57,6 +57,10 @@ const columns = (handleDelete?: (_id: string) => void) => {
       dataIndex: 'viewCount',
     },
     {
+      title: 'برجسته',
+      render: (_text: string, record: IIdeaRead) => (record.featured ? 'هست' : 'نیست'),
+    },
+    {
       title: 'تعداد پسند',
       key: 'likeCount',
       dataIndex: 'likeCount',

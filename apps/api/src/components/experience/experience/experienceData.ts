@@ -8,6 +8,7 @@ import {
   IExperienceLike,
   IExperienceRead,
   IVideoRead,
+  IExperienceCategory,
 } from "@my/types";
 import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
@@ -71,6 +72,9 @@ class ExperienceData {
     } = await paginationProps(searchQuery, req, this.Experience);
 
     const data: IExperienceRead[] = await this.Experience.find(fixedSearchQuery)
+      .populate<{ experienceCategory: IExperienceCategory }>(
+        "experienceCategory",
+      )
       .populate<{ images: IImage[]; videos: IVideoRead[] }>([
         "videos",
         "images",

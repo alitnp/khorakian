@@ -59,6 +59,22 @@ const UserIdea: FC = () => {
     setLoading(false);
   };
 
+  const DisApproveUserIdea = async (id: number | string) => {
+    setLoading(true);
+    await ApiService.post(endpointUrls.setUserIdeaDisApprove + '/' + id, {})
+      .then((res: any) =>
+        handleApiThen({
+          res,
+          dispatch,
+          onSuccess: () => getUserIdea(query),
+          notifFail: true,
+          notifSuccess: true,
+        })
+      )
+      .catch(() => apiCatcher(errorResponse));
+    setLoading(false);
+  };
+
   //constant
   const filterItems = (
     <>
@@ -106,7 +122,7 @@ const UserIdea: FC = () => {
         record?.isApprove === true ? (
           <div>
             <p>توسط ادمین تایید شده</p>
-            <TcPopconfirm onConfirm={() => ApproveUserIdea(record?._id)} title='ایده ی کاربر رد تایید شود؟'>
+            <TcPopconfirm onConfirm={() => DisApproveUserIdea(record?._id)} title='ایده ی کاربر رد تایید شود؟'>
               <span className='cursor-pointer text-t-secondary-color'>رد ایده</span>
             </TcPopconfirm>
           </div>
