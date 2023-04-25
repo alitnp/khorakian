@@ -1,6 +1,5 @@
 "use client";
 
-import "@/assets/style/emblaStyles.css";
 import KSwiper from "@/components/KSwipper/KSwiper";
 import { FC, ReactNode, memo } from "react";
 import { SwiperSlide } from "swiper/react";
