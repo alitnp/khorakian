@@ -8,6 +8,9 @@ import postCategory from 'redux/reducer/PostCategory/postCategoryReducer';
 import ideaCategory from 'redux/reducer/IdeaCategory/ideaCategoryReducer';
 import experienceCategory from 'redux/reducer/ExperienceCategory/experienceCategoryReducer';
 import userExperienceCategory from 'redux/reducer/UserExperienceCategory/UserExperienceCategoryReducer';
+import pageItemType from 'redux/reducer/PageItemType/pageItemTypeReducer';
+import pageItemStyle from 'redux/reducer/PageItemStyle/pageItemStyleReducer';
+import pageItemSorting from 'redux/reducer/PageItemSorting/pageItemSortingReducer';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -24,6 +27,9 @@ export const store = configureStore({
     ideaCategory,
     experienceCategory,
     userExperienceCategory,
+    pageItemType,
+    pageItemSorting,
+    pageItemStyle,
   },
 });
 

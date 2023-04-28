@@ -17,7 +17,7 @@ class UserController extends BaseController<IUser> {
       req.body.mobileNumber,
       req.body.password,
     );
-
+    res.cookie("token", "sdfgsdfg", { httpOnly: true });
     return res.send(apiDataResponse<{ token: string }>({ token }));
   };
 

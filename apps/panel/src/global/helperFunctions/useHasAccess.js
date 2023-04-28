@@ -18,7 +18,7 @@ const useHasAccess = () => {
     // if (!restrict && rolesList.includes('SuperAdmin')) return true;
     // return !!passedRole;
   };
-  // console.log(roles);
+
   return { roles, hasAccessTo };
 };
 

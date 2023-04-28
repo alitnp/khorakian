@@ -3938,3 +3938,615 @@ body : {}
 },
 Response : {}
 },
+{
+type : ERROR,
+timestamp : 1682655832867,
+date : Fri Apr 28 2023 07:53:52 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\28321be68989026c6ce236b746603b25","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1682655845997,
+date : Fri Apr 28 2023 07:54:05 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\50021ee80744158ad4fb99115a710f07","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1682655967855,
+date : Fri Apr 28 2023 07:56:07 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\a318a0c33752b19e94008035082071e7","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1682656155757,
+date : Fri Apr 28 2023 07:59:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\projects\\khorakian\\apps\\api\\public\\image\\ef260ca854771e0e799b3af92e9ede16","storageErrors":[]}
+},
+{
+type : ERROR,
+timestamp : 1682656317530,
+date : Fri Apr 28 2023 08:01:57 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/644a2bbae637cf6339d56e39,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682656467513,
+date : Fri Apr 28 2023 08:04:27 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/644a2bbae637cf6339d56e39,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682666516550,
+date : Fri Apr 28 2023 10:51:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669508199,
+date : Fri Apr 28 2023 11:41:48 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669526765,
+date : Fri Apr 28 2023 11:42:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669529200,
+date : Fri Apr 28 2023 11:42:09 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669530046,
+date : Fri Apr 28 2023 11:42:10 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669646582,
+date : Fri Apr 28 2023 11:44:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669651984,
+date : Fri Apr 28 2023 11:44:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669718098,
+date : Fri Apr 28 2023 11:45:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669844520,
+date : Fri Apr 28 2023 11:47:24 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669921304,
+date : Fri Apr 28 2023 11:48:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669929377,
+date : Fri Apr 28 2023 11:48:49 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682669982045,
+date : Fri Apr 28 2023 11:49:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670011849,
+date : Fri Apr 28 2023 11:50:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670042881,
+date : Fri Apr 28 2023 11:50:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670065260,
+date : Fri Apr 28 2023 11:51:05 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670079574,
+date : Fri Apr 28 2023 11:51:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670134229,
+date : Fri Apr 28 2023 11:52:14 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670186991,
+date : Fri Apr 28 2023 11:53:06 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670240797,
+date : Fri Apr 28 2023 11:54:00 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670277280,
+date : Fri Apr 28 2023 11:54:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670358946,
+date : Fri Apr 28 2023 11:55:58 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670365160,
+date : Fri Apr 28 2023 11:56:05 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682670388745,
+date : Fri Apr 28 2023 11:56:28 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09000000001","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682677714172,
+date : Fri Apr 28 2023 13:58:34 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09302897880","password":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682678036961,
+date : Fri Apr 28 2023 14:03:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682678038997,
+date : Fri Apr 28 2023 14:03:58 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682678042305,
+date : Fri Apr 28 2023 14:04:02 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"12345678"}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682678681473,
+date : Fri Apr 28 2023 14:14:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/login,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1682678741398,
+date : Fri Apr 28 2023 14:15:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"ABc124528"}
+},
+Response : {"status":400,"message":"رمز عبور وارد شده صحیح نیست.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681261266,
+date : Fri Apr 28 2023 14:57:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681261326,
+date : Fri Apr 28 2023 14:57:41 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681276778,
+date : Fri Apr 28 2023 14:57:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681276854,
+date : Fri Apr 28 2023 14:57:56 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681310207,
+date : Fri Apr 28 2023 14:58:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681310275,
+date : Fri Apr 28 2023 14:58:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681310434,
+date : Fri Apr 28 2023 14:58:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681333855,
+date : Fri Apr 28 2023 14:58:53 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681334320,
+date : Fri Apr 28 2023 14:58:54 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681339319,
+date : Fri Apr 28 2023 14:58:59 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682681351867,
+date : Fri Apr 28 2023 14:59:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682690322363,
+date : Fri Apr 28 2023 17:28:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09358654331","password":"12345678","repeatPassword":"12345678"}
+},
+Response : {"status":404,"message":"کاربری با این شماره همراه یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682690352593,
+date : Fri Apr 28 2023 17:29:12 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":"09358654331","password":"12345678","repeatPassword":"12345678"}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682690397839,
+date : Fri Apr 28 2023 17:29:57 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":"09358654331","password":"12345678","repeatPassword":"12345678"}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682690714155,
+date : Fri Apr 28 2023 17:35:14 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":"09358654331","password":"12345678","repeatPassword":"12345678"}
+},
+Response : {"status":400,"message":"نام ارسال نشده است.","details":{"firstName":"نام ارسال نشده است.","lastName":"نام خوانوادگی ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682698247312,
+date : Fri Apr 28 2023 19:40:47 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItem,
+body : {"title":"سلایدر","index":"0","type":"642fd58a3ee982f48470bb69","Sorting":"642fad213f147ae58fdfaa90","Style":"642faf01dfda66cf153cae17","isPublished":true}
+},
+Response : {"status":400,"message":"شناسه ترتیب المان ارسال نشده است.","details":{"sorting":"شناسه ترتیب المان ارسال نشده است.","style":"شناسه ظاهر المان ارسال نشده است."},"isSuccess":false,"data":null}
+},

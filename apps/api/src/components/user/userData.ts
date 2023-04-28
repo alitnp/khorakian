@@ -50,7 +50,7 @@ class UserData implements IData<IUser> {
     lastName,
     mobileNumber,
     password,
-  }: IUser): Promise<IUser> => {
+  }: IUser): Promise<IUser & { token: string }> => {
     const existingUser = await this.User.findOne({ mobileNumber });
     if (!!existingUser)
       throw new ConflictError("فردی با این شماره همراه در سیستم وجود دارد.");
@@ -63,7 +63,9 @@ class UserData implements IData<IUser> {
     });
     user.setFullName();
     user.password = await user.getHashedPassword(password);
-    return await user.save();
+    const token = user.generateAuthToken();
+    const savedUser = await user.save();
+    return { ...savedUser, token };
   };
 
   update = async ({ _id, firstName, lastName }: IUser): Promise<IUser> => {

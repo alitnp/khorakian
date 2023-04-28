@@ -47,7 +47,7 @@ const TimeLine: FC<ITimeLine> = ({}) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [swiperInstance, setSwiperInstance] =
 		useState<Swiper>();
-	console.log(activeIndex);
+
 	const getSlide = (slides: any[], index: number) => (
 		<SwiperSlide className="px-0 w-fit" key={index}>
 			<div className="px-2 py-2 w-fit">

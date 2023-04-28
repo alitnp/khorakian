@@ -7,7 +7,11 @@ export const imageSchema = new Schema<IImage>({
   format: String,
   pathname: String,
   thumbnailPathname: String,
+  thumbnailHeight: Number,
+  thumbnailWidth: Number,
   title: String,
+  height: Number,
+  width: Number,
   ...defaultSchemaProps,
 });
 

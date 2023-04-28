@@ -7,6 +7,7 @@ import {
   YoutubeOutlined,
   PictureOutlined,
   UserOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
 import TcMenu from 'components/UI/Menu/TcMenu';
 import useScreenWidth from 'global/helperFunctions/useScreenWidth';
@@ -14,6 +15,8 @@ import { memo, useEffect, useState } from 'react';
 import SidebarModalApplication from './components/SidebarModalApplication';
 import routes from 'global/Constants/routes';
 import genericModels from 'global/Models/genericRoutesModels';
+import defaultImageModel from 'global/Models/defaultImageModel';
+import pageItemModel from 'global/Models/pageItemModel';
 
 const TcSidebar = ({ open, setOpen, horizental }) => {
   // state
@@ -41,6 +44,15 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
     { name: 'ایده ی کاربران', icon: <BulbOutlined />, to: routes.userIdea.path, open: open, role: true },
     { name: 'تجربیات', icon: <ExceptionOutlined />, to: routes.experience.path, open: open, role: true },
     { name: 'تجربیات کاربران', icon: <ExceptionOutlined />, to: routes.userExperience.path, open: open, role: true },
+    {
+      name: 'صفحه بندی',
+      icon: <HomeOutlined />,
+      subMenu: [
+        { name: defaultImageModel.title, to: routes.defaultImage.path, role: true },
+        { name: pageItemModel.title, to: routes.pageItem.path, role: true },
+      ],
+      open: open,
+    },
     {
       name: 'اطلاعات پایه',
       icon: <InfoCircleOutlined />,

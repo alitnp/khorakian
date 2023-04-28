@@ -18,6 +18,8 @@ import ideaRoutes from 'components/Routes//ideaRoutes';
 import userIdeaRoutes from 'components/Routes/userIdeaRoutes';
 import experienceRoutes from 'components/Routes/experienceRoutes';
 import userExperienceRoutes from 'components/Routes/userExperienceRoutes';
+import defaultImageRoutes from 'components/Routes/defaultImageRoutes';
+import pageItemRoutes from 'components/Routes/pageItemRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -68,6 +70,9 @@ function MainRouter() {
       accessRole: true,
     },
 
+    //defaultImage
+    ...defaultImageRoutes(),
+
     //user
     ...userRoutes(),
 
@@ -88,6 +93,9 @@ function MainRouter() {
 
     //experience
     ...experienceRoutes(),
+
+    //pageItem
+    ...pageItemRoutes(),
 
     //userExperience
     ...userExperienceRoutes(),

@@ -24,10 +24,10 @@ class ImageData implements IData<IImage> {
   };
 
   get = async (id: string): Promise<IImage> => {
-    const postCategory = await this.Image.findById(id);
-    if (!postCategory) throw new NotFoundError("عکس مورد نظر یافت نشد.");
+    const image = await this.Image.findById(id);
+    if (!image) throw new NotFoundError("عکس مورد نظر یافت نشد.");
 
-    return postCategory;
+    return image;
   };
 
   //! fake data : dont use it
@@ -88,10 +88,10 @@ class ImageData implements IData<IImage> {
     //detect if converting and resizing image was successfull
     let webpCreated = false;
     let smallWebpCreated = false;
-
+    let imageData;
     //try create a webp format file from image
     try {
-      await convertImageToWebp(
+      imageData = await convertImageToWebp(
         imageDir + newOriginFormatFileName,
         imageDir + webpFileName,
       );
@@ -99,14 +99,14 @@ class ImageData implements IData<IImage> {
     } catch (error) {
       console.log("sharp crash : ", error);
     }
-
     //if creating a webp format was successfull then delete original image then try create a small image
+    let smallImageData;
     if (webpCreated) {
       //delete origin file
       await fileDelete(imageDir + newOriginFormatFileName);
       //try resize
       try {
-        await convertImageToSmallWebp(
+        smallImageData = await convertImageToSmallWebp(
           imageDir + webpFileName,
           imageDir + smallWebpFileName,
         );
@@ -127,6 +127,14 @@ class ImageData implements IData<IImage> {
     } else {
       image.fileName = newOriginFormatFileName;
       image.pathname = "/image/" + newOriginFormatFileName;
+    }
+    if (imageData) {
+      image.width = imageData.width;
+      image.height = imageData.height;
+    }
+    if (smallImageData) {
+      image.thumbnailWidth = smallImageData.width;
+      image.thumbnailWidthHeight = smallImageData.height;
     }
     return await image.save();
   };

@@ -10,6 +10,12 @@ const routes = {
   dashboard: { path: '/dashboard', isPrivate: true },
   setting: { path: '/setting', isPrivate: true },
 
+  //defaultImage
+  defaultImage: { path: '/defaultImage', isPrivate: true },
+  defaultImageCreate: { path: '/defaultImage/create', isPrivate: true },
+  defaultImageEdit: { path: '/defaultImage/edit', isPrivate: true },
+  defaultImageDetail: { path: '/defaultImage/detail', isPrivate: true },
+
   //postCategory
   postCategory: { path: '/postcategory', isPrivate: true },
   postCategoryCreate: { path: '/postcategory/create', isPrivate: true },
@@ -39,6 +45,30 @@ const routes = {
   userExperience: { path: '/userExperience', isPrivate: true },
   userExperienceCreate: { path: '/userExperience/create', isPrivate: true },
   userExperienceEdit: { path: '/userExperience/edit', isPrivate: true },
+
+  //pageItemType
+  pageItemType: { path: '/pageItemType', isPrivate: true },
+  pageItemTypeCreate: { path: '/pageItemType/create', isPrivate: true },
+  pageItemTypeEdit: { path: '/pageItemType/edit', isPrivate: true },
+  pageItemTypeDetail: { path: '/pageItemType/detail', isPrivate: true },
+
+  //pageItemStyle
+  pageItemStyle: { path: '/pageItemStyle', isPrivate: true },
+  pageItemStyleCreate: { path: '/pageItemStyle/create', isPrivate: true },
+  pageItemStyleEdit: { path: '/pageItemStyle/edit', isPrivate: true },
+  pageItemStyleDetail: { path: '/pageItemStyle/detail', isPrivate: true },
+
+  //pageItemSorting
+  pageItemSorting: { path: '/pageItemSorting', isPrivate: true },
+  pageItemSortingCreate: { path: '/pageItemSorting/create', isPrivate: true },
+  pageItemSortingEdit: { path: '/pageItemSorting/edit', isPrivate: true },
+  pageItemSortingDetail: { path: '/pageItemSorting/detail', isPrivate: true },
+
+  //pageItem
+  pageItem: { path: '/pageItem', isPrivate: true },
+  pageItemCreate: { path: '/pageItem/create', isPrivate: true },
+  pageItemEdit: { path: '/pageItem/edit', isPrivate: true },
+  pageItemDetail: { path: '/pageItem/detail', isPrivate: true },
 
   //experienceCategory
   experienceCategory: { path: '/experienceCategory', isPrivate: true },

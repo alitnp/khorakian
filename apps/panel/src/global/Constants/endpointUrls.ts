@@ -1,16 +1,19 @@
 const endpointUrls = {
   //development
-  // baseUrl: 'http://Apitest.levelupfx724.com/api',
-  imageBaseUrl: 'http://Apitest.levelupfx724.com/',
-  mobileApp: 'http://Dl.levelupfx724.com/levelup.apk',
 
   //!A-a
   //!B-b
   //!C-c
   //!D-d
+  //defaultImage
+  defaultImageGetList: '/defaultImage',
+  defaultImageDetail: (id: number | string) => '/defaultImage/' + id,
+  defaultImageCreate: '/defaultImage',
+  defaultImageEdit: (id: number | string) => '/defaultImage/' + id,
+  defaultImageDelete: (id: number | string) => '/defaultImage/' + id,
 
   //! E-e
-  ////experience
+  //experience
   experienceGetList: '/experience',
   experienceDetail: (id: number | string) => '/experience/' + id,
   experienceCreate: '/experience',
@@ -66,6 +69,34 @@ const endpointUrls = {
   //!O-o
 
   //!P-p
+  //pageItem
+  pageItemGetList: '/pageItem',
+  pageItemDetail: (id: number | string) => '/pageItem/' + id,
+  pageItemCreate: '/pageItem',
+  pageItemEdit: (id: number | string) => '/pageItem/' + id,
+  pageItemDelete: (id: number | string) => '/pageItem/' + id,
+
+  //pageItemType
+  pageItemTypeGetList: '/pageItemType',
+  pageItemTypeDetail: (id: number | string) => '/pageItemType/' + id,
+  pageItemTypeCreate: '/pageItemType',
+  pageItemTypeEdit: (id: number | string) => '/pageItemType/' + id,
+  pageItemTypeDelete: (id: number | string) => '/pageItemType/' + id,
+
+  //pageItemSorting
+  pageItemSortingGetList: '/pageItemSorting',
+  pageItemSortingDetail: (id: number | string) => '/pageItemSorting/' + id,
+  pageItemSortingCreate: '/pageItemSorting',
+  pageItemSortingEdit: (id: number | string) => '/pageItemSorting/' + id,
+  pageItemSortingDelete: (id: number | string) => '/pageItemSorting/' + id,
+
+  //pageItemStyle
+  pageItemStyleGetList: '/pageItemStyle',
+  pageItemStyleDetail: (id: number | string) => '/pageItemStyle/' + id,
+  pageItemStyleCreate: '/pageItemStyle',
+  pageItemStyleEdit: (id: number | string) => '/pageItemStyle/' + id,
+  pageItemStyleDelete: (id: number | string) => '/pageItemStyle/' + id,
+
   //post
   postGetList: '/post',
   postDetail: (id: number | string) => '/post/' + id,

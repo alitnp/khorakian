@@ -16,10 +16,14 @@ import pageItemSortingRoutes from "@/components/Home/pageItemSorting/pageItemSor
 import pageItemStyleRoutes from "@/components/Home/pageItemStyle/pageItemStyleRoutes";
 import sliderRoutes from "@/components/Home/silder/sliderRoutes";
 import pageItemRoutes from "@/components/Home/pageItem/pageItemRoutes";
+import defaultImageRoutes from "@/components/defaultImage/defaultImageRoutes";
 
 const router = Router();
 
 // router.get("/", sanitizer(appKeyValidator), HomeController.getAppInfo);
+
+//!D-e
+router.use("/defaultImage", defaultImageRoutes);
 
 //!E-e
 router.use("/userExperience", userExperience);

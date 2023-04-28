@@ -140,3 +140,13 @@
 .swiper-pagination-bullet-active {
   background-color: var(--primary-1-color);
 }
+
+.chakra-toast__inner{
+  direction :rtl !important
+}
+
+.chakra-toast__inner button{
+  direction :ltr !important;
+  margin-right:auto;
+  left: 0.5rem !important;
+}
