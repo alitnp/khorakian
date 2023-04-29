@@ -143,3 +143,7 @@
 .swiper-pagination-bullet-active {
   background-color: var(--primary-1-color);
 }
+
+.ant-form label {
+  font-weight: 500;
+}

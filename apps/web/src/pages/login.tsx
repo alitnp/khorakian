@@ -8,7 +8,6 @@ import {
 import { serverSideFetch } from "@/global/utils/webFetch";
 import webConfig from "@/global/constants/webConfig";
 import LoginRegisterLayout from "@/components/login/LoginLayout";
-import LoginForm from "@/components/login/LoginForm";
 
 export async function getStaticProps() {
 	const image: ApiDataResponse<IDefaultImageRead> =
@@ -39,9 +38,7 @@ const Login: FC<Ilogin> = ({ image }) => {
 			pathname={image.pathname}
 			height={image.height}
 			width={image.width}
-		>
-			<LoginForm />
-		</LoginRegisterLayout>
+		/>
 	);
 };
 

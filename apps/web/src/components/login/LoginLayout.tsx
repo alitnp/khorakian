@@ -51,6 +51,7 @@ const LoginRegisterLayout: FC<Ilogin> = ({
 					alt=""
 					className="object-cover w-full h-screen"
 				/>
+				<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
 				<div className="absolute top-0 left-0 w-full h-full bg-slate-900/30" />
 				<div className="absolute top-0 left-0 flex items-center justify-center w-full h-full k-container">
 					<div className="w-full max-w-xl rounded-lg shadow-2xl shadow-black/70 backdrop-blur-md backdrop-brightness-200 bg-white/50">
