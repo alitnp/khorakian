@@ -56,6 +56,9 @@
   }
 }
 
+
+
+
 .k-comment-icon {
   cursor: pointer;
   filter: drop-shadow(0 0px 0px rgba(3, 106, 161, 0.401)) drop-shadow(0 0px 0px rgba(3, 106, 161, 0.19));
@@ -139,14 +142,4 @@
 
 .swiper-pagination-bullet-active {
   background-color: var(--primary-1-color);
-}
-
-.chakra-toast__inner{
-  direction :rtl !important
-}
-
-.chakra-toast__inner button{
-  direction :ltr !important;
-  margin-right:auto;
-  left: 0.5rem !important;
 }
