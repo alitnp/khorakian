@@ -1,0 +1,24 @@
+{
+type : ERROR,
+timestamp : 1682865582394,
+date : Sun Apr 30 2023 19:09:42 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682865583163,
+date : Sun Apr 30 2023 19:09:43 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

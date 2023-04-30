@@ -50,7 +50,7 @@ class AboutMeData {
     } = await paginationProps(searchQuery, req, this.AboutMe);
 
     const data: IAboutMeRead[] = await this.AboutMe.find(fixedSearchQuery)
-      .populate<{ images: IImage[]; posts: IPostRead[] }>("images", "posts")
+      .populate<{ images: IImage[]; posts: IPostRead[] }>(["images", "posts"])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -69,7 +69,7 @@ class AboutMeData {
 
   get = async (id: string): Promise<IAboutMeRead> => {
     const item = (await this.AboutMe.findById(id)
-      .populate<{ images: IImage[]; posts: IPostRead[] }>("images", "posts")
+      .populate<{ images: IImage[]; posts: IPostRead[] }>(["images", "posts"])
       .lean()) as IAboutMeRead;
 
     if (!item) throw new NotFoundError();
@@ -98,19 +98,15 @@ class AboutMeData {
     text,
     posts,
     images,
-  }: IAboutMe & { _id: string }): Promise<IAboutMeRead> => {
-    const item = await this.AboutMe.findByIdAndUpdate(
-      _id,
-      {
-        $set: {
-          title,
-          text,
-          posts,
-          images,
-        },
+  }: IAboutMe): Promise<IAboutMeRead> => {
+    const item = await this.AboutMe.findByIdAndUpdate(_id, {
+      $set: {
+        title,
+        text,
+        posts,
+        images,
       },
-      { new: true },
-    );
+    });
     if (!item) throw new NotFoundError();
 
     return await this.get(item._id);

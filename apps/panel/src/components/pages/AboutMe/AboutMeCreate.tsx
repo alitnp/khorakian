@@ -42,7 +42,7 @@ const AboutMeCreate = () => {
     if (images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس انتخاب نشده' }));
     if (posts.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ پستی انتخاب نشده' }));
     setLoading(true);
-    await ApiService.post(endpointUrls.aboutMeCreate, { ...values, image: images.map((img) => img._id), posts: posts.map((post) => post._id) })
+    await ApiService.post(endpointUrls.aboutMeCreate, { ...values, images: images.map((img) => img._id), posts: posts.map((post) => post._id) })
       .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);

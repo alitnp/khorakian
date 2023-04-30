@@ -16,7 +16,7 @@ const PostPickerModal: FC<IPostPicker> = ({ visible, close, handlePick }) => {
   }, []);
 
   return (
-    <TcModal visible={visible} onCancel={close} title='انتخاب پست' footer={null}>
+    <TcModal visible={visible} onCancel={close} width={768} title='انتخاب پست' footer={null}>
       <PostPicker handlePick={onPick} />
     </TcModal>
   );
