@@ -12,7 +12,7 @@ const sliderSchema = new Schema<ISlider>({
   url: String,
   direction: {
     type: String,
-    enum: ["right", "left", "center"],
+    enum: ["right", "left", "center", "hidden"],
     default: "right",
   },
   ...defaultSchemaProps,

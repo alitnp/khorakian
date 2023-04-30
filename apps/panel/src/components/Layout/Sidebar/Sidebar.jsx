@@ -17,6 +17,7 @@ import routes from 'global/Constants/routes';
 import genericModels from 'global/Models/genericRoutesModels';
 import defaultImageModel from 'global/Models/defaultImageModel';
 import pageItemModel from 'global/Models/pageItemModel';
+import sliderModel from 'global/Models/sliderModel';
 
 const TcSidebar = ({ open, setOpen, horizental }) => {
   // state
@@ -50,6 +51,7 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
       icon: <HomeOutlined />,
       subMenu: [
         { name: defaultImageModel.title, to: routes.defaultImage.path, role: true },
+        { name: sliderModel.title, to: routes.slider.path, role: true },
         { name: pageItemModel.title, to: routes.pageItem.path, role: true },
       ],
       open: open,

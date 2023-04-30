@@ -11,17 +11,60 @@ import ImageOnlyCard from "@/components/global/Card/ImageOnlyCard";
 import TextOnlyCardsRow from "@/components/global/PageItems/TextOnlyCardsRow";
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
 import TimeLine from "@/components/global/TimeLine/TimeLine";
+import { GetStaticProps } from "next";
+import { serverSideFetch } from "@/global/utils/webFetch";
+import webEndpointUrls from "@/global/constants/webEndpointUrls";
+import {
+	ApiDataResponse,
+	IPageItemConents,
+	ISliderRead,
+} from "@my/types";
+import webConfig from "@/global/constants/webConfig";
 
-export default function Home() {
+export const getStaticProps: GetStaticProps = async () => {
+	const pageItems: ApiDataResponse<IPageItemConents> =
+		await serverSideFetch(
+			webEndpointUrls.pageItemWithContent
+		);
+	if (!pageItems) {
+		console.log(
+			"error fetch : " + webEndpointUrls.pageItemWithContent
+		);
+	}
+
+	return {
+		props: { pageItems: pageItems.data },
+		revalidate: webConfig.dataRevalidateTime,
+	};
+};
+
+export default function Home({
+	pageItems,
+}: {
+	pageItems: IPageItemConents[];
+}) {
+	console.log(pageItems);
 	return (
 		<main>
-			<Slider
-				history={<SliderHistory />}
-				items={[1, 2, 3].map(() => (
-					<SliderSlide />
-				))}
-			/>
-			<CardsRow
+			{pageItems.map((pageItem) => {
+				if (pageItem.type.title === "slider")
+					return (
+						<Slider
+							key={pageItem._id}
+							history={<SliderHistory />}
+							items={pageItem.content.map((slide: ISliderRead) => (
+								<SliderSlide
+									key={slide._id}
+									{...slide}
+									imagePathName={slide.image.pathname}
+									width={slide.image.width}
+									height={slide.image.height}
+								/>
+							))}
+						/>
+					);
+			})}
+			{/* <CardsRow
 				title={
 					<PageItemTitle
 						title="تازه ها"
@@ -35,8 +78,8 @@ export default function Home() {
 						<Card key={index} />
 					)
 				)}
-			/>
-			<WideCardsRow
+			/> */}
+			{/* <WideCardsRow
 				title={
 					<PageItemTitle
 						title="تازه ها"
@@ -50,8 +93,8 @@ export default function Home() {
 						<WideCard key={index} />
 					)
 				)}
-			/>
-			<ImageOnlyCardsRow
+			/> */}
+			{/* <ImageOnlyCardsRow
 				title={
 					<PageItemTitle
 						title="تازه ها"
@@ -65,8 +108,8 @@ export default function Home() {
 						<ImageOnlyCard key={index} />
 					)
 				)}
-			/>
-			<TextOnlyCardsRow
+			/> */}
+			{/* <TextOnlyCardsRow
 				title={
 					<PageItemTitle
 						title="تازه ها"
@@ -80,8 +123,8 @@ export default function Home() {
 						<TextOnlyCard key={index} />
 					)
 				)}
-			/>
-			<TimeLine />
+			/> */}
+			{/* <TimeLine /> */}
 		</main>
 	);
 }

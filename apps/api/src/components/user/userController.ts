@@ -13,12 +13,11 @@ class UserController extends BaseController<IUser> {
   }
 
   login = async (req: Req, res: Res) => {
-    const token = await this.data.login(
+    const data = await this.data.login(
       req.body.mobileNumber,
       req.body.password,
     );
-    res.cookie("token", "sdfgsdfg", { httpOnly: true });
-    return res.send(apiDataResponse<{ token: string }>({ token }));
+    return res.send(apiDataResponse<{ token: string; user: IUser }>(data));
   };
 
   getCurrentUser = async (req: Req, res: Res) => {

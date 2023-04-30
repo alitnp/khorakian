@@ -8,6 +8,9 @@ const webEndpointUrls = {
 	userLogin: "/user/login",
 	userRegister: "/user",
 	userWhoAmI: "/user/getCurrentUser",
+
+	//P
+	pageItemWithContent: "/pageItem/getWithContents",
 };
 
 export default webEndpointUrls;

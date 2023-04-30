@@ -1,4 +1,5 @@
-import { ApiDataResponse, IDefaultImageRead, IImage } from '@my/types';
+import { ApiDataResponse, IDefaultImageRead, IExperience, IImage, ISliderRead, IVideoRead } from '@my/types';
+import AddVideo from 'components/UI/Video/AddVideo';
 import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
@@ -21,9 +22,12 @@ import routes from 'global/Constants/routes';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import defaultImageModel from 'global/Models/defaultImageModel';
+import { convertFormValuesToEnglishNumber } from 'global/default';
+import TcSelect from 'components/UI/Form/Inputs/TcSelect';
+import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import useQuery from 'global/helperFunctions/useQuery';
 
-const DefaultImageUpdate = () => {
+const SliderUpdate = () => {
   //states
   const [images, setImages] = useState<IImage[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -40,16 +44,16 @@ const DefaultImageUpdate = () => {
     id && getDetail(id);
   }, [id]);
 
-  //functions
+  //function
   const getDetail = async (id: string) => {
     setLoading(true);
-    await ApiService.get(endpointUrls.defaultImageDetail(id))
-      .then((res: ApiDataResponse<IDefaultImageRead>) =>
-        handleApiThenGeneric({
+    await ApiService.get(endpointUrls.sliderDetail(id))
+      .then((res: ApiDataResponse<ISliderRead>) =>
+        handleApiThenGeneric<ApiDataResponse<ISliderRead>, ISliderRead>({
           res,
           onSuccessData: (data) => {
             form.setFieldsValue(data);
-            setImages([data.image]);
+            setImages([data.image as IImage]);
           },
           dispatch,
           notifSuccess: false,
@@ -61,34 +65,59 @@ const DefaultImageUpdate = () => {
   };
   const handleSubmit = async (values: any) => {
     if (images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکسی انتخاب نشده' }));
+
     setLoading(true);
-    await ApiService.put(endpointUrls.defaultImageEdit(id as string), { ...values, image: images[0]._id })
-      .then((res: ApiDataResponse<IDefaultImageRead>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.defaultImage.path), notifFail: true, notifSuccess: true }))
+    await ApiService.post(endpointUrls.sliderEdit(id as string), { ...values, image: images[0]._id })
+      .then((res: ApiDataResponse<ISliderRead>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.slider.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
+  };
+
+  const handleChange = (value: any, values: any) => {
+    convertFormValuesToEnglishNumber(value, values, ['index'], form, false);
   };
 
   return (
     <TcCard back={{ to: routes.defaultImage.path }}>
       <TcPageTitle title={'ایجاد ' + defaultImageModel.title} />
-      <TcForm form={form} onFinish={handleSubmit}>
+      <TcForm form={form} onFinish={handleSubmit} onValuesChange={handleChange}>
         <TcFormWrapper>
-          <div className='flex flex-col'>
-            <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
-              <TcInput placeholder='کلید' disabled />
-            </TcFormItem>
-            {/* <small>! توجه : تغییر کلید ممکن است باعث لود نشدن عکس در سایت اصلی شود. لطفا با اطلاع کامل این فیلد را تغییر دهید.</small> */}
-          </div>
+          <TcFormItem name='title' label='عنوان اصلی' rules={[{ required: true, message: 'عنوان اسلایدر را تعیین کنید' }]}>
+            <TcInput placeholder='عنوان اصلی' />
+          </TcFormItem>
+          <TcFormItem name='subTitle' label='عنوان فرعی'>
+            <TcInput placeholder='عنوان فرعی' />
+          </TcFormItem>
+          <TcFormItem name='shortDesc' label='شرح کوتاه'>
+            <TcInput placeholder='شرح کوتاه' />
+          </TcFormItem>
+          <TcFormItem name='direction' label='نوع نوشته' initialValue='right'>
+            <TcSelect
+              options={[
+                { label: 'راست به چپ', value: 'right' },
+                { label: 'چپ به راست', value: 'left' },
+                { label: 'وسط', value: 'center' },
+                { label: 'بدون نوشته', value: 'hidden' },
+              ]}
+            />
+          </TcFormItem>
+          <TcFormItem name='index' label='ردیف' initialValue={0}>
+            <TcInput placeholder='ردیف' />
+          </TcFormItem>
+          <TcFormItem name='url' label='لینک ارجاع'>
+            <TcInput placeholder='لینک ارجاع' />
+          </TcFormItem>
+          <TcFormItem name='desc' label='شرح'>
+            <TcTextarea placeholder='شرح' />
+          </TcFormItem>
         </TcFormWrapper>
       </TcForm>
-
       <TcDevider>عکس</TcDevider>
       <AddImage images={images} setImages={setImages} singleImage />
-
       <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}
     </TcCard>
   );
 };
 
-export default DefaultImageUpdate;
+export default SliderUpdate;

@@ -1,5 +1,5 @@
 import MyButton from "@/components/basicUi/MyButton";
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
 import { FC, useCallback, useState } from "react";
 import WebApiService, {
 	errorResponse,
@@ -20,9 +20,16 @@ import { AppDispatch } from "@/redux/store";
 import { useRouter } from "next/router";
 import webRoutes from "@/global/constants/routes";
 
-type loginResponse = { user: IUserRead; token: string };
+type registerResponse = IUserRead & { token: string };
+type registerInputs = {
+	mobileNumber: string;
+	password: string;
+	repeatPassword: string;
+	firstName: string;
+	lastName: string;
+};
 
-const LoginForm: FC = () => {
+const RegisterForm: FC = () => {
 	//state
 	const [loading, setLoading] = useState<boolean>(false);
 
@@ -32,24 +39,26 @@ const LoginForm: FC = () => {
 
 	//functions
 	const handleSubmit = useCallback(
-		async (values: {
-			mobileNumber: string;
-			password: string;
-		}) => {
+		async (values: registerInputs) => {
+			if (values.repeatPassword !== values.password)
+				return message.error("تکرار رمز به درستی وارد نشده.");
 			setLoading(true);
-			await WebApiService.post(webEndpointUrls.userLogin, {
+			await WebApiService.post(webEndpointUrls.userRegister, {
 				mobileNumber: values.mobileNumber,
 				password: values.password,
+				firstName: values.firstName,
+				lastName: values.lastName,
 			})
-				.then((res: ApiDataResponse<loginResponse>) =>
+				.then((res: ApiDataResponse<registerResponse>) =>
 					webApiThenGeneric<
-						ApiDataResponse<loginResponse>,
-						loginResponse
+						ApiDataResponse<registerResponse>,
+						registerResponse
 					>({
 						res,
 						onSuccessData: (data) => {
-							setCookie("token", data.token);
-							dispatch(setUser(data.user));
+							const { token, ...user } = data;
+							setCookie("token", token);
+							dispatch(setUser(user));
 							dispatch(setUserLoggedIn(true));
 							push(webRoutes.home.path);
 						},
@@ -87,6 +96,22 @@ const LoginForm: FC = () => {
 					<Input placeholder="شماره موبایل" />
 				</Form.Item>
 				<Form.Item
+					label="نام"
+					name="firstName"
+					rules={[{ required: true, message: "نام وارد نشده" }]}
+				>
+					<Input placeholder="نام" />
+				</Form.Item>
+				<Form.Item
+					label="نام خانوادگی"
+					name="lastName"
+					rules={[
+						{ required: true, message: "نام خانوادگی وارد نشده" },
+					]}
+				>
+					<Input placeholder="نام خانوادگی" />
+				</Form.Item>
+				<Form.Item
 					label="رمز عبور"
 					name="password"
 					rules={[
@@ -99,6 +124,20 @@ const LoginForm: FC = () => {
 					]}
 				>
 					<Input.Password placeholder="رمز عبور" />
+				</Form.Item>
+				<Form.Item
+					label="تکرار رمز"
+					name="repeatPassword"
+					rules={[
+						{ required: true, message: "تکرار رمز وارد نشده" },
+						{
+							min: 8,
+							max: 255,
+							message: "تکرار رمز حداقل ۸ کاراکتر",
+						},
+					]}
+				>
+					<Input.Password placeholder="تکرار رمز" />
 				</Form.Item>
 				<div className="flex justify-end pt-10">
 					<MyButton
@@ -114,4 +153,4 @@ const LoginForm: FC = () => {
 	);
 };
 
-export default LoginForm;
+export default RegisterForm;

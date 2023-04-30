@@ -1,4 +1,5 @@
 import LoginForm from "@/components/login/LoginForm";
+import RegisterForm from "@/components/login/registerForm";
 import webConfig from "@/global/constants/webConfig";
 import { Tabs } from "antd";
 import Image from "next/image";
@@ -36,13 +37,13 @@ const LoginRegisterLayout: FC<Ilogin> = ({
 					</span>
 				),
 				key: "register",
-				children: "asdfasdf",
+				children: <RegisterForm />,
 			},
 		],
 		[]
 	);
 	return (
-		<div className="w-full bg-k-grey-bg-1-color">
+		<>
 			<div className="relative">
 				<Image
 					src={webConfig.domain + pathname}
@@ -53,20 +54,26 @@ const LoginRegisterLayout: FC<Ilogin> = ({
 				/>
 				<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
 				<div className="absolute top-0 left-0 w-full h-full bg-slate-900/30" />
-				<div className="absolute top-0 left-0 flex items-center justify-center w-full h-full k-container">
-					<div className="w-full max-w-xl rounded-lg shadow-2xl shadow-black/70 backdrop-blur-md backdrop-brightness-200 bg-white/50">
-						<main>
+				<div className="absolute top-0 left-0 flex items-center justify-center w-full h-full k-container ">
+					<div className="w-full max-h-[70vh] overflow-y-auto max-w-xl rounded-lg shadow-2xl shadow-black/70 backdrop-blur-sm backdrop-brightness-200 bg-white/60">
+						<main className="relative">
 							<Tabs
 								size="large"
 								defaultActiveKey="login"
 								items={tabItems}
 								centered
+								tabBarStyle={{
+									position: "sticky",
+									top: "0px",
+									backgroundColor: "rgb(255,255,255,0.8)",
+									zIndex: 20,
+								}}
 							/>
 						</main>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

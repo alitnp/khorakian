@@ -379,7 +379,7 @@ export interface ISliderRead
 	subTitle?: string;
 	shortDesc?: string;
 	desc?: string;
-	image?: IImage;
+	image: IImage;
 	url?: string;
 	direction: "right" | "left" | "center";
 }
@@ -427,6 +427,18 @@ export interface IPageItemRead
 	sorting: IPageItemSorting;
 	style: IPageItemStyle;
 	index: number;
+}
+export interface IPageItemConents
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	subTitle?: string;
+	type: IPageItemType;
+	sorting: IPageItemSorting;
+	style: IPageItemStyle;
+	index: number;
+	content: any;
+	totalItems: number;
 }
 
 export interface ISocialMedia

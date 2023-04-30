@@ -22,3 +22,159 @@ body : {}
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1682874009434,
+date : Sun Apr 30 2023 20:30:09 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"123456789"}
+},
+Response : {"status":400,"message":"رمز عبور وارد شده صحیح نیست.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682874013748,
+date : Sun Apr 30 2023 20:30:13 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"09308297880","password":"123456789"}
+},
+Response : {"status":400,"message":"رمز عبور وارد شده صحیح نیست.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875404469,
+date : Sun Apr 30 2023 20:53:24 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875405236,
+date : Sun Apr 30 2023 20:53:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875405259,
+date : Sun Apr 30 2023 20:53:25 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875529287,
+date : Sun Apr 30 2023 20:55:29 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875550086,
+date : Sun Apr 30 2023 20:55:50 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875550129,
+date : Sun Apr 30 2023 20:55:50 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682875575450,
+date : Sun Apr 30 2023 20:56:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/getByKey/login-page2,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682878110334,
+date : Sun Apr 30 2023 21:38:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"mobileNumber":"09358654331","password":"12345678","firstName":"سولماز","lastName":"مرادخانی"}
+},
+Response : {"status":409,"message":"فردی با این شماره همراه در سیستم وجود دارد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682879341199,
+date : Sun Apr 30 2023 21:59:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItem,
+body : {"title":"جدیدترین پست ها","subTitle":"جدیدترین پست ها","index":1,"type":"642fac6b3f147ae58fdfaa8b","sorting":"642fad213f147ae58fdfaa90","style":"642faf01dfda66cf153cae17","isPublished":true}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1682885751223,
+date : Sun Apr 30 2023 23:45:51 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/defaultImage,
+body : {"title":"dsgf s","subTitle":"جدیدترین پست ها","shortDesc":"asdf asdf ","direction":"right","index":0,"desc":"asdf asdf asdf ","image":"644ecbf3bcc78c621be48a2d"}
+},
+Response : {"status":400,"message":"کلید عکس ارسال نشده است.","details":{"key":"کلید عکس ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682889160296,
+date : Mon May 01 2023 00:42:40 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultImage/644ed7cecbb4f2f7e4f94f68,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

@@ -22,6 +22,7 @@ import defaultImageRoutes from 'components/Routes/defaultImageRoutes';
 import pageItemRoutes from 'components/Routes/pageItemRoutes';
 import socialMedia from 'components/Routes/socialMediaRoutes';
 import aboutMe from 'components/Routes/aboutMeRoutes';
+import sliderRoutes from 'components/Routes/sliderRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -107,6 +108,9 @@ function MainRouter() {
 
     //aboutMe
     ...aboutMe(),
+
+    //slider
+    ...sliderRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];

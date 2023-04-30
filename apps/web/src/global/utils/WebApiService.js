@@ -6,7 +6,6 @@ import { getCookie } from "cookies-next";
 // urls
 const BASE_URL = webConfig.baseUrl;
 
-
 export let errorResponse = {};
 
 export const METHOD = {
@@ -31,7 +30,7 @@ const defaultOptions = {
 };
 
 export class WebApiService {
-	constructor(enforcer) {
+	constructor() {
 		// if (enforcer !== singletonEnforcer) {
 		//   throw new Error('Cannot construct singleton');
 		// }
