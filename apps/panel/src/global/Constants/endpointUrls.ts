@@ -2,6 +2,12 @@ const endpointUrls = {
   //development
 
   //!A-a
+  aboutMeGetList: '/aboutMe',
+  aboutMeDetail: (id: number | string) => '/aboutMe/' + id,
+  aboutMeCreate: '/aboutMe',
+  aboutMeEdit: (id: number | string) => '/aboutMe/' + id,
+  aboutMeDelete: (id: number | string) => '/aboutMe/' + id,
+
   //!B-b
   //!C-c
   //!D-d
@@ -113,9 +119,15 @@ const endpointUrls = {
 
   //!Q-q
   //!R-r
-  //!S-s
-  //!T-t
 
+  //!S-s
+  socialMediaDelete: (id: number | string) => '/socialMedia/' + id,
+  socialMediaGetList: '/socialMedia',
+  socialMediaCreate: '/socialMedia',
+  socialMediaEdit: (id: number | string) => '/socialMedia/' + id,
+  socialMediaDetail: (id: number | string) => '/socialMedia/' + id,
+
+  //!T-t
   //!U-u
   //user
   userGetList: '/user',

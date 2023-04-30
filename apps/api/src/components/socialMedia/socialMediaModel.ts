@@ -7,6 +7,7 @@ export const socialMediaPersianName = "شبکه اجتماعی";
 const socialMediaSchema = new Schema<ISocialMedia>({
   title: String,
   url: String,
+  englishTitle: String,
   image: { type: Schema.Types.ObjectId, ref: "Image" },
   ...defaultSchemaProps,
 });

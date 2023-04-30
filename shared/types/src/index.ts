@@ -267,6 +267,14 @@ export interface IExperienceCommentRead
 	text: string;
 	replies: ICommentReply[];
 }
+export interface IExperienceCommentRead
+	extends DefaultModelProperties {
+	_id: string;
+	content: string;
+	user: IUserRead;
+	text: string;
+	replies: ICommentReply[];
+}
 
 /* #END region EXPERIRNCE */
 
@@ -338,6 +346,12 @@ export interface IPostCommentRead
 	replies: ICommentReply[];
 }
 export interface ICommentReply
+	extends DefaultModelProperties {
+	user?: string;
+	text: string;
+}
+
+export interface IGeneralReply
 	extends DefaultModelProperties {
 	user?: string;
 	text: string;
@@ -430,6 +444,23 @@ export interface ISocialMediaRead
 	url: string;
 	image: IImage;
 }
+export interface ISocialMedia
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	englishTitle?: string;
+	url: string;
+	image?: string;
+}
+
+export interface ISocialMediaRead
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	englishTitle?: string;
+	url: string;
+	image: IImage;
+}
 
 //#endregion Home
 
@@ -447,3 +478,48 @@ export interface IDefaultImageRead
 	image: IImage;
 }
 //#endregion
+/* # about me*/
+export interface IAboutMe extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	text: string;
+	images: string[];
+	posts: string[];
+}
+export interface IAboutMeRead
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	text: string;
+	images: IImage[];
+	posts: IPost[];
+}
+
+/* # end of about me*/
+
+/*#DirectMessage */
+export interface IDirectMessage
+	extends DefaultModelProperties {
+	user?: string;
+	text: string;
+	replies?: IGeneralReply[];
+}
+
+export interface IDirectMessageRead
+	extends DefaultModelProperties {
+	_id: string;
+	user: IUserRead;
+	text: string;
+	replies?: IGeneralReply[];
+}
+
+/*#end of DirectMessage */
+
+/*#DefaultText */
+export interface IDefaultText
+	extends DefaultModelProperties {
+	text: string;
+	key: string;
+}
+
+/*#end DefaultText */
