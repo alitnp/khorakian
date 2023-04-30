@@ -1,6 +1,12 @@
 const routes = {
   //baseRoutes
 
+  //aboutMe
+  aboutMe: { path: '/aboutMe', isPrivate: true },
+  aboutMeCreate: { path: '/aboutMe/create', isPrivate: true },
+  aboutMeEdit: { path: '/aboutMe/edit', isPrivate: true },
+  aboutMeDetail: { path: '/aboutMe/detail', isPrivate: true },
+
   //user
   login: { path: '/login', isPrivate: false },
   register: { path: '/register', isPrivate: false },
@@ -63,6 +69,11 @@ const routes = {
   post: { path: '/post', isPrivate: true },
   postCreate: { path: '/post/create', isPrivate: true },
   postEdit: { path: '/post/edit', isPrivate: true },
+
+  //socialMedia
+  socialMedia: { path: '/socialMedia', isPrivate: true },
+  socialMediaEdit: { path: '/socialMedia/edit', isPrivate: true },
+  socialMediaCreate: { path: '/socialMedia/create', isPrivate: true },
 };
 
 export default routes;

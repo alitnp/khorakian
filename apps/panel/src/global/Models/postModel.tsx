@@ -75,13 +75,13 @@ const columns = (handleDelete?: (_id: string) => void) => {
       title: 'دسته بندی',
       key: 'postCategory',
       dataIndex: 'postCategory',
-      render: (text: IPostCategory) => text.title,
+      render: (text: IPostCategory) => text?.title,
     },
     {
       title: 'برجسته',
       key: 'featured',
       dataIndex: 'featured',
-      render: (_text: string, record: IPostRead) => (record.featured ? 'بله' : 'خیر'),
+      render: (_text: string, record: IPostRead) => (record?.featured ? 'بله' : 'خیر'),
     },
     {
       title: 'تعداد بازدید',

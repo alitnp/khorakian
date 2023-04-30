@@ -41,10 +41,14 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
     { name: 'ایده ی کاربران', icon: <BulbOutlined />, to: routes.userIdea.path, open: open, role: true },
     { name: 'تجربیات', icon: <ExceptionOutlined />, to: routes.experience.path, open: open, role: true },
     { name: 'تجربیات کاربران', icon: <ExceptionOutlined />, to: routes.userExperience.path, open: open, role: true },
+    { name: 'درباره من', icon: <UserOutlined />, to: routes.aboutMe.path, open: open, role: true },
     {
       name: 'اطلاعات پایه',
       icon: <InfoCircleOutlined />,
-      subMenu: genericModels.map((menu) => ({ name: menu.title, to: menu.ListRoute, role: true })),
+      subMenu: [
+        ...genericModels.map((menu) => ({ name: menu.title, to: menu.ListRoute, role: true })),
+        { name: 'رسانه‌ی اجتماعی', to: routes.socialMedia.path, open: open, role: true },
+      ],
       open: open,
     },
   ];

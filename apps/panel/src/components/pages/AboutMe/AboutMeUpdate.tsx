@@ -1,5 +1,4 @@
-import { ApiDataResponse, IImage, IPost, IPostRead, IVideoRead } from '@my/types';
-import AddVideo from 'components/UI/Video/AddVideo';
+import { ApiDataResponse, IImage, IAboutMe, IAboutMeRead, IVideoRead, IPostRead, IPost } from '@my/types';
 import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
@@ -12,7 +11,7 @@ import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
 import TcFormWrapper from 'components/UI/FormWrapper/TcFormWrapper';
 import ApiService, { errorResponse } from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
-import postModel from 'global/Models/postModel';
+import aboutMeModel from 'global/Models/aboutMeModel';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
@@ -21,13 +20,14 @@ import { handleApiThen, handleApiThenGeneric } from 'global/helperFunctions/hand
 import { useHistory } from 'react-router';
 import routes from 'global/Constants/routes';
 import useQuery from 'global/helperFunctions/useQuery';
+import AddPost from 'components/UI/Post/AddPost';
 
-const PostUpdate = () => {
+const AboutMeUpdate = () => {
   //states
-  const [videos, setVideos] = useState<IVideoRead[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
   const [images, setImages] = useState<IImage[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [postDetail, setPostDetail] = useState<IPostRead>();
+  const [aboutMeDetail, setAboutMeDetail] = useState<IAboutMeRead>();
 
   //hooks
   const apiCatcher = useApiCatcher();
@@ -44,16 +44,17 @@ const PostUpdate = () => {
   //function
   const getDetail = async (id: string) => {
     setLoading(true);
-    await ApiService.get(endpointUrls.postDetail(id))
-      .then((res: ApiDataResponse<IPostRead>) =>
+    await ApiService.get(endpointUrls.aboutMeDetail(id))
+      .then((res: ApiDataResponse<IAboutMeRead>) =>
         handleApiThenGeneric({
           res,
           onSuccessData: (data) => {
-            setPostDetail(data);
+            setAboutMeDetail(data);
             form.setFieldsValue(data);
-            form.setFieldValue('postCategory', data.postCategory._id);
+            console.log(data);
+
             setImages(data.images);
-            setVideos(data.videos);
+            setPosts(data.posts);
           },
           dispatch,
           notifSuccess: false,
@@ -66,13 +67,13 @@ const PostUpdate = () => {
   // This is a function that is called when a form is submitted
   const handleSubmit = async (values: any) => {
     // If there are no videos or images, show a warning
-    if (videos.length + images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس یا ویدیویی انتخاب نشده' }));
+    if (posts.length + images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس یا ویدیویی انتخاب نشده' }));
     // Set the loading state to true
     setLoading(true);
-    // Make a post request to the server
-    await ApiService.put(endpointUrls.postEdit(postDetail?._id || ''), { ...values, videos: videos.map((vid) => vid._id), images: images.map((img) => img._id) })
-      // If the request is successful, redirect to the post page
-      .then((res: ApiDataResponse<IPost>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.post.path), notifFail: true, notifSuccess: true }))
+    // Make a aboutMe request to the server
+    await ApiService.put(endpointUrls.aboutMeEdit(aboutMeDetail?._id || ''), { ...values, videos: posts.map((vid) => vid._id), images: images.map((img) => img._id) })
+      // If the request is successful, redirect to the aboutMe page
+      .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       // If the request fails, show an error message
       .catch(() => apiCatcher(errorResponse));
     // Set the loading state to false
@@ -80,16 +81,16 @@ const PostUpdate = () => {
   };
 
   return (
-    <TcCard back={{ to: routes.post.path }}>
-      <TcPageTitle title='ویرایش پست' />
+    <TcCard back={{ to: routes.aboutMe.path }}>
+      <TcPageTitle title='ویرایش' />
       <TcForm form={form} onFinish={handleSubmit}>
-        <TcFormWrapper>{postModel.inputs}</TcFormWrapper>
+        <TcFormWrapper>{aboutMeModel.inputs}</TcFormWrapper>
       </TcForm>
-      <TcDevider>ویدیو</TcDevider>
-      <AddVideo videos={videos} setVideos={setVideos} />
-
       <TcDevider>عکس</TcDevider>
       <AddImage images={images} setImages={setImages} />
+
+      <TcDevider>پست</TcDevider>
+      <AddPost posts={posts} setPosts={setPosts} />
 
       <TcFormButtons noCancel submitButtonText='ویرایش' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}
@@ -97,4 +98,4 @@ const PostUpdate = () => {
   );
 };
 
-export default PostUpdate;
+export default AboutMeUpdate;

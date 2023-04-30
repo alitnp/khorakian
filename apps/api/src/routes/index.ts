@@ -16,10 +16,21 @@ import pageItemSortingRoutes from "@/components/Home/pageItemSorting/pageItemSor
 import pageItemStyleRoutes from "@/components/Home/pageItemStyle/pageItemStyleRoutes";
 import sliderRoutes from "@/components/Home/silder/sliderRoutes";
 import pageItemRoutes from "@/components/Home/pageItem/pageItemRoutes";
+import socialMediaRoutes from "@/components/socialMedia/socialMediaRoutes";
+import aboutMeRoutes from "@/components/aboutMe/aboutMeRoutes";
+import defaultTextRoutes from "@/components/defaultText/defaultTextRoutes";
+import directMessgaeRoutes from "@/components/directMessage/directMessageRoutes";
 
 const router = Router();
 
 // router.get("/", sanitizer(appKeyValidator), HomeController.getAppInfo);
+
+//!A-a
+router.use("/aboutMe", aboutMeRoutes);
+
+//D-d
+router.use("/defaultText", defaultTextRoutes);
+router.use("/directMessage", directMessgaeRoutes);
 
 //!E-e
 router.use("/userExperience", userExperience);
@@ -45,6 +56,7 @@ router.use("/postcategory", postCategoryRoutes);
 
 //!S-s
 router.use("/slider", sliderRoutes);
+router.use("/socialMedia", socialMediaRoutes);
 
 //!U-u
 router.use("/user", userRoutes);
