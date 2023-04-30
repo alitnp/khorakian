@@ -22,3 +22,75 @@ body : {}
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1682882496386,
+date : Sun Apr 30 2023 23:51:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/defaultText/644ebfb81471f5e917a53e6f,
+body : {"text":"f","key":"dsdcsds222"}
+},
+Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682882501498,
+date : Sun Apr 30 2023 23:51:41 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/defaultText/644ebfb81471f5e917a53e6f,
+body : {"text":"f","key":"dsdcsds222"}
+},
+Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682882558504,
+date : Sun Apr 30 2023 23:52:38 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/defaultText/644ebfee1471f5e917a53e81,
+body : {"text":"d","key":"ddddddddd2"}
+},
+Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682882619203,
+date : Sun Apr 30 2023 23:53:39 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/defaultText/644ebfee1471f5e917a53e81,
+body : {"text":"d","key":"ddddddddd2"}
+},
+Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682882759734,
+date : Sun Apr 30 2023 23:55:59 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/defaultText/644ebfee1471f5e917a53e81,
+body : {"text":"d","key":"ddddddddd2"}
+},
+Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1682882811035,
+date : Sun Apr 30 2023 23:56:51 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/defaultText/644ebfee1471f5e917a53e81,
+body : {"text":"d","key":"ddddddddd"}
+},
+Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},

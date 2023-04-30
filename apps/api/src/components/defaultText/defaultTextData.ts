@@ -48,6 +48,14 @@ class DefaultTextData {
     };
   };
 
+  getByKey = async (key: string): Promise<IDefaultText> => {
+    if (!key) throw new NotFoundError();
+    const item = await this.DefaultText.findOne({ key });
+    if (!item) throw new NotFoundError();
+
+    return item;
+  };
+
   get = async (id: string): Promise<IDefaultText> => {
     const item = (await this.DefaultText.findById(id).lean()) as IDefaultText;
 

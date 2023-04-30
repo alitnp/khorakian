@@ -1,6 +1,7 @@
 import {
   existsStringValidation,
   paramIdValidations,
+  paramValidations,
 } from "@/validation/globalValidations";
 
 export const getDefaultTextValidations = [...paramIdValidations];
@@ -11,6 +12,10 @@ export const createDefaultTextValidations = [
     minLength: 2,
     maxLength: 1000,
   }),
+];
+
+export const getByKeyDefaultTextValidations = [
+  ...paramValidations("key", "شناسه"),
 ];
 
 export const updateDefaultTextValidations = [

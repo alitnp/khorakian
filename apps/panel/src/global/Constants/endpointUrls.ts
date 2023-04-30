@@ -17,6 +17,12 @@ const endpointUrls = {
   defaultImageCreate: '/defaultImage',
   defaultImageEdit: (id: number | string) => '/defaultImage/' + id,
   defaultImageDelete: (id: number | string) => '/defaultImage/' + id,
+  //defaultText
+  defaultTextGetList: '/defaultText',
+  defaultTextDetail: (id: number | string) => '/defaultText/' + id,
+  defaultTextCreate: '/defaultText',
+  defaultTextEdit: (id: number | string) => '/defaultText/' + id,
+  defaultTextDelete: (id: number | string) => '/defaultText/' + id,
 
   //! E-e
   //experience

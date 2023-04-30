@@ -1,11 +1,8 @@
-import { ApiDataResponse, IDefaultImageRead, IExperience, IImage, IVideoRead } from '@my/types';
-import AddVideo from 'components/UI/Video/AddVideo';
+import { ApiDataResponse, IDefaultText } from '@my/types';
 import TcCard from 'components/UI/Card/TcCard';
-import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { useState } from 'react';
-import AddImage from 'components/UI/Image/AddImage';
 import TcForm from 'components/UI/Form/TcForm';
 import { Form } from 'antd';
 import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
@@ -15,17 +12,18 @@ import endpointUrls from 'global/Constants/endpointUrls';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
-import { setNotificationData } from 'redux/reducer/Toast/toastReducer';
 import { handleApiThen } from 'global/helperFunctions/handleApiThen';
 import { useHistory } from 'react-router';
 import routes from 'global/Constants/routes';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
-import defaultImageModel from 'global/Models/defaultImageModel';
+import defaultTextModel from 'global/Models/defaultTextModel';
+import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
+import { setNotificationData } from 'redux/reducer/Toast/toastReducer';
 
-const DefaultImageCreate = () => {
+const DefaultTextCreate = () => {
   //states
-  const [images, setImages] = useState<IImage[]>([]);
+  const [text, setText] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
   //hooks
@@ -37,27 +35,39 @@ const DefaultImageCreate = () => {
   //function
 
   const handleSubmit = async (values: any) => {
-    if (images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکسی انتخاب نشده' }));
+    if (!text) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ متنی انتخاب نشده' }));
     setLoading(true);
-    await ApiService.post(endpointUrls.defaultImageCreate, { ...values, image: images[0]._id })
-      .then((res: ApiDataResponse<IDefaultImageRead>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.defaultImage.path), notifFail: true, notifSuccess: true }))
+    await ApiService.post(endpointUrls.defaultTextCreate, {
+      ...values,
+      text: text,
+    })
+      .then((res: ApiDataResponse<IDefaultText>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.defaultText.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
   };
 
+  console.log(text);
+
+  const changeHandler = (value: any) => {
+    if (value.text) {
+      setText(value.text);
+    }
+  };
+
   return (
-    <TcCard back={{ to: routes.defaultImage.path }}>
-      <TcPageTitle title={'ایجاد ' + defaultImageModel.title} />
-      <TcForm form={form} onFinish={handleSubmit}>
+    <TcCard back={{ to: routes.defaultText.path }}>
+      <TcPageTitle title={'ایجاد ' + defaultTextModel.title} />
+      <TcForm form={form} onFinish={handleSubmit} onValuesChange={changeHandler}>
         <TcFormWrapper>
+          {' '}
+          <TcFormItem name='text' label='متن' rules={[{ required: true, message: 'متن تعیین نشده' }]}>
+            <TcTextarea size='small' placeholder='متن' />
+          </TcFormItem>
           <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
             <TcInput placeholder='کلید' />
           </TcFormItem>
         </TcFormWrapper>
       </TcForm>
-
-      <TcDevider>عکس</TcDevider>
-      <AddImage images={images} setImages={setImages} singleImage />
 
       <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}
@@ -65,4 +75,4 @@ const DefaultImageCreate = () => {
   );
 };
 
-export default DefaultImageCreate;
+export default DefaultTextCreate;

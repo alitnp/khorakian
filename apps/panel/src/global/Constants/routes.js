@@ -22,6 +22,12 @@ const routes = {
   defaultImageEdit: { path: '/defaultImage/edit', isPrivate: true },
   defaultImageDetail: { path: '/defaultImage/detail', isPrivate: true },
 
+  //defaultText
+  defaultText: { path: '/defaultText', isPrivate: true },
+  defaultTextCreate: { path: '/defaultText/create', isPrivate: true },
+  defaultTextEdit: { path: '/defaultText/edit', isPrivate: true },
+  defaultTextDetail: { path: '/defaultText/detail', isPrivate: true },
+
   //postCategory
   postCategory: { path: '/postcategory', isPrivate: true },
   postCategoryCreate: { path: '/postcategory/create', isPrivate: true },
