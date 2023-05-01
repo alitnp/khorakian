@@ -8,11 +8,12 @@ import {
 import webConfig from "@/global/constants/webConfig";
 import { memo } from "react";
 import HomeSlider from "@/components/home/HomeSlider";
-import HomeCards from "@/components/home/components/HomeCards";
+import HomeCards from "@/components/home/HomeCards";
 import TimeLine from "@/components/global/TimeLine/TimeLine";
-import HomeWideCards from "@/components/home/components/HomeWideCards";
-import HomeTextOnlyCards from "@/components/home/components/HomeTextOnlyCards ";
-import HomeImageOnlyCards from "@/components/home/components/HomeImageOnlyCards";
+import HomeWideCards from "@/components/home/HomeWideCards";
+import HomeTextOnlyCards from "@/components/home/HomeTextOnlyCards ";
+import HomeImageOnlyCards from "@/components/home/HomeImageOnlyCards";
+import HomeIdeaExpLink from "@/components/home/HomeIdeaExpLink";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const pageItems: ApiDataResponse<IPageItemConents> =
@@ -38,7 +39,7 @@ const Home = ({
 }) => {
 	return (
 		<main>
-			{pageItems.map((pageItem, index) => {
+			{/* {pageItems.map((pageItem, index) => {
 				if (pageItem.type.title === "slider")
 					return (
 						<HomeSlider key={pageItem._id} data={pageItem} />
@@ -77,38 +78,8 @@ const Home = ({
 							data={pageItem}
 						/>
 					);
-			})}
-			{/* <ImageOnlyCardsRow
-				title={
-					<PageItemTitle
-						title="تازه ها"
-						desc="آخرین محتوای اضافه شده به سامانه"
-						moreText="۱۴ مورد دیگر"
-						moreUrl="/"
-					/>
-				}
-				items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
-					(_item, index) => (
-						<ImageOnlyCard key={index} />
-					)
-				)}
-			/> */}
-			{/* <TextOnlyCardsRow
-				title={
-					<PageItemTitle
-						title="تازه ها"
-						desc="آخرین محتوای اضافه شده به سامانه"
-						moreText="۱۴ مورد دیگر"
-						moreUrl="/"
-					/>
-				}
-				items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
-					(_item, index) => (
-						<TextOnlyCard key={index} />
-					)
-				)}
-			/> */}
-			{/* <TimeLine /> */}
+			})} */}
+			<HomeIdeaExpLink />
 		</main>
 	);
 };

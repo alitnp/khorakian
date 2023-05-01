@@ -1,0 +1,40 @@
+{
+type : INFO,
+timestamp : 1682967462871,
+date : Mon May 01 2023 22:27:42 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1682967477912,
+date : Mon May 01 2023 22:27:57 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/pageItem/getWithContents,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1682967481793,
+date : Mon May 01 2023 22:28:01 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultText?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1682969317293,
+date : Mon May 01 2023 22:58:37 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/pageItem/getWithContents,
+body : {}
+},
