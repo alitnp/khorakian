@@ -39,6 +39,7 @@ const Login: FC<Ilogin> = ({ image }) => {
 			pathname={image.pathname}
 			height={image.height}
 			width={image.width}
+			imageAlt={image.title}
 		/>
 	);
 };

@@ -7,10 +7,12 @@ interface ISliderSlide extends ISliderRead {
 	imagePathName: string;
 	width: number;
 	height: number;
+	imageAlt: string;
 }
 
 const SliderSlide: FC<ISliderSlide> = ({
 	imagePathName,
+	imageAlt,
 	width,
 	height,
 	...props
@@ -20,14 +22,14 @@ const SliderSlide: FC<ISliderSlide> = ({
 			<div className="relative flex items-center justify-center w-full h-full overflow-hidden">
 				<Image
 					src={(webConfig.domain as string) + imagePathName}
-					alt="Asdf"
+					alt={imageAlt}
 					width={width}
 					height={height}
 					className="object-cover object-center w-full h-full mx-auto "
 				/>
 				<Image
 					src={(webConfig.domain as string) + imagePathName}
-					alt="Asdf"
+					alt={imageAlt}
 					width={width}
 					height={height}
 					className="absolute object-cover object-center w-full h-full scale-110 blur-xl brightness-50 -z-10"

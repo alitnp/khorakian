@@ -10,12 +10,14 @@ interface Ilogin {
 	pathname: string;
 	width: number;
 	height: number;
+	imageAlt: string;
 }
 
 const LoginRegisterLayout: FC<Ilogin> = ({
 	pathname,
 	width,
 	height,
+	imageAlt,
 }) => {
 	const tabItems = useMemo(
 		() => [
@@ -49,7 +51,7 @@ const LoginRegisterLayout: FC<Ilogin> = ({
 					src={webConfig.domain + pathname}
 					width={width}
 					height={height}
-					alt=""
+					alt={imageAlt}
 					className="object-cover w-full h-screen"
 				/>
 				<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />

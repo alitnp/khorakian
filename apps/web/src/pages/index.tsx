@@ -20,6 +20,8 @@ import {
 	ISliderRead,
 } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
+import { memo, useCallback } from "react";
+import webRoutes from "@/global/constants/routes";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const pageItems: ApiDataResponse<IPageItemConents> =
@@ -38,12 +40,13 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-export default function Home({
+const Home = ({
 	pageItems,
 }: {
 	pageItems: IPageItemConents[];
-}) {
+}) => {
 	console.log(pageItems);
+
 	return (
 		<main>
 			{pageItems.map((pageItem) => {
@@ -59,6 +62,7 @@ export default function Home({
 									imagePathName={slide.image.pathname}
 									width={slide.image.width}
 									height={slide.image.height}
+									imageAlt={slide.image.title}
 								/>
 							))}
 						/>
@@ -127,4 +131,6 @@ export default function Home({
 			{/* <TimeLine /> */}
 		</main>
 	);
-}
+};
+
+export default memo(Home);

@@ -66,7 +66,7 @@ export interface IImage extends DefaultModelProperties {
 	fileName: string;
 	format: string;
 	pathname: string;
-	thumbnailPathname?: string;
+	thumbnailPathname: string;
 	thumbnailWidth: number;
 	thumbnailHeight: number;
 	width: number;
