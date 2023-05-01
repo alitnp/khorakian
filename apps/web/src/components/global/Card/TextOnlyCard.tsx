@@ -1,36 +1,54 @@
-
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
+import Link from "next/link";
 import { FC, memo } from "react";
 
-interface ITextOnlyCard {}
+interface ITextOnlyCard {
+	category: string;
+	title: string;
+	desc: string;
+	creationDate: string;
+	likeCount: number;
+	commentCount: number;
+	detailPath: string;
+	viewCount: number;
+	isLiked: boolean;
+	isCommented: boolean;
+}
 
-const TextOnlyCard: FC<ITextOnlyCard> = ({}) => {
+const TextOnlyCard: FC<ITextOnlyCard> = ({
+	category,
+	title,
+	desc,
+	creationDate,
+	likeCount,
+	commentCount,
+	viewCount,
+	detailPath,
+	isLiked,
+	isCommented,
+}) => {
 	return (
 		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 snap-start">
 			<div className="w-full sm:w-[400px] px-4 py-2">
 				<span className="text-sm font-light text-k-grey-text-color">
-					آلبوم
+					{category}
 				</span>
-				<h2 className="mb-2 text-base font-medium line-clamp-1">
-					مراسم پیاده روی سبنت سمنیبت سمینتسی aslfj asdjf alskdjf
-					مسنیتب منسیتبم سنیبت
-				</h2>
-				<p className="mb-2 text-sm line-clamp-4">
-					ای شهر تهران شرکت کردم. من به عنوان یک فرد سیاست مدار،
-					به دنبال تحقق دموکراسی، عدالت اجتماعی و پیشرفت اقتصادی
-					برای کشورم هستم. من در طول فعالیت های سیاسی خود، سعی
-					کرده ام که با مشارکت مردم، نظارت بر عملکرد دولت و
-					پیگیری مطالبات شهروندان باشم
-				</p>
+				<Link href={detailPath}>
+					<h2 className="mb-2 text-base font-medium line-clamp-1">
+						{title}
+					</h2>
+				</Link>
+				<p className="mb-2 text-sm line-clamp-4">{desc}</p>
 				<div className="flex items-center justify-between pt-2 mt-4 border-t">
 					<span className="text-sm text-k-grey-text-color">
-						۱۶ مهر ۱۴۰۰
+						{creationDate}
 					</span>
 					<CardLikeCommentCount
-						likeCount={10}
-						commentCount={21}
-						isLiked={false}
-						isCommented={false}
+						viewCount={viewCount || 0}
+						likeCount={likeCount || 0}
+						commentCount={commentCount || 0}
+						isLiked={isLiked}
+						isCommented={isCommented}
 					/>
 				</div>
 			</div>

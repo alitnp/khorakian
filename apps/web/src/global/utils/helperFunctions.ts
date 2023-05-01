@@ -1,3 +1,8 @@
+import webRoutes from "@/global/constants/routes";
+import { DateObject } from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+
 export const englishNumberOnly = (
 	input: string,
 	allowCammaAndDot?: boolean,
@@ -26,3 +31,117 @@ export const englishNumberOnly = (
 
 	return input;
 };
+
+export const getThumbnailFromContent = (
+	item: any
+): {
+	imagePathname: string;
+	width: number;
+	height: number;
+	imageAlt: string;
+	isVideo: boolean;
+} => {
+	if (
+		item.videos.length > 0 &&
+		!!item.videos[0]?.thumbnail?.thumbnailPathname
+	)
+		return {
+			imagePathname:
+				item.videos[0].thumbnail.thumbnailPathname,
+			width: item.videos[0].thumbnail.width,
+			height: item.videos[0].thumbnail.height,
+			imageAlt: item.videos[0].title,
+			isVideo: true,
+		};
+	if (
+		!!item.video &&
+		!!item.video?.thumbnail?.thumbnailPathname
+	)
+		return {
+			imagePathname: item.video.thumbnail.thumbnailPathname,
+			width: item.video.thumbnail.width,
+			height: item.video.thumbnail.height,
+			imageAlt: item.video.title,
+			isVideo: true,
+		};
+
+	if (
+		item.images?.length > 0 &&
+		!!item.images[0]?.thumbnailPathname
+	)
+		return {
+			imagePathname: item.images[0].thumbnailPathname,
+			width: item.images[0].width,
+			height: item.images[0].height,
+			imageAlt: item.images[0].title,
+			isVideo: item.videos.length > 0 || !!item.video,
+		};
+
+	if (!!item.image && !!item.image.thumbnailPathname)
+		return {
+			imagePathname: item.image.thumbnailPathname,
+			width: item.image.width,
+			height: item.image.height,
+			imageAlt: item.image.title,
+			isVideo: item.videos.length > 0 || !!item.video,
+		};
+
+	return {
+		imagePathname: "",
+		width: 0,
+		height: 0,
+		imageAlt: "",
+		isVideo: false,
+	};
+};
+
+export const getMoreUrlPathFromPageItem = (
+	pageItemType: string
+) => {
+	if (pageItemType === "post")
+		return webRoutes.postAllContents.path;
+	if (
+		pageItemType === "experience" ||
+		pageItemType === "userExperience"
+	)
+		return webRoutes.experienceAllContents.path;
+	if (pageItemType === "idea" || pageItemType === "userIdea")
+		return webRoutes.ideaAllContents.path;
+};
+
+export const getDetailPathnameforPageItem = (
+	pageItemType: string
+) => {
+	if (pageItemType === "post")
+		return webRoutes.postDetail.path;
+	if (pageItemType === "experience")
+		return webRoutes.experienceDetail.path;
+	if (pageItemType === "userExperience")
+		return webRoutes.userExperienceDetail.path;
+	if (pageItemType === "idea" || pageItemType === "userIdea")
+		return webRoutes.ideaDetail.path;
+};
+
+export const getCategoryKeyNameFormPageItem = (
+	pageItemType: string
+): string => {
+	if (pageItemType === "post") return "postCategory";
+	if (
+		pageItemType === "experience" ||
+		pageItemType === "userExperience"
+	)
+		return "experienceCategory";
+	if (pageItemType === "idea" || pageItemType === "userIdea")
+		return "ideaCategory";
+	return "post";
+};
+
+export const dateObjectFormatter = (
+	date: any,
+	format = "YYYY/MM/DD"
+) =>
+	new DateObject({
+		date,
+		locale: persian_fa,
+		calendar: persian,
+	}).format(format);

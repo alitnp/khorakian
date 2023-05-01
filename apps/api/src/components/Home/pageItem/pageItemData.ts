@@ -85,14 +85,16 @@ class PageItemData {
         content = await Post.find(filters)
           .sort(sort)
           .limit(10)
-          .populate(["images", "videos"]);
+          .populate("images")
+          .populate({ path: "videos", populate: { path: "thumbnail" } });
         totalItems = await Post.countDocuments(filters);
       }
       if (pi.type.title === "experience") {
         content = await Experience.find(filters)
           .sort(sort)
           .limit(10)
-          .populate(["images", "videos"]);
+          .populate("images")
+          .populate({ path: "videos", populate: { path: "thumbnail" } });
         totalItems = await Experience.countDocuments(filters);
       }
       if (pi.type.title === "userExperience") {

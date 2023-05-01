@@ -32,7 +32,7 @@ const persianNumbers = {
  * @returns {string} The output with replaced numerals
  */
 export const replaceNumbersWithPersian = (input) => {
-	if (!input) return "";
+	if (input === undefined || input === null) return "";
 	// Convert the input to a string if it is a number
 	let str =
 		typeof input === "number" ? input.toString() : input;

@@ -442,6 +442,18 @@ export interface IPageItemConents
 	content: any;
 	totalItems: number;
 }
+export interface IPageItemGeneric<T>
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	subTitle?: string;
+	type: IPageItemType;
+	sorting: IPageItemSorting;
+	style: IPageItemStyle;
+	index: number;
+	content: T;
+	totalItems: number;
+}
 
 export interface ISocialMedia
 	extends DefaultModelProperties {
