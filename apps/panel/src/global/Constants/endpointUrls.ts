@@ -24,6 +24,10 @@ const endpointUrls = {
   defaultTextEdit: (id: number | string) => '/defaultText/' + id,
   defaultTextDelete: (id: number | string) => '/defaultText/' + id,
 
+  //directMessage
+  directMessageGetList: '/directMessage',
+  directMessageDetail: (id: number | string) => '/directMessage' + id,
+
   //! E-e
   //experience
   experienceGetList: '/experience',

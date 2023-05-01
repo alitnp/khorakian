@@ -13,9 +13,15 @@ import {
 import DirectMessageController from "@/components/directMessage/directMessageController";
 import { User } from "@/components/user/userModel";
 import { DirectMessage } from "@/components/directMessage/directMessageModel";
+import UserData from "@/components/user/userData";
+import ImageData from "@/components/image/imageData";
+import { Image } from "@/components/image/imageModel";
 
 const router = Router();
-const data = new DirectMessageData(DirectMessage, User);
+const data = new DirectMessageData(
+  DirectMessage,
+  new UserData(User, new ImageData(Image)),
+);
 const controller = new DirectMessageController(data);
 
 //get

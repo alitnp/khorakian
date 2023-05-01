@@ -16,6 +16,10 @@ const routes = {
   dashboard: { path: '/dashboard', isPrivate: true },
   setting: { path: '/setting', isPrivate: true },
 
+  //directMessage
+  directMessage: { path: '/directMessage', isPrivate: true },
+  directMessageDetail: { path: '/directMessage/detail', isPrivate: true },
+
   //defaultImage
   defaultImage: { path: '/defaultImage', isPrivate: true },
   defaultImageCreate: { path: '/defaultImage/create', isPrivate: true },

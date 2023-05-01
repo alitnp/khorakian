@@ -23,6 +23,7 @@ import pageItemRoutes from 'components/Routes/pageItemRoutes';
 import socialMedia from 'components/Routes/socialMediaRoutes';
 import aboutMe from 'components/Routes/aboutMeRoutes';
 import defaultTextRoutes from 'components/Routes/defaultTextRoutes';
+import directMessageRoutes from 'components/Routes/directMessageRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -111,6 +112,9 @@ function MainRouter() {
 
     //defaultTextRoutes
     ...defaultTextRoutes(),
+
+    //directMessageRoutes
+    ...directMessageRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];

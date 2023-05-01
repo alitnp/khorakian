@@ -1,27 +1,24 @@
-import { IUserMethods } from "@/components/user/userModel";
 import { Model } from "mongoose";
-import { ApiDataListResponse, IDirectMessage, IUser } from "@my/types";
+import { ApiDataListResponse, IDirectMessage } from "@my/types";
 import { NotFoundError } from "@/helpers/error";
 import { getAllData } from "@/data/globalData";
 import BadRequestError from "@/helpers/error/BadRequestError";
+import UserData from "@/components/user/userData";
 
 class DirectMessageData {
   DirectMessage: Model<IDirectMessage>;
-  User: Model<IUser, {}, IUserMethods>;
+  User: UserData;
 
-  constructor(
-    DirectMessage: Model<IDirectMessage>,
-    User: Model<IUser, {}, IUserMethods>,
-  ) {
+  constructor(DirectMessage: Model<IDirectMessage>, User: UserData) {
     this.DirectMessage = DirectMessage;
     this.User = User;
   }
 
   getAll = async (
     req: Req,
-    userId?: string,
+    userId: string,
   ): Promise<ApiDataListResponse<IDirectMessage>> => {
-    const user = await this.User.findById(userId);
+    const user = await this.User.get(userId);
     if (!user) throw new NotFoundError();
     const searchQuery: any = {};
     if (userId) {
@@ -52,7 +49,11 @@ class DirectMessageData {
     ]);
   };
 
-  create = async (text: string, userId?: string): Promise<IDirectMessage> => {
+  create = async (text: string, userId: string): Promise<IDirectMessage> => {
+    console.log(userId);
+    const user = await this.User.get(userId);
+
+    if (!user) throw new NotFoundError("");
     const item = new this.DirectMessage({
       user: userId,
       text,
@@ -80,10 +81,10 @@ class DirectMessageData {
 
   reply = async (
     id: string,
-    userId: string | undefined,
+    userId: string,
     text: string,
   ): Promise<IDirectMessage> => {
-    const user = await this.User.findById(userId);
+    const user = await this.User.get(userId);
     const item = await this.DirectMessage.findById(id);
     if (!item) throw new NotFoundError("پیام یافت نشد");
     if (user?.isAdmin || userId === item.user) {

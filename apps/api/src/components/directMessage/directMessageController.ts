@@ -10,7 +10,7 @@ class DirectMessageController {
     this.data = data;
   }
   getAll = async (req: Req, res: Res) => {
-    const result = await this.data.getAll(req, getUserIdFromReq(req));
+    const result = await this.data.getAll(req, getUserIdFromReq(req) as string);
     res.send(apiDataListResponse<IDirectMessage>(result));
   };
   getAllAdmin = async (req: Req, res: Res) => {
@@ -28,7 +28,10 @@ class DirectMessageController {
   // };
 
   create = async (req: Req, res: Res) => {
-    const result = await this.data.create(req.body);
+    const result = await this.data.create(
+      req.body.text,
+      getUserIdFromReq(req) as string,
+    );
     res.send(apiDataResponse<IDirectMessage>(result));
   };
 
@@ -45,7 +48,7 @@ class DirectMessageController {
   reply = async (req: Req, res: Res) => {
     const result = await this.data.reply(
       req.params.id,
-      getUserIdFromReq(req),
+      getUserIdFromReq(req) as string,
       req.body.text,
     );
     res.send(apiDataResponse<IDirectMessage>(result));
