@@ -16,11 +16,21 @@ const routes = {
   dashboard: { path: '/dashboard', isPrivate: true },
   setting: { path: '/setting', isPrivate: true },
 
+  //directMessage
+  directMessage: { path: '/directMessage', isPrivate: true },
+  directMessageDetail: { path: '/directMessage/detail', isPrivate: true },
+
   //defaultImage
   defaultImage: { path: '/defaultImage', isPrivate: true },
   defaultImageCreate: { path: '/defaultImage/create', isPrivate: true },
   defaultImageEdit: { path: '/defaultImage/edit', isPrivate: true },
   defaultImageDetail: { path: '/defaultImage/detail', isPrivate: true },
+
+  //defaultText
+  defaultText: { path: '/defaultText', isPrivate: true },
+  defaultTextCreate: { path: '/defaultText/create', isPrivate: true },
+  defaultTextEdit: { path: '/defaultText/edit', isPrivate: true },
+  defaultTextDetail: { path: '/defaultText/detail', isPrivate: true },
 
   //postCategory
   postCategory: { path: '/postcategory', isPrivate: true },

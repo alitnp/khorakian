@@ -68,7 +68,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       key: 'operation',
       render: (_text: any, record: IImage) => (
         <div className='flex'>
-          <TcDetailIcon to={routes.aboutMeDetail.path + '/' + record._id} />
+          {/* <TcDetailIcon to={routes.aboutMeDetail.path + '/' + record._id} /> */}
           <TcEditIcon to={routes.aboutMeEdit.path + '/' + record._id} />
           <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
         </div>

@@ -151,6 +151,15 @@ export const firstNameValidations = [
   }),
 ];
 
+export const fullNameValidations = [
+  ...existsStringValidation({
+    key: "fullName",
+    name: "نام ونام خانوادگی",
+    minLength: 2,
+    maxLength: 50,
+  }),
+];
+
 export const lastNameValidations = [
   ...existsStringValidation({
     key: "lastName",

@@ -34,6 +34,7 @@ export interface IUser extends DefaultModelProperties {
 	mobileNumber: string;
 	password: string;
 	isAdmin: boolean;
+	image?: string;
 }
 export interface IUserRead extends DefaultModelProperties {
 	_id: string;
@@ -42,6 +43,7 @@ export interface IUserRead extends DefaultModelProperties {
 	fullName: string;
 	mobileNumber: string;
 	isAdmin: boolean;
+	image: IImage;
 }
 /* #endregion */
 
@@ -66,7 +68,7 @@ export interface IImage extends DefaultModelProperties {
 	fileName: string;
 	format: string;
 	pathname: string;
-	thumbnailPathname: string;
+	thumbnailPathname?: string;
 	thumbnailWidth: number;
 	thumbnailHeight: number;
 	width: number;
@@ -531,6 +533,12 @@ export interface IDirectMessageRead
 export interface IDefaultText
 	extends DefaultModelProperties {
 	text: string;
+	key: string;
+}
+
+export interface IDefaultTextRead
+	extends DefaultModelProperties {
+	text: string[];
 	key: string;
 }
 

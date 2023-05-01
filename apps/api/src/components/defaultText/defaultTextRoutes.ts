@@ -6,16 +6,22 @@ import {
   deleteDefaultTextValidations,
   updateDefaultTextValidations,
   getDefaultTextValidations,
+  getByKeyDefaultTextValidations,
 } from "@/components/defaultText/defaultTextValidations";
-import { DefaultText } from "@/components/defaultText/defaultTextModel";
 import DefaultTextData from "@/components/defaultText/defaultTextData";
 import DefaultTextController from "@/components/defaultText/defaultTextController";
+import { DefaultText } from "@/components/defaultText/defaultTextModel";
 
 const router = Router();
 const data = new DefaultTextData(DefaultText);
 const controller = new DefaultTextController(data);
 
 //get
+router.get(
+  "/getByKey/:key",
+  validate(getByKeyDefaultTextValidations),
+  controller.getByKey,
+);
 // get a signgle DefaultText with id
 router.get("/:id", validate(getDefaultTextValidations), controller.get);
 // get a list of DefaultText

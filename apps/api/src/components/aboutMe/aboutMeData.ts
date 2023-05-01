@@ -10,6 +10,7 @@ import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import ImageData from "@/components/image/imageData";
 import PostData from "@/components/Post/post/postData";
+import BadRequestError from "@/helpers/error/BadRequestError";
 
 class AboutMeData {
   AboutMe: Model<IAboutMe, {}, {}, {}, any>;
@@ -82,11 +83,26 @@ class AboutMeData {
     posts,
     images,
   }: IAboutMe): Promise<IAboutMeRead> => {
+    if (!images.length || !posts.length)
+      throw new BadRequestError(" عکس  یا پست ارسال نشده");
+    const existingImageIds = [];
+    for (let i = 0; i < images.length; i++) {
+      const imageId = images[i];
+      const existingImage = await this.Image.get(imageId);
+      if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
+
+    const existingPostsIds = [];
+    for (let i = 0; i < posts.length; i++) {
+      const postsId = posts[i];
+      const existingPosts = await this.Post.get(postsId);
+      if (!!existingPosts) existingPostsIds.push(existingPosts._id);
+    }
     const item = new this.AboutMe({
       title,
       text,
-      posts,
-      images,
+      posts: existingPostsIds,
+      images: existingImageIds,
     });
     await item.save();
     return await this.get(item._id);
@@ -99,12 +115,27 @@ class AboutMeData {
     posts,
     images,
   }: IAboutMe): Promise<IAboutMeRead> => {
+    if (!images.length || !posts.length)
+      throw new BadRequestError(" عکس  یا پست ارسال نشده");
+    const existingImageIds = [];
+    for (let i = 0; i < images.length; i++) {
+      const imageId = images[i];
+      const existingImage = await this.Image.get(imageId);
+      if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
+
+    const existingPostsIds = [];
+    for (let i = 0; i < posts.length; i++) {
+      const postsId = posts[i];
+      const existingPosts = await this.Post.get(postsId);
+      if (!!existingPosts) existingPostsIds.push(existingPosts._id);
+    }
     const item = await this.AboutMe.findByIdAndUpdate(_id, {
       $set: {
         title,
         text,
-        posts,
-        images,
+        posts: existingPostsIds,
+        images: existingImageIds,
       },
     });
     if (!item) throw new NotFoundError();

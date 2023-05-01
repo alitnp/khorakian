@@ -15,9 +15,11 @@ import {
 import UserData from "@/components/user/userData";
 import UserController from "@/components/user/userController";
 import { User } from "@/components/user/userModel";
+import { Image } from "@/components/image/imageModel";
+import ImageData from "@/components/image/imageData";
 
 const router = Router();
-const data = new UserData(User);
+const data = new UserData(User, new ImageData(Image));
 const controller = new UserController(data);
 
 //get
