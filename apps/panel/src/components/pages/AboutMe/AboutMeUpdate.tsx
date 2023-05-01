@@ -71,7 +71,7 @@ const AboutMeUpdate = () => {
     // Set the loading state to true
     setLoading(true);
     // Make a aboutMe request to the server
-    await ApiService.put(endpointUrls.aboutMeEdit(aboutMeDetail?._id || ''), { ...values, videos: posts.map((vid) => vid._id), images: images.map((img) => img._id) })
+    await ApiService.put(endpointUrls.aboutMeEdit(aboutMeDetail?._id || ''), { ...values, posts: posts.map((vid) => vid._id), images: images.map((img) => img._id) })
       // If the request is successful, redirect to the aboutMe page
       .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       // If the request fails, show an error message

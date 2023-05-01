@@ -8,24 +8,11 @@ import { defaultSchemaProps } from "@/utils/constants";
 export interface IUserMethods {
   generateAuthToken(): string;
   comparePassword(_password: string): Promise<boolean>;
-  setFullName(): void;
   getHashedPassword(_password: string): Promise<string>;
 }
 type UserModel = Model<IUser, {}, IUserMethods>;
 
 export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
-  firstName: {
-    type: String,
-    required: [true, "نام تعیین نشده."],
-    minlength: [2, "نام حداقل باید ۲ کاراکتر باشد."],
-    maxlength: [50, "نام حداکثر ۵۰ کاراکتر."],
-  },
-  lastName: {
-    type: String,
-    required: [true, "نام خانوادگی تعیین نشده."],
-    minlength: [2, "نام خانوادگی حداقل باید ۲ کاراکتر باشد."],
-    maxlength: [50, "نام خانوادگی حداکثر ۵۰ کاراکتر."],
-  },
   fullName: {
     type: String,
     required: [true, "نام و نام خانوادگی تعیین نشده."],
@@ -47,6 +34,7 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
       message: "فردی با این شماره تلفن در سیستم وجود دارد.",
     },
   },
+  image: [{ type: Schema.Types.ObjectId, ref: "Image" }],
   password: { type: String, minlength: 8, maxlength: 1024, required: true },
   isAdmin: { type: Boolean, default: false },
   ...defaultSchemaProps,
@@ -62,9 +50,6 @@ userSchema.methods.generateAuthToken = function () {
 };
 userSchema.methods.comparePassword = async function (requestPassword: string) {
   return await compare(requestPassword, this.password);
-};
-userSchema.methods.setFullName = function () {
-  this.fullName = this.firstName + " " + this.lastName;
 };
 
 userSchema.methods.getHashedPassword = async function (password: string) {

@@ -33,7 +33,8 @@ const AddPosts: FC<IAddPost> = ({ posts, setPosts }) => {
     },
     [posts]
   );
-  const handleReArrange = useCallback((oldIndex: number, newIndex: number) => setPosts((posts: IPost[]) => [...moveItemInArray(posts, oldIndex, newIndex)]), [posts]);
+
+  // const handleReArrange = useCallback((oldIndex: number, newIndex: number) => setPosts((posts: IPost[]) => [...moveItemInArray(posts, oldIndex, newIndex)]), [posts]);
 
   return (
     <>

@@ -94,3 +94,15 @@ body : {"text":"d","key":"ddddddddd"}
 },
 Response : {"status":400,"message":"متن باید حداقل 2 کاراکتر باشد.","details":{"text":"متن باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
 },
+{
+type : ERROR,
+timestamp : 1682920200825,
+date : Mon May 01 2023 10:20:00 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/aboutMe/644f52f5a882f7326ac7225b,
+body : {"title":"JJJJ2","text":"JJJ2","posts":[],"images":["642d52b0c614daffa23ec176"]}
+},
+Response : {"status":400,"message":" عکس  یا پست ارسال نشده","data":null,"isSuccess":false}
+},

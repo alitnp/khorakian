@@ -34,6 +34,7 @@ export interface IUser extends DefaultModelProperties {
   mobileNumber: string;
   password: string;
   isAdmin: boolean;
+  image?: string;
 }
 export interface IUserRead extends DefaultModelProperties {
   _id: string;
@@ -42,6 +43,7 @@ export interface IUserRead extends DefaultModelProperties {
   fullName: string;
   mobileNumber: string;
   isAdmin: boolean;
+  image: IImage;
 }
 /* #endregion */
 
