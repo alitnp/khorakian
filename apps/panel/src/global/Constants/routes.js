@@ -86,6 +86,12 @@ const routes = {
   pageItemEdit: { path: '/pageItem/edit', isPrivate: true },
   pageItemDetail: { path: '/pageItem/detail', isPrivate: true },
 
+  //slider
+  slider: { path: '/slider', isPrivate: true },
+  sliderCreate: { path: '/slider/create', isPrivate: true },
+  sliderEdit: { path: '/slider/edit', isPrivate: true },
+  sliderDetail: { path: '/slider/detail', isPrivate: true },
+
   //experienceCategory
   experienceCategory: { path: '/experienceCategory', isPrivate: true },
   experienceCategoryCreate: { path: '/experienceCategory/create', isPrivate: true },

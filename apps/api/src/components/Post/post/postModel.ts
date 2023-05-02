@@ -18,7 +18,7 @@ export const postSchema = new Schema<IPost>({
   videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
   postCategory: {
     type: postCategorySchema,
-    required: [true, "عنوان تعیین نشده."],
+    required: [true, "دسته بندی تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
   viewCount: Number,

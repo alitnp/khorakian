@@ -18,7 +18,7 @@ export const experienceSchema = new Schema<IExperience>({
   videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
   experienceCategory: {
     type: experienceCategorySchema,
-    required: [true, "عنوان تعیین نشده."],
+    required: [true, "دسته یندی تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
   viewCount: Number,

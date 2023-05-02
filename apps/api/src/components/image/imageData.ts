@@ -20,7 +20,7 @@ class ImageData implements IData<IImage> {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IImage>(searchQuery, req, this.Image);
+    return await getAllData<IImage>(searchQuery, req, this.Image);
   };
 
   get = async (id: string): Promise<IImage> => {

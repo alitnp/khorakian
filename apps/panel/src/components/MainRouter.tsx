@@ -22,6 +22,7 @@ import defaultImageRoutes from 'components/Routes/defaultImageRoutes';
 import pageItemRoutes from 'components/Routes/pageItemRoutes';
 import socialMedia from 'components/Routes/socialMediaRoutes';
 import aboutMe from 'components/Routes/aboutMeRoutes';
+import sliderRoutes from 'components/Routes/sliderRoutes';
 import defaultTextRoutes from 'components/Routes/defaultTextRoutes';
 import directMessageRoutes from 'components/Routes/directMessageRoutes';
 
@@ -110,6 +111,8 @@ function MainRouter() {
     //aboutMe
     ...aboutMe(),
 
+    //slider
+    ...sliderRoutes(),
     //defaultTextRoutes
     ...defaultTextRoutes(),
 

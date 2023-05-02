@@ -17,7 +17,7 @@ const filterInputs = (
   </>
 );
 
-const columns = (handleDelete?: (_id: string) => void) => {
+const columns = () => {
   const columns: any[] = [
     {
       title: 'عکس',
@@ -27,17 +27,16 @@ const columns = (handleDelete?: (_id: string) => void) => {
       render: (_text: string, record: IDefaultImageRead) => <ImageItem image={record.image} />,
     },
     { title: 'کلید', key: 'key', dataIndex: 'key' },
-  ];
-  handleDelete &&
-    columns.push({
+    {
       title: 'عملیات',
       render: (_text: any, record: Record<string, any>) => (
         <div className='flex'>
-          {<TcEditIcon to={`${routes.defaultImageEdit.path}/${record._id}`} />}
-          {<TcDeleteIcon onConfirm={() => handleDelete(record._id)} />}
+          <TcEditIcon to={`${routes.defaultImageEdit.path}/${record._id}`} />
         </div>
       ),
-    });
+    },
+  ];
+
   return columns;
 };
 

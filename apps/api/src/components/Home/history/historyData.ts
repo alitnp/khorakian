@@ -19,7 +19,7 @@ class HistoryData implements IData<IHistory> {
     if (req.query.to) searchQuery.to = { $regex: req.query.to, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IHistory>(searchQuery, req, this.History);
+    return await getAllData<IHistory>(searchQuery, req, this.History);
   };
 
   get = async (id: string): Promise<IHistory> => {

@@ -8,14 +8,15 @@ import {
 import { serverSideFetch } from "@/global/utils/webFetch";
 import webConfig from "@/global/constants/webConfig";
 import LoginRegisterLayout from "@/components/login/LoginLayout";
+import { GetServerSideProps, GetStaticProps } from "next";
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const image: ApiDataResponse<IDefaultImageRead> =
 		await serverSideFetch(
 			webEndpointUrls.getDefaultImageByKey("login-page")
 		);
 	if (!image.data) {
-		throw new Error(
+		console.log(
 			"error fetch : " +
 				webEndpointUrls.getDefaultImageByKey("login-page")
 		);
@@ -26,18 +27,20 @@ export async function getStaticProps() {
 		},
 		revalidate: webConfig.dataRevalidateTime,
 	};
-}
+};
 
 interface Ilogin {
 	image: IImage;
 }
 
 const Login: FC<Ilogin> = ({ image }) => {
+	console.log(image);
 	return (
 		<LoginRegisterLayout
 			pathname={image.pathname}
 			height={image.height}
 			width={image.width}
+			imageAlt={image.title}
 		/>
 	);
 };

@@ -145,15 +145,18 @@ class UserData implements IData<IUserRead> {
     return user;
   };
 
-  login = async (mobileNumber: string, password: string): Promise<string> => {
+  login = async (
+    mobileNumber: string,
+    password: string,
+  ): Promise<{ token: string; user: IUser }> => {
     const user = await this.User.findOne({ mobileNumber });
     if (!user) throw new NotFoundError("کاربری با این شماره همراه یافت نشد.");
 
     const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid)
       throw new BadRequestError("رمز عبور وارد شده صحیح نیست.");
-
-    return user.generateAuthToken();
+    const token = user.generateAuthToken();
+    return { user, token };
   };
 
   getUserByMobileNumber = async (mobileNumber: string): Promise<IUserRead> => {

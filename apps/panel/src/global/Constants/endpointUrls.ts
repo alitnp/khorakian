@@ -131,11 +131,19 @@ const endpointUrls = {
   //!R-r
 
   //!S-s
+  //socialMedia
   socialMediaDelete: (id: number | string) => '/socialMedia/' + id,
   socialMediaGetList: '/socialMedia',
   socialMediaCreate: '/socialMedia',
   socialMediaEdit: (id: number | string) => '/socialMedia/' + id,
   socialMediaDetail: (id: number | string) => '/socialMedia/' + id,
+
+  //slider
+  sliderDelete: (id: number | string) => '/slider/' + id,
+  sliderGetList: '/slider',
+  sliderCreate: '/slider',
+  sliderEdit: (id: number | string) => '/slider/' + id,
+  sliderDetail: (id: number | string) => '/slider/' + id,
 
   //!T-t
   //!U-u

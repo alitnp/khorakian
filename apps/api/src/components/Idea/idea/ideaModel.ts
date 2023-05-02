@@ -16,7 +16,7 @@ export const ideaSchema = new Schema<IIdea>({
   ideaCategory: {
     type: Schema.Types.ObjectId,
     ref: "IdeaCategory",
-    required: [true, "عنوان تعیین نشده."],
+    required: [true, "دسته بندی تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
   isApprove: { type: Boolean, default: false },

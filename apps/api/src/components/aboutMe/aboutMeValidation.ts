@@ -1,18 +1,17 @@
 import {
+  existsStringValidation,
   // bodyIdValidations,
   paramIdValidations,
-  shortTitleValidations,
 } from "@/validation/globalValidations";
 
 export const getAboutMeValidations = [...paramIdValidations];
 export const createAboutMeValidations = [
-  // ...bodyIdValidations("post"),
-  ...shortTitleValidations,
-];
-
-export const updateAboutMeValidations = [
-  ...paramIdValidations,
-  ...shortTitleValidations,
+  ...existsStringValidation({
+    key: "postId",
+    name: "شناسه پست",
+    minLength: 24,
+    maxLength: 24,
+  }),
 ];
 
 export const deleteAboutMeValidations = [...paramIdValidations];

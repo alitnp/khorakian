@@ -1,5 +1,4 @@
 import { validate } from "@/helpers";
-import auth from "@/middlewares/athenticate";
 import isAdmin from "@/middlewares/isAdmin";
 import { Router } from "express";
 import AboutMeData from "@/components/aboutMe/aboutMeData";
@@ -11,7 +10,6 @@ import {
   createAboutMeValidations,
   deleteAboutMeValidations,
   getAboutMeValidations,
-  updateAboutMeValidations,
 } from "@/components/aboutMe/aboutMeValidation";
 import ImageData from "@/components/image/imageData";
 import { Image } from "@/components/image/imageModel";
@@ -27,7 +25,6 @@ import CommentData from "@/components/comment/commentData";
 const router = Router();
 const data = new AboutMeData(
   AboutMe,
-  // new ImageData(Image),
   new PostData(
     Post,
     new PostCategoryData(PostCategory),
@@ -49,17 +46,11 @@ router.get("/", controller.getAll);
 //create a new aboutme - admin only
 router.post(
   "/",
-  [auth, ...validate(createAboutMeValidations)],
+  [isAdmin, ...validate(createAboutMeValidations)],
   controller.create,
 );
 
 //put
-//edit an existing aboutme - admin only
-router.put(
-  "/:id",
-  [isAdmin, ...validate(updateAboutMeValidations)],
-  controller.update,
-);
 
 //delete
 //delete a aboutme - admin only

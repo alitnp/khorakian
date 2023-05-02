@@ -75,9 +75,9 @@ const DefaultImageUpdate = () => {
         <TcFormWrapper>
           <div className='flex flex-col'>
             <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
-              <TcInput placeholder='کلید' />
+              <TcInput placeholder='کلید' disabled />
             </TcFormItem>
-            <small>! توجه : تغییر کلید ممکن است باعث لود نشدن عکس در سایت اصلی شود. لطفا با اطلاع کامل این فیلد را تغییر دهید.</small>
+            {/* <small>! توجه : تغییر کلید ممکن است باعث لود نشدن عکس در سایت اصلی شود. لطفا با اطلاع کامل این فیلد را تغییر دهید.</small> */}
           </div>
         </TcFormWrapper>
       </TcForm>

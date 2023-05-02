@@ -56,7 +56,10 @@
   }
 }
 
+.inherit-color * {
+  color: inherit !important;
 
+}
 
 
 .k-comment-icon {

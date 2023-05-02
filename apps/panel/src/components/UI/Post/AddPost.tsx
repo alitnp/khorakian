@@ -10,20 +10,24 @@ import PostItem from 'components/UI/Post/PostItem';
 interface IAddPost {
   posts: IPost[];
   setPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
+  singlePost?: boolean;
 }
 
-const AddPosts: FC<IAddPost> = ({ posts, setPosts }) => {
+const AddPosts: FC<IAddPost> = ({ posts, setPosts, singlePost = false }) => {
   //states
   const [showPostPicker, setShowPostPicker] = useState<boolean>(false);
 
   //functions
   const toggleShowVideoPicker = useCallback(() => setShowPostPicker((prevState) => !prevState), []);
   const addPost = useCallback(
-    (post: IPost) =>
-      setPosts((posts) => {
-        if (posts.some((vid) => vid._id === post._id)) return posts;
-        return [...posts, post];
-      }),
+    (post: IPost) => {
+      if (singlePost) setPosts([post]);
+      else
+        setPosts((posts) => {
+          if (posts.some((vid) => vid._id === post._id)) return posts;
+          return [...posts, post];
+        });
+    },
     [posts]
   );
   const removePost = useCallback(

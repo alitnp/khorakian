@@ -24,9 +24,12 @@ class DefaultImageData {
     if (req.query.key)
       searchQuery.key = { $regex: req.query.key, $options: "i" };
 
-    return getAllData<IDefaultImage>(searchQuery, req, this.DefaultImage, [
-      "image",
-    ]);
+    return await getAllData<IDefaultImage>(
+      searchQuery,
+      req,
+      this.DefaultImage,
+      ["image"],
+    );
   };
 
   get = async (id: string): Promise<IDefaultImageRead> => {

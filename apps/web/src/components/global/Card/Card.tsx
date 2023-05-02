@@ -1,38 +1,82 @@
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
+import webConfig from "@/global/constants/webConfig";
 import Image from "next/image";
+import Link from "next/link";
 import { FC, memo } from "react";
+import { BsPlayCircle } from "react-icons/bs";
 
-interface ICard {}
+interface ICard {
+	category: string;
+	imagePathname: string;
+	width: number;
+	height: number;
+	imageAlt: string;
+	isVideo: boolean;
+	title: string;
+	creationDate: string;
+	likeCount: number;
+	commentCount: number;
+	detailPath: string;
+	viewCount: number;
+	isLiked: boolean;
+	isCommented: boolean;
+}
 
-const Card: FC<ICard> = ({}) => {
+const Card: FC<ICard> = ({
+	category,
+	imagePathname,
+	width,
+	height,
+	imageAlt,
+	isVideo,
+	title,
+	creationDate,
+	likeCount,
+	commentCount,
+	viewCount,
+	detailPath,
+	isLiked,
+	isCommented,
+}) => {
 	return (
 		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 snap-start">
-			<div className="relative overflow-hidden w-full aspect-video md:aspect-auto  md:w-[355.55px] md:h-[200px]">
-				<Image
-					src="/slider.png"
-					alt="sdfgsdfg"
-					width={355.55}
-					height={200}
-					className="object-cover w-full aspect-video md:aspect-auto md:w-[355.55px] md:h-[200px] transition-transform duration-500 ease-out hover:scale-110"
-				/>
-			</div>
+			<Link href={detailPath}>
+				<div className="relative overflow-hidden w-full aspect-video md:aspect-auto group md:w-[355.55px] md:h-[200px]">
+					{imagePathname && (
+						<Image
+							src={webConfig.domain + imagePathname}
+							alt={imageAlt}
+							width={width}
+							height={height}
+							className="object-cover w-full aspect-video md:aspect-auto md:w-[355.55px] md:h-[200px] transition-transform duration-500 ease-out group-hover:scale-110"
+						/>
+					)}
+					{isVideo && (
+						<div className="absolute top-0 left-0 flex items-center justify-center w-full h-full text-k-bg-color bg-slate-800/40">
+							<BsPlayCircle className="text-5xl" />
+						</div>
+					)}
+				</div>
+			</Link>
 			<div className="px-4 py-2 md:w-[355.55px]">
 				<span className="text-sm font-light text-k-grey-text-color">
-					آلبوم
+					{category}
 				</span>
-				<h2 className="h-12 text-base font-medium leading-6 line-clamp-2">
-					مراسم پیاده روی سبنت سمنیبت سمینتسی aslfj asdjf alskdjf
-					مسنیتب منسیتبم سنیبت
-				</h2>
+				<Link href={detailPath}>
+					<h2 className="text-base font-medium leading-6 h-7 line-clamp-1">
+						{title}
+					</h2>
+				</Link>
 				<div className="flex items-center justify-between pt-2 mt-4 border-t">
 					<span className="text-sm text-k-grey-text-color">
-						۱۶ مهر ۱۴۰۰
+						{creationDate}
 					</span>
 					<CardLikeCommentCount
-						likeCount={10}
-						commentCount={21}
-						isLiked={false}
-						isCommented={false}
+						viewCount={viewCount || 0}
+						likeCount={likeCount || 0}
+						commentCount={commentCount || 0}
+						isLiked={isLiked}
+						isCommented={isCommented}
 					/>
 				</div>
 			</div>
