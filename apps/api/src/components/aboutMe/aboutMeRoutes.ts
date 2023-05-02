@@ -3,7 +3,7 @@ import auth from "@/middlewares/athenticate";
 import isAdmin from "@/middlewares/isAdmin";
 import { Router } from "express";
 import AboutMeData from "@/components/aboutMe/aboutMeData";
-import { AboutMe } from "@/components/aboutMe/aboutMeModel";
+import { AboutMe } from "@/components/aboutMe/aboutMePostsModel";
 import PostData from "@/components/Post/post/postData";
 import { Post } from "@/components/Post/post/postModel";
 import AboutMeController from "@/components/aboutMe/aboutMeController";
@@ -27,7 +27,7 @@ import CommentData from "@/components/comment/commentData";
 const router = Router();
 const data = new AboutMeData(
   AboutMe,
-  new ImageData(Image),
+  // new ImageData(Image),
   new PostData(
     Post,
     new PostCategoryData(PostCategory),

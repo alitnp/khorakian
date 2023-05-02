@@ -8,21 +8,21 @@ import {
 } from "@my/types";
 import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
-import ImageData from "@/components/image/imageData";
+// import ImageData from "@/components/image/imageData";
 import PostData from "@/components/Post/post/postData";
 import BadRequestError from "@/helpers/error/BadRequestError";
 
 class AboutMeData {
   AboutMe: Model<IAboutMe, {}, {}, {}, any>;
-  Image: ImageData;
+  // Image: ImageData;
   Post: PostData;
   constructor(
     AboutMe: Model<IAboutMe, {}, {}, {}, any>,
-    Image: ImageData,
+    // Image: ImageData,
     Post: PostData,
   ) {
     this.AboutMe = AboutMe;
-    this.Image = Image;
+    // this.Image = Image;
     this.Post = Post;
   }
 
@@ -51,7 +51,7 @@ class AboutMeData {
     } = await paginationProps(searchQuery, req, this.AboutMe);
 
     const data: IAboutMeRead[] = await this.AboutMe.find(fixedSearchQuery)
-      .populate<{ images: IImage[]; posts: IPostRead[] }>(["images", "posts"])
+      .populate<{ posts: IPostRead[] }>(["posts"])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -77,20 +77,14 @@ class AboutMeData {
     return item;
   };
 
-  create = async ({
-    title,
-    text,
-    posts,
-    images,
-  }: IAboutMe): Promise<IAboutMeRead> => {
-    if (!images.length || !posts.length)
-      throw new BadRequestError(" عکس  یا پست ارسال نشده");
-    const existingImageIds = [];
-    for (let i = 0; i < images.length; i++) {
-      const imageId = images[i];
-      const existingImage = await this.Image.get(imageId);
-      if (!!existingImage) existingImageIds.push(existingImage._id);
-    }
+  create = async ({ posts }: IAboutMe): Promise<IAboutMeRead> => {
+    if (!posts.length) throw new BadRequestError("پست ارسال نشده");
+    // const existingImageIds = [];
+    // for (let i = 0; i < images.length; i++) {
+    //   const imageId = images[i];
+    //   const existingImage = await this.Image.get(imageId);
+    //   if (!!existingImage) existingImageIds.push(existingImage._id);
+    // }
 
     const existingPostsIds = [];
     for (let i = 0; i < posts.length; i++) {
@@ -99,10 +93,10 @@ class AboutMeData {
       if (!!existingPosts) existingPostsIds.push(existingPosts._id);
     }
     const item = new this.AboutMe({
-      title,
-      text,
+      // title,
+      // text,
       posts: existingPostsIds,
-      images: existingImageIds,
+      // images: existingImageIds,
     });
     await item.save();
     return await this.get(item._id);
@@ -110,19 +104,18 @@ class AboutMeData {
 
   update = async ({
     _id,
-    title,
-    text,
+    // title,
+    // text,
     posts,
-    images,
-  }: IAboutMe): Promise<IAboutMeRead> => {
-    if (!images.length || !posts.length)
-      throw new BadRequestError(" عکس  یا پست ارسال نشده");
-    const existingImageIds = [];
-    for (let i = 0; i < images.length; i++) {
-      const imageId = images[i];
-      const existingImage = await this.Image.get(imageId);
-      if (!!existingImage) existingImageIds.push(existingImage._id);
-    }
+  }: // images,
+  IAboutMe): Promise<IAboutMeRead> => {
+    if (!posts.length) throw new BadRequestError("پست ارسال نشده");
+    // const existingImageIds = [];
+    // for (let i = 0; i < images.length; i++) {
+    //   const imageId = images[i];
+    //   const existingImage = await this.Image.get(imageId);
+    //   if (!!existingImage) existingImageIds.push(existingImage._id);
+    // }
 
     const existingPostsIds = [];
     for (let i = 0; i < posts.length; i++) {
@@ -132,10 +125,10 @@ class AboutMeData {
     }
     const item = await this.AboutMe.findByIdAndUpdate(_id, {
       $set: {
-        title,
-        text,
+        // title,
+        // text,
         posts: existingPostsIds,
-        images: existingImageIds,
+        // images: existingImageIds,
       },
     });
     if (!item) throw new NotFoundError();
