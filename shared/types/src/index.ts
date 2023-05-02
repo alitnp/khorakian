@@ -507,17 +507,17 @@ export interface IDefaultImageRead
 /* # about me*/
 export interface IAboutMe extends DefaultModelProperties {
 	_id: string;
-	title: string;
-	text: string;
-	images: string[];
+	// title: string;
+	// text: string;
+	// images: string[];
 	posts: string[];
 }
 export interface IAboutMeRead
 	extends DefaultModelProperties {
 	_id: string;
-	title: string;
-	text: string;
-	images: IImage[];
+	// title: string;
+	// text: string;
+	// images: IImage[];
 	posts: IPost[];
 }
 
