@@ -1,67 +1,114 @@
 import MyButton from "@/components/basicUi/MyButton";
+import webRoutes from "@/global/constants/routes";
+import webConfig from "@/global/constants/webConfig";
+import { IImage } from "@my/types";
+import Image from "next/image";
+import Link from "next/link";
 import { FC } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
-interface IHomeIdeaExpLink {}
+interface IHomeIdeaExpLink {
+	home_experience_title?: string;
+	home_experience_text?: string;
+	home_experience_button?: string;
+	home_experience_image?: IImage;
+	home_idea_title?: string;
+	home_idea_text?: string;
+	home_idea_button?: string;
+	home_idea_image?: IImage;
+}
 
-const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({}) => {
+const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
+	home_experience_title,
+	home_experience_text,
+	home_experience_button,
+	home_experience_image,
+	home_idea_title,
+	home_idea_text,
+	home_idea_button,
+	home_idea_image,
+}) => {
 	return (
 		<div className="flex flex-col md:flex-row">
-			<div className="flex items-center justify-center w-full md:w-1/2 bg-slate-700 ">
-				<div className="mx-5 my-14 text-k-bg-color">
+			<div className="relative flex items-center justify-center w-full md:w-1/2 ">
+				<div className="absolute top-0 left-0 w-full h-full -z-10">
+					<div className="relative w-full h-full">
+						{home_experience_image && (
+							<Image
+								src={
+									webConfig.domain + home_experience_image.pathname
+								}
+								width={home_experience_image.width}
+								height={home_experience_image.height}
+								alt={home_experience_image.title}
+								className="object-cover w-full h-full"
+							/>
+						)}
+						<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm brightness-50" />
+					</div>
+				</div>
+				<div className="w-full max-w-lg mx-5 my-14 text-k-bg-color">
 					<div className="w-40 py-4 mb-6 rounded-lg bg-k-primary-color">
 						<h3 className="relative text-3xl font-bold whitespace-nowrap right-[15%]  sm:right-1/4">
-							تجربیات دیگران
+							{home_experience_title}
 						</h3>
 					</div>
-					<p className="max-w-lg">
-						آنچه تا امروز در فضای فرهنگی انقلاب اسلامی رقم خورده،
-						مرهون تلاش مدیران و فعالان این عرصه بوده است که هر
-						کدام به سهم خود سعی کرده‌اند نقش‌آفرینی کنند. متاسفانه
-						این تجربیات به طور متمرکز در جایی ثبت نشده و این قسمت
-						از سایت برای ثبت این تجارب طراحی شده است. اگر خودتان
-						کار و پروژه‌ای انجام داده‌اید یا از طرحی اطلاع دقیق
-						دارید، حتما در این بخش ثبت کنید یا برای فعالیت‌های ثبت
-						شده دیگران، نظر و نقدی بنویسید.
-					</p>
+					<p className="max-w-lg">{home_experience_text}</p>
 					<hr className="w-full my-6 border-k-bg-color" />
 					<div className="flex justify-end">
-						<MyButton
-							type="primary"
-							shape="round"
-							className="!w-fit !px-10"
-						>
-							نمایش همه
-						</MyButton>
+						<Link href={webRoutes.experience.path}>
+							<MyButton
+								type="primary"
+								shape="round"
+								className="!w-fit !px-10"
+							>
+								{home_experience_button}
+							</MyButton>
+						</Link>
 					</div>
 				</div>
 			</div>
-			<div className="flex items-center justify-center w-full md:w-1/2 bg-zinc-700">
+			<div className="relative flex items-center justify-center w-full md:w-1/2 ">
+				<div className="absolute top-0 left-0 w-full h-full -z-10">
+					<div className="relative w-full h-full">
+						{home_idea_image && (
+							<Image
+								src={webConfig.domain + home_idea_image.pathname}
+								width={home_idea_image.width}
+								height={home_idea_image.height}
+								alt={home_idea_image.title}
+								className="object-cover w-full h-full"
+							/>
+						)}
+						<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm brightness-50" />
+					</div>
+				</div>
 				<div className="flex flex-col items-center gap-4 mx-5 my-16 text-k-bg-color ">
 					<h3 className="text-3xl font-medium whitespace-nowrap">
-						ایده ها و نظر ها
+						{home_idea_title}
 					</h3>
 					<p className="max-w-sm text-center">
-						ایده یا پیشنهاد برای پیشرفت در زمینه فرهنگ و ارشاد
-						کشور دارید، امیر خوراکیان، مشتاق شنیدن افکار نو
+						{home_idea_text}
 					</p>
-					<MyButton
-						type="primary"
-						shape="round"
-						className="flex items-center justify-center gap-x-2 !w-fit !px-10"
-					>
-						<span>ثبت ایده</span>
-						<BiArrowBack />
-					</MyButton>
-					<div className="p-4 rounded-lg  bg-k-bg-color text-k-text-color">
+					<Link href={webRoutes.idea.path}>
+						<MyButton
+							type="primary"
+							shape="round"
+							className="flex items-center justify-center gap-x-2 !w-fit !px-10"
+						>
+							<span>{home_idea_button}</span>
+							<BiArrowBack />
+						</MyButton>
+					</Link>
+					<div className="flex items-center p-4 rounded-lg bg-k-bg-color text-k-text-color gap-x-2">
 						<div className="inline-flex gap-6 ">
-							<p className="w-[20ch] line-clamp-3 text-xs">
+							<p className="w-[20ch] line-clamp-3 text-xs font-medium">
 								ایجاد سامانه دایره المعارف شهدای دفاع مقدس
 							</p>
 							<div className="rounded-full w-14 h-14 bg-slate-800"></div>
 						</div>
 						<div className="inline-flex gap-6">
-							<p className="w-[20ch] line-clamp-3 text-xs">
+							<p className="w-[20ch] line-clamp-3 text-xs font-medium">
 								ایجاد سامانه دایره المعارف شهدای دفاع مقدس
 							</p>
 							<div className="rounded-full w-14 h-14 bg-slate-800"></div>

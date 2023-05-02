@@ -20,7 +20,7 @@ class LikeData<likeModel> {
     if (req.query.user) populate.push("content");
     if (!req.query.content && !req.query.user) populate.push("user", "content");
 
-    return getAllData<likeModel>(searchQuery, req, this.Like, populate);
+    return await getAllData<likeModel>(searchQuery, req, this.Like, populate);
   };
 
   isUserLiked = async (contentId: string, userId: string): Promise<boolean> => {

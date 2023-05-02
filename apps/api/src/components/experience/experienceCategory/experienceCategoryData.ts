@@ -18,7 +18,7 @@ class ExperienceCategoryData implements IData<IExperienceCategory> {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IExperienceCategory>(
+    return await getAllData<IExperienceCategory>(
       searchQuery,
       req,
       this.ExperienceCategory,

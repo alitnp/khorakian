@@ -1,10 +1,9 @@
-import { ApiDataResponse, IImage, IAboutMe, IPost } from '@my/types';
+import { ApiDataResponse, IAboutMe, IPost } from '@my/types';
 import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { useState, useEffect } from 'react';
-import AddImage from 'components/UI/Image/AddImage';
 import IAddPost from 'components/UI/Post/AddPost';
 import TcForm from 'components/UI/Form/TcForm';
 import { Form } from 'antd';
@@ -23,9 +22,7 @@ import aboutMeModel from 'global/Models/aboutMeModel';
 
 const AboutMeCreate = () => {
   //states
-  const [images, setImages] = useState<IImage[]>([]);
-  const [posts, setPosts] = useState<IPost[]>([]);
-
+  const [post, setPost] = useState<IPost[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   //hooks
@@ -38,11 +35,10 @@ const AboutMeCreate = () => {
   useEffect(() => {}, []);
 
   //function
-  const handleSubmit = async (values: any) => {
-    if (images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس انتخاب نشده' }));
-    if (posts.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ پستی انتخاب نشده' }));
+  const handleSubmit = async () => {
+    if (post.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ پستی انتخاب نشده' }));
     setLoading(true);
-    await ApiService.post(endpointUrls.aboutMeCreate, { ...values, images: images.map((img) => img._id), posts: posts.map((post) => post._id) })
+    await ApiService.post(endpointUrls.aboutMeCreate, { postId: post[0]._id })
       .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
@@ -51,16 +47,11 @@ const AboutMeCreate = () => {
   return (
     <TcCard back={{ to: routes.aboutMe.path }}>
       <TcPageTitle title='ایجاد' />
-      <TcForm form={form} onFinish={handleSubmit}>
-        <TcFormWrapper>{aboutMeModel.inputs}</TcFormWrapper>
-      </TcForm>
 
-      <TcDevider>عکس</TcDevider>
-      <AddImage images={images} setImages={setImages} />
       <TcDevider>پست</TcDevider>
-      <IAddPost posts={posts} setPosts={setPosts} />
+      <IAddPost posts={post} setPosts={setPost} singlePost />
 
-      <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
+      <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={handleSubmit} />
       {loading && <TcCoverLoading />}
     </TcCard>
   );

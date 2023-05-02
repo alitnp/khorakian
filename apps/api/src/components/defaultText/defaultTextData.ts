@@ -4,9 +4,9 @@ import { paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class DefaultTextData {
-  DefaultText: Model<IDefaultText, {}, {}, {}, any>;
+  DefaultText: Model<IDefaultText>;
 
-  constructor(defaultText: Model<IDefaultText, {}, {}, {}, any>) {
+  constructor(defaultText: Model<IDefaultText>) {
     this.DefaultText = defaultText;
   }
 
@@ -31,7 +31,7 @@ class DefaultTextData {
       desc,
     } = await paginationProps(searchQuery, req, this.DefaultText);
 
-    const data: IDefaultText[] = await this.DefaultText.find(fixedSearchQuery)
+    const data = await this.DefaultText.find(fixedSearchQuery)
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -71,7 +71,7 @@ class DefaultTextData {
       key,
     });
     await item.save();
-    return await this.get(item._id);
+    return await this.get(item._id + "");
   };
 
   update = async ({
@@ -91,7 +91,7 @@ class DefaultTextData {
     );
     if (!item) throw new NotFoundError();
 
-    return await this.get(item._id);
+    return await this.get(_id);
   };
 
   remove = async (id: string): Promise<IDefaultText> => {

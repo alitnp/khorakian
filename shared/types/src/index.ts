@@ -507,18 +507,12 @@ export interface IDefaultImageRead
 /* # about me*/
 export interface IAboutMe extends DefaultModelProperties {
 	_id: string;
-	// title: string;
-	// text: string;
-	// images: string[];
-	posts: string[];
+	post?: string;
 }
 export interface IAboutMeRead
 	extends DefaultModelProperties {
 	_id: string;
-	// title: string;
-	// text: string;
-	// images: IImage[];
-	posts: IPost[];
+	post: IPostRead;
 }
 
 /* # end of about me*/
@@ -545,12 +539,6 @@ export interface IDirectMessageRead
 export interface IDefaultText
 	extends DefaultModelProperties {
 	text: string;
-	key: string;
-}
-
-export interface IDefaultTextRead
-	extends DefaultModelProperties {
-	text: string[];
 	key: string;
 }
 

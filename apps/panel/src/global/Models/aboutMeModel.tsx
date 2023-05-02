@@ -1,14 +1,10 @@
-import { IImage, IPostCategory, IAboutMe } from '@my/types';
+import { IImage, IAboutMe, IPostRead, IAboutMeRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
-import TcSelect from 'components/UI/Form/Inputs/TcSelect';
-import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
-import TcDetailIcon from 'components/UI/TableIcons/TcDetailIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
-import { getAllPostCategories } from 'redux/reducer/PostCategory/getAllPostCategories';
 
 const title = 'درباره من';
 const englishTitle = 'aboutMe';
@@ -40,25 +36,9 @@ const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
     {
       title: 'عنوان',
-      key: 'title',
-      dataIndex: 'title',
-    },
-    {
-      title: 'متن',
-      key: 'text',
-      dataIndex: 'text',
-    },
-    {
-      title: 'عکس',
-      key: 'images',
-      dataIndex: 'images',
-      render: (_text: string, record: IAboutMe) => (record.images?.length && record.images?.length > 0 ? record.images.length : 'ندارد'),
-    },
-    {
-      title: 'پست',
-      key: 'posts',
-      dataIndex: 'posts',
-      render: (_text: string, record: IAboutMe) => (record.posts?.length ? record.posts.length : 'ندارد'),
+      key: 'post',
+      dataIndex: 'post',
+      render: (_text: string, record: IAboutMeRead) => record?.post?.title,
     },
   ];
 

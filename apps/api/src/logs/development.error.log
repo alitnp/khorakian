@@ -1,0 +1,24 @@
+{
+type : ERROR,
+timestamp : 1683018315782,
+date : Tue May 02 2023 13:35:15 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItemType,
+body : {"title":"aboutMe"}
+},
+Response : {"status":409,"message":"یک نوع المان صفحه با این نام قبلا ثبت شده.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683021063282,
+date : Tue May 02 2023 14:21:03 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/aboutMe,
+body : {"postId":"644e8187f647e712d2b28ecb"}
+},
+Response : {"status":400,"message":"عنوان ارسال نشده است.","details":{"title":"عنوان ارسال نشده است."},"isSuccess":false,"data":null}
+},

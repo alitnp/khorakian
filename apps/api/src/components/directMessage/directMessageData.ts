@@ -26,10 +26,12 @@ class DirectMessageData {
     }
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
-    return getAllData<IDirectMessage>(searchQuery, req, this.DirectMessage, [
-      "user",
-      "replies.user",
-    ]);
+    return await getAllData<IDirectMessage>(
+      searchQuery,
+      req,
+      this.DirectMessage,
+      ["user", "replies.user"],
+    );
   };
 
   //only admin in route Handle
@@ -43,10 +45,12 @@ class DirectMessageData {
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
     if (req.query.userId) searchQuery.user._id = { $regex: req.query.userId };
-    return getAllData<IDirectMessage>(searchQuery, req, this.DirectMessage, [
-      "user",
-      "replies.user",
-    ]);
+    return await getAllData<IDirectMessage>(
+      searchQuery,
+      req,
+      this.DirectMessage,
+      ["user", "replies.user"],
+    );
   };
 
   create = async (text: string, userId: string): Promise<IDirectMessage> => {

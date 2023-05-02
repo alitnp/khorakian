@@ -20,7 +20,12 @@ class CommentData<commentModel> {
     if (!req.query.content && !req.query.user)
       populate.push(...["user", "content"]);
 
-    return getAllData<commentModel>(searchQuery, req, this.Comment, populate);
+    return await getAllData<commentModel>(
+      searchQuery,
+      req,
+      this.Comment,
+      populate,
+    );
   };
 
   isUserCommented = async (

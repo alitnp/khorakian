@@ -31,7 +31,7 @@ export class BasicData<entityModel> implements IData<entityModel> {
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = { $regex: req.query._id };
-    return getAllData<entityModel>(searchQuery, req, this.model);
+    return await getAllData<entityModel>(searchQuery, req, this.model);
   };
 
   get = async (id: string): Promise<entityModel> => {
@@ -88,7 +88,7 @@ export const getAllData = async <T>(
   searchQuery: any,
   req: Req,
   model: Model<T>,
-  populate: string[] = [],
+  populate?: any,
 ): Promise<ApiDataListResponse<T>> => {
   const {
     fixedSearchQuery,
@@ -102,7 +102,7 @@ export const getAllData = async <T>(
 
   const data = await model
     .find(fixedSearchQuery)
-    .populate(populate)
+    .populate(populate || {})
     .limit(pageSize)
     .skip((pageNumber - 1) * pageSize)
     .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 });

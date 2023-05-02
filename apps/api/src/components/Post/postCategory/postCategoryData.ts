@@ -16,7 +16,7 @@ class PostCategoryData implements IData<IPostCategory> {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IPostCategory>(searchQuery, req, this.PostCategory);
+    return await getAllData<IPostCategory>(searchQuery, req, this.PostCategory);
   };
 
   get = async (id: string): Promise<IPostCategory> => {

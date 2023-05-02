@@ -51,7 +51,7 @@ class PageItemData {
     //if theres no custom sortBy then sort by index
     if (!getSortBy(req)) req.query.sortBy = "index";
 
-    return getAllData<IPageItem>(searchQuery, req, this.PageItem, [
+    return await getAllData<IPageItem>(searchQuery, req, this.PageItem, [
       "type",
       "sorting",
       "style",

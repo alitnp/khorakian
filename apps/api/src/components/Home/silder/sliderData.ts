@@ -30,7 +30,7 @@ class SliderData implements IData<ISlider> {
     //if theres no custom sortBy then sort by index
     if (!getSortBy(req)) req.query.sortBy = "index";
 
-    return getAllData<ISlider>(searchQuery, req, this.Slider, ["image"]);
+    return await getAllData<ISlider>(searchQuery, req, this.Slider, ["image"]);
   };
 
   get = async (id: string): Promise<ISlider> => {

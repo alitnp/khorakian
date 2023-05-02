@@ -3,6 +3,8 @@ const webEndpointUrls = {
 	//defaultImage
 	getDefaultImageByKey: (key: string) =>
 		"/defaultImage/getByKey/" + key,
+	//defaultText
+	defautlTextGetAll: "/defaultText",
 
 	//U
 	userLogin: "/user/login",
