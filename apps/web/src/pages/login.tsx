@@ -8,7 +8,7 @@ import {
 import { serverSideFetch } from "@/global/utils/webFetch";
 import webConfig from "@/global/constants/webConfig";
 import LoginRegisterLayout from "@/components/login/LoginLayout";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const image: ApiDataResponse<IDefaultImageRead> =

@@ -1,10 +1,8 @@
-import { IImage, IAboutMe, IPostRead, IAboutMeRead } from '@my/types';
+import { IImage, IAboutMeRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
-import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
-import routes from 'global/Constants/routes';
 
 const title = 'درباره من';
 const englishTitle = 'aboutMe';
@@ -49,7 +47,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       render: (_text: any, record: IImage) => (
         <div className='flex'>
           {/* <TcDetailIcon to={routes.aboutMeDetail.path + '/' + record._id} /> */}
-          <TcEditIcon to={routes.aboutMeEdit.path + '/' + record._id} />
+
           <TcDeleteIcon onConfirm={() => handleDelete(record._id)} />
         </div>
       ),

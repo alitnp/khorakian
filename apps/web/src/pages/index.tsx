@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { serverSideFetch } from "@/global/utils/webFetch";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import {
@@ -59,6 +59,7 @@ const Home = ({
 	pageItems: IPageItemConents[];
 	defaultTexts: Record<string, string>;
 }) => {
+	console.log("asldfkjhasldfkj");
 	const renderPageItems = useMemo(
 		() =>
 			pageItems.map((pageItem, index) => {
