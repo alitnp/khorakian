@@ -508,11 +508,15 @@ export interface IDefaultImageRead
 export interface IAboutMe extends DefaultModelProperties {
 	_id: string;
 	post?: string;
+	name: string;
+	position: string;
 }
 export interface IAboutMeRead
 	extends DefaultModelProperties {
 	_id: string;
 	post: IPostRead;
+	name: string;
+	position: string;
 }
 
 /* # end of about me*/

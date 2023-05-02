@@ -1,6 +1,6 @@
 import { FC, useState, useEffect, useCallback } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
-import { ApiDataListResponse, IPost } from '@my/types';
+import { ApiDataListResponse, IPostRead } from '@my/types';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import ApiService from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
@@ -12,12 +12,12 @@ import TcInput from 'components/UI/Form/Inputs/TcInput';
 import postModel from 'global/Models/postModel';
 
 interface IPostPicker {
-  handlePick: (_post: IPost) => void;
+  handlePick: (_post: IPostRead) => void;
 }
 
 const PostPicker: FC<IPostPicker> = ({ handlePick }) => {
   //states
-  const [list, setList] = useState<ApiDataListResponse<IPost>>();
+  const [list, setList] = useState<ApiDataListResponse<IPostRead>>();
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
@@ -31,7 +31,7 @@ const PostPicker: FC<IPostPicker> = ({ handlePick }) => {
   const getList = async (pageNumber: number, title: string) => {
     setLoading(true);
     await ApiService.get(endpointUrls.postGetList + '?' + queryString.stringify({ pageNumber, pageSize: 50, title }))
-      .then((res: ApiDataListResponse<IPost>) => handleApiThenGeneric<ApiDataListResponse<IPost>, IPost[]>({ res, onSuccess: setList }))
+      .then((res: ApiDataListResponse<IPostRead>) => handleApiThenGeneric<ApiDataListResponse<IPostRead>, IPostRead[]>({ res, onSuccess: setList }))
       .catch(() => {});
     setLoading(false);
   };
@@ -58,7 +58,7 @@ const PostPicker: FC<IPostPicker> = ({ handlePick }) => {
             title: 'انتخاب',
             key: 'choose',
             dataIndex: '_id',
-            render: (_text: string, record: IPost) => (
+            render: (_text: string, record: IPostRead) => (
               <p className='cursor-pointer text-t-secondary-color hover:underline' onClick={() => handlePick(record)}>
                 انتخاب
               </p>

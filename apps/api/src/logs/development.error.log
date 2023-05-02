@@ -1,0 +1,36 @@
+{
+type : ERROR,
+timestamp : 1683053515401,
+date : Tue May 02 2023 22:21:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/aboutMe/create,
+body : {}
+},
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683053726474,
+date : Tue May 02 2023 22:25:26 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/aboutMe,
+body : {"name":"شسیب ","position":"شسیب ","postId":"644fe792317cff09a40f9f54"}
+},
+Response : {"status":400,"message":"سمت باید حداقل 24 کاراکتر باشد.","details":{"position":"سمت باید حداقل 24 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683053751719,
+date : Tue May 02 2023 22:25:51 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/aboutMe,
+body : {"name":"شسیب ","position":"شسیب ","postId":"644fe792317cff09a40f9f54"}
+},
+Response : {"status":400,"message":"سمت باید حداقل 24 کاراکتر باشد.","details":{"position":"سمت باید حداقل 24 کاراکتر باشد."},"isSuccess":false,"data":null}
+},

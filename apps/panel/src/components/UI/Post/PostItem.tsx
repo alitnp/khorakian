@@ -1,10 +1,10 @@
-import { IImage, IPost } from '@my/types';
+import { IImage, IPostRead } from '@my/types';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 
 import { FC, memo } from 'react';
 
 interface IPostThumbnail {
-  post: IPost;
+  post: IPostRead;
   onSelect?: (_post: IImage) => void;
   onRemove?: (_id: string) => void;
 }

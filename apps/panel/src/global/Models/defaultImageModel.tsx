@@ -24,7 +24,7 @@ const columns = () => {
       key: 'image',
       dataIndex: 'image',
       width: 170,
-      render: (_text: string, record: IDefaultImageRead) => <ImageItem image={record.image} />,
+      render: (_text: string, record: IDefaultImageRead) => record.image && <ImageItem image={record.image} />,
     },
     { title: 'کلید', key: 'key', dataIndex: 'key' },
     {

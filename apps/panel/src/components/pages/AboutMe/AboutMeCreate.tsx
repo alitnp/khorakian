@@ -1,4 +1,4 @@
-import { ApiDataResponse, IAboutMe, IPost } from '@my/types';
+import { ApiDataResponse, IAboutMe, IPostRead } from '@my/types';
 import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
@@ -19,10 +19,12 @@ import { handleApiThen } from 'global/helperFunctions/handleApiThen';
 import { useHistory } from 'react-router';
 import routes from 'global/Constants/routes';
 import aboutMeModel from 'global/Models/aboutMeModel';
+import TcFormItem from 'components/UI/Form/TcFormItem';
+import TcInput from 'components/UI/Form/Inputs/TcInput';
 
 const AboutMeCreate = () => {
   //states
-  const [post, setPost] = useState<IPost[]>([]);
+  const [post, setPost] = useState<IPostRead[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   //hooks
@@ -35,10 +37,10 @@ const AboutMeCreate = () => {
   useEffect(() => {}, []);
 
   //function
-  const handleSubmit = async () => {
+  const handleSubmit = async (values: any) => {
     if (post.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ پستی انتخاب نشده' }));
     setLoading(true);
-    await ApiService.post(endpointUrls.aboutMeCreate, { postId: post[0]._id })
+    await ApiService.post(endpointUrls.aboutMeCreate, { ...values, postId: post[0]._id })
       .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
@@ -47,11 +49,21 @@ const AboutMeCreate = () => {
   return (
     <TcCard back={{ to: routes.aboutMe.path }}>
       <TcPageTitle title='ایجاد' />
+      <TcForm onFinish={handleSubmit} form={form}>
+        <TcFormWrapper>
+          <TcFormItem label='نام فرد' name='name' rules={[{ required: true, message: 'نام فرد تعیین نشده' }]}>
+            <TcInput placeholder='نام فرد' />
+          </TcFormItem>
+          <TcFormItem label='سمت' name='position' rules={[{ required: true, message: 'سمت تعیین نشده' }]}>
+            <TcInput placeholder='سمت' />
+          </TcFormItem>
+        </TcFormWrapper>
+      </TcForm>
 
       <TcDevider>پست</TcDevider>
       <IAddPost posts={post} setPosts={setPost} singlePost />
 
-      <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={handleSubmit} />
+      <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}
     </TcCard>
   );

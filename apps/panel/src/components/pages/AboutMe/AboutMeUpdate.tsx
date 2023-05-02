@@ -1,10 +1,10 @@
-import { ApiDataResponse, IDefaultImageRead, IImage } from '@my/types';
+import { ApiDataResponse, IAboutMe, IAboutMeRead, IPost, IPostRead } from '@my/types';
 import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
 import { useState, useEffect } from 'react';
-import AddImage from 'components/UI/Image/AddImage';
+import IAddPost from 'components/UI/Post/AddPost';
 import TcForm from 'components/UI/Form/TcForm';
 import { Form } from 'antd';
 import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
@@ -20,12 +20,11 @@ import { useHistory } from 'react-router';
 import routes from 'global/Constants/routes';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
-import defaultImageModel from 'global/Models/defaultImageModel';
 import useQuery from 'global/helperFunctions/useQuery';
 
-const DefaultImageUpdate = () => {
+const AboutMeUpdate = () => {
   //states
-  const [images, setImages] = useState<IImage[]>([]);
+  const [post, setPost] = useState<IPostRead[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   //hooks
@@ -40,50 +39,46 @@ const DefaultImageUpdate = () => {
     id && getDetail(id);
   }, [id]);
 
-  //functions
+  //function
   const getDetail = async (id: string) => {
     setLoading(true);
-    await ApiService.get(endpointUrls.defaultImageDetail(id))
-      .then((res: ApiDataResponse<IDefaultImageRead>) =>
-        handleApiThenGeneric({
-          res,
-          onSuccessData: (data) => {
-            form.setFieldsValue(data);
-            data.image && setImages([data.image]);
-          },
-          dispatch,
-          notifSuccess: false,
-          notifFail: true,
-        })
-      )
-      .catch(() => apiCatcher(errorResponse));
+    await ApiService.get(endpointUrls.aboutMeDetail(id)).then((res: ApiDataResponse<IAboutMeRead>) =>
+      handleApiThenGeneric<ApiDataResponse<IAboutMeRead>, IAboutMeRead>({
+        res,
+        dispatch,
+        onSuccessData: (data) => {
+          form.setFieldsValue({ name: data.name, position: data.position });
+          setPost([data.post]);
+        },
+      })
+    );
     setLoading(false);
   };
   const handleSubmit = async (values: any) => {
-    if (images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکسی انتخاب نشده' }));
+    if (post.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ پستی انتخاب نشده' }));
     setLoading(true);
-    await ApiService.put(endpointUrls.defaultImageEdit(id as string), { ...values, image: images[0]._id })
-      .then((res: ApiDataResponse<IDefaultImageRead>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.defaultImage.path), notifFail: true, notifSuccess: true }))
+    await ApiService.post(endpointUrls.aboutMeEdit(id + ''), { ...values, postId: post[0]._id })
+      .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
   };
 
   return (
-    <TcCard back={{ to: routes.defaultImage.path }}>
-      <TcPageTitle title={'ایجاد ' + defaultImageModel.title} />
+    <TcCard back={{ to: routes.aboutMe.path }}>
+      <TcPageTitle title='ایجاد' />
       <TcForm form={form} onFinish={handleSubmit}>
         <TcFormWrapper>
-          <div className='flex flex-col'>
-            <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
-              <TcInput placeholder='کلید' disabled />
-            </TcFormItem>
-            {/* <small>! توجه : تغییر کلید ممکن است باعث لود نشدن عکس در سایت اصلی شود. لطفا با اطلاع کامل این فیلد را تغییر دهید.</small> */}
-          </div>
+          <TcFormItem label='نام فرد' name='name' rules={[{ required: true, message: 'نام فرد تعیین نشده' }]}>
+            <TcInput placeholder='نام فرد' />
+          </TcFormItem>
+          <TcFormItem label='سمت' name='position' rules={[{ required: true, message: 'سمت تعیین نشده' }]}>
+            <TcInput placeholder='سمت' />
+          </TcFormItem>
         </TcFormWrapper>
       </TcForm>
 
-      <TcDevider>عکس</TcDevider>
-      <AddImage images={images} setImages={setImages} singleImage />
+      <TcDevider>پست</TcDevider>
+      <IAddPost posts={post} setPosts={setPost} singlePost />
 
       <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}
@@ -91,4 +86,4 @@ const DefaultImageUpdate = () => {
   );
 };
 
-export default DefaultImageUpdate;
+export default AboutMeUpdate;

@@ -1,11 +1,8 @@
-import { GetServerSideProps, GetStaticProps } from "next";
-import { serverSideFetch } from "@/global/utils/webFetch";
-import webEndpointUrls from "@/global/constants/webEndpointUrls";
+import { GetStaticProps } from "next";
 import {
-	ApiDataListResponse,
-	ApiDataResponse,
-	IDefaultText,
+	IImage,
 	IPageItemConents,
+	IPostRead,
 } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
 import { memo, useMemo } from "react";
@@ -17,37 +14,35 @@ import HomeTextOnlyCards from "@/components/home/HomeTextOnlyCards ";
 import HomeImageOnlyCards from "@/components/home/HomeImageOnlyCards";
 import HomeIdeaExpLink from "@/components/home/HomeIdeaExpLink";
 import HomeAboutMe from "@/components/home/HomeAboutMe";
+import {
+	getHomeAboutMePosts,
+	getHomeDefaultImages,
+	getHomeDefaultTexts,
+	getHomePageItems,
+} from "@/components/home/homeFunctions";
+
+type homeProps = {
+	pageItems: IPageItemConents[];
+	defaultTexts: Record<string, string>;
+	defaultImages: Record<string, IImage>;
+	aboutMePosts: IPostRead[];
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-	const pageItems: ApiDataResponse<IPageItemConents> =
-		await serverSideFetch(
-			webEndpointUrls.pageItemWithContent
-		);
-	if (!pageItems) {
-		console.log(
-			"error fetch : " + webEndpointUrls.pageItemWithContent
-		);
-	}
-	const defaultTexts: ApiDataListResponse<IDefaultText> =
-		await serverSideFetch(
-			webEndpointUrls.defautlTextGetAll + "?pageSize=200"
-		);
-	if (!pageItems) {
-		console.log(
-			"error fetch : " + webEndpointUrls.pageItemWithContent
-		);
-	}
-	const defaultTextsObject: Record<string, string> = {};
-	defaultTexts.data.map((item) => {
-		defaultTextsObject[item.key] = item.text;
-	});
+	const pageItems = await getHomePageItems();
+	const defaultTextsObject = await getHomeDefaultTexts();
+	const defaultImagesObject = await getHomeDefaultImages();
+	const aboutMePosts = await getHomeAboutMePosts();
+
+	const props: homeProps = {
+		pageItems: pageItems.data,
+		defaultTexts: defaultTextsObject,
+		defaultImages: defaultImagesObject,
+		aboutMePosts,
+	};
 
 	return {
-		props: {
-			pageItems: pageItems.data,
-			defaultTexts: defaultTextsObject,
-		},
-
+		props,
 		revalidate: webConfig.dataRevalidateTime,
 	};
 };
@@ -55,10 +50,9 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home = ({
 	pageItems,
 	defaultTexts,
-}: {
-	pageItems: IPageItemConents[];
-	defaultTexts: Record<string, string>;
-}) => {
+	defaultImages,
+	aboutMePosts,
+}: homeProps) => {
 	console.log("asldfkjhasldfkj");
 	const renderPageItems = useMemo(
 		() =>
@@ -70,9 +64,29 @@ const Home = ({
 				if (pageItem.type.title === "timeLine")
 					return <TimeLine key={pageItem._id} />;
 				if (pageItem.type.title === "homeIdeaExperienceBox")
-					return <HomeIdeaExpLink {...defaultTexts} />;
+					return (
+						<HomeIdeaExpLink
+							key={pageItem._id}
+							{...defaultTexts}
+							home_experience_image={
+								defaultImages?.home_experience_image
+							}
+							home_idea_image={defaultImages?.home_idea_image}
+						/>
+					);
 				if (pageItem.type.title === "aboutMe")
-					return <HomeAboutMe {...defaultTexts} />;
+					return (
+						<HomeAboutMe
+							key={pageItem._id}
+							{...defaultTexts}
+							posts={aboutMePosts}
+							home_aboutMe_image={
+								defaultImages?.home_aboutMe_image
+							}
+						/>
+					);
+				if (pageItem.type.title === "timeLine")
+					return <TimeLine key={pageItem._id} />;
 				if (pageItem.style.title === "default")
 					return (
 						<HomeCards

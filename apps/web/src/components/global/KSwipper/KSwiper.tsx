@@ -1,4 +1,5 @@
 import "swiper/css";
+import "swiper/css/autoplay";
 import { FC } from "react";
 import { Swiper, SwiperProps } from "swiper/react";
 import useScreenWidth from "@/global/utils/useScreenWidth";

@@ -23,6 +23,12 @@ class AboutMeData {
     if (req.query._id) {
       searchQuery._id = req.query._id;
     }
+    if (req.query.name) {
+      searchQuery.name = { $regex: req.query.name, $options: "i" };
+    }
+    if (req.query.position) {
+      searchQuery.position = { $regex: req.query.position, $options: "i" };
+    }
 
     const {
       fixedSearchQuery,
@@ -67,12 +73,22 @@ class AboutMeData {
     return item;
   };
 
-  create = async ({ postId }: { postId: string }): Promise<IAboutMeRead> => {
+  create = async ({
+    postId,
+    name,
+    position,
+  }: {
+    postId: string;
+    name: string;
+    position: string;
+  }): Promise<IAboutMeRead> => {
     if (!postId) throw new BadRequestError("پست ارسال نشده");
     const post = await this.Post.get(postId);
     if (!post) throw new NotFoundError("پستی با این شناسه یافت نشد");
     const item = new this.AboutMe({
       post: postId,
+      name,
+      position,
     });
     await item.save();
     return await this.get(item._id);
