@@ -1,0 +1,140 @@
+{
+type : INFO,
+timestamp : 1683044895138,
+date : Tue May 02 2023 19:58:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044895567,
+date : Tue May 02 2023 19:58:15 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/aboutMe?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044931753,
+date : Tue May 02 2023 19:58:51 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044935452,
+date : Tue May 02 2023 19:58:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/pageItem/getWithContents,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044935532,
+date : Tue May 02 2023 19:58:55 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultText?pageSize=200,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044950948,
+date : Tue May 02 2023 19:59:10 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044951247,
+date : Tue May 02 2023 19:59:11 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/aboutMe?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044954884,
+date : Tue May 02 2023 19:59:14 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/aboutMe?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044956769,
+date : Tue May 02 2023 19:59:16 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post?pageNumber=1&pageSize=50&title=,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044958905,
+date : Tue May 02 2023 19:59:18 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/aboutMe,
+body : {"postId":"644fe792317cff09a40f9f54"}
+},
+{
+type : INFO,
+timestamp : 1683044959056,
+date : Tue May 02 2023 19:59:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/aboutMe?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044960467,
+date : Tue May 02 2023 19:59:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044960794,
+date : Tue May 02 2023 19:59:20 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/aboutMe?,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683044964236,
+date : Tue May 02 2023 19:59:24 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/pageItemType?,
+body : {}
+},

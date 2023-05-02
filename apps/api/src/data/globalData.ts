@@ -102,7 +102,7 @@ export const getAllData = async <T>(
 
   const data = await model
     .find(fixedSearchQuery)
-    .populate(populate || {})
+    .populate(populate || [])
     .limit(pageSize)
     .skip((pageNumber - 1) * pageSize)
     .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 });
