@@ -1,0 +1,60 @@
+{
+type : ERROR,
+timestamp : 1683045108337,
+date : Tue May 02 2023 21:01:48 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":"hamedani.a","password":"3392790311"}
+},
+Response : {"status":400,"message":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹","details":{"mobileNumber":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹"},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683045467987,
+date : Tue May 02 2023 21:07:47 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItem,
+body : {"title":"gfgfgffgb","type":"64513beece12352553243b01","style":"64513c36ce12352553243b19","isPublished":true,"index":""}
+},
+Response : {"status":400,"message":"شناسه ترتیب المان ارسال نشده است.","details":{"sorting":"شناسه ترتیب المان ارسال نشده است.","index":"فقط اعداد برای ترتیب قابل قبول است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683045478691,
+date : Tue May 02 2023 21:07:58 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItem,
+body : {"title":"gfgfgffgb","index":"1","type":"64513beece12352553243b01","style":"64513c36ce12352553243b19","isPublished":true}
+},
+Response : {"status":400,"message":"شناسه ترتیب المان ارسال نشده است.","details":{"sorting":"شناسه ترتیب المان ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683045510843,
+date : Tue May 02 2023 21:08:30 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItem,
+body : {"title":"xxxx","type":"64513beece12352553243b01","sorting":"64513c71ce12352553243b31","style":"64513c36ce12352553243b19","isPublished":true,"index":""}
+},
+Response : {"status":400,"message":"فقط اعداد برای ترتیب قابل قبول است.","details":{"index":"فقط اعداد برای ترتیب قابل قبول است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683045524461,
+date : Tue May 02 2023 21:08:44 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/pageItemSorting,
+body : {"title":"1"}
+},
+Response : {"status":400,"message":"عنوان باید حداقل 2 کاراکتر باشد.","details":{"title":"عنوان باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+},
