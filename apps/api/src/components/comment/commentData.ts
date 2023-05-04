@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse } from "@my/types";
-import { getAllData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class CommentData<commentModel> {
@@ -11,7 +11,7 @@ class CommentData<commentModel> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<commentModel>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.user) searchQuery.user = req.query.user;
     if (req.query.content) searchQuery.content = req.query.content;
     const populate = ["replies.user"];

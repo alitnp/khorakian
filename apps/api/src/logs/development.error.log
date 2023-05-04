@@ -1,60 +1,108 @@
 {
 type : ERROR,
-timestamp : 1683045108337,
-date : Tue May 02 2023 21:01:48 GMT+0430 (Iran Daylight Time),
+timestamp : 1683053515401,
+date : Tue May 02 2023 22:21:55 GMT+0330 (وقت عادی ایران),
 ip : ::ffff:127.0.0.1,
 Request : {
-method : POST,
-url : /api/v1/user/login,
-body : {"mobileNumber":"hamedani.a","password":"3392790311"}
+method : GET,
+url : /api/v1/aboutMe/create,
+body : {}
 },
-Response : {"status":400,"message":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹","details":{"mobileNumber":"شماره همراه ۱۱ رقم، مثال: ۰۹۱۲۳۴۵۶۷۸۹"},"isSuccess":false,"data":null}
+Response : {"status":400,"message":"شناسه به درستی وارد نشده است.","details":{"id":"شناسه به درستی وارد نشده است."},"isSuccess":false,"data":null}
 },
 {
 type : ERROR,
-timestamp : 1683045467987,
-date : Tue May 02 2023 21:07:47 GMT+0430 (Iran Daylight Time),
+timestamp : 1683053726474,
+date : Tue May 02 2023 22:25:26 GMT+0330 (وقت عادی ایران),
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
-url : /api/v1/pageItem,
-body : {"title":"gfgfgffgb","type":"64513beece12352553243b01","style":"64513c36ce12352553243b19","isPublished":true,"index":""}
+url : /api/v1/aboutMe,
+body : {"name":"شسیب ","position":"شسیب ","postId":"644fe792317cff09a40f9f54"}
 },
-Response : {"status":400,"message":"شناسه ترتیب المان ارسال نشده است.","details":{"sorting":"شناسه ترتیب المان ارسال نشده است.","index":"فقط اعداد برای ترتیب قابل قبول است."},"isSuccess":false,"data":null}
+Response : {"status":400,"message":"سمت باید حداقل 24 کاراکتر باشد.","details":{"position":"سمت باید حداقل 24 کاراکتر باشد."},"isSuccess":false,"data":null}
 },
 {
 type : ERROR,
-timestamp : 1683045478691,
-date : Tue May 02 2023 21:07:58 GMT+0430 (Iran Daylight Time),
+timestamp : 1683053751719,
+date : Tue May 02 2023 22:25:51 GMT+0330 (وقت عادی ایران),
 ip : ::ffff:127.0.0.1,
 Request : {
 method : POST,
-url : /api/v1/pageItem,
-body : {"title":"gfgfgffgb","index":"1","type":"64513beece12352553243b01","style":"64513c36ce12352553243b19","isPublished":true}
+url : /api/v1/aboutMe,
+body : {"name":"شسیب ","position":"شسیب ","postId":"644fe792317cff09a40f9f54"}
 },
-Response : {"status":400,"message":"شناسه ترتیب المان ارسال نشده است.","details":{"sorting":"شناسه ترتیب المان ارسال نشده است."},"isSuccess":false,"data":null}
+Response : {"status":400,"message":"سمت باید حداقل 24 کاراکتر باشد.","details":{"position":"سمت باید حداقل 24 کاراکتر باشد."},"isSuccess":false,"data":null}
 },
 {
 type : ERROR,
-timestamp : 1683045510843,
-date : Tue May 02 2023 21:08:30 GMT+0430 (Iran Daylight Time),
+timestamp : 1683134507903,
+date : Wed May 03 2023 20:51:47 GMT+0330 (وقت عادی ایران),
 ip : ::ffff:127.0.0.1,
 Request : {
-method : POST,
-url : /api/v1/pageItem,
-body : {"title":"xxxx","type":"64513beece12352553243b01","sorting":"64513c71ce12352553243b31","style":"64513c36ce12352553243b19","isPublished":true,"index":""}
+method : GET,
+url : /api/v1/directMessage?,
+body : {}
 },
-Response : {"status":400,"message":"فقط اعداد برای ترتیب قابل قبول است.","details":{"index":"فقط اعداد برای ترتیب قابل قبول است."},"isSuccess":false,"data":null}
+Response : {}
 },
 {
 type : ERROR,
-timestamp : 1683045524461,
-date : Tue May 02 2023 21:08:44 GMT+0430 (Iran Daylight Time),
+timestamp : 1683136816357,
+date : Wed May 03 2023 21:30:16 GMT+0330 (وقت عادی ایران),
 ip : ::ffff:127.0.0.1,
 Request : {
-method : POST,
-url : /api/v1/pageItemSorting,
-body : {"title":"1"}
+method : PUT,
+url : /api/v1/aboutMe/64529adb07a84bfeacc5c623,
+body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباطات","text":"از تجربیات ایشون استفاده های زیادی کردم","postId":"64529feb6f1b76b549676b7f"}
 },
-Response : {"status":400,"message":"عنوان باید حداقل 2 کاراکتر باشد.","details":{"title":"عنوان باید حداقل 2 کاراکتر باشد."},"isSuccess":false,"data":null}
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683136828368,
+date : Wed May 03 2023 21:30:28 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/aboutMe/64529adb07a84bfeacc5c623,
+body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباطات","text":"از تجربیات ایشون استفاده های زیادی کردم","postId":"64529feb6f1b76b549676b7f"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683172039569,
+date : Thu May 04 2023 07:17:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/aboutMe/64529adb07a84bfeacc5c623,
+body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباطات","text":"از تجربیات ایشون استفاده های زیادی کردم","postId":"64529feb6f1b76b549676b7f"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683200251292,
+date : Thu May 04 2023 15:07:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/directMessage?,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683202290312,
+date : Thu May 04 2023 15:41:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/directMessage?,
+body : {}
+},
+Response : {}
 },

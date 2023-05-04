@@ -6,7 +6,7 @@ import 'assets/css/editorjsCustomizations.css';
 
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-import fa from 'antd/es/locale/fa_IR';
+import fa from 'antd/locale/fa_IR';
 import { ConfigProvider } from 'antd';
 import { Provider } from 'react-redux';
 import App from './components/App';

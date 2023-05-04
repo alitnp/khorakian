@@ -24,6 +24,7 @@ export const postSchema = new Schema<IPost>({
   viewCount: Number,
   likeCount: Number,
   commentCount: Number,
+  eventDate: { type: Number, default: Date.now },
   ...defaultSchemaProps,
 });
 

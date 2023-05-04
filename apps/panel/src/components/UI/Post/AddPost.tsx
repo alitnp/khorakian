@@ -1,4 +1,4 @@
-import { IPost } from '@my/types';
+import { IPostRead } from '@my/types';
 import { moveItemInArray } from '@my/helpers';
 import { FC, memo, useState, useCallback } from 'react';
 import PlusBox from 'components/UI/PlusBox/PlusBox';
@@ -8,8 +8,8 @@ import PostPickerModal from 'components/UI/Post/PostPickerModal';
 import PostItem from 'components/UI/Post/PostItem';
 
 interface IAddPost {
-  posts: IPost[];
-  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
+  posts: IPostRead[];
+  setPosts: React.Dispatch<React.SetStateAction<IPostRead[]>>;
   singlePost?: boolean;
 }
 
@@ -20,7 +20,7 @@ const AddPosts: FC<IAddPost> = ({ posts, setPosts, singlePost = false }) => {
   //functions
   const toggleShowVideoPicker = useCallback(() => setShowPostPicker((prevState) => !prevState), []);
   const addPost = useCallback(
-    (post: IPost) => {
+    (post: IPostRead) => {
       if (singlePost) setPosts([post]);
       else
         setPosts((posts) => {

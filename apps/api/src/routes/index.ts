@@ -26,20 +26,17 @@ const router = Router();
 
 // router.get("/", sanitizer(appKeyValidator), HomeController.getAppInfo);
 
-//!D-e
-router.use("/defaultImage", defaultImageRoutes);
 //!A-a
 router.use("/aboutMe", aboutMeRoutes);
 
 //D-d
+router.use("/defaultImage", defaultImageRoutes);
 router.use("/defaultText", defaultTextRoutes);
 router.use("/directMessage", directMessgaeRoutes);
 
 //!E-e
-router.use("/userExperience", userExperience);
 router.use("/experienceCategory", experienceCategory);
 router.use("/experience", experience);
-router.use("/userExperienceCategory", userExperienceCategory);
 
 //!H-i
 router.use("/history", historyRoutes);
@@ -62,6 +59,8 @@ router.use("/slider", sliderRoutes);
 router.use("/socialMedia", socialMediaRoutes);
 
 //!U-u
+router.use("/userExperienceCategory", userExperienceCategory);
+router.use("/userExperience", userExperience);
 router.use("/user", userRoutes);
 
 //!V-v

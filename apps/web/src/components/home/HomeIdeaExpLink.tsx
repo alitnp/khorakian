@@ -29,8 +29,8 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 	home_idea_image,
 }) => {
 	return (
-		<div className="flex flex-col md:flex-row">
-			<div className="relative flex items-center justify-center w-full md:w-1/2 ">
+		<div className="flex flex-col lg:flex-row">
+			<div className="relative flex items-center justify-center w-full lg:w-1/2 ">
 				<div className="absolute top-0 left-0 w-full h-full -z-10">
 					<div className="relative w-full h-full">
 						{home_experience_image && (
@@ -48,7 +48,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 					</div>
 				</div>
 				<div className="w-full max-w-lg mx-5 my-14 text-k-bg-color">
-					<div className="w-40 py-4 mb-6 rounded-lg bg-k-primary-color">
+					<div className="w-40 py-4 mb-6 rounded-lg bg-k-primary-2-color">
 						<h3 className="relative text-3xl font-bold whitespace-nowrap right-[15%]  sm:right-1/4">
 							{home_experience_title}
 						</h3>
@@ -68,7 +68,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 					</div>
 				</div>
 			</div>
-			<div className="relative flex items-center justify-center w-full md:w-1/2 ">
+			<div className="relative flex items-center justify-center w-full lg:w-1/2 ">
 				<div className="absolute top-0 left-0 w-full h-full -z-10">
 					<div className="relative w-full h-full">
 						{home_idea_image && (
@@ -100,7 +100,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 							<BiArrowBack />
 						</MyButton>
 					</Link>
-					<div className="flex items-center p-4 rounded-lg bg-k-bg-color text-k-text-color gap-x-2">
+					<div className="flex flex-col items-center gap-4 p-4 rounded-lg sm:flex-row bg-k-bg-color text-k-text-color">
 						<div className="inline-flex gap-6 ">
 							<p className="w-[20ch] line-clamp-3 text-xs font-medium">
 								ایجاد سامانه دایره المعارف شهدای دفاع مقدس

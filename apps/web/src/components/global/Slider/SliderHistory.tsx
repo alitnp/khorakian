@@ -1,5 +1,3 @@
-
-
 import { FC, useEffect, useState } from "react";
 
 interface ISliderHistory {}
@@ -19,7 +17,7 @@ const SliderHistory: FC<ISliderHistory> = ({}) => {
 		const interval = setInterval(() => {
 			if (activeIndex === data.length - 1) setActiveIndex(0);
 			else setActiveIndex(activeIndex + 1);
-		}, 4000);
+		}, 3000);
 		return () => clearInterval(interval);
 	}, [activeIndex]);
 

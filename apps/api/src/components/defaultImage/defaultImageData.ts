@@ -5,7 +5,7 @@ import {
   IDefaultImageRead,
   IImage,
 } from "@my/types";
-import { getAllData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import BadRequestError from "@/helpers/error/BadRequestError";
 import ImageData from "@/components/image/imageData";
@@ -20,7 +20,7 @@ class DefaultImageData {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IDefaultImage>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.key)
       searchQuery.key = { $regex: req.query.key, $options: "i" };
 

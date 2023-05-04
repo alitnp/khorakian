@@ -10,7 +10,7 @@ import {
   IVideoRead,
   IExperienceCategory,
 } from "@my/types";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
@@ -48,7 +48,7 @@ class ExperienceData {
     req: Req,
     userId?: string,
   ): Promise<ApiDataListResponse<IExperienceRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)

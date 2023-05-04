@@ -25,6 +25,14 @@ class AboutMeController {
     res.send(apiDataResponse<IAboutMeRead>(result));
   };
 
+  update = async (req: Req, res: Res) => {
+    const result = await this.data.update({
+      ...req.body,
+      _id: req.params.id,
+    });
+    res.send(apiDataResponse<IAboutMeRead>(result));
+  };
+
   remove = async (req: Req, res: Res) => {
     const result = await this.data.remove(req.params.id);
     res.send(apiDataResponse<IAboutMeRead>(result));

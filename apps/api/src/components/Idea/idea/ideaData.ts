@@ -10,7 +10,7 @@ import {
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
 import { stringToBoolean } from "@/utils/util";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
@@ -38,7 +38,7 @@ class IdeaData {
     req: Req,
     userId?: string,
   ): Promise<ApiDataListResponse<IIdeaRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query._id) {
       searchQuery._id = req.query._id;
     }

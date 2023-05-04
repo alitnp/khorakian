@@ -1,5 +1,5 @@
-import { ApiDataResponse, IImage, IPost, IVideoRead } from '@my/types';
-import AddVideo from 'components/UI/Video/AddVideo';
+import { ApiDataResponse, IExperience } from '@my/types';
+
 import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
@@ -12,7 +12,6 @@ import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
 import TcFormWrapper from 'components/UI/FormWrapper/TcFormWrapper';
 import ApiService, { errorResponse } from 'config/API/ApiService';
 import endpointUrls from 'global/Constants/endpointUrls';
-import postModel from 'global/Models/postModel';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import { AppDispatch } from 'redux/store';
 import { useDispatch } from 'react-redux';
@@ -20,12 +19,12 @@ import { setNotificationData } from 'redux/reducer/Toast/toastReducer';
 import { handleApiThen } from 'global/helperFunctions/handleApiThen';
 import { useHistory } from 'react-router';
 import routes from 'global/Constants/routes';
+import experienceModel from 'global/Models/experienceModel';
+import directMessageModel from 'global/Models/directMessageModel';
 
-const PostCreate = () => {
+const DirectMessageCreate = () => {
   //states
-  const [videos, setVideos] = useState<IVideoRead[]>([]);
-  const [images, setImages] = useState<IImage[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   //hooks
   const apiCatcher = useApiCatcher();
@@ -37,33 +36,25 @@ const PostCreate = () => {
   useEffect(() => {}, []);
 
   //function
-
   const handleSubmit = async (values: any) => {
-    if (videos.length + images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس یا ویدیویی انتخاب نشده' }));
-    if (!!values.eventDate) values.eventDate = values.eventDate.unix * 1000;
     setLoading(true);
-    await ApiService.post(endpointUrls.postCreate, { ...values, videos: videos.map((vid) => vid._id), images: images.map((img) => img._id) })
-      .then((res: ApiDataResponse<IPost>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.post.path), notifFail: true, notifSuccess: true }))
+    await ApiService.post(endpointUrls.directMessageCreate, { ...values })
+      .then((res: any) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.directMessage.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
   };
 
   return (
-    <TcCard back={{ to: routes.post.path }}>
-      <TcPageTitle title='ایجاد پست' />
+    <TcCard back={{ to: routes.experience.path }}>
+      <TcPageTitle title='ایجاد تجربه' />
       <TcForm form={form} onFinish={handleSubmit}>
-        <TcFormWrapper>{postModel.inputs}</TcFormWrapper>
+        <TcFormWrapper>{directMessageModel.inputs}</TcFormWrapper>
+        <TcFormButtons noCancel submitButtonText='ثبت' />
       </TcForm>
-      <TcDevider>ویدیو</TcDevider>
-      <AddVideo videos={videos} setVideos={setVideos} />
 
-      <TcDevider>عکس</TcDevider>
-      <AddImage images={images} setImages={setImages} />
-
-      <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}
     </TcCard>
   );
 };
 
-export default PostCreate;
+export default DirectMessageCreate;

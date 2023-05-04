@@ -19,6 +19,7 @@ const routes = {
   //directMessage
   directMessage: { path: '/directMessage', isPrivate: true },
   directMessageDetail: { path: '/directMessage/detail', isPrivate: true },
+  directMessageCreate: { path: '/directMessage/create', isPrivate: true },
 
   //defaultImage
   defaultImage: { path: '/defaultImage', isPrivate: true },

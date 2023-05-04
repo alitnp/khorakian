@@ -9,7 +9,7 @@ import {
   IPageItemConents,
 } from "@my/types";
 import { getSortBy } from "@/utils/pagination";
-import { getAllData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import PageItemTypeData from "@/components/Home/pageItemType/pageItemTypeData";
 import PageItemSortingData from "@/components/Home/pageItemSorting/pageItemSortingData";
@@ -40,7 +40,7 @@ class PageItemData {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IPageItem>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.subTitle)

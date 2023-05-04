@@ -4,7 +4,7 @@ import { fileForm } from "@/middlewares/fileForm";
 import { publicFolder } from "@/config";
 import { fileDelete, fileRename } from "@/utils/file";
 import { convertImageToWebp, convertImageToSmallWebp } from "@/utils/image";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 
 class ImageData implements IData<IImage> {
@@ -15,7 +15,7 @@ class ImageData implements IData<IImage> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IImage>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
@@ -86,8 +86,6 @@ class ImageData implements IData<IImage> {
     );
 
     //detect if converting and resizing image was successfull
-    let webpCreated = false;
-    let smallWebpCreated = false;
     let imageData;
     //try create a webp format file from image
     try {
@@ -95,13 +93,12 @@ class ImageData implements IData<IImage> {
         imageDir + newOriginFormatFileName,
         imageDir + webpFileName,
       );
-      webpCreated = true;
     } catch (error) {
       console.log("sharp crash : ", error);
     }
     //if creating a webp format was successfull then delete original image then try create a small image
     let smallImageData;
-    if (webpCreated) {
+    if (imageData?.width && imageData.width > 300) {
       //delete origin file
       await fileDelete(imageDir + newOriginFormatFileName);
       //try resize
@@ -110,32 +107,33 @@ class ImageData implements IData<IImage> {
           imageDir + webpFileName,
           imageDir + smallWebpFileName,
         );
-        smallWebpCreated = true;
       } catch (error) {
         console.log("sharp crash : ", error);
       }
     }
 
     //if converted to webp store new image date in database otherwise store origin file metadata
-    if (webpCreated) {
+    if (!!imageData) {
       image.fileName = webpFileName;
       image.pathname = "/image/" + webpFileName;
       image.format = "webp";
+      image.width = imageData.width;
+      image.height = imageData.height;
       //if resize was success then store thumbnal pathname
-      if (smallWebpCreated)
+      if (!smallImageData) {
+        image.thumbnailPathname = "/image/" + webpFileName;
+        image.thumbnailWidth = imageData.width;
+        image.thumbnailHeight = imageData.height;
+      } else {
         image.thumbnailPathname = "/image/" + smallWebpFileName;
+        image.thumbnailWidth = smallImageData.width;
+        image.thumbnailHeight = smallImageData.height;
+      }
     } else {
       image.fileName = newOriginFormatFileName;
       image.pathname = "/image/" + newOriginFormatFileName;
     }
-    if (imageData) {
-      image.width = imageData.width;
-      image.height = imageData.height;
-    }
-    if (smallImageData) {
-      image.thumbnailWidth = smallImageData.width;
-      image.thumbnailWidthHeight = smallImageData.height;
-    }
+
     return await image.save();
   };
 }

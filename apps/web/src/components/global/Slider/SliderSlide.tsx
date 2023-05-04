@@ -18,7 +18,7 @@ const SliderSlide: FC<ISliderSlide> = ({
 	...props
 }) => {
 	return (
-		<div className="h-[768px]">
+		<div className="h-[500px] sm:h-[768px] bg-slate-500">
 			<div className="relative flex items-center justify-center w-full h-full overflow-hidden">
 				<Image
 					src={(webConfig.domain as string) + imagePathName}
@@ -27,16 +27,16 @@ const SliderSlide: FC<ISliderSlide> = ({
 					height={height}
 					className="object-cover object-center w-full h-full mx-auto "
 				/>
-				<Image
+				{/* <Image
 					src={(webConfig.domain as string) + imagePathName}
 					alt={imageAlt}
 					width={width}
 					height={height}
 					className="absolute object-cover object-center w-full h-full scale-110 blur-xl brightness-50 -z-10"
-				/>
+				/> */}
 				<div className="absolute top-0 right-0 flex flex-col items-center justify-center w-full h-full gap-2 k-container sm:items-start bg-k-faded-dark-bg-color sm:bg-transparent sm:bg-gradient-to-l from-k-dark-bg-color via-15% via-k-dark-bg-color to-50% to-black/0">
 					{props.title && (
-						<h1 className="text-5xl font-bold text-k-opposite-text-color">
+						<h1 className="text-3xl font-bold sm:text-5xl text-k-opposite-text-color">
 							{props.title}
 						</h1>
 					)}

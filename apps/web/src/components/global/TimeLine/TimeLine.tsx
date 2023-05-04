@@ -119,8 +119,8 @@ const TimeLine: FC<ITimeLine> = ({}) => {
 
 	return (
 		<>
-			<div className="relative w-full overflow-hidden">
-				<div className="absolute top-0 right-0 z-10 h-full border-l w-36 backdrop-blur-sm border-k-text-color">
+			<div className="relative w-full py-16 overflow-hidden">
+				<div className="absolute top-0 right-0 z-10 hidden h-full border-l md:block w-36 backdrop-blur-sm border-k-text-color">
 					<div className="relative w-full h-full ">
 						<div className="absolute left-0 -translate-x-1/2 -translate-y-1/2 top-1/2">
 							{yearShape}
@@ -151,9 +151,14 @@ const TimeLine: FC<ITimeLine> = ({}) => {
 				</div>
 				<div className="absolute top-0 left-0 w-full border-b h-1/2 border-k-text-color" />
 			</div>
-			<button onClick={() => swiperInstance?.slideNext()}>
-				next
-			</button>
+			<div className="flex gap-4">
+				<button onClick={() => swiperInstance?.slideNext()}>
+					next
+				</button>
+				<button onClick={() => swiperInstance?.slidePrev()}>
+					prev
+				</button>
+			</div>
 		</>
 	);
 };

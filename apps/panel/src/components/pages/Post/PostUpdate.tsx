@@ -67,6 +67,8 @@ const PostUpdate = () => {
   const handleSubmit = async (values: any) => {
     // If there are no videos or images, show a warning
     if (videos.length + images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس یا ویدیویی انتخاب نشده' }));
+
+    if (!!values.eventDate) values.eventDate = values.eventDate.unix * 1000;
     // Set the loading state to true
     setLoading(true);
     // Make a post request to the server

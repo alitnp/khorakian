@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IPostCategory } from "@my/types";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 
 class PostCategoryData implements IData<IPostCategory> {
@@ -11,7 +11,7 @@ class PostCategoryData implements IData<IPostCategory> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IPostCategory>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;

@@ -1,6 +1,10 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IImage, IUser, IUserRead } from "@my/types";
-import { IData, paginationProps } from "@/data/globalData";
+import {
+  IData,
+  defaultSearchQueries,
+  paginationProps,
+} from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 import { IUserMethods } from "@/components/user/userModel";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
@@ -18,7 +22,7 @@ class UserData implements IData<IUserRead> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IUserRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.fullName)
       searchQuery.fullName = { $regex: req.query.fullName, $options: "i" };
 

@@ -1,17 +1,14 @@
 import { SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import KSwiper from "@/components/global/KSwipper/KSwiper";
 
 const Slider = ({ items, history }) => {
 	return (
-		<div className="relative">
+		<div className="relative ">
 			<KSwiper
-				modules={[
-					Pagination,
-					// Autoplay
-				]}
+				modules={[Pagination, Autoplay]}
 				autoplay={{
-					delay: 2500,
+					delay: 5000,
 					disableOnInteraction: false,
 				}}
 				slidesPerView={1}
