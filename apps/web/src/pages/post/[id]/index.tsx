@@ -1,5 +1,6 @@
 import {
   ApiDataListResponse,
+  ApiDataResponse,
   IImage,
   IPost,
   IPostRead,
@@ -12,6 +13,9 @@ import { serverSideFetch } from '@/global/utils/webFetch';
 import webEndpointUrls from '@/global/constants/webEndpointUrls';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import WebApiService, { errorResponse } from '@/global/utils/WebApiService';
+import { webApiCatch, webApiThenGeneric } from '@/global/utils/webApiThen';
+import { AnyAaaaRecord } from 'dns';
 
 type postDetailProps = {
   defaultTexts: Record<string, string>;
@@ -22,7 +26,8 @@ type postDetailProps = {
 
 const PostDetail = () => {
   //state
-  const [postDetailsList, setPostDetailsList] = useState<any>();
+  const [postDetailsList, setPostDetailsList] = useState<IPost>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   //hook
   const { query } = useRouter();
@@ -30,19 +35,26 @@ const PostDetail = () => {
   //effect
   useEffect(() => {
     query?.id && getPostDetail(query.id as string);
+
     console.log(query.id);
   }, [query]);
 
   //func
   const getPostDetail = async (id: string) => {
-    const item: ApiDataListResponse<IPost> = await serverSideFetch(
-      webEndpointUrls.getPostDetail + id
-    );
-    if (!item) {
-      console.log('error fetch : ' + webEndpointUrls.getPostDetail + id);
-    } else {
-      setPostDetailsList(item);
-    }
+    setLoading(true);
+    await WebApiService.get(webEndpointUrls.getPostDetail(id))
+      .then((res: ApiDataResponse<IPost>) =>
+        webApiThenGeneric<ApiDataResponse<IPost>, IPost>({
+          res,
+          onSuccessData: (data) => {
+            setPostDetailsList(data);
+          },
+          notifFail: true,
+          notifSuccess: true,
+        })
+      )
+      .catch(() => webApiCatch(errorResponse));
+    setLoading(false);
   };
 
   console.log(postDetailsList);
@@ -50,7 +62,7 @@ const PostDetail = () => {
   return (
     <>
       <main>
-        <PostDetailSlider />
+        <PostDetailSlider images={postDetailsList?.images} />
       </main>
     </>
   );

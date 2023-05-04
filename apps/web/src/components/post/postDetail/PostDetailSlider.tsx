@@ -1,6 +1,6 @@
 import 'swiper/css';
 import 'swiper/css/autoplay';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import useScreenWidth from '@/global/utils/useScreenWidth';
 import React from 'react';
 // Import Swiper React components
@@ -12,26 +12,22 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper';
+import webConfig from '@/global/constants/webConfig';
 
-interface IKSwiper extends SwiperProps {
-  wrapperClassName?: string;
-  needNavigation?: boolean;
+interface IProps extends SwiperProps {
+  images: any;
 }
 
-const PostDetailSlider: FC<IKSwiper> = ({
-  wrapperClassName,
-  needNavigation,
-  children,
-  ...props
-}) => {
+const PostDetailSlider: FC<IProps> = ({ children, images }) => {
   //state
-  //   const [thumbsSwiper, setThumbsSwiper] = useState<any>();
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(undefined);
   //hooks
-  const width = useScreenWidth();
+
+  console.log(images);
 
   return (
     <>
-      <div className={wrapperClassName}>
+      <div className={'py-14 k-container bg-k-grey-bg-1-color'}>
         <Swiper
           // style={{
           //   '--swiper-navigation-color': '#fff',
@@ -39,16 +35,19 @@ const PostDetailSlider: FC<IKSwiper> = ({
           // }}
           spaceBetween={10}
           navigation={true}
-          //   thumbs={{ swiper: thumbsSwiper }}
+          thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </SwiperSlide>
+          {images?.length > 0 &&
+            images?.map((img: any) => (
+              <SwiperSlide key={img._id}>
+                <img src={webConfig.domain + img.pathname} />
+              </SwiperSlide>
+            ))}
         </Swiper>
         <Swiper
-          //   onSwiper={setThumbsSwiper}
+          onSwiper={setThumbsSwiper}
           spaceBetween={10}
           slidesPerView={4}
           freeMode={true}
@@ -60,12 +59,13 @@ const PostDetailSlider: FC<IKSwiper> = ({
             clickable: true,
             dynamicBullets: true,
           }}
-          navigation={width > 500 && needNavigation ? true : false}
-          {...props}
         >
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </SwiperSlide>
+          {images?.length > 0 &&
+            images?.map((img: any) => (
+              <SwiperSlide key={img._id}>
+                <img src={webConfig.domain + img.pathname} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </>

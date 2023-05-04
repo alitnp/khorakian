@@ -106,3 +106,87 @@ body : {}
 },
 Response : {}
 },
+{
+type : ERROR,
+timestamp : 1683215522532,
+date : Thu May 04 2023 20:22:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"شماره همراه ارسال نشده است.","details":{"mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683215522541,
+date : Thu May 04 2023 20:22:02 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/user/login,
+body : {"mobileNumber":""}
+},
+Response : {"status":400,"message":"شماره همراه ارسال نشده است.","details":{"mobileNumber":"شماره همراه ارسال نشده است.","password":"رمز عبور ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683215569679,
+date : Thu May 04 2023 20:22:49 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/login,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683215593064,
+date : Thu May 04 2023 20:23:13 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/login,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683215600592,
+date : Thu May 04 2023 20:23:20 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/login,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683215605842,
+date : Thu May 04 2023 20:23:25 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/login,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683217890027,
+date : Thu May 04 2023 21:01:30 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : POST,
+url : /api/v1/image/upload,
+body : {}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
