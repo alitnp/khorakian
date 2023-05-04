@@ -1,7 +1,12 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse, IDirectMessage } from "@my/types";
+import {
+  ApiDataListResponse,
+  IDirectMessage,
+  IDirectMessageRead,
+  IUserRead,
+} from "@my/types";
 import { NotFoundError } from "@/helpers/error";
-import { getAllData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData } from "@/data/globalData";
 import BadRequestError from "@/helpers/error/BadRequestError";
 import UserData from "@/components/user/userData";
 
@@ -16,12 +21,13 @@ class DirectMessageData {
 
   getAll = async (
     req: Req,
-    userId: string,
+    isAdmin?: boolean,
+    userId?: string,
   ): Promise<ApiDataListResponse<IDirectMessage>> => {
-    const user = await this.User.get(userId);
-    if (!user) throw new NotFoundError();
-    const searchQuery: any = {};
-    if (userId) {
+    if (!userId) throw new NotFoundError();
+
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
+    if (!isAdmin) {
       searchQuery.user._id = userId;
     }
     if (req.query.text)
@@ -30,27 +36,25 @@ class DirectMessageData {
       searchQuery,
       req,
       this.DirectMessage,
-      ["user", "replies.user"],
+      ["user"],
     );
   };
 
-  //only admin in route Handle
-  getAllAdmin = async (
-    req: Req,
-  ): Promise<ApiDataListResponse<IDirectMessage>> => {
-    const searchQuery: any = {};
-    if (req.query._id) {
-      searchQuery._id = req.query._id;
-    }
-    if (req.query.text)
-      searchQuery.text = { $regex: req.query.text, $option: "i" };
-    if (req.query.userId) searchQuery.user._id = { $regex: req.query.userId };
-    return await getAllData<IDirectMessage>(
-      searchQuery,
-      req,
-      this.DirectMessage,
-      ["user", "replies.user"],
-    );
+  get = async (
+    id: string,
+    isAdmin?: boolean,
+    userId?: string,
+  ): Promise<IDirectMessageRead> => {
+    if (!id) throw new BadRequestError("شناسه پیام ارسال نشده");
+    if (!userId) throw new NotFoundError();
+    const item = (await this.DirectMessage.findById(id).populate<{
+      user: IUserRead;
+    }>(["user"])) as IDirectMessageRead | null;
+    if (!item) throw new NotFoundError();
+
+    if (isAdmin) return item;
+    if (userId !== item.user._id) throw new NotFoundError();
+    return item;
   };
 
   create = async (text: string, userId: string): Promise<IDirectMessage> => {

@@ -1,10 +1,20 @@
+import { IUserRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
+import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDetailIcon from 'components/UI/TableIcons/TcDetailIcon';
 import routes from 'global/Constants/routes';
 
 const title = 'پیام های من';
 const englishTitle = 'directMessage';
+
+const inputs = (
+  <>
+    <TcFormItem name='text' label='متن'>
+      <TcTextarea placeholder='متن' />
+    </TcFormItem>
+  </>
+);
 
 const filterInputs = (
   <>
@@ -22,7 +32,10 @@ const columns = (handleDelete?: (_id: string) => void) => {
       dataIndex: 'text',
     },
     {
-      title: 'ارجاع دهنده',
+      title: 'ثبت کننده',
+      key: 'user',
+      dataIndex: 'user',
+      render: (text: IUserRead) => text.fullName,
     },
   ];
   handleDelete &&
@@ -43,6 +56,7 @@ const directMessageModel = {
   englishTitle,
   filterInputs,
   columns,
+  inputs,
 };
 
 export default directMessageModel;

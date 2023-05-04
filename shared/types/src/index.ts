@@ -292,6 +292,7 @@ export interface IPost extends DefaultModelProperties {
 	viewCount: number;
 	likeCount: number;
 	commentCount: number;
+	eventDate: number;
 }
 export interface IPostCreate
 	extends DefaultModelProperties {
@@ -301,6 +302,7 @@ export interface IPostCreate
 	videos: string[];
 	postCategory: string;
 	featured: boolean;
+	eventDate?: number;
 }
 
 export interface IPostRead extends DefaultModelProperties {
@@ -315,6 +317,7 @@ export interface IPostRead extends DefaultModelProperties {
 	likeCount: number;
 	commentCount: number;
 	liked?: boolean;
+	eventDate: number;
 }
 
 export interface IPostLike extends DefaultModelProperties {

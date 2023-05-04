@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IImage, ISlider, ISliderRead } from "@my/types";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import { getSortBy } from "@/utils/pagination";
 
@@ -12,7 +12,7 @@ class SliderData implements IData<ISlider> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<ISlider>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.subTitle)

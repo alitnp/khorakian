@@ -25,6 +25,7 @@ const endpointUrls = {
   defaultTextDelete: (id: number | string) => '/defaultText/' + id,
 
   //directMessage
+  directMessageCreate: '/directMessage',
   directMessageGetList: '/directMessage',
   directMessageDetail: (id: number | string) => '/directMessage' + id,
 

@@ -1,6 +1,6 @@
-import { IDirectMessage } from "@my/types";
+import { IDirectMessage, IDirectMessageRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
-import { getUserIdFromReq } from "@/utils/util";
+import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
 import DirectMessageData from "@/components/directMessage/directMessageData";
 
 class DirectMessageController {
@@ -10,22 +10,22 @@ class DirectMessageController {
     this.data = data;
   }
   getAll = async (req: Req, res: Res) => {
-    const result = await this.data.getAll(req, getUserIdFromReq(req) as string);
-    res.send(apiDataListResponse<IDirectMessage>(result));
-  };
-  getAllAdmin = async (req: Req, res: Res) => {
-    const result = await this.data.getAllAdmin(req);
+    const result = await this.data.getAll(
+      req,
+      getUserIsAdminFromReq(req),
+      getUserIdFromReq(req),
+    );
     res.send(apiDataListResponse<IDirectMessage>(result));
   };
 
-  // get = async (req: Req, res: Res) => {
-  //   const result = await this.data.get(
-  //     req.params.id,
-  //     getUserIdFromReq(req),
-  //     getUserIsAdminFromReq(req),
-  //   );
-  //   res.send(apiDataResponse<IDirectMessageRead>(result));
-  // };
+  get = async (req: Req, res: Res) => {
+    const result = await this.data.get(
+      req.params.id,
+      getUserIsAdminFromReq(req),
+      getUserIdFromReq(req),
+    );
+    res.send(apiDataResponse<IDirectMessageRead>(result));
+  };
 
   create = async (req: Req, res: Res) => {
     const result = await this.data.create(

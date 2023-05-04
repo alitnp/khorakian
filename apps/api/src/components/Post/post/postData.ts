@@ -9,7 +9,7 @@ import {
   IPostRead,
   IVideoRead,
 } from "@my/types";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
@@ -47,7 +47,7 @@ class PostData {
     req: Req,
     userId?: string,
   ): Promise<ApiDataListResponse<IPostRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)
@@ -57,6 +57,10 @@ class PostData {
     if (req.query._id) searchQuery._id = req.query._id;
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
+    if (req.query.eventDateFrom)
+      searchQuery.eventDate = { $gt: req.query.eventDateFrom };
+    if (req.query.eventDateTo)
+      searchQuery.eventDate = { $lt: req.query.eventDateTo };
 
     const {
       fixedSearchQuery,
@@ -122,6 +126,7 @@ class PostData {
     videos,
     text,
     featured,
+    eventDate,
   }: IPostCreate): Promise<IPostRead> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
     const existingImageIds = [];
@@ -148,6 +153,7 @@ class PostData {
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      eventDate: eventDate || Date.now(),
     });
     await post.save();
     return await this.get(post._id);
@@ -161,6 +167,7 @@ class PostData {
     videos,
     text,
     featured,
+    eventDate,
   }: IPostCreate & { _id: string }): Promise<IPostRead> => {
     const existingPostCategory = await this.PostCategory.get(postCategory);
 
@@ -178,20 +185,17 @@ class PostData {
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
 
-    const post = await this.Post.findByIdAndUpdate(
-      _id,
-      {
-        $set: {
-          title,
-          postCategory: existingPostCategory,
-          images: existingImageIds,
-          videos: existingVideoIds,
-          text,
-          featured: !!featured,
-        },
+    const post = await this.Post.findByIdAndUpdate(_id, {
+      $set: {
+        title,
+        postCategory: existingPostCategory,
+        images: existingImageIds,
+        videos: existingVideoIds,
+        text,
+        featured: !!featured,
+        eventDate: eventDate || Date.now(),
       },
-      { new: true },
-    );
+    });
     if (!post) throw new NotFoundError();
 
     return await this.get(post._id);

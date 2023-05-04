@@ -5,7 +5,7 @@ import {
   IAboutMeRead,
   IPostRead,
 } from "@my/types";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import PostData from "@/components/Post/post/postData";
 import BadRequestError from "@/helpers/error/BadRequestError";
@@ -19,7 +19,7 @@ class AboutMeData {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IAboutMeRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query._id) {
       searchQuery._id = req.query._id;
     }

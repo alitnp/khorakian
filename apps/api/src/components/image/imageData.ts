@@ -4,7 +4,7 @@ import { fileForm } from "@/middlewares/fileForm";
 import { publicFolder } from "@/config";
 import { fileDelete, fileRename } from "@/utils/file";
 import { convertImageToWebp, convertImageToSmallWebp } from "@/utils/image";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 
 class ImageData implements IData<IImage> {
@@ -15,7 +15,7 @@ class ImageData implements IData<IImage> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IImage>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;

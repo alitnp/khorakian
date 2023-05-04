@@ -7,6 +7,7 @@ import DirectMessageData from "@/components/directMessage/directMessageData";
 import {
   createDirectMessageValidations,
   deleteDirectMessageValidations,
+  getDirectMessageValidations,
   // getDirectMessageValidations,
   updateDirectMessageValidations,
 } from "@/components/directMessage/directMessageValidations";
@@ -26,7 +27,7 @@ const controller = new DirectMessageController(data);
 
 //get
 // get a signgle  DirectMessage with id
-// router.get("/:id", validate(getDirectMessageValidations), controller.get);
+router.get("/:id", validate(getDirectMessageValidations), controller.get);
 // get a list of  DirectMessages
 router.get("/", controller.getAll);
 

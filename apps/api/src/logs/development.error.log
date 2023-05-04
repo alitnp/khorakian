@@ -82,3 +82,27 @@ body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباط�
 },
 Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1683200251292,
+date : Thu May 04 2023 15:07:31 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/directMessage?,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683202290312,
+date : Thu May 04 2023 15:41:30 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/directMessage?,
+body : {}
+},
+Response : {}
+},

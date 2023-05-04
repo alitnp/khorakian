@@ -9,6 +9,8 @@ import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
 import { getAllPostCategories } from 'redux/reducer/PostCategory/getAllPostCategories';
+import TcDatePicker from 'components/UI/DatePicker/TcDatePicker copy';
+import { dateObjectFormatter } from 'global/helperFunctions/dateFormatter';
 
 const title = 'پست';
 const englishTitle = 'post';
@@ -32,6 +34,9 @@ const inputs = (
           { label: 'خیر', value: false },
         ]}
       />
+    </TcFormItem>
+    <TcFormItem label='زمان وقوع' name='eventDate'>
+      <TcDatePicker />
     </TcFormItem>
     <TcFormItem label='متن' name='text' full>
       <TcTextarea placeholder='متن' />
@@ -85,6 +90,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       dataIndex: 'postCategory',
       render: (text: IPostCategory) => text?.title,
     },
+    { title: 'زمان وقوع', key: 'eventDate', dataIndex: 'eventDate', render: (text: number) => dateObjectFormatter(text) },
     {
       title: 'برجسته',
       key: 'featured',

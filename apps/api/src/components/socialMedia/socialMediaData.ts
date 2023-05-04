@@ -5,7 +5,7 @@ import {
   ISocialMedia,
   ISocialMediaRead,
 } from "@my/types";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import ImageData from "@/components/image/imageData";
 import BadRequestError from "@/helpers/error/BadRequestError";
@@ -22,7 +22,7 @@ class SocialMediaData {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<ISocialMediaRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query._id) {
       searchQuery._id = req.query._id;
     }

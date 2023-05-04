@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IDefaultText } from "@my/types";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class DefaultTextData {
@@ -11,7 +11,7 @@ class DefaultTextData {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IDefaultText>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $options: "i" };
     if (req.query.key)
