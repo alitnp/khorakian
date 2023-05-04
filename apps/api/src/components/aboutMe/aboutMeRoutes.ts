@@ -51,6 +51,14 @@ router.post(
 );
 
 //put
+router.put(
+  "/:id",
+  [
+    isAdmin,
+    ...validate([...createAboutMeValidations, ...getAboutMeValidations]),
+  ],
+  controller.update,
+);
 
 //delete
 //delete a aboutme - admin only

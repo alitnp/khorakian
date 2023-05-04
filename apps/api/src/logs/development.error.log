@@ -34,3 +34,51 @@ body : {"name":"شسیب ","position":"شسیب ","postId":"644fe792317cff09a40f
 },
 Response : {"status":400,"message":"سمت باید حداقل 24 کاراکتر باشد.","details":{"position":"سمت باید حداقل 24 کاراکتر باشد."},"isSuccess":false,"data":null}
 },
+{
+type : ERROR,
+timestamp : 1683134507903,
+date : Wed May 03 2023 20:51:47 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/directMessage?,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683136816357,
+date : Wed May 03 2023 21:30:16 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/aboutMe/64529adb07a84bfeacc5c623,
+body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباطات","text":"از تجربیات ایشون استفاده های زیادی کردم","postId":"64529feb6f1b76b549676b7f"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683136828368,
+date : Wed May 03 2023 21:30:28 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/aboutMe/64529adb07a84bfeacc5c623,
+body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباطات","text":"از تجربیات ایشون استفاده های زیادی کردم","postId":"64529feb6f1b76b549676b7f"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683172039569,
+date : Thu May 04 2023 07:17:19 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : PUT,
+url : /api/v1/aboutMe/64529adb07a84bfeacc5c623,
+body : {"name":"جواد آذری جهرمی","position":"وزیر ارتباطات","text":"از تجربیات ایشون استفاده های زیادی کردم","postId":"64529feb6f1b76b549676b7f"}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

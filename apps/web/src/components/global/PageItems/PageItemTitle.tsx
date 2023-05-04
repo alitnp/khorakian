@@ -18,7 +18,7 @@ const PageItemTitle: FC<IPageItemTitle> = ({
 	return (
 		<div className="flex justify-between border-b item-center">
 			<div>
-				<h3 className="text-3xl font-bold">{title}</h3>
+				<h1 className="text-3xl font-bold">{title}</h1>
 				<span className="text-sm">{desc}</span>
 			</div>
 			{moreText && moreUrl && (

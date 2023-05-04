@@ -57,6 +57,9 @@ const AboutMeCreate = () => {
           <TcFormItem label='سمت' name='position' rules={[{ required: true, message: 'سمت تعیین نشده' }]}>
             <TcInput placeholder='سمت' />
           </TcFormItem>
+          <TcFormItem label='متن' name='text' rules={[{ required: true, message: 'متن تعیین نشده' }]}>
+            <TcInput placeholder='متن' />
+          </TcFormItem>
         </TcFormWrapper>
       </TcForm>
 

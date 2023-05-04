@@ -1,8 +1,10 @@
 import { GetStaticProps } from "next";
 import {
+	IAboutMeRead,
 	IImage,
 	IPageItemConents,
 	IPostRead,
+	ISocialMediaRead,
 } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
 import { memo, useMemo } from "react";
@@ -15,17 +17,20 @@ import HomeImageOnlyCards from "@/components/home/HomeImageOnlyCards";
 import HomeIdeaExpLink from "@/components/home/HomeIdeaExpLink";
 import HomeAboutMe from "@/components/home/HomeAboutMe";
 import {
+	getAllSocialMedias,
 	getHomeAboutMePosts,
 	getHomeDefaultImages,
 	getHomeDefaultTexts,
 	getHomePageItems,
 } from "@/components/home/homeFunctions";
+import Footer from "@/components/global/Footer/Footer";
 
 type homeProps = {
 	pageItems: IPageItemConents[];
 	defaultTexts: Record<string, string>;
 	defaultImages: Record<string, IImage>;
-	aboutMePosts: IPostRead[];
+	aboutMePosts: IAboutMeRead[];
+	socialMedias: ISocialMediaRead[];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -33,12 +38,14 @@ export const getStaticProps: GetStaticProps = async () => {
 	const defaultTextsObject = await getHomeDefaultTexts();
 	const defaultImagesObject = await getHomeDefaultImages();
 	const aboutMePosts = await getHomeAboutMePosts();
+	const socialMedias = await getAllSocialMedias();
 
 	const props: homeProps = {
 		pageItems: pageItems.data,
 		defaultTexts: defaultTextsObject,
 		defaultImages: defaultImagesObject,
 		aboutMePosts,
+		socialMedias,
 	};
 
 	return {
@@ -52,6 +59,7 @@ const Home = ({
 	defaultTexts,
 	defaultImages,
 	aboutMePosts,
+	socialMedias,
 }: homeProps) => {
 	console.log("asldfkjhasldfkj");
 	const renderPageItems = useMemo(
@@ -122,7 +130,16 @@ const Home = ({
 			}),
 		[]
 	);
-	return <main>{renderPageItems}</main>;
+	return (
+		<>
+			<main>{renderPageItems}</main>
+			<Footer
+				{...defaultTexts}
+				footer_image={defaultImages.footer_image}
+				socialMedias={socialMedias}
+			/>
+		</>
+	);
 };
 
 export default memo(Home);

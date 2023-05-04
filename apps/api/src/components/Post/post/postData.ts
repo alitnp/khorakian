@@ -69,10 +69,11 @@ class PostData {
     } = await paginationProps(searchQuery, req, this.Post);
 
     const data: IPostRead[] = await this.Post.find(fixedSearchQuery)
-      .populate<{ images: IImage[]; videos: IVideoRead[] }>([
-        "videos",
-        "images",
-      ])
+      .populate<{ images: IImage[]; videos: IVideoRead[] }>({
+        path: "videos",
+        populate: { path: "thumbnail" },
+      })
+      .populate<{ images: IImage[] }>("images")
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })

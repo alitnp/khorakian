@@ -9,6 +9,7 @@ import {
 	IImage,
 	IPageItemConents,
 	IPostRead,
+	ISocialMediaRead,
 } from "@my/types";
 
 export const getHomePageItems = async (): Promise<
@@ -67,7 +68,7 @@ export const getHomeDefaultImages = async (): Promise<
 };
 
 export const getHomeAboutMePosts = async (): Promise<
-	IPostRead[]
+	IAboutMeRead[]
 > => {
 	const aboutMePosts: ApiDataListResponse<IAboutMeRead> =
 		await serverSideFetch(
@@ -78,5 +79,20 @@ export const getHomeAboutMePosts = async (): Promise<
 			"error fetch : " + webEndpointUrls.defautlImageGetAll
 		);
 	}
-	return aboutMePosts.data.map((item) => item.post);
+	return aboutMePosts.data;
+};
+
+export const getAllSocialMedias = async (): Promise<
+	ISocialMediaRead[]
+> => {
+	const socialMedias: ApiDataListResponse<ISocialMediaRead> =
+		await serverSideFetch(
+			webEndpointUrls.socialMediaGetAll + "?pageSize=100"
+		);
+	if (!socialMedias) {
+		console.log(
+			"error fetch : " + webEndpointUrls.socialMediaGetAll
+		);
+	}
+	return socialMedias.data;
 };

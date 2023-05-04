@@ -510,6 +510,7 @@ export interface IAboutMe extends DefaultModelProperties {
 	post?: string;
 	name: string;
 	position: string;
+	text: string;
 }
 export interface IAboutMeRead
 	extends DefaultModelProperties {
@@ -517,6 +518,7 @@ export interface IAboutMeRead
 	post: IPostRead;
 	name: string;
 	position: string;
+	text: string;
 }
 
 /* # end of about me*/

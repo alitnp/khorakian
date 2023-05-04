@@ -1,10 +1,15 @@
+import "swiper/css/pagination";
 import webConfig from "@/global/constants/webConfig";
-import { IImage, IPostRead } from "@my/types";
+import { IAboutMeRead, IImage } from "@my/types";
 import Image from "next/image";
 import { FC } from "react";
+import HomeAboutMeCard from "@/components/home/HomeAboutMeCard";
+import { SwiperSlide } from "swiper/react";
+import KSwiper from "@/components/global/KSwipper/KSwiper";
+import { Pagination } from "swiper";
 
 interface IHomeAboutMe {
-	posts: IPostRead[];
+	posts: IAboutMeRead[];
 	home_aboutMe_title?: string;
 	home_aboutMe_text?: string;
 	home_aboutMe_image?: IImage;
@@ -16,19 +21,39 @@ const HomeAboutMe: FC<IHomeAboutMe> = ({
 	home_aboutMe_text,
 	home_aboutMe_image,
 }) => {
-	console.log(posts);
 	return (
-		<div className="my-6  k-container">
-			<div className="flex">
-				<div className="flex flex-col justify-center w-full py-20">
-					<span className="mb-4 text-2xl font-bold">
+		<div className="grid w-full grid-cols-1 my-6 k-container">
+			<div className="flex items-center w-full">
+				<div className="flex flex-col justify-center w-full py-20 grow-0">
+					<h4 className="mb-4 text-2xl font-bold">
 						{home_aboutMe_title}
-					</span>
-					<p className="max-w-[100ch] w-full">
+					</h4>
+					<p className="max-w-[100ch] 2xl:max-w-[130ch] w-full mb-6">
 						{home_aboutMe_text}
 					</p>
+					<div className="xl:max-w-[100ch] 2xl:max-w-[130ch]">
+						<KSwiper
+							slidesPerView={1}
+							spaceBetween={16}
+							modules={[Pagination]}
+							pagination={{
+								clickable: true,
+							}}
+							wrapperClassName=""
+							breakpoints={{ 600: { slidesPerView: 2 } }}
+						>
+							{posts.map((item, index: number) => (
+								<SwiperSlide
+									key={item._id}
+									className="!h-auto pb-8"
+								>
+									<HomeAboutMeCard aboutMe={item} index={index} />
+								</SwiperSlide>
+							))}
+						</KSwiper>
+					</div>
 				</div>
-				<div className="hidden w-full lg:block">
+				<div className="hidden w-full xl:block shrink">
 					{home_aboutMe_image && (
 						<div className="mx-auto overflow-hidden rounded-lg w-fit ">
 							<Image
@@ -36,7 +61,7 @@ const HomeAboutMe: FC<IHomeAboutMe> = ({
 								width={home_aboutMe_image.width}
 								height={home_aboutMe_image.height}
 								alt={home_aboutMe_image.title}
-								className="object-cover h-full max-w-md max-h-[500px]"
+								className="object-cover h-full max-w-md w-full max-h-[500px]"
 							/>
 						</div>
 					)}

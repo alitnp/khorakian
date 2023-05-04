@@ -1,11 +1,12 @@
 import { IImage, ISocialMediaRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcFormItem from 'components/UI/Form/TcFormItem';
+import ImageItem from 'components/UI/Image/ImageItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
 
-const title = 'رسانه‌های اجتماعی';
+const title = 'شبکه اجتماعی';
 const englishTitle = 'socialMedia';
 
 const inputs = (
@@ -35,6 +36,13 @@ const filterInputs = (
 
 const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
+    {
+      title: 'عکس',
+      key: 'image',
+      dataIndex: 'image',
+      width: 170,
+      render: (_text: string, record: ISocialMediaRead) => record.image && <ImageItem image={record.image} />,
+    },
     {
       title: 'عنوان',
       key: 'title',

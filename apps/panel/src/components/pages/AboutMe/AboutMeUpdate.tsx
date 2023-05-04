@@ -46,8 +46,9 @@ const AboutMeUpdate = () => {
       handleApiThenGeneric<ApiDataResponse<IAboutMeRead>, IAboutMeRead>({
         res,
         dispatch,
+        notifSuccess: false,
         onSuccessData: (data) => {
-          form.setFieldsValue({ name: data.name, position: data.position });
+          form.setFieldsValue({ name: data.name, position: data.position, text: data.text });
           setPost([data.post]);
         },
       })
@@ -57,7 +58,7 @@ const AboutMeUpdate = () => {
   const handleSubmit = async (values: any) => {
     if (post.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ پستی انتخاب نشده' }));
     setLoading(true);
-    await ApiService.post(endpointUrls.aboutMeEdit(id + ''), { ...values, postId: post[0]._id })
+    await ApiService.put(endpointUrls.aboutMeEdit(id + ''), { ...values, postId: post[0]._id })
       .then((res: ApiDataResponse<IAboutMe>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.aboutMe.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);
@@ -73,6 +74,9 @@ const AboutMeUpdate = () => {
           </TcFormItem>
           <TcFormItem label='سمت' name='position' rules={[{ required: true, message: 'سمت تعیین نشده' }]}>
             <TcInput placeholder='سمت' />
+          </TcFormItem>
+          <TcFormItem label='متن' name='text' rules={[{ required: true, message: 'متن تعیین نشده' }]}>
+            <TcInput placeholder='متن' />
           </TcFormItem>
         </TcFormWrapper>
       </TcForm>

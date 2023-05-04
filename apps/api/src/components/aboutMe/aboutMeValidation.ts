@@ -24,6 +24,12 @@ export const createAboutMeValidations = [
     minLength: 2,
     maxLength: 255,
   }),
+  ...existsStringValidation({
+    key: "text",
+    name: "متن",
+    minLength: 2,
+    maxLength: 255,
+  }),
 ];
 
 export const deleteAboutMeValidations = [...paramIdValidations];

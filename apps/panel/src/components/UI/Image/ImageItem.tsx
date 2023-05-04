@@ -12,6 +12,7 @@ interface IImageThumbnail {
 }
 
 const ImageItem: FC<IImageThumbnail> = ({ image, onSelect, onRemove, size }) => {
+  console.log(image);
   const imagePathname = useMemo<string>(() => {
     if (!image) return '';
     if (size === 'large') return DOMAIN + image.pathname;

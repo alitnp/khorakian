@@ -20,6 +20,8 @@ import defaultImageModel from 'global/Models/defaultImageModel';
 import pageItemModel from 'global/Models/pageItemModel';
 import sliderModel from 'global/Models/sliderModel';
 import defaultTextModel from 'global/Models/defaultTextModel';
+import socialMediaModel from 'global/Models/socialMediaModel';
+import aboutMeModel from 'global/Models/aboutMeModel';
 
 const TcSidebar = ({ open, setOpen, horizental }) => {
   // state
@@ -145,18 +147,7 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
       open: open,
       role: true,
     },
-    {
-      name: 'درباره من',
-      icon: (
-        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
-          {' '}
-          <UserOutlined />
-        </div>
-      ),
-      to: routes.aboutMe.path,
-      open: open,
-      role: true,
-    },
+
     {
       name: 'پیام‌های من',
       icon: (
@@ -180,6 +171,12 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
         { name: sliderModel.title, to: routes.slider.path, role: true },
         { name: defaultTextModel.title, to: routes.defaultText.path, role: true },
         { name: pageItemModel.title, to: routes.pageItem.path, role: true },
+        {
+          name: aboutMeModel.title,
+          to: routes.aboutMe.path,
+          role: true,
+        },
+        { name: socialMediaModel.title, to: routes.socialMedia.path, open: open, role: true },
       ],
       open: open,
     },
@@ -190,10 +187,7 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
           <InfoCircleOutlined />
         </div>
       ),
-      subMenu: [
-        ...genericModels.map((menu) => ({ name: menu.title, to: menu.ListRoute, role: true })),
-        { name: 'رسانه‌ی اجتماعی', to: routes.socialMedia.path, open: open, role: true },
-      ],
+      subMenu: [...genericModels.map((menu) => ({ name: menu.title, to: menu.ListRoute, role: true }))],
       open: open,
     },
   ];

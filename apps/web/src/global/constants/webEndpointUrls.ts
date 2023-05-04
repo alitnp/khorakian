@@ -17,6 +17,9 @@ const webEndpointUrls = {
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",
+
+	//S
+	socialMediaGetAll: "/socialMedia",
 };
 
 export default webEndpointUrls;

@@ -4,6 +4,7 @@ import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
+import ImageItem from 'components/UI/Image/ImageItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
@@ -66,6 +67,13 @@ const filterInputs = (
 
 const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
+    {
+      title: 'عکس',
+      key: 'video',
+      dataIndex: 'video',
+      width: 170,
+      render: (_text: string, record: IExperienceRead) => <ImageItem image={record?.videos[0]?.thumbnail || record.images[0]} />,
+    },
     {
       title: 'عنوان',
       key: 'title',

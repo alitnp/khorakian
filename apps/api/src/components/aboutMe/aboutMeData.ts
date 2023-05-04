@@ -29,6 +29,9 @@ class AboutMeData {
     if (req.query.position) {
       searchQuery.position = { $regex: req.query.position, $options: "i" };
     }
+    if (req.query.text) {
+      searchQuery.text = { $regex: req.query.text, $options: "i" };
+    }
 
     const {
       fixedSearchQuery,
@@ -77,11 +80,8 @@ class AboutMeData {
     postId,
     name,
     position,
-  }: {
-    postId: string;
-    name: string;
-    position: string;
-  }): Promise<IAboutMeRead> => {
+    text,
+  }: IAboutMe & { postId: string }): Promise<IAboutMeRead> => {
     if (!postId) throw new BadRequestError("پست ارسال نشده");
     const post = await this.Post.get(postId);
     if (!post) throw new NotFoundError("پستی با این شناسه یافت نشد");
@@ -89,9 +89,28 @@ class AboutMeData {
       post: postId,
       name,
       position,
+      text,
     });
     await item.save();
     return await this.get(item._id);
+  };
+
+  update = async ({
+    _id,
+    postId,
+    name,
+    position,
+    text,
+  }: IAboutMe & { postId: string }): Promise<IAboutMeRead> => {
+    const aboutMe = await this.get(_id);
+    if (!aboutMe) throw new NotFoundError("موردی با این شناسه یافت نشد");
+    if (!postId) throw new BadRequestError("پست ارسال نشده");
+    const post = await this.Post.get(postId);
+    if (!post) throw new NotFoundError("پستی با این شناسه یافت نشد");
+    await this.AboutMe.findByIdAndUpdate(_id, {
+      $set: { post: postId, name, text, position },
+    });
+    return await this.get(_id);
   };
 
   remove = async (id: string): Promise<IAboutMeRead> => {

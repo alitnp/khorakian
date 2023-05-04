@@ -22,10 +22,12 @@ const inputs = (
 
 const filterInputs = (
   <>
-    <TcFormItem name='title' label='عنوان'>
-      <TcInput placeholder='عنوان' />
+    <TcFormItem name='name' label='فرد'>
+      <TcInput placeholder='فرد' />
     </TcFormItem>
-
+    <TcFormItem name='position' label='سمت'>
+      <TcInput placeholder='سمت' />
+    </TcFormItem>
     <TcFormItem label='متن' name='text'>
       <TcInput placeholder='متن' />
     </TcFormItem>
@@ -43,6 +45,11 @@ const columns = (handleDelete?: (_id: string) => void) => {
       title: 'سمت',
       key: 'position',
       dataIndex: 'position',
+    },
+    {
+      title: 'متن',
+      key: 'text',
+      dataIndex: 'text',
     },
     {
       title: 'پست',
