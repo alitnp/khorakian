@@ -1,84 +1,57 @@
-import { GetStaticProps } from 'next';
 import {
-  IAboutMeRead,
+  ApiDataListResponse,
   IImage,
-  IPageItemConents,
+  IPost,
   IPostRead,
   ISocialMediaRead,
 } from '@my/types';
 import webConfig from '@/global/constants/webConfig';
-import { memo, useMemo } from 'react';
-import HomeSlider from '@/components/home/HomeSlider';
-import HomeCards from '@/components/home/HomeCards';
-import TimeLine from '@/components/global/TimeLine/TimeLine';
-import HomeWideCards from '@/components/home/HomeWideCards';
-import HomeTextOnlyCards from '@/components/home/HomeTextOnlyCards ';
-import HomeImageOnlyCards from '@/components/home/HomeImageOnlyCards';
-import HomeIdeaExpLink from '@/components/home/HomeIdeaExpLink';
-import HomeAboutMe from '@/components/home/HomeAboutMe';
-import {
-  getAllSocialMedias,
-  getHomeAboutMePosts,
-  getHomeDefaultImages,
-  getHomeDefaultTexts,
-  getHomePageItems,
-} from '@/components/home/homeFunctions';
-import Footer from '@/components/global/Footer/Footer';
+import { memo, useEffect, useState } from 'react';
+import PostDetailSlider from '@/components/post/postDetail/PostDetailSlider';
+import { serverSideFetch } from '@/global/utils/webFetch';
+import webEndpointUrls from '@/global/constants/webEndpointUrls';
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 
-type homeProps = {
-  pageItems: IPageItemConents[];
+type postDetailProps = {
   defaultTexts: Record<string, string>;
   defaultImages: Record<string, IImage>;
-  aboutMePosts: IAboutMeRead[];
   socialMedias: ISocialMediaRead[];
+  postDetailData: IPost[];
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const pageItems = await getHomePageItems();
-  const defaultTextsObject = await getHomeDefaultTexts();
-  const defaultImagesObject = await getHomeDefaultImages();
-  const aboutMePosts = await getHomeAboutMePosts();
-  const socialMedias = await getAllSocialMedias();
+const PostDetail = () => {
+  //state
+  const [postDetailsList, setPostDetailsList] = useState<any>();
 
-  const props: homeProps = {
-    pageItems: pageItems.data,
-    defaultTexts: defaultTextsObject,
-    defaultImages: defaultImagesObject,
-    aboutMePosts,
-    socialMedias,
+  //hook
+  const { query } = useRouter();
+
+  //effect
+  useEffect(() => {
+    query?.id && getPostDetail(query.id as string);
+    console.log(query.id);
+  }, [query]);
+
+  //func
+  const getPostDetail = async (id: string) => {
+    const item: ApiDataListResponse<IPost> = await serverSideFetch(
+      webEndpointUrls.getPostDetail + id
+    );
+    if (!item) {
+      console.log('error fetch : ' + webEndpointUrls.getPostDetail + id);
+    } else {
+      setPostDetailsList(item);
+    }
   };
 
-  return {
-    props,
-    revalidate: webConfig.dataRevalidateTime,
-  };
-};
-
-const PostDetail = ({
-  pageItems,
-  defaultTexts,
-  defaultImages,
-  aboutMePosts,
-  socialMedias,
-}: homeProps) => {
-  console.log('asldfkjhasldfkj');
-  const renderPageItems = useMemo(
-    () =>
-      pageItems.map((pageItem, index) => {
-        if (pageItem.type.title === 'slider')
-          return <HomeSlider key={pageItem._id} data={pageItem} />;
-      }),
-    []
-  );
+  console.log(postDetailsList);
 
   return (
     <>
-      <main></main>
-      <Footer
-        {...defaultTexts}
-        footer_image={defaultImages.footer_image}
-        socialMedias={socialMedias}
-      />
+      <main>
+        <PostDetailSlider />
+      </main>
     </>
   );
 };

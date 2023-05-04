@@ -2,7 +2,7 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import { FC } from 'react';
 import useScreenWidth from '@/global/utils/useScreenWidth';
-import React, { useRef, useState } from 'react';
+import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide, SwiperProps } from 'swiper/react';
 // Import Swiper styles
@@ -10,7 +10,6 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import './styles.css';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 
@@ -26,7 +25,7 @@ const PostDetailSlider: FC<IKSwiper> = ({
   ...props
 }) => {
   //state
-  const [thumbsSwiper, setThumbsSwiper] = useState<any>();
+  //   const [thumbsSwiper, setThumbsSwiper] = useState<any>();
   //hooks
   const width = useScreenWidth();
 
@@ -40,7 +39,7 @@ const PostDetailSlider: FC<IKSwiper> = ({
           // }}
           spaceBetween={10}
           navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
+          //   thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >
@@ -49,7 +48,7 @@ const PostDetailSlider: FC<IKSwiper> = ({
           </SwiperSlide>
         </Swiper>
         <Swiper
-          onSwiper={setThumbsSwiper}
+          //   onSwiper={setThumbsSwiper}
           spaceBetween={10}
           slidesPerView={4}
           freeMode={true}
