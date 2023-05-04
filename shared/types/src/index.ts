@@ -361,6 +361,12 @@ export interface IGeneralReply
 	user?: string;
 	text: string;
 }
+export interface IGeneralReplyRead
+	extends DefaultModelProperties {
+	_id: string;
+	user: IUserRead;
+	text: string;
+}
 
 /* #endregion post*/
 
@@ -539,7 +545,7 @@ export interface IDirectMessageRead
 	_id: string;
 	user: IUserRead;
 	text: string;
-	replies?: IGeneralReply[];
+	replies: IGeneralReplyRead[];
 }
 
 /*#end of DirectMessage */

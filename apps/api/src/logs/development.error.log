@@ -106,3 +106,15 @@ body : {}
 },
 Response : {}
 },
+{
+type : ERROR,
+timestamp : 1683212837642,
+date : Thu May 04 2023 18:37:17 GMT+0330 (وقت عادی ایران),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/defaultText/6453ca23c26ff2caf9ef0ee0,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},

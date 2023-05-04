@@ -76,7 +76,7 @@ const TimeLine: FC<ITimeLine> = ({}) => {
 									>
 										<img
 											src={src}
-											className="object-contain max-w-[256px] max-h-[200px] hover:scale-125 transition-all duration-1000 ease-linear"
+											className="object-contain max-w-[256px] max-h-[200px] transition-transform duration-500 ease-out hover:scale-110"
 										/>
 									</div>
 								</div>
@@ -106,7 +106,7 @@ const TimeLine: FC<ITimeLine> = ({}) => {
 								>
 									<img
 										src={src}
-										className="object-contain max-w-[256px] max-h-[200px] hover:scale-125 transition-all duration-1000 ease-linear"
+										className="object-contain max-w-[256px] max-h-[200px] transition-transform duration-500 ease-out hover:scale-110"
 									/>
 								</div>
 							</div>

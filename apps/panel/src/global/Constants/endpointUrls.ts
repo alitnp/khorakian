@@ -27,7 +27,8 @@ const endpointUrls = {
   //directMessage
   directMessageCreate: '/directMessage',
   directMessageGetList: '/directMessage',
-  directMessageDetail: (id: number | string) => '/directMessage' + id,
+  directMessageDetail: (id: number | string) => '/directMessage/' + id,
+  directMessageReply: (id: number | string) => '/directMessage/reply/' + id,
 
   //! E-e
   //experience
@@ -47,6 +48,11 @@ const endpointUrls = {
   //!F-f
   //!G-g
   //!H-h
+  historyGetList: '/history',
+  historyDetail: (id: number | string) => '/history/' + id,
+  historyCreate: '/history',
+  historyEdit: (id: number | string) => '/history/' + id,
+  historyDelete: (id: number | string) => '/history/' + id,
 
   //!I-i
   //idea

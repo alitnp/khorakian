@@ -25,7 +25,12 @@ const Footer: FC<IFooter> = ({
 			socialMedias.map((sm) => {
 				if (!sm.image.thumbnailPathname) return null;
 				return (
-					<a href={sm.url} target="_blank" rel="noreferrer">
+					<a
+						href={sm.url}
+						target="_blank"
+						rel="noreferrer"
+						key={sm._id}
+					>
 						<Image
 							key={sm._id}
 							src={webConfig.domain + sm.image.thumbnailPathname}

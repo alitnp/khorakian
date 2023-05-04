@@ -22,6 +22,7 @@ import sliderModel from 'global/Models/sliderModel';
 import defaultTextModel from 'global/Models/defaultTextModel';
 import socialMediaModel from 'global/Models/socialMediaModel';
 import aboutMeModel from 'global/Models/aboutMeModel';
+import historyModel from 'global/Models/historyModel';
 
 const TcSidebar = ({ open, setOpen, horizental }) => {
   // state
@@ -177,6 +178,7 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
           role: true,
         },
         { name: socialMediaModel.title, to: routes.socialMedia.path, open: open, role: true },
+        { name: historyModel.title, to: routes.history.path, open: open, role: true },
       ],
       open: open,
     },

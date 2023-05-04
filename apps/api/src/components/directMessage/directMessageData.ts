@@ -36,7 +36,7 @@ class DirectMessageData {
       searchQuery,
       req,
       this.DirectMessage,
-      ["user"],
+      ["user", "replies.user"],
     );
   };
 
@@ -49,7 +49,7 @@ class DirectMessageData {
     if (!userId) throw new NotFoundError();
     const item = (await this.DirectMessage.findById(id).populate<{
       user: IUserRead;
-    }>(["user"])) as IDirectMessageRead | null;
+    }>(["user", "replies.user"])) as IDirectMessageRead | null;
     if (!item) throw new NotFoundError();
 
     if (isAdmin) return item;
@@ -89,8 +89,8 @@ class DirectMessageData {
 
   reply = async (
     id: string,
-    userId: string,
     text: string,
+    userId: string,
   ): Promise<IDirectMessage> => {
     const user = await this.User.get(userId);
     const item = await this.DirectMessage.findById(id);

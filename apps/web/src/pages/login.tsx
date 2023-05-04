@@ -34,7 +34,6 @@ interface Ilogin {
 }
 
 const Login: FC<Ilogin> = ({ image }) => {
-	console.log(image);
 	return (
 		<LoginRegisterLayout
 			pathname={image.pathname}

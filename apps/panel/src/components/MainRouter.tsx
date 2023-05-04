@@ -25,6 +25,7 @@ import aboutMe from 'components/Routes/aboutMeRoutes';
 import sliderRoutes from 'components/Routes/sliderRoutes';
 import defaultTextRoutes from 'components/Routes/defaultTextRoutes';
 import directMessageRoutes from 'components/Routes/directMessageRoutes';
+import historyRoutes from 'components/Routes/historyRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -118,6 +119,8 @@ function MainRouter() {
 
     //directMessageRoutes
     ...directMessageRoutes(),
+    //historyRoutes
+    ...historyRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];

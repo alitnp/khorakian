@@ -6,6 +6,7 @@ import {
 	IAboutMeRead,
 	IDefaultImageRead,
 	IDefaultText,
+	IHistory,
 	IImage,
 	IPageItemConents,
 	IPostRead,
@@ -95,4 +96,19 @@ export const getAllSocialMedias = async (): Promise<
 		);
 	}
 	return socialMedias.data;
+};
+
+export const getAllHistories = async (): Promise<
+	IHistory[]
+> => {
+	const histories: ApiDataListResponse<IHistory> =
+		await serverSideFetch(
+			webEndpointUrls.historyGetAll + "?pageSize=100"
+		);
+	if (!histories) {
+		console.log(
+			"error fetch : " + webEndpointUrls.historyGetAll
+		);
+	}
+	return histories.data;
 };

@@ -1,6 +1,9 @@
+import { IHistory } from "@my/types";
 import { FC, useEffect, useState } from "react";
 
-interface ISliderHistory {}
+interface ISliderHistory {
+	histories: IHistory[];
+}
 
 const data = [
 	{ label: "مشاور مجلس شورای اسلامی", from: 1388, to: 1392 },
@@ -8,14 +11,18 @@ const data = [
 	{ label: "مشاور مجلس اسلامی", from: 1385, to: 1392 },
 ];
 
-const SliderHistory: FC<ISliderHistory> = ({}) => {
+const SliderHistory: FC<ISliderHistory> = ({
+	histories,
+}) => {
 	//state
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 
 	//effect
 	useEffect(() => {
 		const interval = setInterval(() => {
-			if (activeIndex === data.length - 1) setActiveIndex(0);
+			if (!histories) return;
+			if (activeIndex === histories.length - 1)
+				setActiveIndex(0);
 			else setActiveIndex(activeIndex + 1);
 		}, 3000);
 		return () => clearInterval(interval);
@@ -25,13 +32,14 @@ const SliderHistory: FC<ISliderHistory> = ({}) => {
 		<div className="relative z-20 py-3 sm:rounded-tr-lg sm:bottom-0 sm:left-0 sm:px-4 sm:py-6 sm:absolute bg-k-dark-bg-color sm:bg-k-faded-dark-bg-color sm:w-64">
 			<div className="text-center text-k-opposite-text-color sm:flex">
 				<div className="w-full">
-					<p>{data[activeIndex].label}</p>
+					<p>{histories[activeIndex].title}</p>
 					<p className="font-bold text-center text-k-primary-color">
-						{data[activeIndex].from} - {data[activeIndex].to}
+						{histories[activeIndex].from} -{" "}
+						{histories[activeIndex].to}
 					</p>
 				</div>
 				<div className="flex justify-center gap-2 mt-2 sm:mt-0 sm:flex-col">
-					{data.map((_dot, index) => (
+					{histories.map((_dot, index) => (
 						<div
 							key={index}
 							className={`${

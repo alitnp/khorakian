@@ -10,6 +10,9 @@ const webEndpointUrls = {
 	defautlTextGetAll: "/defaultText",
 	defautlImageGetAll: "/defaultImage",
 
+	//H
+	historyGetAll: "/history",
+
 	//U
 	userLogin: "/user/login",
 	userRegister: "/user",

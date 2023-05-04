@@ -48,8 +48,8 @@ class DirectMessageController {
   reply = async (req: Req, res: Res) => {
     const result = await this.data.reply(
       req.params.id,
-      getUserIdFromReq(req) as string,
       req.body.text,
+      getUserIdFromReq(req) as string,
     );
     res.send(apiDataResponse<IDirectMessage>(result));
   };

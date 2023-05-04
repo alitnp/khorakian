@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import {
 	IAboutMeRead,
+	IHistory,
 	IImage,
 	IPageItemConents,
 	IPostRead,
@@ -17,6 +18,7 @@ import HomeImageOnlyCards from "@/components/home/HomeImageOnlyCards";
 import HomeIdeaExpLink from "@/components/home/HomeIdeaExpLink";
 import HomeAboutMe from "@/components/home/HomeAboutMe";
 import {
+	getAllHistories,
 	getAllSocialMedias,
 	getHomeAboutMePosts,
 	getHomeDefaultImages,
@@ -31,6 +33,7 @@ type homeProps = {
 	defaultImages: Record<string, IImage>;
 	aboutMePosts: IAboutMeRead[];
 	socialMedias: ISocialMediaRead[];
+	histories: IHistory[];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -39,6 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const defaultImagesObject = await getHomeDefaultImages();
 	const aboutMePosts = await getHomeAboutMePosts();
 	const socialMedias = await getAllSocialMedias();
+	const histories = await getAllHistories();
 
 	const props: homeProps = {
 		pageItems: pageItems.data,
@@ -46,6 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		defaultImages: defaultImagesObject,
 		aboutMePosts,
 		socialMedias,
+		histories,
 	};
 
 	return {
@@ -60,6 +65,7 @@ const Home = ({
 	defaultImages,
 	aboutMePosts,
 	socialMedias,
+	histories,
 }: homeProps) => {
 	console.log("asldfkjhasldfkj");
 	const renderPageItems = useMemo(
@@ -67,7 +73,11 @@ const Home = ({
 			pageItems.map((pageItem, index) => {
 				if (pageItem.type.title === "slider")
 					return (
-						<HomeSlider key={pageItem._id} data={pageItem} />
+						<HomeSlider
+							key={pageItem._id}
+							data={pageItem}
+							histories={histories}
+						/>
 					);
 				if (pageItem.type.title === "timeLine")
 					return <TimeLine key={pageItem._id} />;

@@ -1,5 +1,9 @@
 import KSwiper from "@/components/global/KSwipper/KSwiper";
 import { FC, ReactNode, memo } from "react";
+import { Autoplay, Navigation, Thumbs } from "swiper";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 import { SwiperSlide } from "swiper/react";
 
 interface ICardsRow {
@@ -25,12 +29,10 @@ const CardsRow: FC<ICardsRow> = ({
 				slidesPerView="auto"
 				spaceBetween={20}
 				wrapperClassName="pb-4"
+				modules={[Autoplay, Navigation, Thumbs]}
 			>
 				{items.map((item, index) => (
-					<SwiperSlide
-						key={index}
-						className="py-2  !w-fit"
-					>
+					<SwiperSlide key={index} className="py-2  !w-fit">
 						{item}
 					</SwiperSlide>
 				))}

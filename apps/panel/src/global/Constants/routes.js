@@ -63,6 +63,11 @@ const routes = {
   userExperienceCreate: { path: '/userExperience/create', isPrivate: true },
   userExperienceEdit: { path: '/userExperience/edit', isPrivate: true },
 
+  //history
+  history: { path: '/history', isPrivate: true },
+  historyCreate: { path: '/history/create', isPrivate: true },
+  historyEdit: { path: '/history/edit', isPrivate: true },
+
   //pageItemType
   pageItemType: { path: '/pageItemType', isPrivate: true },
   pageItemTypeCreate: { path: '/pageItemType/create', isPrivate: true },
