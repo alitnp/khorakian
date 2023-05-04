@@ -20,7 +20,7 @@ interface IProps extends SwiperProps {
 
 const PostDetailSlider: FC<IProps> = ({ children, images }) => {
   //state
-  const [thumbsSwiper, setThumbsSwiper] = useState<any>(undefined);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>();
   //hooks
 
   console.log(images);
@@ -35,7 +35,10 @@ const PostDetailSlider: FC<IProps> = ({ children, images }) => {
           // }}
           spaceBetween={10}
           navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
+          thumbs={{
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+          }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >

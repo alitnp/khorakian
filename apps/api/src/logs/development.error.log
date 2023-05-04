@@ -190,3 +190,27 @@ body : {}
 },
 Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
 },
+{
+type : ERROR,
+timestamp : 1683220509001,
+date : Thu May 04 2023 21:45:09 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post/643d3a4e27487bbf4fb0e186,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683220514802,
+date : Thu May 04 2023 21:45:14 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post/643d3a4e27487bbf4fb0e186,
+body : {}
+},
+Response : {"status":404,"message":"یافت نشد.","data":null,"isSuccess":false}
+},
