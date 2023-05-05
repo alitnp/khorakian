@@ -1,3 +1,11 @@
 .ant-btn-primary {
   background-color: var(--primary-1-color);
 }
+
+.ant-tabs-tab {
+  background-color: green !important;
+}
+
+.ant-tabs-tab-active {
+  @apply !bg-red-500;
+}

@@ -1,10 +1,6 @@
 import {
-	ApiDataListResponse,
 	ApiDataResponse,
-	IImage,
-	IPost,
 	IPostRead,
-	ISocialMediaRead,
 } from "@my/types";
 import { memo, useEffect, useState } from "react";
 import PostDetailSlider from "@/components/post/postDetail/PostDetailSlider";
@@ -20,17 +16,10 @@ import {
 import AllCommentTabs from "@/components/post/postDetail/comments/AllCommentTabs";
 import PostDetailDescription from "@/components/post/postDetail/PostDetailDescription";
 
-type postDetailProps = {
-	defaultTexts: Record<string, string>;
-	defaultImages: Record<string, IImage>;
-	socialMedias: ISocialMediaRead[];
-	postDetailData: IPost[];
-};
-
 const PostDetail = () => {
 	//state
 	const [postDetailsList, setPostDetailsList] =
-		useState<IPost>();
+		useState<IPostRead>();
 	const [loading, setLoading] = useState<boolean>(false);
 
 	//hook
@@ -46,8 +35,11 @@ const PostDetail = () => {
 	const getPostDetail = async (id: string) => {
 		setLoading(true);
 		await WebApiService.get(webEndpointUrls.getPostDetail(id))
-			.then((res: ApiDataResponse<IPost>) =>
-				webApiThenGeneric<ApiDataResponse<IPost>, IPost>({
+			.then((res: ApiDataResponse<IPostRead>) =>
+				webApiThenGeneric<
+					ApiDataResponse<IPostRead>,
+					IPostRead
+				>({
 					res,
 					onSuccessData: (data) => {
 						setPostDetailsList(data);
@@ -60,11 +52,11 @@ const PostDetail = () => {
 		setLoading(false);
 	};
 
-	console.log(postDetailsList);
-
 	return (
 		<main>
-			<PostDetailSlider images={postDetailsList?.images} />
+			{postDetailsList && (
+				<PostDetailSlider images={postDetailsList.images} />
+			)}
 			<PostDetailDescription />
 			<div className="w-full my-5">
 				<AllCommentTabs />

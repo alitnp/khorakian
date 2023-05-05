@@ -1,9 +1,7 @@
 import "swiper/css";
 import "swiper/css/autoplay";
 import { FC, useState } from "react";
-import useScreenWidth from "@/global/utils/useScreenWidth";
 import React from "react";
-// Import Swiper React components
 import {
 	Swiper,
 	SwiperSlide,
@@ -15,21 +13,16 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 // import required modules
-import SwiperClass, {
-	FreeMode,
-	Navigation,
-	Thumbs,
-} from "swiper";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 import webConfig from "@/global/constants/webConfig";
+import Image from "next/image";
+import { IImage } from "@my/types";
 
 interface IProps extends SwiperProps {
-	images: any;
+	images: IImage[];
 }
 
-const PostDetailSlider: FC<IProps> = ({
-	children,
-	images,
-}) => {
+const PostDetailSlider: FC<IProps> = ({ images }) => {
 	//state
 	const [thumbsSwiper, setThumbsSwiper] = useState<any>();
 	//hooks
@@ -38,15 +31,9 @@ const PostDetailSlider: FC<IProps> = ({
 
 	return (
 		<>
-			<div
-				className={"py-14 k-container bg-k-grey-bg-1-color"}
-			>
+			<div className="select-none bg-k-text-color">
 				<Swiper
-					// style={{
-					//   '--swiper-navigation-color': '#fff',
-					//   '--swiper-pagination-color': '#fff',
-					// }}
-					spaceBetween={10}
+					spaceBetween={0}
 					navigation={true}
 					thumbs={{
 						swiper:
@@ -55,26 +42,31 @@ const PostDetailSlider: FC<IProps> = ({
 								: null,
 					}}
 					modules={[FreeMode, Navigation, Thumbs]}
-					className="mySwiper2"
 				>
 					{images?.length > 0 &&
-						images?.map((img: any) => (
-							<SwiperSlide key={img._id}>
-								<img
-									className="w-full h-full"
+						images?.map((img) => (
+							<SwiperSlide
+								key={img._id}
+								className="relative w-full h-[500px] max-h-[80vh] "
+							>
+								<Image
+									className="object-contain w-full h-[500px] max-h-[80vh] object-center"
 									src={webConfig.domain + img.pathname}
+									width={img.width}
+									height={img.height}
+									alt={img.title}
 								/>
 							</SwiperSlide>
 						))}
 				</Swiper>
+
 				<Swiper
 					onSwiper={setThumbsSwiper}
-					spaceBetween={10}
+					spaceBetween={0}
 					slidesPerView={4}
 					freeMode={true}
 					watchSlidesProgress={true}
 					modules={[FreeMode, Navigation, Thumbs]}
-					className="mySwiper"
 					dir="rtl"
 					pagination={{
 						clickable: true,
@@ -82,9 +74,18 @@ const PostDetailSlider: FC<IProps> = ({
 					}}
 				>
 					{images?.length > 0 &&
-						images?.map((img: any) => (
-							<SwiperSlide key={img._id}>
-								<img src={webConfig.domain + img.pathname} />
+						images?.map((img) => (
+							<SwiperSlide
+								key={img._id}
+								className="h-[200px] max-h-[20vh]"
+							>
+								<Image
+									className="object-contain w-full h-[200px] max-h-[20vh] object-center"
+									src={webConfig.domain + img.pathname}
+									width={img.width}
+									height={img.height}
+									alt={img.title}
+								/>
 							</SwiperSlide>
 						))}
 				</Swiper>
