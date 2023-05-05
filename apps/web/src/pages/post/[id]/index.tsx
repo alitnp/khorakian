@@ -6,16 +6,14 @@ import {
   IPostRead,
   ISocialMediaRead,
 } from '@my/types';
-import webConfig from '@/global/constants/webConfig';
 import { memo, useEffect, useState } from 'react';
 import PostDetailSlider from '@/components/post/postDetail/PostDetailSlider';
-import { serverSideFetch } from '@/global/utils/webFetch';
 import webEndpointUrls from '@/global/constants/webEndpointUrls';
-import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import WebApiService, { errorResponse } from '@/global/utils/WebApiService';
 import { webApiCatch, webApiThenGeneric } from '@/global/utils/webApiThen';
-import { AnyAaaaRecord } from 'dns';
+import AllCommentTabs from '@/components/post/postDetail/comments/AllCommentTabs';
+import PostDetailDescription from '@/components/post/postDetail/PostDetailDescription';
 
 type postDetailProps = {
   defaultTexts: Record<string, string>;
@@ -35,7 +33,6 @@ const PostDetail = () => {
   //effect
   useEffect(() => {
     query?.id && getPostDetail(query.id as string);
-
     console.log(query.id);
   }, [query]);
 
@@ -60,11 +57,13 @@ const PostDetail = () => {
   console.log(postDetailsList);
 
   return (
-    <>
-      <main>
-        <PostDetailSlider images={postDetailsList?.images} />
-      </main>
-    </>
+    <main>
+      <PostDetailSlider images={postDetailsList?.images} />
+      <PostDetailDescription />
+      <div className="w-full my-5">
+        <AllCommentTabs />
+      </div>
+    </main>
   );
 };
 
