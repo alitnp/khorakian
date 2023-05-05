@@ -67,7 +67,6 @@ const Home = ({
 	socialMedias,
 	histories,
 }: homeProps) => {
-	console.log("asldfkjhasldfkj");
 	const renderPageItems = useMemo(
 		() =>
 			pageItems.map((pageItem, index) => {
@@ -108,7 +107,7 @@ const Home = ({
 						<HomeFeatured
 							key={pageItem._id}
 							title={pageItem.title}
-							posts={pageItem.content}
+							posts={pageItem.content.slice(0, 6)}
 						/>
 					);
 				if (pageItem.type.title === "timeLine")

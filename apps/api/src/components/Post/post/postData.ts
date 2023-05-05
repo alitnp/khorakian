@@ -3,6 +3,7 @@ import {
   ApiDataListResponse,
   IImage,
   IPost,
+  IPostCategory,
   IPostComment,
   IPostCreate,
   IPostLike,
@@ -78,6 +79,7 @@ class PostData {
         populate: { path: "thumbnail" },
       })
       .populate<{ images: IImage[] }>("images")
+      .populate<{ postCategory: IPostCategory }>("postCategory")
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -108,6 +110,7 @@ class PostData {
         path: "videos",
         populate: { path: "thumbnail" },
       })
+      .populate<{ postCategory: IPostCategory }>("postCategory")
       .lean()) as IPostRead;
 
     if (!post) throw new NotFoundError();
@@ -128,7 +131,8 @@ class PostData {
     featured,
     eventDate,
   }: IPostCreate): Promise<IPostRead> => {
-    const existingPostCategory = await this.PostCategory.get(postCategory);
+    await this.PostCategory.get(postCategory);
+
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
       const imageId = images[i];
@@ -145,7 +149,7 @@ class PostData {
 
     const post = new this.Post({
       title,
-      postCategory: existingPostCategory,
+      postCategory,
       images: existingImageIds,
       videos: existingVideoIds,
       text,
@@ -169,7 +173,7 @@ class PostData {
     featured,
     eventDate,
   }: IPostCreate & { _id: string }): Promise<IPostRead> => {
-    const existingPostCategory = await this.PostCategory.get(postCategory);
+    await this.PostCategory.get(postCategory);
 
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
@@ -188,7 +192,7 @@ class PostData {
     const post = await this.Post.findByIdAndUpdate(_id, {
       $set: {
         title,
-        postCategory: existingPostCategory,
+        postCategory,
         images: existingImageIds,
         videos: existingVideoIds,
         text,

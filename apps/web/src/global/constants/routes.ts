@@ -1,5 +1,3 @@
-
-
 const webRoutes = {
 	home: { path: "/", private: false },
 	login: { path: "/login", private: false },
@@ -7,7 +5,7 @@ const webRoutes = {
 
 	//post
 	postAllContents: { path: "/postcontents", private: false },
-	postDetail: { path: "/postdetail", private: false },
+	postDetail: { path: "/post", private: false },
 
 	//experience
 	experience: { path: "/experience", private: false },

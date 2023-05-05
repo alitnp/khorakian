@@ -13,6 +13,7 @@ interface IHomeFeaturedPosts {
 	activeCategory: string | undefined;
 	setActivePost: (_index: number) => void;
 	posts: IPostRead[];
+	title: string;
 }
 
 const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
@@ -20,6 +21,7 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 	activeCategory,
 	setActivePost,
 	posts,
+	title,
 }) => {
 	const getPosts = useCallback((): IPostRead[] => {
 		if (!activeCategory) return posts;
@@ -39,19 +41,21 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 							isActive
 								? ""
 								: "hover:bg-k-grey-bg-1-color cursor-pointer"
-						} px-4 z-30`}
+						} px-4 z-30 max-w-[300px] md:max-w-[unset]`}
 						onClick={() => setActivePost(index)}
 					>
 						<div
-							className={`${index !== 0 ? "border-t" : ""} py-2`}
+							className={`${
+								index !== 0 ? "md:border-t" : ""
+							} py-2`}
 						>
-							<span
+							<div
 								className={`${
 									isActive ? "text-k-primary-color" : ""
-								} block text-base font-medium `}
+								} text-base font-medium line-clamp-1 whitespace-nowrap`}
 							>
 								{post.title}
-							</span>
+							</div>
 							<span className="text-xs text-k-grey-text-color">
 								{dateObjectFormatter(post.eventDate)}
 							</span>
@@ -65,9 +69,29 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 		[activeCategory, activePost]
 	);
 	return (
-		<div className="flex flex-col bg-k-bg-color w-fit grow-0 max-w-[200px] min-w-[150px]">
-			{renderPostsList}
-		</div>
+		<>
+			<div className="flex items-center justify-between px-4 py-2 border-b md:hidden bg-k-bg-color ">
+				<span className="font-medium">{title}</span>
+				<span className="cursor-pointer text-k-primary-color hover:underline">
+					نمایش همه
+				</span>
+			</div>
+			<div className="relative flex flex-row md:flex-col md:w-44 lg:w-64 bg-k-bg-color shrink-0">
+				<div className="sticky top-0 left-0 z-40 hidden px-4 py-2 font-medium border-b md:block bg-k-bg-color">
+					{title}
+				</div>
+
+				<div className="flex overflow-y-auto md:overflow-visible md:flex-col">
+					{renderPostsList}
+				</div>
+
+				<div className="hidden px-4 py-2 mt-auto text-center border-t md:block text-k-primary-color ">
+					<span className="cursor-pointer hover:underline ">
+						نمایش همه
+					</span>
+				</div>
+			</div>
+		</>
 	);
 };
 

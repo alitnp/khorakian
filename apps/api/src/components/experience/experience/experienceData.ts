@@ -79,6 +79,9 @@ class ExperienceData {
         "videos",
         "images",
       ])
+      .populate<{ experienceCategory: IExperienceCategory }>(
+        "experienceCategory",
+      )
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -113,6 +116,9 @@ class ExperienceData {
         path: "videos",
         populate: { path: "thumbnail" },
       })
+      .populate<{ experienceCategory: IExperienceCategory }>(
+        "experienceCategory",
+      )
       .lean()) as IExperienceRead;
 
     if (!experience) throw new NotFoundError();
@@ -133,9 +139,7 @@ class ExperienceData {
     text,
     featured,
   }: IExperienceCreate): Promise<IExperienceRead> => {
-    const existingExperienceCategory = await this.ExperienceCategory.get(
-      experienceCategory,
-    );
+    await this.ExperienceCategory.get(experienceCategory);
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
       const imageId = images[i];
@@ -152,7 +156,7 @@ class ExperienceData {
 
     const experience = new this.Experience({
       title,
-      experienceCategory: existingExperienceCategory,
+      experienceCategory,
       images: existingImageIds,
       videos: existingVideoIds,
       text,
@@ -174,9 +178,7 @@ class ExperienceData {
     text,
     featured,
   }: IExperienceCreate & { _id: string }): Promise<IExperienceRead> => {
-    const existingExperienceCategory = await this.ExperienceCategory.get(
-      experienceCategory,
-    );
+    await this.ExperienceCategory.get(experienceCategory);
 
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
@@ -197,7 +199,7 @@ class ExperienceData {
       {
         $set: {
           title,
-          experienceCategory: existingExperienceCategory,
+          experienceCategory,
           images: existingImageIds,
           videos: existingVideoIds,
           text,

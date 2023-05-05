@@ -7,6 +7,7 @@ import {
   IPageItemStyle,
   IPageItemType,
   IPageItemConents,
+  IPostCategory,
 } from "@my/types";
 import { getSortBy } from "@/utils/pagination";
 import { defaultSearchQueries, getAllData } from "@/data/globalData";
@@ -134,7 +135,8 @@ class PageItemData {
           .sort(sort)
           .limit(100)
           .populate("images")
-          .populate({ path: "videos", populate: { path: "thumbnail" } });
+          .populate({ path: "videos", populate: { path: "thumbnail" } })
+          .populate<{ postCategory: IPostCategory }>("postCategory");
         totalItems = await Post.countDocuments({ ...filters, featured: true });
       }
       result.push({ ...pi, content, totalItems });

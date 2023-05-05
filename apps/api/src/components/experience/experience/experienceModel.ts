@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IExperience } from "@my/types";
 import { defaultSchemaProps } from "@/utils/constants";
-import { experienceCategorySchema } from "@/components/experience/experienceCategory/experienceCategoryModel";
 
 export const experienceSchema = new Schema<IExperience>({
   title: {
@@ -17,8 +16,9 @@ export const experienceSchema = new Schema<IExperience>({
   images: [{ type: Schema.Types.ObjectId, ref: "Image" }],
   videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
   experienceCategory: {
-    type: experienceCategorySchema,
-    required: [true, "دسته یندی تعیین نشده."],
+    type: Schema.Types.ObjectId,
+    ref: "ExperienceCategory",
+    required: [true, "دسته بندی تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
   viewCount: Number,

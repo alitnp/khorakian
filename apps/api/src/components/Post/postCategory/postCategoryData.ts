@@ -39,37 +39,18 @@ class PostCategoryData implements IData<IPostCategory> {
   };
 
   update = async ({ _id, title }: IPostCategory): Promise<IPostCategory> => {
-    const postCategory = await this.PostCategory.findById(_id);
-    if (!postCategory) throw new NotFoundError();
+    await this.get(_id);
 
     const existingContentType = await this.PostCategory.findOne({ title });
     if (!!existingContentType) throw new ConflictError();
 
-    postCategory.title = title;
+    await this.PostCategory.findByIdAndUpdate(_id, { $set: { title } });
 
-    // await Post.updateMany(
-    //   {
-    //     "category._id": _id,
-    //   },
-    //   {
-    //     $set: {
-    //       "category.title": title,
-    //     },
-    //   },
-    // );
-
-    return await postCategory.save();
+    return await this.get(_id);
   };
 
   remove = async (id: string): Promise<IPostCategory> => {
-    const postCategory = await this.PostCategory.findById(id);
-    if (!postCategory) throw new NotFoundError();
-
-    // const postsWithThisCategory = await Post.find({ "category._id": id });
-    // if (postsWithThisCategory.length > 0)
-    //   throw new ConflictError(
-    //     "این دسته بندی در جای دیگر درحال استفاده می باشد.",
-    //   );
+    const postCategory = await this.get(id);
 
     await this.PostCategory.findByIdAndDelete(id);
 

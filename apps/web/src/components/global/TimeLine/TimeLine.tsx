@@ -119,7 +119,7 @@ const TimeLine: FC<ITimeLine> = ({}) => {
 
 	return (
 		<>
-			<div className="relative w-full py-16 overflow-hidden">
+			<div className="relative w-full py-24 overflow-hidden">
 				<div className="absolute top-0 right-0 z-10 hidden h-full border-l md:block w-36 backdrop-blur-sm border-k-text-color">
 					<div className="relative w-full h-full ">
 						<div className="absolute left-0 -translate-x-1/2 -translate-y-1/2 top-1/2">

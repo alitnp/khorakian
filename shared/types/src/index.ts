@@ -207,7 +207,7 @@ export interface IExperience
 	text: string;
 	images: string[];
 	videos: string[];
-	experienceCategory: IExperienceCategory;
+	experienceCategory?: string;
 	featured: boolean;
 	viewCount: number;
 	likeCount: number;
@@ -287,7 +287,7 @@ export interface IPost extends DefaultModelProperties {
 	text: string;
 	images: string[];
 	videos: string[];
-	postCategory: IPostCategory;
+	postCategory?: string;
 	featured: boolean;
 	viewCount: number;
 	likeCount: number;
