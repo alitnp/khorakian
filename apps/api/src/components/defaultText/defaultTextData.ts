@@ -1,7 +1,8 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IDefaultText } from "@my/types";
-import { defaultSearchQueries, paginationProps } from "@/data/globalData";
+import { defaultSearchQueries } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
+import { getAllData } from "@/data/globalData";
 
 class DefaultTextData {
   DefaultText: Model<IDefaultText>;
@@ -20,32 +21,10 @@ class DefaultTextData {
         $options: "i",
       };
     if (req.query._id) searchQuery._id = req.query._id;
+    if (req.query.persianKey)
+      searchQuery.persianKey = { $regex: req.query.text, $options: "i" };
 
-    const {
-      fixedSearchQuery,
-      pageNumber,
-      pageSize,
-      totalItems,
-      totalPages,
-      sortBy,
-      desc,
-    } = await paginationProps(searchQuery, req, this.DefaultText);
-
-    const data = await this.DefaultText.find(fixedSearchQuery)
-      .limit(pageSize)
-      .skip((pageNumber - 1) * pageSize)
-      .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
-      .lean();
-
-    return {
-      data,
-      pageNumber,
-      pageSize,
-      totalItems,
-      totalPages,
-      sortBy,
-      desc: desc === -1 ? true : false,
-    };
+    return await getAllData<IDefaultText>(searchQuery, req, this.DefaultText);
   };
 
   getByKey = async (key: string): Promise<IDefaultText> => {
@@ -57,18 +36,20 @@ class DefaultTextData {
   };
 
   get = async (id: string): Promise<IDefaultText> => {
-    const item = (await this.DefaultText.findById(id).lean()) as IDefaultText;
-
+    const item = await this.DefaultText.findById(id);
     if (!item) throw new NotFoundError();
-    await this.DefaultText.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
-
     return item;
   };
 
-  create = async ({ key, text }: IDefaultText): Promise<IDefaultText> => {
+  create = async ({
+    key,
+    text,
+    persianKey,
+  }: IDefaultText): Promise<IDefaultText> => {
     const item = new this.DefaultText({
       text,
       key,
+      persianKey,
     });
     await item.save();
     return await this.get(item._id + "");
@@ -78,17 +59,15 @@ class DefaultTextData {
     _id,
     key,
     text,
+    persianKey,
   }: IDefaultText & { _id: string }): Promise<IDefaultText> => {
-    const item = await this.DefaultText.findByIdAndUpdate(
-      _id,
-      {
-        $set: {
-          key,
-          text,
-        },
+    const item = await this.DefaultText.findByIdAndUpdate(_id, {
+      $set: {
+        key,
+        text,
+        persianKey,
       },
-      { new: true },
-    );
+    });
     if (!item) throw new NotFoundError();
 
     return await this.get(_id);

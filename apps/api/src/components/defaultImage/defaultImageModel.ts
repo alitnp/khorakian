@@ -6,6 +6,7 @@ export const defaultImagePersianName = "عکس پیشفرض";
 
 export const defaultImageSchema = new Schema<IDefaultImage>({
   key: { type: String, required: true },
+  persianKey: { type: String, required: true },
   image: { type: Schema.Types.ObjectId, ref: "Image", required: true },
   ...defaultSchemaProps,
 });

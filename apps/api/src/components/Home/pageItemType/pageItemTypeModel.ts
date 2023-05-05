@@ -11,6 +11,7 @@ export const pageItemTypeSchema = new Schema<IPageItemType>({
     minlength: [2, "عنوان حداقل باید ۲ کاراکتر باشد."],
     maxlength: [50, "عنوان حداکثر ۵۰ کاراکتر."],
   },
+  persianTitle: { type: String },
   ...defaultSchemaProps,
 });
 

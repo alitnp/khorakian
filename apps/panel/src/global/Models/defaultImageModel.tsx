@@ -14,6 +14,9 @@ const filterInputs = (
     <TcFormItem name='key' label='کلید'>
       <TcInput placeholder='کلید' />
     </TcFormItem>
+    <TcFormItem name='persianKey' label='کلید فارسی'>
+      <TcInput placeholder='کلید فارسی' />
+    </TcFormItem>
   </>
 );
 
@@ -27,6 +30,7 @@ const columns = () => {
       render: (_text: string, record: IDefaultImageRead) => record.image && <ImageItem image={record.image} />,
     },
     { title: 'کلید', key: 'key', dataIndex: 'key' },
+    { title: 'کلید فارسی', key: 'persianKey', dataIndex: 'persianKey' },
     {
       title: 'عملیات',
       render: (_text: any, record: Record<string, any>) => (

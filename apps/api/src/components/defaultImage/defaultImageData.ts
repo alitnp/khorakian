@@ -23,6 +23,8 @@ class DefaultImageData {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.key)
       searchQuery.key = { $regex: req.query.key, $options: "i" };
+    if (req.query.persianKey)
+      searchQuery.persianKey = { $regex: req.query.text, $options: "i" };
 
     return await getAllData<IDefaultImage>(
       searchQuery,
@@ -54,6 +56,7 @@ class DefaultImageData {
   create = async ({
     key,
     image,
+    persianKey,
   }: IDefaultImage): Promise<IDefaultImageRead> => {
     if (!image) throw new BadRequestError("شناسه عکس ارسال نشده");
     await this.Image.get(image);
@@ -61,6 +64,7 @@ class DefaultImageData {
     const item = new this.DefaultImage({
       key,
       image,
+      persianKey,
     });
     await item.save();
 
@@ -71,12 +75,13 @@ class DefaultImageData {
     _id,
     key,
     image,
+    persianKey,
   }: IDefaultImage): Promise<IDefaultImageRead> => {
     if (!image) throw new BadRequestError("شناسه عکس ارسال نشده");
     await this.Image.get(image);
 
     const item = await this.DefaultImage.findByIdAndUpdate(_id, {
-      $set: { key, image },
+      $set: { key, image, persianKey },
     });
     if (!item) throw new NotFoundError();
 
@@ -84,9 +89,7 @@ class DefaultImageData {
   };
 
   remove = async (id: string): Promise<IDefaultImageRead> => {
-    const item = await this.DefaultImage.findByIdAndDelete(id).populate<{
-      image: IImage;
-    }>(["image"]);
+    const item = await this.get(id);
     if (!item) throw new NotFoundError();
 
     return item;

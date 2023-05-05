@@ -13,6 +13,9 @@ const filterInputs = (
     <TcFormItem name='key' label='کلید'>
       <TcInput placeholder='کلید' />
     </TcFormItem>
+    <TcFormItem name='persianKey' label='کلید فارسی'>
+      <TcInput placeholder='کلید فارسی' />
+    </TcFormItem>
     <TcFormItem name='text' label='متن'>
       <TcInput placeholder='متن' />
     </TcFormItem>
@@ -22,7 +25,7 @@ const filterInputs = (
 const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
     { title: 'کلید', key: 'key', dataIndex: 'key' },
-
+    { title: 'کلید فارسی', key: 'persianKey', dataIndex: 'persianKey' },
     {
       title: 'متن',
       key: 'text',

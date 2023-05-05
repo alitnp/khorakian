@@ -129,6 +129,14 @@ class PageItemData {
         content = await Slider.find(filters).sort("index").populate(["image"]);
         totalItems = await Slider.countDocuments(filters);
       }
+      if (pi.type.title === "featured") {
+        content = await Post.find({ ...filters, featured: true })
+          .sort(sort)
+          .limit(100)
+          .populate("images")
+          .populate({ path: "videos", populate: { path: "thumbnail" } });
+        totalItems = await Post.countDocuments({ ...filters, featured: true });
+      }
       result.push({ ...pi, content, totalItems });
     }
 

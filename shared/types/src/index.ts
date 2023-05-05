@@ -405,6 +405,7 @@ export interface IPageItemType
 	extends DefaultModelProperties {
 	_id: string;
 	title: string;
+	persianTitle: string;
 }
 
 export interface IPageItemSorting
@@ -505,12 +506,14 @@ export interface IDefaultImage
 	_id: string;
 	key: string;
 	image?: string;
+	persianKey: string;
 }
 export interface IDefaultImageRead
 	extends DefaultModelProperties {
 	_id: string;
 	key: string;
 	image: IImage;
+	persianKey: string;
 }
 //#endregion
 /* # about me*/
@@ -555,6 +558,7 @@ export interface IDefaultText
 	extends DefaultModelProperties {
 	text: string;
 	key: string;
+	persianKey: string;
 }
 
 /*#end DefaultText */

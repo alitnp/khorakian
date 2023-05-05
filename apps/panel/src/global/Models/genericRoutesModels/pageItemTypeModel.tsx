@@ -15,12 +15,18 @@ const inputs: ReactNode = (
     <TcFormItem name='title' label='عنوان' rules={[{ required: true, message: 'عنوان وارد نشده.' }]}>
       <TcInput />
     </TcFormItem>
+    <TcFormItem name='persianTitle' label='عنوان فارسی' rules={[{ required: true, message: 'عنوان وارد نشده.' }]}>
+      <TcInput />
+    </TcFormItem>
   </>
 );
 
 const filterInputs = (
   <>
     <TcFormItem name='title' label='عنوان'>
+      <TcInput />
+    </TcFormItem>
+    <TcFormItem name='persianTitle' label='عنوان فارسی'>
       <TcInput />
     </TcFormItem>
   </>
@@ -31,6 +37,11 @@ const columns = (handleDelete: (_id: number) => void) => [
     title: 'عنوان',
     key: 'title',
     dataIndex: 'title',
+  },
+  {
+    title: 'عنوان فارسی',
+    key: 'persianTitle',
+    dataIndex: 'persianTitle',
   },
   {
     title: 'عملیات',

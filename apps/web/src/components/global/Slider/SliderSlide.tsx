@@ -18,7 +18,7 @@ const SliderSlide: FC<ISliderSlide> = ({
 	...props
 }) => {
 	return (
-		<div className="h-[500px] sm:h-[768px] bg-slate-500">
+		<div className="h-[500px] sm:h-[768px] max-h-[80vh] bg-slate-500">
 			<div className="relative flex items-center justify-center w-full h-full overflow-hidden">
 				<Image
 					src={(webConfig.domain as string) + imagePathName}

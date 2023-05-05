@@ -89,8 +89,8 @@ const PageITemUpdate: FC = () => {
           <TcFormItem name='type' label='نوع' rules={[{ required: true, message: 'نوع تعیین نشده' }]}>
             <TcSelectReduxSearch reducerName='pageItemType' getlist={getAllPageItemTypes} reducerListProperty='list' placeholder='نوع' />
           </TcFormItem>
-          <TcFormItem name='sorting' label='ترتیب'>
-            <TcSelectReduxSearch reducerName='pageItemSorting' getlist={getAllPageItemSortings} reducerListProperty='list' placeholder='ترتیب' />
+          <TcFormItem name='sorting' label='ترتیب محتوا'>
+            <TcSelectReduxSearch reducerName='pageItemSorting' getlist={getAllPageItemSortings} reducerListProperty='list' placeholder='ترتیب محتوا' />
           </TcFormItem>
           <TcFormItem name='style' label='ظاهر' rules={[{ required: true, message: 'نوع تعیین نشده' }]}>
             <TcSelectReduxSearch reducerName='pageItemStyle' getlist={getAllPageItemStyles} reducerListProperty='list' placeholder='ظاهر' />

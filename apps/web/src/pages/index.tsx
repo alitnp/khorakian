@@ -4,7 +4,6 @@ import {
 	IHistory,
 	IImage,
 	IPageItemConents,
-	IPostRead,
 	ISocialMediaRead,
 } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
@@ -26,6 +25,7 @@ import {
 	getHomePageItems,
 } from "@/components/home/homeFunctions";
 import Footer from "@/components/global/Footer/Footer";
+import HomeFeatured from "@/components/home/HomeFeatured";
 
 type homeProps = {
 	pageItems: IPageItemConents[];
@@ -101,6 +101,13 @@ const Home = ({
 							home_aboutMe_image={
 								defaultImages?.home_aboutMe_image
 							}
+						/>
+					);
+				if (pageItem.type.title === "featured")
+					return (
+						<HomeFeatured
+							title={pageItem.title}
+							posts={pageItem.content}
 						/>
 					);
 				if (pageItem.type.title === "timeLine")

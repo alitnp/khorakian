@@ -1,5 +1,6 @@
 import webConfig from "@/global/constants/webConfig";
 import { IImage, ISocialMediaRead } from "@my/types";
+import { Tooltip } from "antd";
 import Image from "next/image";
 import { FC, useMemo } from "react";
 
@@ -11,6 +12,14 @@ interface IFooter {
 	footer_additionalInfo_1?: string;
 	footer_additionalInfo_2?: string;
 }
+
+const quickAccessRoutes = [
+	{ title: "تازه ها", route: "/" },
+	{ title: "تجربیات", route: "/" },
+	{ title: "ایده ها و نظر ها", route: "/" },
+	{ title: "پیام به من", route: "/" },
+	{ title: "پروفایل", route: "/" },
+];
 
 const Footer: FC<IFooter> = ({
 	socialMedias,
@@ -25,29 +34,28 @@ const Footer: FC<IFooter> = ({
 			socialMedias.map((sm) => {
 				if (!sm.image.thumbnailPathname) return null;
 				return (
-					<a
-						href={sm.url}
-						target="_blank"
-						rel="noreferrer"
+					<Tooltip
+						title={sm.englishTitle || sm.title}
 						key={sm._id}
 					>
-						<Image
-							key={sm._id}
-							src={webConfig.domain + sm.image.thumbnailPathname}
-							width={sm.image.thumbnailWidth}
-							height={sm.image.thumbnailHeight}
-							alt={sm.image.title}
-						/>
-					</a>
+						<a href={sm.url} target="_blank" rel="noreferrer">
+							<Image
+								src={webConfig.domain + sm.image.thumbnailPathname}
+								width={sm.image.thumbnailWidth}
+								height={sm.image.thumbnailHeight}
+								alt={sm.image.title}
+							/>
+						</a>
+					</Tooltip>
 				);
 			}),
 		[]
 	);
 
 	return (
-		<div className="mb-6 k-container">
+		<footer className="my-6 k-container">
 			<div className="w-full px-8 py-4 border shadow-lg rounded-xl">
-				<div className="flex items-center justify-between">
+				<div className="flex flex-col items-center justify-between gap-y-8 lg:flex-row">
 					<div className="flex items-center gap-x-2">
 						{footer_image?.thumbnailPathname && (
 							<Image
@@ -69,7 +77,25 @@ const Footer: FC<IFooter> = ({
 							</span>
 						</div>
 					</div>
-					<div className="flex gap-x-4">{renderMedias}</div>
+					<div>
+						<span className="block mb-2">دسترسی سریع</span>
+						<nav>
+							<ul className="grid grid-cols-3 gap-2 text-sm text-k-grey-text-color">
+								{quickAccessRoutes.map((item) => (
+									<li
+										key={item.title}
+										className="cursor-pointer hover:underline"
+									>
+										{item.title}
+									</li>
+								))}
+							</ul>
+						</nav>
+					</div>
+					<div className="lg:min-w-[200px]">
+						<span className="block mb-2">صفحه های دیگر</span>
+						<div className="flex gap-x-4">{renderMedias}</div>
+					</div>
 				</div>
 				<div className="mt-4">
 					<span className="block text-xs">
@@ -80,7 +106,7 @@ const Footer: FC<IFooter> = ({
 					</span>
 				</div>
 			</div>
-		</div>
+		</footer>
 	);
 };
 

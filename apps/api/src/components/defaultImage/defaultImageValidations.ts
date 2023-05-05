@@ -21,22 +21,17 @@ export const createDefaultImageValidations = [
     minLength: 24,
     maxLength: 24,
   }),
+  ...existsStringValidation({
+    key: "persianKey",
+    name: "عنوان فارسی",
+    minLength: 24,
+    maxLength: 24,
+  }),
 ];
 
 export const updateDefaultImageValidations = [
   ...paramIdValidations,
-  ...existsStringValidation({
-    key: "key",
-    name: "کلید عکس",
-    minLength: 3,
-    maxLength: 55,
-  }),
-  ...existsStringValidation({
-    key: "image",
-    name: "شناسه عکس",
-    minLength: 24,
-    maxLength: 24,
-  }),
+  ...createDefaultImageValidations,
 ];
 
 export const deleteDefaultImageValidations = [...paramIdValidations];

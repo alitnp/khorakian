@@ -82,12 +82,14 @@ const DefaultTextUpdate = () => {
       <TcPageTitle title={' ویرایش ' + defaultTextModel.title} />
       <TcForm form={form} onFinish={handleSubmit} onValuesChange={changeHandler}>
         <TcFormWrapper>
-          <TcFormItem name='text' label='متن' rules={[{ required: true, message: 'متن تعیین نشده' }]}>
-            <TcTextarea placeholder='متن' />
-          </TcFormItem>
-
           <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
             <TcInput placeholder='کلید' />
+          </TcFormItem>
+          <TcFormItem name='persianKey' label='کلید فارسی' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
+            <TcInput placeholder='کلید فارسی' />
+          </TcFormItem>
+          <TcFormItem name='text' label='متن' rules={[{ required: true, message: 'متن تعیین نشده' }]}>
+            <TcTextarea placeholder='متن' />
           </TcFormItem>
         </TcFormWrapper>
       </TcForm>

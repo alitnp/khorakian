@@ -41,7 +41,7 @@ const columns = (handleDelete: (_id: number) => void) => [
     title: 'نوع',
     key: 'type',
     dataIndex: 'type',
-    render: (text: IPageItemType) => text?.title,
+    render: (text: IPageItemType) => text?.persianTitle,
   },
   {
     title: 'ترتیب',

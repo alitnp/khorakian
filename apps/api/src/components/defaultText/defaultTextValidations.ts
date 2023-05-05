@@ -12,6 +12,12 @@ export const createDefaultTextValidations = [
     minLength: 2,
     maxLength: 1000,
   }),
+  ...existsStringValidation({
+    key: "persianKey",
+    name: "عنوان فارسی",
+    minLength: 2,
+    maxLength: 1000,
+  }),
 ];
 
 export const getByKeyDefaultTextValidations = [
@@ -19,12 +25,8 @@ export const getByKeyDefaultTextValidations = [
 ];
 
 export const updateDefaultTextValidations = [
-  ...existsStringValidation({
-    key: "text",
-    name: "متن",
-    minLength: 2,
-    maxLength: 1000,
-  }),
+  ...paramIdValidations,
+  ...createDefaultTextValidations,
 ];
 
 export const deleteDefaultTextValidations = [...paramIdValidations];
