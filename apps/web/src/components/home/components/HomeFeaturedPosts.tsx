@@ -9,9 +9,9 @@ import {
 } from "react";
 
 interface IHomeFeaturedPosts {
-	activePost: IPostRead;
+	activePost: number;
 	activeCategory: string | undefined;
-	setActivePost: (_post: IPostRead) => void;
+	setActivePost: (_index: number) => void;
 	posts: IPostRead[];
 }
 
@@ -31,7 +31,7 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 	const renderPostsList = useMemo(
 		(): ReactNode[] =>
 			getPosts().map((post, index) => {
-				const isActive = activePost._id === post._id;
+				const isActive = index === activePost;
 				return (
 					<div
 						key={post._id}
@@ -39,8 +39,8 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 							isActive
 								? ""
 								: "hover:bg-k-grey-bg-1-color cursor-pointer"
-						} px-4`}
-						onClick={() => setActivePost(post)}
+						} px-4 z-30`}
+						onClick={() => setActivePost(index)}
 					>
 						<div
 							className={`${index !== 0 ? "border-t" : ""} py-2`}

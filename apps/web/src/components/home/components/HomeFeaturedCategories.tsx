@@ -6,7 +6,7 @@ interface IHomeFeaturedCategories {
 	activeCategory: string | undefined;
 	setActiveCategory: (_id: string | undefined) => void;
 	posts: IPostRead[];
-	setActivePost: (post: IPostRead) => void;
+	setActivePost: (index: number) => void;
 }
 
 const HomeFeaturedCategories: FC<
@@ -34,9 +34,10 @@ const HomeFeaturedCategories: FC<
 			} px-4 py-1 rounded-md cursor-pointer `;
 		catChips.push(
 			<div
+				key={"asdfasf"}
 				onClick={() => {
 					setActiveCategory(undefined);
-					setActivePost(posts[0]);
+					setActivePost(0);
 				}}
 				className={chipClassNames(activeCategory === undefined)}
 			>
@@ -46,13 +47,10 @@ const HomeFeaturedCategories: FC<
 		cats.map((item) =>
 			catChips.push(
 				<div
+					key={item._id}
 					onClick={() => {
 						setActiveCategory(item._id);
-						setActivePost(
-							posts.find(
-								(post) => post.postCategory._id === item._id
-							) as IPostRead
-						);
+						setActivePost(0);
 					}}
 					className={chipClassNames(activeCategory === item._id)}
 				>
@@ -64,7 +62,7 @@ const HomeFeaturedCategories: FC<
 	}, [activeCategory]);
 
 	return (
-		<div className="flex items-center justify-center gap-4 py-2 border rounded-lg shadow-sm">
+		<div className="flex items-center justify-center gap-4 py-2 border rounded-lg shadow-sm shrink-0">
 			{categoriyChips}
 		</div>
 	);

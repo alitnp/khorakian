@@ -106,6 +106,7 @@ const Home = ({
 				if (pageItem.type.title === "featured")
 					return (
 						<HomeFeatured
+							key={pageItem._id}
 							title={pageItem.title}
 							posts={pageItem.content}
 						/>

@@ -2,6 +2,11 @@ import webRoutes from "@/global/constants/routes";
 import { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import {
+	IExperienceRead,
+	IImage,
+	IPostRead,
+} from "@my/types";
 
 export const englishNumberOnly = (
 	input: string,
@@ -145,3 +150,16 @@ export const dateObjectFormatter = (
 		locale: persian_fa,
 		calendar: persian,
 	}).format(format);
+
+export const getImageFromContent = (
+	content: IPostRead | IExperienceRead
+): IImage | null => {
+	if (
+		content.images.length === 0 &&
+		content.videos.length === 0
+	)
+		return null;
+	if (!!content.videos[0]?.thumbnail)
+		return content.videos[0].thumbnail;
+	return content.images[0];
+};
