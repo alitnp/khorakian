@@ -60,7 +60,10 @@ const PostDetailSlider: FC<IProps> = ({
 					{images?.length > 0 &&
 						images?.map((img: any) => (
 							<SwiperSlide key={img._id}>
-								<img src={webConfig.domain + img.pathname} />
+								<img
+									className="w-full h-full"
+									src={webConfig.domain + img.pathname}
+								/>
 							</SwiperSlide>
 						))}
 				</Swiper>
