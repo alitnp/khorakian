@@ -2958,3 +2958,153 @@ method : GET,
 url : /api/v1/post/6454ecab78cd41012093d7dd,
 body : {}
 },
+{
+type : INFO,
+timestamp : 1683286039556,
+date : Fri May 05 2023 15:57:19 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/user/getCurrentUser,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683286052035,
+date : Fri May 05 2023 15:57:32 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post/643d3a8427487bbf4fb0e1b9,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683292295381,
+date : Fri May 05 2023 17:41:35 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/post/comment?pageSize=100&content=6427c8fa96c9e2ef396fe6c4,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683292896590,
+date : Fri May 05 2023 17:51:36 GMT+0430 (Iran Daylight Time),
+ip : ::ffff:127.0.0.1,
+Request : {
+method : GET,
+url : /api/v1/post/643d3a8427487bbf4fb0e1b9,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683297671214,
+date : Fri May 05 2023 19:11:11 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683297675474,
+date : Fri May 05 2023 19:11:15 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683297687306,
+date : Fri May 05 2023 19:11:27 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+{
+type : INFO,
+timestamp : 1683297722259,
+date : Fri May 05 2023 19:12:02 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"641fde14c6cab1ecf468fd1f"}
+},
+{
+type : INFO,
+timestamp : 1683297760812,
+date : Fri May 05 2023 19:12:40 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"641fde80c6cab1ecf468fd23"}
+},
+{
+type : INFO,
+timestamp : 1683297812374,
+date : Fri May 05 2023 19:13:32 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment,
+body : {"text":"asdfkhasdlfjh","user":"641fde80c6cab1ecf468fd23"}
+},
+{
+type : INFO,
+timestamp : 1683297822132,
+date : Fri May 05 2023 19:13:42 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"641fde80c6cab1ecf468fd23"}
+},
+{
+type : INFO,
+timestamp : 1683297837931,
+date : Fri May 05 2023 19:13:57 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1683297876950,
+date : Fri May 05 2023 19:14:36 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"fullName":"fatemeMalekpour","mobileNumber":"09105371653","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1683297889645,
+date : Fri May 05 2023 19:14:49 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"fullName":"fatemeMalekpour","mobileNumber":"09362077481","password":"12345678"}
+},
+{
+type : INFO,
+timestamp : 1683297931869,
+date : Fri May 05 2023 19:15:31 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"64551661e25bc3e134383ea5"}
+},

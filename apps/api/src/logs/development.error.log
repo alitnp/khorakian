@@ -1,0 +1,108 @@
+{
+type : ERROR,
+timestamp : 1683297671218,
+date : Fri May 05 2023 19:11:11 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683297675475,
+date : Fri May 05 2023 19:11:15 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683297687306,
+date : Fri May 05 2023 19:11:27 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : GET,
+url : /api/v1/user,
+body : {}
+},
+Response : {}
+},
+{
+type : ERROR,
+timestamp : 1683297722260,
+date : Fri May 05 2023 19:12:02 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"641fde14c6cab1ecf468fd1f"}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683297760813,
+date : Fri May 05 2023 19:12:40 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"641fde80c6cab1ecf468fd23"}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683297822133,
+date : Fri May 05 2023 19:13:42 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"641fde80c6cab1ecf468fd23"}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683297837941,
+date : Fri May 05 2023 19:13:57 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"firstName":"ali","lastName":"hamedani","mobileNumber":"09308297880","password":"12345678"}
+},
+Response : {"status":400,"message":"نام ونام خانوادگی ارسال نشده است.","details":{"fullName":"نام ونام خانوادگی ارسال نشده است."},"isSuccess":false,"data":null}
+},
+{
+type : ERROR,
+timestamp : 1683297876962,
+date : Fri May 05 2023 19:14:36 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/user,
+body : {"fullName":"fatemeMalekpour","mobileNumber":"09105371653","password":"12345678"}
+},
+Response : {"status":409,"message":"فردی با این شماره همراه در سیستم وجود دارد.","data":null,"isSuccess":false}
+},
+{
+type : ERROR,
+timestamp : 1683297931870,
+date : Fri May 05 2023 19:15:31 GMT+0430 (Iran Daylight Time),
+ip : ::1,
+Request : {
+method : POST,
+url : /api/v1/post/comment/6427c8fa96c9e2ef396fe6c4,
+body : {"text":"asdfkhasdlfjh","user":"64551661e25bc3e134383ea5"}
+},
+Response : {"status":401,"message":"لطفا ابتدا وارد حساب کاربری خود شوید.","data":null,"isSuccess":false}
+},

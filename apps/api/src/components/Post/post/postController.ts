@@ -1,6 +1,6 @@
 import { IPostComment, IPostLike, IPostRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
-import { getUserIdFromReq } from "@/utils/util";
+import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
 import PostData from "@/components/Post/post/postData";
 
 class PostController {
@@ -51,6 +51,15 @@ class PostController {
     );
     res.send(apiDataResponse<IPostRead>(result));
   };
+
+  // getAdminsComments = async (req: Req, res: Res) => {
+  //   const result = await this.data.getAdminsComments(
+  //     req,
+  //     getUserIsAdminFromReq(req),
+  //     getUserIdFromReq(req),
+  //   );
+  //   res.send(apiDataListResponse<IPostComment>(result));
+  // };
 
   reply = async (req: Req, res: Res) => {
     const result = await this.data.reply(
