@@ -19,9 +19,10 @@ import LikeData from "@/components/Like/likeData";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import CommentData from "@/components/comment/commentData";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
+import BadRequestError from "@/helpers/error/BadRequestError";
 
 class ExperienceData {
-  Experience: Model<IExperience, {}, {}, {}, any>;
+  Experience: Model<IExperience>;
   ExperienceCategory: ExperienceCategoryData;
   Video: VideoData;
   Image: ImageData;
@@ -29,7 +30,7 @@ class ExperienceData {
   ExperienceComment: CommentData<IExperienceComment>;
 
   constructor(
-    Experience: Model<IExperience, {}, {}, {}, any>,
+    Experience: Model<IExperience>,
     ExperienceCategory: ExperienceCategoryData,
     Video: VideoData,
     Image: ImageData,
@@ -110,7 +111,7 @@ class ExperienceData {
   };
 
   get = async (id: string, userId?: string): Promise<IExperienceRead> => {
-    const experience = (await this.Experience.findById(id)
+    const experience = await this.Experience.findById(id)
       .populate<{ images: IImage[] }>("images")
       .populate<{ videos: IVideoRead[] }>({
         path: "videos",
@@ -119,12 +120,22 @@ class ExperienceData {
       .populate<{ experienceCategory: IExperienceCategory }>(
         "experienceCategory",
       )
-      .lean()) as IExperienceRead;
+      .lean();
 
     if (!experience) throw new NotFoundError();
     await this.Experience.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
-    const experienceRead = { ...experience, liked: false };
+    try {
+      JSON.parse(experience.article);
+    } catch (_error) {
+      throw new BadRequestError("مقاله ارسالی قابل پردازش نیست");
+    }
+
+    const experienceRead: IExperienceRead = {
+      ...experience,
+      liked: false,
+      article: JSON.parse(experience.article),
+    };
     if (userId)
       experienceRead.liked = await this.ExperienceLike.isUserLiked(id, userId);
 
@@ -138,6 +149,7 @@ class ExperienceData {
     videos,
     text,
     featured,
+    article,
   }: IExperienceCreate): Promise<IExperienceRead> => {
     await this.ExperienceCategory.get(experienceCategory);
     const existingImageIds = [];
@@ -145,6 +157,12 @@ class ExperienceData {
       const imageId = images[i];
       const existingImage = await this.Image.get(imageId);
       if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
+
+    try {
+      JSON.parse(article);
+    } catch (_error) {
+      throw new BadRequestError("مقاله ارسالی قابل پردازش نیست");
     }
 
     const existingVideoIds = [];
@@ -164,7 +182,9 @@ class ExperienceData {
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      article,
     });
+
     await experience.save();
     return await this.get(experience._id);
   };
@@ -177,6 +197,7 @@ class ExperienceData {
     videos,
     text,
     featured,
+    article,
   }: IExperienceCreate & { _id: string }): Promise<IExperienceRead> => {
     await this.ExperienceCategory.get(experienceCategory);
 
@@ -194,6 +215,12 @@ class ExperienceData {
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
 
+    try {
+      JSON.parse(article);
+    } catch (_error) {
+      throw new BadRequestError("مقاله ارسالی قابل پردازش نیست");
+    }
+
     const experience = await this.Experience.findByIdAndUpdate(
       _id,
       {
@@ -204,6 +231,7 @@ class ExperienceData {
           videos: existingVideoIds,
           text,
           featured: !!featured,
+          article,
         },
       },
       { new: true },

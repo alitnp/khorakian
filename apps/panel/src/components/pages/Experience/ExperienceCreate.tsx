@@ -4,7 +4,7 @@ import TcCard from 'components/UI/Card/TcCard';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import TcPageTitle from 'components/UI/PageTitle/TcPageTitle';
 import useApiCatcher from 'global/helperFunctions/useApiCatcher';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AddImage from 'components/UI/Image/AddImage';
 import TcForm from 'components/UI/Form/TcForm';
 import { Form } from 'antd';
@@ -20,6 +20,7 @@ import { handleApiThen } from 'global/helperFunctions/handleApiThen';
 import { useHistory } from 'react-router';
 import routes from 'global/Constants/routes';
 import experienceModel from 'global/Models/experienceModel';
+import RichTextEditor from 'components/UI/RichText/RichTextEditor';
 
 const ExperienceCreate = () => {
   //states
@@ -32,6 +33,7 @@ const ExperienceCreate = () => {
   const [form] = Form.useForm();
   const dispatch: AppDispatch = useDispatch();
   const { push } = useHistory();
+  const richTextRef: any = useRef();
 
   //effect
   useEffect(() => {}, []);
@@ -58,6 +60,9 @@ const ExperienceCreate = () => {
 
       <TcDevider>عکس</TcDevider>
       <AddImage images={images} setImages={setImages} />
+
+      <TcDevider>مقاله</TcDevider>
+      <RichTextEditor editorRef={richTextRef} initialData={undefined} />
 
       <TcFormButtons noCancel submitButtonText='ثبت' onSubmit={() => form.submit()} />
       {loading && <TcCoverLoading />}

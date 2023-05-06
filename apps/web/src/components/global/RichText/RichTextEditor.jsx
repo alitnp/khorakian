@@ -12,26 +12,39 @@ import ColorPlugin from 'editorjs-text-color-plugin';
 import { useCallback, useState } from 'react';
 import Delimiter from '@editorjs/delimiter';
 import ApiService, { DOMAIN } from 'config/API/ApiService';
+import endpointUrls from 'global/Constants/endpointUrls';
 
 export const EDITOR_JS_TOOLS = {
   paragraph: {
     class: Paragraph,
-    inlineToolbar: ['bold', 'italic', 'Color'],
+    inlineToolbar: [
+      // 'bold',
+      // 'italic',
+      // 'Color'
+    ],
     tunes: ['textAlignment'],
   },
   header: {
     class: Header,
-    inlineToolbar: ['italic', 'Color'],
+    // inlineToolbar: ['italic', 'Color'],
     tunes: ['textAlignment'],
   },
   table: {
     class: Table,
-    inlineToolbar: ['bold', 'italic', 'Color'],
+    inlineToolbar: [
+      // 'bold',
+      // 'italic',
+      // 'Color'
+    ],
     // tunes: ['textAlignment'],
   },
   list: {
     class: List,
-    inlineToolbar: ['bold', 'italic', 'Color'],
+    inlineToolbar: [
+      // 'bold',
+      // 'italic',
+      // 'Color'
+    ],
   },
   image: {
     class: Image,
@@ -46,21 +59,33 @@ export const EDITOR_JS_TOOLS = {
           // your own uploading logic here
           const formData = new FormData();
           formData.append('image', file);
-          return ApiService.post('', formData).then((res) => {
+          return ApiService.post(endpointUrls.uploadDocumentImage, formData).then((res) => {
             return {
               success: 1,
               file: {
                 url: DOMAIN + res.data.path,
+                // any other image data you want to store, such as width, height, color, extension, etc
               },
             };
           });
         },
       },
+      // endpoints: {
+      //   byFile: BASE_URL + endpointUrls.uploadProcessImage,
+      //   //byUrl: 'http://localhost:8008/fetchUrl',
+      // },
+      // additionalRequestHeaders: {
+      //   Authorization: cookie.get('sessionid'),
+      // },
     },
   },
   alert: {
     class: Alert,
-    inlineToolbar: ['bold', 'italic', 'Color'],
+    inlineToolbar: [
+      // 'bold',
+      // 'italic',
+      // 'Color'
+    ],
     config: {
       defaultType: 'primary',
       messagePlaceholder: 'متن پیام را وارد کنید',
@@ -72,7 +97,11 @@ export const EDITOR_JS_TOOLS = {
   // marker: Marker,
   checklist: {
     class: CheckList,
-    inlineToolbar: ['bold', 'italic', 'Color'],
+    inlineToolbar: [
+      // 'bold',
+      // 'italic',
+      // 'Color'
+    ],
     // tunes: ['textAlignment'],
   },
   Color: {
@@ -91,9 +120,9 @@ export const EDITOR_JS_TOOLS = {
     },
   },
 };
-const RichTextEditor = ({ editorRef, initialData }) => {
+const RichTextEditor = ({ editorRef, initialData = null }) => {
   //states
-  const [data, setData] = useState(initialData || null);
+  const [data, setData] = useState(initialData);
 
   const ReactEditorJS = createReactEditorJS();
 

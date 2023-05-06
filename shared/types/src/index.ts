@@ -212,6 +212,7 @@ export interface IExperience
 	viewCount: number;
 	likeCount: number;
 	commentCount: number;
+	article: string;
 }
 export interface IExperienceCreate
 	extends DefaultModelProperties {
@@ -221,6 +222,7 @@ export interface IExperienceCreate
 	videos: string[];
 	experienceCategory: string;
 	featured: boolean;
+	article: string;
 }
 
 export interface IExperienceRead
@@ -236,6 +238,7 @@ export interface IExperienceRead
 	likeCount: number;
 	commentCount: number;
 	liked?: boolean;
+	article: Record<string, any>;
 }
 
 export interface IExperienceLike

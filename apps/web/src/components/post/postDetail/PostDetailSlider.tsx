@@ -1,22 +1,13 @@
-import "swiper/css";
-import "swiper/css/autoplay";
 import { FC, useState } from "react";
 import React from "react";
-import {
-	Swiper,
-	SwiperSlide,
-	SwiperProps,
-} from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
+import { SwiperSlide, SwiperProps } from "swiper/react";
 import "swiper/css/free-mode";
-import "swiper/css/navigation";
 import "swiper/css/thumbs";
-// import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { FreeMode, Thumbs } from "swiper";
 import webConfig from "@/global/constants/webConfig";
 import Image from "next/image";
 import { IImage } from "@my/types";
+import KSwiper from "@/components/global/KSwipper/KSwiper";
 
 interface IProps extends SwiperProps {
 	images: IImage[];
@@ -25,70 +16,86 @@ interface IProps extends SwiperProps {
 const PostDetailSlider: FC<IProps> = ({ images }) => {
 	//state
 	const [thumbsSwiper, setThumbsSwiper] = useState<any>();
-	//hooks
-
-	console.log(images);
+	const [activeIndex, setActiveIndex] = useState<number>(0);
 
 	return (
 		<>
-			<div className="select-none bg-k-text-color">
-				<Swiper
+			<div className="select-none bg-k-text-color ">
+				<KSwiper
+					observer
+					observeParents
 					spaceBetween={0}
-					navigation={true}
+					onSlideChange={(swiper: any) =>
+						setActiveIndex(swiper.activeIndex)
+					}
 					thumbs={{
 						swiper:
 							thumbsSwiper && !thumbsSwiper.destroyed
 								? thumbsSwiper
 								: null,
 					}}
-					modules={[FreeMode, Navigation, Thumbs]}
+					modules={[FreeMode, Thumbs]}
 				>
 					{images?.length > 0 &&
 						images?.map((img) => (
 							<SwiperSlide
 								key={img._id}
-								className="relative w-full h-[500px] max-h-[80vh] "
+								className="relative w-full h-[300px] md:h-[500px] max-h-[80vh] overflow-hidden"
 							>
 								<Image
-									className="object-contain w-full h-[500px] max-h-[80vh] object-center"
+									className="z-0 object-cover object-center w-full h-[300px] md:h-[500px] max-h-[80vh] scale-110 brightness-50 blur-lg"
 									src={webConfig.domain + img.pathname}
 									width={img.width}
 									height={img.height}
 									alt={img.title}
 								/>
+								<div className="absolute top-0 left-0 z-20 w-full h-full ">
+									<Image
+										className="object-contain shadow-lg w-full h-[300px] md:h-[500px] max-h-[80vh] object-center"
+										src={webConfig.domain + img.pathname}
+										width={img.width}
+										height={img.height}
+										alt={img.title}
+									/>
+								</div>
 							</SwiperSlide>
 						))}
-				</Swiper>
+				</KSwiper>
 
-				<Swiper
-					onSwiper={setThumbsSwiper}
-					spaceBetween={0}
-					slidesPerView={4}
-					freeMode={true}
-					watchSlidesProgress={true}
-					modules={[FreeMode, Navigation, Thumbs]}
-					dir="rtl"
-					pagination={{
-						clickable: true,
-						dynamicBullets: true,
-					}}
-				>
-					{images?.length > 0 &&
-						images?.map((img) => (
-							<SwiperSlide
-								key={img._id}
-								className="h-[200px] max-h-[20vh]"
-							>
-								<Image
-									className="object-contain w-full h-[200px] max-h-[20vh] object-center"
-									src={webConfig.domain + img.pathname}
-									width={img.width}
-									height={img.height}
-									alt={img.title}
-								/>
-							</SwiperSlide>
-						))}
-				</Swiper>
+				<div className="!w-fit mx-auto">
+					<KSwiper
+						onSwiper={setThumbsSwiper}
+						spaceBetween={8}
+						slidesPerView={"auto"}
+						watchSlidesProgress={true}
+						modules={[Thumbs]}
+						dir="rtl"
+						pagination={{
+							clickable: true,
+							dynamicBullets: true,
+						}}
+					>
+						{images?.length > 0 &&
+							images?.map((img, index) => (
+								<SwiperSlide
+									key={img._id}
+									className={`h-[100px] max-h-[20vh] !w-fit border-2 rounded-lg overflow-hidden ${
+										index === activeIndex
+											? " border-k-secondary-color"
+											: "border-transparent"
+									}`}
+								>
+									<Image
+										className="object-contain w-fit h-[100px] max-h-[20vh] object-center"
+										src={webConfig.domain + img.pathname}
+										width={img.width}
+										height={img.height}
+										alt={img.title}
+									/>
+								</SwiperSlide>
+							))}
+					</KSwiper>
+				</div>
 			</div>
 		</>
 	);
