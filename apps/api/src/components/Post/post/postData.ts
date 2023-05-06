@@ -271,6 +271,22 @@ class PostData {
     return await this.get(post._id);
   };
 
+  // getAdminsComments = async (
+  //   req: Req,
+  //   isAdmin?: boolean,
+  //   userId?: string,
+  // ): Promise<ApiDataListResponse<IPostComment>> => {
+  //     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
+  //   if (!userId) throw new NotFoundError();
+  //    if (isAdmin) {
+  //      searchQuery.user._id = userId;
+  //    }
+
+  //   return await getAllData<IPostComment>(searchQuery,
+  //     req,
+  //   this.PostComment);
+  // };
+
   reply = async (
     commentId: string,
     userId: string | undefined,

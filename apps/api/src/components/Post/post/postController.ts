@@ -52,6 +52,15 @@ class PostController {
     res.send(apiDataResponse<IPostRead>(result));
   };
 
+  // getAdminsComments = async (req: Req, res: Res) => {
+  //   const result = await this.data.getAdminsComments(
+  //     req,
+  //     getUserIsAdminFromReq(req),
+  //     getUserIdFromReq(req),
+  //   );
+  //   res.send(apiDataListResponse<IPostComment>(result));
+  // };
+
   reply = async (req: Req, res: Res) => {
     const result = await this.data.reply(
       req.params.id,
