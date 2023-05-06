@@ -5,9 +5,13 @@ import TabsContent from '@/components/post/postDetail/comments/TabsContent';
 import webEndpointUrls from '@/global/constants/webEndpointUrls';
 import WebApiService, { errorResponse } from '@/global/utils/WebApiService';
 import { webApiCatch, webApiThenGeneric } from '@/global/utils/webApiThen';
-import { ApiDataResponse, IPostComment } from '@my/types';
+import { ApiDataResponse, IPostComment, IPostCommentRead } from '@my/types';
 
-const AllCommentTabs: FC = () => {
+interface IProps {
+  comments: IPostCommentRead;
+}
+
+const AllCommentTabs: FC<IProps> = ({ comments }) => {
   // state
   const [loading, setLoading] = useState<boolean>(false);
   const [commentsList, setCommentsList] = useState<IPostComment>();
@@ -15,6 +19,7 @@ const AllCommentTabs: FC = () => {
   //effect
   useEffect(() => {
     getAllComments;
+    console.log(comments);
   }, []);
 
   const onChange = (key: string) => {
