@@ -10,11 +10,7 @@ import {
   IPostRead,
   IVideoRead,
 } from "@my/types";
-import {
-  defaultSearchQueries,
-  getAllData,
-  paginationProps,
-} from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";

@@ -1,6 +1,6 @@
 import { IPostComment, IPostLike, IPostRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
-import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
+import { getUserIdFromReq } from "@/utils/util";
 import PostData from "@/components/Post/post/postData";
 
 class PostController {
