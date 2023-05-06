@@ -1,6 +1,10 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse } from "@my/types";
-import { defaultSearchQueries, getAllData } from "@/data/globalData";
+import {
+  defaultSearchQueries,
+  getAllData,
+  paginationProps,
+} from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class CommentData<commentModel> {
@@ -17,6 +21,7 @@ class CommentData<commentModel> {
     const populate = ["replies.user"];
     if (req.query.content) populate.push("user");
     if (req.query.user) populate.push("content");
+
     if (!req.query.content && !req.query.user)
       populate.push(...["user", "content"]);
 
@@ -26,6 +31,39 @@ class CommentData<commentModel> {
       this.Comment,
       populate,
     );
+  };
+
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<commentModel>> => {
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
+    if (req.query.content) searchQuery.content = req.query.content;
+    const { pageNumber, totalItems, totalPages, sortBy, desc } =
+      await paginationProps(searchQuery, req, this.Comment);
+
+    const data = await this.Comment.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $match: { "user.isAdmin": true },
+      },
+    ]);
+
+    return {
+      data,
+      pageNumber,
+      pageSize: 100,
+      totalItems,
+      totalPages,
+      sortBy,
+      desc: desc === -1 ? true : false,
+    };
   };
 
   isUserCommented = async (

@@ -39,6 +39,8 @@ const controller = new PostController(data);
 router.get("/like", controller.getAllLikes);
 //get all post comments
 router.get("/comment", controller.getAllComments);
+//get all admin post comments
+router.get("/adminComments", controller.getAdminComments);
 // get a signgle post with id
 router.get("/:id", validate(getPostValidations), controller.get);
 // get a list of posts

@@ -18,6 +18,11 @@ class PostController {
     res.send(apiDataListResponse<IPostComment>(result));
   };
 
+  getAdminComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAdminComments(req);
+    res.send(apiDataListResponse<IPostComment>(result));
+  };
+
   getAllLikes = async (req: Req, res: Res) => {
     const result = await this.data.getAllLikes(req);
     res.send(apiDataListResponse<IPostLike>(result));
