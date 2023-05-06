@@ -13,12 +13,25 @@ export const getServerSideProps: GetServerSideProps =
 			ApiDataResponse<IPostRead>
 		>(
 			webEndpointUrls.getPostDetail(
-				(context?.params?.id as string) || "asdf"
+				context?.params?.id as string
 			),
 			context.req
 		);
+		// const comments = await serverSideFetch<
+		// 	ApiListDataResponse<IPostCommentRead>
+		// >(
+		// 	webEndpointUrls.getPostDetail(
+		// 		(context?.params?.id as string) + "?pageSize=50&postId="
+		// 	),
+		// 	context.req
+		// );
 
-		return { props: { post: post.data } };
+		return {
+			props: {
+				post: post.data,
+				// comments: comments
+			},
+		};
 	};
 
 const PostDetail: FC<{ post: IPostRead }> = ({ post }) => {

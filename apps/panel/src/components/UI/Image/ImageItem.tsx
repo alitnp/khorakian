@@ -14,15 +14,15 @@ interface IImageThumbnail {
 const ImageItem: FC<IImageThumbnail> = ({ image, onSelect, onRemove, size }) => {
   const imagePathname = useMemo<string>(() => {
     if (!image) return '';
-    if (size === 'large') return DOMAIN + image.pathname;
-    if (image.thumbnailPathname) return DOMAIN + image.thumbnailPathname;
-    return DOMAIN + image.pathname;
+    if (size === 'large') return DOMAIN + image?.pathname;
+    if (image.thumbnailPathname) return DOMAIN + image?.thumbnailPathname;
+    return DOMAIN + image?.pathname;
   }, [image]);
 
   return (
     <div className={size === 'large' ? 'w-80' : 'w-36'}>
       {!onSelect && !onRemove && (
-        <a href={DOMAIN + image.pathname} target='_blank' rel='noreferrer' className='cursor-zoom-in'>
+        <a href={DOMAIN + image?.pathname} target='_blank' rel='noreferrer' className='cursor-zoom-in'>
           <img src={imagePathname} width={size === 'large' ? 320 : 144} className='object-cover object-center rounded-lg' />
         </a>
       )}

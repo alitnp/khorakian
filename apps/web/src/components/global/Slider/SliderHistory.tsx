@@ -5,12 +5,6 @@ interface ISliderHistory {
 	histories: IHistory[];
 }
 
-const data = [
-	{ label: "مشاور مجلس شورای اسلامی", from: 1388, to: 1392 },
-	{ label: "مشاور شورای مجلس ", from: 1386, to: 1392 },
-	{ label: "مشاور مجلس اسلامی", from: 1385, to: 1392 },
-];
-
 const SliderHistory: FC<ISliderHistory> = ({
 	histories,
 }) => {
@@ -32,10 +26,10 @@ const SliderHistory: FC<ISliderHistory> = ({
 		<div className="relative z-20 py-3 sm:rounded-tr-lg sm:bottom-0 sm:left-0 sm:px-4 sm:py-6 sm:absolute bg-k-dark-bg-color sm:bg-k-faded-dark-bg-color sm:w-64">
 			<div className="text-center text-k-opposite-text-color sm:flex">
 				<div className="w-full">
-					<p>{histories[activeIndex].title}</p>
+					<p>{histories[activeIndex]?.title}</p>
 					<p className="font-bold text-center text-k-primary-color">
-						{histories[activeIndex].from} -{" "}
-						{histories[activeIndex].to}
+						{histories[activeIndex]?.from} -{" "}
+						{histories[activeIndex]?.to}
 					</p>
 				</div>
 				<div className="flex justify-center gap-2 mt-2 sm:mt-0 sm:flex-col">
