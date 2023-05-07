@@ -14,18 +14,18 @@ const webRoutes = {
 		private: false,
 	},
 	experienceDetail: {
-		path: "/experiencedetail",
+		path: "/experience",
 		private: false,
 	},
 	userExperienceDetail: {
-		path: "/userexperiencedetail",
+		path: "/userexperience",
 		private: false,
 	},
 
 	//idea
 	idea: { path: "/idea", private: false },
 	ideaAllContents: { path: "/ideacontents", private: false },
-	ideaDetail: { path: "/ideadetail", private: false },
+	ideaDetail: { path: "/idead", private: false },
 };
 
 export default webRoutes;

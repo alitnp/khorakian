@@ -15,7 +15,7 @@ export const experienceSchema = new Schema<IExperience>({
   },
   article: {
     type: String,
-    maxlength: [1000000, "حجم متن ارسال شده بیش از حد مجاز است"],
+    maxlength: [500000, "حجم متن ارسال شده بیش از حد مجاز است"],
     required: true,
   },
   images: [{ type: Schema.Types.ObjectId, ref: "Image" }],
