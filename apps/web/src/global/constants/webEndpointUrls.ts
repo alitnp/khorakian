@@ -20,7 +20,7 @@ const webEndpointUrls = {
   //P
   pageItemWithContent: '/pageItem/getWithContents',
   getPostDetail: (id: string) => '/post/' + id,
-  getAllPostComments: (id: string) => '/post/comment/' + id,
+  getAllPostComments: '/post/comment',
 
   //S
   socialMediaGetAll: '/socialMedia',
