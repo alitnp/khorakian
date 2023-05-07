@@ -31,7 +31,7 @@ const HomeAboutMeCard: FC<IHomeAboutMeCard> = ({
 		(post: IPostRead): imageDetail => {
 			let image: imageDetail = undefined;
 			if (
-				post.videos.length > 0 &&
+				post?.videos?.length > 0 &&
 				!!post.videos[0]?.thumbnail?.thumbnailPathname
 			) {
 				const info: IImage = post.videos[0].thumbnail;
@@ -39,7 +39,7 @@ const HomeAboutMeCard: FC<IHomeAboutMeCard> = ({
 					pathname: info.thumbnailPathname as string,
 					alt: info.title,
 				};
-			} else if (post.images.length > 0) {
+			} else if (post?.images?.length > 0) {
 				const info: IImage = post.images[0];
 				image = {
 					pathname: info.thumbnailPathname as string,

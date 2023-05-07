@@ -36,10 +36,10 @@ interface Ilogin {
 const Login: FC<Ilogin> = ({ image }) => {
 	return (
 		<LoginRegisterLayout
-			pathname={image.pathname}
-			height={image.height}
-			width={image.width}
-			imageAlt={image.title}
+			pathname={image?.pathname}
+			height={image?.height}
+			width={image?.width}
+			imageAlt={image?.title}
 		/>
 	);
 };

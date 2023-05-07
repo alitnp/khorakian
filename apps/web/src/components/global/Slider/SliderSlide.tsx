@@ -20,13 +20,15 @@ const SliderSlide: FC<ISliderSlide> = ({
 	return (
 		<div className="h-[500px] sm:h-[768px] max-h-[80vh] bg-slate-500">
 			<div className="relative flex items-center justify-center w-full h-full overflow-hidden">
-				<Image
-					src={(webConfig.domain as string) + imagePathName}
-					alt={imageAlt}
-					width={width}
-					height={height}
-					className="object-cover object-center w-full h-full mx-auto "
-				/>
+				{imagePathName && (
+					<Image
+						src={(webConfig.domain as string) + imagePathName}
+						alt={imageAlt}
+						width={width}
+						height={height}
+						className="object-cover object-center w-full h-full mx-auto "
+					/>
+				)}
 				{/* <Image
 					src={(webConfig.domain as string) + imagePathName}
 					alt={imageAlt}

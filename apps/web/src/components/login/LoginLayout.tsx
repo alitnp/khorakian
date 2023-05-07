@@ -47,13 +47,17 @@ const LoginRegisterLayout: FC<Ilogin> = ({
 	return (
 		<>
 			<div className="relative">
-				<Image
-					src={webConfig.domain + pathname}
-					width={width}
-					height={height}
-					alt={imageAlt}
-					className="object-cover w-full h-screen"
-				/>
+				<div className="h-screen">
+					{pathname && (
+						<Image
+							src={webConfig.domain + pathname}
+							width={width}
+							height={height}
+							alt={imageAlt}
+							className="object-cover w-full h-screen"
+						/>
+					)}
+				</div>
 				<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
 				<div className="absolute top-0 left-0 w-full h-full bg-slate-900/30" />
 				<div className="absolute top-0 left-0 flex items-center justify-center w-full h-full k-container ">

@@ -254,6 +254,14 @@ class PostData {
     return comments;
   };
 
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<IPostComment>> => {
+    const comments = await this.PostComment.getAdminComments(req);
+
+    return comments;
+  };
+
   comment = async (
     postId: string,
     userId: string | undefined,

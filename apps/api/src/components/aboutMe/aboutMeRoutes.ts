@@ -21,6 +21,7 @@ import VideoData from "@/components/video/videoData";
 import PostCategoryData from "@/components/Post/postCategory/postCategoryData";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
+import { User } from "@/components/user/userModel";
 
 const router = Router();
 const data = new AboutMeData(
@@ -31,7 +32,7 @@ const data = new AboutMeData(
     new VideoData(Video, new ImageData(Image)),
     new ImageData(Image),
     new LikeData(PostLike),
-    new CommentData(PostComment),
+    new CommentData(PostComment, User),
   ),
 );
 
