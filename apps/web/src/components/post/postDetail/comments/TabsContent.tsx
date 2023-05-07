@@ -1,7 +1,12 @@
 import EachComment from '@/components/post/postDetail/comments/EachComment';
+import { IPostCommentRead } from '@my/types';
 import React, { FC } from 'react';
 
-const TabsContent: FC = () => (
+interface IProps {
+  comments: IPostCommentRead;
+}
+
+const TabsContent: FC<IProps> = ({ comments }) => (
   <div className="p-5">
     <span className="text-sm ">
       لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
@@ -18,10 +23,10 @@ const TabsContent: FC = () => (
     <hr className="my-5" />
 
     <div className="my-4">
-      <EachComment />
+      <EachComment comments={comments} />
       {/* //reply */}
       <div className="mr-10 my-5">
-        <EachComment />
+        <EachComment comments={comments} />
       </div>
       <hr />
     </div>

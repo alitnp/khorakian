@@ -1,6 +1,10 @@
+import { IPostCommentRead } from '@my/types';
 import React, { FC } from 'react';
 
-const EachComment: FC = () => (
+interface IProps {
+  comments: IPostCommentRead;
+}
+const EachComment: FC<IProps> = ({ comments }) => (
   <div className="grid m-3">
     <div className="flex items-center">
       <img

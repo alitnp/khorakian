@@ -14,11 +14,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
 
   const comments = await serverSideFetch<ApiDataResponse<IPostCommentRead>>(
-    webEndpointUrls.getAllPostComments(
-      (context?.params?.id as string) +
-        '?pageSize=50&postId=' +
-        context?.params?.id
-    ),
+    webEndpointUrls.getAllPostComments(context?.params?.id as string) +
+      '?pageSize=50&postId=' +
+      context?.params?.id,
     context.req
   );
 

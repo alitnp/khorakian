@@ -13,12 +13,12 @@ interface IProps {
 
 const AllCommentTabs: FC<IProps> = ({ comments }) => {
   // state
-  const [loading, setLoading] = useState<boolean>(false);
-  const [commentsList, setCommentsList] = useState<IPostComment>();
+  // const [loading, setLoading] = useState<boolean>(false);
+  // const [commentsList, setCommentsList] = useState<IPostComment>();
 
   //effect
   useEffect(() => {
-    getAllComments;
+    // getAllComments;
     console.log(comments);
   }, []);
 
@@ -27,24 +27,24 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
   };
 
   //func
-  const getAllComments = async (id: string) => {
-    setLoading(true);
-    await WebApiService.get(webEndpointUrls.getAllPostComments)
-      .then((res: ApiDataResponse<IPostComment>) =>
-        webApiThenGeneric<ApiDataResponse<IPostComment>, IPostComment>({
-          res,
-          onSuccessData: (data) => {
-            setCommentsList(data);
-          },
-          notifFail: true,
-          notifSuccess: true,
-        })
-      )
-      .catch(() => webApiCatch(errorResponse));
-    setLoading(false);
-  };
+  // const getAllComments = async (id: string) => {
+  //   setLoading(true);
+  //   await WebApiService.get(webEndpointUrls.getAllPostComments)
+  //     .then((res: ApiDataResponse<IPostComment>) =>
+  //       webApiThenGeneric<ApiDataResponse<IPostComment>, IPostComment>({
+  //         res,
+  //         onSuccessData: (data) => {
+  //           setCommentsList(data);
+  //         },
+  //         notifFail: true,
+  //         notifSuccess: true,
+  //       })
+  //     )
+  //     .catch(() => webApiCatch(errorResponse));
+  //   setLoading(false);
+  // };
 
-  console.log(commentsList);
+  console.log(comments);
 
   return (
     <Tabs
@@ -54,9 +54,9 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
       items={new Array(3).fill(null).map((_, i) => {
         const id = String(i + 1);
         return {
-          label: <TabsLabel />,
+          label: <TabsLabel user={comments?.user} />,
           key: id,
-          children: <TabsContent />,
+          children: <TabsContent comments={comments} />,
         };
       })}
     />

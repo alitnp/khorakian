@@ -1,6 +1,11 @@
+import { IUser, IUserRead } from '@my/types';
 import React, { FC } from 'react';
 
-const TabsLabel: FC = () => (
+interface IProps {
+  user: IUserRead;
+}
+
+const TabsLabel: FC<IProps> = ({ user }) => (
   <div className="flex items-center p-3">
     <img
       className="rounded-full w-12 h-12 mx-2"
