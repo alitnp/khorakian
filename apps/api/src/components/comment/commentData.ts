@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse } from "@my/types";
+import { ApiDataListResponse, IUser } from "@my/types";
 import {
   defaultSearchQueries,
   getAllData,
@@ -9,9 +9,11 @@ import { NotFoundError } from "@/helpers/error";
 
 class CommentData<commentModel> {
   Comment: Model<commentModel>;
+  User: Model<IUser>;
 
-  constructor(Comment: Model<commentModel>) {
+  constructor(Comment: Model<commentModel>, User: Model<IUser>) {
     this.Comment = Comment;
+    this.User = User;
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<commentModel>> => {
@@ -40,20 +42,17 @@ class CommentData<commentModel> {
     if (req.query.content) searchQuery.content = req.query.content;
     const { pageNumber, totalItems, totalPages, sortBy, desc } =
       await paginationProps(searchQuery, req, this.Comment);
-
-    const data = await this.Comment.aggregate([
-      {
-        $lookup: {
-          from: "users",
-          localField: "user",
-          foreignField: "_id",
-          as: "user",
+    console.log(await this.User.find({ isAdmin: true }).distinct("_id"));
+    const data = await this.Comment.find({
+      $and: [
+        { content: req.query.content },
+        {
+          user: {
+            $in: await this.User.find({ isAdmin: true }).distinct("_id"),
+          },
         },
-      },
-      {
-        $match: { "user.isAdmin": true },
-      },
-    ]);
+      ],
+    }).populate(["user", "content"]);
 
     return {
       data,

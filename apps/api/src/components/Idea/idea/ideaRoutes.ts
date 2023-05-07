@@ -18,13 +18,14 @@ import auth from "@/middlewares/athenticate";
 import isAdmin from "@/middlewares/isAdmin";
 import { paramIdValidations } from "@/validation/globalValidations";
 import { Router } from "express";
+import { User } from "@/components/user/userModel";
 
 const router = Router();
 const data = new IdeaData(
   Idea,
   new IdeaCategoryData(IdeaCategory),
   new LikeData(IdeaLike),
-  new CommentData(IdeaComment),
+  new CommentData(IdeaComment, User),
 );
 
 const controller = new IdeaController(data);

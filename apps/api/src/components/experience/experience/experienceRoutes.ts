@@ -22,6 +22,7 @@ import {
   getExperienceValidations,
   updateExperienceValidations,
 } from "@/components/experience/experience/experienceValidations";
+import { User } from "@/components/user/userModel";
 
 const router = Router();
 const data = new ExperienceData(
@@ -30,7 +31,7 @@ const data = new ExperienceData(
   new VideoData(Video, new ImageData(Image)),
   new ImageData(Image),
   new LikeData(ExperienceLike),
-  new CommentData(ExperienceComment),
+  new CommentData(ExperienceComment, User),
 );
 const controller = new ExperienceController(data);
 

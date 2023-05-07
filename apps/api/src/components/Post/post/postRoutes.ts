@@ -22,6 +22,7 @@ import {
   getPostValidations,
   updatePostValidations,
 } from "@/components/Post/post/postValidations";
+import { User } from "@/components/user/userModel";
 
 const router = Router();
 const data = new PostData(
@@ -30,7 +31,7 @@ const data = new PostData(
   new VideoData(Video, new ImageData(Image)),
   new ImageData(Image),
   new LikeData(PostLike),
-  new CommentData(PostComment),
+  new CommentData(PostComment, User),
 );
 const controller = new PostController(data);
 

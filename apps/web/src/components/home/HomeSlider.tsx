@@ -24,10 +24,10 @@ const HomeSlider: FC<IHomeSlider> = ({
 				<SliderSlide
 					key={slide._id}
 					{...slide}
-					imagePathName={slide.image.pathname}
-					width={slide.image.width}
-					height={slide.image.height}
-					imageAlt={slide.image.title}
+					imagePathName={slide.image?.pathname}
+					width={slide.image?.width}
+					height={slide.image?.height}
+					imageAlt={slide.image?.title}
 				/>
 			))}
 		/>
