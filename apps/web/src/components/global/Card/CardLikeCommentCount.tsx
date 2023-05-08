@@ -39,7 +39,9 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 				<span>
 					<HiEye />
 				</span>
-				{withText && <span>بازدید</span>}
+				{withText && (
+					<span className="font-medium">بازدید</span>
+				)}
 				<span className="text-sm">
 					{replaceNumbersWithPersian(viewCount)}
 				</span>
@@ -49,28 +51,36 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 					withText && "border-l border-k-grey-text-color pl-2"
 				}`}
 			>
-				<div className="flex items-center gap-1 k-like-icon">
+				<div className="flex items-center gap-1 k-like-icon group">
 					<span
 						className={isLiked ? "text-k-primary-color" : ""}
 					>
 						<AiFillHeart />
 					</span>
-					{withText && <span>پسند</span>}
+					{withText && (
+						<span className="!drop-shadow-none !filter-none group-hover:text-k-primary-color">
+							پسند
+						</span>
+					)}
 				</div>
 				<span className="text-sm">
 					{replaceNumbersWithPersian(likeCount)}
 				</span>
 			</div>
 			<div className={`flex items-center gap-1`}>
-				<div className="flex items-center gap-1 k-comment-icon">
+				<div className="flex items-center gap-1 group k-comment-icon">
 					<span
 						className={
 							isCommented ? "text-k-secondary-color" : ""
 						}
 					>
-						<TbMessageCircle2Filled />
+						<TbMessageCircle2Filled className="" />
 					</span>
-					{withText && <span>نظر</span>}
+					{withText && (
+						<span className="!drop-shadow-none !filter-none group-hover:text-k-secondary-color">
+							نظر
+						</span>
+					)}
 				</div>
 				<span className="text-sm">
 					{replaceNumbersWithPersian(commentCount)}

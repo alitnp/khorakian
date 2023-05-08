@@ -12,6 +12,7 @@ import { TfiMenu } from "react-icons/tfi";
 import { VscAccount } from "react-icons/vsc";
 import fa from "antd/lib/locale/fa_IR";
 import { ConfigProvider } from "antd";
+import InitialInfo from "@/components/global/InitialInfo/InitialInfo";
 
 interface ILayout {
 	children: ReactNode;
@@ -44,6 +45,7 @@ const Layout: FC<ILayout> = ({ children }) => {
 					},
 				}}
 			>
+				<InitialInfo />
 				<header className="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-12 bg-k-faded-dark-bg-color text-k-opposite-text-color k-container ">
 					<div className="hidden md:block">
 						<Navigation />

@@ -25,8 +25,7 @@ type registerInputs = {
 	mobileNumber: string;
 	password: string;
 	repeatPassword: string;
-	firstName: string;
-	lastName: string;
+	fullName: string;
 };
 
 const RegisterForm: FC = () => {
@@ -46,8 +45,7 @@ const RegisterForm: FC = () => {
 			await WebApiService.post(webEndpointUrls.userRegister, {
 				mobileNumber: values.mobileNumber,
 				password: values.password,
-				firstName: values.firstName,
-				lastName: values.lastName,
+				fullName: values.fullName,
 			})
 				.then((res: ApiDataResponse<registerResponse>) =>
 					webApiThenGeneric<
@@ -73,11 +71,10 @@ const RegisterForm: FC = () => {
 	);
 
 	return (
-		<div className="px-4 pb-4 sm:py-4 sm:px-6">
+		<div className="px-4 pt-6 pb-4 sm:px-6">
 			<Form
-				labelCol={{ span: 5 }}
+				labelCol={{ span: 6 }}
 				labelAlign="left"
-				size="large"
 				requiredMark={false}
 				onFinish={handleSubmit}
 			>
@@ -96,20 +93,16 @@ const RegisterForm: FC = () => {
 					<Input placeholder="شماره موبایل" />
 				</Form.Item>
 				<Form.Item
-					label="نام"
-					name="firstName"
-					rules={[{ required: true, message: "نام وارد نشده" }]}
-				>
-					<Input placeholder="نام" />
-				</Form.Item>
-				<Form.Item
-					label="نام خانوادگی"
-					name="lastName"
+					label="نام و نام خانوادگی"
+					name="fullName"
 					rules={[
-						{ required: true, message: "نام خانوادگی وارد نشده" },
+						{
+							required: true,
+							message: "نام و نام خانوادگی وارد نشده",
+						},
 					]}
 				>
-					<Input placeholder="نام خانوادگی" />
+					<Input placeholder="نام و نام خانوادگی" />
 				</Form.Item>
 				<Form.Item
 					label="رمز عبور"
@@ -139,7 +132,7 @@ const RegisterForm: FC = () => {
 				>
 					<Input.Password placeholder="تکرار رمز" />
 				</Form.Item>
-				<div className="flex justify-end pt-10">
+				<div className="flex justify-end pt-6">
 					<MyButton
 						type="primary"
 						htmlType="submit"

@@ -59,9 +59,8 @@ class PageItemData {
     ]);
   };
 
-  getWithContents = async (isAdmin: boolean): Promise<IPageItemConents[]> => {
+  getWithContents = async (): Promise<IPageItemConents[]> => {
     const filters: any = {};
-    if (!isAdmin) filters.isPublished = true;
     const pageItems = await this.PageItem.find(filters)
       .sort("index")
       .populate<{
@@ -163,6 +162,7 @@ class PageItemData {
     sorting,
     style,
     index,
+    isPublished,
   }: IPageItem): Promise<IPageItem> => {
     await this.#checkExistance({
       type,
@@ -177,6 +177,7 @@ class PageItemData {
       sorting,
       style,
       index: index || 0,
+      isPublished,
     });
     return await item.save();
   };
@@ -189,6 +190,7 @@ class PageItemData {
     sorting,
     style,
     index,
+    isPublished,
   }: IPageItem): Promise<IPageItem> => {
     await this.#checkExistance({
       type,
@@ -197,7 +199,7 @@ class PageItemData {
     });
 
     const item = await this.PageItem.findByIdAndUpdate(_id, {
-      $set: { title, subTitle, type, sorting, style, index },
+      $set: { title, subTitle, type, sorting, style, index, isPublished },
     });
     if (!item) throw new NotFoundError();
 

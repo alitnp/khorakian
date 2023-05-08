@@ -2,23 +2,27 @@ import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import { serverSideFetch } from "@/global/utils/webFetch";
 import {
 	ApiDataListResponse,
-	ApiDataResponse,
 	IAboutMeRead,
 	IDefaultImageRead,
 	IDefaultText,
 	IHistory,
 	IImage,
 	IPageItemConents,
-	IPostRead,
 	ISocialMediaRead,
 } from "@my/types";
+import { NextIncomingMessage } from "next/dist/server/request-meta";
 
-export const getHomePageItems = async (): Promise<
-	ApiDataListResponse<IPageItemConents>
-> => {
+export const getHomePageItems = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<ApiDataListResponse<IPageItemConents>> => {
 	const pageItems: ApiDataListResponse<IPageItemConents> =
 		await serverSideFetch(
-			webEndpointUrls.pageItemWithContent
+			webEndpointUrls.pageItemWithContent,
+			req
 		);
 	if (!pageItems) {
 		console.log(
@@ -28,12 +32,17 @@ export const getHomePageItems = async (): Promise<
 	return pageItems;
 };
 
-export const getHomeDefaultTexts = async (): Promise<
-	Record<string, string>
-> => {
+export const getHomeDefaultTexts = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<Record<string, string>> => {
 	const defaultTexts: ApiDataListResponse<IDefaultText> =
 		await serverSideFetch(
-			webEndpointUrls.defautlTextGetAll + "?pageSize=200"
+			webEndpointUrls.defautlTextGetAll + "?pageSize=200",
+			req
 		);
 	if (!defaultTexts) {
 		console.log(
@@ -49,12 +58,17 @@ export const getHomeDefaultTexts = async (): Promise<
 	return defaultTextsObject;
 };
 
-export const getHomeDefaultImages = async (): Promise<
-	Record<string, IImage>
-> => {
+export const getHomeDefaultImages = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<Record<string, IImage>> => {
 	const defaultImages: ApiDataListResponse<IDefaultImageRead> =
 		await serverSideFetch(
-			webEndpointUrls.defautlImageGetAll + "?pageSize=200"
+			webEndpointUrls.defautlImageGetAll + "?pageSize=200",
+			req
 		);
 	if (!defaultImages) {
 		console.log(
@@ -68,12 +82,17 @@ export const getHomeDefaultImages = async (): Promise<
 	return defaultImagesObject;
 };
 
-export const getHomeAboutMePosts = async (): Promise<
-	IAboutMeRead[]
-> => {
+export const getHomeAboutMePosts = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<IAboutMeRead[]> => {
 	const aboutMePosts: ApiDataListResponse<IAboutMeRead> =
 		await serverSideFetch(
-			webEndpointUrls.aboutMeGetAll + "?pageSize=200"
+			webEndpointUrls.aboutMeGetAll + "?pageSize=200",
+			req
 		);
 	if (!aboutMePosts) {
 		console.log(
@@ -83,27 +102,37 @@ export const getHomeAboutMePosts = async (): Promise<
 	return aboutMePosts.data;
 };
 
-export const getAllSocialMedias = async (): Promise<
-	ISocialMediaRead[]
-> => {
+export const getAllSocialMedias = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<ISocialMediaRead[]> => {
 	const socialMedias: ApiDataListResponse<ISocialMediaRead> =
 		await serverSideFetch(
 			webEndpointUrls.socialMediaGetAll + "?pageSize=100"
 		);
 	if (!socialMedias) {
 		console.log(
-			"error fetch : " + webEndpointUrls.socialMediaGetAll
+			"error fetch : " + webEndpointUrls.socialMediaGetAll,
+			req
 		);
 	}
 	return socialMedias.data;
 };
 
-export const getAllHistories = async (): Promise<
-	IHistory[]
-> => {
+export const getAllHistories = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<IHistory[]> => {
 	const histories: ApiDataListResponse<IHistory> =
 		await serverSideFetch(
-			webEndpointUrls.historyGetAll + "?pageSize=100"
+			webEndpointUrls.historyGetAll + "?pageSize=100",
+			req
 		);
 	if (!histories) {
 		console.log(

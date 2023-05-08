@@ -55,7 +55,7 @@ const Footer: FC<IFooter> = ({
 	return (
 		<footer className="my-6 k-container">
 			<div className="w-full px-8 py-4 border shadow-lg rounded-xl">
-				<div className="flex flex-col items-center justify-between gap-y-8 lg:flex-row">
+				<div className="flex flex-col items-center justify-between gap-y-8 md:flex-row md:items-start">
 					<div className="flex items-center gap-x-2">
 						{footer_image?.thumbnailPathname && (
 							<Image
@@ -72,7 +72,7 @@ const Footer: FC<IFooter> = ({
 							<span className="block text-base font-medium">
 								{footer_title}
 							</span>
-							<span className="block text-sm text-k-grey-text-color">
+							<span className="block text-sm text-k-grey-text-color max-w-[30ch]">
 								{footer_subTitle}
 							</span>
 						</div>
@@ -80,11 +80,11 @@ const Footer: FC<IFooter> = ({
 					<div>
 						<span className="block mb-2">دسترسی سریع</span>
 						<nav>
-							<ul className="grid grid-cols-3 gap-2 text-sm text-k-grey-text-color">
+							<ul className="grid grid-cols-2 gap-4 text-sm sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 text-k-grey-text-color">
 								{quickAccessRoutes.map((item) => (
 									<li
 										key={item.title}
-										className="cursor-pointer hover:underline"
+										className="cursor-pointer whitespace-nowrap hover:underline"
 									>
 										{item.title}
 									</li>

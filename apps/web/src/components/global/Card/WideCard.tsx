@@ -69,16 +69,18 @@ const WideCard: FC<IWideCard> = ({
 						{title}
 					</h2>
 				</Link>
-				<p className="mb-2 text-sm line-clamp-3">{desc}</p>
-				<div className="flex justify-end ">
-					<Link
-						href={detailPath}
-						className="text-sm cursor-pointer text-k-primary-color"
-					>
-						ادامه مطلب
-					</Link>
+				<div className="flex flex-col justify-between h-full ">
+					<p className="mb-2 text-sm line-clamp-3">{desc}</p>
+					<div className="flex justify-end ">
+						<Link
+							href={detailPath}
+							className="mt-auto text-sm cursor-pointer text-k-primary-color"
+						>
+							ادامه مطلب
+						</Link>
+					</div>
 				</div>
-				<div className="flex justify-between pt-2 mt-auto border-t">
+				<div className="flex justify-between pt-2 mt-2 border-t">
 					<span className="text-sm text-k-grey-text-color">
 						{creationDate}
 					</span>

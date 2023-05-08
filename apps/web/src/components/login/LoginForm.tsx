@@ -64,7 +64,7 @@ const LoginForm: FC = () => {
 	);
 
 	return (
-		<div className="px-4 pb-4 sm:py-4 sm:px-6">
+		<div className="px-4 pt-6 pb-4 sm:px-6">
 			<Form
 				labelCol={{ span: 5 }}
 				labelAlign="left"
@@ -100,7 +100,7 @@ const LoginForm: FC = () => {
 				>
 					<Input.Password placeholder="رمز عبور" />
 				</Form.Item>
-				<div className="flex justify-end pt-10">
+				<div className="flex justify-end pt-6">
 					<MyButton
 						type="primary"
 						htmlType="submit"
