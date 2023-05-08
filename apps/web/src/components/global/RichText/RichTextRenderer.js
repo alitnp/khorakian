@@ -11,7 +11,6 @@ import {
 import { Fragment } from "react";
 
 const RichTextRenderer = ({ data }) => {
-	console.log(data);
 	if (!data) return null;
 
 	//functions
@@ -37,7 +36,7 @@ const RichTextRenderer = ({ data }) => {
 	};
 
 	return (
-		<div className="min-h-[150px]">
+		<div className="min-h-[150px] mb-10">
 			<div className="max-w-2xl mx-auto rich-text-renderer">
 				{handleRenderData(data)}
 			</div>

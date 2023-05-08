@@ -48,15 +48,15 @@ export const renderTable = (
 	return (
 		<div className="mt-4 mb-8 overflow-hidden border rounded-md border-t-border-color-base">
 			<div className="relative overflow-x-auto direction-ltr">
-				<table className="w-full text-sm ">
+				<table className="w-full text-sm border-collapse">
 					{haveHeadings && (
 						<thead className="">
-							<tr className="border-b border-t-border-color-base">
+							<tr className="border-b border-t-border-color-base bg-k-grey-bg-2-color">
 								{block.data.content.length > 0 &&
 									block.data.content[0].map((item, index) => (
 										<th
 											key={index}
-											className="px-1 py-2 text-base bg-t-layer-bg-color"
+											className="px-1 py-2 text-base border bg-t-layer-bg-color"
 											dangerouslySetInnerHTML={{ __html: item }}
 										></th>
 									))}
@@ -74,7 +74,7 @@ export const renderTable = (
 									{row.map((item, index) => (
 										<td
 											key={index}
-											className="px-1 py-2"
+											className="px-1 py-2 border"
 											dangerouslySetInnerHTML={{ __html: item }}
 										></td>
 									))}

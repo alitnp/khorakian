@@ -3,18 +3,18 @@ import {
 	IExperienceRead,
 } from "@my/types";
 import { FC, memo } from "react";
-import PostDetailSlider from "@/components/post/postDetail/PostDetailSlider";
+import ContentDetailSlider from "@/components/global/Slider/ContentDetailSlider";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
-import AllCommentTabs from "@/components/post/postDetail/comments/AllCommentTabs";
-import PostDetailDescription from "@/components/post/postDetail/PostDetailDescription";
 import { GetServerSideProps } from "next";
 import { serverSideFetch } from "@/global/utils/webFetch";
 import RichTextRenderer from "@/components/global/RichText/RichTextRenderer";
 import { parseStringArticle } from "@/components/global/RichText/richTextRendererFunctions";
+import { dateObjectFormatter } from "@/global/utils/helperFunctions";
+import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
-		const post = await serverSideFetch<
+		const experience = await serverSideFetch<
 			ApiDataResponse<IExperienceRead>
 		>(
 			webEndpointUrls.getExperienceDetail(
@@ -33,29 +33,54 @@ export const getServerSideProps: GetServerSideProps =
 
 		return {
 			props: {
-				post: post.data,
+				experience: experience.data,
 				// comments: comments
 			},
 		};
 	};
 
-const PostDetail: FC<{ post: IExperienceRead }> = ({
-	post,
-}) => {
-	//state
+const ExperienceDetail: FC<{
+	experience: IExperienceRead;
+}> = ({ experience }) => {
+	console.log(experience);
 
 	return (
 		<main>
-			<PostDetailSlider images={post?.images || []} />
-			<RichTextRenderer
-				data={parseStringArticle(post?.article)}
-			/>
-			{/* <PostDetailDescription />
-			<div className="w-full my-5">
-				<AllCommentTabs />
-			</div> */}
+			<ContentDetailSlider images={experience?.images || []} />
+			<div className="max-w-2xl mx-auto">
+				<div className="mb-4">
+					<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
+						<span>
+							تجربیات
+							{"  >  "}
+							{experience?.experienceCategory?.title}
+							{"  >  "}
+							{experience.title}
+						</span>
+						<span>
+							{dateObjectFormatter(experience?.creationDate)}
+						</span>
+					</div>
+					<div className="flex justify-end">
+						<CardLikeCommentCount
+							viewCount={experience.viewCount || 0}
+							likeCount={experience.likeCount || 0}
+							commentCount={experience.commentCount || 0}
+							isLiked={experience.liked}
+							withText
+						/>
+					</div>
+				</div>
+				<RichTextRenderer
+					data={parseStringArticle(experience?.article)}
+				/>
+				{/* <PostDetailDescription />
+				<div className="w-full my-5">
+					<AllCommentTabs />
+				</div> */}
+			</div>
 		</main>
 	);
 };
 
-export default memo(PostDetail);
+export default memo(ExperienceDetail);

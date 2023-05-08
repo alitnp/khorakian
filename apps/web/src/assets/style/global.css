@@ -16,6 +16,8 @@
   --faded-dark-bg-color: #1919196a;
   --grey-bg-1-color: #F7F7F7;
   --grey-bg-2-color: #e2e2e2;
+  --table-even-row: var(--bg-color);
+  --table-odd-row: var(--grey-bg-1-color);
 
   /* border */
   --border-1-color: #D9DADB;

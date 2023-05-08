@@ -1,6 +1,6 @@
 import { ApiDataResponse, IPostRead } from "@my/types";
 import { FC, memo } from "react";
-import PostDetailSlider from "@/components/post/postDetail/PostDetailSlider";
+import ContentDetailSlider from "@/components/global/Slider/ContentDetailSlider";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import AllCommentTabs from "@/components/post/postDetail/comments/AllCommentTabs";
 import PostDetailDescription from "@/components/post/postDetail/PostDetailDescription";
@@ -39,7 +39,7 @@ const PostDetail: FC<{ post: IPostRead }> = ({ post }) => {
 
 	return (
 		<main>
-			<PostDetailSlider images={post?.images || []} />
+			<ContentDetailSlider images={post?.images || []} />
 
 			<PostDetailDescription />
 			<div className="w-full my-5">
