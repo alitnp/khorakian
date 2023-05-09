@@ -1,11 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Divider, Tabs } from 'antd';
+import React, { FC } from 'react';
+import { Tabs } from 'antd';
 import TabsLabel from '@/components/post/postDetail/comments/TabsLabel';
 import TabsContent from '@/components/post/postDetail/comments/TabsContent';
-import webEndpointUrls from '@/global/constants/webEndpointUrls';
-import WebApiService, { errorResponse } from '@/global/utils/WebApiService';
-import { webApiCatch, webApiThenGeneric } from '@/global/utils/webApiThen';
-import { ApiDataResponse, IPostComment, IPostCommentRead } from '@my/types';
+import { IPostCommentRead } from '@my/types';
 
 interface IProps {
   comments: IPostCommentRead;
@@ -15,12 +12,6 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
   // state
   // const [loading, setLoading] = useState<boolean>(false);
   // const [commentsList, setCommentsList] = useState<IPostComment>();
-
-  //effect
-  useEffect(() => {
-    // getAllComments;
-    console.log(comments);
-  }, []);
 
   const onChange = (key: string) => {
     console.log(key);
@@ -54,7 +45,7 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
       items={new Array(3).fill(null).map((_, i) => {
         const id = String(i + 1);
         return {
-          label: <TabsLabel user={comments?.user} />,
+          label: <TabsLabel comments={comments} />,
           key: id,
           children: <TabsContent comments={comments} />,
         };

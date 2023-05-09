@@ -4,9 +4,9 @@ import React, { FC } from 'react';
 interface IProps {
   comments: any;
 }
-const EachComment: FC<IProps> = ({ comments }) => (
+const EachCommentReplyes: FC<IProps> = ({ comments }) => (
   <div className="grid m-3">
-    {comments?.map((item: IPostCommentRead) => {
+    {comments?.replies?.map((item: IPostCommentRead) => {
       <>
         <div className="flex items-center" key={item._id}>
           <img
@@ -24,4 +24,4 @@ const EachComment: FC<IProps> = ({ comments }) => (
   </div>
 );
 
-export default EachComment;
+export default EachCommentReplyes;

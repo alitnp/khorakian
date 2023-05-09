@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const comments = await serverSideFetch<ApiDataResponse<IPostCommentRead>>(
     webEndpointUrls.getAllPostComments +
-      '?pageSize=50&postId=' +
+      '?pageSize=50&content=' +
       context?.params?.id,
     context.req
   );
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       post: post.data,
-      comments,
+      comments: comments.data,
     },
   };
 };
@@ -33,6 +33,8 @@ const PostDetail: FC<{ post: IPostRead; comments: IPostCommentRead }> = ({
   comments,
 }) => {
   //state
+
+  console.log(comments);
 
   return (
     <main>
