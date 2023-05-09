@@ -26,6 +26,7 @@ import {
 } from "@/components/home/homeFunctions";
 import Footer from "@/components/global/Footer/Footer";
 import HomeFeatured from "@/components/home/HomeFeatured";
+import { store } from "@/redux/store";
 
 type homeProps = {
 	pageItems: IPageItemConents[];

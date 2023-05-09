@@ -64,6 +64,7 @@ const LoginRegisterLayout: FC<Ilogin> = ({
 					<div className="w-full max-h-[70vh] overflow-y-auto max-w-xl rounded-lg shadow-2xl shadow-black/70 backdrop-blur-sm backdrop-brightness-200 bg-white/60">
 						<main className="relative">
 							<Tabs
+								tabBarGutter={16}
 								size="large"
 								defaultActiveKey="login"
 								items={tabItems}

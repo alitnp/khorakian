@@ -1,5 +1,6 @@
 import "@/assets/style/global.css";
 import "@/assets/style/antCustomization.css";
+import "@/assets/style/editorjsCustomizations.css";
 import Layout from "@/components/global/Layout/Layout";
 import { store } from "@/redux/store";
 

@@ -36,15 +36,17 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 }) => {
 	return (
 		<Link href={detailPath}>
-			<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 snap-start h-[200px]">
-				<div className="relative overflow-hidden group">
-					<Image
-						src={webConfig.domain + imagePathname}
-						width={width}
-						height={height}
-						alt={imageAlt}
-						className="object-cover sm:object-contain w-fit transition-transform h-[200px] duration-500 max-w-[300px] sm:max-w-sm ease-out group-hover:scale-110"
-					/>
+			<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 snap-start h-[200px]  max-w-[300px] sm:max-w-sm">
+				<div className="relative w-full h-[200px] max-w-[300px] sm:max-w-sm overflow-hidden bg-slate-700 group">
+					{imagePathname && (
+						<Image
+							src={webConfig.domain + imagePathname}
+							width={width}
+							height={height}
+							alt={imageAlt}
+							className="object-cover  w-fit transition-transform h-[200px] duration-500 max-w-[300px] sm:max-w-sm ease-out group-hover:scale-110"
+						/>
+					)}
 					<div className="absolute top-0 left-0 w-full h-full bg-k-faded-dark-bg-color">
 						<div className="relative flex items-center justify-center w-full h-full text-k-bg-color">
 							{isVideo && <BsPlayCircle className="text-5xl" />}

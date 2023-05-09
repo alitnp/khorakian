@@ -7,11 +7,11 @@ import SimpleImage from '@editorjs/simple-image';
 import Paragraph from '@editorjs/paragraph';
 import AlignmentTuneTool from 'editorjs-text-alignment-blocktune';
 import List from '@editorjs/list';
-import Alert from 'editorjs-alert';
 import ColorPlugin from 'editorjs-text-color-plugin';
 import { useCallback, useState } from 'react';
 import Delimiter from '@editorjs/delimiter';
 import ApiService, { DOMAIN } from 'config/API/ApiService';
+import endpointUrls from 'global/Constants/endpointUrls';
 
 export const EDITOR_JS_TOOLS = {
   paragraph: {
@@ -46,11 +46,13 @@ export const EDITOR_JS_TOOLS = {
           // your own uploading logic here
           const formData = new FormData();
           formData.append('image', file);
-          return ApiService.post('', formData).then((res) => {
+          return ApiService.post(endpointUrls.imageUpload, formData).then((res) => {
             return {
               success: 1,
               file: {
-                url: DOMAIN + res.data.path,
+                url: DOMAIN + res.data.pathname,
+                width: res.data.width,
+                height: res.data.height,
               },
             };
           });
@@ -58,14 +60,14 @@ export const EDITOR_JS_TOOLS = {
       },
     },
   },
-  alert: {
-    class: Alert,
-    inlineToolbar: ['bold', 'italic', 'Color'],
-    config: {
-      defaultType: 'primary',
-      messagePlaceholder: 'متن پیام را وارد کنید',
-    },
-  },
+  // alert: {
+  //   class: Alert,
+  //   inlineToolbar: ['bold', 'italic', 'Color'],
+  //   config: {
+  //     defaultType: 'primary',
+  //     messagePlaceholder: 'متن پیام را وارد کنید',
+  //   },
+  // },
   Delimiter: {
     class: Delimiter,
   },

@@ -22,11 +22,13 @@ const SliderHistory: FC<ISliderHistory> = ({
 		return () => clearInterval(interval);
 	}, [activeIndex]);
 
+	if (!histories || histories?.length === 0) return null;
+
 	return (
 		<div className="relative z-20 py-3 sm:rounded-tr-lg sm:bottom-0 sm:left-0 sm:px-4 sm:py-6 sm:absolute bg-k-dark-bg-color sm:bg-k-faded-dark-bg-color sm:w-64">
 			<div className="text-center text-k-opposite-text-color sm:flex">
 				<div className="w-full">
-					<p>{histories[activeIndex]?.title}</p>
+					<h5>{histories[activeIndex]?.title}</h5>
 					<p className="font-bold text-center text-k-primary-color">
 						{histories[activeIndex]?.from} -{" "}
 						{histories[activeIndex]?.to}

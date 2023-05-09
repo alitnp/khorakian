@@ -238,7 +238,7 @@ export interface IExperienceRead
 	likeCount: number;
 	commentCount: number;
 	liked?: boolean;
-	article: Record<string, any>;
+	article: string;
 }
 
 export interface IExperienceLike
