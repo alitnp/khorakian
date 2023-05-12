@@ -2,6 +2,7 @@ const webRoutes = {
 	home: { path: "/", private: false },
 	login: { path: "/login", private: false },
 	register: { path: "/register", private: false },
+	dashboard: { path: "/dashboard", private: false },
 
 	//post
 	postAllContents: { path: "/postcontents", private: false },
