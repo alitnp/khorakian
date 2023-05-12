@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const PostDetail: FC<{ post: IPostRead; comments: IPostCommentRead }> = ({
+const PostDetail: FC<{ post: IPostRead; comments: IPostCommentRead[] }> = ({
   post,
   comments,
 }) => {

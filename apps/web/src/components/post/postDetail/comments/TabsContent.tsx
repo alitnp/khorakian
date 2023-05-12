@@ -4,7 +4,7 @@ import { IPostCommentRead } from '@my/types';
 import React, { FC } from 'react';
 
 interface IProps {
-  comments: IPostCommentRead;
+  comments: IPostCommentRead[];
 }
 
 const TabsContent: FC<IProps> = ({ comments }) => (

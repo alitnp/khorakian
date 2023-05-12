@@ -5,7 +5,7 @@ import TabsContent from '@/components/post/postDetail/comments/TabsContent';
 import { IPostCommentRead } from '@my/types';
 
 interface IProps {
-  comments: IPostCommentRead;
+  comments: IPostCommentRead[];
 }
 
 const AllCommentTabs: FC<IProps> = ({ comments }) => {
@@ -42,14 +42,13 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
       onChange={onChange}
       className=" max-w-screen-lg m-auto"
       type="card"
-      items={new Array(3).fill(null).map((_, i) => {
-        const id = String(i + 1);
-        return {
-          label: <TabsLabel comments={comments} />,
-          key: id,
+      items={[
+        {
+          label: 'همه',
+          key: 'ALL',
           children: <TabsContent comments={comments} />,
-        };
-      })}
+        },
+      ]}
     />
   );
 };
