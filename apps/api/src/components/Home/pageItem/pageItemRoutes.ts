@@ -28,6 +28,7 @@ const controller = new PageItemController(data);
 const router = Router();
 
 //get
+router.get("/getWithContents", controller.getWithContents);
 router.get("/:id", validate(getPageItemValidations), controller.get);
 router.get("/", controller.getAll);
 

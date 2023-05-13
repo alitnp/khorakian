@@ -40,6 +40,7 @@ const PostCreate = () => {
 
   const handleSubmit = async (values: any) => {
     if (videos.length + images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس یا ویدیویی انتخاب نشده' }));
+    if (!!values.eventDate) values.eventDate = values.eventDate.unix * 1000;
     setLoading(true);
     await ApiService.post(endpointUrls.postCreate, { ...values, videos: videos.map((vid) => vid._id), images: images.map((img) => img._id) })
       .then((res: ApiDataResponse<IPost>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.post.path), notifFail: true, notifSuccess: true }))

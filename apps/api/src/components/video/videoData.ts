@@ -12,7 +12,7 @@ import {
 } from "@/utils/video";
 import BadRequestError from "@/helpers/error/BadRequestError";
 import ImageData from "@/components/image/imageData";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 
 class VideoData implements IData<IVideo> {
   private Video: Model<IVideo, {}, {}, {}, any>;
@@ -24,12 +24,14 @@ class VideoData implements IData<IVideo> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IVideo>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IVideo>(searchQuery, req, this.Video, ["thumbnail"]);
+    return await getAllData<IVideo>(searchQuery, req, this.Video, [
+      "thumbnail",
+    ]);
   };
 
   get = async (id: string) => {

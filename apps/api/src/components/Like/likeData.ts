@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse } from "@my/types";
-import { getAllData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class LikeData<likeModel> {
@@ -11,7 +11,7 @@ class LikeData<likeModel> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<likeModel>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.user) searchQuery.user = req.query.user;
     if (req.query.content) searchQuery.content = req.query.content;
 
@@ -20,7 +20,7 @@ class LikeData<likeModel> {
     if (req.query.user) populate.push("content");
     if (!req.query.content && !req.query.user) populate.push("user", "content");
 
-    return getAllData<likeModel>(searchQuery, req, this.Like, populate);
+    return await getAllData<likeModel>(searchQuery, req, this.Like, populate);
   };
 
   isUserLiked = async (contentId: string, userId: string): Promise<boolean> => {

@@ -13,6 +13,7 @@ apps/api/src/logs
 apps/panel/build
 apps/web/out
 apps/web/.next
+apps/**/*.log
 
 .DS_Store
 **/.DS_Store

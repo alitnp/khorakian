@@ -7,7 +7,7 @@ import {
   getSortByDescending,
 } from "@/utils/pagination";
 import { ConflictError, NotFoundError } from "@/helpers/error";
-import { getUserIsAdminFromReq } from "@/utils/util";
+import { getUserIsAdminFromReq, stringToBoolean } from "@/utils/util";
 
 export interface IData<Model, CreateModel = {}, UpdateModel = {}> {
   getAll(req: Req): Promise<ApiDataListResponse<Model>>;
@@ -27,11 +27,11 @@ export class BasicData<entityModel> implements IData<entityModel> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<entityModel>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = { $regex: req.query._id };
-    return getAllData<entityModel>(searchQuery, req, this.model);
+    return await getAllData<entityModel>(searchQuery, req, this.model);
   };
 
   get = async (id: string): Promise<entityModel> => {
@@ -88,7 +88,7 @@ export const getAllData = async <T>(
   searchQuery: any,
   req: Req,
   model: Model<T>,
-  populate: string[] = [],
+  populate?: any,
 ): Promise<ApiDataListResponse<T>> => {
   const {
     fixedSearchQuery,
@@ -102,7 +102,7 @@ export const getAllData = async <T>(
 
   const data = await model
     .find(fixedSearchQuery)
-    .populate(populate)
+    .populate(populate || [])
     .limit(pageSize)
     .skip((pageNumber - 1) * pageSize)
     .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 });
@@ -144,4 +144,20 @@ export const paginationProps = async <T>(
     desc,
     descBoolean: desc === -1 ? true : false,
   };
+};
+
+export const defaultSearchQueries = (
+  searchQuery: Record<string, any>,
+  req: Req,
+): Record<string, any> => {
+  if (req.query.creationDateFrom)
+    searchQuery.creationData = { $bt: req.query.creationDateFrom };
+  if (req.query.creationDateTo)
+    searchQuery.creationData = { $lt: req.query.creationDateFrom };
+  if (req.query.isPublished && getUserIsAdminFromReq(req)) {
+    searchQuery.isPublished = stringToBoolean(req.query.isPublished);
+  }
+  if (!getUserIsAdminFromReq(req)) searchQuery.isPublished = false;
+
+  return searchQuery;
 };

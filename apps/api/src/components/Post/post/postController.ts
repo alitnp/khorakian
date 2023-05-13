@@ -18,6 +18,11 @@ class PostController {
     res.send(apiDataListResponse<IPostComment>(result));
   };
 
+  getAdminComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAdminComments(req);
+    res.send(apiDataListResponse<IPostComment>(result));
+  };
+
   getAllLikes = async (req: Req, res: Res) => {
     const result = await this.data.getAllLikes(req);
     res.send(apiDataListResponse<IPostLike>(result));
@@ -51,6 +56,15 @@ class PostController {
     );
     res.send(apiDataResponse<IPostRead>(result));
   };
+
+  // getAdminsComments = async (req: Req, res: Res) => {
+  //   const result = await this.data.getAdminsComments(
+  //     req,
+  //     getUserIsAdminFromReq(req),
+  //     getUserIdFromReq(req),
+  //   );
+  //   res.send(apiDataListResponse<IPostComment>(result));
+  // };
 
   reply = async (req: Req, res: Res) => {
     const result = await this.data.reply(

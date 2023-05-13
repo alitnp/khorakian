@@ -1,0 +1,35 @@
+.ant-btn-primary {
+  background-color: var(--primary-1-color);
+}
+
+
+
+.ant-tabs-tab-active {
+  @apply !bg-zinc-100;
+}
+
+.ant-tabs-content {
+  @apply !bg-zinc-100;
+}
+
+.ant-tabs-nav {
+  margin: 0 !important;
+}
+
+.ant-tabs-tab {
+  @apply !ml-2
+}
+
+
+.ant-tabs-nav-wrap::before,
+.ant-tabs-nav-operations {
+  @apply !hidden
+}
+
+
+
+@media screen and (max-width : 575px) {
+  .ant-form-item {
+    @apply mb-0
+  }
+}

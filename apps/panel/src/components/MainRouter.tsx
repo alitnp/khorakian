@@ -14,6 +14,18 @@ import postRoutes from 'components/Routes/postRoutes';
 import userRoutes from 'components/Routes/userRoutes';
 import videoRoutes from 'components/Routes/videoRoutes';
 import imageRoutes from 'components/Routes/imageRoutes';
+import ideaRoutes from 'components/Routes//ideaRoutes';
+import userIdeaRoutes from 'components/Routes/userIdeaRoutes';
+import experienceRoutes from 'components/Routes/experienceRoutes';
+import userExperienceRoutes from 'components/Routes/userExperienceRoutes';
+import defaultImageRoutes from 'components/Routes/defaultImageRoutes';
+import pageItemRoutes from 'components/Routes/pageItemRoutes';
+import socialMedia from 'components/Routes/socialMediaRoutes';
+import aboutMe from 'components/Routes/aboutMeRoutes';
+import sliderRoutes from 'components/Routes/sliderRoutes';
+import defaultTextRoutes from 'components/Routes/defaultTextRoutes';
+import directMessageRoutes from 'components/Routes/directMessageRoutes';
+import historyRoutes from 'components/Routes/historyRoutes';
 
 const LoginForm = React.lazy(() => import('./pages/Login/LoginForm'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
@@ -64,6 +76,9 @@ function MainRouter() {
       accessRole: true,
     },
 
+    //defaultImage
+    ...defaultImageRoutes(),
+
     //user
     ...userRoutes(),
 
@@ -75,6 +90,37 @@ function MainRouter() {
 
     //image
     ...imageRoutes(),
+
+    //idea
+    ...ideaRoutes(),
+
+    //userIdea
+    ...userIdeaRoutes(),
+
+    //experience
+    ...experienceRoutes(),
+
+    //pageItem
+    ...pageItemRoutes(),
+
+    //userExperience
+    ...userExperienceRoutes(),
+
+    //socialMedia
+    ...socialMedia(),
+
+    //aboutMe
+    ...aboutMe(),
+
+    //slider
+    ...sliderRoutes(),
+    //defaultTextRoutes
+    ...defaultTextRoutes(),
+
+    //directMessageRoutes
+    ...directMessageRoutes(),
+    //historyRoutes
+    ...historyRoutes(),
   ];
 
   const genericRoute: protectedRoute[] = [];

@@ -3,13 +3,14 @@ import {
   ApiDataListResponse,
   IImage,
   IPost,
+  IPostCategory,
   IPostComment,
   IPostCreate,
   IPostLike,
   IPostRead,
   IVideoRead,
 } from "@my/types";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
@@ -47,7 +48,7 @@ class PostData {
     req: Req,
     userId?: string,
   ): Promise<ApiDataListResponse<IPostRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)
@@ -57,6 +58,10 @@ class PostData {
     if (req.query._id) searchQuery._id = req.query._id;
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
+    if (req.query.eventDateFrom)
+      searchQuery.eventDate = { $gt: req.query.eventDateFrom };
+    if (req.query.eventDateTo)
+      searchQuery.eventDate = { $lt: req.query.eventDateTo };
 
     const {
       fixedSearchQuery,
@@ -69,10 +74,12 @@ class PostData {
     } = await paginationProps(searchQuery, req, this.Post);
 
     const data: IPostRead[] = await this.Post.find(fixedSearchQuery)
-      .populate<{ images: IImage[]; videos: IVideoRead[] }>([
-        "videos",
-        "images",
-      ])
+      .populate<{ images: IImage[]; videos: IVideoRead[] }>({
+        path: "videos",
+        populate: { path: "thumbnail" },
+      })
+      .populate<{ images: IImage[] }>("images")
+      .populate<{ postCategory: IPostCategory }>("postCategory")
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -103,6 +110,7 @@ class PostData {
         path: "videos",
         populate: { path: "thumbnail" },
       })
+      .populate<{ postCategory: IPostCategory }>("postCategory")
       .lean()) as IPostRead;
 
     if (!post) throw new NotFoundError();
@@ -121,8 +129,10 @@ class PostData {
     videos,
     text,
     featured,
+    eventDate,
   }: IPostCreate): Promise<IPostRead> => {
-    const existingPostCategory = await this.PostCategory.get(postCategory);
+    await this.PostCategory.get(postCategory);
+
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
       const imageId = images[i];
@@ -139,7 +149,7 @@ class PostData {
 
     const post = new this.Post({
       title,
-      postCategory: existingPostCategory,
+      postCategory,
       images: existingImageIds,
       videos: existingVideoIds,
       text,
@@ -147,6 +157,7 @@ class PostData {
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      eventDate: eventDate || Date.now(),
     });
     await post.save();
     return await this.get(post._id);
@@ -160,8 +171,9 @@ class PostData {
     videos,
     text,
     featured,
+    eventDate,
   }: IPostCreate & { _id: string }): Promise<IPostRead> => {
-    const existingPostCategory = await this.PostCategory.get(postCategory);
+    await this.PostCategory.get(postCategory);
 
     const existingImageIds = [];
     for (let i = 0; i < images.length; i++) {
@@ -177,20 +189,17 @@ class PostData {
       if (!!existingVideo) existingVideoIds.push(existingVideo._id);
     }
 
-    const post = await this.Post.findByIdAndUpdate(
-      _id,
-      {
-        $set: {
-          title,
-          postCategory: existingPostCategory,
-          images: existingImageIds,
-          videos: existingVideoIds,
-          text,
-          featured: !!featured,
-        },
+    const post = await this.Post.findByIdAndUpdate(_id, {
+      $set: {
+        title,
+        postCategory,
+        images: existingImageIds,
+        videos: existingVideoIds,
+        text,
+        featured: !!featured,
+        eventDate: eventDate || Date.now(),
       },
-      { new: true },
-    );
+    });
     if (!post) throw new NotFoundError();
 
     return await this.get(post._id);
@@ -245,6 +254,14 @@ class PostData {
     return comments;
   };
 
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<IPostComment>> => {
+    const comments = await this.PostComment.getAdminComments(req);
+
+    return comments;
+  };
+
   comment = async (
     postId: string,
     userId: string | undefined,
@@ -261,6 +278,22 @@ class PostData {
 
     return await this.get(post._id);
   };
+
+  // getAdminsComments = async (
+  //   req: Req,
+  //   isAdmin?: boolean,
+  //   userId?: string,
+  // ): Promise<ApiDataListResponse<IPostComment>> => {
+  //     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
+  //   if (!userId) throw new NotFoundError();
+  //    if (isAdmin) {
+  //      searchQuery.user._id = userId;
+  //    }
+
+  //   return await getAllData<IPostComment>(searchQuery,
+  //     req,
+  //   this.PostComment);
+  // };
 
   reply = async (
     commentId: string,

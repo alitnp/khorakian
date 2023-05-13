@@ -1,18 +1,17 @@
 import { createReactEditorJS } from 'react-editor-js';
 import Table from '@editorjs/table';
-// import Image from '@editorjs/image';
+import Image from '@editorjs/image';
 import Header from '@editorjs/header';
 import CheckList from '@editorjs/checklist';
 import SimpleImage from '@editorjs/simple-image';
 import Paragraph from '@editorjs/paragraph';
 import AlignmentTuneTool from 'editorjs-text-alignment-blocktune';
 import List from '@editorjs/list';
-import Alert from 'editorjs-alert';
 import ColorPlugin from 'editorjs-text-color-plugin';
 import { useCallback, useState } from 'react';
 import Delimiter from '@editorjs/delimiter';
-// import ApiService, { DOMAIN } from 'config/API/ApiService';
-// import endpointUrls from 'global/Constants/endpointUrls';
+import ApiService, { DOMAIN } from 'config/API/ApiService';
+import endpointUrls from 'global/Constants/endpointUrls';
 
 export const EDITOR_JS_TOOLS = {
   paragraph: {
@@ -34,47 +33,41 @@ export const EDITOR_JS_TOOLS = {
     class: List,
     inlineToolbar: ['bold', 'italic', 'Color'],
   },
-  // image: {
-  //   class: Image,
-  //   config: {
-  //     uploader: {
-  //       /**
-  //        * Upload file to the server and return an uploaded image data
-  //        * @param {File} file - file selected from the device or pasted by drag-n-drop
-  //        * @return {Promise.<{success, file: {url}}>}
-  //        */
-  //       uploadByFile(file) {
-  //         // your own uploading logic here
-  //         const formData = new FormData();
-  //         formData.append('image', file);
-  //         return ApiService.post(endpointUrls.uploadProcessImage, formData).then((res) => {
-  //           return {
-  //             success: 1,
-  //             file: {
-  //               url: DOMAIN + res.data.path,
-  //               // any other image data you want to store, such as width, height, color, extension, etc
-  //             },
-  //           };
-  //         });
-  //       },
-  //     },
-  //     // endpoints: {
-  //     //   byFile: BASE_URL + endpointUrls.uploadProcessImage,
-  //     //   //byUrl: 'http://localhost:8008/fetchUrl',
-  //     // },
-  //     // additionalRequestHeaders: {
-  //     //   Authorization: cookie.get('token'),
-  //     // },
-  //   },
-  // },
-  alert: {
-    class: Alert,
-    inlineToolbar: ['bold', 'italic', 'Color'],
+  image: {
+    class: Image,
     config: {
-      defaultType: 'primary',
-      messagePlaceholder: 'متن پیام را وارد کنید',
+      uploader: {
+        /**
+         * Upload file to the server and return an uploaded image data
+         * @param {File} file - file selected from the device or pasted by drag-n-drop
+         * @return {Promise.<{success, file: {url}}>}
+         */
+        uploadByFile(file) {
+          // your own uploading logic here
+          const formData = new FormData();
+          formData.append('image', file);
+          return ApiService.post(endpointUrls.imageUpload, formData).then((res) => {
+            return {
+              success: 1,
+              file: {
+                url: DOMAIN + res.data.pathname,
+                width: res.data.width,
+                height: res.data.height,
+              },
+            };
+          });
+        },
+      },
     },
   },
+  // alert: {
+  //   class: Alert,
+  //   inlineToolbar: ['bold', 'italic', 'Color'],
+  //   config: {
+  //     defaultType: 'primary',
+  //     messagePlaceholder: 'متن پیام را وارد کنید',
+  //   },
+  // },
   Delimiter: {
     class: Delimiter,
   },

@@ -29,5 +29,6 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'warn',
     'arrow-body-style': 0,
     'react/prop-types': 0,
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 };

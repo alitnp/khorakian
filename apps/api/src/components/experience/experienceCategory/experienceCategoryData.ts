@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IExperienceCategory } from "@my/types";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 
 class ExperienceCategoryData implements IData<IExperienceCategory> {
@@ -13,12 +13,12 @@ class ExperienceCategoryData implements IData<IExperienceCategory> {
   getAll = async (
     req: Req,
   ): Promise<ApiDataListResponse<IExperienceCategory>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IExperienceCategory>(
+    return await getAllData<IExperienceCategory>(
       searchQuery,
       req,
       this.ExperienceCategory,

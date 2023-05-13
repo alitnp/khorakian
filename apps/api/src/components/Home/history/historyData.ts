@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IHistory } from "@my/types";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class HistoryData implements IData<IHistory> {
@@ -11,7 +11,7 @@ class HistoryData implements IData<IHistory> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IHistory>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.from)
@@ -19,7 +19,7 @@ class HistoryData implements IData<IHistory> {
     if (req.query.to) searchQuery.to = { $regex: req.query.to, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IHistory>(searchQuery, req, this.History);
+    return await getAllData<IHistory>(searchQuery, req, this.History);
   };
 
   get = async (id: string): Promise<IHistory> => {

@@ -1,6 +1,5 @@
 import {
-  firstNameValidations,
-  lastNameValidations,
+  fullNameValidations,
   mobileNumberValidations,
   paramIdValidations,
   passwordValidations,
@@ -12,14 +11,12 @@ export const loginValidations = [
 ];
 
 export const createUserValidations = [
-  ...firstNameValidations,
-  ...lastNameValidations,
+  ...fullNameValidations,
   ...mobileNumberValidations,
   ...passwordValidations,
 ];
 
 export const updateUserValidations = [
   ...paramIdValidations,
-  ...firstNameValidations,
-  ...lastNameValidations,
+  ...fullNameValidations,
 ];

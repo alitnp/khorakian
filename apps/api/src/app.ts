@@ -12,11 +12,12 @@ import routes from "@/routes";
 import { logInfoHandler } from "@/helpers/loggers";
 import swaggerOptions from "@/config/swaggerOptions";
 import addTokenDataToHeader from "@/middlewares/addTokenDataToHeader";
+import cookieParser from "cookie-parser";
 
 export const createApp = (): express.Application => {
   const app = express();
 
-  app.use(cors());
+  app.use(cors({ origin: true, credentials: true }));
   app.options(
     "*",
     cors({
@@ -32,6 +33,7 @@ export const createApp = (): express.Application => {
       crossOriginResourcePolicy: false,
     }),
   );
+  app.use(cookieParser());
   app.use(express.json());
   app.use(
     express.urlencoded({

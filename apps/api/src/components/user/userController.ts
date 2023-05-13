@@ -1,31 +1,52 @@
 //@ts-ignore
 import TrezSMSClient from "trez-sms-client";
-import { IUser } from "@my/types";
+import { IUser, IUserRead } from "@my/types";
 import { apiDataResponse } from "@/helpers/apiResponse";
-import BaseController from "@/controller/globalControllers";
 import UserData from "@/components/user/userData";
+import { getUserIdFromReq } from "@/utils/util";
+import { NotFoundError } from "@/helpers/error";
+import { fileForm } from "@/middlewares/fileForm";
+import BadRequestError from "@/helpers/error/BadRequestError";
+import BaseController from "@/controller/globalControllers";
 
-class UserController extends BaseController<IUser> {
+class UserController extends BaseController<IUserRead> {
   data;
   constructor(data: UserData) {
     super(data);
     this.data = data;
   }
 
+  create = async (req: Req, res: Res) => {
+    const result = await this.data.register(req.body);
+    res.send(apiDataResponse<IUser>(result));
+  };
+
   login = async (req: Req, res: Res) => {
-    const token = await this.data.login(
+    const data = await this.data.login(
       req.body.mobileNumber,
       req.body.password,
     );
-
-    return res.send(apiDataResponse<{ token: string }>({ token }));
+    return res.send(apiDataResponse<{ token: string; user: IUser }>(data));
   };
 
   getCurrentUser = async (req: Req, res: Res) => {
-    const userId = JSON.parse(req.headers.tokenData as string)._id;
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new NotFoundError("کاربر یافت نشد");
     const user = await this.data.getCurrentUser(userId);
+    return res.send(apiDataResponse<IUserRead>(user));
+  };
 
-    return res.send(apiDataResponse<IUser>(user));
+  uploadProfile = async (req: Req, res: Res) => {
+    const tempReq = req as Req & { file: fileForm };
+    if (!tempReq.file) throw new BadRequestError("فایل عکس یافت نشد.");
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new NotFoundError("کاربر یافت نشد");
+    const data = await this.data.uploadProfile(
+      tempReq.file,
+      tempReq.body.title,
+      userId,
+    );
+    return res.send(apiDataResponse(data));
   };
 
   toggleUserAdminAccess = async (req: Req, res: Res): Promise<Res> => {

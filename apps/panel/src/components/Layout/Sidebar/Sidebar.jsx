@@ -1,10 +1,28 @@
-import { DoubleRightOutlined, DashboardOutlined, InfoCircleOutlined, YoutubeOutlined, PictureOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  DoubleRightOutlined,
+  ExceptionOutlined,
+  QuestionCircleOutlined as BulbOutlined,
+  DashboardOutlined,
+  InfoCircleOutlined,
+  YoutubeOutlined,
+  PictureOutlined,
+  UserOutlined,
+  HomeOutlined,
+  MailOutlined,
+} from '@ant-design/icons';
 import TcMenu from 'components/UI/Menu/TcMenu';
 import useScreenWidth from 'global/helperFunctions/useScreenWidth';
 import { memo, useEffect, useState } from 'react';
 import SidebarModalApplication from './components/SidebarModalApplication';
 import routes from 'global/Constants/routes';
 import genericModels from 'global/Models/genericRoutesModels';
+import defaultImageModel from 'global/Models/defaultImageModel';
+import pageItemModel from 'global/Models/pageItemModel';
+import sliderModel from 'global/Models/sliderModel';
+import defaultTextModel from 'global/Models/defaultTextModel';
+import socialMediaModel from 'global/Models/socialMediaModel';
+import aboutMeModel from 'global/Models/aboutMeModel';
+import historyModel from 'global/Models/historyModel';
 
 const TcSidebar = ({ open, setOpen, horizental }) => {
   // state
@@ -23,15 +41,155 @@ const TcSidebar = ({ open, setOpen, horizental }) => {
 
   //constants
   const sidebarMenus = [
-    { name: 'داشبورد', icon: <DashboardOutlined />, to: routes.dashboard.path, open: open, role: true },
-    { name: 'افراد', icon: <UserOutlined />, to: routes.user.path, open: open, role: true },
-    { name: 'پست', icon: <DashboardOutlined />, to: routes.post.path, open: open, role: true },
-    { name: 'ویدیو', icon: <YoutubeOutlined />, to: routes.video.path, open: open, role: true },
-    { name: 'عکس', icon: <PictureOutlined />, to: routes.image.path, open: open, role: true },
+    {
+      name: 'داشبورد',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <DashboardOutlined />
+        </div>
+      ),
+      to: routes.dashboard.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'افراد',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <UserOutlined />
+        </div>
+      ),
+      to: routes.user.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'پست',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          <DashboardOutlined />
+        </div>
+      ),
+      to: routes.post.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'ویدیو',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <YoutubeOutlined />
+        </div>
+      ),
+      to: routes.video.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'عکس',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <PictureOutlined />
+        </div>
+      ),
+      to: routes.image.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'ایده ها',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <BulbOutlined />
+        </div>
+      ),
+      to: routes.idea.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'ایده ی کاربران',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <BulbOutlined />
+        </div>
+      ),
+      to: routes.userIdea.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'تجربیات',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <ExceptionOutlined />
+        </div>
+      ),
+      to: routes.experience.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'تجربیات کاربران',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          {' '}
+          <ExceptionOutlined />
+        </div>
+      ),
+      to: routes.userExperience.path,
+      open: open,
+      role: true,
+    },
+
+    {
+      name: 'پیام‌های من',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          <MailOutlined className='text-t-primary' />
+        </div>
+      ),
+      to: routes.directMessage.path,
+      open: open,
+      role: true,
+    },
+    {
+      name: 'صفحه بندی',
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          <HomeOutlined />{' '}
+        </div>
+      ),
+      subMenu: [
+        { name: defaultImageModel.title, to: routes.defaultImage.path, role: true },
+        { name: sliderModel.title, to: routes.slider.path, role: true },
+        { name: defaultTextModel.title, to: routes.defaultText.path, role: true },
+        { name: pageItemModel.title, to: routes.pageItem.path, role: true },
+        {
+          name: aboutMeModel.title,
+          to: routes.aboutMe.path,
+          role: true,
+        },
+        { name: socialMediaModel.title, to: routes.socialMedia.path, open: open, role: true },
+        { name: historyModel.title, to: routes.history.path, open: open, role: true },
+      ],
+      open: open,
+    },
     {
       name: 'اطلاعات پایه',
-      icon: <InfoCircleOutlined />,
-      subMenu: genericModels.map((menu) => ({ name: menu.title, to: menu.ListRoute, role: true })),
+      icon: (
+        <div className='color-inherit text-t-primary-color dark:text-t-text-color'>
+          <InfoCircleOutlined />
+        </div>
+      ),
+      subMenu: [...genericModels.map((menu) => ({ name: menu.title, to: menu.ListRoute, role: true }))],
       open: open,
     },
   ];

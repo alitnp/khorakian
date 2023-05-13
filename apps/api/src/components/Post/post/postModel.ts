@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IPost } from "@my/types";
 import { defaultSchemaProps } from "@/utils/constants";
-import { postCategorySchema } from "@/components/Post/postCategory/postCategoryModel";
 
 export const postSchema = new Schema<IPost>({
   title: {
@@ -17,13 +16,15 @@ export const postSchema = new Schema<IPost>({
   images: [{ type: Schema.Types.ObjectId, ref: "Image" }],
   videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
   postCategory: {
-    type: postCategorySchema,
-    required: [true, "عنوان تعیین نشده."],
+    type: Schema.Types.ObjectId,
+    ref: "PostCategory",
+    required: [true, "دسته بندی تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
   viewCount: Number,
   likeCount: Number,
   commentCount: Number,
+  eventDate: { type: Number, default: Date.now },
   ...defaultSchemaProps,
 });
 

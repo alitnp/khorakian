@@ -10,10 +10,11 @@ import {
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
 import { stringToBoolean } from "@/utils/util";
-import { paginationProps } from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
+import BadRequestError from "@/helpers/error/BadRequestError";
 
 class IdeaData {
   Idea: Model<IIdea, {}, {}, {}, any>;
@@ -37,7 +38,7 @@ class IdeaData {
     req: Req,
     userId?: string,
   ): Promise<ApiDataListResponse<IIdeaRead>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query._id) {
       searchQuery._id = req.query._id;
     }
@@ -46,11 +47,14 @@ class IdeaData {
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
     if (req.query.isAdminSubmitted)
-      searchQuery.isAdminSubmitted = !!req.query.isAdminSubmitted;
+      searchQuery.isAdminSubmitted = stringToBoolean(
+        req.query.isAdminSubmitted,
+      );
     if (req.query.ideaCategory) {
       searchQuery.ideaCategory._id = { $regex: req.query.ideaCategory };
     }
-    if (req.query.isApprove) searchQuery.isApprove = !!req.query.isApprove;
+    if (req.query.isApprove)
+      searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
 
@@ -65,6 +69,7 @@ class IdeaData {
     } = await paginationProps(searchQuery, req, this.Idea);
 
     const data: IIdeaRead[] = await this.Idea.find(fixedSearchQuery)
+      .populate<{ ideaCategory: IIdeaCategory }>("ideaCategory")
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -97,7 +102,7 @@ class IdeaData {
     if (!idea) throw new NotFoundError();
     await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
-    const ideaRead = { ...idea, liked: false };
+    const ideaRead = { ...idea, liked: false } as IIdeaRead;
     if (userId) ideaRead.liked = await this.IdeaLike.isUserLiked(id, userId);
 
     return ideaRead;
@@ -110,12 +115,14 @@ class IdeaData {
     featured,
     isAdminSubmitted,
   }: IIdea): Promise<IIdeaRead> => {
-    if (!ideaCategory) throw new NotFoundError();
+    if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
+    if (!existingIdeaCategory)
+      throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
 
     const idea = new this.Idea({
       title,
-      ideaCategory: existingIdeaCategory,
+      ideaCategory,
       text,
       featured: !!featured,
       viewCount: 0,
@@ -134,15 +141,16 @@ class IdeaData {
     text,
     featured,
   }: IIdea & { _id: string }): Promise<IIdeaRead> => {
-    if (!ideaCategory) throw new NotFoundError();
+    if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
-
+    if (!existingIdeaCategory)
+      throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
     const idea = await this.Idea.findByIdAndUpdate(
       _id,
       {
         $set: {
           title,
-          postCategory: existingIdeaCategory,
+          ideaCategory,
           text,
           featured: !!featured,
         },

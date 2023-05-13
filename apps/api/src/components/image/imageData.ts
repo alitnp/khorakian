@@ -4,7 +4,7 @@ import { fileForm } from "@/middlewares/fileForm";
 import { publicFolder } from "@/config";
 import { fileDelete, fileRename } from "@/utils/file";
 import { convertImageToWebp, convertImageToSmallWebp } from "@/utils/image";
-import { getAllData, IData } from "@/data/globalData";
+import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 
 class ImageData implements IData<IImage> {
@@ -15,19 +15,19 @@ class ImageData implements IData<IImage> {
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IImage>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query._id) searchQuery._id = req.query._id;
 
-    return getAllData<IImage>(searchQuery, req, this.Image);
+    return await getAllData<IImage>(searchQuery, req, this.Image);
   };
 
   get = async (id: string): Promise<IImage> => {
-    const postCategory = await this.Image.findById(id);
-    if (!postCategory) throw new NotFoundError("عکس مورد نظر یافت نشد.");
+    const image = await this.Image.findById(id);
+    if (!image) throw new NotFoundError("عکس مورد نظر یافت نشد.");
 
-    return postCategory;
+    return image;
   };
 
   //! fake data : dont use it
@@ -86,48 +86,54 @@ class ImageData implements IData<IImage> {
     );
 
     //detect if converting and resizing image was successfull
-    let webpCreated = false;
-    let smallWebpCreated = false;
-
+    let imageData;
     //try create a webp format file from image
     try {
-      await convertImageToWebp(
+      imageData = await convertImageToWebp(
         imageDir + newOriginFormatFileName,
         imageDir + webpFileName,
       );
-      webpCreated = true;
     } catch (error) {
       console.log("sharp crash : ", error);
     }
-
     //if creating a webp format was successfull then delete original image then try create a small image
-    if (webpCreated) {
+    let smallImageData;
+    if (imageData?.width && imageData.width > 300) {
       //delete origin file
       await fileDelete(imageDir + newOriginFormatFileName);
       //try resize
       try {
-        await convertImageToSmallWebp(
+        smallImageData = await convertImageToSmallWebp(
           imageDir + webpFileName,
           imageDir + smallWebpFileName,
         );
-        smallWebpCreated = true;
       } catch (error) {
         console.log("sharp crash : ", error);
       }
     }
 
     //if converted to webp store new image date in database otherwise store origin file metadata
-    if (webpCreated) {
+    if (!!imageData) {
       image.fileName = webpFileName;
       image.pathname = "/image/" + webpFileName;
       image.format = "webp";
+      image.width = imageData.width;
+      image.height = imageData.height;
       //if resize was success then store thumbnal pathname
-      if (smallWebpCreated)
+      if (!smallImageData) {
+        image.thumbnailPathname = "/image/" + webpFileName;
+        image.thumbnailWidth = imageData.width;
+        image.thumbnailHeight = imageData.height;
+      } else {
         image.thumbnailPathname = "/image/" + smallWebpFileName;
+        image.thumbnailWidth = smallImageData.width;
+        image.thumbnailHeight = smallImageData.height;
+      }
     } else {
       image.fileName = newOriginFormatFileName;
       image.pathname = "/image/" + newOriginFormatFileName;
     }
+
     return await image.save();
   };
 }

@@ -31,6 +31,16 @@ const columns = (handleDelete?: (_id: string) => void) => {
       key: 'title',
       dataIndex: 'title',
     },
+    {
+      title: 'طول',
+      key: 'width',
+      dataIndex: 'width',
+    },
+    {
+      title: 'عکس',
+      key: 'height',
+      dataIndex: 'height',
+    },
     // {
     //   title: 'کیفیت ها',
     //   key: 'qualities',

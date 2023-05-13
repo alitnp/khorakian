@@ -10,20 +10,24 @@ import { HomeOutlined } from '@ant-design/icons';
 interface IAddVideo {
   images: IImage[];
   setImages: React.Dispatch<React.SetStateAction<IImage[]>>;
+  singleImage?: boolean;
 }
 
-const AddVideo: FC<IAddVideo> = ({ images, setImages }) => {
+const AddVideo: FC<IAddVideo> = ({ images, setImages, singleImage = false }) => {
   //states
   const [showImagePicker, setShowImagePicker] = useState<boolean>(false);
 
   //functions
   const toggleShowVideoPicker = useCallback(() => setShowImagePicker((prevState) => !prevState), []);
   const addImage = useCallback(
-    (image: IImage) =>
-      setImages((images) => {
-        if (images.some((vid) => vid._id === image._id)) return images;
-        return [...images, image];
-      }),
+    (image: IImage) => {
+      if (singleImage) setImages([image]);
+      else
+        setImages((images) => {
+          if (images.some((img) => img._id === image._id)) return images;
+          return [...images, image];
+        });
+    },
     [images]
   );
   const removeImage = useCallback(
@@ -41,7 +45,7 @@ const AddVideo: FC<IAddVideo> = ({ images, setImages }) => {
         {images.map((img, index) => (
           <div key={img._id} className='flex flex-col items-center gap-1'>
             <div className={`${index === 0 && 'border border-t-secondary-color rounded-xl p-1'}`}>
-              <TcCount count={index} setCount={(newIndex: number) => handleReArrange(index, newIndex)} />
+              {!singleImage && <TcCount count={index} setCount={(newIndex: number) => handleReArrange(index, newIndex)} />}
               <ImageItem image={img} onRemove={removeImage} />
             </div>
 

@@ -4,10 +4,13 @@ import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
+import ImageItem from 'components/UI/Image/ImageItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
 import { getAllPostCategories } from 'redux/reducer/PostCategory/getAllPostCategories';
+import TcDatePicker from 'components/UI/DatePicker/TcDatePicker copy';
+import { dateObjectFormatter } from 'global/helperFunctions/dateFormatter';
 
 const title = 'پست';
 const englishTitle = 'post';
@@ -31,6 +34,9 @@ const inputs = (
           { label: 'خیر', value: false },
         ]}
       />
+    </TcFormItem>
+    <TcFormItem label='زمان وقوع' name='eventDate'>
+      <TcDatePicker />
     </TcFormItem>
     <TcFormItem label='متن' name='text' full>
       <TcTextarea placeholder='متن' />
@@ -67,6 +73,13 @@ const filterInputs = (
 const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
     {
+      title: 'عکس',
+      key: 'video',
+      dataIndex: 'video',
+      width: 170,
+      render: (_text: string, record: IPostRead) => <ImageItem image={record?.videos[0]?.thumbnail ? record?.videos[0]?.thumbnail : record.images[0]} />,
+    },
+    {
       title: 'عنوان',
       key: 'title',
       dataIndex: 'title',
@@ -75,13 +88,14 @@ const columns = (handleDelete?: (_id: string) => void) => {
       title: 'دسته بندی',
       key: 'postCategory',
       dataIndex: 'postCategory',
-      render: (text: IPostCategory) => text.title,
+      render: (text: IPostCategory) => text?.title,
     },
+    { title: 'زمان وقوع', key: 'eventDate', dataIndex: 'eventDate', render: (text: number) => dateObjectFormatter(text) },
     {
       title: 'برجسته',
       key: 'featured',
       dataIndex: 'featured',
-      render: (_text: string, record: IPostRead) => (record.featured ? 'بله' : 'خیر'),
+      render: (_text: string, record: IPostRead) => (record?.featured ? 'بله' : 'خیر'),
     },
     {
       title: 'تعداد بازدید',

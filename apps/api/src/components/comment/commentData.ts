@@ -1,26 +1,68 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse } from "@my/types";
-import { getAllData } from "@/data/globalData";
+import { ApiDataListResponse, IUser } from "@my/types";
+import {
+  defaultSearchQueries,
+  getAllData,
+  paginationProps,
+} from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class CommentData<commentModel> {
   Comment: Model<commentModel>;
+  User: Model<IUser>;
 
-  constructor(Comment: Model<commentModel>) {
+  constructor(Comment: Model<commentModel>, User: Model<IUser>) {
     this.Comment = Comment;
+    this.User = User;
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<commentModel>> => {
-    const searchQuery: any = {};
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.user) searchQuery.user = req.query.user;
     if (req.query.content) searchQuery.content = req.query.content;
     const populate = ["replies.user"];
     if (req.query.content) populate.push("user");
     if (req.query.user) populate.push("content");
+
     if (!req.query.content && !req.query.user)
       populate.push(...["user", "content"]);
 
-    return getAllData<commentModel>(searchQuery, req, this.Comment, populate);
+    return await getAllData<commentModel>(
+      searchQuery,
+      req,
+      this.Comment,
+      populate,
+    );
+  };
+
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<commentModel>> => {
+    const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
+    if (req.query.content) searchQuery.content = req.query.content;
+    const { pageNumber, totalItems, totalPages, sortBy, desc } =
+      await paginationProps(searchQuery, req, this.Comment);
+    console.log(await this.User.find({ isAdmin: true }).distinct("_id"));
+    const data = await this.Comment.find({
+      $and: [
+        { content: req.query.content },
+        {
+          user: {
+            $in: await this.User.find({ isAdmin: true }).distinct("_id"),
+          },
+        },
+      ],
+    }).populate(["user", "content"]);
+
+    return {
+      data,
+      pageNumber,
+      pageSize: 100,
+      totalItems,
+      totalPages,
+      sortBy,
+      desc: desc === -1 ? true : false,
+    };
   };
 
   isUserCommented = async (

@@ -39,6 +39,7 @@ const ImagePicker: FC<IImagePicker> = ({ handlePick }) => {
       .catch(() => {});
     setLoading(false);
   };
+
   const renderGrid = useCallback(
     () => (
       <div className='flex flex-wrap items-center gap-4 my-4'>

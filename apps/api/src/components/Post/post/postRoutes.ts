@@ -22,6 +22,7 @@ import {
   getPostValidations,
   updatePostValidations,
 } from "@/components/Post/post/postValidations";
+import { User } from "@/components/user/userModel";
 
 const router = Router();
 const data = new PostData(
@@ -30,7 +31,7 @@ const data = new PostData(
   new VideoData(Video, new ImageData(Image)),
   new ImageData(Image),
   new LikeData(PostLike),
-  new CommentData(PostComment),
+  new CommentData(PostComment, User),
 );
 const controller = new PostController(data);
 
@@ -39,6 +40,8 @@ const controller = new PostController(data);
 router.get("/like", controller.getAllLikes);
 //get all post comments
 router.get("/comment", controller.getAllComments);
+//get all admin post comments
+router.get("/adminComments", controller.getAdminComments);
 // get a signgle post with id
 router.get("/:id", validate(getPostValidations), controller.get);
 // get a list of posts
