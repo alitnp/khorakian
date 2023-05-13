@@ -24,6 +24,7 @@ const webEndpointUrls = {
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",
 	getPostDetail: (id: string) => "/post/" + id,
+	getAllPosts: "/post",
 	getAllPostComments: "/post/comment",
 
 	//S

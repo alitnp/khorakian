@@ -4,6 +4,7 @@ import {
 	IHistory,
 	IImage,
 	IPageItemConents,
+	IPostRead,
 	ISocialMediaRead,
 } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
@@ -23,10 +24,10 @@ import {
 	getHomeDefaultImages,
 	getHomeDefaultTexts,
 	getHomePageItems,
+	getTimelinePosts,
 } from "@/components/home/homeFunctions";
 import Footer from "@/components/global/Footer/Footer";
 import HomeFeatured from "@/components/home/HomeFeatured";
-import { store } from "@/redux/store";
 
 type homeProps = {
 	pageItems: IPageItemConents[];
@@ -35,6 +36,7 @@ type homeProps = {
 	aboutMePosts: IAboutMeRead[];
 	socialMedias: ISocialMediaRead[];
 	histories: IHistory[];
+	timeLinePosts: IPostRead[];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -44,6 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const aboutMePosts = await getHomeAboutMePosts();
 	const socialMedias = await getAllSocialMedias();
 	const histories = await getAllHistories();
+	const timeLinePosts = await getTimelinePosts();
 
 	const props: homeProps = {
 		pageItems: pageItems.data,
@@ -52,6 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		aboutMePosts,
 		socialMedias,
 		histories,
+		timeLinePosts,
 	};
 
 	return {
@@ -67,6 +71,7 @@ const Home = ({
 	aboutMePosts,
 	socialMedias,
 	histories,
+	timeLinePosts,
 }: homeProps) => {
 	const renderPageItems = useMemo(
 		() =>
@@ -80,7 +85,9 @@ const Home = ({
 						/>
 					);
 				if (pageItem.type.title === "timeLine")
-					return <TimeLine key={pageItem._id} />;
+					return (
+						<TimeLine key={pageItem._id} posts={timeLinePosts} />
+					);
 				if (pageItem.type.title === "homeIdeaExperienceBox")
 					return (
 						<HomeIdeaExpLink
@@ -112,7 +119,9 @@ const Home = ({
 						/>
 					);
 				if (pageItem.type.title === "timeLine")
-					return <TimeLine key={pageItem._id} />;
+					return (
+						<TimeLine key={pageItem._id} posts={timeLinePosts} />
+					);
 				if (pageItem.style.title === "default")
 					return (
 						<HomeCards

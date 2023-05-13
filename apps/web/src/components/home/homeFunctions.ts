@@ -8,6 +8,7 @@ import {
 	IHistory,
 	IImage,
 	IPageItemConents,
+	IPostRead,
 	ISocialMediaRead,
 } from "@my/types";
 import { NextIncomingMessage } from "next/dist/server/request-meta";
@@ -140,4 +141,25 @@ export const getAllHistories = async (
 		);
 	}
 	return histories.data;
+};
+
+export const getTimelinePosts = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<IPostRead[]> => {
+	const posts: ApiDataListResponse<IPostRead> =
+		await serverSideFetch(
+			webEndpointUrls.getAllPosts +
+				"?pageSize=1000&sort=eventDate",
+			req
+		);
+	if (!posts) {
+		console.log(
+			"error fetch : " + webEndpointUrls.getAllPosts
+		);
+	}
+	return posts.data;
 };

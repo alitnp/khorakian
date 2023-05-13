@@ -32,7 +32,7 @@ const Footer: FC<IFooter> = ({
 	const renderMedias = useMemo(
 		() =>
 			socialMedias.map((sm) => {
-				if (!sm.image.thumbnailPathname) return null;
+				if (!sm.image?.thumbnailPathname) return null;
 				return (
 					<Tooltip
 						title={sm.englishTitle || sm.title}
