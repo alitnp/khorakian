@@ -4,12 +4,13 @@ import { IPostCommentRead } from '@my/types';
 import React, { FC } from 'react';
 
 interface IProps {
-  comments: IPostCommentRead[];
+  comments?: IPostCommentRead[];
+  adminComments?: IPostCommentRead[];
 }
 
-const TabsContent: FC<IProps> = ({ comments }) => (
+const TabsContent: FC<IProps> = ({ comments, adminComments }) => (
   <>
-    <div className=" p-5">
+    <div className="p-5">
       <EachComment comments={comments} />
       {/* //reply */}
       <div className="mr-10 my-5">

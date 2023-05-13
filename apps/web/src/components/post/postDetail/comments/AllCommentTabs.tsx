@@ -6,16 +6,13 @@ import { IPostCommentRead } from '@my/types';
 
 interface IProps {
   comments: IPostCommentRead[];
+  adminComments: IPostCommentRead[];
 }
 
-const AllCommentTabs: FC<IProps> = ({ comments }) => {
+const AllCommentTabs: FC<IProps> = ({ comments, adminComments }) => {
   // state
   // const [loading, setLoading] = useState<boolean>(false);
   // const [commentsList, setCommentsList] = useState<IPostComment>();
-
-  const onChange = (key: string) => {
-    console.log(key);
-  };
 
   //func
   // const getAllComments = async (id: string) => {
@@ -35,6 +32,10 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
   //   setLoading(false);
   // };
 
+  const onChange = (key: string) => {
+    console.log(key);
+  };
+
   console.log(comments);
 
   return (
@@ -47,6 +48,11 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
           label: 'همه',
           key: 'ALL',
           children: <TabsContent comments={comments} />,
+        },
+        {
+          label: 'ادمین',
+          key: 'admin',
+          children: <TabsContent adminComments={adminComments} />,
         },
       ]}
     />
