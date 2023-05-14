@@ -1,41 +1,21 @@
 import React, { FC } from 'react';
 import { Tabs } from 'antd';
-import TabsLabel from '@/components/post/postDetail/comments/TabsLabel';
-import TabsContent from '@/components/post/postDetail/comments/TabsContent';
+import AllComments from '@/components/post/postDetail/comments/AllComments';
 import { IPostCommentRead } from '@my/types';
+import TabAdminComment from '@/components/post/postDetail/comments/TabAdminComment';
+import TabsLabel from '@/components/post/postDetail/comments/TabsLabel';
 
 interface IProps {
-  comments: IPostCommentRead[];
+  comments?: IPostCommentRead[];
+  adminComments?: IPostCommentRead[];
 }
 
-const AllCommentTabs: FC<IProps> = ({ comments }) => {
-  // state
-  // const [loading, setLoading] = useState<boolean>(false);
-  // const [commentsList, setCommentsList] = useState<IPostComment>();
-
+const AllCommentTabs: FC<IProps> = ({ comments, adminComments }) => {
   const onChange = (key: string) => {
     console.log(key);
   };
 
-  //func
-  // const getAllComments = async (id: string) => {
-  //   setLoading(true);
-  //   await WebApiService.get(webEndpointUrls.getAllPostComments)
-  //     .then((res: ApiDataResponse<IPostComment>) =>
-  //       webApiThenGeneric<ApiDataResponse<IPostComment>, IPostComment>({
-  //         res,
-  //         onSuccessData: (data) => {
-  //           setCommentsList(data);
-  //         },
-  //         notifFail: true,
-  //         notifSuccess: true,
-  //       })
-  //     )
-  //     .catch(() => webApiCatch(errorResponse));
-  //   setLoading(false);
-  // };
-
-  console.log(comments);
+  console.log(adminComments);
 
   return (
     <Tabs
@@ -46,7 +26,12 @@ const AllCommentTabs: FC<IProps> = ({ comments }) => {
         {
           label: 'همه',
           key: 'ALL',
-          children: <TabsContent comments={comments} />,
+          children: <AllComments comments={comments} />,
+        },
+        {
+          label: <TabsLabel comments={comments} />,
+          key: 'Admin',
+          children: <TabAdminComment adminComments={adminComments} />,
         },
       ]}
     />

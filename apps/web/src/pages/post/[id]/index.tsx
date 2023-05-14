@@ -20,29 +20,38 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     context.req
   );
 
+  const adminComments = await serverSideFetch<
+    ApiDataResponse<IPostCommentRead>
+  >(
+    webEndpointUrls.getAllPostAdminComments +
+      '?pageSize=50&content=' +
+      context?.params?.id,
+    context.req
+  );
+
   return {
     props: {
       post: post.data,
       comments: comments.data,
+      adminComments: adminComments.data,
     },
   };
 };
 
-const PostDetail: FC<{ post: IPostRead; comments: IPostCommentRead[] }> = ({
-  post,
-  comments,
-}) => {
-  //state
-
-  console.log(comments);
+const PostDetail: FC<{
+  post: IPostRead;
+  comments: IPostCommentRead[];
+  adminComments: IPostCommentRead[];
+}> = ({ post, comments, adminComments }) => {
+  console.log(adminComments);
 
   return (
     <main>
       <ContentDetailSlider images={post?.images || []} />
 
-      <PostDetailDescription />
+      <PostDetailDescription post={post} />
       <div className="w-full my-5">
-        <AllCommentTabs comments={comments} />
+        <AllCommentTabs comments={comments} adminComments={adminComments} />
       </div>
     </main>
   );
