@@ -5,13 +5,13 @@ const webRoutes = {
 	dashboard: { path: "/dashboard", private: false },
 
 	//post
-	postAllContents: { path: "/postcontents", private: false },
+	postAllContents: { path: "/post", private: false },
 	postDetail: { path: "/post", private: false },
 
 	//experience
 	experience: { path: "/experience", private: false },
 	experienceAllContents: {
-		path: "/experiencecontents",
+		path: "/experience",
 		private: false,
 	},
 	experienceDetail: {

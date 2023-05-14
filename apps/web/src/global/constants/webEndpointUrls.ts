@@ -26,6 +26,7 @@ const webEndpointUrls = {
 	getPostDetail: (id: string) => "/post/" + id,
 	getAllPosts: "/post",
 	getAllPostComments: "/post/comment",
+	getAllPostCategories: "/postcategory",
 
 	//S
 	socialMediaGetAll: "/socialMedia",
