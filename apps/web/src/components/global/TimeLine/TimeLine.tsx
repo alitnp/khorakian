@@ -11,6 +11,8 @@ import {
 	IoIosArrowBack,
 	IoIosArrowForward,
 } from "react-icons/io";
+import { dateObjectFormatter } from "@/global/utils/helperFunctions";
+import TimeLineButtons from "@/components/global/TimeLine/components/TimeLineButtons";
 
 interface ITimeLine {
 	posts: IPostRead[];
@@ -40,37 +42,81 @@ const TimeLine: FC<ITimeLine> = ({ posts }) => {
 	const [swiperInstance, setSwiperInstance] =
 		useState<Swiper>();
 
-	const getSlide = (slides: IPostRead[], index: number) => (
-		<SwiperSlide className="px-0 !w-fit" key={index}>
-			<div className="px-2 py-2 w-fit">
-				<div className="h-[500px] w-fit">
-					<div className="flex items-center w-fit h-1/2 ">
-						{[
-							...slides.filter((_item, idx) => idx % 2 === 1),
-						].map((post) => (
-							<TimeLinePost
-								index={index}
-								post={post}
-								key={post._id}
-							/>
-						))}
+	const getSlide = (slides: IPostRead[], index: number) => {
+		let needYear;
+		if (index > 0) {
+			needYear =
+				dateObjectFormatter(slides[0].eventDate, "YYYY") !==
+				dateObjectFormatter(
+					array[index - 1].posts[0].eventDate,
+					"YYYY"
+				);
+		} else {
+			needYear =
+				dateObjectFormatter(slides[0].eventDate, "YYYY") !==
+				dateObjectFormatter(
+					array[array.length - 1].posts[0].eventDate,
+					"YYYY"
+				);
+		}
+
+		return (
+			<>
+				<SwiperSlide className="px-0 !w-fit" key={index}>
+					{needYear && (
+						<div className="absolute top-0 right-0 flex items-center justify-center h-full border-l border-dashed fill-k-grey-bg-2-color inherit-fill ">
+							<div className="relative scale-75 right-1/2">
+								{yearShape}
+								<span className="absolute -rotate-90 translate-x-1/2 -translate-y-1/2 top-1/2 right-1/2">
+									{dateObjectFormatter(slides[0].eventDate, "YYYY")}
+								</span>
+							</div>
+						</div>
+					)}
+					<div className="px-2 py-2 w-fit">
+						<div className="h-[500px] w-fit">
+							<div className="flex items-center w-fit h-1/2 ">
+								{[
+									...slides.filter((_item, idx) => idx % 2 === 1),
+								].map((post) => (
+									<TimeLinePost
+										index={index}
+										post={post}
+										key={post._id}
+									/>
+								))}
+							</div>
+							<div className="flex items-center h-1/2 shrink-0 w-fit">
+								{[
+									...slides.filter((_item, idx) => idx % 2 === 0),
+								].map((post) => (
+									<TimeLinePost
+										key={post._id}
+										post={post}
+										index={index}
+										down
+									/>
+								))}
+							</div>
+						</div>
 					</div>
-					<div className="flex items-center h-1/2 shrink-0 w-fit">
-						{[
-							...slides.filter((_item, idx) => idx % 2 === 0),
-						].map((post) => (
-							<TimeLinePost
-								key={post._id}
-								post={post}
-								index={index}
-								down
-							/>
-						))}
-					</div>
-				</div>
-			</div>
-		</SwiperSlide>
+				</SwiperSlide>
+			</>
+		);
+	};
+
+	const array: any = chunkArray(multiplePosts(posts), 2).map(
+		(arr, index) => ({ posts: arr, index })
 	);
+
+	console.log(array);
+	console.log(activeIndex);
+	// console.log(
+	// 	dateObjectFormatter(
+	// 		array[activeIndex].posts[0].eventDate,
+	// 		"YYYY"
+	// 	)
+	// );
 
 	const renderSlides = useMemo(
 		() =>
@@ -87,6 +133,12 @@ const TimeLine: FC<ITimeLine> = ({ posts }) => {
 					<div className="relative w-full h-full ">
 						<div className="absolute left-0 -translate-x-1/2 -translate-y-1/2 top-1/2">
 							{yearShape}
+							<div className="absolute -rotate-90 translate-x-1/2 -translate-y-1/2 text-k-bg-color top-1/2 right-1/2">
+								{dateObjectFormatter(
+									array[activeIndex].posts[0].eventDate,
+									"YYYY"
+								)}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -102,9 +154,10 @@ const TimeLine: FC<ITimeLine> = ({ posts }) => {
 						}
 						autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
 						spaceBetween={0}
-						onSlideChange={(swiper: Swiper) =>
-							setActiveIndex(swiper.activeIndex)
-						}
+						onSlideChange={(swiper: Swiper) => {
+							setActiveIndex(swiper.realIndex);
+							console.log(swiper);
+						}}
 						// centeredSlides={true}
 						loop
 					>
@@ -116,26 +169,7 @@ const TimeLine: FC<ITimeLine> = ({ posts }) => {
 				</div>
 				<div className="absolute top-0 left-0 w-full border-b h-1/2 border-k-text-color" />
 			</div>
-			<div className="absolute bottom-0 flex flex-col h-full translate-x-1/2 right-1/2">
-				<div className="w-1/2 h-full border-l border-dashed border-k-primary-color"></div>
-			</div>
-			<div className="absolute translate-x-1/2 bottom-6 right-1/2">
-				<div className="relative flex gap-8 py-6">
-					<div
-						className="flex items-center justify-center w-8 h-8 transition-shadow duration-300 border rounded-full shadow-none cursor-pointer hover:shadow-lg"
-						onClick={() => swiperInstance?.slideNext()}
-					>
-						<IoIosArrowForward className="cursor-pointer shadow-none transition-shadow hover:shadow-lg ml-[2px]" />
-					</div>
-					<div
-						className="flex items-center justify-center w-8 h-8 transition-shadow duration-300 border rounded-full shadow-none cursor-pointer hover:shadow-lg"
-						onClick={() => swiperInstance?.slidePrev()}
-					>
-						<IoIosArrowBack className=" mr-[2px]" />
-					</div>
-					<div className="absolute top-0 w-0 h-full translate-x-1/2 border-2 rounded-full border-k-primary-color right-1/2"></div>
-				</div>
-			</div>
+			<TimeLineButtons swiperInstance={swiperInstance} />
 		</div>
 	);
 };
