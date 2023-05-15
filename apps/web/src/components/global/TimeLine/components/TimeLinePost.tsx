@@ -1,7 +1,12 @@
 import webConfig from "@/global/constants/webConfig";
-import { dateObjectFormatter } from "@/global/utils/helperFunctions";
+import {
+	dateObjectFormatter,
+	getThumbnailFromContent,
+} from "@/global/utils/helperFunctions";
 import { IPostRead } from "@my/types";
 import { FC } from "react";
+import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
+import { BsPlayCircle } from "react-icons/bs";
 
 interface ITimeListPost {
 	index: number;
@@ -14,8 +19,12 @@ const TimeLinePost: FC<ITimeListPost> = ({
 	post,
 	down = false,
 }) => {
+	const image = getThumbnailFromContent(post);
 	return (
-		<div className={`relative flex items-center h-full`}>
+		<div
+			className={`relative flex items-center h-full`}
+			style={{ marginRight: down ? "50px" : "" }}
+		>
 			<div
 				className={`absolute ${
 					down ? "top-0" : "bottom-0"
@@ -37,7 +46,7 @@ const TimeLinePost: FC<ITimeListPost> = ({
 							: "pt-1 -bottom-0 translate-y-full"
 					} text-xs translate-x-1/2   right-1/2 text-k-grey-text-color whitespace-nowrap`}
 				>
-					{dateObjectFormatter(post.eventDate)}
+					{dateObjectFormatter(post.eventDate, "DD MMMM YYYY")}
 				</span>
 			)}
 			{!down && index % 4 === 0 && index % 3 !== 0 && (
@@ -48,7 +57,7 @@ const TimeLinePost: FC<ITimeListPost> = ({
 							: "pt-1 -bottom-0 translate-y-full"
 					} text-xs translate-x-1/2   right-1/2 text-k-grey-text-color whitespace-nowrap`}
 				>
-					{dateObjectFormatter(post.eventDate)}
+					{dateObjectFormatter(post.eventDate, "DD MMMM YYYY")}
 				</span>
 			)}
 			<div
@@ -57,12 +66,30 @@ const TimeLinePost: FC<ITimeListPost> = ({
 									border
 										`}
 			>
-				{webConfig.domain && post.images[0]?.pathname && (
+				{webConfig.domain && image && (
 					<img
-						src={webConfig.domain + post.images[0].pathname}
-						className="object-contain max-w-[256px] max-h-[200px] transition-transform duration-500 ease-out hover:scale-110"
+						src={webConfig.domain + image.imagePathname}
+						className="object-contain max-w-[250px] max-h-[200px] transition-transform duration-500 ease-out hover:scale-110"
 					/>
 				)}
+				<div className="absolute top-0 left-0 flex items-end w-full h-full p-2 text-k-bg-color bg-slate-800/30">
+					<span className="line-clamp-1">{post.title}</span>
+				</div>
+				{post.videos.length > 0 && (
+					<div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-k-bg-color">
+						<BsPlayCircle className="text-4xl" />
+					</div>
+				)}
+				<div className="absolute top-1 left-2">
+					<CardLikeCommentCount
+						viewCount={post.viewCount || 0}
+						likeCount={post.likeCount || 0}
+						commentCount={post.commentCount || 0}
+						isLiked={post.liked}
+						isCommented={false}
+						lightColor
+					/>
+				</div>
 			</div>
 		</div>
 	);

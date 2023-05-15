@@ -32,7 +32,7 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 			}`}
 		>
 			<div
-				className={`flex items-center gap-1 ${
+				className={`flex items-center gap-1  ${
 					withText && "border-l border-k-grey-text-color pl-2"
 				}`}
 			>

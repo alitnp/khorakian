@@ -93,6 +93,10 @@
 
 }
 
+.inherit-fill * {
+  fill: inherit !important;
+}
+
 
 .k-comment-icon {
   cursor: pointer;
