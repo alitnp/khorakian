@@ -10,8 +10,6 @@ interface IProps {
 
 const TabsLabel: FC<IProps> = ({ comments }) => (
   <div className="flex items-center ">
-    {}
-
     {comments?.map((item: IPostCommentRead) => {
       return (
         <>

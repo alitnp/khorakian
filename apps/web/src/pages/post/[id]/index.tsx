@@ -1,5 +1,5 @@
 import { ApiDataResponse, IPostCommentRead, IPostRead } from '@my/types';
-import { FC, memo } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import webEndpointUrls from '@/global/constants/webEndpointUrls';
 import AllCommentTabs from '@/components/post/postDetail/comments/AllCommentTabs';
 import PostDetailDescription from '@/components/post/postDetail/PostDetailDescription';
@@ -43,8 +43,6 @@ const PostDetail: FC<{
   comments: IPostCommentRead[];
   adminComments: IPostCommentRead[];
 }> = ({ post, comments, adminComments }) => {
-  console.log(adminComments);
-
   return (
     <main>
       <ContentDetailSlider images={post?.images || []} />
