@@ -2,14 +2,18 @@ import {
 	getAllPostCategories,
 	getAllPosts,
 } from "@/components/post/postFunctions";
-import webRoutes from "@/global/constants/routes";
 import { IPostCategory, IPostRead } from "@my/types";
 import { GetServerSideProps } from "next";
-import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import { FC, useMemo } from "react";
 import querystring from "querystring";
 import PostsFloatingBox from "@/components/post/posts/PostsFloatingBox";
+import Card from "@/components/global/Card/Card";
+import {
+	dateObjectFormatter,
+	getThumbnailFromContent,
+} from "@/global/utils/helperFunctions";
+import webRoutes from "@/global/constants/routes";
 
 interface IPostsPage {
 	postCategories: IPostCategory[];
@@ -22,7 +26,10 @@ export const getServerSideProps: GetServerSideProps =
 		const postCategories = await getAllPostCategories(
 			context.req
 		);
-		const posts = await getAllPosts(context.req);
+		const posts = await getAllPosts(
+			context.req,
+			context.query
+		);
 
 		if (!postCategories || !posts)
 			return {
@@ -43,7 +50,7 @@ const PostsPage: FC<IPostsPage> = ({
 	posts,
 	query,
 }) => {
-	console.log(querystring.stringify(query));
+	console.log(posts);
 	//constants
 
 	return (
@@ -52,7 +59,36 @@ const PostsPage: FC<IPostsPage> = ({
 				query={query}
 				postCategories={postCategories}
 			/>
-			<div className="h-[200vh]"></div>
+			<div className="h-[200vh] mt-24 k-container gap-4">
+				<div className="grid w-full gap-4 md:grid-cols-2">
+					{posts.map((post) => {
+						const image = getThumbnailFromContent(post);
+						return (
+							<Card
+								key={post._id}
+								category={post.postCategory.title}
+								commentCount={post.commentCount}
+								likeCount={post.likeCount}
+								title={post.title}
+								viewCount={post.viewCount}
+								creationDate={dateObjectFormatter(
+									post.creationDate
+								)}
+								isLiked={post.liked || false}
+								height={image.height}
+								width={image.width}
+								imageAlt={image.imageAlt}
+								imagePathname={image.imagePathname}
+								isCommented={false}
+								isVideo={image.isVideo}
+								detailPath={
+									webRoutes.postDetail.path + "/" + post._id
+								}
+							/>
+						);
+					})}
+				</div>
+			</div>
 		</div>
 	);
 };

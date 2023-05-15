@@ -54,7 +54,7 @@ class PostData {
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $options: "i" };
     if (req.query.postCategory)
-      searchQuery.postCategory._id = { $regex: req.query.postCategory };
+      searchQuery.postCategory = req.query.postCategory;
     if (req.query._id) searchQuery._id = req.query._id;
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);

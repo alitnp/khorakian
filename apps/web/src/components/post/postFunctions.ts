@@ -6,6 +6,8 @@ import {
 	IPostRead,
 } from "@my/types";
 import { NextIncomingMessage } from "next/dist/server/request-meta";
+import queryString from "querystring";
+import { ParsedUrlQuery } from "querystring";
 
 export const getAllPostCategories = async (
 	req?: NextIncomingMessage & {
@@ -28,15 +30,23 @@ export const getAllPostCategories = async (
 };
 
 export const getAllPosts = async (
-	req?: NextIncomingMessage & {
+	req: NextIncomingMessage & {
 		cookies: Partial<{
 			[key: string]: string;
 		}>;
-	}
+	},
+	query: ParsedUrlQuery
 ): Promise<IPostRead[]> => {
+	console.log(
+		webEndpointUrls.getAllPosts +
+			"?" +
+			queryString.stringify({ pageSize: 50, ...query })
+	);
 	const items: ApiDataListResponse<IPostRead> =
 		await serverSideFetch(
-			webEndpointUrls.getAllPosts + "?pageSize=50",
+			webEndpointUrls.getAllPosts +
+				"?" +
+				queryString.stringify({ pageSize: 50, ...query }),
 			req
 		);
 	if (!items) {
