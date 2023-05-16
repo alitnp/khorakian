@@ -29,8 +29,6 @@ interface IDashboard {
 }
 
 const Dashboard: FC<IDashboard> = ({ user }) => {
-	console.log(user);
-
 	return <DashboardLayout>asdfasdf</DashboardLayout>;
 };
 

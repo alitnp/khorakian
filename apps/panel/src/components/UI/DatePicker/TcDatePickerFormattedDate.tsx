@@ -18,7 +18,7 @@ interface ITcDatePicker extends DatePickerProps, CalendarProps {
 const TcDatePickerFormattedDate: FC<ITcDatePicker> = ({ placeholder = 'تاریخ را انتخاب کنید', value, onChange, range, ...props }) => {
   //states
   const [localValue, setLocalValue] = useState<any>(null);
-  console.log(value);
+
   //effect
   useEffect(() => {
     if (!value) return setLocalValue(null);

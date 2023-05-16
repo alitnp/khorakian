@@ -53,6 +53,9 @@ const DefaultImageCreate = () => {
           <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
             <TcInput placeholder='کلید' />
           </TcFormItem>
+          <TcFormItem name='persianKey' label='کلید فارسی' rules={[{ required: true, message: 'کلید فارسی تعیین نشده' }]}>
+            <TcInput placeholder='کلید فارسی' />
+          </TcFormItem>
         </TcFormWrapper>
       </TcForm>
 

@@ -68,7 +68,7 @@ function DirectMessageDetail() {
   const isActive = (id: string): boolean => {
     return id !== detail?.user._id;
   };
-  console.log(detail);
+
   return (
     <TcCard back={{ to: routes.directMessage.path }}>
       <TcPageTitle title='پیام مستقیم' />

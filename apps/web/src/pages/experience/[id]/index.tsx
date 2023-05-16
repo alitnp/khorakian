@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps =
 const ExperienceDetail: FC<{
 	experience: IExperienceRead;
 }> = ({ experience }) => {
-	console.log(experience);
+
 
 	return (
 		<main>

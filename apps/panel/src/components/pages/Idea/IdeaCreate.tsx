@@ -32,8 +32,6 @@ const IdeaCreate: FC = () => {
 
   //functions
   const handelSubmit = async (values: any) => {
-    console.log('hello');
-
     setLoading(true);
     await ApiService.post(endpointUrls.ideaCreate, { ...values, isAdminSubmitted: true })
       .then((res: any) =>

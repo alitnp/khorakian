@@ -50,9 +50,6 @@ const PostsPage: FC<IPostsPage> = ({
 	posts,
 	query,
 }) => {
-	console.log(posts);
-	//constants
-
 	return (
 		<div>
 			<PostsFloatingBox

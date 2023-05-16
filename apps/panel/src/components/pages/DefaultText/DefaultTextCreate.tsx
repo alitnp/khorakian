@@ -46,8 +46,6 @@ const DefaultTextCreate = () => {
     setLoading(false);
   };
 
-  console.log(text);
-
   const changeHandler = (value: any) => {
     if (value.text) {
       setText(value.text);

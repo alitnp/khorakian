@@ -47,7 +47,6 @@ const SocialMediaUpdate = () => {
         handleApiThenGeneric({
           res,
           onSuccessData: (data) => {
-            console.log(data);
             setSocialMediaDetail(data);
             form.setFieldsValue(data);
             setImages([data.image]);
