@@ -26,11 +26,6 @@ const persianNumbers = {
 	9: "۹",
 };
 
-/**
- * Replaces Arabic numerals with Persian numerals in a string or a number
- * @param {string | number} input - The input to be processed
- * @returns {string} The output with replaced numerals
- */
 export const replaceNumbersWithPersian = (input) => {
 	if (input === undefined || input === null) return "";
 	// Convert the input to a string if it is a number

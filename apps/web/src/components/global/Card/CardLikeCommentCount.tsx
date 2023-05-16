@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { TbMessageCircle2Filled } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import { HiEye } from "react-icons/hi";
-import { replaceNumbersWithPersian } from "@my/helpers";
+import { replaceNumbersWithPersian } from "@/global/utils/helperFunctions";
 
 interface ICardLikeCommentCount {
 	likeCount: number;
