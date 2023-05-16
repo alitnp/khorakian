@@ -12,7 +12,6 @@ const MainTitle: FC<IMainTitle> = ({
 	experience_header_title,
 	experience_header_subTitle,
 	experience_header_button_text,
-	experience_tips_image,
 }) => {
 	return (
 		<>
@@ -24,19 +23,17 @@ const MainTitle: FC<IMainTitle> = ({
 						className="mx-auto mt-5 text-center"
 						style={{ width: "60%" }}
 					>
-						<span className="text-3xl font-bold">
+						<h1 className="text-3xl font-bold">
 							{experience_header_title}
-						</span>
+						</h1>
 					</div>
 					<div className="mx-auto max-w-[60ch] my-4 text-center">
-						<span className="text-base ">
+						<span className="block text-base ">
 							{experience_header_subTitle}
 						</span>
-						<br />
-						<br />
 						<a
 							href="#"
-							className="px-4 py-1 mt-5 border border-k-primary-color rounded-2xl text-k-primary-color"
+							className="block px-4 py-1 mx-auto mt-6 border w-fit border-k-primary-color rounded-2xl text-k-primary-color"
 						>
 							{experience_header_button_text}
 						</a>

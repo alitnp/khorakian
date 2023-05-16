@@ -1,13 +1,5 @@
 import { GetStaticProps } from "next";
-import { serverSideFetch } from "@/global/utils/webFetch";
-import webEndpointUrls from "@/global/constants/webEndpointUrls";
-import {
-	ApiDataListResponse,
-	ApiDataResponse,
-	IDefaultText,
-	IImage,
-	IPageItemConents,
-} from "@my/types";
+import { IImage } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
 import { memo } from "react";
 import MainTitle from "@/components/experience/MainTitle";
@@ -47,7 +39,10 @@ const Experience = ({
 				{...defaultTextsObject}
 				{...defaultImagesObject}
 			/>
-			<ExperienceTips />
+			<ExperienceTips
+				{...defaultTextsObject}
+				{...defaultImagesObject}
+			/>
 		</main>
 	);
 };

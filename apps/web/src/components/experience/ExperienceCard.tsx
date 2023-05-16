@@ -1,28 +1,28 @@
-import webConfig from '@/global/constants/webConfig';
-import { Image } from 'antd';
-import { FC } from 'react';
+import { FC } from "react";
 
-interface IExperienceCard {}
+interface IExperienceCard {
+	text?: string;
+	title?: string;
+	active?: boolean;
+}
 
-const ExperienceCard: FC<IExperienceCard> = ({}) => {
-  return (
-    <div
-      className="p-3"
-      style={{
-        boxShadow: '0 0 5px 0',
-        backdropFilter: 'blur(10px)',
-        backgroundColor: 'white',
-        borderRadius: '12px',
-        height: '7rem',
-      }}
-    >
-      <h1 className="font-bold text-base">مشاوره در زمینه ی فرهنگی</h1>
-      <span className="text-sm">
-        مشاوره راهنمایی و استفاده از تجربیات دیگران وپیشگوستان درباره ی نحوه ی
-        مواجه با مشکلات و مسائل
-      </span>
-    </div>
-  );
+const ExperienceCard: FC<IExperienceCard> = ({
+	text,
+	title,
+	active,
+}) => {
+	return (
+		<div
+			className={`p-3 w-full max-w-[30ch] overflow-hidden rounded-lg bg-white/20 backdrop-blur-sm backdrop-brightness-125 border text-k-bg-color ${
+				active
+					? "border-k-primary-color "
+					: "border-transparent"
+			}`}
+		>
+			<h4 className="mb-2 text-sm font-medium">{title}</h4>
+			<span className="text-xs font-light">{text}</span>
+		</div>
+	);
 };
 
 export default ExperienceCard;

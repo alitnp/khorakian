@@ -13,7 +13,7 @@ export const createDefaultImageValidations = [
     key: "key",
     name: "کلید عکس",
     minLength: 3,
-    maxLength: 55,
+    maxLength: 255,
   }),
   ...existsStringValidation({
     key: "image",
@@ -24,8 +24,8 @@ export const createDefaultImageValidations = [
   ...existsStringValidation({
     key: "persianKey",
     name: "عنوان فارسی",
-    minLength: 24,
-    maxLength: 24,
+    minLength: 3,
+    maxLength: 255,
   }),
 ];
 
