@@ -36,6 +36,7 @@ export const getSortBy = (req: Req): string | undefined => {
 
 export const getSortByDescending = (req: Req): 1 | -1 => {
   const desc = getPropertyFromRequest(req, "desc");
+  if (!desc) return -1;
   if (desc === 1 || desc === -1) return desc;
   const booleanDesc = stringToBoolean(desc);
   return booleanDesc ? -1 : 1;

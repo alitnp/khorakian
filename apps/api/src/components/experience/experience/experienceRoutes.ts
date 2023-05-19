@@ -40,6 +40,8 @@ const controller = new ExperienceController(data);
 router.get("/like", controller.getAllLikes);
 //get all Experience comments
 router.get("/comment", controller.getAllComments);
+router.get("/getAllWithComments", controller.getAllWithComments);
+router.get("/getAllWithAdminComments", controller.getAllWithAdminComments);
 // get a signgle Experience with id
 router.get("/:id", validate(getExperienceValidations), controller.get);
 // get a list of Experiences

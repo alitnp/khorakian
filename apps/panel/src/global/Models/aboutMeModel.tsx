@@ -46,11 +46,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       key: 'position',
       dataIndex: 'position',
     },
-    {
-      title: 'متن',
-      key: 'text',
-      dataIndex: 'text',
-    },
+
     {
       title: 'پست',
       key: 'post',

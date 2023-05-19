@@ -9,6 +9,8 @@ import {
   IExperienceRead,
   IVideoRead,
   IExperienceCategory,
+  IExperienceWithComments,
+  IExperienceCommentRead,
 } from "@my/types";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
@@ -107,6 +109,47 @@ class ExperienceData {
       sortBy,
       desc: desc === -1 ? true : false,
     };
+  };
+
+  getAllWithAdminComments = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IExperienceWithComments>> => {
+    const result = await this.getAll(req, userId);
+
+    const resultWithComments: ApiDataListResponse<IExperienceWithComments> = {
+      ...result,
+      data: result.data.map((item) => ({ ...item, comments: [] })),
+    };
+    for (let i = 0; i < resultWithComments.data.length; i++) {
+      const item = resultWithComments.data[i];
+      const comments = await this.ExperienceComment.getAdminCommentsByContentId(
+        item._id,
+      );
+      item.comments = comments.data as unknown[] as IExperienceCommentRead[];
+      resultWithComments.data[i] = item;
+    }
+    return resultWithComments;
+  };
+
+  getAllWithComments = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IExperienceWithComments>> => {
+    const result = await this.getAll(req, userId);
+    const resultWithComments: ApiDataListResponse<IExperienceWithComments> = {
+      ...result,
+      data: result.data.map((item) => ({ ...item, comments: [] })),
+    };
+    for (let i = 0; i < resultWithComments.data.length; i++) {
+      const item = resultWithComments.data[i];
+      const comments = await this.ExperienceComment.getCommentsByContentId(
+        item._id,
+      );
+      item.comments = comments.data as unknown[] as IExperienceCommentRead[];
+      resultWithComments.data[i] = item;
+    }
+    return resultWithComments;
   };
 
   get = async (id: string, userId?: string): Promise<IExperienceRead> => {

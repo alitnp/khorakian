@@ -6,6 +6,7 @@ import {
 	IDefaultImageRead,
 	IDefaultText,
 	IHistory,
+	IIdeaRead,
 	IImage,
 	IPageItemConents,
 	IPostRead,
@@ -92,7 +93,7 @@ export const getHomeAboutMePosts = async (
 ): Promise<IAboutMeRead[]> => {
 	const aboutMePosts: ApiDataListResponse<IAboutMeRead> =
 		await serverSideFetch(
-			webEndpointUrls.aboutMeGetAll + "?pageSize=200",
+			webEndpointUrls.aboutMeGetAll + "?pageSize=10",
 			req
 		);
 	if (!aboutMePosts) {
@@ -112,7 +113,7 @@ export const getAllSocialMedias = async (
 ): Promise<ISocialMediaRead[]> => {
 	const socialMedias: ApiDataListResponse<ISocialMediaRead> =
 		await serverSideFetch(
-			webEndpointUrls.socialMediaGetAll + "?pageSize=100"
+			webEndpointUrls.socialMediaGetAll + "?pageSize=10"
 		);
 	if (!socialMedias) {
 		console.log(
@@ -132,7 +133,7 @@ export const getAllHistories = async (
 ): Promise<IHistory[]> => {
 	const histories: ApiDataListResponse<IHistory> =
 		await serverSideFetch(
-			webEndpointUrls.historyGetAll + "?pageSize=100",
+			webEndpointUrls.historyGetAll + "?pageSize=10",
 			req
 		);
 	if (!histories) {
@@ -153,7 +154,7 @@ export const getTimelinePosts = async (
 	const posts: ApiDataListResponse<IPostRead> =
 		await serverSideFetch(
 			webEndpointUrls.getAllPosts +
-				"?pageSize=1000&sort=eventDate",
+				"?pageSize=100&sort=eventDate",
 			req
 		);
 	if (!posts) {
@@ -162,4 +163,25 @@ export const getTimelinePosts = async (
 		);
 	}
 	return posts.data;
+};
+
+export const getFeaturedIdeas = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<IIdeaRead[]> => {
+	const items: ApiDataListResponse<IIdeaRead> =
+		await serverSideFetch(
+			webEndpointUrls.getAllIdeas +
+				"?pageSize=2&featured=true",
+			req
+		);
+	if (!items) {
+		console.log(
+			"error fetch : " + webEndpointUrls.getAllIdeas
+		);
+	}
+	return items.data;
 };

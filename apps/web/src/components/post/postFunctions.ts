@@ -36,7 +36,7 @@ export const getAllPosts = async (
 		}>;
 	},
 	query: ParsedUrlQuery
-): Promise<IPostRead[]> => {
+): Promise<ApiDataListResponse<IPostRead>> => {
 	console.log(
 		webEndpointUrls.getAllPosts +
 			"?" +
@@ -54,5 +54,5 @@ export const getAllPosts = async (
 			"error fetch : " + webEndpointUrls.getAllPosts
 		);
 	}
-	return items.data;
+	return items;
 };

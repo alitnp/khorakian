@@ -70,7 +70,7 @@ const columns = (handleDelete?: (_id: string) => void) => {
       key: 'commentCount',
       dataIndex: 'commentCount',
     },
-    { title: 'توضیحات', key: 'text', dataIndex: 'text' },
+
     { title: 'وضعیت', render: (_text: any, record: Record<string, any>) => (record.isApprove ? 'تایید شده' : 'تایید نشده') },
   ];
   handleDelete &&

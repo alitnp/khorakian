@@ -16,6 +16,20 @@ class ExperienceController {
     const result = await this.data.getAll(req, getUserIdFromReq(req));
     res.send(apiDataListResponse<IExperienceRead>(result));
   };
+  getAllWithComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAllWithComments(
+      req,
+      getUserIdFromReq(req),
+    );
+    res.send(apiDataListResponse<IExperienceRead>(result));
+  };
+  getAllWithAdminComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAllWithAdminComments(
+      req,
+      getUserIdFromReq(req),
+    );
+    res.send(apiDataListResponse<IExperienceRead>(result));
+  };
 
   getAllComments = async (req: Req, res: Res) => {
     const result = await this.data.getAllComments(req);

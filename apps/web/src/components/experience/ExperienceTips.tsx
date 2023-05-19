@@ -40,16 +40,17 @@ const ExperienceTips: FC<IExperience> = ({
 							src={
 								webConfig.domain + experience_tips_image.pathname
 							}
+							className="object-cover"
 						/>
 					)}
 				</div>
-				<div className="z-20 w-full h-full py-32 k-container bg-slate-800/80">
+				<div className="z-20 w-full h-full py-32 k-container bg-stone-800/80">
 					<div className="pb-20 mx-auto text-center ">
 						<h1 className="text-3xl font-bold text-k-bg-color max-w-[30ch] mx-auto">
 							{experience_tips_title}
 						</h1>
 					</div>
-					<div className="flex flex-wrap items-stretch justify-center gap-6">
+					<div className="grid grid-cols-1 gap-10 mx-auto sm:grid-cols-2 lg:grid-cols-4 max-w-7xl">
 						{(experience_tip_1_text ||
 							experience_tip_1_title) && (
 							<ExperienceCard

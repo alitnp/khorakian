@@ -28,8 +28,6 @@ export type DefaultModelProperties = {
 /* #region user */
 export interface IUser extends DefaultModelProperties {
 	_id: string;
-	firstName: string;
-	lastName: string;
 	fullName: string;
 	mobileNumber: string;
 	password: string;
@@ -38,8 +36,6 @@ export interface IUser extends DefaultModelProperties {
 }
 export interface IUserRead extends DefaultModelProperties {
 	_id: string;
-	firstName: string;
-	lastName: string;
 	fullName: string;
 	mobileNumber: string;
 	isAdmin: boolean;
@@ -240,6 +236,22 @@ export interface IExperienceRead
 	liked?: boolean;
 	article: string;
 }
+export interface IExperienceWithComments
+	extends DefaultModelProperties {
+	_id: string;
+	title: string;
+	text: string;
+	images: IImage[];
+	videos: IVideoRead[];
+	experienceCategory: IExperienceCategory;
+	featured: boolean;
+	viewCount: number;
+	likeCount: number;
+	commentCount: number;
+	liked?: boolean;
+	article: string;
+	comments: IExperienceCommentRead[];
+}
 
 export interface IExperienceLike
 	extends DefaultModelProperties {
@@ -259,19 +271,13 @@ export interface IExperienceLikeRead
 
 export interface IExperienceComment
 	extends DefaultModelProperties {
+	_id: string;
 	content?: string;
 	user?: string;
 	text: string;
 	replies?: ICommentReply[];
 }
-export interface IExperienceCommentRead
-	extends DefaultModelProperties {
-	_id: string;
-	content: string;
-	user: IUserRead;
-	text: string;
-	replies: ICommentReply[];
-}
+
 export interface IExperienceCommentRead
 	extends DefaultModelProperties {
 	_id: string;

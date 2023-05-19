@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import {
 	IAboutMeRead,
 	IHistory,
+	IIdeaRead,
 	IImage,
 	IPageItemConents,
 	IPostRead,
@@ -20,6 +21,7 @@ import HomeAboutMe from "@/components/home/HomeAboutMe";
 import {
 	getAllHistories,
 	getAllSocialMedias,
+	getFeaturedIdeas,
 	getHomeAboutMePosts,
 	getHomeDefaultImages,
 	getHomeDefaultTexts,
@@ -37,6 +39,7 @@ type homeProps = {
 	socialMedias: ISocialMediaRead[];
 	histories: IHistory[];
 	timeLinePosts: IPostRead[];
+	featuredIdeas: IIdeaRead[];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -47,6 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const socialMedias = await getAllSocialMedias();
 	const histories = await getAllHistories();
 	const timeLinePosts = await getTimelinePosts();
+	const featuredIdeas = await getFeaturedIdeas();
 
 	const props: homeProps = {
 		pageItems: pageItems.data,
@@ -56,6 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		socialMedias,
 		histories,
 		timeLinePosts,
+		featuredIdeas,
 	};
 
 	return {
@@ -72,6 +77,7 @@ const Home = ({
 	socialMedias,
 	histories,
 	timeLinePosts,
+	featuredIdeas,
 }: homeProps) => {
 	const renderPageItems = useMemo(
 		() =>
@@ -92,6 +98,7 @@ const Home = ({
 					return (
 						<HomeIdeaExpLink
 							key={pageItem._id}
+							featuredIdeas={featuredIdeas}
 							{...defaultTexts}
 							home_experience_image={
 								defaultImages?.home_experience_image
@@ -103,6 +110,7 @@ const Home = ({
 					return (
 						<HomeAboutMe
 							key={pageItem._id}
+							greyBg={index % 2 === 0}
 							{...defaultTexts}
 							posts={aboutMePosts}
 							home_aboutMe_image={
@@ -116,6 +124,7 @@ const Home = ({
 							key={pageItem._id}
 							title={pageItem.title}
 							posts={pageItem.content.slice(0, 6)}
+							greyBg={index % 2 === 0}
 						/>
 					);
 				if (pageItem.type.title === "timeLine")

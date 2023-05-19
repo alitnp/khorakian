@@ -40,9 +40,8 @@ class CommentData<commentModel> {
   ): Promise<ApiDataListResponse<commentModel>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.content) searchQuery.content = req.query.content;
-    const { pageNumber, totalItems, totalPages, sortBy, desc } =
+    const { pageNumber, totalItems, totalPages, sortBy, desc, pageSize } =
       await paginationProps(searchQuery, req, this.Comment);
-    console.log(await this.User.find({ isAdmin: true }).distinct("_id"));
     const data = await this.Comment.find({
       $and: [
         { content: req.query.content },
@@ -52,16 +51,61 @@ class CommentData<commentModel> {
           },
         },
       ],
-    }).populate(["user", "content"]);
+    }).populate(["user"]);
 
     return {
       data,
       pageNumber,
-      pageSize: 100,
+      pageSize,
       totalItems,
       totalPages,
       sortBy,
       desc: desc === -1 ? true : false,
+    };
+  };
+
+  getAdminCommentsByContentId = async (
+    _id: string,
+  ): Promise<ApiDataListResponse<commentModel>> => {
+    const data = await this.Comment.find({
+      $and: [
+        { content: _id },
+        {
+          user: {
+            $in: await this.User.find({ isAdmin: true }).distinct("_id"),
+          },
+        },
+      ],
+    }).populate(["user"]);
+
+    return {
+      data,
+      pageNumber: 1,
+      pageSize: data.length,
+      totalItems: data.length,
+      totalPages: 1,
+      sortBy: "creationDate",
+      desc: false,
+    };
+  };
+
+  getCommentsByContentId = async (
+    _id: string,
+  ): Promise<ApiDataListResponse<commentModel>> => {
+    const data = await this.Comment.find({
+      content: _id,
+    })
+      .populate(["user"])
+      .limit(50);
+
+    return {
+      data,
+      pageNumber: 1,
+      pageSize: data.length,
+      totalItems: data.length,
+      totalPages: 1,
+      sortBy: "creationDate",
+      desc: false,
     };
   };
 

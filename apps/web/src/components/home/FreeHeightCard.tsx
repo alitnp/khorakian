@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FC, memo } from "react";
 import { BsPlayCircle } from "react-icons/bs";
 
-interface ICard {
+interface IFreeHeightCard {
 	category: string;
 	imagePathname: string;
 	width: number;
@@ -22,7 +22,7 @@ interface ICard {
 	isCommented: boolean;
 }
 
-const Card: FC<ICard> = ({
+const FreeHeightCard: FC<IFreeHeightCard> = ({
 	category,
 	imagePathname,
 	width,
@@ -39,16 +39,16 @@ const Card: FC<ICard> = ({
 	isCommented,
 }) => {
 	return (
-		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 ">
+		<article className="items-stretch w-full mb-6 overflow-hidden border shadow-md bg-k-bg-color rounded-xl shrink-0 ">
 			<Link href={detailPath}>
-				<div className="relative overflow-hidden w-full aspect-video md:aspect-auto group md:w-[355.55px] md:h-[200px]">
+				<div className="relative w-full overflow-hidden group">
 					{imagePathname && (
 						<Image
 							src={webConfig.domain + imagePathname}
 							alt={imageAlt}
 							width={width}
 							height={height}
-							className="object-cover w-full aspect-video md:aspect-auto md:w-[355.55px] md:h-[200px] transition-transform duration-500 ease-out group-hover:scale-110"
+							className="object-contain w-full "
 						/>
 					)}
 					{isVideo && (
@@ -58,7 +58,7 @@ const Card: FC<ICard> = ({
 					)}
 				</div>
 			</Link>
-			<div className="px-4 py-2 md:w-[355.55px]">
+			<div className="px-4 py-2">
 				<span className="text-sm font-light text-k-grey-text-color">
 					{category}
 				</span>
@@ -84,4 +84,4 @@ const Card: FC<ICard> = ({
 	);
 };
 
-export default memo(Card);
+export default memo(FreeHeightCard);

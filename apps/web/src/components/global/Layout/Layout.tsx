@@ -28,6 +28,7 @@ const Layout: FC<ILayout> = ({ children }) => {
 			>
 				<InitialInfo />
 				<LayoutHeader />
+				<div className="w-full h-12 bg-k-text-color"></div>
 				{children}
 			</ConfigProvider>
 		</div>

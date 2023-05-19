@@ -13,6 +13,7 @@ interface IHomeAboutMe {
 	home_aboutMe_title?: string;
 	home_aboutMe_text?: string;
 	home_aboutMe_image?: IImage;
+	greyBg: boolean;
 }
 
 const HomeAboutMe: FC<IHomeAboutMe> = ({
@@ -20,9 +21,14 @@ const HomeAboutMe: FC<IHomeAboutMe> = ({
 	home_aboutMe_title,
 	home_aboutMe_text,
 	home_aboutMe_image,
+	greyBg,
 }) => {
 	return (
-		<div className="grid w-full grid-cols-1 my-6 k-container">
+		<div
+			className={`grid w-full grid-cols-1 py-24 k-container ${
+				greyBg && "bg-k-grey-bg-1-color"
+			}`}
+		>
 			<div className="flex items-center w-full">
 				<div className="flex flex-col justify-center w-full py-20 grow-0">
 					<h4 className="mb-4 text-2xl font-bold">

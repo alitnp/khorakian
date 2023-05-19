@@ -79,11 +79,11 @@ const columns = (handleDelete?: (_id: string) => void) => {
       key: 'title',
       dataIndex: 'title',
     },
-    {
-      title: 'متن',
-      key: 'text',
-      dataIndex: 'text',
-    },
+    // {
+    //   title: 'متن',
+    //   key: 'text',
+    //   dataIndex: 'text',
+    // },
     {
       title: 'دسته بندی',
       key: 'experienceCategory',

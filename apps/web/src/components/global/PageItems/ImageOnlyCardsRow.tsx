@@ -15,7 +15,7 @@ const ImageOnlyCardsRow: FC<IImageOnlyCardsRow> = ({
 }) => {
 	return (
 		<div
-			className={`py-14 k-container ${
+			className={`py-24 k-container ${
 				greyBg && "bg-k-grey-bg-1-color"
 			}`}
 		>

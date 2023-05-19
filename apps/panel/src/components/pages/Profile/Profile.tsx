@@ -14,8 +14,7 @@ const Profile: FC = () => {
       <TcCard>
         <TcPageTitle title='اطلاعات حساب کاربری' />
         <TcFormWrapper>
-          <TcShowInfo right='نام' left={userProfile?.firstName} />
-          <TcShowInfo right='نام خانوادگی' left={userProfile?.lastName} />
+          <TcShowInfo right='نام' left={userProfile?.fullName} />
           <TcShowInfo right='شماره موبایل' left={userProfile?.mobileNumber} />
         </TcFormWrapper>
       </TcCard>

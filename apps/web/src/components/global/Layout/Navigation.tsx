@@ -5,6 +5,7 @@ import { FC, useMemo } from "react";
 
 const navigationItems = [
 	{ label: "خانه", route: routes.home.path },
+	{ label: "مطالب", route: routes.postAllContents.path },
 	{ label: "تجربیات", route: routes.experience.path },
 	{
 		label: "ایده‌ها و نظرها",

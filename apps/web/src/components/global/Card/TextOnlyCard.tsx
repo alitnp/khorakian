@@ -28,7 +28,7 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 	isCommented,
 }) => {
 	return (
-		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 snap-start">
+		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 ">
 			<div className="w-full sm:w-[400px] px-4 py-2">
 				<span className="text-sm font-light text-k-grey-text-color">
 					{category}

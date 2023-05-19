@@ -12,9 +12,16 @@ const webEndpointUrls = {
 
 	//E
 	getExperienceDetail: (id: string) => "/experience/" + id,
+	getAllExperienceWithComments:
+		"/experience/getAllWithComments",
+	getAllExperience: "/experience",
+	getAllExperienceCategories: "/experiencecategory",
 
 	//H
 	historyGetAll: "/history",
+
+	//I
+	getAllIdeas: "/idea",
 
 	//U
 	userLogin: "/user/login",

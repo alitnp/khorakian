@@ -7,11 +7,13 @@ import { FC, memo, useState, useMemo } from "react";
 interface IHomeFeatured {
 	posts: IPostRead[];
 	title: string;
+	greyBg: boolean;
 }
 
 const HomeFeatured: FC<IHomeFeatured> = ({
 	posts,
 	title,
+	greyBg,
 }) => {
 	//states
 	const [activeCategory, setActiveCategory] =
@@ -26,7 +28,11 @@ const HomeFeatured: FC<IHomeFeatured> = ({
 	}, [activeCategory, activePost]);
 
 	return (
-		<div className="py-16 mx-auto k-container">
+		<div
+			className={`py-24 mx-auto k-container ${
+				greyBg && "bg-k-grey-bg-1-color"
+			}`}
+		>
 			<HomeFeaturedCategories
 				posts={posts}
 				activeCategory={activeCategory}

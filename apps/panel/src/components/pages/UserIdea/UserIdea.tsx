@@ -86,7 +86,7 @@ const UserIdea: FC = () => {
 
   const columns = [
     { title: 'عنوان', key: 'title', dataIndex: 'title' },
-    { title: 'توضیحات', key: 'text', dataIndex: 'text' },
+
     {
       title: 'وضعیت تایید',
       render: (_text: any, record: Record<string, any>) => (record?.isApprove === true ? <span className='text-t-success-color'>تایید شده</span> : 'در انتظار تایید'),

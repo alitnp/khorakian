@@ -34,7 +34,7 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
       message: "فردی با این شماره تلفن در سیستم وجود دارد.",
     },
   },
-  image: [{ type: Schema.Types.ObjectId, ref: "Image" }],
+  image: { type: Schema.Types.ObjectId, ref: "Image" },
   password: { type: String, minlength: 8, maxlength: 1024, required: true },
   isAdmin: { type: Boolean, default: false },
   ...defaultSchemaProps,

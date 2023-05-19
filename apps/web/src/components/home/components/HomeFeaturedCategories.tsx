@@ -62,7 +62,7 @@ const HomeFeaturedCategories: FC<
 	}, [activeCategory]);
 
 	return (
-		<div className="flex items-center justify-center gap-4 py-2 border rounded-lg shadow-sm shrink-0">
+		<div className="flex items-center justify-center gap-4 py-2 border rounded-lg shadow-sm shrink-0 bg-k-bg-color">
 			{categoriyChips}
 		</div>
 	);

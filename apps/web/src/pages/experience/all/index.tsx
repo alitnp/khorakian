@@ -1,12 +1,8 @@
 import {
-	getAllPostCategories,
-	getAllPosts,
-} from "@/components/post/postFunctions";
-import {
 	ApiDataListResponse,
+	IExperienceCategory,
+	IExperienceRead,
 	IImage,
-	IPostCategory,
-	IPostRead,
 	ISocialMediaRead,
 } from "@my/types";
 import { GetServerSideProps } from "next";
@@ -28,11 +24,15 @@ import {
 } from "@/components/home/homeFunctions";
 import { useRouter } from "next/router";
 import queryString from "querystring";
+import {
+	getAllExperienceCategories,
+	getAllExperiences,
+} from "@/components/experience/experienceFunctions";
 import AllItemsPageFloatingBox from "@/components/global/AllItemsPageFloatingBox/AllItemsPageFloatingBox";
 
-interface IPostsPage {
-	postCategories: IPostCategory[];
-	posts: ApiDataListResponse<IPostRead>;
+interface IAllExperiencePage {
+	categories: IExperienceCategory[];
+	items: ApiDataListResponse<IExperienceRead>;
 	query: ParsedUrlQuery;
 	defaultTexts: Record<string, string>;
 	defaultImages: Record<string, IImage>;
@@ -41,10 +41,10 @@ interface IPostsPage {
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
-		const postCategories = await getAllPostCategories(
+		const categories = await getAllExperienceCategories(
 			context.req
 		);
-		const posts = await getAllPosts(
+		const items = await getAllExperiences(
 			context.req,
 			context.query
 		);
@@ -52,14 +52,14 @@ export const getServerSideProps: GetServerSideProps =
 		const defaultTextsObject = await getHomeDefaultTexts();
 		const defaultImagesObject = await getHomeDefaultImages();
 
-		if (!postCategories || !posts)
+		if (!categories || !items)
 			return {
 				redirect: { destination: "/500", permanent: false },
 			};
 
-		const props: IPostsPage = {
-			postCategories,
-			posts,
+		const props: IAllExperiencePage = {
+			categories,
+			items,
 			socialMedias,
 			defaultImages: defaultImagesObject,
 			defaultTexts: defaultTextsObject,
@@ -69,9 +69,9 @@ export const getServerSideProps: GetServerSideProps =
 		return { props };
 	};
 
-const PostsPage: FC<IPostsPage> = ({
-	postCategories,
-	posts,
+const AllExperiencePage: FC<IAllExperiencePage> = ({
+	categories,
+	items,
 	query,
 	socialMedias,
 	defaultImages,
@@ -97,8 +97,8 @@ const PostsPage: FC<IPostsPage> = ({
 			<main>
 				<AllItemsPageFloatingBox
 					query={query}
-					postCategories={postCategories}
-					route={webRoutes.postAllContents.path}
+					postCategories={categories}
+					route={webRoutes.experienceAllContent.path}
 				/>
 				<div className="min-h-[70vh] pt-12 k-container">
 					<Masonry
@@ -112,20 +112,20 @@ const PostsPage: FC<IPostsPage> = ({
 						className="my-masonry-grid"
 						columnClassName="my-masonry-grid_column"
 					>
-						{posts.data.map((post) => {
-							const image = getThumbnailFromContent(post);
+						{items.data.map((item) => {
+							const image = getThumbnailFromContent(item);
 							return (
 								<FreeHeightCard
-									key={post._id}
-									category={post.postCategory.title}
-									commentCount={post.commentCount}
-									likeCount={post.likeCount}
-									title={post.title}
-									viewCount={post.viewCount}
+									key={item._id}
+									category={item.experienceCategory.title}
+									commentCount={item.commentCount}
+									likeCount={item.likeCount}
+									title={item.title}
+									viewCount={item.viewCount}
 									creationDate={dateObjectFormatter(
-										post.creationDate
+										item.creationDate
 									)}
-									isLiked={post.liked || false}
+									isLiked={item.liked || false}
 									height={image.height}
 									width={image.width}
 									imageAlt={image.imageAlt}
@@ -133,19 +133,19 @@ const PostsPage: FC<IPostsPage> = ({
 									isCommented={false}
 									isVideo={image.isVideo}
 									detailPath={
-										webRoutes.postDetail.path + "/" + post._id
+										webRoutes.experienceDetail.path + "/" + item._id
 									}
 								/>
 							);
 						})}
 					</Masonry>
 				</div>
-				{posts.totalPages > 1 && (
+				{items.totalPages > 1 && (
 					<div className="flex justify-center my-6">
 						<Pagination
-							current={posts.pageNumber}
-							pageSize={posts.pageSize}
-							total={posts.totalItems}
+							current={items.pageNumber}
+							pageSize={items.pageSize}
+							total={items.totalItems}
 							onChange={handlePagination}
 						/>
 					</div>
@@ -160,4 +160,4 @@ const PostsPage: FC<IPostsPage> = ({
 	);
 };
 
-export default PostsPage;
+export default AllExperiencePage;

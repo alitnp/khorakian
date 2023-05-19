@@ -126,6 +126,7 @@ export const paginationProps = async <T>(
   let pageNumber = getPageNumber(req);
   const pageSize = getPageSize(req);
   const totalItems = await model.countDocuments(searchQuery);
+
   const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
   if (pageNumber > totalPages) pageNumber = totalPages;
   const sortBy = getSortBy(req) || "";
@@ -157,7 +158,7 @@ export const defaultSearchQueries = (
   if (req.query.isPublished && getUserIsAdminFromReq(req)) {
     searchQuery.isPublished = stringToBoolean(req.query.isPublished);
   }
-  if (!getUserIsAdminFromReq(req)) searchQuery.isPublished = false;
+  if (!getUserIsAdminFromReq(req)) searchQuery.isPublished = true;
 
   return searchQuery;
 };

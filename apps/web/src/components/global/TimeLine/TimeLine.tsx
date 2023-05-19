@@ -109,8 +109,8 @@ const TimeLine: FC<ITimeLine> = ({ posts }) => {
 		(arr, index) => ({ posts: arr, index })
 	);
 
-	console.log(array);
-	console.log(activeIndex);
+	// console.log(array);
+	// console.log(activeIndex);
 	// console.log(
 	// 	dateObjectFormatter(
 	// 		array[activeIndex].posts[0].eventDate,

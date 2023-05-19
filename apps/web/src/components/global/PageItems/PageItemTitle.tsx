@@ -16,7 +16,7 @@ const PageItemTitle: FC<IPageItemTitle> = ({
 	moreUrl,
 }) => {
 	return (
-		<div className="flex justify-between border-b item-center">
+		<div className="flex flex-col justify-between gap-2 pb-2 border-b sm:flex-row item-center">
 			<div>
 				<h1 className="text-3xl font-bold">{title}</h1>
 				<span className="text-sm">{desc}</span>

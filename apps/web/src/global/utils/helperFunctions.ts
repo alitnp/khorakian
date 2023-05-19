@@ -109,7 +109,7 @@ export const getMoreUrlPathFromPageItem = (
 		pageItemType === "experience" ||
 		pageItemType === "userExperience"
 	)
-		return webRoutes.experienceAllContents.path;
+		return webRoutes.experiencePage.path;
 	if (pageItemType === "idea" || pageItemType === "userIdea")
 		return webRoutes.ideaAllContents.path;
 };

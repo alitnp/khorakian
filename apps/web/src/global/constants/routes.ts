@@ -10,8 +10,12 @@ const webRoutes = {
 
 	//experience
 	experience: { path: "/experience", private: false },
-	experienceAllContents: {
+	experiencePage: {
 		path: "/experience",
+		private: false,
+	},
+	experienceAllContent: {
+		path: "/experience/all",
 		private: false,
 	},
 	experienceDetail: {

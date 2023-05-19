@@ -108,11 +108,6 @@ const UserExperience: FC = () => {
       dataIndex: 'title',
     },
     {
-      title: 'متن',
-      key: 'text',
-      dataIndex: 'text',
-    },
-    {
       title: 'دسته بندی',
       key: 'userExperienceCategory',
       dataIndex: 'userExperienceCategory',

@@ -36,7 +36,7 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 }) => {
 	return (
 		<Link href={detailPath}>
-			<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 snap-start h-[200px]  max-w-[300px] sm:max-w-sm">
+			<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 h-[200px]  max-w-[300px] sm:max-w-sm">
 				<div className="relative w-full h-[200px] max-w-[300px] sm:max-w-sm overflow-hidden bg-slate-700 group">
 					{imagePathname && (
 						<Image

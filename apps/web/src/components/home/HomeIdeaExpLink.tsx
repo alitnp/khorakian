@@ -1,7 +1,7 @@
 import MyButton from "@/components/basicUi/MyButton";
 import webRoutes from "@/global/constants/routes";
 import webConfig from "@/global/constants/webConfig";
-import { IImage } from "@my/types";
+import { IIdeaRead, IImage } from "@my/types";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -16,6 +16,7 @@ interface IHomeIdeaExpLink {
 	home_idea_text?: string;
 	home_idea_button?: string;
 	home_idea_image?: IImage;
+	featuredIdeas: IIdeaRead[];
 }
 
 const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
@@ -27,6 +28,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 	home_idea_text,
 	home_idea_button,
 	home_idea_image,
+	featuredIdeas,
 }) => {
 	return (
 		<div className="flex flex-col lg:flex-row">
@@ -101,18 +103,14 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 						</MyButton>
 					</Link>
 					<div className="flex flex-col items-center gap-4 p-4 rounded-lg sm:flex-row bg-k-bg-color text-k-text-color">
-						<div className="inline-flex gap-6 ">
-							<p className="w-[20ch] line-clamp-3 text-xs font-medium">
-								ایجاد سامانه دایره المعارف شهدای دفاع مقدس
-							</p>
-							<div className="rounded-full w-14 h-14 bg-slate-800"></div>
-						</div>
-						<div className="inline-flex gap-6">
-							<p className="w-[20ch] line-clamp-3 text-xs font-medium">
-								ایجاد سامانه دایره المعارف شهدای دفاع مقدس
-							</p>
-							<div className="rounded-full w-14 h-14 bg-slate-800"></div>
-						</div>
+						{featuredIdeas?.map((idea) => (
+							<div key={idea._id} className="inline-flex gap-6 ">
+								<p className="w-[20ch] line-clamp-3 text-xs font-medium">
+									{idea.title}
+								</p>
+								{/* <div className="rounded-full w-14 h-14 bg-slate-800"></div> */}
+							</div>
+						))}
 					</div>
 				</div>
 			</div>

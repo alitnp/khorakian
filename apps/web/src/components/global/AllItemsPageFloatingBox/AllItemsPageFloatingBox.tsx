@@ -1,20 +1,20 @@
-import { IPostCategory } from "@my/types";
 import Link from "next/link";
 import { FC, memo, useMemo } from "react";
 import { ParsedUrlQuery } from "querystring";
-import webRoutes from "@/global/constants/routes";
 import queryString from "querystring";
 import { Select } from "antd";
 import { useRouter } from "next/router";
 
 interface IPostsFloatingBox {
-	postCategories: IPostCategory[];
+	postCategories: { _id: string; title: string }[];
 	query: ParsedUrlQuery;
+	route: string;
 }
 
-const PostsFloatingBox: FC<IPostsFloatingBox> = ({
+const AllItemsFloatingBox: FC<IPostsFloatingBox> = ({
 	postCategories,
 	query,
+	route,
 }) => {
 	//hooks
 	const { push } = useRouter();
@@ -22,39 +22,42 @@ const PostsFloatingBox: FC<IPostsFloatingBox> = ({
 	//constants
 	const renderCategories = useMemo(
 		() => [
-			<span className="py-1 text-sm font-light whitespace-nowrap text-k-grey-text-color">
+			<span
+				key="text"
+				className="py-1 text-sm font-light whitespace-nowrap text-k-grey-text-color"
+			>
 				دسته بندی :
 			</span>,
 			<Link
+				key="all"
 				className={`${
 					!query.postCategory
 						? "text-k-primary-2-color bg-k-faded-primary-color"
 						: "hover:bg-k-grey-bg-2-color"
 				} px-2 py-1 text-sm rounded-lg`}
 				href={
-					webRoutes.postAllContents.path +
-					"?" +
-					queryString.stringify()
+					route + "?" + queryString.stringify({ pageNumber: 1 })
 				}
 			>
 				همه
 			</Link>,
 			...postCategories.map((postCat) => (
 				<Link
+					key={postCat._id}
 					className={`${
 						query.postCategory === postCat._id
 							? "text-k-primary-2-color bg-k-faded-primary-color"
 							: "hover:bg-k-grey-bg-2-color"
 					} px-2 py-1 text-sm rounded-lg whitespace-nowrap`}
 					href={
-						webRoutes.postAllContents.path +
+						route +
 						"?" +
 						queryString.stringify({
 							...query,
 							postCategory: postCat._id,
+							pageNumber: 1,
 						})
 					}
-					key={postCat._id}
 				>
 					{postCat.title}
 				</Link>
@@ -65,7 +68,7 @@ const PostsFloatingBox: FC<IPostsFloatingBox> = ({
 
 	return (
 		<div className="sticky z-50 k-container top-14">
-			<div className="flex flex-col items-center justify-between w-full px-4 py-2 border shadow-lg rounded-xl border-k-border-2-color md:flex-row bg-k-bg-color">
+			<div className="flex flex-col items-center justify-between w-full px-4 py-2 border shadow-lg rounded-xl border-k-border-2-color md:flex-row bg-white/70 backdrop-blur-md">
 				<div className="flex flex-wrap items-center justify-center w-full gap-2 md:justify-start">
 					{renderCategories}
 				</div>
@@ -82,9 +85,13 @@ const PostsFloatingBox: FC<IPostsFloatingBox> = ({
 						bordered={false}
 						onChange={(e) =>
 							push(
-								webRoutes.postAllContents.path +
+								route +
 									"?" +
-									queryString.stringify({ ...query, sort: e })
+									queryString.stringify({
+										...query,
+										sort: e,
+										pageNumber: 1,
+									})
 							)
 						}
 						id="sort-select"
@@ -93,7 +100,7 @@ const PostsFloatingBox: FC<IPostsFloatingBox> = ({
 							{ label: "بازدید", value: "viewCount" },
 							{ label: "پسند", value: "likeCount" },
 							{ label: "نظر", value: "commentCount" },
-							{ label: "زمان وقوع", value: " eventDate" },
+							{ label: "برجسته", value: "isFeatured" },
 						]}
 					/>
 				</div>
@@ -102,4 +109,4 @@ const PostsFloatingBox: FC<IPostsFloatingBox> = ({
 	);
 };
 
-export default memo(PostsFloatingBox);
+export default memo(AllItemsFloatingBox);
