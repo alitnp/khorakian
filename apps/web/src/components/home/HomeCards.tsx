@@ -37,7 +37,6 @@ const HomeCards: FC<IHomeCards> = ({ data, greyBg }) => {
 				<PageItemTitle
 					title={data.title}
 					desc={data.subTitle}
-					moreText={`${data.totalItems - 10} مورد دیگر`}
 					moreUrl={moreUrl}
 				/>
 			}

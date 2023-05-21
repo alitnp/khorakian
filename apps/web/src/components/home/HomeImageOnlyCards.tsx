@@ -34,7 +34,6 @@ const HomeImageOnlyCards: FC<IHomeImageOnlyCards> = ({
 				<PageItemTitle
 					title={data.title}
 					desc={data.subTitle}
-					moreText={`${data.totalItems - 10} مورد دیگر`}
 					moreUrl={moreUrl}
 				/>
 			}

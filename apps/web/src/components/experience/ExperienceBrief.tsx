@@ -26,7 +26,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 
 	return (
 		<article className="py-10 border-b border-k-border-2-color">
-			<div className="flex items-start justify-between">
+			<div className="flex items-start justify-between gap-x-4">
 				<div className="flex flex-col gap-4 mb-5 sm:flex-row">
 					{image && (
 						<Link
@@ -75,7 +75,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 					href={
 						webRoutes.experienceDetail.path + "/" + experience._id
 					}
-					className="flex items-center gap-2 text-sm font-medium cursor-pointer text-k-primary-color hover:text-k-primary-2-color"
+					className="items-center hidden gap-2 text-sm font-medium cursor-pointer text-k-primary-color hover:text-k-primary-2-color md:flex"
 				>
 					<span>بیشتر بخوانید</span>
 					<BiArrowBack className="text-xl" />

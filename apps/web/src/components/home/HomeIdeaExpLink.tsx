@@ -49,7 +49,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 						<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm brightness-50" />
 					</div>
 				</div>
-				<div className="w-full max-w-lg mx-5 my-14 text-k-bg-color">
+				<div className="w-full max-w-lg mx-5 my-20 text-k-bg-color">
 					<div className="w-40 py-4 mb-6 rounded-lg bg-k-primary-2-color">
 						<h3 className="relative text-3xl font-bold whitespace-nowrap right-[15%]  sm:right-1/4">
 							{home_experience_title}
@@ -85,7 +85,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 						<div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm brightness-50" />
 					</div>
 				</div>
-				<div className="flex flex-col items-center gap-4 mx-5 my-16 text-k-bg-color ">
+				<div className="flex flex-col items-center gap-4 mx-5 my-20 text-k-bg-color ">
 					<h3 className="text-3xl font-medium whitespace-nowrap">
 						{home_idea_title}
 					</h3>
@@ -96,13 +96,13 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 						<MyButton
 							type="primary"
 							shape="round"
-							className="flex items-center justify-center gap-x-2 !w-fit !px-10"
+							className="flex items-center justify-center gap-x-2  !w-fit !px-10"
 						>
 							<span>{home_idea_button}</span>
 							<BiArrowBack />
 						</MyButton>
 					</Link>
-					<div className="flex flex-col items-center gap-4 p-4 rounded-lg sm:flex-row bg-k-bg-color text-k-text-color">
+					<div className="flex flex-col items-center gap-4 p-4 mt-6 rounded-lg sm:flex-row bg-k-bg-color text-k-text-color">
 						{featuredIdeas?.map((idea) => (
 							<div key={idea._id} className="inline-flex gap-6 ">
 								<p className="w-[20ch] line-clamp-3 text-xs font-medium">
