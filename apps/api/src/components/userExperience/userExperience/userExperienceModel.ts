@@ -13,9 +13,9 @@ export const userExperienceSchema = new Schema<IUserExperience>({
     type: String,
     maxlength: [1000000, "حجم متن ارسال شده بیش از حد مجاز است"],
   },
-  userExperienceCategory: {
+  experienceCategory: {
     type: Schema.Types.ObjectId,
-    ref: "UserExperienceCategory",
+    ref: "ExperienceCategory",
     required: [true, "عنوان تعیین نشده."],
   },
   featured: { type: Boolean, default: false },

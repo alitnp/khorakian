@@ -1,3 +1,4 @@
+import DashboardPageTitle from "@/components/dashboard/DashboardPageTitle";
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
 import webRoutes from "@/global/constants/routes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
@@ -29,7 +30,12 @@ interface IDashboard {
 }
 
 const Dashboard: FC<IDashboard> = ({ user }) => {
-	return <DashboardLayout>asdfasdf</DashboardLayout>;
+	console.log(user);
+	return (
+		<DashboardLayout>
+			<DashboardPageTitle title="داشبورد" />
+		</DashboardLayout>
+	);
 };
 
 export default Dashboard;

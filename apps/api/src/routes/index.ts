@@ -7,7 +7,6 @@ import ideaCategoryRoutes from "@/components/Idea/ideaCategory/ideaCategoryRoute
 import ideaRoutes from "@/components/Idea/idea/ideaRoutes";
 import experienceCategory from "@/components/experience/experienceCategory/experienceCategoryRoutes";
 import experience from "@/components/experience/experience/experienceRoutes";
-import userExperienceCategory from "@/components/userExperience/userExperienceCategory/userExperienceCategoryRoutes";
 import userExperience from "@/components/userExperience/userExperience/userExperienceRoutes";
 import postRoutes from "@/components/Post/post/postRoutes";
 import historyRoutes from "@/components/Home/history/historyRoutes";
@@ -59,7 +58,6 @@ router.use("/slider", sliderRoutes);
 router.use("/socialMedia", socialMediaRoutes);
 
 //!U-u
-router.use("/userExperienceCategory", userExperienceCategory);
 router.use("/userExperience", userExperience);
 router.use("/user", userRoutes);
 

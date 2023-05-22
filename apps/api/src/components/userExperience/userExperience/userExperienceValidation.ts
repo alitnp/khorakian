@@ -6,7 +6,7 @@ import {
 
 export const getUserExperienceValidations = [...paramIdValidations];
 export const createUserExperienceValidations = [
-  ...bodyIdValidations("userExperienceCategory"),
+  ...bodyIdValidations("experienceCategory"),
   ...shortTitleValidations,
 ];
 

@@ -7,8 +7,6 @@ import {
   getUserExperienceValidations,
   updateUserExperienceValidations,
 } from "@/components/userExperience/userExperience/userExperienceValidation";
-import UserExperienceCategoryData from "@/components/userExperience/userExperienceCategory/userExperienceCategoryData";
-import { UserExperienceCategory } from "@/components/userExperience/userExperienceCategory/userExperienceCategoryModel";
 import { UserExperienceLike } from "@/components/userExperience/userExperienceLike/userExperienceLikeModel";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
@@ -19,11 +17,13 @@ import isAdmin from "@/middlewares/isAdmin";
 import { paramIdValidations } from "@/validation/globalValidations";
 import { Router } from "express";
 import { User } from "@/components/user/userModel";
+import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
+import { ExperienceCategory } from "@/components/experience/experienceCategory/experienceCategoryModel";
 
 const router = Router();
 const data = new UserExperienceData(
   UserExperience,
-  new UserExperienceCategoryData(UserExperienceCategory),
+  new ExperienceCategoryData(ExperienceCategory),
   new LikeData(UserExperienceLike),
   new CommentData(UserExperienceComment, User),
 );

@@ -3,7 +3,8 @@ import {
 	PayloadAction,
 } from "@reduxjs/toolkit";
 import { IUserRead } from "@my/types";
-import { getCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
+import { cookies } from "next/dist/client/components/headers";
 
 const token = getCookie("token");
 
@@ -28,9 +29,14 @@ export const userReducer = createSlice({
 		) => {
 			state.loggedIn = action.payload;
 		},
+		logout: (state) => {
+			deleteCookie("token");
+			state.user = undefined;
+			state.loggedIn = false;
+		},
 	},
 });
 
-export const { setUser, setUserLoggedIn } =
+export const { setUser, setUserLoggedIn, logout } =
 	userReducer.actions;
 export default userReducer.reducer;

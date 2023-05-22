@@ -106,7 +106,7 @@ export interface IUserExperience
 	_id: string;
 	title: string;
 	text: string;
-	userExperienceCategory?: string;
+	experienceCategory?: string;
 	featured: boolean;
 	viewCount: number;
 	likeCount: number;
@@ -133,7 +133,7 @@ export interface IUserExperienceRead
 	_id: string;
 	title: string;
 	text: string;
-	userExperienceCategory: IUserExperienceCategory;
+	experienceCategory: IExperienceCategory;
 	featured: boolean;
 	viewCount: number;
 	likeCount: number;

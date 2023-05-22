@@ -1,6 +1,7 @@
 import { Model } from "mongoose";
 import {
   ApiDataListResponse,
+  IExperienceCategory,
   IUserExperience,
   IUserExperienceCategory,
   IUserExperienceComment,
@@ -13,22 +14,22 @@ import { stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
-import UserExperienceCategoryData from "@/components/userExperience/userExperienceCategory/userExperienceCategoryData";
+import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
 
 class UserExperienceData {
   UserExperience: Model<IUserExperience, {}, {}, {}, any>;
-  UserExperienceCategory: UserExperienceCategoryData;
+  ExperienceCategory: ExperienceCategoryData;
   UserExperienceLike: LikeData<IUserExperienceLike>;
   UserExperienceComment: CommentData<IUserExperienceComment>;
 
   constructor(
     UserExperience: Model<IUserExperience, {}, {}, {}, any>,
-    UserExperienceCategory: UserExperienceCategoryData,
+    ExperienceCategory: ExperienceCategoryData,
     UserExperienceLike: LikeData<IUserExperienceLike>,
     UserExperienceComment: CommentData<IUserExperienceComment>,
   ) {
     this.UserExperience = UserExperience;
-    this.UserExperienceCategory = UserExperienceCategory;
+    this.ExperienceCategory = ExperienceCategory;
     this.UserExperienceLike = UserExperienceLike;
     this.UserExperienceComment = UserExperienceComment;
   }
@@ -102,7 +103,7 @@ class UserExperienceData {
   get = async (id: string, userId?: string): Promise<IUserExperienceRead> => {
     const userExperience = await this.UserExperience.findById(id)
       .populate<{
-        userExperienceCategory: IUserExperienceCategory;
+        experienceCategory: IExperienceCategory;
       }>(["userExperienceCategory"])
       .lean();
 
@@ -124,14 +125,15 @@ class UserExperienceData {
 
   create = async ({
     title,
-    userExperienceCategory,
+    experienceCategory,
     text,
     featured,
   }: // isAdminSubmitted,
   IUserExperience): Promise<IUserExperienceRead> => {
-    if (!userExperienceCategory) throw new NotFoundError();
-    const existingUserExperienceCategory =
-      await this.UserExperienceCategory.get(userExperienceCategory);
+    if (!experienceCategory) throw new NotFoundError();
+    const existingUserExperienceCategory = await this.ExperienceCategory.get(
+      experienceCategory,
+    );
 
     const userExperience = new this.UserExperience({
       title,
@@ -150,20 +152,21 @@ class UserExperienceData {
   update = async ({
     _id,
     title,
-    userExperienceCategory,
+    experienceCategory,
     text,
     featured,
   }: IUserExperience & { _id: string }): Promise<IUserExperienceRead> => {
-    if (!userExperienceCategory) throw new NotFoundError();
-    const existingUserExperienceCategory =
-      await this.UserExperienceCategory.get(userExperienceCategory);
+    if (!experienceCategory) throw new NotFoundError();
+    const existingExperienceCategory = await this.ExperienceCategory.get(
+      experienceCategory,
+    );
 
     const userExperience = await this.UserExperience.findByIdAndUpdate(
       _id,
       {
         $set: {
           title,
-          postCategory: existingUserExperienceCategory,
+          postCategory: existingExperienceCategory,
           text,
           featured: !!featured,
         },
