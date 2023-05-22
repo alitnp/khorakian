@@ -17,7 +17,7 @@ const DashboardSidebarItem: FC<IDashboardSidebarItem> = ({
 	return (
 		<Link
 			href={path}
-			className={`px-6 py-2 rounded-lg ${
+			className={`px-6 py-2 text-center rounded-lg ${
 				path === pathname
 					? "bg-k-primary-2-color text-k-opposite-text-color"
 					: "hover:bg-k-grey-bg-2-color"

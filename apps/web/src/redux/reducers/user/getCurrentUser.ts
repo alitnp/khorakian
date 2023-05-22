@@ -1,6 +1,9 @@
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService from "@/global/utils/WebApiService";
-import { setUser } from "@/redux/reducers/user/userReducer";
+import {
+	logout,
+	setUser,
+} from "@/redux/reducers/user/userReducer";
 import { AppDispatch } from "@/redux/store";
 
 export const getCurrentUser =
@@ -8,6 +11,7 @@ export const getCurrentUser =
 		await WebApiService.get(webEndpointUrls.userWhoAmI)
 			.then((res: any) => {
 				if (res.isSuccess) dispatch(setUser(res.data));
+				else dispatch(logout());
 			})
-			.catch(() => {});
+			.catch(() => dispatch(logout()));
 	};

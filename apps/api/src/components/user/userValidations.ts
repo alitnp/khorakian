@@ -1,4 +1,5 @@
 import {
+  existsStringValidation,
   fullNameValidations,
   mobileNumberValidations,
   paramIdValidations,
@@ -19,4 +20,19 @@ export const createUserValidations = [
 export const updateUserValidations = [
   ...paramIdValidations,
   ...fullNameValidations,
+];
+
+export const changePasswordValidations = [
+  ...existsStringValidation({
+    key: "currentPassword",
+    name: "رمز عبور فعلی",
+    minLength: 8,
+    maxLength: 255,
+  }),
+  ...existsStringValidation({
+    key: "newPassword",
+    name: "رمز عبور جدید",
+    minLength: 8,
+    maxLength: 255,
+  }),
 ];

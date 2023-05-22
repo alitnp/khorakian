@@ -20,7 +20,7 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 	return (
 		<div className="flex flex-col gap-1 p-1 border shadow-lg rounded-xl bg-k-bg-color shrink-0">
 			<DashboardSidebarItem
-				title="داشبورد"
+				title="حساب کاربری"
 				path={webRoutes.dashboard.path}
 			/>
 			<DashboardSidebarItem
@@ -36,7 +36,7 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 				path={webRoutes.experience.path}
 			/>
 			<div
-				className="px-6 py-2 mt-auto rounded-lg hover:bg-k-grey-bg-2-color"
+				className="px-6 py-2 mt-auto text-center rounded-lg cursor-pointer hover:bg-k-grey-bg-2-color"
 				onClick={handleLogout}
 			>
 				خروج

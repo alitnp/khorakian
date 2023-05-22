@@ -3,11 +3,11 @@ import TrezSMSClient from "trez-sms-client";
 import { IUser, IUserRead } from "@my/types";
 import { apiDataResponse } from "@/helpers/apiResponse";
 import UserData from "@/components/user/userData";
-import { getUserIdFromReq } from "@/utils/util";
 import { NotFoundError } from "@/helpers/error";
 import { fileForm } from "@/middlewares/fileForm";
 import BadRequestError from "@/helpers/error/BadRequestError";
 import BaseController from "@/controller/globalControllers";
+import { getUserIdFromReq } from "@/utils/util";
 
 class UserController extends BaseController<IUserRead> {
   data;
@@ -26,7 +26,7 @@ class UserController extends BaseController<IUserRead> {
       req.body.mobileNumber,
       req.body.password,
     );
-    return res.send(apiDataResponse<{ token: string; user: IUser }>(data));
+    return res.send(apiDataResponse<{ token: string; user: IUserRead }>(data));
   };
 
   getCurrentUser = async (req: Req, res: Res) => {
@@ -38,6 +38,7 @@ class UserController extends BaseController<IUserRead> {
 
   uploadProfile = async (req: Req, res: Res) => {
     const tempReq = req as Req & { file: fileForm };
+    console.log(req.file);
     if (!tempReq.file) throw new BadRequestError("فایل عکس یافت نشد.");
     const userId = getUserIdFromReq(req);
     if (!userId) throw new NotFoundError("کاربر یافت نشد");
@@ -85,6 +86,15 @@ class UserController extends BaseController<IUserRead> {
     return res.send(
       apiDataResponse<null>(null, "کد تایید برای شما ارسال گردید."),
     );
+  };
+
+  changePassword = async (req: Req, res: Res) => {
+    const result = await this.data.changePassword(
+      req.body.currentPassword,
+      req.body.newPassword,
+      getUserIdFromReq(req),
+    );
+    return res.send(apiDataResponse(result));
   };
 }
 

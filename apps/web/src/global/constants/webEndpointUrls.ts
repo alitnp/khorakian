@@ -27,6 +27,8 @@ const webEndpointUrls = {
 	userLogin: "/user/login",
 	userRegister: "/user",
 	userWhoAmI: "/user/getCurrentUser",
+	userUploadProfile: "/user/uploadProfile",
+	userChangePassword: "/user/changePassword",
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",

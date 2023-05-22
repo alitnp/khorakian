@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import auth from "@/middlewares/athenticate";
 import {
+  changePasswordValidations,
   createUserValidations,
   loginValidations,
   updateUserValidations,
@@ -17,6 +18,7 @@ import UserController from "@/components/user/userController";
 import { User } from "@/components/user/userModel";
 import { Image } from "@/components/image/imageModel";
 import ImageData from "@/components/image/imageData";
+import { imageForm } from "@/middlewares/fileForm";
 
 const router = Router();
 const data = new UserData(User, new ImageData(Image));
@@ -35,9 +37,15 @@ router.post(
 );
 router.post("/login", validate(loginValidations), controller.login);
 router.post("/iforgot", validate(mobileNumberValidations), controller.iForgot);
+router.post("/uploadProfile", [auth, ...imageForm()], controller.uploadProfile);
 router.post("/", validate(createUserValidations), controller.create);
 
 //put
+router.put(
+  "/changePassword",
+  [auth, ...validate(changePasswordValidations)],
+  controller.changePassword,
+);
 router.put(
   "/:id",
   [isAdmin, ...validate(updateUserValidations)],

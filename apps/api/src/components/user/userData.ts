@@ -5,10 +5,13 @@ import {
   defaultSearchQueries,
   paginationProps,
 } from "@/data/globalData";
-import { ConflictError, NotFoundError } from "@/helpers/error";
+import {
+  ConflictError,
+  NotFoundError,
+  BadRequestError,
+  UnauthenticatedError,
+} from "@/helpers/error";
 import { IUserMethods } from "@/components/user/userModel";
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
-import BadRequestError from "@/helpers/error/BadRequestError";
 import { stringToBoolean } from "@/utils/util";
 import ImageData from "@/components/image/imageData";
 import { fileForm } from "@/middlewares/fileForm";
@@ -122,10 +125,8 @@ class UserData implements IData<IUserRead> {
     userId?: string,
   ): Promise<IUserRead> => {
     const item = await this.Image.createImageFile(file, title);
-    const user = await this.User.findById(userId);
+    const user = await this.User.findByIdAndUpdate(userId, { image: item._id });
     if (!user) throw new NotFoundError("کاربر یافت نشد");
-    user.image = item._id;
-    await user.save();
     return this.get(user._id);
   };
 
@@ -152,8 +153,10 @@ class UserData implements IData<IUserRead> {
   login = async (
     mobileNumber: string,
     password: string,
-  ): Promise<{ token: string; user: IUser }> => {
-    const user = await this.User.findOne({ mobileNumber });
+  ): Promise<{ token: string; user: IUserRead }> => {
+    const user = await this.User.findOne({ mobileNumber }).populate<{
+      image: IImage;
+    }>("image");
     if (!user) throw new NotFoundError("کاربری با این شماره همراه یافت نشد.");
 
     const isPasswordValid = await user.comparePassword(password);
@@ -170,6 +173,22 @@ class UserData implements IData<IUserRead> {
       .lean();
     if (!user) throw new NotFoundError("کاربری با این شماره موبایل یافت نشد.");
 
+    return user;
+  };
+
+  changePassword = async (
+    currentPassword: string,
+    newPassword: string,
+    userId?: string,
+  ): Promise<IUser> => {
+    if (!userId) throw new UnauthenticatedError();
+    const user = await this.User.findById(userId);
+    if (!user) throw new UnauthenticatedError();
+    const isPassowrdCurrect = await user.comparePassword(currentPassword);
+    if (!isPassowrdCurrect)
+      throw new BadRequestError("رمز عبور فعلی بدرستی وارد نشده");
+    const hashedPass = await user.getHashedPassword(newPassword);
+    await this.User.findByIdAndUpdate(userId, { password: hashedPass });
     return user;
   };
 }
