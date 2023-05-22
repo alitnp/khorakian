@@ -357,11 +357,17 @@ export interface IPostCommentRead
 	content: string;
 	user: IUserRead;
 	text: string;
-	replies: ICommentReply[];
+	replies: ICommentReplyRead[];
 }
 export interface ICommentReply
 	extends DefaultModelProperties {
 	user?: string;
+	text: string;
+}
+
+export interface ICommentReplyRead
+	extends DefaultModelProperties {
+	user: IUserRead;
 	text: string;
 }
 

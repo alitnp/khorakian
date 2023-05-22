@@ -1,68 +1,72 @@
-import React, { FC, useEffect, useState } from "react";
-import { Divider, Tabs } from "antd";
-import TabsLabel from "@/components/post/postDetail/comments/TabsLabel";
-import TabsContent from "@/components/post/postDetail/comments/TabsContent";
-import webEndpointUrls from "@/global/constants/webEndpointUrls";
-import WebApiService, {
-	errorResponse,
-} from "@/global/utils/WebApiService";
-import {
-	webApiCatch,
-	webApiThenGeneric,
-} from "@/global/utils/webApiThen";
-import { ApiDataResponse, IPostComment } from "@my/types";
+import React, { FC, useMemo } from "react";
+import { Tabs } from "antd";
+import AllComments from "@/components/post/postDetail/comments/AllComments";
+import { IPostCommentRead } from "@my/types";
 
-const AllCommentTabs: FC = () => {
-	// state
-	const [loading, setLoading] = useState<boolean>(false);
-	const [commentsList, setCommentsList] =
-		useState<IPostComment>();
+interface IProps {
+	comments: IPostCommentRead[];
+	adminComments: IPostCommentRead[];
+}
 
-	//effect
-	useEffect(() => {
-		getAllComments;
-	}, []);
+type adminComment = {
+	tabInfo: { fullName: string; _id: string };
+	tabBody: IPostCommentRead[];
+};
 
+const AllCommentTabs: FC<IProps> = ({
+	comments,
+	adminComments,
+}) => {
 	const onChange = (key: string) => {
 		console.log(key);
 	};
 
-	//func
-	const getAllComments = async (id: string) => {
-		setLoading(true);
-		await WebApiService.get(
-			webEndpointUrls.getAllPostComments
-		)
-			.then((res: ApiDataResponse<IPostComment>) =>
-				webApiThenGeneric<
-					ApiDataResponse<IPostComment>,
-					IPostComment
-				>({
-					res,
-					onSuccessData: (data) => {
-						setCommentsList(data);
-					},
-					notifFail: true,
-					notifSuccess: true,
-				})
+	const tabComments = useMemo(() => {
+		const temptabComments: adminComment[] = [];
+		adminComments.map((comment) => {
+			if (
+				!temptabComments.some(
+					(adComm) => adComm.tabInfo._id === comment.user._id
+				)
 			)
-			.catch(() => webApiCatch(errorResponse));
-		setLoading(false);
-	};
+				temptabComments.push({
+					tabInfo: {
+						fullName: comment.user.fullName,
+						_id: comment.user._id,
+					},
+					tabBody: [],
+				});
+			const thisCommentAdminIndex = temptabComments.findIndex(
+				(addComm) => addComm.tabInfo._id === comment.user._id
+			);
+			temptabComments[thisCommentAdminIndex].tabBody.push(
+				comment
+			);
+		});
+		return temptabComments;
+	}, [adminComments]);
+
+	const adminCommentTabs = useMemo(() => {
+		return tabComments.map((tabComment) => ({
+			label: tabComment.tabInfo.fullName,
+			key: tabComment.tabInfo._id,
+			children: <AllComments comments={tabComment.tabBody} />,
+		}));
+	}, [tabComments]);
 
 	return (
 		<Tabs
 			onChange={onChange}
 			className="max-w-screen-lg m-auto "
 			type="card"
-			items={new Array(3).fill(null).map((_, i) => {
-				const id = String(i + 1);
-				return {
-					label: <TabsLabel />,
-					key: id,
-					children: <TabsContent />,
-				};
-			})}
+			items={[
+				{
+					label: "همه",
+					key: "ALL",
+					children: <AllComments comments={comments} />,
+				},
+				...adminCommentTabs,
+			]}
 		/>
 	);
 };
