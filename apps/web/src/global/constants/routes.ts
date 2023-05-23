@@ -1,8 +1,17 @@
-const webRoutes = {
+const webRoutes: Record<
+	string,
+	{ path: string; private: boolean }
+> = {
 	home: { path: "/", private: false },
 	login: { path: "/login", private: false },
 	register: { path: "/register", private: false },
 	dashboard: { path: "/dashboard", private: false },
+
+	//dashboard
+	dashboardExperience: {
+		path: "/dashboard/experience",
+		private: true,
+	},
 
 	//post
 	postAllContents: { path: "/post", private: false },

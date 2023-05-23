@@ -25,7 +25,7 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 			/>
 			<DashboardSidebarItem
 				title="تجربیات من"
-				path={webRoutes.experience.path}
+				path={webRoutes.dashboardExperience.path}
 			/>
 			<DashboardSidebarItem
 				title="ایده های من"

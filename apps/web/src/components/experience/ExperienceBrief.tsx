@@ -103,7 +103,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 								key={comment._id}
 								className="flex items-center gap-2 px-4 py-2 rounded-lg bg-k-grey-bg-1-color"
 							>
-								{comment.user.image && webConfig.domain ? (
+								{comment?.user?.image && webConfig.domain ? (
 									<Image
 										src={
 											webConfig.domain +
@@ -117,7 +117,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 								) : (
 									<VscAccount />
 								)}
-								{comment.user.fullName}
+								{comment.user?.fullName}
 							</div>
 						))}
 						{experience.commentCount > 3 && (

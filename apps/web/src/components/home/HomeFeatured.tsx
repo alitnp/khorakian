@@ -29,16 +29,18 @@ const HomeFeatured: FC<IHomeFeatured> = ({
 
 	return (
 		<div
-			className={`py-24 mx-auto k-container ${
+			className={` py-24 mx-auto k-container ${
 				greyBg && "bg-k-grey-bg-1-color"
 			}`}
 		>
-			<HomeFeaturedCategories
-				posts={posts}
-				activeCategory={activeCategory}
-				setActiveCategory={setActiveCategory}
-				setActivePost={setActivePost}
-			/>
+			<div className="mx-auto max-w-7xl">
+				<HomeFeaturedCategories
+					posts={posts}
+					activeCategory={activeCategory}
+					setActiveCategory={setActiveCategory}
+					setActivePost={setActivePost}
+				/>
+			</div>
 			<div className="flex flex-col md:flex-row w-full mt-2 overflow-hidden border rounded-lg shadow-md bg-k-text-color md:h-[500px] max-w-7xl mx-auto">
 				<HomeFeaturedPosts
 					title={title}
