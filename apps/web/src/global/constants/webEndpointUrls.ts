@@ -29,6 +29,7 @@ const webEndpointUrls = {
 	userWhoAmI: "/user/getCurrentUser",
 	userUploadProfile: "/user/uploadProfile",
 	userChangePassword: "/user/changePassword",
+	userExperienceGetAll: "/userExperience",
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",

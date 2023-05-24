@@ -1,4 +1,6 @@
+import MyButton from "@/components/basicUi/MyButton";
 import DashboardPageTitle from "@/components/dashboard/DashboardPageTitle";
+import DashboardUserExperience from "@/components/dashboard/dashboardExperience/DashboardUserExperience";
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
 import { FC } from "react";
 
@@ -13,9 +15,14 @@ const DashboardExperience: FC = () => {
 					</span>
 				}
 			/>
-			<div>
-				<span>تجربه ای دارید که </span>
+			<div className="flex flex-col items-center gap-4 py-10">
+				<span className="text-sm">
+					تجربه ای برای درمیان گذاشتن با امیر خوراکیان یا اشتراک
+					در سایت دارید؟
+				</span>
+				<MyButton size="small">ثبت تجربه جدید</MyButton>
 			</div>
+			<DashboardUserExperience />
 		</DashboardLayout>
 	);
 };
