@@ -19,7 +19,6 @@ const columns = () =>
   // handleDelete?: (_id: string) => void
   {
     const columns: any[] = [
-      { title: 'نام', key: 'firstName', dataIndex: 'firstName' },
       { title: 'نام و نام خانوادگی', key: 'fullName', dataIndex: 'fullName' },
       { title: 'شماره همراه', key: 'mobileNumber', dataIndex: 'mobileNumber' },
     ];

@@ -13,12 +13,12 @@ import { GetStaticProps } from "next";
 export const getStaticProps: GetStaticProps = async () => {
 	const image: ApiDataResponse<IDefaultImageRead> =
 		await serverSideFetch(
-			webEndpointUrls.getDefaultImageByKey("login-page")
+			webEndpointUrls.getDefaultImageByKey("login_page")
 		);
 	if (!image.data) {
 		console.log(
 			"error fetch : " +
-				webEndpointUrls.getDefaultImageByKey("login-page")
+				webEndpointUrls.getDefaultImageByKey("login_page")
 		);
 	}
 	return {

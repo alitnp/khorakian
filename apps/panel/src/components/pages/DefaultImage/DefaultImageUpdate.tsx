@@ -72,14 +72,7 @@ const DefaultImageUpdate = () => {
     <TcCard back={{ to: routes.defaultImage.path }}>
       <TcPageTitle title={'ایجاد ' + defaultImageModel.title} />
       <TcForm form={form} onFinish={handleSubmit}>
-        <TcFormWrapper>
-          <div className='flex flex-col'>
-            <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
-              <TcInput placeholder='کلید' disabled />
-            </TcFormItem>
-            {/* <small>! توجه : تغییر کلید ممکن است باعث لود نشدن عکس در سایت اصلی شود. لطفا با اطلاع کامل این فیلد را تغییر دهید.</small> */}
-          </div>
-        </TcFormWrapper>
+        <TcFormWrapper>{defaultImageModel.inputs}</TcFormWrapper>
       </TcForm>
 
       <TcDevider>عکس</TcDevider>

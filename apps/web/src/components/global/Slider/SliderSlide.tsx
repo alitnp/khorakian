@@ -52,7 +52,7 @@ const SliderSlide: FC<ISliderSlide> = ({
 							{props.shortDesc}
 						</h3>
 					)}
-					<p className="max-w-xl mt-4 text-justify sm:text-right text-k-opposite-text-color">
+					<p className="max-w-lg mt-4 text-sm text-justify sm:text-right text-k-opposite-text-color">
 						{props.desc}
 					</p>
 				</div>

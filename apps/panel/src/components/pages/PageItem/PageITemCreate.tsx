@@ -66,7 +66,7 @@ const PageITemCreate: FC = () => {
           <TcFormItem name='type' label='نوع' rules={[{ required: true, message: 'نوع تعیین نشده' }]}>
             <TcSelectReduxSearch reducerName='pageItemType' getlist={getAllPageItemTypes} labelPropertyName='persianTitle' reducerListProperty='list' placeholder='نوع' />
           </TcFormItem>
-          <TcFormItem name='sorting' label='ترتیب محتوا'>
+          <TcFormItem name='sorting' label='ترتیب محتوا' rules={[{ required: true, message: 'ترتیب محتوا تعیین نشده' }]}>
             <TcSelectReduxSearch reducerName='pageItemSorting' getlist={getAllPageItemSortings} reducerListProperty='list' placeholder='ترتیب محتوا' />
           </TcFormItem>
           <TcFormItem name='style' label='ظاهر' rules={[{ required: true, message: 'نوع تعیین نشده' }]}>

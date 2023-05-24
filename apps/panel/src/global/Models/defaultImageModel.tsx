@@ -19,6 +19,16 @@ const filterInputs = (
     </TcFormItem>
   </>
 );
+const inputs = (
+  <>
+    <TcFormItem name='key' label='کلید'>
+      <TcInput placeholder='کلید' />
+    </TcFormItem>
+    <TcFormItem name='persianKey' label='کلید فارسی'>
+      <TcInput placeholder='کلید فارسی' />
+    </TcFormItem>
+  </>
+);
 
 const columns = () => {
   const columns: any[] = [
@@ -49,6 +59,7 @@ const defaultImageModel = {
   englishTitle,
   filterInputs,
   columns,
+  inputs,
 };
 
 export default defaultImageModel;

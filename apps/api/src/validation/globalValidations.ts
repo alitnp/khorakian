@@ -142,28 +142,10 @@ export const passwordValidations = [
   }),
 ];
 
-export const firstNameValidations = [
-  ...existsStringValidation({
-    key: "firstName",
-    name: "نام",
-    minLength: 2,
-    maxLength: 50,
-  }),
-];
-
 export const fullNameValidations = [
   ...existsStringValidation({
     key: "fullName",
     name: "نام ونام خانوادگی",
-    minLength: 2,
-    maxLength: 50,
-  }),
-];
-
-export const lastNameValidations = [
-  ...existsStringValidation({
-    key: "lastName",
-    name: "نام خوانوادگی",
     minLength: 2,
     maxLength: 50,
   }),

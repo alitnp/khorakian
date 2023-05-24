@@ -86,7 +86,8 @@ class PageItemData {
           .sort(sort)
           .limit(10)
           .populate("images")
-          .populate({ path: "videos", populate: { path: "thumbnail" } });
+          .populate({ path: "videos", populate: { path: "thumbnail" } })
+          .populate("postCategory");
         totalItems = await Post.countDocuments(filters);
       }
       if (pi.type.title === "experience") {
@@ -94,11 +95,15 @@ class PageItemData {
           .sort(sort)
           .limit(10)
           .populate("images")
-          .populate({ path: "videos", populate: { path: "thumbnail" } });
+          .populate({ path: "videos", populate: { path: "thumbnail" } })
+          .populate("experienceCategory");
         totalItems = await Experience.countDocuments(filters);
       }
       if (pi.type.title === "userExperience") {
-        content = await UserExperience.find(filters).sort(sort).limit(10);
+        content = await UserExperience.find(filters)
+          .populate("userExperienceCategory")
+          .sort(sort)
+          .limit(10);
         totalItems = await UserExperience.countDocuments(filters);
       }
       if (pi.type.title === "idea") {

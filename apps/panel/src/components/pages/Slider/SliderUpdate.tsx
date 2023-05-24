@@ -67,7 +67,7 @@ const SliderUpdate = () => {
     if (images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکسی انتخاب نشده' }));
 
     setLoading(true);
-    await ApiService.post(endpointUrls.sliderEdit(id as string), { ...values, image: images[0]._id })
+    await ApiService.put(endpointUrls.sliderEdit(id as string), { ...values, image: images[0]._id })
       .then((res: ApiDataResponse<ISliderRead>) => handleApiThen({ res, dispatch, onSuccess: () => push(routes.slider.path), notifFail: true, notifSuccess: true }))
       .catch(() => apiCatcher(errorResponse));
     setLoading(false);

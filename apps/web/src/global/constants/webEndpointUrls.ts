@@ -15,13 +15,15 @@ const webEndpointUrls = {
 	getAllExperienceWithComments:
 		"/experience/getAllWithComments",
 	getAllExperience: "/experience",
-	getAllExperienceCategories: "/experiencecategory",
+	getAllExperienceCategories: "/experienceCategory",
+	createUserExperience: "/userExperience",
 
 	//H
 	historyGetAll: "/history",
 
 	//I
 	getAllIdeas: "/idea",
+	getAllIdeaCategories: "/ideaCategory",
 
 	//U
 	userLogin: "/user/login",

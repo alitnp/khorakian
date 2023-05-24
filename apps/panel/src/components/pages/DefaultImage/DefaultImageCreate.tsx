@@ -49,14 +49,7 @@ const DefaultImageCreate = () => {
     <TcCard back={{ to: routes.defaultImage.path }}>
       <TcPageTitle title={'ایجاد ' + defaultImageModel.title} />
       <TcForm form={form} onFinish={handleSubmit}>
-        <TcFormWrapper>
-          <TcFormItem name='key' label='کلید' rules={[{ required: true, message: 'کلید تعیین نشده' }]}>
-            <TcInput placeholder='کلید' />
-          </TcFormItem>
-          <TcFormItem name='persianKey' label='کلید فارسی' rules={[{ required: true, message: 'کلید فارسی تعیین نشده' }]}>
-            <TcInput placeholder='کلید فارسی' />
-          </TcFormItem>
-        </TcFormWrapper>
+        <TcFormWrapper>{defaultImageModel.inputs}</TcFormWrapper>
       </TcForm>
 
       <TcDevider>عکس</TcDevider>

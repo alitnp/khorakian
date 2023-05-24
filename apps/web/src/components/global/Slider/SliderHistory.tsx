@@ -26,9 +26,11 @@ const SliderHistory: FC<ISliderHistory> = ({
 
 	return (
 		<div className="relative z-20 py-3 sm:rounded-tr-lg sm:bottom-0 sm:left-0 sm:px-4 sm:py-6 sm:absolute bg-k-dark-bg-color sm:bg-k-faded-dark-bg-color sm:w-64">
-			<div className="text-center text-k-opposite-text-color sm:flex">
+			<div className="text-center text-k-opposite-text-color sm:flex sm:gap-4">
 				<div className="w-full">
-					<h5>{histories[activeIndex]?.title}</h5>
+					<h5 className="text-sm">
+						{histories[activeIndex]?.title}
+					</h5>
 					<p className="font-bold text-center text-k-primary-color">
 						{histories[activeIndex]?.from} -{" "}
 						{histories[activeIndex]?.to}
