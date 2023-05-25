@@ -6,9 +6,10 @@ import React, { FC } from 'react';
 
 interface IProps {
   reply: ICommentReplyRead;
+  isLiked?: boolean;
 }
 
-const CommentReplyes: FC<IProps> = ({ reply }) => (
+const CommentReplyes: FC<IProps> = ({ reply, isLiked }) => (
   <>
     <div className="grid rounded-md  ">
       <div className="flex items-center">
@@ -27,12 +28,35 @@ const CommentReplyes: FC<IProps> = ({ reply }) => (
             </span>
           </div>
         )}
-        <span className="font-bold text-base "> {reply?.user?.fullName}</span>
-        <span className="text-xs text-t-secondary-color mr-2">
-          {dateObjectFormatter(reply?.creationDate, 'DD MMMM YYYY')}
-        </span>
+
+        <div className="grid">
+          <div className="flex">
+            <span className="font-bold text-base ">
+              {reply?.user?.fullName}
+            </span>
+            {/* <div className="flex justify-center  text-k-grey-text-color items-center gap-1 mr-3 k-like-icon group">
+              <span className={isLiked ? 'text-k-primary-color' : ''}>
+                <AiFillHeart className="text-base" />
+              </span>
+             <span className="!drop-shadow-none  text-xs !filter-none group-hover:text-k-primary-color">
+                پسند
+              </span> 
+            </div> */}
+            {/* <div className="flex items-center text-k-grey-text-color gap-1 mr-2 group k-comment-icon">
+              <span className={isLiked ? 'text-k-secondary-color' : ''}>
+                <BsReply className="text-lg" />
+              </span>
+              <span className=" text-xs  group-hover:text-k-secondary-color">
+                پاسخ
+              </span>
+            </div> */}
+          </div>
+          <span className="text-xs text-t-secondary-color mr-2">
+            {dateObjectFormatter(reply?.creationDate, 'DD MMMM YYYY')}
+          </span>
+        </div>
       </div>
-      <span className="text-sm my-2 ">{reply.text}</span>
+      <span className="text-sm my-2 mr-3">{reply.text}</span>
     </div>
   </>
 );
