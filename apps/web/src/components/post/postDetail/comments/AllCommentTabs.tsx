@@ -1,11 +1,12 @@
 import React, { FC, useMemo } from 'react';
 import { Tabs } from 'antd';
 import AllComments from '@/components/post/postDetail/comments/AllComments';
-import { IPostCommentRead } from '@my/types';
+import { IPostCommentRead, IPostRead } from '@my/types';
 
 interface IProps {
   comments: IPostCommentRead[];
   adminComments: IPostCommentRead[];
+  post: IPostRead;
 }
 
 type adminComment = {
@@ -13,7 +14,7 @@ type adminComment = {
   tabBody: IPostCommentRead[];
 };
 
-const AllCommentTabs: FC<IProps> = ({ comments, adminComments }) => {
+const AllCommentTabs: FC<IProps> = ({ comments, adminComments, post }) => {
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -45,7 +46,7 @@ const AllCommentTabs: FC<IProps> = ({ comments, adminComments }) => {
     return tabComments.map((tabComment) => ({
       label: tabComment.tabInfo.fullName,
       key: tabComment.tabInfo._id,
-      children: <AllComments comments={tabComment.tabBody} />,
+      children: <AllComments comments={tabComment.tabBody} post={post} />,
     }));
   }, [tabComments]);
 
@@ -58,7 +59,7 @@ const AllCommentTabs: FC<IProps> = ({ comments, adminComments }) => {
         {
           label: 'همه',
           key: 'ALL',
-          children: <AllComments comments={comments} />,
+          children: <AllComments comments={comments} post={post} />,
         },
         ...adminCommentTabs,
       ]}

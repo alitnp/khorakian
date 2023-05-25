@@ -74,7 +74,7 @@ const Comment: FC<IProps> = ({ item, isLiked }) => {
           title="پاسخ به نظر"
           visible={showCommentModel}
           close={() => setShowCommentModel(false)}
-          endPointUrl={webEndpointUrls.createPostReply + '/' + item._id}
+          endPointUrl={webEndpointUrls.createCommentPostReply + '/' + item._id}
           footer={false}
         />
       )}

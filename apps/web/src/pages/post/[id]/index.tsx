@@ -48,7 +48,11 @@ const PostDetail: FC<{
       <ContentDetailSlider images={post?.images || []} />
       <PostDetailDescription post={post} />
       <div className="w-full my-5">
-        <AllCommentTabs comments={comments} adminComments={adminComments} />
+        <AllCommentTabs
+          comments={comments}
+          adminComments={adminComments}
+          post={post}
+        />
       </div>
     </main>
   );

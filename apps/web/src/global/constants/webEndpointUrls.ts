@@ -38,7 +38,8 @@ const webEndpointUrls = {
   getAllPostComments: '/post/comment',
   getAllPostCategories: '/postcategory',
   getAllPostAdminComments: '/post/adminComments',
-  createPostReply: '/post/reply',
+  createCommentPostReply: '/post/reply',
+  createCommentPost: '/post/comment',
 
   //S
   socialMediaGetAll: '/socialMedia',
