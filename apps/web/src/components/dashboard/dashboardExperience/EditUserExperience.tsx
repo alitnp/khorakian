@@ -14,19 +14,22 @@ import { getAllExperienceCategories } from "@/redux/reducers/categories/getAllEx
 import {
 	ApiDataResponse,
 	IUserExperience,
+	IUserExperienceRead,
 } from "@my/types";
 import { Form, Input, Modal } from "antd";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 
 interface ICreateUserExperience {
+	userExperience: IUserExperienceRead;
 	visible: boolean;
 	close: () => void;
-	refetch: () => void;
+	refetch: (_id: string) => void;
 }
 
-const CreateUserExperience: FC<ICreateUserExperience> = ({
+const EditUserExperience: FC<ICreateUserExperience> = ({
+	userExperience,
 	visible,
 	close,
 	refetch,
@@ -36,13 +39,23 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 
 	//hooks
 	const [form] = Form.useForm();
-	const { push } = useRouter();
+
+	//effects
+	useEffect(() => {
+		userExperience &&
+			form.setFieldsValue({
+				title: userExperience.title,
+				text: userExperience.text,
+				experienceCategory:
+					userExperience.experienceCategory._id + "",
+			});
+	}, [userExperience]);
 
 	//functions
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
-		await WebApiService.post(
-			webEndpointUrls.createUserExperience,
+		await WebApiService.put(
+			webEndpointUrls.userExperienceEdit(userExperience._id),
 			values
 		)
 			.then((res: ApiDataResponse<IUserExperience>) =>
@@ -51,7 +64,7 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 					notifFail: true,
 					notifSuccess: true,
 					onSuccess: () => {
-						refetch();
+						refetch(userExperience._id);
 						close();
 					},
 				})
@@ -65,7 +78,7 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 			open={visible}
 			onCancel={close}
 			footer={false}
-			title="ثبت تجربه من"
+			title="ویرایش تجربه من"
 		>
 			<div className="pt-6">
 				<Form
@@ -122,7 +135,7 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 					</p>
 					<div className="flex justify-end mt-6">
 						<MyButton type="primary" htmlType="submit">
-							ثبت
+							ویرایش
 						</MyButton>
 					</div>
 				</Form>
@@ -132,4 +145,4 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 	);
 };
 
-export default CreateUserExperience;
+export default EditUserExperience;

@@ -28,13 +28,13 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 	isCommented,
 }) => {
 	return (
-		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 ">
-			<div className="w-full sm:w-[400px] px-4 py-2">
+		<article className="items-stretch w-full overflow-hidden border shadow-md bg-k-bg-color rounded-xl md:max-w-lg shrink-0 ">
+			<div className="w-full px-4 py-2">
 				<span className="text-sm font-light text-k-grey-text-color">
 					{category}
 				</span>
 				<Link href={detailPath}>
-					<h2 className="mb-2 text-base font-medium line-clamp-1">
+					<h2 className="mb-2 text-base font-medium line-clamp-1 hover:text-k-primary-color">
 						{title}
 					</h2>
 				</Link>

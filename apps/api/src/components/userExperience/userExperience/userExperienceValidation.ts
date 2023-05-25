@@ -1,18 +1,20 @@
 import {
   bodyIdValidations,
+  existsStringValidation,
   paramIdValidations,
-  shortTitleValidations,
+  titleValidations,
 } from "@/validation/globalValidations";
 
 export const getUserExperienceValidations = [...paramIdValidations];
 export const createUserExperienceValidations = [
   ...bodyIdValidations("experienceCategory"),
-  ...shortTitleValidations,
+  ...titleValidations,
+  ...existsStringValidation({ key: "text", name: "شرح" }),
 ];
 
 export const updateUserExperienceValidations = [
   ...paramIdValidations,
-  ...shortTitleValidations,
+  ...createUserExperienceValidations,
 ];
 
 export const deleteUserExperienceValidations = [...paramIdValidations];

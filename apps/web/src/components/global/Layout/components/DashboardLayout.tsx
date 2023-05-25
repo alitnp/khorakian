@@ -12,9 +12,9 @@ const DashboardLayout: FC<IDashboardLayout> = ({
 }) => {
 	return (
 		<div className="min-h-screen bg-k-grey-bg-1-color">
-			<div className="flex gap-6 py-10 mx-auto max-w-7xl k-container">
+			<div className="flex flex-col gap-6 py-10 mx-auto md:flex-row max-w-7xl k-container">
 				<DashboardSideBar />
-				<div className="w-full px-6 py-2 border rounded-lg shadow-lg bg-k-bg-color">
+				<div className="relative w-full px-6 pt-2 pb-10 border rounded-lg shadow-lg bg-k-bg-color">
 					{children}
 				</div>
 			</div>

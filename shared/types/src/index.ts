@@ -113,6 +113,7 @@ export interface IUserExperience
 	commentCount: number;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user?: string;
 }
 
 export interface IUserExperienceLike
@@ -141,6 +142,7 @@ export interface IUserExperienceRead
 	liked?: boolean;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user: IUserRead;
 }
 
 /* #endregion UserExperience */

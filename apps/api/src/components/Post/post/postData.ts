@@ -16,7 +16,7 @@ import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
 import { stringToBoolean } from "@/utils/util";
 import LikeData from "@/components/Like/likeData";
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import CommentData from "@/components/comment/commentData";
 import PostCategoryData from "@/components/Post/postCategory/postCategoryData";
 
@@ -213,7 +213,7 @@ class PostData {
   };
 
   like = async (postId: string, userId?: string): Promise<IPostRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     await this.PostLike.like(postId, userId);
 
@@ -226,7 +226,7 @@ class PostData {
   };
 
   dislike = async (postId: string, userId?: string): Promise<IPostRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     await this.PostLike.disLike(postId, userId);
 
@@ -267,7 +267,7 @@ class PostData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const post = await this.Post.findById(postId);
     if (!post) throw new NotFoundError();
@@ -300,7 +300,7 @@ class PostData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const comment = await this.PostComment.reply(commentId, userId, text);
 

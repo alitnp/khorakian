@@ -24,6 +24,10 @@ const webEndpointUrls = {
 	//I
 	getAllIdeas: "/idea",
 	getAllIdeaCategories: "/ideaCategory",
+	ideaGetAll: "/idea",
+	ideaDetail: (_id: string) => "/idea/" + _id,
+	ideaDelete: (_id: string) => "/idea/" + _id,
+	ideaEdit: (_id: string) => "/idea/" + _id,
 
 	//U
 	userLogin: "/user/login",
@@ -32,6 +36,12 @@ const webEndpointUrls = {
 	userUploadProfile: "/user/uploadProfile",
 	userChangePassword: "/user/changePassword",
 	userExperienceGetAll: "/userExperience",
+	userExperienceDetail: (_id: string) =>
+		"/userExperience/" + _id,
+	userExperienceDelete: (_id: string) =>
+		"/userExperience/" + _id,
+	userExperienceEdit: (_id: string) =>
+		"/userExperience/" + _id,
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",

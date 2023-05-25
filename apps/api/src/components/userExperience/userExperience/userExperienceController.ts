@@ -4,7 +4,7 @@ import {
   IUserExperienceRead,
 } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
-import { getUserIdFromReq } from "@/utils/util";
+import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
 import UserExperienceData from "@/components/userExperience/userExperience/userExperienceData";
 
 class UserExperienceController {
@@ -35,18 +35,27 @@ class UserExperienceController {
   create = async (req: Req, res: Res) => {
     const result = await this.data.create({
       ...req.body,
+      user: getUserIdFromReq(req),
       // isAdminSubmitted: getUserIsAdminFromReq(req),
     });
     res.send(apiDataResponse<IUserExperienceRead>(result));
   };
 
   update = async (req: Req, res: Res) => {
-    const result = await this.data.update({ _id: req.params.id, ...req.body });
+    const result = await this.data.update({
+      _id: req.params.id,
+      ...req.body,
+      user: getUserIdFromReq(req),
+    });
     res.send(apiDataResponse<IUserExperienceRead>(result));
   };
 
   remove = async (req: Req, res: Res) => {
-    const result = await this.data.remove(req.params.id);
+    const result = await this.data.remove(
+      req.params.id,
+      getUserIsAdminFromReq(req),
+      getUserIdFromReq(req),
+    );
     res.send(apiDataResponse<IUserExperienceRead>(result));
   };
 

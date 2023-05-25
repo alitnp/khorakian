@@ -12,6 +12,10 @@ const webRoutes: Record<
 		path: "/dashboard/experience",
 		private: true,
 	},
+	dashboardIdea: {
+		path: "/dashboard/idea",
+		private: true,
+	},
 
 	//post
 	postAllContents: { path: "/post", private: false },

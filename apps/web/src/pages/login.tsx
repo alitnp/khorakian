@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	}
 	return {
 		props: {
-			image: image.data.image,
+			image: image?.data?.image ||null,
 		},
 		revalidate: webConfig.dataRevalidateTime,
 	};

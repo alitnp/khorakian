@@ -12,7 +12,7 @@ import CommentData from "@/components/comment/commentData";
 import { stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
 import BadRequestError from "@/helpers/error/BadRequestError";
 
@@ -169,7 +169,7 @@ class IdeaData {
   };
 
   like = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     await this.IdeaLike.like(ideaId, userId);
     const item = await this.Idea.findByIdAndUpdate(ideaId, {
       $inc: { likeCount: 1 },
@@ -180,7 +180,7 @@ class IdeaData {
   };
 
   dislike = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     await this.IdeaLike.disLike(ideaId, userId);
     const item = await this.get(ideaId, userId);
     const updatedIdea = await this.Idea.findByIdAndUpdate(ideaId, {
@@ -209,7 +209,7 @@ class IdeaData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     const item = await this.Idea.findById(ideaId);
     if (!item) throw new NotFoundError();
     await this.IdeaComment.create(ideaId, userId, text);
@@ -222,7 +222,7 @@ class IdeaData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const comment = await this.IdeaComment.reply(commentId, userId, text);
     return await this.get(comment.content as string);

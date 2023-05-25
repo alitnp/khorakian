@@ -18,7 +18,7 @@ import VideoData from "@/components/video/videoData";
 import ImageData from "@/components/image/imageData";
 import { stringToBoolean } from "@/utils/util";
 import LikeData from "@/components/Like/likeData";
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import CommentData from "@/components/comment/commentData";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
 
@@ -275,7 +275,7 @@ class ExperienceData {
     experienceId: string,
     userId?: string,
   ): Promise<IExperienceRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     await this.ExperienceLike.like(experienceId, userId);
 
@@ -291,7 +291,7 @@ class ExperienceData {
     experienceId: string,
     userId?: string,
   ): Promise<IExperienceRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     await this.ExperienceLike.disLike(experienceId, userId);
 
@@ -329,7 +329,7 @@ class ExperienceData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const experience = await this.Experience.findById(experienceId);
     if (!experience) throw new NotFoundError();
@@ -348,7 +348,7 @@ class ExperienceData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const comment = await this.ExperienceComment.reply(commentId, userId, text);
 

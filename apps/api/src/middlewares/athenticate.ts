@@ -1,4 +1,4 @@
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import { UnauthenticatedError } from "@/helpers/error";
 
 const auth = (req: Req, _res: Res, next: NextFn) => {
   const tokenData = !!req.headers.tokenData;

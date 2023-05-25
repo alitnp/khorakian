@@ -18,6 +18,8 @@ module.exports = {
 				"k-primary-2-color": "var(--primary-2-color)",
 				"k-secondary-color": "var(--secondary-1-color)",
 				"k-faded-primary-color": "var(--faded-primary-color)",
+				"k-success-color": "var(--success-color)",
+				"k-error-color": "var(--error-color)",
 
 				//bg
 				"k-bg-color": "var(--bg-color)",

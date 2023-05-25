@@ -1,10 +1,9 @@
 import MyButton from "@/components/basicUi/MyButton";
-import CreateUserExperience from "@/components/dashboard/dashboardExperience/CreateUserExperience";
 import DashboardExperienceList from "@/components/dashboard/dashboardExperience/DashboardExperienceList";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService from "@/global/utils/WebApiService";
 import { webApiThenGeneric } from "@/global/utils/webApiThen";
-import { IUserExperienceRead } from "@my/types";
+import { IIdeaRead, IUserExperienceRead } from "@my/types";
 import { ApiDataListResponse } from "@my/types";
 import {
 	FC,
@@ -15,18 +14,21 @@ import {
 	memo,
 } from "react";
 import queryString from "querystring";
+import CreateUserIdea from "@/components/dashboard/dashboardIdea/CreateUserIdea";
+import DashboardIdeaList from "@/components/dashboard/dashboardIdea/DashboardIdeaList";
 
-interface IDashboardUserExperience {
+interface IDashboardUserIdea {
 	visible: boolean;
 	toggleCreateModal: () => void;
 }
 
-const DashboardUserExperience: FC<
-	IDashboardUserExperience
-> = ({ visible, toggleCreateModal }) => {
+const DashboardUserIdea: FC<IDashboardUserIdea> = ({
+	visible,
+	toggleCreateModal,
+}) => {
 	//state
 	const [list, setList] =
-		useState<ApiDataListResponse<IUserExperienceRead>>();
+		useState<ApiDataListResponse<IIdeaRead>>();
 
 	//effect
 	useEffect(() => {
@@ -45,14 +47,14 @@ const DashboardUserExperience: FC<
 				payload.isApprove = !!isApprove;
 
 			await WebApiService.get(
-				webEndpointUrls.userExperienceGetAll +
+				webEndpointUrls.ideaGetAll +
 					"?" +
 					queryString.stringify(payload)
 			)
-				.then((res: ApiDataListResponse<IUserExperienceRead>) =>
+				.then((res: ApiDataListResponse<IIdeaRead>) =>
 					webApiThenGeneric<
-						ApiDataListResponse<IUserExperienceRead>,
-						IUserExperienceRead[]
+						ApiDataListResponse<IIdeaRead>,
+						IIdeaRead[]
 					>({
 						res,
 						notifFail: false,
@@ -83,7 +85,7 @@ const DashboardUserExperience: FC<
 	const renderList = useMemo(() => {
 		if (!list) return <></>;
 		return (
-			<DashboardExperienceList list={list} refetch={getList} />
+			<DashboardIdeaList list={list} refetch={getList} />
 		);
 	}, [list]);
 
@@ -91,7 +93,7 @@ const DashboardUserExperience: FC<
 		<div>
 			{emptyList}
 			{renderList}
-			<CreateUserExperience
+			<CreateUserIdea
 				visible={visible}
 				close={toggleCreateModal}
 				refetch={getList}
@@ -100,4 +102,4 @@ const DashboardUserExperience: FC<
 	);
 };
 
-export default memo(DashboardUserExperience);
+export default memo(DashboardUserIdea);

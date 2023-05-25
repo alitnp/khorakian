@@ -10,7 +10,7 @@ const DashboardPageTitle: FC<IDashboardPageTitle> = ({
 	moreContent,
 }) => {
 	return (
-		<h1 className="flex items-center justify-between w-full pb-2 font-medium border-b">
+		<h1 className="flex flex-col justify-between w-full gap-2 pb-2 mb-4 font-medium border-b sm:items-center sm:flex-row">
 			{title}
 			{moreContent && moreContent}
 		</h1>
