@@ -1,7 +1,6 @@
 import MyButton from "@/components/basicUi/MyButton";
 import Loading from "@/components/global/Loading/Loading";
 import ReduxSelect from "@/components/global/ReduxSelect/ReduxSelect";
-import webRoutes from "@/global/constants/routes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService, {
 	errorResponse,
@@ -10,16 +9,9 @@ import {
 	webApiCatch,
 	webApiThen,
 } from "@/global/utils/webApiThen";
-import { getAllExperienceCategories } from "@/redux/reducers/categories/getAllExperienceCategories";
 import { getAllIdeaCategories } from "@/redux/reducers/categories/getAllIdeaCategories";
-import {
-	ApiDataResponse,
-	IIdeaRead,
-	IUserExperience,
-	IUserExperienceRead,
-} from "@my/types";
+import { ApiDataResponse, IIdeaRead } from "@my/types";
 import { Form, Input, Modal } from "antd";
-import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 
@@ -56,10 +48,10 @@ const EditUserIdea: FC<ICreateUserIdea> = ({
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
 		await WebApiService.put(
-			webEndpointUrls.userExperienceEdit(idea._id),
+			webEndpointUrls.ideaEdit(idea._id),
 			values
 		)
-			.then((res: ApiDataResponse<IUserExperience>) =>
+			.then((res: ApiDataResponse<IIdeaRead>) =>
 				webApiThen({
 					res,
 					notifFail: true,

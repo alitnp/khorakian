@@ -25,6 +25,7 @@ const webEndpointUrls = {
 	getAllIdeas: "/idea",
 	getAllIdeaCategories: "/ideaCategory",
 	ideaGetAll: "/idea",
+	ideaCreate: "/idea",
 	ideaDetail: (_id: string) => "/idea/" + _id,
 	ideaDelete: (_id: string) => "/idea/" + _id,
 	ideaEdit: (_id: string) => "/idea/" + _id,

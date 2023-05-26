@@ -41,7 +41,7 @@ const CreateUserIdea: FC<ICreateUserIdea> = ({
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
 		await WebApiService.post(
-			webEndpointUrls.createUserExperience,
+			webEndpointUrls.ideaCreate,
 			values
 		)
 			.then((res: ApiDataResponse<IUserExperience>) =>

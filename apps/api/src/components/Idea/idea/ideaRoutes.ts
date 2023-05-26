@@ -19,6 +19,9 @@ import isAdmin from "@/middlewares/isAdmin";
 import { paramIdValidations } from "@/validation/globalValidations";
 import { Router } from "express";
 import { User } from "@/components/user/userModel";
+import UserData from "@/components/user/userData";
+import ImageData from "@/components/image/imageData";
+import { Image } from "@/components/image/imageModel";
 
 const router = Router();
 const data = new IdeaData(
@@ -26,6 +29,7 @@ const data = new IdeaData(
   new IdeaCategoryData(IdeaCategory),
   new LikeData(IdeaLike),
   new CommentData(IdeaComment, User),
+  new UserData(User, new ImageData(Image)),
 );
 
 const controller = new IdeaController(data);
@@ -85,7 +89,7 @@ router.post("/", [auth, ...validate(createIdeaValidations)], controller.create);
 //edit an existing idea - admin only
 router.put(
   "/:id",
-  [isAdmin, ...validate(updateIdeaValidations)],
+  [auth, ...validate(updateIdeaValidations)],
   controller.update,
 );
 
@@ -93,7 +97,7 @@ router.put(
 //delete a idea - admin only
 router.delete(
   "/:id",
-  [isAdmin, ...validate(deleteIdeaValidations)],
+  [auth, ...validate(deleteIdeaValidations)],
   controller.remove,
 );
 

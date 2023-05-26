@@ -167,6 +167,7 @@ export interface IIdea extends DefaultModelProperties {
 	commentCount: number;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user?: string;
 }
 
 export interface IIdeaLike extends DefaultModelProperties {
@@ -193,6 +194,7 @@ export interface IIdeaRead extends DefaultModelProperties {
 	liked?: boolean;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user: IUserRead;
 }
 
 /* #endregion idea */

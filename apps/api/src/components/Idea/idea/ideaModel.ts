@@ -21,6 +21,11 @@ export const ideaSchema = new Schema<IIdea>({
   featured: { type: Boolean, default: false },
   isApprove: { type: Boolean, default: false },
   isAdminSubmitted: { type: Boolean, default: false },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "شناسه فرد ثبت کننده ارسال نشده"],
+  },
   viewCount: Number,
   likeCount: Number,
   commentCount: Number,

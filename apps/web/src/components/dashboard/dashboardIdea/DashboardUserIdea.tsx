@@ -73,11 +73,11 @@ const DashboardUserIdea: FC<IDashboardUserIdea> = ({
 		return (
 			<div className="flex flex-col items-center gap-4 py-10">
 				<span className="text-sm">
-					تجربه ای برای درمیان گذاشتن با امیر خوراکیان یا اشتراک
+					ایده ای برای درمیان گذاشتن با امیر خوراکیان یا اشتراک
 					در سایت دارید؟
 				</span>
 				<MyButton size="small" onClick={toggleCreateModal}>
-					ثبت تجربه جدید
+					ثبت ایده جدید
 				</MyButton>
 			</div>
 		);

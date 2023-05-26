@@ -63,8 +63,7 @@ const DashboardIdeaDetail: FC = () => {
 					res,
 					notifFail: true,
 					notifSuccess: true,
-					onSuccess: () =>
-						push(webRoutes.dashboardExperience.path),
+					onSuccess: () => push(webRoutes.dashboardIdea.path),
 				})
 			)
 			.catch(() => webApiCatch(errorResponse));
