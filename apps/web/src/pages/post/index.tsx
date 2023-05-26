@@ -16,7 +16,7 @@ import {
 	dateObjectFormatter,
 	getThumbnailFromContent,
 } from "@/global/utils/helperFunctions";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import FreeHeightCard from "@/components/home/FreeHeightCard";
 import Masonry from "react-masonry-css";
 import { Pagination } from "antd";

@@ -18,7 +18,7 @@ import {
 } from "@/redux/reducers/user/userReducer";
 import { AppDispatch } from "@/redux/store";
 import { useRouter } from "next/router";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 
 type loginResponse = { user: IUserRead; token: string };
 

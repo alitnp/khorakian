@@ -23,7 +23,7 @@ const MainTitle: FC<IMainTitle> = ({
 						className="mx-auto mt-5 text-center"
 						style={{ width: "60%" }}
 					>
-						<h1 className="text-3xl font-bold">
+						<h1 className="text-4xl font-bold">
 							{experience_header_title}
 						</h1>
 					</div>

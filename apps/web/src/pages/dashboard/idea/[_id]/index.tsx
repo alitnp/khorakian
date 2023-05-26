@@ -3,7 +3,7 @@ import EditUserIdea from "@/components/dashboard/dashboardIdea/EditUserIdea";
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
 import Loading from "@/components/global/Loading/Loading";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService, {
 	errorResponse,

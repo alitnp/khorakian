@@ -1,5 +1,5 @@
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
 import {
 	ApiDataListResponse,

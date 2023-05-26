@@ -1,5 +1,5 @@
 import Navigation from "@/components/global/Layout/Navigation";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import { RootState } from "@/redux/store";
 import { Drawer } from "antd";
 import Link from "next/link";

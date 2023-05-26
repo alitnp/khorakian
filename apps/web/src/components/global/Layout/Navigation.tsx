@@ -1,4 +1,4 @@
-import routes from "@/global/constants/routes";
+import routes from "@/global/constants/webRoutes";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useMemo } from "react";
@@ -9,7 +9,7 @@ const navigationItems = [
 	{ label: "تجربیات", route: routes.experience.path },
 	{
 		label: "ایده‌ها و نظرها",
-		route: routes.experience.path,
+		route: routes.idea.path,
 	},
 ];
 
