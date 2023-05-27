@@ -1,7 +1,6 @@
 import MyButton from "@/components/basicUi/MyButton";
 import Loading from "@/components/global/Loading/Loading";
 import ReduxSelect from "@/components/global/ReduxSelect/ReduxSelect";
-import webRoutes from "@/global/constants/webRoutes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService, {
 	errorResponse,
