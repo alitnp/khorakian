@@ -55,7 +55,7 @@ const Footer: FC<IFooter> = ({
 	return (
 		<footer className="my-6 k-container">
 			<div className="w-full px-8 py-4 border shadow-lg rounded-xl">
-				<div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
+				<div className="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
 					<div className="flex items-center gap-x-2">
 						{footer_image?.thumbnailPathname && (
 							<Image
@@ -84,7 +84,7 @@ const Footer: FC<IFooter> = ({
 								{quickAccessRoutes.map((item) => (
 									<li
 										key={item.title}
-										className="cursor-pointer whitespace-nowrap hover:underline"
+										className="cursor-pointer whitespace-nowrap hover:text-k-primary-color"
 									>
 										{item.title}
 									</li>

@@ -6,32 +6,37 @@ import {
   IIdeaComment,
   IIdeaLike,
   IIdeaRead,
+  IUserRead,
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
-import { stringToBoolean } from "@/utils/util";
+import { getUserIdFromReq, stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
-import { NotFoundError } from "@/helpers/error";
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import { NotFoundError, UnauthenticatedError } from "@/helpers/error";
+import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
 import BadRequestError from "@/helpers/error/BadRequestError";
+import UserData from "@/components/user/userData";
 
 class IdeaData {
-  Idea: Model<IIdea, {}, {}, {}, any>;
+  Idea: Model<IIdea>;
   IdeaCategory: IdeaCategoryData;
   IdeaLike: LikeData<IIdeaLike>;
   IdeaComment: CommentData<IIdeaComment>;
+  User: UserData;
 
   constructor(
-    Idea: Model<IIdea, {}, {}, {}, any>,
+    Idea: Model<IIdea>,
     IdeaCategory: IdeaCategoryData,
     IdeaLike: LikeData<IIdeaLike>,
     IdeaComment: CommentData<IIdeaComment>,
+    User: UserData,
   ) {
     this.Idea = Idea;
     this.IdeaCategory = IdeaCategory;
     this.IdeaLike = IdeaLike;
     this.IdeaComment = IdeaComment;
+    this.User = User;
   }
 
   getAll = async (
@@ -68,8 +73,11 @@ class IdeaData {
       desc,
     } = await paginationProps(searchQuery, req, this.Idea);
 
-    const data: IIdeaRead[] = await this.Idea.find(fixedSearchQuery)
-      .populate<{ ideaCategory: IIdeaCategory }>("ideaCategory")
+    const data: IIdeaRead[] = await this.Idea.find({
+      ...fixedSearchQuery,
+      user: getUserIdFromReq(req),
+    })
+      .populate<{ ideaCategory: IIdeaCategory }>(["ideaCategory"])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -96,7 +104,8 @@ class IdeaData {
     const idea = await this.Idea.findById(id)
       .populate<{
         ideaCategory: IIdeaCategory;
-      }>(["ideaCategory"])
+        user: IUserRead;
+      }>(["ideaCategory", "user"])
       .lean();
 
     if (!idea) throw new NotFoundError();
@@ -114,7 +123,12 @@ class IdeaData {
     text,
     featured,
     isAdminSubmitted,
+    user,
   }: IIdea): Promise<IIdeaRead> => {
+    if (!user) throw new UnauthenticatedError();
+    const existUser = await this.User.get(user);
+    if (!existUser) throw new UnauthenticatedError();
+
     if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
     if (!existingIdeaCategory)
@@ -129,6 +143,7 @@ class IdeaData {
       likeCount: 0,
       commentCount: 0,
       isAdminSubmitted,
+      user,
     });
     await idea.save();
     return await this.get(idea._id);
@@ -140,12 +155,25 @@ class IdeaData {
     ideaCategory,
     text,
     featured,
+    user,
   }: IIdea & { _id: string }): Promise<IIdeaRead> => {
+    if (!user) throw new UnauthenticatedError();
+    const existUser = await this.User.get(user);
+    if (!existUser) throw new UnauthenticatedError();
+    const existIdea = await this.get(_id);
+    if (!existIdea) throw new NotFoundError();
+    if (existIdea.user._id != user)
+      throw new BadRequestError("شما دسترسی ویرایش این مورد را ندارید");
+
+    if (existIdea.isApprove)
+      throw new BadRequestError("ایده های منتشر شده امکان ویرایش ندارند");
+
     if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
     if (!existingIdeaCategory)
       throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
-    const idea = await this.Idea.findByIdAndUpdate(
+
+    await this.Idea.findByIdAndUpdate(
       _id,
       {
         $set: {
@@ -157,19 +185,26 @@ class IdeaData {
       },
       { new: true },
     );
-    if (!idea) throw new NotFoundError();
 
-    return await this.get(idea._id);
+    return await this.get(existIdea._id);
   };
 
-  remove = async (id: string): Promise<IIdeaRead> => {
+  remove = async (
+    id: string,
+    isAdmin: boolean,
+    userId?: string,
+  ): Promise<IIdeaRead> => {
     const item = await this.get(id);
+
+    if (!isAdmin && !userId) throw new UnauthenticatedError();
+    if (!isAdmin && userId != item.user._id) throw new UnauthorizedError();
+
     await this.Idea.findByIdAndDelete(id);
     return item;
   };
 
   like = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     await this.IdeaLike.like(ideaId, userId);
     const item = await this.Idea.findByIdAndUpdate(ideaId, {
       $inc: { likeCount: 1 },
@@ -180,7 +215,7 @@ class IdeaData {
   };
 
   dislike = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     await this.IdeaLike.disLike(ideaId, userId);
     const item = await this.get(ideaId, userId);
     const updatedIdea = await this.Idea.findByIdAndUpdate(ideaId, {
@@ -209,7 +244,7 @@ class IdeaData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     const item = await this.Idea.findById(ideaId);
     if (!item) throw new NotFoundError();
     await this.IdeaComment.create(ideaId, userId, text);
@@ -222,7 +257,7 @@ class IdeaData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const comment = await this.IdeaComment.reply(commentId, userId, text);
     return await this.get(comment.content as string);

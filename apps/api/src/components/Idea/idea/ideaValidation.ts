@@ -6,7 +6,7 @@ import {
 
 export const getIdeaValidations = [...paramIdValidations];
 export const createIdeaValidations = [
-  ...bodyIdValidations("ideaCategory"),
+  ...bodyIdValidations("ideaCategory", "شناسه دسته بندی"),
   ...shortTitleValidations,
 ];
 

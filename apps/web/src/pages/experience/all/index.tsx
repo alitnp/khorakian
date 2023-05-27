@@ -12,7 +12,7 @@ import {
 	dateObjectFormatter,
 	getThumbnailFromContent,
 } from "@/global/utils/helperFunctions";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import FreeHeightCard from "@/components/home/FreeHeightCard";
 import { Pagination } from "antd";
 import Footer from "@/components/global/Footer/Footer";

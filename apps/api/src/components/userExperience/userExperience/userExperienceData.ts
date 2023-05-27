@@ -3,35 +3,43 @@ import {
   ApiDataListResponse,
   IExperienceCategory,
   IUserExperience,
-  IUserExperienceCategory,
   IUserExperienceComment,
   IUserExperienceLike,
   IUserExperienceRead,
+  IUserRead,
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
-import { stringToBoolean } from "@/utils/util";
+import { getUserIdFromReq, stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
-import { NotFoundError } from "@/helpers/error";
-import UnauthenticatedError from "@/helpers/error/UnauthorizedError";
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthenticatedError,
+} from "@/helpers/error";
+import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
+import UserData from "@/components/user/userData";
 
 class UserExperienceData {
-  UserExperience: Model<IUserExperience, {}, {}, {}, any>;
+  UserExperience: Model<IUserExperience>;
   ExperienceCategory: ExperienceCategoryData;
   UserExperienceLike: LikeData<IUserExperienceLike>;
   UserExperienceComment: CommentData<IUserExperienceComment>;
+  User: UserData;
 
   constructor(
-    UserExperience: Model<IUserExperience, {}, {}, {}, any>,
+    UserExperience: Model<IUserExperience>,
     ExperienceCategory: ExperienceCategoryData,
     UserExperienceLike: LikeData<IUserExperienceLike>,
     UserExperienceComment: CommentData<IUserExperienceComment>,
+    User: UserData,
   ) {
     this.UserExperience = UserExperience;
     this.ExperienceCategory = ExperienceCategory;
     this.UserExperienceLike = UserExperienceLike;
     this.UserExperienceComment = UserExperienceComment;
+    this.User = User;
   }
 
   getAll = async (
@@ -53,7 +61,7 @@ class UserExperienceData {
         $regex: req.query.userExperienceCategory,
       };
     }
-    if (req.query.isApprove)
+    if (req.query.isApprove !== undefined)
       searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
@@ -68,11 +76,12 @@ class UserExperienceData {
       desc,
     } = await paginationProps(searchQuery, req, this.UserExperience);
 
-    const data: IUserExperienceRead[] = await this.UserExperience.find(
-      fixedSearchQuery,
-    )
-      .populate<{ userExperienceCategory: IUserExperienceCategory }>(
-        "userExperienceCategory",
+    const data: IUserExperienceRead[] = await this.UserExperience.find({
+      ...fixedSearchQuery,
+      user: getUserIdFromReq(req),
+    })
+      .populate<{ experienceCategory: IExperienceCategory }>(
+        "experienceCategory",
       )
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
@@ -104,11 +113,15 @@ class UserExperienceData {
     const userExperience = await this.UserExperience.findById(id)
       .populate<{
         experienceCategory: IExperienceCategory;
-      }>(["userExperienceCategory"])
+        user: IUserRead;
+      }>(["experienceCategory", "user"])
       .lean();
 
     if (!userExperience) throw new NotFoundError();
-    await this.UserExperience.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
+    if (userId != userExperience.user._id)
+      await this.UserExperience.findByIdAndUpdate(id, {
+        $inc: { viewCount: 1 },
+      });
 
     const userExperienceRead = {
       ...userExperience,
@@ -128,21 +141,27 @@ class UserExperienceData {
     experienceCategory,
     text,
     featured,
+    user,
   }: // isAdminSubmitted,
   IUserExperience): Promise<IUserExperienceRead> => {
+    if (!user) throw new UnauthorizedError();
+    await this.User.get(user);
     if (!experienceCategory) throw new NotFoundError();
-    const existingUserExperienceCategory = await this.ExperienceCategory.get(
+    const existingExperienceCategory = await this.ExperienceCategory.get(
       experienceCategory,
     );
+    if (!existingExperienceCategory)
+      throw new BadRequestError("دسته بندی با این شناسه یافت نشد.");
 
     const userExperience = new this.UserExperience({
       title,
-      userExperienceCategory: existingUserExperienceCategory,
+      experienceCategory,
       text,
       featured: !!featured,
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      user,
       // isAdminSubmitted,
     });
     await userExperience.save();
@@ -155,11 +174,20 @@ class UserExperienceData {
     experienceCategory,
     text,
     featured,
+    user,
   }: IUserExperience & { _id: string }): Promise<IUserExperienceRead> => {
+    if (!user) throw new UnauthenticatedError();
+    await this.User.get(user);
     if (!experienceCategory) throw new NotFoundError();
     const existingExperienceCategory = await this.ExperienceCategory.get(
       experienceCategory,
     );
+    const userExpt = await this.get(_id);
+    if (userExpt.user._id != user)
+      throw new BadRequestError("شما دسترسی ویرایش این مورد را ندارید");
+
+    if (userExpt.isApprove)
+      throw new BadRequestError("تجربیات منتشر شده امکان ویرایش ندارند.");
 
     const userExperience = await this.UserExperience.findByIdAndUpdate(
       _id,
@@ -178,8 +206,15 @@ class UserExperienceData {
     return await this.get(userExperience._id);
   };
 
-  remove = async (id: string): Promise<IUserExperienceRead> => {
+  remove = async (
+    id: string,
+    isAdmin: boolean,
+    userId?: string,
+  ): Promise<IUserExperienceRead> => {
     const item = await this.get(id);
+
+    if (!isAdmin && !userId) throw new UnauthenticatedError();
+    if (!isAdmin && userId != item.user._id) throw new UnauthorizedError();
     await this.UserExperience.findByIdAndDelete(id);
     return item;
   };
@@ -188,7 +223,7 @@ class UserExperienceData {
     userExperienceId: string,
     userId?: string,
   ): Promise<IUserExperienceRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     await this.UserExperienceLike.like(userExperienceId, userId);
     const item = await this.UserExperience.findByIdAndUpdate(userExperienceId, {
       $inc: { likeCount: 1 },
@@ -202,7 +237,7 @@ class UserExperienceData {
     userExperienceId: string,
     userId?: string,
   ): Promise<IUserExperienceRead> => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     await this.UserExperienceLike.disLike(userExperienceId, userId);
     const item = await this.get(userExperienceId, userId);
     const updatedUserExperience = await this.UserExperience.findByIdAndUpdate(
@@ -236,7 +271,7 @@ class UserExperienceData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
     const item = await this.UserExperience.findById(userExperienceId);
     if (!item) throw new NotFoundError();
     await this.UserExperienceComment.create(userExperienceId, userId, text);
@@ -251,7 +286,7 @@ class UserExperienceData {
     userId: string | undefined,
     text: string,
   ) => {
-    if (!userId) throw new UnauthenticatedError();
+    if (!userId) throw new UnauthorizedError();
 
     const comment = await this.UserExperienceComment.reply(
       commentId,

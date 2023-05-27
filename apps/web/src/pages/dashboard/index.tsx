@@ -3,7 +3,7 @@ import UserChangePassword from "@/components/dashboard/dashboard/UserChangePassw
 import UserInfo from "@/components/dashboard/dashboard/UserInfo";
 import UserProfileImage from "@/components/dashboard/dashboard/UserProfileImage";
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import { serverSideFetch } from "@/global/utils/webFetch";
 import { RootState } from "@/redux/store";

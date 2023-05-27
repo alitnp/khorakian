@@ -1,5 +1,5 @@
 import DashboardSidebarItem from "@/components/global/Layout/components/DashboardSidebarItem";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import { logout } from "@/redux/reducers/user/userReducer";
 import { store } from "@/redux/store";
 import { useRouter } from "next/router";
@@ -29,7 +29,7 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 			/>
 			<DashboardSidebarItem
 				title="ایده های من"
-				path={webRoutes.experience.path}
+				path={webRoutes.dashboardIdea.path}
 			/>
 			<DashboardSidebarItem
 				title="نظرهای من"

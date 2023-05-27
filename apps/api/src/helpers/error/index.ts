@@ -5,8 +5,9 @@ import NotFoundError from "./NotFoundError";
 import TimeOutError from "./TimeOutError";
 import ConflictError from "./ConflictError";
 import BadRequestError from "./BadRequestError";
-import UnauthenticatedError from "./UnauthorizedError";
+import UnauthorizedError from "./UnauthorizedError";
 import { getMongoDbError } from "./MongoError";
+import UnauthenticatedError from "@/helpers/error/UnauthenticatedError";
 
 export {
   APIError,
@@ -16,6 +17,7 @@ export {
   TimeOutError,
   ConflictError,
   BadRequestError,
+  UnauthorizedError,
   UnauthenticatedError,
   getMongoDbError,
 };

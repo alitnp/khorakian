@@ -32,17 +32,26 @@ class IdeaController {
     const result = await this.data.create({
       ...req.body,
       isAdminSubmitted: getUserIsAdminFromReq(req),
+      user: getUserIdFromReq(req),
     });
     res.send(apiDataResponse<IIdeaRead>(result));
   };
 
   update = async (req: Req, res: Res) => {
-    const result = await this.data.update({ _id: req.params.id, ...req.body });
+    const result = await this.data.update({
+      _id: req.params.id,
+      ...req.body,
+      user: getUserIdFromReq(req),
+    });
     res.send(apiDataResponse<IIdeaRead>(result));
   };
 
   remove = async (req: Req, res: Res) => {
-    const result = await this.data.remove(req.params.id);
+    const result = await this.data.remove(
+      req.params.id,
+      getUserIsAdminFromReq(req),
+      getUserIdFromReq(req),
+    );
     res.send(apiDataResponse<IIdeaRead>(result));
   };
 

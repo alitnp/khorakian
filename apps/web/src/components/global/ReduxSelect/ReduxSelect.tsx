@@ -43,7 +43,7 @@ const ReduxSelect: FC<IReduxSelect> = ({
 		onChange && onChange(e);
 		if (onChangeFullInfo) {
 			const item = optionsList?.find(
-				(item: any) => item._id === e
+				(item: any) => item._id == e
 			);
 			onChangeFullInfo({
 				...item,
@@ -62,7 +62,7 @@ const ReduxSelect: FC<IReduxSelect> = ({
 			optionFilterProp="children"
 			options={optionsList?.map((item: any) => ({
 				label: item[labelPropertyName],
-				value: item._id,
+				value: item._id + "",
 			}))}
 			{...props}
 			onChange={handleChange}

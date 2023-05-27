@@ -5,7 +5,7 @@ import { TfiMenu } from "react-icons/tfi";
 import { VscAccount } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 import KDrawer from "@/components/global/Layout/components/KDrawer";
 
 const LayoutHeader: FC = () => {

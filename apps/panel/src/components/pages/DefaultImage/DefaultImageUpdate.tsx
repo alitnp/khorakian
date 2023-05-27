@@ -70,7 +70,7 @@ const DefaultImageUpdate = () => {
 
   return (
     <TcCard back={{ to: routes.defaultImage.path }}>
-      <TcPageTitle title={'ایجاد ' + defaultImageModel.title} />
+      <TcPageTitle title={'ویرایش ' + defaultImageModel.title} />
       <TcForm form={form} onFinish={handleSubmit}>
         <TcFormWrapper>{defaultImageModel.inputs}</TcFormWrapper>
       </TcForm>

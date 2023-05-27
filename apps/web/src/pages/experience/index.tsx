@@ -15,7 +15,7 @@ import {
 import { getExperienceListWithComments } from "@/components/experience/experienceFunctions";
 import ExperienceBrief from "@/components/experience/ExperienceBrief";
 import Link from "next/link";
-import webRoutes from "@/global/constants/routes";
+import webRoutes from "@/global/constants/webRoutes";
 
 type props = {
 	defaultTextsObject: Record<string, string>;

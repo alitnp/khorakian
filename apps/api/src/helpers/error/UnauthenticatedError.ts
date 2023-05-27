@@ -1,6 +1,4 @@
-import { UNAUTHORIZED } from "http-status/lib";
-
-class UnauthorizedError {
+class UnauthenticatedError {
   readonly status: number;
   readonly message: string;
   readonly data: null;
@@ -9,11 +7,11 @@ class UnauthorizedError {
   constructor(message?: string) {
     Object.setPrototypeOf(this, new.target.prototype);
 
-    this.status = UNAUTHORIZED;
-    this.message = message || "شما دسترسی به این عملیات را ندارید.";
+    this.status = 401;
+    this.message = message || "لطفا ابتدا وارد حساب کاربری خود شوید.";
     this.data = null;
     this.isSuccess = false;
   }
 }
 
-export default UnauthorizedError;
+export default UnauthenticatedError;

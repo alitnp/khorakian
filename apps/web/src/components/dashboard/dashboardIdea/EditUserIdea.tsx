@@ -1,7 +1,6 @@
 import MyButton from "@/components/basicUi/MyButton";
 import Loading from "@/components/global/Loading/Loading";
 import ReduxSelect from "@/components/global/ReduxSelect/ReduxSelect";
-import webRoutes from "@/global/constants/webRoutes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService, {
 	errorResponse,
@@ -10,23 +9,21 @@ import {
 	webApiCatch,
 	webApiThen,
 } from "@/global/utils/webApiThen";
-import { getAllExperienceCategories } from "@/redux/reducers/categories/getAllExperienceCategories";
-import {
-	ApiDataResponse,
-	IUserExperience,
-} from "@my/types";
+import { getAllIdeaCategories } from "@/redux/reducers/categories/getAllIdeaCategories";
+import { ApiDataResponse, IIdeaRead } from "@my/types";
 import { Form, Input, Modal } from "antd";
-import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 
-interface ICreateUserExperience {
+interface ICreateUserIdea {
+	idea: IIdeaRead;
 	visible: boolean;
 	close: () => void;
-	refetch: () => void;
+	refetch: (_id: string) => void;
 }
 
-const CreateUserExperience: FC<ICreateUserExperience> = ({
+const EditUserIdea: FC<ICreateUserIdea> = ({
+	idea,
 	visible,
 	close,
 	refetch,
@@ -36,22 +33,31 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 
 	//hooks
 	const [form] = Form.useForm();
-	const { push } = useRouter();
+
+	//effects
+	useEffect(() => {
+		idea &&
+			form.setFieldsValue({
+				title: idea.title,
+				text: idea.text,
+				ideaCategory: idea.ideaCategory._id + "",
+			});
+	}, [idea]);
 
 	//functions
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
-		await WebApiService.post(
-			webEndpointUrls.createUserExperience,
+		await WebApiService.put(
+			webEndpointUrls.ideaEdit(idea._id),
 			values
 		)
-			.then((res: ApiDataResponse<IUserExperience>) =>
+			.then((res: ApiDataResponse<IIdeaRead>) =>
 				webApiThen({
 					res,
 					notifFail: true,
 					notifSuccess: true,
 					onSuccess: () => {
-						refetch();
+						refetch(idea._id);
 						close();
 					},
 				})
@@ -65,7 +71,7 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 			open={visible}
 			onCancel={close}
 			footer={false}
-			title="ثبت تجربه من"
+			title="ویرایش ایده من"
 		>
 			<div className="pt-6">
 				<Form
@@ -80,14 +86,14 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 						rules={[
 							{
 								required: true,
-								message: "عنوان تجربه وارد نشده.",
+								message: "عنوان ایده وارد نشده.",
 							},
 						]}
 					>
 						<Input placeholder="عنوان" />
 					</Form.Item>
 					<Form.Item
-						name="experienceCategory"
+						name="ideaCategory"
 						label="دسته بندی"
 						rules={[
 							{
@@ -98,8 +104,8 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 					>
 						<ReduxSelect
 							reducerName="categories"
-							reducerListProperty="experienceCategoryList"
-							getlist={getAllExperienceCategories}
+							reducerListProperty="ideaCategoryList"
+							getlist={getAllIdeaCategories}
 						/>
 					</Form.Item>
 					<Form.Item
@@ -108,7 +114,7 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 						rules={[
 							{
 								required: true,
-								message: "شرح تجربه وارد نشده.",
+								message: "شرح ایده وارد نشده.",
 							},
 						]}
 					>
@@ -116,13 +122,13 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 					</Form.Item>
 					<p className="mt-4">
 						<BiInfoCircle className="inline" /> توجه داشته باشید،
-						تمام تجربیات ثبت شده توسط ادمین بررسی و در صورت تایید
+						تمام ایده های ثبت شده توسط ادمین بررسی و در صورت تایید
 						در سامانه منتشر می شود تا با دیگر کاربران اشتراک گذاری
 						و مورد بحث گفتگو قرار گیرد.
 					</p>
 					<div className="flex justify-end mt-6">
 						<MyButton type="primary" htmlType="submit">
-							ثبت
+							ویرایش
 						</MyButton>
 					</div>
 				</Form>
@@ -132,4 +138,4 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 	);
 };
 
-export default CreateUserExperience;
+export default EditUserIdea;

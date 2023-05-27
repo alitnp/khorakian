@@ -131,6 +131,7 @@ export interface IUserExperience
 	commentCount: number;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user?: string;
 }
 
 export interface IUserExperienceLike
@@ -159,6 +160,7 @@ export interface IUserExperienceRead
 	liked?: boolean;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user: IUserRead;
 }
 
 /* #endregion UserExperience */
@@ -183,6 +185,7 @@ export interface IIdea extends DefaultModelProperties {
 	commentCount: number;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user?: string;
 }
 
 export interface IIdeaLike extends DefaultModelProperties {
@@ -209,6 +212,7 @@ export interface IIdeaRead extends DefaultModelProperties {
 	liked?: boolean;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	user: IUserRead;
 }
 
 /* #endregion idea */

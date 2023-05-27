@@ -7,7 +7,7 @@ export const userExperienceSchema = new Schema<IUserExperience>({
     type: String,
     required: [true, "عنوان تعیین نشده."],
     minlength: [2, "عنوان حداقل باید ۲ کاراکتر باشد."],
-    maxlength: [50, "عنوان حداکثر ۵۰ کاراکتر."],
+    maxlength: [255, "عنوان حداکثر ۵۰ کاراکتر."],
   },
   text: {
     type: String,
@@ -16,10 +16,15 @@ export const userExperienceSchema = new Schema<IUserExperience>({
   experienceCategory: {
     type: Schema.Types.ObjectId,
     ref: "ExperienceCategory",
-    required: [true, "عنوان تعیین نشده."],
+    required: [true, "دسته بندی تعیین نشده."],
   },
   featured: { type: Boolean, default: false },
   isApprove: { type: Boolean, default: false },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "شناسه کاربر ثبت کننده ارسال نشده."],
+  },
   // isAdminSubmitted: { type: Boolean, default: false },
   viewCount: Number,
   likeCount: Number,

@@ -19,6 +19,9 @@ import { Router } from "express";
 import { User } from "@/components/user/userModel";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
 import { ExperienceCategory } from "@/components/experience/experienceCategory/experienceCategoryModel";
+import UserData from "@/components/user/userData";
+import ImageData from "@/components/image/imageData";
+import { Image } from "@/components/image/imageModel";
 
 const router = Router();
 const data = new UserExperienceData(
@@ -26,6 +29,7 @@ const data = new UserExperienceData(
   new ExperienceCategoryData(ExperienceCategory),
   new LikeData(UserExperienceLike),
   new CommentData(UserExperienceComment, User),
+  new UserData(User, new ImageData(Image)),
 );
 
 const controller = new UserExperienceController(data);
@@ -68,7 +72,7 @@ router.post(
 //create a new userExperience - admin only
 router.post(
   "/",
-  [isAdmin, ...validate(createUserExperienceValidations)],
+  [auth, ...validate(createUserExperienceValidations)],
   controller.create,
 );
 
@@ -89,7 +93,7 @@ router.post(
 //edit an existing userExperience - admin only
 router.put(
   "/:id",
-  [isAdmin, ...validate(updateUserExperienceValidations)],
+  [auth, ...validate(updateUserExperienceValidations)],
   controller.update,
 );
 
@@ -97,7 +101,7 @@ router.put(
 //delete a userExperience - admin only
 router.delete(
   "/:id",
-  [isAdmin, ...validate(deleteUserExperienceValidations)],
+  [auth, ...validate(deleteUserExperienceValidations)],
   controller.remove,
 );
 
