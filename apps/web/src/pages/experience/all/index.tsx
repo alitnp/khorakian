@@ -14,7 +14,6 @@ import {
 } from "@/global/utils/helperFunctions";
 import webRoutes from "@/global/constants/routes";
 import FreeHeightCard from "@/components/home/FreeHeightCard";
-import Masonry from "react-masonry-css";
 import { Pagination } from "antd";
 import Footer from "@/components/global/Footer/Footer";
 import {
@@ -29,6 +28,7 @@ import {
 	getAllExperiences,
 } from "@/components/experience/experienceFunctions";
 import AllItemsPageFloatingBox from "@/components/global/AllItemsPageFloatingBox/AllItemsPageFloatingBox";
+import MyMasonry from "@/components/global/Masonry/MyMasonry";
 
 interface IAllExperiencePage {
 	categories: IExperienceCategory[];
@@ -101,17 +101,7 @@ const AllExperiencePage: FC<IAllExperiencePage> = ({
 					route={webRoutes.experienceAllContent.path}
 				/>
 				<div className="min-h-[70vh] pt-12 k-container">
-					<Masonry
-						breakpointCols={{
-							default: 4,
-							1600: 3,
-							1100: 2,
-							700: 2,
-							500: 1,
-						}}
-						className="my-masonry-grid"
-						columnClassName="my-masonry-grid_column"
-					>
+					<MyMasonry>
 						{items.data.map((item) => {
 							const image = getThumbnailFromContent(item);
 							return (
@@ -138,7 +128,7 @@ const AllExperiencePage: FC<IAllExperiencePage> = ({
 								/>
 							);
 						})}
-					</Masonry>
+					</MyMasonry>
 				</div>
 				{items.totalPages > 1 && (
 					<div className="flex justify-center my-6">

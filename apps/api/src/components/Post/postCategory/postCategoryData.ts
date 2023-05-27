@@ -4,9 +4,9 @@ import { defaultSearchQueries, getAllData, IData } from "@/data/globalData";
 import { ConflictError, NotFoundError } from "@/helpers/error";
 
 class PostCategoryData implements IData<IPostCategory> {
-  PostCategory: Model<IPostCategory, {}, {}, {}, any>;
+  PostCategory: Model<IPostCategory>;
 
-  constructor(PostCategory: Model<IPostCategory, {}, {}, {}, any>) {
+  constructor(PostCategory: Model<IPostCategory>) {
     this.PostCategory = PostCategory;
   }
 

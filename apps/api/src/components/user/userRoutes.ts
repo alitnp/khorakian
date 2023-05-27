@@ -25,6 +25,7 @@ const data = new UserData(User, new ImageData(Image));
 const controller = new UserController(data);
 
 //get
+router.get("/getMyNotifications", auth, controller.getMyNotifications);
 router.get("/getCurrentUser", auth, controller.getCurrentUser);
 router.get("/:id", [isAdmin, ...validate(paramIdValidations)], controller.get);
 router.get("/", isAdmin, controller.getAll);

@@ -1,5 +1,11 @@
 import { Model } from "mongoose";
-import { ApiDataListResponse, IImage, IUser, IUserRead } from "@my/types";
+import {
+  ApiDataListResponse,
+  IImage,
+  INotificationRead,
+  IUser,
+  IUserRead,
+} from "@my/types";
 import {
   IData,
   defaultSearchQueries,
@@ -67,6 +73,7 @@ class UserData implements IData<IUserRead> {
   get = async (id: string): Promise<IUserRead> => {
     const user = await this.User.findById(id)
       .populate<{ image: IImage }>(["image"])
+      .select(["-password", "-notification"])
       .lean();
 
     if (!user) throw new NotFoundError();
@@ -75,10 +82,24 @@ class UserData implements IData<IUserRead> {
 
   getCurrentUser = async (id: string): Promise<IUserRead> => {
     const user = await this.User.findById(id)
-      .select("-password")
+      .select(["-password", "-notification"])
       .populate<{ image: IImage }>(["image"]);
     if (!user) throw new UnauthenticatedError();
     return user;
+  };
+
+  getMyNotifications = async (id: string): Promise<INotificationRead[]> => {
+    const user = await this.User.findById(id).populate<{
+      notification: INotificationRead[];
+    }>({
+      path: "notification",
+      populate: {
+        path: "frontEndRoute",
+        model: "FrontEndRoute",
+      },
+    });
+    if (!user) throw new NotFoundError();
+    return user.notification;
   };
 
   //dont use

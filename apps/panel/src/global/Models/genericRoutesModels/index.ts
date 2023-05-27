@@ -6,7 +6,8 @@ import { routeModel } from 'global/Models/globalModels';
 import pageItemTypeModel from 'global/Models/genericRoutesModels/pageItemTypeModel';
 import pageItemStyleModel from 'global/Models/genericRoutesModels/pageItemStyleModel';
 import pageItemSortingModel from 'global/Models/genericRoutesModels/pageItemSortingModel';
+import frontEndRouteModel from 'global/Models/genericRoutesModels/frontEndRouteModel';
 
-const genericModels: routeModel[] = [postCategoryModel, ideaCategoryModel, experienceCategory, pageItemTypeModel, pageItemStyleModel, pageItemSortingModel];
+const genericModels: routeModel[] = [postCategoryModel, ideaCategoryModel, experienceCategory, pageItemTypeModel, pageItemStyleModel, pageItemSortingModel, frontEndRouteModel];
 
 export default genericModels;

@@ -20,6 +20,7 @@ import socialMediaRoutes from "@/components/socialMedia/socialMediaRoutes";
 import aboutMeRoutes from "@/components/aboutMe/aboutMeRoutes";
 import defaultTextRoutes from "@/components/defaultText/defaultTextRoutes";
 import directMessgaeRoutes from "@/components/directMessage/directMessageRoutes";
+import frontEndRouteRoutes from "@/components/frontEndRoute/frontEndRouteRoutes";
 
 const router = Router();
 
@@ -36,6 +37,9 @@ router.use("/directMessage", directMessgaeRoutes);
 //!E-e
 router.use("/experienceCategory", experienceCategory);
 router.use("/experience", experience);
+
+//!F-f
+router.use("/frontEndRoute", frontEndRouteRoutes);
 
 //!H-i
 router.use("/history", historyRoutes);

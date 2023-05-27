@@ -27,6 +27,12 @@ const routes = {
   defaultImageEdit: { path: '/defaultImage/edit', isPrivate: true },
   defaultImageDetail: { path: '/defaultImage/detail', isPrivate: true },
 
+  //frontEndRoute
+  frontEndRoute: { path: '/frontEndRoute', isPrivate: true },
+  frontEndRouteCreate: { path: '/frontEndRoute/create', isPrivate: true },
+  frontEndRouteEdit: { path: '/frontEndRoute/edit', isPrivate: true },
+  frontEndRouteDetail: { path: '/frontEndRoute/detail', isPrivate: true },
+
   //defaultText
   defaultText: { path: '/defaultText', isPrivate: true },
   defaultTextCreate: { path: '/defaultText/create', isPrivate: true },

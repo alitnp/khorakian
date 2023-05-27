@@ -33,6 +33,7 @@ export interface IUser extends DefaultModelProperties {
 	password: string;
 	isAdmin: boolean;
 	image?: string;
+	notification: INotification[];
 }
 export interface IUserRead extends DefaultModelProperties {
 	_id: string;
@@ -40,6 +41,23 @@ export interface IUserRead extends DefaultModelProperties {
 	mobileNumber: string;
 	isAdmin: boolean;
 	image: IImage;
+}
+
+export interface INotification
+	extends DefaultModelProperties {
+	title: string;
+	text: string;
+	frontEndRoute?: string;
+	contextId?: string;
+	unReadNotification: boolean;
+}
+export interface INotificationRead
+	extends DefaultModelProperties {
+	title: string;
+	text: string;
+	frontEndRoute: IFrontEndRoute;
+	contextId?: string;
+	unReadNotification: boolean;
 }
 /* #endregion */
 
@@ -575,5 +593,10 @@ export interface IDefaultText
 	key: string;
 	persianKey: string;
 }
-
 /*#end DefaultText */
+
+export interface IFrontEndRoute
+	extends DefaultModelProperties {
+	title: string;
+	path: string;
+}

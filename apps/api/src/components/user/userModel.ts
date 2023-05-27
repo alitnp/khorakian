@@ -3,7 +3,7 @@ import { IUser } from "@my/types";
 import jwt from "jsonwebtoken";
 import CONFIG from "@/config";
 import { compare, hash } from "@/utils/crypt";
-import { defaultSchemaProps } from "@/utils/constants";
+import { defaultSchemaProps, notificationSchema } from "@/utils/constants";
 
 export interface IUserMethods {
   generateAuthToken(): string;
@@ -37,6 +37,7 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   image: { type: Schema.Types.ObjectId, ref: "Image" },
   password: { type: String, minlength: 8, maxlength: 1024, required: true },
   isAdmin: { type: Boolean, default: false },
+  notification: [notificationSchema],
   ...defaultSchemaProps,
 });
 

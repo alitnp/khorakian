@@ -15,6 +15,7 @@ import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
 import TcDevider from 'components/UI/Devider/TcDevider';
 import { handleApiThen } from 'global/helperFunctions/handleApiThen';
 import { ApiDataResponse } from '@my/types';
+import { setNotificationData } from 'redux/reducer/Toast/toastReducer';
 
 const LoginForm: FC = () => {
   //states
@@ -35,6 +36,13 @@ const LoginForm: FC = () => {
           res,
           dispatch,
           onSuccess: (res) => {
+            if (!res.data.user.isAdmin)
+              return dispatch(
+                setNotificationData({
+                  type: 'warning',
+                  message: 'حساب شما دسترسی به این سامانه ندارد.',
+                })
+              );
             cookie.set('token', 'Bearer ' + res.data.token);
             dispatch(login({ isLoggedIn: true }));
           },

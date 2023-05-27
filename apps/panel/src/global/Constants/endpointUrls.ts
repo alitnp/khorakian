@@ -46,6 +46,12 @@ const endpointUrls = {
   experienceCategoryDelete: (id: number | string) => '/experienceCategory/' + id,
 
   //!F-f
+  //frontEndRoute
+  frontEndRouteGetList: '/frontEndRoute',
+  frontEndRouteDetail: (id: number | string) => '/frontEndRoute/' + id,
+  frontEndRouteCreate: '/frontEndRoute',
+  frontEndRouteEdit: (id: number | string) => '/frontEndRoute/' + id,
+  frontEndRouteDelete: (id: number | string) => '/frontEndRoute/' + id,
   //!G-g
   //!H-h
   historyGetList: '/history',

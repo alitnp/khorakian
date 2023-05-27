@@ -1,6 +1,6 @@
 //@ts-ignore
 import TrezSMSClient from "trez-sms-client";
-import { IUser, IUserRead } from "@my/types";
+import { INotificationRead, IUser, IUserRead } from "@my/types";
 import { apiDataResponse } from "@/helpers/apiResponse";
 import UserData from "@/components/user/userData";
 import { NotFoundError } from "@/helpers/error";
@@ -48,6 +48,13 @@ class UserController extends BaseController<IUserRead> {
       userId,
     );
     return res.send(apiDataResponse(data));
+  };
+
+  getMyNotifications = async (req: Req, res: Res) => {
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new NotFoundError("کاربر یافت نشد");
+    const items = await this.data.getMyNotifications(userId);
+    return res.send(apiDataResponse<INotificationRead[]>(items));
   };
 
   toggleUserAdminAccess = async (req: Req, res: Res): Promise<Res> => {

@@ -18,7 +18,6 @@ import {
 } from "@/global/utils/helperFunctions";
 import webRoutes from "@/global/constants/routes";
 import FreeHeightCard from "@/components/home/FreeHeightCard";
-import Masonry from "react-masonry-css";
 import { Pagination } from "antd";
 import Footer from "@/components/global/Footer/Footer";
 import {
@@ -29,6 +28,7 @@ import {
 import { useRouter } from "next/router";
 import queryString from "querystring";
 import AllItemsPageFloatingBox from "@/components/global/AllItemsPageFloatingBox/AllItemsPageFloatingBox";
+import MyMasonry from "@/components/global/Masonry/MyMasonry";
 
 interface IPostsPage {
 	postCategories: IPostCategory[];
@@ -101,17 +101,7 @@ const PostsPage: FC<IPostsPage> = ({
 					route={webRoutes.postAllContents.path}
 				/>
 				<div className="min-h-[70vh] pt-12 k-container">
-					<Masonry
-						breakpointCols={{
-							default: 4,
-							1600: 3,
-							1100: 2,
-							700: 2,
-							500: 1,
-						}}
-						className="my-masonry-grid"
-						columnClassName="my-masonry-grid_column"
-					>
+					<MyMasonry>
 						{posts.data.map((post) => {
 							const image = getThumbnailFromContent(post);
 							return (
@@ -138,7 +128,7 @@ const PostsPage: FC<IPostsPage> = ({
 								/>
 							);
 						})}
-					</Masonry>
+					</MyMasonry>
 				</div>
 				{posts.totalPages > 1 && (
 					<div className="flex justify-center my-6">
