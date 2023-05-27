@@ -43,21 +43,39 @@ export interface IUserRead extends DefaultModelProperties {
 	image: IImage;
 }
 
+export type notificationType =
+	| "default"
+	| "comment"
+	| "like"
+	| "success"
+	| "error";
+
 export interface INotification
 	extends DefaultModelProperties {
+	_id: string;
 	title: string;
 	text: string;
 	frontEndRoute?: string;
 	contextId?: string;
 	unReadNotification: boolean;
+	notificatoinType: notificationType;
+}
+export interface INotificationCreate {
+	title: string;
+	text: string;
+	frontEndRoute?: string;
+	contextId?: string;
+	notificatoinType: notificationType;
 }
 export interface INotificationRead
 	extends DefaultModelProperties {
+	_id: string;
 	title: string;
 	text: string;
 	frontEndRoute: IFrontEndRoute;
 	contextId?: string;
 	unReadNotification: boolean;
+	notificatoinType: notificationType;
 }
 /* #endregion */
 
@@ -601,6 +619,7 @@ export interface IDefaultText
 
 export interface IFrontEndRoute
 	extends DefaultModelProperties {
+	_id: string;
 	title: string;
 	path: string;
 }

@@ -2,6 +2,7 @@ import { Model } from "mongoose";
 import {
   ApiDataListResponse,
   IImage,
+  INotificationCreate,
   INotificationRead,
   IUser,
   IUserRead,
@@ -86,6 +87,20 @@ class UserData implements IData<IUserRead> {
       .populate<{ image: IImage }>(["image"]);
     if (!user) throw new UnauthenticatedError();
     return user;
+  };
+
+  addNotification = async (
+    userId: string,
+    notification: INotificationCreate,
+  ): Promise<INotificationRead[]> => {
+    const user = await this.User.findByIdAndUpdate(userId, {
+      $push: { notification: { $each: [notification], $position: 0 } },
+    }).populate<{ notification: INotificationRead[] }>({
+      path: "notification",
+      populate: { path: "frontEndRoute", model: "FrontEndRoute" },
+    });
+    if (!user) throw new BadRequestError("کاربری با این شناسه یافت نشد.");
+    return user.notification;
   };
 
   getMyNotifications = async (id: string): Promise<INotificationRead[]> => {

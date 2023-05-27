@@ -22,6 +22,8 @@ import { ExperienceCategory } from "@/components/experience/experienceCategory/e
 import UserData from "@/components/user/userData";
 import ImageData from "@/components/image/imageData";
 import { Image } from "@/components/image/imageModel";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
 const data = new UserExperienceData(
@@ -30,6 +32,7 @@ const data = new UserExperienceData(
   new LikeData(UserExperienceLike),
   new CommentData(UserExperienceComment, User),
   new UserData(User, new ImageData(Image)),
+  new FrontEndRouteData(FrontEndRoute),
 );
 
 const controller = new UserExperienceController(data);

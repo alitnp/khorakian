@@ -2,11 +2,13 @@ import { Model } from "mongoose";
 import {
   ApiDataListResponse,
   IExperienceCategory,
+  INotificationCreate,
   IUserExperience,
   IUserExperienceComment,
   IUserExperienceLike,
   IUserExperienceRead,
   IUserRead,
+  notificationType,
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
@@ -20,6 +22,7 @@ import {
 import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
 import UserData from "@/components/user/userData";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
 
 class UserExperienceData {
   UserExperience: Model<IUserExperience>;
@@ -27,6 +30,7 @@ class UserExperienceData {
   UserExperienceLike: LikeData<IUserExperienceLike>;
   UserExperienceComment: CommentData<IUserExperienceComment>;
   User: UserData;
+  FrontEndRouteData: FrontEndRouteData;
 
   constructor(
     UserExperience: Model<IUserExperience>,
@@ -34,12 +38,14 @@ class UserExperienceData {
     UserExperienceLike: LikeData<IUserExperienceLike>,
     UserExperienceComment: CommentData<IUserExperienceComment>,
     User: UserData,
+    FrontEndRouteData: FrontEndRouteData,
   ) {
     this.UserExperience = UserExperience;
     this.ExperienceCategory = ExperienceCategory;
     this.UserExperienceLike = UserExperienceLike;
     this.UserExperienceComment = UserExperienceComment;
     this.User = User;
+    this.FrontEndRouteData = FrontEndRouteData;
   }
 
   getAll = async (
@@ -224,11 +230,20 @@ class UserExperienceData {
     userId?: string,
   ): Promise<IUserExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
+
     await this.UserExperienceLike.like(userExperienceId, userId);
-    const item = await this.UserExperience.findByIdAndUpdate(userExperienceId, {
+
+    await this.UserExperience.findByIdAndUpdate(userExperienceId, {
       $inc: { likeCount: 1 },
     });
-    if (!item) throw new NotFoundError();
+
+    this.#addNotificationToUser({
+      title: "پسند",
+      text: "تجربه شما با عنوان %expTitle% توسط %userFullName% پسند شد.",
+      contentId: userExperienceId,
+      creatorId: userId,
+      type: "like",
+    });
 
     return await this.get(userExperienceId, userId);
   };
@@ -272,12 +287,24 @@ class UserExperienceData {
     text: string,
   ) => {
     if (!userId) throw new UnauthorizedError();
+
     const item = await this.UserExperience.findById(userExperienceId);
     if (!item) throw new NotFoundError();
+
     await this.UserExperienceComment.create(userExperienceId, userId, text);
+
     await this.UserExperience.findByIdAndUpdate(userExperienceId, {
       $inc: { commentCount: 1 },
     });
+
+    this.#addNotificationToUser({
+      title: "نظر",
+      text: "%userFullName% برای تجربه شما با عنوان %expTitle% یک نظر ثبت کرد.",
+      contentId: userExperienceId,
+      creatorId: userId,
+      type: "comment",
+    });
+
     return await this.get(item._id);
   };
 
@@ -285,6 +312,7 @@ class UserExperienceData {
     commentId: string,
     userId: string | undefined,
     text: string,
+    experienceId: string,
   ) => {
     if (!userId) throw new UnauthorizedError();
 
@@ -293,6 +321,15 @@ class UserExperienceData {
       userId,
       text,
     );
+
+    this.#addNotificationToUser({
+      title: "پاسخ",
+      text: "%userFullName% به نظر شما پاسخ داد.",
+      contentId: experienceId,
+      creatorId: userId,
+      type: "comment",
+    });
+
     return await this.get(comment.content as string);
   };
 
@@ -305,6 +342,12 @@ class UserExperienceData {
       { new: true },
     );
     if (!item) throw new NotFoundError();
+    this.#addNotificationToUser({
+      title: "تایید",
+      text: "تجربه شما با عنوان %expTitle% توسط ادمین تایید شد.",
+      contentId: id,
+      type: "success",
+    });
 
     return await this.get(id);
   };
@@ -319,7 +362,52 @@ class UserExperienceData {
     );
     if (!item) throw new NotFoundError();
 
+    this.#addNotificationToUser({
+      title: "تایید",
+      text: "تجربه شما با عنوان %expTitle% توسط ادمین رد شد.",
+      contentId: id,
+      type: "error",
+    });
+
     return await this.get(id);
+  };
+
+  #addNotificationToUser = async ({
+    title,
+    text,
+    contentId,
+    creatorId,
+    type,
+  }: {
+    title: string;
+    text: string;
+    contentId: string;
+    creatorId?: string;
+    type?: notificationType;
+  }) => {
+    const frontEndRoute = await this.FrontEndRouteData.getByTitle(
+      "userExperienceDetail",
+    );
+    if (!frontEndRoute) return;
+
+    const creatorUser = creatorId && (await this.User.get(creatorId));
+    if (creatorUser)
+      text.replace(
+        "%userFullName%",
+        "<b>" + creatorUser.isAdmin ? "ادمین" : creatorUser.fullName + "</b>",
+      );
+
+    const userExp = await this.get(contentId);
+    if (!userExp) return;
+
+    const notfication: INotificationCreate = {
+      title,
+      text: text.replace("%expTitle%", "<b>" + userExp.title + "</b>"),
+      frontEndRoute: frontEndRoute._id,
+      contextId: userExp._id,
+      notificatoinType: type || "default",
+    };
+    this.User.addNotification(userExp.user._id, notfication);
   };
 }
 

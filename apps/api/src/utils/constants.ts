@@ -25,5 +25,10 @@ export const notificationSchema = new Schema<INotification>({
   frontEndRoute: { type: Types.ObjectId, ref: "FrontEndRoute" },
   unReadNotification: { type: Boolean, default: true },
   contextId: String,
+  notificatoinType: {
+    type: String,
+    enum: ["default", "comment", "like", "success", "error"],
+    default: "default",
+  },
   ...defaultSchemaProps,
 });

@@ -34,6 +34,12 @@ class FrontEndRouteData {
     return item;
   };
 
+  getByTitle = async (title: string): Promise<IFrontEndRoute | undefined> => {
+    const item = await this.FrontEndRoute.findOne({ title });
+    if (!item) return undefined;
+    return item;
+  };
+
   create = async ({ title, path }: IFrontEndRoute): Promise<IFrontEndRoute> => {
     const item = new this.FrontEndRoute({
       title,
