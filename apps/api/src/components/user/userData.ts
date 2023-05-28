@@ -112,15 +112,17 @@ class UserData implements IData<IUserRead> {
   };
 
   getMyNotifications = async (id: string): Promise<INotificationRead[]> => {
-    const user = await this.User.findById(id).populate<{
-      notification: INotificationRead[];
-    }>({
-      path: "notification",
-      populate: {
-        path: "frontEndRoute",
-        model: "FrontEndRoute",
-      },
-    });
+    const user = await this.User.findById(id)
+      .slice("notification", [0, 50])
+      .populate<{
+        notification: INotificationRead[];
+      }>({
+        path: "notification",
+        populate: {
+          path: "frontEndRoute",
+          model: "FrontEndRoute",
+        },
+      });
     if (!user) throw new NotFoundError();
     return user.notification;
   };

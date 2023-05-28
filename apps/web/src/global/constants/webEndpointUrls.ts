@@ -30,6 +30,9 @@ const webEndpointUrls = {
 	ideaDelete: (_id: string) => "/idea/" + _id,
 	ideaEdit: (_id: string) => "/idea/" + _id,
 
+	//N
+	notificationGetAll: "/user/getMyNotifications",
+
 	//U
 	userLogin: "/user/login",
 	userRegister: "/user",

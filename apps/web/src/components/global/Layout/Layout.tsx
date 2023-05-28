@@ -21,7 +21,7 @@ const Layout: FC<ILayout> = ({ children }) => {
 				direction="rtl"
 				theme={{
 					token: {
-						colorPrimary: "#EE5054",
+						colorPrimary: "#a6373a",
 						...iranSans.style,
 					},
 				}}

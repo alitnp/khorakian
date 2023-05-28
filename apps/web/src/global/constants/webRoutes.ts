@@ -16,6 +16,10 @@ const webRoutes: Record<
 		path: "/dashboard/idea",
 		private: true,
 	},
+	dashboardProfile: {
+		path: "/dashboard/profile",
+		private: true,
+	},
 
 	//post
 	postAllContents: { path: "/post", private: false },

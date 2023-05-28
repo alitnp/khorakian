@@ -55,7 +55,7 @@ const Experience = ({
 				{...defaultTextsObject}
 				{...defaultImagesObject}
 			/>
-			<div className="mx-auto max-w-7xl k-container">
+			<div className="max-w-5xl mx-auto k-container">
 				<div className="flex justify-between pb-6 mt-10 border-b border-k-border-2-color">
 					<h1 className="text-base font-medium">
 						آخرین تجربیات ثبت شده
