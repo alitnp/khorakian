@@ -2,13 +2,11 @@ import { Model } from "mongoose";
 import {
   ApiDataListResponse,
   IExperienceCategory,
-  INotificationCreate,
   IUserExperience,
   IUserExperienceComment,
   IUserExperienceLike,
   IUserExperienceRead,
   IUserRead,
-  notificationType,
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
@@ -22,7 +20,6 @@ import {
 import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
 import UserData from "@/components/user/userData";
-import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
 
 class UserExperienceData {
   UserExperience: Model<IUserExperience>;
@@ -30,7 +27,6 @@ class UserExperienceData {
   UserExperienceLike: LikeData<IUserExperienceLike>;
   UserExperienceComment: CommentData<IUserExperienceComment>;
   User: UserData;
-  FrontEndRouteData: FrontEndRouteData;
 
   constructor(
     UserExperience: Model<IUserExperience>,
@@ -38,14 +34,12 @@ class UserExperienceData {
     UserExperienceLike: LikeData<IUserExperienceLike>,
     UserExperienceComment: CommentData<IUserExperienceComment>,
     User: UserData,
-    FrontEndRouteData: FrontEndRouteData,
   ) {
     this.UserExperience = UserExperience;
     this.ExperienceCategory = ExperienceCategory;
     this.UserExperienceLike = UserExperienceLike;
     this.UserExperienceComment = UserExperienceComment;
     this.User = User;
-    this.FrontEndRouteData = FrontEndRouteData;
   }
 
   getAll = async (
@@ -233,17 +227,22 @@ class UserExperienceData {
 
     await this.UserExperienceLike.like(userExperienceId, userId);
 
-    await this.UserExperience.findByIdAndUpdate(userExperienceId, {
+    const item = await this.UserExperience.findByIdAndUpdate(userExperienceId, {
       $inc: { likeCount: 1 },
-    });
+    }).populate<{ user: IUserRead }>("user");
 
-    this.#addNotificationToUser({
-      title: "پسند",
-      text: "تجربه شما با عنوان %expTitle% توسط %userFullName% پسند شد.",
-      contentId: userExperienceId,
-      creatorId: userId,
-      type: "like",
-    });
+    {
+      item &&
+        this.User.createNotificationAndAddToUser({
+          title: "پسند",
+          text: "تجربه شما با عنوان " + item.title + " توسط user پسند شد.",
+          contentId: userExperienceId,
+          creatorUserId: userId,
+          notifUserId: item.user._id,
+          frontEndRouteTitle: "userExperienceDetail",
+          type: "like",
+        });
+    }
 
     return await this.get(userExperienceId, userId);
   };
@@ -288,7 +287,9 @@ class UserExperienceData {
   ) => {
     if (!userId) throw new UnauthorizedError();
 
-    const item = await this.UserExperience.findById(userExperienceId);
+    const item = await this.UserExperience.findById(userExperienceId).populate<{
+      user: IUserRead;
+    }>("user");
     if (!item) throw new NotFoundError();
 
     await this.UserExperienceComment.create(userExperienceId, userId, text);
@@ -297,11 +298,13 @@ class UserExperienceData {
       $inc: { commentCount: 1 },
     });
 
-    this.#addNotificationToUser({
+    this.User.createNotificationAndAddToUser({
       title: "نظر",
-      text: "%userFullName% برای تجربه شما با عنوان %expTitle% یک نظر ثبت کرد.",
+      text: "user برای تجربه شما با عنوان " + item.title + " یک نظر ثبت کرد.",
       contentId: userExperienceId,
-      creatorId: userId,
+      frontEndRouteTitle: "userExperienceDetail",
+      creatorUserId: userId,
+      notifUserId: item.user._id,
       type: "comment",
     });
 
@@ -312,7 +315,6 @@ class UserExperienceData {
     commentId: string,
     userId: string | undefined,
     text: string,
-    experienceId: string,
   ) => {
     if (!userId) throw new UnauthorizedError();
 
@@ -322,13 +324,25 @@ class UserExperienceData {
       text,
     );
 
-    this.#addNotificationToUser({
-      title: "پاسخ",
-      text: "%userFullName% به نظر شما پاسخ داد.",
-      contentId: experienceId,
-      creatorId: userId,
-      type: "comment",
-    });
+    const commentDetail = (await this.UserExperienceComment.get(
+      commentId,
+    )) as unknown as IUserExperienceComment & {
+      content: IUserExperienceRead;
+      user: IUserRead;
+    };
+
+    {
+      commentDetail &&
+        this.User.createNotificationAndAddToUser({
+          title: "پاسخ",
+          text: "user به نظر شما پاسخ داد.",
+          contentId: commentDetail.content._id,
+          creatorUserId: userId,
+          notifUserId: commentDetail.user._id,
+          frontEndRouteTitle: "userExperienceDetail",
+          type: "comment",
+        });
+    }
 
     return await this.get(comment.content as string);
   };
@@ -340,12 +354,14 @@ class UserExperienceData {
         $set: { isApprove: true },
       },
       { new: true },
-    );
+    ).populate<{ user: IUserRead }>("user");
     if (!item) throw new NotFoundError();
-    this.#addNotificationToUser({
-      title: "تایید",
-      text: "تجربه شما با عنوان %expTitle% توسط ادمین تایید شد.",
+    this.User.createNotificationAndAddToUser({
+      title: "تایید توسط ادمین",
+      text: "تجربه شما با عنوان " + item.title + " توسط ادمین تایید شد.",
       contentId: id,
+      notifUserId: item.user._id,
+      frontEndRouteTitle: "userExperienceDetail",
       type: "success",
     });
 
@@ -359,55 +375,19 @@ class UserExperienceData {
         $set: { isApprove: false },
       },
       { new: true },
-    );
+    ).populate<{ user: IUserRead }>("user");
     if (!item) throw new NotFoundError();
 
-    this.#addNotificationToUser({
-      title: "تایید",
-      text: "تجربه شما با عنوان %expTitle% توسط ادمین رد شد.",
+    this.User.createNotificationAndAddToUser({
+      title: "رد توسط ادمین",
+      text: "تجربه شما با عنوان " + item.title + " توسط ادمین رد شد.",
       contentId: id,
+      notifUserId: item.user._id,
+      frontEndRouteTitle: "userExperienceDetail",
       type: "error",
     });
 
     return await this.get(id);
-  };
-
-  #addNotificationToUser = async ({
-    title,
-    text,
-    contentId,
-    creatorId,
-    type,
-  }: {
-    title: string;
-    text: string;
-    contentId: string;
-    creatorId?: string;
-    type?: notificationType;
-  }) => {
-    const frontEndRoute = await this.FrontEndRouteData.getByTitle(
-      "userExperienceDetail",
-    );
-    if (!frontEndRoute) return;
-
-    const creatorUser = creatorId && (await this.User.get(creatorId));
-    if (creatorUser)
-      text.replace(
-        "%userFullName%",
-        "<b>" + creatorUser.isAdmin ? "ادمین" : creatorUser.fullName + "</b>",
-      );
-
-    const userExp = await this.get(contentId);
-    if (!userExp) return;
-
-    const notfication: INotificationCreate = {
-      title,
-      text: text.replace("%expTitle%", "<b>" + userExp.title + "</b>"),
-      frontEndRoute: frontEndRoute._id,
-      contextId: userExp._id,
-      notificatoinType: type || "default",
-    };
-    this.User.addNotification(userExp.user._id, notfication);
   };
 }
 

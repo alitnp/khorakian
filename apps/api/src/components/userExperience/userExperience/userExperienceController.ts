@@ -73,7 +73,6 @@ class UserExperienceController {
       req.params.id,
       getUserIdFromReq(req),
       req.body.text,
-      req.body.userExperienceId,
     );
     res.send(apiDataResponse<IUserExperienceRead>(result));
   };

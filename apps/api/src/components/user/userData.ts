@@ -6,6 +6,7 @@ import {
   INotificationRead,
   IUser,
   IUserRead,
+  notificationType,
 } from "@my/types";
 import {
   IData,
@@ -22,13 +23,20 @@ import { IUserMethods } from "@/components/user/userModel";
 import { stringToBoolean } from "@/utils/util";
 import ImageData from "@/components/image/imageData";
 import { fileForm } from "@/middlewares/fileForm";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
 
 class UserData implements IData<IUserRead> {
   User: Model<IUser, {}, IUserMethods>;
   Image: ImageData;
-  constructor(User: Model<IUser, {}, IUserMethods>, Image: ImageData) {
+  FrontEndRouteData: FrontEndRouteData;
+  constructor(
+    User: Model<IUser, {}, IUserMethods>,
+    Image: ImageData,
+    FrontEndRouteData: FrontEndRouteData,
+  ) {
     this.User = User;
     this.Image = Image;
+    this.FrontEndRouteData = FrontEndRouteData;
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IUserRead>> => {
@@ -226,6 +234,51 @@ class UserData implements IData<IUserRead> {
     const hashedPass = await user.getHashedPassword(newPassword);
     await this.User.findByIdAndUpdate(userId, { password: hashedPass });
     return user;
+  };
+
+  createNotificationAndAddToUser = async ({
+    title,
+    text,
+    contentId,
+    creatorUserId,
+    notifUserId,
+    type,
+    frontEndRouteTitle,
+  }: {
+    title: string;
+    text: string;
+    contentId: string;
+    frontEndRouteTitle: string;
+    notifUserId: string;
+    creatorUserId?: string;
+    type?: notificationType;
+  }) => {
+    let notifText = text;
+    const frontEndRoute = await this.FrontEndRouteData.getByTitle(
+      frontEndRouteTitle,
+    );
+    if (!frontEndRoute) return;
+
+    const creatorUser = creatorUserId
+      ? await this.User.findById(creatorUserId)
+      : undefined;
+    if (creatorUser)
+      notifText = text.replace(
+        "user",
+        creatorUser.isAdmin ? "ادمین" : creatorUser.fullName,
+      );
+    console.log(creatorUser);
+    const notifUser = await this.User.findById(notifUserId);
+    if (!notifUser) return;
+
+    const notfication: INotificationCreate = {
+      title,
+      text: notifText,
+      frontEndRoute: frontEndRoute._id,
+      contextId: contentId,
+      notificatoinType: type || "default",
+    };
+    this.addNotification(notifUser._id, notfication);
   };
 }
 

@@ -35,6 +35,15 @@ class CommentData<commentModel> {
     );
   };
 
+  get = async (id: string): Promise<commentModel> => {
+    const comment = await this.Comment.findById(id).populate([
+      "user",
+      "content",
+    ]);
+    if (!comment) throw new NotFoundError("نظر یافت نشد.");
+    return comment as commentModel;
+  };
+
   getAdminComments = async (
     req: Req,
   ): Promise<ApiDataListResponse<commentModel>> => {

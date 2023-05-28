@@ -22,6 +22,8 @@ import { User } from "@/components/user/userModel";
 import UserData from "@/components/user/userData";
 import ImageData from "@/components/image/imageData";
 import { Image } from "@/components/image/imageModel";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
 const data = new IdeaData(
@@ -29,7 +31,11 @@ const data = new IdeaData(
   new IdeaCategoryData(IdeaCategory),
   new LikeData(IdeaLike),
   new CommentData(IdeaComment, User),
-  new UserData(User, new ImageData(Image)),
+  new UserData(
+    User,
+    new ImageData(Image),
+    new FrontEndRouteData(FrontEndRoute),
+  ),
 );
 
 const controller = new IdeaController(data);

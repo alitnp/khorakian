@@ -31,8 +31,11 @@ const data = new UserExperienceData(
   new ExperienceCategoryData(ExperienceCategory),
   new LikeData(UserExperienceLike),
   new CommentData(UserExperienceComment, User),
-  new UserData(User, new ImageData(Image)),
-  new FrontEndRouteData(FrontEndRoute),
+  new UserData(
+    User,
+    new ImageData(Image),
+    new FrontEndRouteData(FrontEndRoute),
+  ),
 );
 
 const controller = new UserExperienceController(data);
