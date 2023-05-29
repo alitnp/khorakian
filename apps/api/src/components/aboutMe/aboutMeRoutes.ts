@@ -22,6 +22,9 @@ import PostCategoryData from "@/components/Post/postCategory/postCategoryData";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
 import { User } from "@/components/user/userModel";
+import UserData from "@/components/user/userData";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
 const data = new AboutMeData(
@@ -33,6 +36,11 @@ const data = new AboutMeData(
     new ImageData(Image),
     new LikeData(PostLike),
     new CommentData(PostComment, User),
+    new UserData(
+      User,
+      new ImageData(Image),
+      new FrontEndRouteData(FrontEndRoute),
+    ),
   ),
 );
 

@@ -23,6 +23,9 @@ import {
   updatePostValidations,
 } from "@/components/Post/post/postValidations";
 import { User } from "@/components/user/userModel";
+import UserData from "@/components/user/userData";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
 const data = new PostData(
@@ -32,6 +35,11 @@ const data = new PostData(
   new ImageData(Image),
   new LikeData(PostLike),
   new CommentData(PostComment, User),
+  new UserData(
+    User,
+    new ImageData(Image),
+    new FrontEndRouteData(FrontEndRoute),
+  ),
 );
 const controller = new PostController(data);
 

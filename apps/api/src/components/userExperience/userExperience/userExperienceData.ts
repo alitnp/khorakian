@@ -122,12 +122,10 @@ class UserExperienceData {
       .lean();
 
     if (!userExperience) throw new NotFoundError();
-    if (addView) {
-      if (userId != userExperience.user._id)
-        await this.UserExperience.findByIdAndUpdate(id, {
-          $inc: { viewCount: 1 },
-        });
-    }
+    if (addView && userId != userExperience.user._id)
+      await this.UserExperience.findByIdAndUpdate(id, {
+        $inc: { viewCount: 1 },
+      });
 
     const userExperienceRead = {
       ...userExperience,
@@ -244,18 +242,16 @@ class UserExperienceData {
       },
     ).populate<{ user: IUserRead }>("user");
 
-    {
-      updatedItem &&
-        this.User.createNotificationAndAddToUser({
-          title: "پسند",
-          text: "تجربه شما با عنوان " + item.title + " توسط user پسند شد.",
-          contentId: userExperienceId,
-          creatorUserId: userId,
-          notifUserId: item.user._id,
-          frontEndRouteTitle: "userExperienceDetail",
-          type: "like",
-        });
-    }
+    updatedItem &&
+      this.User.createNotificationAndAddToUser({
+        title: "پسند",
+        text: "تجربه شما با عنوان " + item.title + " توسط user پسند شد.",
+        contentId: userExperienceId,
+        creatorUserId: userId,
+        notifUserId: item.user._id,
+        frontEndRouteTitle: "userExperienceDetail",
+        type: "like",
+      });
 
     return await this.get(userExperienceId, userId);
   };
@@ -337,25 +333,19 @@ class UserExperienceData {
       text,
     );
 
-    const commentDetail = (await this.UserExperienceComment.get(
-      commentId,
-    )) as unknown as IUserExperienceComment & {
-      content: IUserExperienceRead;
-      user: IUserRead;
-    };
+    const item = await this.get(comment.content as string);
+    const user = await this.User.get(comment.user as string);
 
-    {
-      commentDetail &&
-        this.User.createNotificationAndAddToUser({
-          title: "پاسخ",
-          text: "user به نظر شما پاسخ داد.",
-          contentId: commentDetail.content._id,
-          creatorUserId: userId,
-          notifUserId: commentDetail.user._id,
-          frontEndRouteTitle: "userExperienceDetail",
-          type: "comment",
-        });
-    }
+    item &&
+      this.User.createNotificationAndAddToUser({
+        title: "پاسخ",
+        text: "user به نظر شما پاسخ داد.",
+        contentId: item._id,
+        creatorUserId: userId,
+        notifUserId: user._id,
+        frontEndRouteTitle: "userExperienceDetail",
+        type: "comment",
+      });
 
     return await this.get(comment.content as string);
   };
@@ -367,13 +357,14 @@ class UserExperienceData {
         $set: { isApprove: true },
       },
       { new: true },
-    ).populate<{ user: IUserRead }>("user");
+    );
     if (!item) throw new NotFoundError();
+
     this.User.createNotificationAndAddToUser({
       title: "تایید توسط ادمین",
       text: "تجربه شما با عنوان " + item.title + " توسط ادمین تایید شد.",
       contentId: id,
-      notifUserId: item.user._id,
+      notifUserId: item.user as string,
       frontEndRouteTitle: "userExperienceDetail",
       type: "success",
     });
@@ -388,14 +379,14 @@ class UserExperienceData {
         $set: { isApprove: false },
       },
       { new: true },
-    ).populate<{ user: IUserRead }>("user");
+    );
     if (!item) throw new NotFoundError();
 
     this.User.createNotificationAndAddToUser({
       title: "رد توسط ادمین",
       text: "تجربه شما با عنوان " + item.title + " توسط ادمین رد شد.",
       contentId: id,
-      notifUserId: item.user._id,
+      notifUserId: item.user as string,
       frontEndRouteTitle: "userExperienceDetail",
       type: "error",
     });

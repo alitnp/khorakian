@@ -42,7 +42,11 @@ class ExperienceController {
   };
 
   get = async (req: Req, res: Res) => {
-    const result = await this.data.get(req.params.id, getUserIdFromReq(req));
+    const result = await this.data.get(
+      req.params.id,
+      getUserIdFromReq(req),
+      true,
+    );
     res.send(apiDataResponse<IExperienceRead>(result));
   };
 

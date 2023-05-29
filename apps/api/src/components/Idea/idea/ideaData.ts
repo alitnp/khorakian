@@ -100,7 +100,11 @@ class IdeaData {
     };
   };
 
-  get = async (id: string, userId?: string): Promise<IIdeaRead> => {
+  get = async (
+    id: string,
+    userId?: string,
+    addView = false,
+  ): Promise<IIdeaRead> => {
     const idea = await this.Idea.findById(id)
       .populate<{
         ideaCategory: IIdeaCategory;
@@ -109,7 +113,8 @@ class IdeaData {
       .lean();
 
     if (!idea) throw new NotFoundError();
-    await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
+    if (addView && userId != idea.user._id)
+      await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
     const ideaRead = { ...idea, liked: false } as IIdeaRead;
     if (userId) ideaRead.liked = await this.IdeaLike.isUserLiked(id, userId);
@@ -205,11 +210,19 @@ class IdeaData {
 
   like = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
     if (!userId) throw new UnauthorizedError();
+
+    const item = await this.get(ideaId, userId);
+
+    if (item.liked) return await this.dislike(ideaId, userId);
+
+    await this.get(ideaId, userId);
+
+    if (item.liked) return await this.dislike(ideaId, userId);
+
     await this.IdeaLike.like(ideaId, userId);
-    const item = await this.Idea.findByIdAndUpdate(ideaId, {
+    await this.Idea.findByIdAndUpdate(ideaId, {
       $inc: { likeCount: 1 },
     });
-    if (!item) throw new NotFoundError();
 
     return await this.get(ideaId, userId);
   };
@@ -249,6 +262,17 @@ class IdeaData {
     if (!item) throw new NotFoundError();
     await this.IdeaComment.create(ideaId, userId, text);
     await this.Idea.findByIdAndUpdate(ideaId, { $inc: { commentCount: 1 } });
+
+    this.User.createNotificationAndAddToUser({
+      title: "نظر",
+      text: "user برای ایده شما با عنوان " + item.title + " یک نظر ثبت کرد.",
+      contentId: ideaId,
+      frontEndRouteTitle: "ideaDetail",
+      creatorUserId: userId,
+      notifUserId: item.user as string,
+      type: "comment",
+    });
+
     return await this.get(item._id);
   };
 
@@ -260,6 +284,21 @@ class IdeaData {
     if (!userId) throw new UnauthorizedError();
 
     const comment = await this.IdeaComment.reply(commentId, userId, text);
+
+    const item = await this.get(comment.content as string);
+    const user = await this.User.get(comment.user as string);
+
+    item &&
+      this.User.createNotificationAndAddToUser({
+        title: "پاسخ",
+        text: "user به نظر شما پاسخ داد.",
+        contentId: item._id,
+        creatorUserId: userId,
+        notifUserId: user._id,
+        frontEndRouteTitle: "ideaDetail",
+        type: "comment",
+      });
+
     return await this.get(comment.content as string);
   };
 
@@ -273,6 +312,15 @@ class IdeaData {
     );
     if (!item) throw new NotFoundError();
 
+    this.User.createNotificationAndAddToUser({
+      title: "تایید توسط ادمین",
+      text: "ایده شما با عنوان " + item.title + " توسط ادمین تایید شد.",
+      contentId: id,
+      notifUserId: item.user as string,
+      frontEndRouteTitle: "ideaDetail",
+      type: "success",
+    });
+
     return await this.get(id);
   };
 
@@ -285,6 +333,15 @@ class IdeaData {
       { new: true },
     );
     if (!item) throw new NotFoundError();
+
+    this.User.createNotificationAndAddToUser({
+      title: "رد توسط ادمین",
+      text: "ایده شما با عنوان " + item.title + " توسط ادمین رد شد.",
+      contentId: id,
+      notifUserId: item.user as string,
+      frontEndRouteTitle: "ideaDetail",
+      type: "error",
+    });
 
     return await this.get(id);
   };

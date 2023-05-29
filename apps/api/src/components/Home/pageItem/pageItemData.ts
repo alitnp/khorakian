@@ -77,7 +77,7 @@ class PageItemData {
   };
 
   getWithContents = async (userId?: string): Promise<IPageItemConents[]> => {
-    console.log(userId);
+    console.log("userId:", userId);
     const filters: any = {};
     const pageItems = await this.PageItem.find(filters)
       .sort("index")
@@ -105,7 +105,8 @@ class PageItemData {
           .limit(10)
           .populate("images")
           .populate({ path: "videos", populate: { path: "thumbnail" } })
-          .populate("postCategory");
+          .populate("postCategory")
+          .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];
           if (!userId) content[i].liked = false;
@@ -123,7 +124,8 @@ class PageItemData {
           .limit(10)
           .populate("images")
           .populate({ path: "videos", populate: { path: "thumbnail" } })
-          .populate("experienceCategory");
+          .populate("experienceCategory")
+          .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];
           if (!userId) content[i].liked = false;
@@ -139,7 +141,8 @@ class PageItemData {
         content = await UserExperience.find(filters)
           .populate("userExperienceCategory")
           .sort(sort)
-          .limit(10);
+          .limit(10)
+          .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];
           if (!userId) content[i].liked = false;
@@ -155,7 +158,8 @@ class PageItemData {
         content = await Idea.find({ isAdminSubmitted: true, ...filters })
           .sort(sort)
           .limit(10)
-          .populate(["ideaCategory"]);
+          .populate(["ideaCategory"])
+          .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];
           if (!userId) content[i].liked = false;
@@ -178,7 +182,8 @@ class PageItemData {
         })
           .sort(sort)
           .limit(10)
-          .populate(["ideaCategory"]);
+          .populate(["ideaCategory"])
+          .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];
           if (!userId) content[i].liked = false;
@@ -203,7 +208,8 @@ class PageItemData {
           .limit(100)
           .populate("images")
           .populate({ path: "videos", populate: { path: "thumbnail" } })
-          .populate<{ postCategory: IPostCategory }>("postCategory");
+          .populate<{ postCategory: IPostCategory }>("postCategory")
+          .lean();
         totalItems = await Post.countDocuments({ ...filters, featured: true });
       }
       result.push({ ...pi, content, totalItems });

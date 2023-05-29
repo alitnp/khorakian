@@ -23,6 +23,9 @@ import {
   updateExperienceValidations,
 } from "@/components/experience/experience/experienceValidations";
 import { User } from "@/components/user/userModel";
+import UserData from "@/components/user/userData";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
 const data = new ExperienceData(
@@ -32,6 +35,11 @@ const data = new ExperienceData(
   new ImageData(Image),
   new LikeData(ExperienceLike),
   new CommentData(ExperienceComment, User),
+  new UserData(
+    User,
+    new ImageData(Image),
+    new FrontEndRouteData(FrontEndRoute),
+  ),
 );
 const controller = new ExperienceController(data);
 
