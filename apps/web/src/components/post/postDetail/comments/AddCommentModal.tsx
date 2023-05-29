@@ -1,19 +1,18 @@
 import MyButton from '@/components/basicUi/MyButton';
-import webRoutes from '@/global/constants/routes';
 import WebApiService, { errorResponse } from '@/global/utils/WebApiService';
 import { webApiCatch, webApiThen } from '@/global/utils/webApiThen';
 import { ApiDataResponse, ICommentReplyRead } from '@my/types';
 import { Modal, ModalProps, Form, Input } from 'antd';
-import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 
 interface ITcModal extends ModalProps {
   title: string;
-  refetch?: () => void;
+
   endPointUrl: string;
   route?: string;
-  close?: () => void;
+  close: () => void;
   visible: boolean;
+  refetch(): void;
 }
 
 const AddCommentModal: FC<ITcModal> = ({
@@ -21,6 +20,7 @@ const AddCommentModal: FC<ITcModal> = ({
   title,
   visible,
   close,
+
   refetch,
   endPointUrl,
   route,
@@ -31,7 +31,6 @@ const AddCommentModal: FC<ITcModal> = ({
 
   //hooks
   const [form] = Form.useForm();
-  const { push } = useRouter();
 
   //func
   const handleSubmit = async (values: any) => {
@@ -41,9 +40,10 @@ const AddCommentModal: FC<ITcModal> = ({
         webApiThen({
           res,
           notifFail: true,
-          notifSuccess: true,
+          notifSuccess: false,
           onSuccess: () => {
-            route && push(webRoutes.route.path), refetch && refetch, close;
+            close();
+            refetch();
           },
         })
       )
@@ -53,13 +53,13 @@ const AddCommentModal: FC<ITcModal> = ({
 
   return (
     <Modal
+      title={<p className="mb-0">{title}</p>}
       centered
       destroyOnClose
       open={visible}
       onCancel={close}
       footer={false}
       {...props}
-      title={<p className="mb-0">{title}</p>}
     >
       <div className="pt-2 border-t border-t-border-color-base">
         <Form

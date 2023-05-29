@@ -9,14 +9,14 @@ interface IProps {
   isLiked?: boolean;
 }
 
-const CommentReplyes: FC<IProps> = ({ reply, isLiked }) => (
+const CommentReplyes: FC<IProps> = ({ reply }) => (
   <>
-    <div className="grid rounded-md  ">
+    <div className="grid rounded-md mt-2">
       <div className="flex items-center">
         {reply?.user?.image?.pathname ? (
           <Image
             src={webConfig.domain + reply?.user.image.pathname}
-            alt={''}
+            alt={reply?.user.image._id}
             width={reply?.user.image.width}
             height={reply?.user.image.height}
             className="object-cover w-full aspect-video md:aspect-auto md:w-[355.55px] md:h-[200px] transition-transform duration-500 ease-out group-hover:scale-110"
@@ -31,32 +31,14 @@ const CommentReplyes: FC<IProps> = ({ reply, isLiked }) => (
 
         <div className="grid">
           <div className="flex">
-            <span className="font-bold text-base ">
-              {reply?.user?.fullName}
-            </span>
-            {/* <div className="flex justify-center  text-k-grey-text-color items-center gap-1 mr-3 k-like-icon group">
-              <span className={isLiked ? 'text-k-primary-color' : ''}>
-                <AiFillHeart className="text-base" />
-              </span>
-             <span className="!drop-shadow-none  text-xs !filter-none group-hover:text-k-primary-color">
-                پسند
-              </span> 
-            </div> */}
-            {/* <div className="flex items-center text-k-grey-text-color gap-1 mr-2 group k-comment-icon">
-              <span className={isLiked ? 'text-k-secondary-color' : ''}>
-                <BsReply className="text-lg" />
-              </span>
-              <span className=" text-xs  group-hover:text-k-secondary-color">
-                پاسخ
-              </span>
-            </div> */}
+            <span className="sm:text-base ">{reply?.user?.fullName}</span>
           </div>
-          <span className="text-xs text-t-secondary-color mr-2">
+          <span className="text-xs text-stone-400 mr-2">
             {dateObjectFormatter(reply?.creationDate, 'DD MMMM YYYY')}
           </span>
         </div>
       </div>
-      <span className="text-sm my-2 mr-3">{reply.text}</span>
+      <span className="sm:text-base my-2 mr-3">{reply.text}</span>
     </div>
   </>
 );

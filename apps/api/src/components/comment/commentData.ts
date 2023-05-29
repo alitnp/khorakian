@@ -35,6 +35,21 @@ class CommentData<commentModel> {
     );
   };
 
+  getMyComments = async (
+    userId: string,
+    contentId: string,
+  ): Promise<commentModel[]> => {
+    const searchQuery: Record<string, any> = {
+      user: userId,
+      content: contentId,
+    };
+
+    return await this.Comment.find(searchQuery).populate([
+      "replies.user",
+      "user",
+    ]);
+  };
+
   getAdminComments = async (
     req: Req,
   ): Promise<ApiDataListResponse<commentModel>> => {

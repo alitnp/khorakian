@@ -262,6 +262,15 @@ class PostData {
     return comments;
   };
 
+  getMyComments = async (
+    userId: string,
+    contentId: string,
+  ): Promise<IPostComment[]> => {
+    const comments = await this.PostComment.getMyComments(userId, contentId);
+
+    return comments;
+  };
+
   comment = async (
     postId: string,
     userId: string | undefined,

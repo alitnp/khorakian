@@ -324,6 +324,26 @@ class ExperienceData {
     return comments;
   };
 
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<IExperienceComment>> => {
+    const comments = await this.ExperienceComment.getAdminComments(req);
+
+    return comments;
+  };
+
+  getMyComments = async (
+    userId: string,
+    contentId: string,
+  ): Promise<IExperienceComment[]> => {
+    const comments = await this.ExperienceComment.getMyComments(
+      userId,
+      contentId,
+    );
+
+    return comments;
+  };
+
   comment = async (
     experienceId: string,
     userId: string | undefined,
