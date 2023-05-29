@@ -17,6 +17,7 @@ const webEndpointUrls = {
 	getAllExperience: "/experience",
 	getAllExperienceCategories: "/experienceCategory",
 	createUserExperience: "/userExperience",
+	experienceLike: "/experience/like",
 
 	//H
 	historyGetAll: "/history",
@@ -29,6 +30,7 @@ const webEndpointUrls = {
 	ideaDetail: (_id: string) => "/idea/" + _id,
 	ideaDelete: (_id: string) => "/idea/" + _id,
 	ideaEdit: (_id: string) => "/idea/" + _id,
+	ideaLike: "/idea/like",
 
 	//N
 	notificationGetAll: "/user/getMyNotifications",
@@ -46,6 +48,7 @@ const webEndpointUrls = {
 		"/userExperience/" + _id,
 	userExperienceEdit: (_id: string) =>
 		"/userExperience/" + _id,
+	userExperienceLike: "/userExperience/like",
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",
@@ -54,6 +57,7 @@ const webEndpointUrls = {
 	getAllPostComments: "/post/comment",
 	getAllPostCategories: "/postcategory",
 	getAllPostAdminComments: "/post/adminComments",
+	postLike: "/post/like",
 
 	//S
 	socialMediaGetAll: "/socialMedia",

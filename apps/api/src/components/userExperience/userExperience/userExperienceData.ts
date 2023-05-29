@@ -109,7 +109,11 @@ class UserExperienceData {
     };
   };
 
-  get = async (id: string, userId?: string): Promise<IUserExperienceRead> => {
+  get = async (
+    id: string,
+    userId?: string,
+    addView = false,
+  ): Promise<IUserExperienceRead> => {
     const userExperience = await this.UserExperience.findById(id)
       .populate<{
         experienceCategory: IExperienceCategory;
@@ -118,10 +122,12 @@ class UserExperienceData {
       .lean();
 
     if (!userExperience) throw new NotFoundError();
-    if (userId != userExperience.user._id)
-      await this.UserExperience.findByIdAndUpdate(id, {
-        $inc: { viewCount: 1 },
-      });
+    if (addView) {
+      if (userId != userExperience.user._id)
+        await this.UserExperience.findByIdAndUpdate(id, {
+          $inc: { viewCount: 1 },
+        });
+    }
 
     const userExperienceRead = {
       ...userExperience,
@@ -203,7 +209,7 @@ class UserExperienceData {
     );
     if (!userExperience) throw new NotFoundError();
 
-    return await this.get(userExperience._id);
+    return await this.get(userExperience._id, user);
   };
 
   remove = async (
@@ -211,7 +217,7 @@ class UserExperienceData {
     isAdmin: boolean,
     userId?: string,
   ): Promise<IUserExperienceRead> => {
-    const item = await this.get(id);
+    const item = await this.get(id, userId);
 
     if (!isAdmin && !userId) throw new UnauthenticatedError();
     if (!isAdmin && userId != item.user._id) throw new UnauthorizedError();
@@ -225,14 +231,21 @@ class UserExperienceData {
   ): Promise<IUserExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
 
+    const item = await this.get(userExperienceId, userId);
+
+    if (item.liked) return await this.dislike(userExperienceId, userId);
+
     await this.UserExperienceLike.like(userExperienceId, userId);
 
-    const item = await this.UserExperience.findByIdAndUpdate(userExperienceId, {
-      $inc: { likeCount: 1 },
-    }).populate<{ user: IUserRead }>("user");
+    const updatedItem = await this.UserExperience.findByIdAndUpdate(
+      userExperienceId,
+      {
+        $inc: { likeCount: 1 },
+      },
+    ).populate<{ user: IUserRead }>("user");
 
     {
-      item &&
+      updatedItem &&
         this.User.createNotificationAndAddToUser({
           title: "پسند",
           text: "تجربه شما با عنوان " + item.title + " توسط user پسند شد.",
@@ -262,7 +275,7 @@ class UserExperienceData {
     );
     if (!updatedUserExperience) throw new NotFoundError();
 
-    return await this.get(userExperienceId);
+    return await this.get(userExperienceId, userId);
   };
 
   getAllLikes = async (

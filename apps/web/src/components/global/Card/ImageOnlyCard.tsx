@@ -18,6 +18,7 @@ interface IImageOnlyCard {
 	viewCount: number;
 	isLiked: boolean;
 	isCommented: boolean;
+	handleLike?: () => void;
 }
 
 const ImageOnlyCard: FC<IImageOnlyCard> = ({
@@ -33,6 +34,7 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 	detailPath,
 	isLiked,
 	isCommented,
+	handleLike,
 }) => {
 	return (
 		<Link href={detailPath}>
@@ -58,6 +60,7 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 									isLiked={isLiked}
 									isCommented={isCommented}
 									lightColor
+									handleLike={handleLike}
 								/>
 							</div>
 							<div className="absolute right-0 bottom-2">

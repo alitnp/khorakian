@@ -20,6 +20,7 @@ interface ICard {
 	viewCount: number;
 	isLiked: boolean;
 	isCommented: boolean;
+	handleLike?: () => void;
 }
 
 const Card: FC<ICard> = ({
@@ -37,6 +38,7 @@ const Card: FC<ICard> = ({
 	detailPath,
 	isLiked,
 	isCommented,
+	handleLike,
 }) => {
 	return (
 		<article className="items-stretch overflow-hidden border shadow-md bg-k-bg-color rounded-xl w-fit shrink-0 ">
@@ -77,6 +79,7 @@ const Card: FC<ICard> = ({
 						commentCount={commentCount || 0}
 						isLiked={isLiked}
 						isCommented={isCommented}
+						handleLike={handleLike}
 					/>
 				</div>
 			</div>

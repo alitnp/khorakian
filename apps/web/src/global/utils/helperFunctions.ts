@@ -7,6 +7,7 @@ import {
 	IImage,
 	IPostRead,
 } from "@my/types";
+import webEndpointUrls from "@/global/constants/webEndpointUrls";
 
 export const englishNumberOnly = (
 	input: string,
@@ -125,6 +126,20 @@ export const getDetailPathnameforPageItem = (
 		return webRoutes.userExperienceDetail.path;
 	if (pageItemType === "idea" || pageItemType === "userIdea")
 		return webRoutes.ideaDetail.path;
+};
+
+export const getContentLikeEndpoint = (
+	pageItemType: string,
+	id: string
+) => {
+	if (pageItemType === "post")
+		return webEndpointUrls.postLike + "/" + id;
+	if (pageItemType === "experience")
+		return webEndpointUrls.experienceLike + "/" + id;
+	if (pageItemType === "userExperience")
+		return webEndpointUrls.userExperienceLike + "/" + id;
+	if (pageItemType === "idea" || pageItemType === "userIdea")
+		return webEndpointUrls.ideaLike + "/" + id;
 };
 
 export const getCategoryKeyNameFormPageItem = (

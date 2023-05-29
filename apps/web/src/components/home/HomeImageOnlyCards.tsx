@@ -1,13 +1,18 @@
 import ImageOnlyCard from "@/components/global/Card/ImageOnlyCard";
 import ImageOnlyCardsRow from "@/components/global/PageItems/ImageOnlyCardsRow";
 import PageItemTitle from "@/components/global/PageItems/PageItemTitle";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
 import {
+	getContentLikeEndpoint,
 	getDetailPathnameforPageItem,
 	getMoreUrlPathFromPageItem,
 	getThumbnailFromContent,
 } from "@/global/utils/helperFunctions";
+import { webApiCatch } from "@/global/utils/webApiThen";
 import { IPageItemConents } from "@my/types";
-import { FC, useMemo } from "react";
+import { FC, useMemo, useState } from "react";
 
 interface IHomeImageOnlyCards {
 	data: IPageItemConents;
@@ -18,6 +23,8 @@ const HomeImageOnlyCards: FC<IHomeImageOnlyCards> = ({
 	data,
 	greyBg,
 }) => {
+	const [, setFakeNumber] = useState(1);
+
 	const moreUrl = useMemo(
 		() => getMoreUrlPathFromPageItem(data.type.title),
 		[data.type.title]
@@ -26,6 +33,20 @@ const HomeImageOnlyCards: FC<IHomeImageOnlyCards> = ({
 		() => getDetailPathnameforPageItem(data.type.title),
 		[data.type.title]
 	);
+
+	const handleContentLike = async (
+		_id: string,
+		index: number
+	) => {
+		await WebApiService.post(
+			getContentLikeEndpoint(data.type.title, _id)
+		)
+			.then((res: any) => {
+				data.content[index] = res.data;
+				setFakeNumber((prevState) => ++prevState);
+			})
+			.catch(() => webApiCatch(errorResponse));
+	};
 
 	return (
 		<ImageOnlyCardsRow
@@ -37,7 +58,7 @@ const HomeImageOnlyCards: FC<IHomeImageOnlyCards> = ({
 					moreUrl={moreUrl}
 				/>
 			}
-			items={data.content.map((item: any) => (
+			items={data.content.map((item: any, index: number) => (
 				<ImageOnlyCard
 					key={item._id}
 					{...getThumbnailFromContent(item)}
@@ -46,8 +67,9 @@ const HomeImageOnlyCards: FC<IHomeImageOnlyCards> = ({
 					commentCount={item.commentCount}
 					viewCount={item.viewCount}
 					detailPath={detailPathname + "/" + item._id}
-					isLiked={false}
+					isLiked={item.liked}
 					isCommented={false}
+					handleLike={() => handleContentLike(item._id, index)}
 				/>
 			))}
 		/>

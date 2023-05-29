@@ -12,6 +12,7 @@ interface ICardLikeCommentCount {
 	isCommented?: boolean;
 	lightColor?: boolean;
 	withText?: boolean;
+	handleLike?: () => void;
 }
 
 const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
@@ -22,6 +23,7 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 	isCommented = false,
 	lightColor = false,
 	withText = false,
+	handleLike,
 }) => {
 	return (
 		<div
@@ -51,7 +53,10 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 					withText && "border-l border-k-grey-text-color pl-2"
 				}`}
 			>
-				<div className="flex items-center gap-1 k-like-icon group">
+				<div
+					className="flex items-center gap-1 k-like-icon group"
+					onClick={handleLike}
+				>
 					<span
 						className={isLiked ? "text-k-primary-color" : ""}
 					>

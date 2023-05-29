@@ -21,6 +21,7 @@ interface IWideCard {
 	viewCount: number;
 	isLiked: boolean;
 	isCommented: boolean;
+	handleLike?: () => void;
 }
 
 const WideCard: FC<IWideCard> = ({
@@ -39,6 +40,7 @@ const WideCard: FC<IWideCard> = ({
 	detailPath,
 	isLiked,
 	isCommented,
+	handleLike,
 }) => {
 	return (
 		<article className="flex flex-col w-full overflow-hidden border rounded-md shadow-lg md:flex-row h-fit bg-k-bg-color">
@@ -90,6 +92,7 @@ const WideCard: FC<IWideCard> = ({
 						commentCount={commentCount || 0}
 						isLiked={isLiked}
 						isCommented={isCommented}
+						handleLike={handleLike}
 					/>
 				</div>
 			</div>
