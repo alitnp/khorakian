@@ -2,6 +2,7 @@ import { IPostComment, IPostLike, IPostRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 import { getUserIdFromReq } from "@/utils/util";
 import PostData from "@/components/Post/post/postData";
+import { UnauthenticatedError } from "@/helpers/error";
 
 class PostController {
   data: PostData;
@@ -19,10 +20,16 @@ class PostController {
   };
 
   getAdminComments = async (req: Req, res: Res) => {
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new UnauthenticatedError();
+    const result = await this.data.getMyComments(userId, req.params.id);
+    res.send(apiDataResponse<IPostComment[]>(result));
+  };
+
+  getMyComments = async (req: Req, res: Res) => {
     const result = await this.data.getAdminComments(req);
     res.send(apiDataListResponse<IPostComment>(result));
   };
-
   getAllLikes = async (req: Req, res: Res) => {
     const result = await this.data.getAllLikes(req);
     res.send(apiDataListResponse<IPostLike>(result));

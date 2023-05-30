@@ -12,46 +12,30 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     webEndpointUrls.getPostDetail(context?.params?.id as string),
     context.req
   );
-
-  const comments = await serverSideFetch<ApiDataResponse<IPostCommentRead>>(
-    webEndpointUrls.getAllPostComments +
-      '?pageSize=50&content=' +
-      context?.params?.id,
-    context.req
-  );
-
-  const adminComments = await serverSideFetch<
-    ApiDataResponse<IPostCommentRead>
-  >(
-    webEndpointUrls.getAllPostAdminComments +
-      '?pageSize=50&content=' +
-      context?.params?.id,
-    context.req
-  );
-
   return {
     props: {
       post: post.data,
-      comments: comments.data,
-      adminComments: adminComments.data,
     },
   };
 };
 
 const PostDetail: FC<{
   post: IPostRead;
-  comments: IPostCommentRead[];
   adminComments: IPostCommentRead[];
-}> = ({ post, comments, adminComments }) => {
+}> = ({ post }) => {
   return (
     <main>
       <ContentDetailSlider images={post?.images || []} />
       <PostDetailDescription post={post} />
       <div className="w-full my-5">
         <AllCommentTabs
-          comments={comments}
-          adminComments={adminComments}
-          post={post}
+          endPointUrlGetAllComments={webEndpointUrls.getAllPostComments}
+          endPointUrlGetAllAdminComments={
+            webEndpointUrls.getAllPostAdminComments
+          }
+          endPointUrlGetAllMyComments={webEndpointUrls.getAllMyComments}
+          commentCreateUrl={webEndpointUrls.postCommentCreate}
+          parentId={post?._id}
         />
       </div>
     </main>

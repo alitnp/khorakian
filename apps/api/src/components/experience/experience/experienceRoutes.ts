@@ -68,6 +68,9 @@ router.post(
   [auth, ...validate(paramIdValidations)],
   controller.comment,
 );
+//get all admin post comments
+router.get("/adminComments", controller.getAdminComments);
+router.get("/myComments/:id", controller.getAdminComments);
 //like a post with Experience id and user id
 router.post(
   "/like/:id",

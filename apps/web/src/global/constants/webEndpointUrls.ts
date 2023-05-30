@@ -18,6 +18,11 @@ const webEndpointUrls = {
 	getAllExperienceCategories: "/experienceCategory",
 	createUserExperience: "/userExperience",
 	experienceLike: "/experience/like",
+	experienceCommentsGetAll: "/experience/comment",
+	experienceAdminCommentsGetAll: "/experience/adminComments",
+	experienceMyCommentsGetAll: "/experience/myComments",
+	experienceCommentCreate: "/experience/comment",
+	experienceCommnetReply: "/experience/reply",
 
 	//H
 	historyGetAll: "/history",
@@ -61,6 +66,9 @@ const webEndpointUrls = {
 
 	//S
 	socialMediaGetAll: "/socialMedia",
+	postCommentCreate: "/post/comment",
+	postCommnetReply: "/post/reply",
+	getAllMyComments: "/post/myComments",
 };
 
 export default webEndpointUrls;
