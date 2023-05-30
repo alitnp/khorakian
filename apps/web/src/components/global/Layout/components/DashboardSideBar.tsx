@@ -35,10 +35,6 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 				title="ایده های من"
 				path={webRoutes.dashboardIdea.path}
 			/>
-			<DashboardSidebarItem
-				title="نظرهای من"
-				path={webRoutes.experience.path}
-			/>
 			<div
 				className="px-6 py-2 mt-auto text-center rounded-lg cursor-pointer hover:bg-k-grey-bg-2-color"
 				onClick={handleLogout}

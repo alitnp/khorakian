@@ -220,9 +220,20 @@ class IdeaData {
     if (item.liked) return await this.dislike(ideaId, userId);
 
     await this.IdeaLike.like(ideaId, userId);
-    await this.Idea.findByIdAndUpdate(ideaId, {
+    const updatedItem = await this.Idea.findByIdAndUpdate(ideaId, {
       $inc: { likeCount: 1 },
-    });
+    }).populate<{ user: IUserRead }>("user");
+
+    updatedItem &&
+      this.User.createNotificationAndAddToUser({
+        title: "پسند",
+        text: "ایده شما با عنوان " + item.title + " توسط user پسند شد.",
+        contentId: ideaId,
+        creatorUserId: userId,
+        notifUserId: item.user._id,
+        frontEndRouteTitle: "ideaDetail",
+        type: "like",
+      });
 
     return await this.get(ideaId, userId);
   };
