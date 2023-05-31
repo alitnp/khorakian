@@ -7,6 +7,7 @@ import {
 	getHomeDefaultTexts,
 } from "@/components/home/homeFunctions";
 import MyButton from "@/components/basicUi/MyButton";
+import IdeasTabs from "@/components/idea/IdeasTabs";
 
 type props = {
 	defaultTextsObject: Record<string, string>;
@@ -41,8 +42,8 @@ const Idea = ({
 				<p className="max-w-xl mx-auto text-center">
 					{defaultTextsObject?.idea_header_text}
 				</p>
-				<div className="flex items-center justify-between max-w-3xl p-4 mx-auto my-10 border rounded-lg border-k-border-2-color ">
-					<h3 className="max-w-md">
+				<div className="flex flex-col items-center justify-between max-w-3xl gap-4 p-4 mx-auto my-10 border rounded-lg sm:flex-row border-k-border-2-color ">
+					<h3 className="max-w-md text-center sm:text-right">
 						{defaultTextsObject?.idea_submit_text}
 					</h3>
 					<MyButton type="primary" size="large">
@@ -50,6 +51,7 @@ const Idea = ({
 					</MyButton>
 				</div>
 			</div>
+			<IdeasTabs />
 		</main>
 	);
 };

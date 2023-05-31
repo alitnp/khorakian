@@ -56,7 +56,7 @@ class IdeaData {
         req.query.isAdminSubmitted,
       );
     if (req.query.ideaCategory) {
-      searchQuery.ideaCategory._id = { $regex: req.query.ideaCategory };
+      searchQuery.ideaCategory = req.query.ideaCategory;
     }
     if (req.query.isApprove)
       searchQuery.isApprove = stringToBoolean(req.query.isApprove);

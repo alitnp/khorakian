@@ -224,13 +224,12 @@ class PostData {
   like = async (postId: string, userId?: string): Promise<IPostRead> => {
     if (!userId) throw new UnauthorizedError();
 
-    await this.PostLike.like(postId, userId);
-
     const post = await this.get(postId, userId);
     if (!post) throw new NotFoundError();
 
     if (post.liked) return this.dislike(postId, userId);
 
+    await this.PostLike.like(postId, userId);
     await this.Post.findByIdAndUpdate(postId, {
       $inc: { likeCount: 1 },
     });
