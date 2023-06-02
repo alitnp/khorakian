@@ -79,7 +79,10 @@ class IdeaData {
     } = await paginationProps(searchQuery, req, this.Idea);
 
     const data: IIdeaRead[] = await this.Idea.find(fixedSearchQuery)
-      .populate<{ ideaCategory: IIdeaCategory }>(["ideaCategory"])
+      .populate<{ ideaCategory: IIdeaCategory; user: IUserRead }>([
+        "ideaCategory",
+        "user",
+      ])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -126,8 +129,12 @@ class IdeaData {
     const idea = await this.Idea.findById(id)
       .populate<{
         ideaCategory: IIdeaCategory;
-        user: IUserRead;
-      }>(["ideaCategory", "user"])
+      }>(["ideaCategory"])
+      .populate<{ user: IUserRead }>({
+        path: "user",
+        select: "-notification",
+        populate: { path: "image", model: "Image" },
+      })
       .lean();
 
     if (!idea) throw new NotFoundError();

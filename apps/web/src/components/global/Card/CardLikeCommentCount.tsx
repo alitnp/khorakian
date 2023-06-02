@@ -41,27 +41,31 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 				<span>
 					<HiEye />
 				</span>
-				{withText && (
-					<span className="font-medium">بازدید</span>
-				)}
+				{withText && <span className="">بازدید</span>}
 				<span className="text-sm">
 					{replaceNumbersWithPersian(viewCount)}
 				</span>
 			</div>
 			<div
-				className={`flex items-center gap-1 ${
+				className={`flex items-center gap-1 group ${
 					withText && "border-l border-k-grey-text-color pl-2"
 				}`}
 			>
 				<div
-					className="flex items-center gap-1 k-like-icon group"
+					className="flex gap-1 cursor-pointer "
 					onClick={handleLike}
 				>
-					<span
-						className={isLiked ? "text-k-primary-color" : ""}
-					>
-						<AiFillHeart />
-					</span>
+					<div className="flex items-center gap-1 k-like-icon ">
+						<span
+							className={
+								isLiked
+									? "text-k-primary-color"
+									: "group-hover:text-k-primary-color"
+							}
+						>
+							<AiFillHeart />
+						</span>
+					</div>
 					{withText && (
 						<span className="!drop-shadow-none !filter-none group-hover:text-k-primary-color">
 							پسند
@@ -72,24 +76,30 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 					{replaceNumbersWithPersian(likeCount)}
 				</span>
 			</div>
-			<div className={`flex items-center gap-1`}>
-				<div className="flex items-center gap-1 group k-comment-icon">
-					<span
-						className={
-							isCommented ? "text-k-secondary-color" : ""
-						}
-					>
-						<TbMessageCircle2Filled className="" />
+			<div className="flex gap-1 cursor-pointer">
+				<div className={`flex items-center gap-1 group`}>
+					<div className="flex items-center gap-1 ">
+						<div className="k-comment-icon">
+							<span
+								className={
+									isCommented
+										? "text-k-secondary-color"
+										: "group-hover:text-k-secondary-color"
+								}
+							>
+								<TbMessageCircle2Filled className="" />
+							</span>
+						</div>
+						{withText && (
+							<span className="!drop-shadow-none !filter-none group-hover:text-k-secondary-color">
+								نظر
+							</span>
+						)}
+					</div>
+					<span className="text-sm">
+						{replaceNumbersWithPersian(commentCount)}
 					</span>
-					{withText && (
-						<span className="!drop-shadow-none !filter-none group-hover:text-k-secondary-color">
-							نظر
-						</span>
-					)}
 				</div>
-				<span className="text-sm">
-					{replaceNumbersWithPersian(commentCount)}
-				</span>
 			</div>
 		</div>
 	);

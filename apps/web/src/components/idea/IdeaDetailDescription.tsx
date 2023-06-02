@@ -8,7 +8,7 @@ interface IProps {
 
 const IdeaDetailDescription: FC<IProps> = ({ idea }) => (
 	<div className="max-w-screen-lg mx-auto my-10 ">
-		<h1 className="text-xl font-bold">{idea?.title}</h1>
+		<h1 className="text-3xl font-bold">{idea?.title}</h1>
 		<span className="text-xs text-t-secondary-color ">
 			{dateObjectFormatter(idea?.creationDate, "DD MMMM YYYY")}
 		</span>

@@ -10,7 +10,7 @@ const UserExperienceDetailDescription: FC<IProps> = ({
 	userExperience,
 }) => (
 	<div className="max-w-screen-lg mx-auto my-10 ">
-		<h1 className="text-xl font-bold">
+		<h1 className="text-3xl font-bold">
 			{userExperience?.title}
 		</h1>
 		<span className="text-xs text-t-secondary-color ">

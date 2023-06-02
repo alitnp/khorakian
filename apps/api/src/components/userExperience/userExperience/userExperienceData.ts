@@ -78,9 +78,10 @@ class UserExperienceData {
     const data: IUserExperienceRead[] = await this.UserExperience.find(
       fixedSearchQuery,
     )
-      .populate<{ experienceCategory: IExperienceCategory }>(
+      .populate<{ experienceCategory: IExperienceCategory; user: IUserRead }>([
         "experienceCategory",
-      )
+        "user",
+      ])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -131,8 +132,12 @@ class UserExperienceData {
     const userExperience = await this.UserExperience.findById(id)
       .populate<{
         experienceCategory: IExperienceCategory;
-        user: IUserRead;
-      }>(["experienceCategory", "user"])
+      }>(["experienceCategory"])
+      .populate<{ user: IUserRead }>({
+        path: "user",
+        select: "-notification",
+        populate: { path: "image", model: "Image" },
+      })
       .lean();
 
     if (!userExperience) throw new NotFoundError();

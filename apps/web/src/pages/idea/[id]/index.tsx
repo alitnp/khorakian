@@ -3,12 +3,21 @@ import {
 	IIdeaRead,
 	IPostCommentRead,
 } from "@my/types";
-import { FC, memo } from "react";
+import { FC, memo, useState } from "react";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import AllCommentTabs from "@/components/post/postDetail/comments/AllCommentTabs";
 import { GetServerSideProps } from "next";
 import { serverSideFetch } from "@/global/utils/webFetch";
 import IdeaDetailDescription from "@/components/idea/IdeaDetailDescription";
+import { dateObjectFormatter } from "@/global/utils/helperFunctions";
+import Image from "next/image";
+import { VscAccount } from "react-icons/vsc";
+import webConfig from "@/global/constants/webConfig";
+import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
+import { webApiCatch } from "@/global/utils/webApiThen";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -22,18 +31,74 @@ export const getServerSideProps: GetServerSideProps =
 		);
 		return {
 			props: {
-				idea: item.data,
+				item: item.data,
 			},
 		};
 	};
 
 const IdeaDetail: FC<{
-	idea: IIdeaRead;
+	item: IIdeaRead;
 	adminComments: IPostCommentRead[];
-}> = ({ idea }) => {
+}> = ({ item }) => {
+	const [, setFakeNumber] = useState<number>(1);
+	const handleLike = async () => {
+		await WebApiService.post(
+			webEndpointUrls.ideaLike + "/" + item._id
+		)
+			.then((res: any) => {
+				item.liked = res.data.liked;
+				item.likeCount = res.data.likeCount;
+				setFakeNumber((prevState) => ++prevState);
+			})
+			.catch(() => webApiCatch(errorResponse));
+	};
+
 	return (
 		<main>
-			<IdeaDetailDescription idea={idea} />
+			<div className="max-w-screen-lg mx-auto my-4 ">
+				<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
+					<span>
+						ایده
+						{"  >  "}
+						{item?.ideaCategory?.title}
+						{"  >  "}
+						{item.title}
+					</span>
+					<span>{dateObjectFormatter(item?.creationDate)}</span>
+				</div>
+				<div className="flex justify-between">
+					<div>
+						{item.user && (
+							<div className="flex items-center gap-1">
+								{item.user.image?.thumbnailPathname ? (
+									<Image
+										src={
+											webConfig.domain +
+											item.user.image.thumbnailPathname
+										}
+										width={64}
+										height={64}
+										alt={item.user.fullName}
+										className="object-cover w-12 h-12 rounded-full"
+									/>
+								) : (
+									<VscAccount />
+								)}
+								<span>{item.user.fullName}</span>
+							</div>
+						)}
+					</div>
+					<CardLikeCommentCount
+						viewCount={item.viewCount || 0}
+						likeCount={item.likeCount || 0}
+						commentCount={item.commentCount || 0}
+						isLiked={item.liked}
+						withText
+						handleLike={handleLike}
+					/>
+				</div>
+			</div>
+			<IdeaDetailDescription idea={item} />
 			<div className="w-full my-5">
 				<AllCommentTabs
 					endPointUrlGetAllComments={
@@ -46,7 +111,7 @@ const IdeaDetail: FC<{
 						webEndpointUrls.getAllMyComments
 					}
 					commentCreateUrl={webEndpointUrls.postCommentCreate}
-					parentId={idea?._id}
+					parentId={item?._id}
 				/>
 			</div>
 		</main>

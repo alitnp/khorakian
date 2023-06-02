@@ -8,6 +8,10 @@ const navigationItems = [
 	{ label: "مطالب", route: routes.postAllContents.path },
 	{ label: "تجربیات", route: routes.experience.path },
 	{
+		label: "تجربه کاربران",
+		route: routes.userExperienceList.path,
+	},
+	{
 		label: "ایده‌ها و نظرها",
 		route: routes.idea.path,
 	},
