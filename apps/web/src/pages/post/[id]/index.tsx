@@ -36,6 +36,7 @@ const PostDetail: FC<{
           endPointUrlGetAllMyComments={webEndpointUrls.getAllMyComments}
           commentCreateUrl={webEndpointUrls.postCommentCreate}
           parentId={post?._id}
+          commentReplyUrl={webEndpointUrls.postCommnetReply}
         />
       </div>
     </main>

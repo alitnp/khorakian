@@ -46,16 +46,16 @@ const ExperienceDetail: FC<{
               {'  >  '}
               {experience?.experienceCategory?.title}
               {'  >  '}
-              {experience.title}
+              {experience?.title}
             </span>
             <span>{dateObjectFormatter(experience?.creationDate)}</span>
           </div>
           <div className="flex justify-end">
             <CardLikeCommentCount
-              viewCount={experience.viewCount || 0}
-              likeCount={experience.likeCount || 0}
-              commentCount={experience.commentCount || 0}
-              isLiked={experience.liked}
+              viewCount={experience?.viewCount || 0}
+              likeCount={experience?.likeCount || 0}
+              commentCount={experience?.commentCount || 0}
+              isLiked={experience?.liked}
               withText
             />
           </div>
@@ -77,6 +77,7 @@ const ExperienceDetail: FC<{
             webEndpointUrls.experienceMyCommentsGetAll
           }
           commentCreateUrl={webEndpointUrls.experienceCommentCreate}
+          commentReplyUrl={webEndpointUrls.experienceCommnetReply}
           parentId={experience?._id}
         />
       </div>

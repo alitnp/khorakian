@@ -4,20 +4,21 @@ import { ICommentReplyRead, IGlobalCommentRead } from '@my/types';
 import React, { FC, useState } from 'react';
 import MyButton from '@/components/basicUi/MyButton';
 import AddCommentModal from '@/components/post/postDetail/comments/AddCommentModal';
-import webEndpointUrls from '@/global/constants/webEndpointUrls';
 
 interface IProps {
   comments?: IGlobalCommentRead[];
   parentId: number | string;
   refetch: () => void;
   commentCreateUrl: string;
+  commentReplyUrl: string;
 }
 
 const AllComments: FC<IProps> = ({
   comments,
+  commentCreateUrl,
+  commentReplyUrl,
   parentId,
   refetch,
-  commentCreateUrl,
 }) => {
   //state
   const [showCommentModel, setShowCommentModel] = useState<boolean>(false);
@@ -40,7 +41,11 @@ const AllComments: FC<IProps> = ({
             return (
               <>
                 <div key={item._id} className=" sm:p-3 m-3">
-                  <Comment item={item} refetch={refetch} />
+                  <Comment
+                    commentReplyUrl={commentReplyUrl}
+                    item={item}
+                    refetch={refetch}
+                  />
                   <div className="my-2 mr-6">
                     {item.replies?.map((reply: ICommentReplyRead) => {
                       return <CommentReplyes reply={reply} />;
@@ -57,9 +62,10 @@ const AllComments: FC<IProps> = ({
           </div>
         )}
       </div>
+
       {showCommentModel && (
         <AddCommentModal
-          title="پاسخ به نظر"
+          title=" ثبت نظر"
           visible={showCommentModel}
           close={toggleShowDateFromTo}
           endPointUrl={commentCreateUrl + '/' + parentId}
