@@ -10,7 +10,7 @@ import {
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
-import { getUserIdFromReq, stringToBoolean } from "@/utils/util";
+import { stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError, UnauthenticatedError } from "@/helpers/error";
 import UnauthorizedError from "@/helpers/error/UnauthorizedError";
@@ -51,17 +51,22 @@ class IdeaData {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
-    if (req.query.isAdminSubmitted)
+    if (req.query.isAdminSubmitted !== undefined)
       searchQuery.isAdminSubmitted = stringToBoolean(
         req.query.isAdminSubmitted,
       );
     if (req.query.ideaCategory) {
-      searchQuery.ideaCategory._id = { $regex: req.query.ideaCategory };
+      searchQuery.ideaCategory = req.query.ideaCategory;
     }
-    if (req.query.isApprove)
+    if (req.query.isApprove !== undefined)
       searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
+    if (req.query.user) searchQuery.user = req.query.user;
+
+    // if (!getUserIsAdminFromReq(req)) {
+    //   searchQuery.isApprove = true;
+    // }
 
     const {
       fixedSearchQuery,
@@ -73,10 +78,7 @@ class IdeaData {
       desc,
     } = await paginationProps(searchQuery, req, this.Idea);
 
-    const data: IIdeaRead[] = await this.Idea.find({
-      ...fixedSearchQuery,
-      user: getUserIdFromReq(req),
-    })
+    const data: IIdeaRead[] = await this.Idea.find(fixedSearchQuery)
       .populate<{ ideaCategory: IIdeaCategory }>(["ideaCategory"])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
@@ -100,7 +102,27 @@ class IdeaData {
     };
   };
 
-  get = async (id: string, userId?: string): Promise<IIdeaRead> => {
+  getMy = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IIdeaRead>> => {
+    req.query.user = userId;
+    return this.getAll(req, userId);
+  };
+
+  getApproved = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IIdeaRead>> => {
+    req.query.isApprove = "true";
+    return this.getAll(req, userId);
+  };
+
+  get = async (
+    id: string,
+    userId?: string,
+    addView = false,
+  ): Promise<IIdeaRead> => {
     const idea = await this.Idea.findById(id)
       .populate<{
         ideaCategory: IIdeaCategory;
@@ -109,7 +131,8 @@ class IdeaData {
       .lean();
 
     if (!idea) throw new NotFoundError();
-    await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
+    if (addView && userId != idea.user._id)
+      await this.Idea.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
     const ideaRead = { ...idea, liked: false } as IIdeaRead;
     if (userId) ideaRead.liked = await this.IdeaLike.isUserLiked(id, userId);
@@ -142,6 +165,7 @@ class IdeaData {
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      isApprove: isAdminSubmitted,
       isAdminSubmitted,
       user,
     });
@@ -205,11 +229,30 @@ class IdeaData {
 
   like = async (ideaId: string, userId?: string): Promise<IIdeaRead> => {
     if (!userId) throw new UnauthorizedError();
+
+    const item = await this.get(ideaId, userId);
+
+    if (item.liked) return await this.dislike(ideaId, userId);
+
+    await this.get(ideaId, userId);
+
+    if (item.liked) return await this.dislike(ideaId, userId);
+
     await this.IdeaLike.like(ideaId, userId);
-    const item = await this.Idea.findByIdAndUpdate(ideaId, {
+    const updatedItem = await this.Idea.findByIdAndUpdate(ideaId, {
       $inc: { likeCount: 1 },
-    });
-    if (!item) throw new NotFoundError();
+    }).populate<{ user: IUserRead }>("user");
+
+    updatedItem &&
+      this.User.createNotificationAndAddToUser({
+        title: "پسند",
+        text: "ایده شما با عنوان " + item.title + " توسط user پسند شد.",
+        contentId: ideaId,
+        creatorUserId: userId,
+        notifUserId: item.user._id,
+        frontEndRouteTitle: "ideaDetail",
+        type: "like",
+      });
 
     return await this.get(ideaId, userId);
   };
@@ -249,6 +292,17 @@ class IdeaData {
     if (!item) throw new NotFoundError();
     await this.IdeaComment.create(ideaId, userId, text);
     await this.Idea.findByIdAndUpdate(ideaId, { $inc: { commentCount: 1 } });
+
+    this.User.createNotificationAndAddToUser({
+      title: "نظر",
+      text: "user برای ایده شما با عنوان " + item.title + " یک نظر ثبت کرد.",
+      contentId: ideaId,
+      frontEndRouteTitle: "ideaDetail",
+      creatorUserId: userId,
+      notifUserId: item.user as string,
+      type: "comment",
+    });
+
     return await this.get(item._id);
   };
 
@@ -260,6 +314,21 @@ class IdeaData {
     if (!userId) throw new UnauthorizedError();
 
     const comment = await this.IdeaComment.reply(commentId, userId, text);
+
+    const item = await this.get(comment.content as string);
+    const user = await this.User.get(comment.user as string);
+
+    item &&
+      this.User.createNotificationAndAddToUser({
+        title: "پاسخ",
+        text: "user به نظر شما پاسخ داد.",
+        contentId: item._id,
+        creatorUserId: userId,
+        notifUserId: user._id,
+        frontEndRouteTitle: "ideaDetail",
+        type: "comment",
+      });
+
     return await this.get(comment.content as string);
   };
 
@@ -273,6 +342,15 @@ class IdeaData {
     );
     if (!item) throw new NotFoundError();
 
+    this.User.createNotificationAndAddToUser({
+      title: "تایید توسط ادمین",
+      text: "ایده شما با عنوان " + item.title + " توسط ادمین تایید شد.",
+      contentId: id,
+      notifUserId: item.user as string,
+      frontEndRouteTitle: "ideaDetail",
+      type: "success",
+    });
+
     return await this.get(id);
   };
 
@@ -285,6 +363,15 @@ class IdeaData {
       { new: true },
     );
     if (!item) throw new NotFoundError();
+
+    this.User.createNotificationAndAddToUser({
+      title: "رد توسط ادمین",
+      text: "ایده شما با عنوان " + item.title + " توسط ادمین رد شد.",
+      contentId: id,
+      notifUserId: item.user as string,
+      frontEndRouteTitle: "ideaDetail",
+      type: "error",
+    });
 
     return await this.get(id);
   };

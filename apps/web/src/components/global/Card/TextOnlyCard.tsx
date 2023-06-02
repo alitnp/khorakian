@@ -13,6 +13,8 @@ interface ITextOnlyCard {
 	viewCount: number;
 	isLiked: boolean;
 	isCommented: boolean;
+	handleLike?: () => void;
+	fullWidth?: boolean;
 }
 
 const TextOnlyCard: FC<ITextOnlyCard> = ({
@@ -26,9 +28,15 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 	detailPath,
 	isLiked,
 	isCommented,
+	handleLike,
+	fullWidth,
 }) => {
 	return (
-		<article className="items-stretch w-full overflow-hidden border shadow-md bg-k-bg-color rounded-xl md:max-w-lg shrink-0 ">
+		<article
+			className={`items-stretch w-full overflow-hidden border shadow-md bg-k-bg-color rounded-xl  shrink-0 ${
+				fullWidth ? "w-full" : "md:max-w-lg"
+			}`}
+		>
 			<div className="w-full px-4 py-2">
 				<span className="text-sm font-light text-k-grey-text-color">
 					{category}
@@ -39,7 +47,7 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 					</h2>
 				</Link>
 				<p className="mb-2 text-sm line-clamp-4">{desc}</p>
-				<div className="flex items-center justify-between pt-2 mt-4 border-t">
+				<div className="flex items-center justify-between gap-4 pt-2 mt-4 border-t">
 					<span className="text-sm text-k-grey-text-color">
 						{creationDate}
 					</span>
@@ -49,6 +57,7 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 						commentCount={commentCount || 0}
 						isLiked={isLiked}
 						isCommented={isCommented}
+						handleLike={handleLike}
 					/>
 				</div>
 			</div>

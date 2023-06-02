@@ -19,9 +19,15 @@ import { User } from "@/components/user/userModel";
 import { Image } from "@/components/image/imageModel";
 import ImageData from "@/components/image/imageData";
 import { imageForm } from "@/middlewares/fileForm";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
-const data = new UserData(User, new ImageData(Image));
+const data = new UserData(
+  User,
+  new ImageData(Image),
+  new FrontEndRouteData(FrontEndRoute),
+);
 const controller = new UserController(data);
 
 //get

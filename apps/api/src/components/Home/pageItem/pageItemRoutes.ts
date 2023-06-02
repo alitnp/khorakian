@@ -16,12 +16,21 @@ import {
   getPageItemValidations,
   updatePageItemValidations,
 } from "@/components/Home/pageItem/pageItemValidations";
+import LikeData from "@/components/Like/likeData";
+import { PostLike } from "@/components/Post/postLike/postLikeModel";
+import { ExperienceLike } from "@/components/experience/experienceLike/experienceLikeModel";
+import { UserExperienceLike } from "@/components/userExperience/userExperienceLike/userExperienceLikeModel";
+import { IdeaLike } from "@/components/Idea/ideaLike/ideaLikeModel";
 
 const data = new PageItemData(
   PageItem,
   new PageItemTypeData(PageItemType),
   new PageItemSortingData(PageItemSorting),
   new PageItemStyleData(PageItemStyle),
+  new LikeData(PostLike),
+  new LikeData(ExperienceLike),
+  new LikeData(UserExperienceLike),
+  new LikeData(IdeaLike),
 );
 const controller = new PageItemController(data);
 

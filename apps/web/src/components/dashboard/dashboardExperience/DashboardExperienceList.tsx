@@ -1,8 +1,17 @@
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
+import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import webRoutes from "@/global/constants/webRoutes";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
 import {
+	webApiCatch,
+	webApiThen,
+} from "@/global/utils/webApiThen";
+import {
 	ApiDataListResponse,
+	ApiDataResponse,
 	IUserExperienceRead,
 } from "@my/types";
 import { Checkbox, Pagination, Tooltip } from "antd";
@@ -44,6 +53,21 @@ const DashboardExperienceList: FC<
 			refetch(pageNumber, pageSize, onlyApproved),
 		[]
 	);
+	const handleLike = async (_id: string) => {
+		await WebApiService.post(
+			webEndpointUrls.userExperienceLike + "/" + _id
+		)
+			.then((res: ApiDataResponse<IUserExperienceRead>) =>
+				webApiThen({
+					res,
+					notifFail: true,
+					notifSuccess: false,
+					onSuccess: () => refetch(),
+					dataOnly: true,
+				})
+			)
+			.catch(() => webApiCatch(errorResponse));
+	};
 
 	//constants
 	const renderList = useMemo(() => {
@@ -72,8 +96,9 @@ const DashboardExperienceList: FC<
 					title={exp.title}
 					likeCount={exp.likeCount}
 					viewCount={exp.viewCount}
-					isLiked={false}
+					isLiked={!!exp.liked}
 					isCommented={false}
+					handleLike={() => handleLike(exp._id)}
 				/>
 			</div>
 		));

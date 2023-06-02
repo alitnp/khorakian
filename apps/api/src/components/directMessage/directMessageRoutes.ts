@@ -17,11 +17,17 @@ import { DirectMessage } from "@/components/directMessage/directMessageModel";
 import UserData from "@/components/user/userData";
 import ImageData from "@/components/image/imageData";
 import { Image } from "@/components/image/imageModel";
+import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
+import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 
 const router = Router();
 const data = new DirectMessageData(
   DirectMessage,
-  new UserData(User, new ImageData(Image)),
+  new UserData(
+    User,
+    new ImageData(Image),
+    new FrontEndRouteData(FrontEndRoute),
+  ),
 );
 const controller = new DirectMessageController(data);
 

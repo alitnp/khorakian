@@ -1,7 +1,20 @@
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
+import { handleIdeaLike } from "@/components/idea/ideaFunctions";
+import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import webRoutes from "@/global/constants/webRoutes";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
-import { ApiDataListResponse, IIdeaRead } from "@my/types";
+import {
+	webApiCatch,
+	webApiThen,
+} from "@/global/utils/webApiThen";
+import {
+	ApiDataListResponse,
+	ApiDataResponse,
+	IIdeaRead,
+} from "@my/types";
 import { Checkbox, Pagination, Tooltip } from "antd";
 import {
 	FC,
@@ -51,27 +64,28 @@ const DashboardIdeaList: FC<IDashboardIdeaList> = ({
 					موردی ثبت نشده.
 				</div>
 			);
-		return list.data.map((exp) => (
-			<div className="" key={exp._id}>
-				{exp.isApprove && (
+		return list.data.map((idea) => (
+			<div className="" key={idea._id}>
+				{idea.isApprove && (
 					<span className="text-xs text-k-success-color">
 						<BiCheck className="inline" />
 						توسط ادمین تایید و در سایت منتشر شده.
 					</span>
 				)}
 				<TextOnlyCard
-					category={exp.ideaCategory.title}
-					commentCount={exp.commentCount}
-					creationDate={dateObjectFormatter(exp.creationDate)}
-					desc={exp.text}
+					category={idea.ideaCategory.title}
+					commentCount={idea.commentCount}
+					creationDate={dateObjectFormatter(idea.creationDate)}
+					desc={idea.text}
 					detailPath={
-						webRoutes.dashboardIdea.path + "/" + exp._id
+						webRoutes.dashboardIdea.path + "/" + idea._id
 					}
-					title={exp.title}
-					likeCount={exp.likeCount}
-					viewCount={exp.viewCount}
-					isLiked={false}
+					title={idea.title}
+					likeCount={idea.likeCount}
+					viewCount={idea.viewCount}
+					isLiked={!!idea.liked}
 					isCommented={false}
+					handleLike={() => handleIdeaLike(idea._id, refetch)}
 				/>
 			</div>
 		));

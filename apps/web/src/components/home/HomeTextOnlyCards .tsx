@@ -1,14 +1,17 @@
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
 import PageItemTitle from "@/components/global/PageItems/PageItemTitle";
 import TextOnlyCardsRow from "@/components/global/PageItems/TextOnlyCardsRow";
+import WebApiService, { errorResponse } from "@/global/utils/WebApiService";
 import {
 	dateObjectFormatter,
 	getCategoryKeyNameFormPageItem,
+	getContentLikeEndpoint,
 	getDetailPathnameforPageItem,
 	getMoreUrlPathFromPageItem,
 } from "@/global/utils/helperFunctions";
+import { webApiCatch } from "@/global/utils/webApiThen";
 import { IPageItemConents } from "@my/types";
-import { FC, useMemo } from "react";
+import { FC, useMemo, useState } from "react";
 
 interface IHomeTextOnlyCards {
 	data: IPageItemConents;
@@ -19,6 +22,8 @@ const HomeTextOnlyCards: FC<IHomeTextOnlyCards> = ({
 	data,
 	greyBg,
 }) => {
+	const [, setFakeNumber] = useState(1);
+	
 	const moreUrl = useMemo(
 		() => getMoreUrlPathFromPageItem(data.type.title),
 		[data.type.title]
@@ -32,6 +37,20 @@ const HomeTextOnlyCards: FC<IHomeTextOnlyCards> = ({
 		[data.type.title]
 	);
 
+		const handleContentLike = async (
+			_id: string,
+			index: number
+		) => {
+			await WebApiService.post(
+				getContentLikeEndpoint(data.type.title, _id)
+			)
+				.then((res: any) => {
+					data.content[index] = res.data;
+					setFakeNumber((prevState) => ++prevState);
+				})
+				.catch(() => webApiCatch(errorResponse));
+		};
+
 	return (
 		<TextOnlyCardsRow
 			greyBg={greyBg}
@@ -42,7 +61,7 @@ const HomeTextOnlyCards: FC<IHomeTextOnlyCards> = ({
 					moreUrl={moreUrl}
 				/>
 			}
-			items={data.content.map((item: any) => (
+			items={data.content.map((item: any,index:number) => (
 				<TextOnlyCard
 					key={item._id}
 					category={item[categoryKeyName]?.title}
@@ -53,8 +72,9 @@ const HomeTextOnlyCards: FC<IHomeTextOnlyCards> = ({
 					commentCount={item.commentCount}
 					viewCount={item.viewCount}
 					detailPath={detailPathname + "/" + item._id}
-					isLiked={false}
+					isLiked={item.liked}
 					isCommented={false}
+					handleLike={() => handleContentLike(item._id, index)}
 				/>
 			))}
 		/>

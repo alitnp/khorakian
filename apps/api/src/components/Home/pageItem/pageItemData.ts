@@ -8,6 +8,10 @@ import {
   IPageItemType,
   IPageItemConents,
   IPostCategory,
+  IPostLike,
+  IExperienceLike,
+  IUserExperienceLike,
+  IIdeaLike,
 } from "@my/types";
 import { getSortBy } from "@/utils/pagination";
 import { defaultSearchQueries, getAllData } from "@/data/globalData";
@@ -21,23 +25,36 @@ import { Experience } from "@/components/experience/experience/experienceModel";
 import { UserExperience } from "@/components/userExperience/userExperience/userExperienceModel";
 import { Idea } from "@/components/Idea/idea/ideaModel";
 import { Slider } from "@/components/Home/silder/sliderModel";
+import LikeData from "@/components/Like/likeData";
 
 class PageItemData {
   PageItem: Model<IPageItem>;
   Type: PageItemTypeData;
   Sorting: PageItemSortingData;
   Style: PageItemStyleData;
+  PostLike: LikeData<IPostLike>;
+  ExperienceLike: LikeData<IExperienceLike>;
+  UserExperienceLike: LikeData<IUserExperienceLike>;
+  IdeaLike: LikeData<IIdeaLike>;
 
   constructor(
     PageItem: Model<IPageItem>,
     PageItemType: PageItemTypeData,
     PageItemSorting: PageItemSortingData,
     PageItemStyle: PageItemStyleData,
+    PostLike: LikeData<IPostLike>,
+    ExperienceLike: LikeData<IExperienceLike>,
+    UserExperienceLike: LikeData<IUserExperienceLike>,
+    IdeaLike: LikeData<IIdeaLike>,
   ) {
     this.PageItem = PageItem;
     this.Type = PageItemType;
     this.Sorting = PageItemSorting;
     this.Style = PageItemStyle;
+    this.PostLike = PostLike;
+    this.ExperienceLike = ExperienceLike;
+    this.UserExperienceLike = UserExperienceLike;
+    this.IdeaLike = IdeaLike;
   }
 
   getAll = async (req: Req): Promise<ApiDataListResponse<IPageItem>> => {
@@ -59,7 +76,7 @@ class PageItemData {
     ]);
   };
 
-  getWithContents = async (): Promise<IPageItemConents[]> => {
+  getWithContents = async (userId?: string): Promise<IPageItemConents[]> => {
     const filters: any = {};
     const pageItems = await this.PageItem.find(filters)
       .sort("index")
@@ -87,7 +104,17 @@ class PageItemData {
           .limit(10)
           .populate("images")
           .populate({ path: "videos", populate: { path: "thumbnail" } })
-          .populate("postCategory");
+          .populate("postCategory")
+          .lean();
+        for (let i = 0; i < content.length; i++) {
+          const item = content[i];
+          if (!userId) content[i].liked = false;
+          else
+            content[i].liked = await this.PostLike.isUserLiked(
+              item._id,
+              userId,
+            );
+        }
         totalItems = await Post.countDocuments(filters);
       }
       if (pi.type.title === "experience") {
@@ -96,21 +123,51 @@ class PageItemData {
           .limit(10)
           .populate("images")
           .populate({ path: "videos", populate: { path: "thumbnail" } })
-          .populate("experienceCategory");
+          .populate("experienceCategory")
+          .lean();
+        for (let i = 0; i < content.length; i++) {
+          const item = content[i];
+          if (!userId) content[i].liked = false;
+          else
+            content[i].liked = await this.ExperienceLike.isUserLiked(
+              item._id,
+              userId,
+            );
+        }
         totalItems = await Experience.countDocuments(filters);
       }
       if (pi.type.title === "userExperience") {
-        content = await UserExperience.find(filters)
-          .populate("userExperienceCategory")
+        content = await UserExperience.find({ ...filters, isApprove: true })
+          .populate("experienceCategory")
           .sort(sort)
-          .limit(10);
+          .limit(10)
+          .lean();
+        for (let i = 0; i < content.length; i++) {
+          const item = content[i];
+          if (!userId) content[i].liked = false;
+          else
+            content[i].liked = await this.UserExperienceLike.isUserLiked(
+              item._id,
+              userId,
+            );
+        }
         totalItems = await UserExperience.countDocuments(filters);
       }
       if (pi.type.title === "idea") {
         content = await Idea.find({ isAdminSubmitted: true, ...filters })
           .sort(sort)
           .limit(10)
-          .populate(["ideaCategory"]);
+          .populate(["ideaCategory"])
+          .lean();
+        for (let i = 0; i < content.length; i++) {
+          const item = content[i];
+          if (!userId) content[i].liked = false;
+          else
+            content[i].liked = await this.IdeaLike.isUserLiked(
+              item._id,
+              userId,
+            );
+        }
         totalItems = await Idea.countDocuments({
           isAdminSubmitted: true,
           ...filters,
@@ -118,13 +175,23 @@ class PageItemData {
       }
       if (pi.type.title === "userIdea") {
         content = await Idea.find({
+          ...filters,
           isAdminSubmitted: false,
           isApprove: true,
-          ...filters,
         })
           .sort(sort)
           .limit(10)
-          .populate(["ideaCategory"]);
+          .populate(["ideaCategory"])
+          .lean();
+        for (let i = 0; i < content.length; i++) {
+          const item = content[i];
+          if (!userId) content[i].liked = false;
+          else
+            content[i].liked = await this.IdeaLike.isUserLiked(
+              item._id,
+              userId,
+            );
+        }
         totalItems = await Idea.countDocuments({
           isAdminSubmitted: false,
           isApprove: true,
@@ -140,7 +207,8 @@ class PageItemData {
           .limit(100)
           .populate("images")
           .populate({ path: "videos", populate: { path: "thumbnail" } })
-          .populate<{ postCategory: IPostCategory }>("postCategory");
+          .populate<{ postCategory: IPostCategory }>("postCategory")
+          .lean();
         totalItems = await Post.countDocuments({ ...filters, featured: true });
       }
       result.push({ ...pi, content, totalItems });

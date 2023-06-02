@@ -17,6 +17,16 @@ class UserExperienceController {
     res.send(apiDataListResponse<IUserExperienceRead>(result));
   };
 
+  getMy = async (req: Req, res: Res) => {
+    const result = await this.data.getMy(req, getUserIdFromReq(req));
+    res.send(apiDataListResponse<IUserExperienceRead>(result));
+  };
+
+  getApproved = async (req: Req, res: Res) => {
+    const result = await this.data.getApproved(req, getUserIdFromReq(req));
+    res.send(apiDataListResponse<IUserExperienceRead>(result));
+  };
+
   getAllComments = async (req: Req, res: Res) => {
     const result = await this.data.getAllComments(req);
     res.send(apiDataListResponse<IUserExperienceComment>(result));
@@ -28,7 +38,11 @@ class UserExperienceController {
   };
 
   get = async (req: Req, res: Res) => {
-    const result = await this.data.get(req.params.id, getUserIdFromReq(req));
+    const result = await this.data.get(
+      req.params.id,
+      getUserIdFromReq(req),
+      true,
+    );
     res.send(apiDataResponse<IUserExperienceRead>(result));
   };
 
@@ -73,7 +87,6 @@ class UserExperienceController {
       req.params.id,
       getUserIdFromReq(req),
       req.body.text,
-      req.body.userExperienceId,
     );
     res.send(apiDataResponse<IUserExperienceRead>(result));
   };

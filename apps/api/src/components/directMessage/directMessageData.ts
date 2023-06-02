@@ -58,7 +58,6 @@ class DirectMessageData {
   };
 
   create = async (text: string, userId: string): Promise<IDirectMessage> => {
-    console.log(userId);
     const user = await this.User.get(userId);
 
     if (!user) throw new NotFoundError("");

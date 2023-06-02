@@ -18,6 +18,7 @@ interface IImageOnlyCard {
 	viewCount: number;
 	isLiked: boolean;
 	isCommented: boolean;
+	handleLike?: () => void;
 }
 
 const ImageOnlyCard: FC<IImageOnlyCard> = ({
@@ -33,43 +34,46 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 	detailPath,
 	isLiked,
 	isCommented,
+	handleLike,
 }) => {
 	return (
-		<Link href={detailPath}>
-			<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 h-[200px]  max-w-[300px] sm:max-w-sm">
-				<div className="relative w-full h-[200px] max-w-[300px] sm:max-w-sm overflow-hidden bg-slate-700 group">
-					{imagePathname && (
-						<Image
-							src={webConfig.domain + imagePathname}
-							width={width}
-							height={height}
-							alt={imageAlt}
-							className="object-cover  w-fit transition-transform h-[200px] duration-500 max-w-[300px] sm:max-w-sm ease-out group-hover:scale-110"
-						/>
-					)}
-					<div className="absolute top-0 left-0 w-full h-full bg-k-faded-dark-bg-color">
-						<div className="relative flex items-center justify-center w-full h-full text-k-bg-color">
-							{isVideo && <BsPlayCircle className="text-5xl" />}
-							<div className="absolute top-2 left-4">
-								<CardLikeCommentCount
-									viewCount={viewCount || 0}
-									likeCount={likeCount || 0}
-									commentCount={commentCount || 0}
-									isLiked={isLiked}
-									isCommented={isCommented}
-									lightColor
-								/>
-							</div>
-							<div className="absolute right-0 bottom-2">
-								<h2 className="mx-4 text-base font-medium line-clamp-1 text-k-opposite-text-color">
-									{title}
-								</h2>
-							</div>
+		<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 group h-[200px] relative  max-w-[300px] sm:max-w-sm">
+			<Link href={detailPath}>
+				<div className="absolute bottom-0 left-0 z-20 w-full h-4/5 "></div>
+			</Link>
+			<div className="relative w-full h-[200px] max-w-[300px] sm:max-w-sm overflow-hidden  ">
+				{imagePathname && (
+					<Image
+						src={webConfig.domain + imagePathname}
+						width={width}
+						height={height}
+						alt={imageAlt}
+						className="object-cover  w-fit transition-transform h-[200px] duration-500 max-w-[300px] sm:max-w-sm ease-out group-hover:scale-110"
+					/>
+				)}
+				<div className="absolute top-0 left-0 w-full h-full bg-k-faded-dark-bg-color">
+					<div className="relative flex items-center justify-center w-full h-full text-k-bg-color">
+						{isVideo && <BsPlayCircle className="text-5xl" />}
+						<div className="absolute top-2 left-4">
+							<CardLikeCommentCount
+								viewCount={viewCount || 0}
+								likeCount={likeCount || 0}
+								commentCount={commentCount || 0}
+								isLiked={isLiked}
+								isCommented={isCommented}
+								lightColor
+								handleLike={handleLike}
+							/>
+						</div>
+						<div className="absolute right-0 bottom-2">
+							<h2 className="mx-4 text-base font-medium line-clamp-1 text-k-opposite-text-color">
+								{title}
+							</h2>
 						</div>
 					</div>
 				</div>
-			</article>
-		</Link>
+			</div>
+		</article>
 	);
 };
 

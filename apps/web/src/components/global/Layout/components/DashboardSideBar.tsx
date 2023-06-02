@@ -20,8 +20,12 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 	return (
 		<div className="flex flex-col gap-1 p-1 border shadow-lg rounded-xl bg-k-bg-color shrink-0">
 			<DashboardSidebarItem
-				title="حساب کاربری"
+				title="داشبورد"
 				path={webRoutes.dashboard.path}
+			/>
+			<DashboardSidebarItem
+				title="حساب کاربری"
+				path={webRoutes.dashboardProfile.path}
 			/>
 			<DashboardSidebarItem
 				title="تجربیات من"
@@ -30,10 +34,6 @@ const DashboardSideBar: FC<IDashboardSideBar> = ({}) => {
 			<DashboardSidebarItem
 				title="ایده های من"
 				path={webRoutes.dashboardIdea.path}
-			/>
-			<DashboardSidebarItem
-				title="نظرهای من"
-				path={webRoutes.experience.path}
 			/>
 			<div
 				className="px-6 py-2 mt-auto text-center rounded-lg cursor-pointer hover:bg-k-grey-bg-2-color"

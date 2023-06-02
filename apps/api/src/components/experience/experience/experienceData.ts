@@ -21,6 +21,7 @@ import LikeData from "@/components/Like/likeData";
 import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import CommentData from "@/components/comment/commentData";
 import ExperienceCategoryData from "@/components/experience/experienceCategory/experienceCategoryData";
+import UserData from "@/components/user/userData";
 
 class ExperienceData {
   Experience: Model<IExperience>;
@@ -29,6 +30,7 @@ class ExperienceData {
   Image: ImageData;
   ExperienceLike: LikeData<IExperienceLike>;
   ExperienceComment: CommentData<IExperienceComment>;
+  User: UserData;
 
   constructor(
     Experience: Model<IExperience>,
@@ -37,6 +39,7 @@ class ExperienceData {
     Image: ImageData,
     ExperienceLike: LikeData<IExperienceLike>,
     ExperienceComment: CommentData<IExperienceComment>,
+    User: UserData,
   ) {
     this.Experience = Experience;
     this.ExperienceCategory = ExperienceCategory;
@@ -44,6 +47,7 @@ class ExperienceData {
     this.Image = Image;
     this.ExperienceLike = ExperienceLike;
     this.ExperienceComment = ExperienceComment;
+    this.User = User;
   }
 
   getAll = async (
@@ -152,7 +156,11 @@ class ExperienceData {
     return resultWithComments;
   };
 
-  get = async (id: string, userId?: string): Promise<IExperienceRead> => {
+  get = async (
+    id: string,
+    userId?: string,
+    addView = false,
+  ): Promise<IExperienceRead> => {
     const experience = await this.Experience.findById(id)
       .populate<{ images: IImage[] }>("images")
       .populate<{ videos: IVideoRead[] }>({
@@ -165,7 +173,8 @@ class ExperienceData {
       .lean();
 
     if (!experience) throw new NotFoundError();
-    await this.Experience.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
+    if (addView)
+      await this.Experience.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
     const experienceRead: IExperienceRead = {
       ...experience,
@@ -277,6 +286,10 @@ class ExperienceData {
   ): Promise<IExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
 
+    const item = await this.get(experienceId, userId);
+
+    if (item.liked) return await this.dislike(experienceId, userId);
+
     await this.ExperienceLike.like(experienceId, userId);
 
     const experience = await this.Experience.findByIdAndUpdate(experienceId, {
@@ -371,6 +384,20 @@ class ExperienceData {
     if (!userId) throw new UnauthorizedError();
 
     const comment = await this.ExperienceComment.reply(commentId, userId, text);
+
+    const item = await this.get(comment.content as string);
+    const user = await this.User.get(comment.user as string);
+
+    item &&
+      this.User.createNotificationAndAddToUser({
+        title: "پاسخ",
+        text: "user به نظر شما پاسخ داد.",
+        contentId: item._id,
+        creatorUserId: userId,
+        notifUserId: user._id,
+        frontEndRouteTitle: "experienceDetail",
+        type: "comment",
+      });
 
     return await this.get(comment.content as string);
   };

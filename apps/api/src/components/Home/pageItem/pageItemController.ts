@@ -1,6 +1,7 @@
 import { IPageItem, IPageItemConents, IPageItemRead } from "@my/types";
 import PageItemData from "@/components/Home/pageItem/pageItemData";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
+import { getUserIdFromReq } from "@/utils/util";
 
 class PageItemController {
   data: PageItemData;
@@ -19,8 +20,8 @@ class PageItemController {
     res.send(apiDataResponse<IPageItemRead>(result));
   };
 
-  getWithContents = async (_req: Req, res: Res) => {
-    const result = await this.data.getWithContents();
+  getWithContents = async (req: Req, res: Res) => {
+    const result = await this.data.getWithContents(getUserIdFromReq(req));
     res.send(apiDataResponse<IPageItemConents[]>(result));
   };
 

@@ -7,6 +7,7 @@ import {
 	IImage,
 	IPostRead,
 } from "@my/types";
+import webEndpointUrls from "@/global/constants/webEndpointUrls";
 
 export const englishNumberOnly = (
 	input: string,
@@ -105,13 +106,13 @@ export const getMoreUrlPathFromPageItem = (
 ) => {
 	if (pageItemType === "post")
 		return webRoutes.postAllContents.path;
-	if (
-		pageItemType === "experience" ||
-		pageItemType === "userExperience"
-	)
+	if (pageItemType === "experience")
 		return webRoutes.experiencePage.path;
-	if (pageItemType === "idea" || pageItemType === "userIdea")
-		return webRoutes.ideaAllContents.path;
+	if (pageItemType === "userExperience")
+		return webRoutes.userExperienceList.path;
+	if (pageItemType === "idea") return webRoutes.idea.path;
+	if (pageItemType === "userIdea")
+		return webRoutes.idea.path + "?tab=users";
 };
 
 export const getDetailPathnameforPageItem = (
@@ -125,6 +126,20 @@ export const getDetailPathnameforPageItem = (
 		return webRoutes.userExperienceDetail.path;
 	if (pageItemType === "idea" || pageItemType === "userIdea")
 		return webRoutes.ideaDetail.path;
+};
+
+export const getContentLikeEndpoint = (
+	pageItemType: string,
+	id: string
+) => {
+	if (pageItemType === "post")
+		return webEndpointUrls.postLike + "/" + id;
+	if (pageItemType === "experience")
+		return webEndpointUrls.experienceLike + "/" + id;
+	if (pageItemType === "userExperience")
+		return webEndpointUrls.userExperienceLike + "/" + id;
+	if (pageItemType === "idea" || pageItemType === "userIdea")
+		return webEndpointUrls.ideaLike + "/" + id;
 };
 
 export const getCategoryKeyNameFormPageItem = (
@@ -177,7 +192,7 @@ const persianNumbers: Record<number, string> = {
 	9: "۹",
 };
 
-export const replaceNumbersWithPersian = (input) => {
+export const replaceNumbersWithPersian = (input: any) => {
 	if (input === undefined || input === null) return "";
 	// Convert the input to a string if it is a number
 	let str =

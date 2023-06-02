@@ -137,6 +137,7 @@ const PostsPage: FC<IPostsPage> = ({
 							pageSize={posts.pageSize}
 							total={posts.totalItems}
 							onChange={handlePagination}
+							hideOnSinglePage
 						/>
 					</div>
 				)}

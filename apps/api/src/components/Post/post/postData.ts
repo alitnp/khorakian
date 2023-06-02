@@ -19,6 +19,7 @@ import LikeData from "@/components/Like/likeData";
 import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import CommentData from "@/components/comment/commentData";
 import PostCategoryData from "@/components/Post/postCategory/postCategoryData";
+import UserData from "@/components/user/userData";
 
 class PostData {
   Post: Model<IPost, {}, {}, {}, any>;
@@ -27,6 +28,7 @@ class PostData {
   Image: ImageData;
   PostLike: LikeData<IPostLike>;
   PostComment: CommentData<IPostComment>;
+  User: UserData;
 
   constructor(
     Post: Model<IPost, {}, {}, {}, any>,
@@ -35,6 +37,7 @@ class PostData {
     Image: ImageData,
     PostLike: LikeData<IPostLike>,
     PostComment: CommentData<IPostComment>,
+    User: UserData,
   ) {
     this.Post = Post;
     this.PostCategory = PostCategory;
@@ -42,6 +45,7 @@ class PostData {
     this.Image = Image;
     this.PostLike = PostLike;
     this.PostComment = PostComment;
+    this.User = User;
   }
 
   getAll = async (
@@ -103,7 +107,11 @@ class PostData {
     };
   };
 
-  get = async (id: string, userId?: string): Promise<IPostRead> => {
+  get = async (
+    id: string,
+    userId?: string,
+    addView = false,
+  ): Promise<IPostRead> => {
     const post = (await this.Post.findById(id)
       .populate<{ images: IImage[] }>("images")
       .populate<{ videos: IVideoRead[] }>({
@@ -114,7 +122,8 @@ class PostData {
       .lean()) as IPostRead;
 
     if (!post) throw new NotFoundError();
-    await this.Post.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
+    if (addView)
+      await this.Post.findByIdAndUpdate(id, { $inc: { viewCount: 1 } });
 
     const postRead = { ...post, liked: false };
     if (userId) postRead.liked = await this.PostLike.isUserLiked(id, userId);
@@ -215,12 +224,15 @@ class PostData {
   like = async (postId: string, userId?: string): Promise<IPostRead> => {
     if (!userId) throw new UnauthorizedError();
 
-    await this.PostLike.like(postId, userId);
+    const post = await this.get(postId, userId);
+    if (!post) throw new NotFoundError();
 
-    const post = await this.Post.findByIdAndUpdate(postId, {
+    if (post.liked) return this.dislike(postId, userId);
+
+    await this.PostLike.like(postId, userId);
+    await this.Post.findByIdAndUpdate(postId, {
       $inc: { likeCount: 1 },
     });
-    if (!post) throw new NotFoundError();
 
     return await this.get(postId, userId);
   };
@@ -312,6 +324,20 @@ class PostData {
     if (!userId) throw new UnauthorizedError();
 
     const comment = await this.PostComment.reply(commentId, userId, text);
+
+    const item = await this.get(comment.content as string);
+    const user = await this.User.get(comment.user as string);
+
+    item &&
+      this.User.createNotificationAndAddToUser({
+        title: "پاسخ",
+        text: "user به نظر شما پاسخ داد.",
+        contentId: item._id,
+        creatorUserId: userId,
+        notifUserId: user._id,
+        frontEndRouteTitle: "postDetail",
+        type: "comment",
+      });
 
     return await this.get(comment.content as string);
   };

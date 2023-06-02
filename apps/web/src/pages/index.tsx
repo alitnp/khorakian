@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import {
 	IAboutMeRead,
 	IHistory,
@@ -42,32 +42,41 @@ type homeProps = {
 	featuredIdeas: IIdeaRead[];
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-	const pageItems = await getHomePageItems();
-	const defaultTextsObject = await getHomeDefaultTexts();
-	const defaultImagesObject = await getHomeDefaultImages();
-	const aboutMePosts = await getHomeAboutMePosts();
-	const socialMedias = await getAllSocialMedias();
-	const histories = await getAllHistories();
-	const timeLinePosts = await getTimelinePosts();
-	const featuredIdeas = await getFeaturedIdeas();
+export const getServerSideProps: GetServerSideProps =
+	async (context) => {
+		const pageItems = await getHomePageItems(context.req);
+		const defaultTextsObject = await getHomeDefaultTexts(
+			context.req
+		);
+		const defaultImagesObject = await getHomeDefaultImages(
+			context.req
+		);
+		const aboutMePosts = await getHomeAboutMePosts(
+			context.req
+		);
+		const socialMedias = await getAllSocialMedias(
+			context.req
+		);
+		const histories = await getAllHistories(context.req);
+		const timeLinePosts = await getTimelinePosts(context.req);
+		const featuredIdeas = await getFeaturedIdeas(context.req);
 
-	const props: homeProps = {
-		pageItems: pageItems.data,
-		defaultTexts: defaultTextsObject,
-		defaultImages: defaultImagesObject,
-		aboutMePosts,
-		socialMedias,
-		histories,
-		timeLinePosts,
-		featuredIdeas,
-	};
+		const props: homeProps = {
+			pageItems: pageItems.data,
+			defaultTexts: defaultTextsObject,
+			defaultImages: defaultImagesObject,
+			aboutMePosts,
+			socialMedias,
+			histories,
+			timeLinePosts,
+			featuredIdeas,
+		};
 
-	return {
-		props,
-		revalidate: webConfig.dataRevalidateTime,
+		return {
+			props,
+			// revalidate: webConfig.dataRevalidateTime,
+		};
 	};
-};
 
 const Home = ({
 	pageItems,
@@ -92,7 +101,12 @@ const Home = ({
 					);
 				if (pageItem.type.title === "timeLine")
 					return (
-						<TimeLine key={pageItem._id} posts={timeLinePosts} />
+						<TimeLine
+							key={pageItem._id}
+							posts={timeLinePosts}
+							title={pageItem.title}
+							subTitle={pageItem.subTitle}
+						/>
 					);
 				if (pageItem.type.title === "homeIdeaExperienceBox")
 					return (
@@ -126,10 +140,6 @@ const Home = ({
 							posts={pageItem.content.slice(0, 6)}
 							greyBg={index % 2 === 0}
 						/>
-					);
-				if (pageItem.type.title === "timeLine")
-					return (
-						<TimeLine key={pageItem._id} posts={timeLinePosts} />
 					);
 				if (pageItem.style.title === "default")
 					return (

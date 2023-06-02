@@ -25,7 +25,6 @@ class LikeData<likeModel> {
 
   isUserLiked = async (contentId: string, userId: string): Promise<boolean> => {
     if (!userId || !contentId) return false;
-
     const like = await this.Like.findOne({
       content: contentId,
       user: userId,
