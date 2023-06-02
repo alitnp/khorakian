@@ -4,9 +4,16 @@ import {
 	getThumbnailFromContent,
 } from "@/global/utils/helperFunctions";
 import { IPostRead } from "@my/types";
-import { FC } from "react";
+import { FC, useState } from "react";
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
 import { BsPlayCircle } from "react-icons/bs";
+import Link from "next/link";
+import webRoutes from "@/global/constants/webRoutes";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
+import webEndpointUrls from "@/global/constants/webEndpointUrls";
+import { webApiCatch } from "@/global/utils/webApiThen";
 
 interface ITimeListPost {
 	index: number;
@@ -19,7 +26,21 @@ const TimeLinePost: FC<ITimeListPost> = ({
 	post,
 	down = false,
 }) => {
+	const [, setFakeNumber] = useState(1);
 	const image = getThumbnailFromContent(post);
+
+	const handleLike = async () => {
+		await WebApiService.post(
+			webEndpointUrls.postLike + "/" + post._id
+		)
+			.then((res: any) => {
+				post.liked = res.data.liked;
+				post.likeCount = res.data.likeCount;
+				setFakeNumber((prevState) => ++prevState);
+			})
+			.catch(() => webApiCatch(errorResponse));
+	};
+
 	return (
 		<div
 			className={`relative flex items-center h-full`}
@@ -66,6 +87,9 @@ const TimeLinePost: FC<ITimeListPost> = ({
 									border
 										`}
 			>
+				<Link href={webRoutes.postDetail.path + "/" + post._id}>
+					<div className="absolute bottom-0 left-0 z-20 w-full h-4/5 "></div>
+				</Link>
 				{webConfig.domain && image && (
 					<img
 						src={webConfig.domain + image.imagePathname}
@@ -88,6 +112,7 @@ const TimeLinePost: FC<ITimeListPost> = ({
 						isLiked={post.liked}
 						isCommented={false}
 						lightColor
+						handleLike={handleLike}
 					/>
 				</div>
 			</div>

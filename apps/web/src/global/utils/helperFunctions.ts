@@ -110,8 +110,9 @@ export const getMoreUrlPathFromPageItem = (
 		return webRoutes.experiencePage.path;
 	if (pageItemType === "userExperience")
 		return webRoutes.userExperienceList.path;
-	if (pageItemType === "idea" || pageItemType === "userIdea")
-		return webRoutes.ideaAllContents.path;
+	if (pageItemType === "idea") return webRoutes.idea.path;
+	if (pageItemType === "userIdea")
+		return webRoutes.idea.path + "?tab=users";
 };
 
 export const getDetailPathnameforPageItem = (

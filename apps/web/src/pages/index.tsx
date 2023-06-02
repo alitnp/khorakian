@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import {
 	IAboutMeRead,
 	IHistory,
@@ -101,7 +101,12 @@ const Home = ({
 					);
 				if (pageItem.type.title === "timeLine")
 					return (
-						<TimeLine key={pageItem._id} posts={timeLinePosts} />
+						<TimeLine
+							key={pageItem._id}
+							posts={timeLinePosts}
+							title={pageItem.title}
+							subTitle={pageItem.subTitle}
+						/>
 					);
 				if (pageItem.type.title === "homeIdeaExperienceBox")
 					return (
@@ -135,10 +140,6 @@ const Home = ({
 							posts={pageItem.content.slice(0, 6)}
 							greyBg={index % 2 === 0}
 						/>
-					);
-				if (pageItem.type.title === "timeLine")
-					return (
-						<TimeLine key={pageItem._id} posts={timeLinePosts} />
 					);
 				if (pageItem.style.title === "default")
 					return (
