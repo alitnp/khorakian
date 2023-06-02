@@ -11,12 +11,13 @@ interface IProps {
   item: IGlobalCommentRead;
   isLiked?: boolean;
   refetch: () => void;
+  commentReplyUrl: string;
 }
-const Comment: FC<IProps> = ({ item, isLiked, refetch }) => {
+const Comment: FC<IProps> = ({ item, isLiked, refetch, commentReplyUrl }) => {
   //state
   const [showCommentModel, setShowCommentModel] = useState<boolean>(false);
   //func
-  const toggleShowDateFromTo = () => setShowCommentModel((prev) => !prev);
+  const toggleShow = () => setShowCommentModel((prev) => !prev);
 
   return (
     <>
@@ -67,10 +68,10 @@ const Comment: FC<IProps> = ({ item, isLiked, refetch }) => {
       </div>
       {showCommentModel && (
         <AddCommentModal
-          title="ثبت نظر "
+          title="پاسخ به نظر"
           visible={showCommentModel}
-          close={toggleShowDateFromTo}
-          endPointUrl={webEndpointUrls.postCommnetReply + '/' + item._id}
+          close={toggleShow}
+          endPointUrl={commentReplyUrl + '/' + item._id}
           footer={false}
           refetch={refetch}
         />

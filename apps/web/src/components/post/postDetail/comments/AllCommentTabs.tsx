@@ -17,6 +17,11 @@ import {
 	webApiCatch,
 	webApiThen,
 } from "@/global/utils/webApiThen";
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
+import FirstCommentBox from "@/components/post/postDetail/comments/FirstCommentBox";
+
+const { TabPane } = Tabs;
 
 interface IProps {
 	endPointUrlGetAllComments: string;
@@ -24,6 +29,7 @@ interface IProps {
 	endPointUrlGetAllMyComments: string;
 	parentId: number | string;
 	commentCreateUrl: string;
+	commentReplyUrl: string;
 }
 
 type adminComment = {
@@ -37,6 +43,7 @@ const AllCommentTabs: FC<IProps> = ({
 	endPointUrlGetAllMyComments,
 	parentId,
 	commentCreateUrl,
+	commentReplyUrl,
 }) => {
 	//state
 	const [_loading, setLoading] = useState<boolean>(false);
@@ -46,6 +53,9 @@ const AllCommentTabs: FC<IProps> = ({
 		useState<IGlobalCommentRead[]>();
 	const [myComments, setMyComments] =
 		useState<IGlobalCommentRead[]>();
+	const { user } = useSelector(
+		(state: RootState) => state.user
+	);
 
 	//effect
 	useEffect(() => {
@@ -153,6 +163,7 @@ const AllCommentTabs: FC<IProps> = ({
 					comments={tabComment.tabBody}
 					parentId={parentId}
 					commentCreateUrl={commentCreateUrl}
+					commentReplyUrl={commentReplyUrl}
 				/>
 			),
 		}));
@@ -164,39 +175,99 @@ const AllCommentTabs: FC<IProps> = ({
 		getComments();
 	};
 
+	const commentsTabs = [
+		{
+			label: "همه",
+			key: "ALL",
+			children: (
+				<AllComments
+					comments={comments}
+					parentId={parentId}
+					refetch={refetch}
+					commentCreateUrl={commentCreateUrl}
+					commentReplyUrl={commentReplyUrl}
+				/>
+			),
+		},
+		{
+			label: "نظرات من",
+			key: "MYCOMMENT",
+			children: (
+				<AllComments
+					comments={myComments}
+					parentId={parentId}
+					refetch={refetch}
+					commentCreateUrl={commentCreateUrl}
+					commentReplyUrl={commentReplyUrl}
+				/>
+			),
+		},
+		{
+			label: "نظرات ادمین",
+			key: "ADMINCOMMENT",
+			children: (
+				<div>
+					<Tabs
+						onChange={onChange}
+						className="max-w-screen-lg m-auto "
+						type="card"
+					>
+						{adminCommentTabs?.map((tab) => (
+							<TabPane key={tab.key} tab={tab.label}>
+								{tab.children}
+							</TabPane>
+						))}
+					</Tabs>
+				</div>
+			),
+		},
+	];
 	return (
-		<Tabs
-			onChange={onChange}
-			className="max-w-screen-lg m-auto mt-16 "
-			type="card"
-			items={[
-				{
-					label: "همه",
-					key: "ALL",
-					children: (
-						<AllComments
-							comments={comments}
-							parentId={parentId}
-							refetch={refetch}
-							commentCreateUrl={commentCreateUrl}
-						/>
-					),
-				},
-				{
-					label: "نظرات من",
-					key: "MYCOMMENT",
-					children: (
-						<AllComments
-							comments={myComments}
-							parentId={parentId}
-							refetch={refetch}
-							commentCreateUrl={commentCreateUrl}
-						/>
-					),
-				},
-				...adminCommentTabs,
-			]}
-		/>
+		<>
+			{comments?.length ||
+			myComments?.length ||
+			adminComments?.length ? (
+				<>
+					<Tabs
+						onChange={onChange}
+						className="max-w-screen-lg m-auto "
+						type="card"
+					>
+						{comments?.length && (
+							<TabPane
+								key={commentsTabs[0].key}
+								tab={commentsTabs[0].label}
+							>
+								{commentsTabs[0].children}
+							</TabPane>
+						)}
+						{myComments?.length && user && (
+							<TabPane
+								key={commentsTabs[1].key}
+								tab={commentsTabs[1].label}
+							>
+								{commentsTabs[1].children}
+							</TabPane>
+						)}
+						{adminComments?.length && (
+							<TabPane
+								key={commentsTabs[2].key}
+								tab={commentsTabs[2].label}
+							>
+								{commentsTabs[2].children}
+							</TabPane>
+						)}
+					</Tabs>
+					{/* {adminComments?.length && commentsTabs[2]} */}
+				</>
+			) : (
+				<FirstCommentBox
+					refetch={refetch}
+					commentCreateUrl={commentCreateUrl}
+					parentId={parentId}
+				/>
+			)}
+		</>
 	);
 };
 export default AllCommentTabs;

@@ -89,6 +89,7 @@ const PostDetail: FC<{
 					}
 					commentCreateUrl={webEndpointUrls.postCommentCreate}
 					parentId={post?._id}
+					commentReplyUrl={webEndpointUrls.postCommnetReply}
 				/>
 			</div>
 		</main>

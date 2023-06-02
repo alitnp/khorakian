@@ -111,6 +111,9 @@ const ExperienceDetail: FC<{
 					commentCreateUrl={
 						webEndpointUrls.experienceCommentCreate
 					}
+					commentReplyUrl={
+						webEndpointUrls.experienceCommnetReply
+					}
 					parentId={experience?._id}
 				/>
 			</div>

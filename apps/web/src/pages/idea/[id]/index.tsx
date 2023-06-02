@@ -112,6 +112,9 @@ const IdeaDetail: FC<{
 					}
 					commentCreateUrl={webEndpointUrls.postCommentCreate}
 					parentId={item?._id}
+					commentReplyUrl={
+						webEndpointUrls.experienceCommnetReply
+					}
 				/>
 			</div>
 		</main>

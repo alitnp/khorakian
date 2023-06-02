@@ -70,7 +70,7 @@ router.post(
 );
 //get all admin post comments
 router.get("/adminComments", controller.getAdminComments);
-router.get("/myComments/:id", controller.getAdminComments);
+router.get("/myComments/:id", auth, controller.getAdminComments);
 //like a post with Experience id and user id
 router.post(
   "/like/:id",
