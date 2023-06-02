@@ -1,4 +1,5 @@
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
+import { handleIdeaLike } from "@/components/idea/ideaFunctions";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import webRoutes from "@/global/constants/webRoutes";
 import WebApiService, {
@@ -54,21 +55,6 @@ const DashboardIdeaList: FC<IDashboardIdeaList> = ({
 			refetch(pageNumber, pageSize, onlyApproved),
 		[]
 	);
-	const handleLike = async (_id: string) => {
-		await WebApiService.post(
-			webEndpointUrls.ideaLike + "/" + _id
-		)
-			.then((res: ApiDataResponse<IIdeaRead>) =>
-				webApiThen({
-					res,
-					notifFail: true,
-					notifSuccess: false,
-					onSuccess: () => refetch(),
-					dataOnly: true,
-				})
-			)
-			.catch(() => webApiCatch(errorResponse));
-	};
 
 	//constants
 	const renderList = useMemo(() => {
@@ -99,7 +85,7 @@ const DashboardIdeaList: FC<IDashboardIdeaList> = ({
 					viewCount={idea.viewCount}
 					isLiked={!!idea.liked}
 					isCommented={false}
-					handleLike={() => handleLike(idea._id)}
+					handleLike={() => handleIdeaLike(idea._id, refetch)}
 				/>
 			</div>
 		));

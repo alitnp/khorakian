@@ -10,7 +10,7 @@ import {
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
-import { getUserIdFromReq, stringToBoolean } from "@/utils/util";
+import { stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError, UnauthenticatedError } from "@/helpers/error";
 import UnauthorizedError from "@/helpers/error/UnauthorizedError";
@@ -51,17 +51,22 @@ class IdeaData {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
-    if (req.query.isAdminSubmitted)
+    if (req.query.isAdminSubmitted !== undefined)
       searchQuery.isAdminSubmitted = stringToBoolean(
         req.query.isAdminSubmitted,
       );
     if (req.query.ideaCategory) {
       searchQuery.ideaCategory = req.query.ideaCategory;
     }
-    if (req.query.isApprove)
+    if (req.query.isApprove !== undefined)
       searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
+    if (req.query.user) searchQuery.user = req.query.user;
+
+    // if (!getUserIsAdminFromReq(req)) {
+    //   searchQuery.isApprove = true;
+    // }
 
     const {
       fixedSearchQuery,
@@ -73,10 +78,7 @@ class IdeaData {
       desc,
     } = await paginationProps(searchQuery, req, this.Idea);
 
-    const data: IIdeaRead[] = await this.Idea.find({
-      ...fixedSearchQuery,
-      user: getUserIdFromReq(req),
-    })
+    const data: IIdeaRead[] = await this.Idea.find(fixedSearchQuery)
       .populate<{ ideaCategory: IIdeaCategory }>(["ideaCategory"])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
@@ -98,6 +100,22 @@ class IdeaData {
       sortBy,
       desc: desc === -1 ? true : false,
     };
+  };
+
+  getMy = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IIdeaRead>> => {
+    req.query.user = userId;
+    return this.getAll(req, userId);
+  };
+
+  getApproved = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IIdeaRead>> => {
+    req.query.isApprove = "true";
+    return this.getAll(req, userId);
   };
 
   get = async (
@@ -147,6 +165,7 @@ class IdeaData {
       viewCount: 0,
       likeCount: 0,
       commentCount: 0,
+      isApprove: isAdminSubmitted,
       isAdminSubmitted,
       user,
     });

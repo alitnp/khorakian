@@ -45,9 +45,9 @@ const controller = new UserExperienceController(data);
 router.get("/like", controller.getAllLikes);
 //get all userExperience comments
 router.get("/comment", controller.getAllComments);
-// get a signgle userExperience with id
+router.get("/getapproved", controller.getApproved);
+router.get("/getmy", auth, controller.getMy);
 router.get("/:id", validate(getUserExperienceValidations), controller.get);
-// get a list of userExperience
 router.get("/", controller.getAll);
 
 //post

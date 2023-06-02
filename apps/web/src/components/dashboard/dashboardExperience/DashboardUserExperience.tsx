@@ -45,7 +45,7 @@ const DashboardUserExperience: FC<
 				payload.isApprove = !!isApprove;
 
 			await WebApiService.get(
-				webEndpointUrls.userExperienceGetAll +
+				webEndpointUrls.getMyUserExperience +
 					"?" +
 					queryString.stringify(payload)
 			)

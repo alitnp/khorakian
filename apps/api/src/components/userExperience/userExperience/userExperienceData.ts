@@ -10,7 +10,7 @@ import {
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
-import { getUserIdFromReq, stringToBoolean } from "@/utils/util";
+import { stringToBoolean } from "@/utils/util";
 import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import {
   BadRequestError,
@@ -54,17 +54,16 @@ class UserExperienceData {
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)
       searchQuery.text = { $regex: req.query.text, $option: "i" };
-    // if (req.query.isAdminSubmitted)
-    //   searchQuery.isAdminSubmitted = !!req.query.isAdminSubmitted;
-    if (req.query.userExperienceCategory) {
-      searchQuery.userExperienceCategory._id = {
-        $regex: req.query.userExperienceCategory,
+    if (req.query.experienceCategory) {
+      searchQuery.experienceCategory._id = {
+        $regex: req.query.experienceCategory,
       };
     }
     if (req.query.isApprove !== undefined)
       searchQuery.isApprove = stringToBoolean(req.query.isApprove);
     if (req.query.featured !== undefined)
       searchQuery.featured = stringToBoolean(req.query.featured);
+    if (req.query.user) searchQuery.user = req.query.user;
 
     const {
       fixedSearchQuery,
@@ -76,10 +75,9 @@ class UserExperienceData {
       desc,
     } = await paginationProps(searchQuery, req, this.UserExperience);
 
-    const data: IUserExperienceRead[] = await this.UserExperience.find({
-      ...fixedSearchQuery,
-      user: getUserIdFromReq(req),
-    })
+    const data: IUserExperienceRead[] = await this.UserExperience.find(
+      fixedSearchQuery,
+    )
       .populate<{ experienceCategory: IExperienceCategory }>(
         "experienceCategory",
       )
@@ -107,6 +105,22 @@ class UserExperienceData {
       sortBy,
       desc: desc === -1 ? true : false,
     };
+  };
+
+  getMy = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IUserExperienceRead>> => {
+    req.query.user = userId;
+    return this.getAll(req, userId);
+  };
+
+  getApproved = async (
+    req: Req,
+    userId?: string,
+  ): Promise<ApiDataListResponse<IUserExperienceRead>> => {
+    req.query.isApprove = "true";
+    return this.getAll(req, userId);
   };
 
   get = async (

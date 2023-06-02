@@ -1,6 +1,6 @@
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService from "@/global/utils/WebApiService";
-import { Segmented, Select } from "antd";
+import { Pagination, Segmented, Select } from "antd";
 import { useRouter } from "next/router";
 import {
 	FC,
@@ -19,6 +19,7 @@ import { getAllIdeaCategories } from "@/redux/reducers/categories/getAllIdeaCate
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
 import webRoutes from "@/global/constants/webRoutes";
+import { handleIdeaLike } from "@/components/idea/ideaFunctions";
 
 interface IIdeasTabs {}
 
@@ -46,13 +47,16 @@ const IdeasTabs: FC<IIdeasTabs> = ({}) => {
 	//functions
 	const getList = async () => {
 		const { tab, ...props } = query;
-		const payload: Record<string, any> = { ...props };
+		const payload: Record<string, any> = {
+			...props,
+			isApproved: true,
+		};
 		if (tab === "admin") payload.isAdminSubmitted = true;
 		if (tab === "users") payload.isAdminSubmitted = false;
 
 		setLoading(true);
 		await WebApiService.get(
-			webEndpointUrls.getAllIdeas +
+			webEndpointUrls.getApprovedIdeas +
 				"?" +
 				queryString.stringify(payload)
 		)
@@ -117,6 +121,16 @@ const IdeasTabs: FC<IIdeasTabs> = ({}) => {
 				})
 		);
 	};
+	const handlePagination = (pageNumber = 1, pageSize = 50) =>
+		push(
+			pathname +
+				"?" +
+				queryString.stringify({
+					...query,
+					pageNumber,
+					pageSize,
+				})
+		);
 
 	//constants
 	const categoryOptions = useMemo(() => {
@@ -134,7 +148,6 @@ const IdeasTabs: FC<IIdeasTabs> = ({}) => {
 		];
 	}, [ideaCategoryList]);
 
-	console.log(list);
 	return (
 		<div className="max-w-3xl mx-auto">
 			<Segmented
@@ -165,7 +178,7 @@ const IdeasTabs: FC<IIdeasTabs> = ({}) => {
 					/>
 				</div>
 			</div>
-			<div className="">
+			<div className="py-6 space-y-4">
 				{list?.data.map((idea) => (
 					<TextOnlyCard
 						category={idea.ideaCategory.title}
@@ -181,9 +194,22 @@ const IdeasTabs: FC<IIdeasTabs> = ({}) => {
 						title={idea.title}
 						viewCount={idea.viewCount}
 						key={idea._id}
+						fullWidth
+						handleLike={() => handleIdeaLike(idea._id, getList)}
 					/>
 				))}
 			</div>
+			{list && list.totalPages > 1 && (
+				<div className="flex justify-center my-6">
+					<Pagination
+						current={list.pageNumber}
+						pageSize={list.pageSize}
+						total={list.totalItems}
+						onChange={handlePagination}
+						hideOnSinglePage
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

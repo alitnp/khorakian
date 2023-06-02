@@ -29,6 +29,8 @@ const webEndpointUrls = {
 
 	//I
 	getAllIdeas: "/idea",
+	getMyIdeas: "/idea/getmy",
+	getApprovedIdeas: "/idea/getapproved",
 	getAllIdeaCategories: "/ideaCategory",
 	ideaGetAll: "/idea",
 	ideaCreate: "/idea",
@@ -54,6 +56,8 @@ const webEndpointUrls = {
 	userExperienceEdit: (_id: string) =>
 		"/userExperience/" + _id,
 	userExperienceLike: "/userExperience/like",
+	getMyUserExperience: "/userExperience/getmy",
+	getApprovedUserExperience: "/userExperience/getapproved",
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",

@@ -53,7 +53,7 @@ const Footer: FC<IFooter> = ({
 	);
 
 	return (
-		<footer className="my-6 k-container">
+		<footer className="mb-6 mt-24 k-container">
 			<div className="w-full px-8 py-4 border shadow-lg rounded-xl">
 				<div className="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
 					<div className="flex items-center gap-x-2">

@@ -113,10 +113,6 @@ const UserIdea: FC = () => {
       dataIndex: 'commentCount',
     },
     {
-      title: 'وضعیت انتشار',
-      render: (_text: any, record: Record<string, any>) => (record?.isPublished === true ? <span className='text-t-success-color'>منتشر شده</span> : 'منتشر نشده'),
-    },
-    {
       title: 'تایید ایده',
       render: (_text: any, record: Record<string, any>) =>
         record?.isApprove === true ? (

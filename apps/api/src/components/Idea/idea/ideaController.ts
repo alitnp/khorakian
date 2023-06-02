@@ -13,6 +13,16 @@ class IdeaController {
     res.send(apiDataListResponse<IIdeaRead>(result));
   };
 
+  getMy = async (req: Req, res: Res) => {
+    const result = await this.data.getMy(req, getUserIdFromReq(req));
+    res.send(apiDataListResponse<IIdeaRead>(result));
+  };
+
+  getApproved = async (req: Req, res: Res) => {
+    const result = await this.data.getApproved(req, getUserIdFromReq(req));
+    res.send(apiDataListResponse<IIdeaRead>(result));
+  };
+
   getAllComments = async (req: Req, res: Res) => {
     const result = await this.data.getAllComments(req);
     res.send(apiDataListResponse<IIdeaComment>(result));

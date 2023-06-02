@@ -47,7 +47,7 @@ const DashboardUserIdea: FC<IDashboardUserIdea> = ({
 				payload.isApprove = !!isApprove;
 
 			await WebApiService.get(
-				webEndpointUrls.ideaGetAll +
+				webEndpointUrls.getMyIdeas +
 					"?" +
 					queryString.stringify(payload)
 			)

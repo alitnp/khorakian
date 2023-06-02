@@ -185,7 +185,6 @@ class UserData implements IData<IUserRead> {
   };
 
   toggleUserAdminAccess = async (id: string): Promise<IUser> => {
-    console.log("admin data");
     const userTemp = await this.User.findById(id);
     if (!userTemp) throw new NotFoundError();
     const user = await this.User.findByIdAndUpdate(id, {
@@ -269,7 +268,7 @@ class UserData implements IData<IUserRead> {
         "user",
         creatorUser.isAdmin ? "ادمین" : creatorUser.fullName,
       );
-    console.log(creatorUser);
+
     const notifUser = await this.User.findById(notifUserId);
     if (!notifUser) return;
 

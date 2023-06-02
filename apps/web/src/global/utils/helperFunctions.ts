@@ -106,11 +106,10 @@ export const getMoreUrlPathFromPageItem = (
 ) => {
 	if (pageItemType === "post")
 		return webRoutes.postAllContents.path;
-	if (
-		pageItemType === "experience" ||
-		pageItemType === "userExperience"
-	)
+	if (pageItemType === "experience")
 		return webRoutes.experiencePage.path;
+	if (pageItemType === "userExperience")
+		return webRoutes.userExperienceList.path;
 	if (pageItemType === "idea" || pageItemType === "userIdea")
 		return webRoutes.ideaAllContents.path;
 };
@@ -192,7 +191,7 @@ const persianNumbers: Record<number, string> = {
 	9: "۹",
 };
 
-export const replaceNumbersWithPersian = (input) => {
+export const replaceNumbersWithPersian = (input: any) => {
 	if (input === undefined || input === null) return "";
 	// Convert the input to a string if it is a number
 	let str =

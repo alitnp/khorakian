@@ -29,10 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-const Idea = ({
-	defaultImagesObject,
-	defaultTextsObject,
-}: props) => {
+const Idea = ({ defaultTextsObject }: props) => {
 	return (
 		<main className="my-16 k-container ">
 			<div className="mx-auto max-w-7xl">

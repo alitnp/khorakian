@@ -14,6 +14,7 @@ interface ITextOnlyCard {
 	isLiked: boolean;
 	isCommented: boolean;
 	handleLike?: () => void;
+	fullWidth?: boolean;
 }
 
 const TextOnlyCard: FC<ITextOnlyCard> = ({
@@ -28,9 +29,14 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 	isLiked,
 	isCommented,
 	handleLike,
+	fullWidth,
 }) => {
 	return (
-		<article className="items-stretch w-full overflow-hidden border shadow-md bg-k-bg-color rounded-xl md:max-w-lg shrink-0 ">
+		<article
+			className={`items-stretch w-full overflow-hidden border shadow-md bg-k-bg-color rounded-xl  shrink-0 ${
+				fullWidth ? "w-full" : "md:max-w-lg"
+			}`}
+		>
 			<div className="w-full px-4 py-2">
 				<span className="text-sm font-light text-k-grey-text-color">
 					{category}

@@ -77,7 +77,6 @@ class PageItemData {
   };
 
   getWithContents = async (userId?: string): Promise<IPageItemConents[]> => {
-    console.log("userId:", userId);
     const filters: any = {};
     const pageItems = await this.PageItem.find(filters)
       .sort("index")
@@ -138,8 +137,8 @@ class PageItemData {
         totalItems = await Experience.countDocuments(filters);
       }
       if (pi.type.title === "userExperience") {
-        content = await UserExperience.find(filters)
-          .populate("userExperienceCategory")
+        content = await UserExperience.find({ ...filters, isApprove: true })
+          .populate("experienceCategory")
           .sort(sort)
           .limit(10)
           .lean();
@@ -176,9 +175,9 @@ class PageItemData {
       }
       if (pi.type.title === "userIdea") {
         content = await Idea.find({
+          ...filters,
           isAdminSubmitted: false,
           isApprove: true,
-          ...filters,
         })
           .sort(sort)
           .limit(10)

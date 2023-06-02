@@ -45,10 +45,10 @@ const controller = new IdeaController(data);
 router.get("/like", controller.getAllLikes);
 //get all idea comments
 router.get("/comment", controller.getAllComments);
-// get a signgle idea with id
+router.get("/getapproved", controller.getApproved);
+router.get("/getmy", auth, controller.getMy);
 router.get("/:id", validate(getIdeaValidations), controller.get);
-// get a list of idea
-router.get("/", controller.getAll);
+router.get("/", isAdmin, controller.getAll);
 
 //post
 //add a reply to comment by comment id

@@ -21,7 +21,7 @@ export const getExperienceListWithComments = async (
 	const items: ApiDataListResponse<IExperienceWithComments> =
 		await serverSideFetch(
 			webEndpointUrls.getAllExperienceWithComments +
-				"?pageSize=20",
+				"?pageSize=30",
 			req
 		);
 	if (!items) {
@@ -41,7 +41,6 @@ export const getAllExperiences = async (
 	},
 	query: ParsedUrlQuery
 ): Promise<ApiDataListResponse<IExperienceRead>> => {
-
 	const items: ApiDataListResponse<IExperienceRead> =
 		await serverSideFetch(
 			webEndpointUrls.getAllExperience +
@@ -57,7 +56,6 @@ export const getAllExperiences = async (
 	return items;
 };
 
-
 export const getAllExperienceCategories = async (
 	req?: NextIncomingMessage & {
 		cookies: Partial<{
@@ -67,13 +65,38 @@ export const getAllExperienceCategories = async (
 ): Promise<IExperienceCategory[]> => {
 	const items: ApiDataListResponse<IExperienceCategory> =
 		await serverSideFetch(
-			webEndpointUrls.getAllExperienceCategories + "?pageSize=1000",
+			webEndpointUrls.getAllExperienceCategories +
+				"?pageSize=1000",
 			req
 		);
 	if (!items) {
 		console.log(
-			"error fetch : " + webEndpointUrls.getAllExperienceCategories
+			"error fetch : " +
+				webEndpointUrls.getAllExperienceCategories
 		);
 	}
 	return items.data;
+};
+
+export const getUserExperienceCount = async (
+	req?: NextIncomingMessage & {
+		cookies: Partial<{
+			[key: string]: string;
+		}>;
+	}
+): Promise<number> => {
+	const items: ApiDataListResponse<IExperienceCategory> =
+		await serverSideFetch(
+			webEndpointUrls.getApprovedUserExperience +
+				"?pageSize=1",
+			req
+		);
+	if (!items) {
+		console.log(
+			"error fetch : " +
+				webEndpointUrls.getApprovedUserExperience
+		);
+		return 0;
+	}
+	return items.totalItems;
 };

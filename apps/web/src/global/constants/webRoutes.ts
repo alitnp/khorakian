@@ -43,11 +43,15 @@ const webRoutes: Record<
 		path: "/userexperience",
 		private: false,
 	},
+	userExperienceList: {
+		path: "/userexperience",
+		private: false,
+	},
 
 	//idea
 	idea: { path: "/idea", private: false },
 	ideaAllContents: { path: "/ideacontents", private: false },
-	ideaDetail: { path: "/idead", private: false },
+	ideaDetail: { path: "/idea", private: false },
 };
 
 export default webRoutes;
