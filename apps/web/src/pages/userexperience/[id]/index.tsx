@@ -1,6 +1,8 @@
 import {
 	ApiDataResponse,
+	IImage,
 	IPostCommentRead,
+	ISocialMediaRead,
 	IUserExperienceRead,
 } from "@my/types";
 import { FC, memo, useState } from "react";
@@ -17,6 +19,12 @@ import { webApiCatch } from "@/global/utils/webApiThen";
 import Image from "next/image";
 import webConfig from "@/global/constants/webConfig";
 import { VscAccount } from "react-icons/vsc";
+import Footer from "@/components/global/Footer/Footer";
+import {
+	getAllSocialMedias,
+	getHomeDefaultImages,
+	getHomeDefaultTexts,
+} from "@/components/home/homeFunctions";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -28,9 +36,16 @@ export const getServerSideProps: GetServerSideProps =
 			),
 			context.req
 		);
+		const socialMedias = await getAllSocialMedias();
+		const defaultTextsObject = await getHomeDefaultTexts();
+		const defaultImagesObject = await getHomeDefaultImages();
+
 		return {
 			props: {
 				item: item.data,
+				socialMedias,
+				defaultImages: defaultImagesObject,
+				defaultTexts: defaultTextsObject,
 			},
 		};
 	};
@@ -38,7 +53,15 @@ export const getServerSideProps: GetServerSideProps =
 const IdeaDetail: FC<{
 	item: IUserExperienceRead;
 	adminComments: IPostCommentRead[];
-}> = ({ item }) => {
+	socialMedias: ISocialMediaRead[];
+	defaultTexts: Record<string, string>;
+	defaultImages: Record<string, IImage>;
+}> = ({
+	item,
+	defaultImages,
+	defaultTexts,
+	socialMedias,
+}) => {
 	const [, setFakeNumber] = useState<number>(1);
 	const handleLike = async () => {
 		await WebApiService.post(
@@ -53,67 +76,78 @@ const IdeaDetail: FC<{
 	};
 
 	return (
-		<main>
-			<div className="max-w-screen-lg mx-auto my-4 ">
-				<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
-					<span>
-						تجربه کاربر
-						{"  >  "}
-						{item?.experienceCategory?.title}
-						{"  >  "}
-						{item.title}
-					</span>
-					<span>{dateObjectFormatter(item?.creationDate)}</span>
-				</div>
-				<div className="flex justify-between">
-					<div>
-						{item.user && (
-							<div className="flex items-center gap-1">
-								{item.user.image?.thumbnailPathname ? (
-									<Image
-										src={
-											webConfig.domain +
-											item.user.image.thumbnailPathname
-										}
-										width={64}
-										height={64}
-										alt={item.user.fullName}
-										className="object-cover w-12 h-12 rounded-full"
-									/>
-								) : (
-									<VscAccount />
-								)}
-								<span>{item.user.fullName}</span>
-							</div>
-						)}
+		<>
+			<main>
+				<div className="max-w-screen-lg mx-auto my-4 k-container">
+					<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
+						<span>
+							تجربه کاربر
+							{"  >  "}
+							{item?.experienceCategory?.title}
+							{"  >  "}
+							{item.title}
+						</span>
+						<span>{dateObjectFormatter(item?.creationDate)}</span>
 					</div>
-					<CardLikeCommentCount
-						viewCount={item.viewCount || 0}
-						likeCount={item.likeCount || 0}
-						commentCount={item.commentCount || 0}
-						isLiked={item.liked}
-						withText
-						handleLike={handleLike}
+					<div className="flex flex-col justify-between gap-2 sm:flex-row">
+						<div>
+							{item.user && (
+								<div className="flex items-center gap-1">
+									{item.user.image?.thumbnailPathname ? (
+										<Image
+											src={
+												webConfig.domain +
+												item.user.image.thumbnailPathname
+											}
+											width={64}
+											height={64}
+											alt={item.user.fullName}
+											className="object-cover w-12 h-12 rounded-full"
+										/>
+									) : (
+										<VscAccount />
+									)}
+									<span>{item.user.fullName}</span>
+								</div>
+							)}
+						</div>
+						<CardLikeCommentCount
+							viewCount={item.viewCount || 0}
+							likeCount={item.likeCount || 0}
+							commentCount={item.commentCount || 0}
+							isLiked={item.liked}
+							withText
+							handleLike={handleLike}
+						/>
+					</div>
+					<UserExperienceDetailDescription
+						userExperience={item}
 					/>
-				</div>
-			</div>
-			<UserExperienceDetailDescription userExperience={item} />
-			{/* <div className="w-full my-5">
+					{/* <div className="w-full my-5">
 				<AllCommentTabs
-					endPointUrlGetAllComments={
-						webEndpointUrls.getAllPostComments
-					}
-					endPointUrlGetAllAdminComments={
-						webEndpointUrls.getAllPostAdminComments
+				endPointUrlGetAllComments={
+					webEndpointUrls.getAllPostComments
+				}
+				endPointUrlGetAllAdminComments={
+					webEndpointUrls.getAllPostAdminComments
 					}
 					endPointUrlGetAllMyComments={
 						webEndpointUrls.getAllMyComments
 					}
 					commentCreateUrl={webEndpointUrls.postCommentCreate}
 					parentId={userExperience?._id}
+					/>
+				</div> */}
+				</div>
+			</main>
+			<div className="max-w-5xl mx-auto">
+				<Footer
+					{...defaultTexts}
+					footer_image={defaultImages?.footer_image}
+					socialMedias={socialMedias}
 				/>
-			</div> */}
-		</main>
+			</div>
+		</>
 	);
 };
 

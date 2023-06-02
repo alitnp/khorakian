@@ -1,7 +1,9 @@
 import {
 	ApiDataResponse,
+	IImage,
 	IPostCommentRead,
 	IPostRead,
+	ISocialMediaRead,
 } from "@my/types";
 import { FC, memo, useState } from "react";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
@@ -16,6 +18,12 @@ import WebApiService, {
 	errorResponse,
 } from "@/global/utils/WebApiService";
 import { webApiCatch } from "@/global/utils/webApiThen";
+import Footer from "@/components/global/Footer/Footer";
+import {
+	getAllSocialMedias,
+	getHomeDefaultImages,
+	getHomeDefaultTexts,
+} from "@/components/home/homeFunctions";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -27,9 +35,16 @@ export const getServerSideProps: GetServerSideProps =
 			),
 			context.req
 		);
+		const socialMedias = await getAllSocialMedias();
+		const defaultTextsObject = await getHomeDefaultTexts();
+		const defaultImagesObject = await getHomeDefaultImages();
+
 		return {
 			props: {
 				post: post.data,
+				socialMedias,
+				defaultImages: defaultImagesObject,
+				defaultTexts: defaultTextsObject,
 			},
 		};
 	};
@@ -37,7 +52,15 @@ export const getServerSideProps: GetServerSideProps =
 const PostDetail: FC<{
 	post: IPostRead;
 	adminComments: IPostCommentRead[];
-}> = ({ post }) => {
+	socialMedias: ISocialMediaRead[];
+	defaultTexts: Record<string, string>;
+	defaultImages: Record<string, IImage>;
+}> = ({
+	post,
+	defaultImages,
+	defaultTexts,
+	socialMedias,
+}) => {
 	const [, setFakeNumber] = useState<number>(1);
 	const handleLike = async () => {
 		await WebApiService.post(
@@ -51,48 +74,57 @@ const PostDetail: FC<{
 			.catch(() => webApiCatch(errorResponse));
 	};
 	return (
-		<main>
-			<ContentDetailSlider images={post?.images || []} />
-			<div className="max-w-screen-lg mx-auto mb-4 ">
-				<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
-					<span>
-						مطلب
-						{"  >  "}
-						{post?.postCategory?.title}
-						{"  >  "}
-						{post.title}
-					</span>
-					<span>{dateObjectFormatter(post?.creationDate)}</span>
+		<>
+			<main>
+				<ContentDetailSlider images={post?.images || []} />
+				<div className="max-w-screen-lg mx-auto mb-4 k-container">
+					<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
+						<span>
+							مطلب
+							{"  >  "}
+							{post?.postCategory?.title}
+							{"  >  "}
+							{post.title}
+						</span>
+						<span>{dateObjectFormatter(post?.creationDate)}</span>
+					</div>
+					<div className="flex justify-end">
+						<CardLikeCommentCount
+							viewCount={post.viewCount || 0}
+							likeCount={post.likeCount || 0}
+							commentCount={post.commentCount || 0}
+							isLiked={post.liked}
+							withText
+							handleLike={handleLike}
+						/>
+					</div>
+					<PostDetailDescription post={post} />
+					<div className="w-full my-5">
+						<AllCommentTabs
+							endPointUrlGetAllComments={
+								webEndpointUrls.getAllPostComments
+							}
+							endPointUrlGetAllAdminComments={
+								webEndpointUrls.getAllPostAdminComments
+							}
+							endPointUrlGetAllMyComments={
+								webEndpointUrls.getAllMyComments
+							}
+							commentCreateUrl={webEndpointUrls.postCommentCreate}
+							parentId={post?._id}
+							commentReplyUrl={webEndpointUrls.postCommnetReply}
+						/>
+					</div>
 				</div>
-				<div className="flex justify-end">
-					<CardLikeCommentCount
-						viewCount={post.viewCount || 0}
-						likeCount={post.likeCount || 0}
-						commentCount={post.commentCount || 0}
-						isLiked={post.liked}
-						withText
-						handleLike={handleLike}
-					/>
-				</div>
-			</div>
-			<PostDetailDescription post={post} />
-			<div className="w-full my-5">
-				<AllCommentTabs
-					endPointUrlGetAllComments={
-						webEndpointUrls.getAllPostComments
-					}
-					endPointUrlGetAllAdminComments={
-						webEndpointUrls.getAllPostAdminComments
-					}
-					endPointUrlGetAllMyComments={
-						webEndpointUrls.getAllMyComments
-					}
-					commentCreateUrl={webEndpointUrls.postCommentCreate}
-					parentId={post?._id}
-					commentReplyUrl={webEndpointUrls.postCommnetReply}
+			</main>
+			<div className="max-w-5xl mx-auto">
+				<Footer
+					{...defaultTexts}
+					footer_image={defaultImages?.footer_image}
+					socialMedias={socialMedias}
 				/>
 			</div>
-		</main>
+		</>
 	);
 };
 

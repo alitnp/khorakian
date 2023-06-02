@@ -41,9 +41,10 @@ const Footer: FC<IFooter> = ({
 						<a href={sm.url} target="_blank" rel="noreferrer">
 							<Image
 								src={webConfig.domain + sm.image.thumbnailPathname}
-								width={sm.image.thumbnailWidth}
-								height={sm.image.thumbnailHeight}
+								width={32}
+								height={32}
 								alt={sm.image.title}
+								className="w-8 h-8"
 							/>
 						</a>
 					</Tooltip>
@@ -53,7 +54,7 @@ const Footer: FC<IFooter> = ({
 	);
 
 	return (
-		<footer className="mb-6 mt-24 k-container">
+		<footer className="mt-24 mb-6 k-container">
 			<div className="w-full px-8 py-4 border shadow-lg rounded-xl">
 				<div className="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
 					<div className="flex items-center gap-x-2">
@@ -72,19 +73,19 @@ const Footer: FC<IFooter> = ({
 							<span className="block text-base font-medium">
 								{footer_title}
 							</span>
-							<span className="block text-sm text-k-grey-text-color max-w-[30ch]">
+							<span className="block text-k-grey-text-color max-w-[30ch] text-xs">
 								{footer_subTitle}
 							</span>
 						</div>
 					</div>
 					<div>
-						<span className="block mb-2">دسترسی سریع</span>
+						<span className="block mb-2 text-sm font-medium">دسترسی سریع</span>
 						<nav>
 							<ul className="flex flex-wrap gap-x-4 gap-y-2 text-k-grey-text-color">
 								{quickAccessRoutes.map((item) => (
 									<li
 										key={item.title}
-										className="cursor-pointer whitespace-nowrap hover:text-k-primary-color"
+										className="text-sm cursor-pointer whitespace-nowrap hover:text-k-primary-color"
 									>
 										{item.title}
 									</li>
@@ -92,16 +93,20 @@ const Footer: FC<IFooter> = ({
 							</ul>
 						</nav>
 					</div>
-					<div className="lg:min-w-[200px]">
-						<span className="block mb-2">صفحه های دیگر</span>
-						<div className="flex gap-x-4">{renderMedias}</div>
+					<div className=" w-fit">
+						<span className="block mb-2 text-sm font-medium">
+							صفحه های دیگر
+						</span>
+						<div className="flex gap-x-4 w-fit">
+							{renderMedias}
+						</div>
 					</div>
 				</div>
-				<div className="mt-4">
-					<span className="block text-xs">
+				<div className="mt-6">
+					<span className="block text-[10px]">
 						{footer_additionalInfo_1}
 					</span>
-					<span className="block text-xs">
+					<span className="block text-[10px]">
 						{footer_additionalInfo_2}
 					</span>
 				</div>

@@ -1,6 +1,8 @@
 import {
 	ApiDataResponse,
 	IExperienceRead,
+	IImage,
+	ISocialMediaRead,
 } from "@my/types";
 import { FC, memo, useState } from "react";
 import ContentDetailSlider from "@/components/global/Slider/ContentDetailSlider";
@@ -16,6 +18,12 @@ import WebApiService, {
 	errorResponse,
 } from "@/global/utils/WebApiService";
 import { webApiCatch } from "@/global/utils/webApiThen";
+import Footer from "@/components/global/Footer/Footer";
+import {
+	getAllSocialMedias,
+	getHomeDefaultImages,
+	getHomeDefaultTexts,
+} from "@/components/home/homeFunctions";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -27,6 +35,9 @@ export const getServerSideProps: GetServerSideProps =
 			),
 			context.req
 		);
+		const socialMedias = await getAllSocialMedias();
+		const defaultTextsObject = await getHomeDefaultTexts();
+		const defaultImagesObject = await getHomeDefaultImages();
 		// const comments = await serverSideFetch<
 		// 	ApiListDataResponse<IPostCommentRead>
 		// >(
@@ -39,6 +50,9 @@ export const getServerSideProps: GetServerSideProps =
 		return {
 			props: {
 				experience: experience.data,
+				socialMedias,
+				defaultImages: defaultImagesObject,
+				defaultTexts: defaultTextsObject,
 				// comments: comments
 			},
 		};
@@ -46,7 +60,15 @@ export const getServerSideProps: GetServerSideProps =
 
 const ExperienceDetail: FC<{
 	experience: IExperienceRead;
-}> = ({ experience }) => {
+	socialMedias: ISocialMediaRead[];
+	defaultTexts: Record<string, string>;
+	defaultImages: Record<string, IImage>;
+}> = ({
+	experience,
+	defaultImages,
+	defaultTexts,
+	socialMedias,
+}) => {
 	const [, setFakeNumber] = useState<number>(1);
 	const handleLike = async () => {
 		await WebApiService.post(
@@ -61,63 +83,74 @@ const ExperienceDetail: FC<{
 	};
 
 	return (
-		<main>
-			<ContentDetailSlider images={experience?.images || []} />
-			<div className="max-w-2xl mx-auto">
-				<div className="mb-4">
-					<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
-						<span>
-							تجربیات
-							{"  >  "}
-							{experience?.experienceCategory?.title}
-							{"  >  "}
-							{experience.title}
-						</span>
-						<span>
-							{dateObjectFormatter(experience?.creationDate)}
-						</span>
-					</div>
-					<div className="flex justify-end">
-						<CardLikeCommentCount
-							viewCount={experience.viewCount || 0}
-							likeCount={experience.likeCount || 0}
-							commentCount={experience.commentCount || 0}
-							isLiked={experience.liked}
-							withText
-							handleLike={handleLike}
-						/>
-					</div>
-				</div>
-				<RichTextRenderer
-					data={parseStringArticle(experience?.article)}
+		<>
+			<main>
+				<ContentDetailSlider
+					images={experience?.images || []}
 				/>
-				{/* <PostDetailDescription />
+				<div className="max-w-2xl mx-auto k-container">
+					<div className="mb-4">
+						<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
+							<span>
+								تجربیات
+								{"  >  "}
+								{experience?.experienceCategory?.title}
+								{"  >  "}
+								{experience.title}
+							</span>
+							<span>
+								{dateObjectFormatter(experience?.creationDate)}
+							</span>
+						</div>
+						<div className="flex justify-end">
+							<CardLikeCommentCount
+								viewCount={experience.viewCount || 0}
+								likeCount={experience.likeCount || 0}
+								commentCount={experience.commentCount || 0}
+								isLiked={experience.liked}
+								withText
+								handleLike={handleLike}
+							/>
+						</div>
+					</div>
+					<RichTextRenderer
+						data={parseStringArticle(experience?.article)}
+					/>
+					{/* <PostDetailDescription />
 				<div className="w-full my-5">
 					<AllCommentTabs />
 				</div> */}
-			</div>
-			{/* comments part  */}
-			<div className="w-full max-w-2xl mx-auto mb-4">
-				<AllCommentTabs
-					endPointUrlGetAllComments={
-						webEndpointUrls.experienceCommentsGetAll
-					}
-					endPointUrlGetAllAdminComments={
-						webEndpointUrls.experienceAdminCommentsGetAll
-					}
-					endPointUrlGetAllMyComments={
-						webEndpointUrls.experienceMyCommentsGetAll
-					}
-					commentCreateUrl={
-						webEndpointUrls.experienceCommentCreate
-					}
-					commentReplyUrl={
-						webEndpointUrls.experienceCommnetReply
-					}
-					parentId={experience?._id}
+				</div>
+				{/* comments part  */}
+				<div className="w-full max-w-2xl mx-auto mb-4">
+					<AllCommentTabs
+						endPointUrlGetAllComments={
+							webEndpointUrls.experienceCommentsGetAll
+						}
+						endPointUrlGetAllAdminComments={
+							webEndpointUrls.experienceAdminCommentsGetAll
+						}
+						endPointUrlGetAllMyComments={
+							webEndpointUrls.experienceMyCommentsGetAll
+						}
+						commentCreateUrl={
+							webEndpointUrls.experienceCommentCreate
+						}
+						commentReplyUrl={
+							webEndpointUrls.experienceCommnetReply
+						}
+						parentId={experience?._id}
+					/>
+				</div>
+			</main>
+			<div className="max-w-5xl mx-auto">
+				<Footer
+					{...defaultTexts}
+					footer_image={defaultImages?.footer_image}
+					socialMedias={socialMedias}
 				/>
 			</div>
-		</main>
+		</>
 	);
 };
 

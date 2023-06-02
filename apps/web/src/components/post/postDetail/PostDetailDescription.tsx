@@ -8,7 +8,9 @@ interface IProps {
 
 const PostDetailDescription: FC<IProps> = ({ post }) => (
 	<div className="max-w-screen-lg mx-auto my-10 ">
-		<h1 className="text-3xl font-bold">{post?.title}</h1>
+		<h1 className="text-2xl font-bold sm:text-3xl">
+			{post?.title}
+		</h1>
 		<span className="text-xs text-t-secondary-color ">
 			{dateObjectFormatter(post?.creationDate, "DD MMMM YYYY")}
 		</span>
