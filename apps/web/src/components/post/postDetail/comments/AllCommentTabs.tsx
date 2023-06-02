@@ -4,6 +4,8 @@ import AllComments from '@/components/post/postDetail/comments/AllComments';
 import { ApiDataResponse, IGlobalCommentRead } from '@my/types';
 import WebApiService, { errorResponse } from '@/global/utils/WebApiService';
 import { webApiCatch, webApiThen } from '@/global/utils/webApiThen';
+import { RootState } from '@/redux/store';
+import { useSelector } from 'react-redux';
 
 interface IProps {
   endPointUrlGetAllComments: string;
@@ -30,6 +32,7 @@ const AllCommentTabs: FC<IProps> = ({
   const [comments, setComments] = useState<IGlobalCommentRead[]>();
   const [adminComments, setAdminComments] = useState<IGlobalCommentRead[]>();
   const [myComments, setMyComments] = useState<IGlobalCommentRead[]>();
+  const { user } = useSelector((state: RootState) => state.user);
 
   //effect
   useEffect(() => {
@@ -140,6 +143,23 @@ const AllCommentTabs: FC<IProps> = ({
     getComments();
   };
 
+  // const myComment = () => {
+  //   return <>
+  //     {
+  //         label: 'نظرات من',
+  //         key: 'MYCOMMENT',
+  //         children: (
+  //           <AllComments
+  //             comments={myComments}
+  //             parentId={parentId}
+  //             refetch={refetch}
+  //             commentCreateUrl={commentCreateUrl}
+  //           />
+  //         ),
+  //       }
+  //   </>
+  //   }
+
   return (
     <Tabs
       onChange={onChange}
@@ -158,18 +178,7 @@ const AllCommentTabs: FC<IProps> = ({
             />
           ),
         },
-        {
-          label: 'نظرات من',
-          key: 'MYCOMMENT',
-          children: (
-            <AllComments
-              comments={myComments}
-              parentId={parentId}
-              refetch={refetch}
-              commentCreateUrl={commentCreateUrl}
-            />
-          ),
-        },
+
         ...adminCommentTabs,
       ]}
     />
