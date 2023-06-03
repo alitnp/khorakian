@@ -37,7 +37,7 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 	handleLike,
 }) => {
 	return (
-		<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 group h-[200px] relative  max-w-[300px] sm:max-w-sm">
+		<article className="items-stretch overflow-hidden shadow-md bg-k-bg-color rounded-xl  w-fit shrink-0 group/card h-[200px] relative  max-w-[300px] sm:max-w-sm">
 			<Link href={detailPath}>
 				<div className="absolute bottom-0 left-0 z-20 w-full h-4/5 "></div>
 			</Link>
@@ -48,7 +48,7 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 						width={width}
 						height={height}
 						alt={imageAlt}
-						className="object-cover  w-fit transition-transform h-[200px] duration-500 max-w-[300px] sm:max-w-sm ease-out group-hover:scale-110"
+						className="object-cover  w-fit transition-transform h-[200px] duration-500 max-w-[300px] sm:max-w-sm ease-out group-hover/card:scale-110"
 					/>
 				)}
 				<div className="absolute top-0 left-0 w-full h-full bg-k-faded-dark-bg-color">

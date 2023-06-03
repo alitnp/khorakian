@@ -7,9 +7,10 @@ import {
 } from "@my/types";
 import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
 import {
 	dateObjectFormatter,
+	getContentLikeEndpoint,
 	getThumbnailFromContent,
 } from "@/global/utils/helperFunctions";
 import webRoutes from "@/global/constants/webRoutes";
@@ -29,6 +30,10 @@ import {
 } from "@/components/experience/experienceFunctions";
 import AllItemsPageFloatingBox from "@/components/global/AllItemsPageFloatingBox/AllItemsPageFloatingBox";
 import MyMasonry from "@/components/global/Masonry/MyMasonry";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
+import { webApiCatch } from "@/global/utils/webApiThen";
 
 interface IAllExperiencePage {
 	categories: IExperienceCategory[];
@@ -77,6 +82,9 @@ const AllExperiencePage: FC<IAllExperiencePage> = ({
 	defaultImages,
 	defaultTexts,
 }) => {
+	//states
+	const [, setFakeNumber] = useState<number>(1);
+
 	//hooks
 	const { push } = useRouter();
 
@@ -92,6 +100,20 @@ const AllExperiencePage: FC<IAllExperiencePage> = ({
 		[query]
 	);
 
+	const handleContentLike = async (
+		_id: string,
+		index: number
+	) => {
+		await WebApiService.post(
+			getContentLikeEndpoint("experience", _id)
+		)
+			.then((res: any) => {
+				items.data[index] = res.data;
+				setFakeNumber((prevState) => ++prevState);
+			})
+			.catch(() => webApiCatch(errorResponse));
+	};
+
 	return (
 		<>
 			<main>
@@ -102,7 +124,7 @@ const AllExperiencePage: FC<IAllExperiencePage> = ({
 				/>
 				<div className="min-h-[70vh] pt-12 k-container">
 					<MyMasonry>
-						{items.data.map((item) => {
+						{items.data.map((item, index) => {
 							const image = getThumbnailFromContent(item);
 							return (
 								<FreeHeightCard
@@ -124,6 +146,9 @@ const AllExperiencePage: FC<IAllExperiencePage> = ({
 									isVideo={image.isVideo}
 									detailPath={
 										webRoutes.experienceDetail.path + "/" + item._id
+									}
+									handleLike={() =>
+										handleContentLike(item._id, index)
 									}
 								/>
 							);

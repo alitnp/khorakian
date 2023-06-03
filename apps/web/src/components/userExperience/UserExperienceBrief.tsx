@@ -56,7 +56,7 @@ const UserExperienceBrief: FC<IExperienceBrief> = ({
 				</Link>
 			</div>
 			<p>
-				{experience.text}
+				{experience.text}{" "}
 				<Link
 					href={
 						webRoutes.userExperienceDetail.path +

@@ -29,11 +29,12 @@ const ExperienceTips: FC<IExperience> = ({
 	experience_tip_4_title,
 	experience_tip_4_text,
 }) => {
+	
 	return (
 		<>
 			<div className="relative w-full">
 				<div className="absolute top-0 left-0 w-full h-full -z-10 bg-k-text-color">
-					{experience_tips_image && (
+					{experience_tips_image?.pathname && (
 						<Image
 							fill
 							alt={experience_tips_image.title}

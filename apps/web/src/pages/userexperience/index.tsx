@@ -132,7 +132,7 @@ const Experience = ({ experience }: props) => {
 
 	return (
 		<main>
-			<div className="relative h-[30rem] flex items-center justify-center w-full ">
+			<div className="relative h-[20rem] flex items-center justify-center w-full ">
 				<div className="relative flex flex-col items-center content-center ">
 					<div
 						className="mx-auto mt-5 text-center"
@@ -146,26 +146,29 @@ const Experience = ({ experience }: props) => {
 			</div>
 
 			<div className="flex flex-col max-w-5xl gap-4 mx-auto mt-6 md:flex-row k-container">
-				<div className="flex flex-col justify-between w-full p-4 border rounded-lg">
-					<h5 className="font-medium">تجربیات امیر خوراکیان</h5>
-					<span className="text-sm text-k-grey-text-color">
-						تا کنون {experience.totalItems} تجربه توسط امیر
-						خوراکیان سامانه ثبت شده و مورد بحث و گفتگو قرار گرفته.
-					</span>
-					<Link
-						href={webRoutes.experienceAllContent.path}
-						className="mt-2 text-sm text-k-primary-color"
-					>
-						نمایش همه تجربیات امیر خوراکیان
-					</Link>
-				</div>
+				<Link
+					href={webRoutes.experienceAllContent.path}
+					className="w-full group"
+				>
+					<div className="flex flex-col justify-between w-full p-4 transition-all duration-300 border rounded-lg bg-k-bg-color group-hover:bg-k-grey-bg-1-color">
+						<h5 className="font-medium">تجربیات امیر خوراکیان</h5>
+						<span className="text-sm text-k-grey-text-color">
+							تا کنون {experience.totalItems} تجربه توسط امیر
+							خوراکیان سامانه ثبت شده و مورد بحث و گفتگو قرار
+							گرفته.
+						</span>
+						<div className="mt-2 mr-auto text-xs text-k-primary-color">
+							نمایش همه تجربیات امیر خوراکیان
+						</div>
+					</div>
+				</Link>
 			</div>
 			<div className="max-w-5xl mx-auto k-container">
-				<div className="flex justify-between pb-6 mt-10 border-b border-k-border-2-color">
+				<div className="flex items-center justify-between pb-3 mt-10 border-b border-k-border-2-color">
 					<h1 className="text-base font-medium">
 						آخرین تجربیات ثبت شده توسط کاربران
 					</h1>
-					<div className="flex justify-end mt-4">
+					<div className="flex justify-end">
 						<div className="">
 							<label
 								htmlFor="idea-category-select"

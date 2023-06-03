@@ -14,21 +14,20 @@ import { BiArrowBack } from "react-icons/bi";
 
 interface IExperienceBrief {
 	experience: IExperienceWithComments;
+	handleLike: () => void;
 }
 
 const ExperienceBrief: FC<IExperienceBrief> = ({
 	experience,
+	handleLike,
 }) => {
-	const image = useMemo(
-		() => getThumbnailFromContent(experience),
-		[]
-	);
+	const image = getThumbnailFromContent(experience);
 
 	return (
 		<article className="py-10 border-b border-k-border-2-color">
 			<div className="flex items-start justify-between gap-x-4">
 				<div className="flex flex-col gap-4 mb-5 sm:flex-row">
-					{image && (
+					{image && webConfig.domain && (
 						<Link
 							href={
 								webRoutes.experienceDetail.path +
@@ -68,6 +67,9 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 							commentCount={experience.commentCount}
 							likeCount={experience.likeCount}
 							viewCount={experience.viewCount}
+							isLiked={experience.liked}
+							isCommented={false}
+							handleLike={handleLike}
 						/>
 					</div>
 				</div>
@@ -82,7 +84,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 				</Link>
 			</div>
 			<p>
-				{experience.text}
+				{experience.text}{" "}
 				<Link
 					href={
 						webRoutes.experienceDetail.path + "/" + experience._id
@@ -103,20 +105,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 								key={comment._id}
 								className="flex items-center gap-2 px-4 py-2 rounded-lg bg-k-grey-bg-1-color"
 							>
-								{comment?.user?.image && webConfig.domain ? (
-									<Image
-										src={
-											webConfig.domain +
-											comment.user.image.thumbnailPathname
-										}
-										alt={comment.user.image.title}
-										width={comment.user.image.thumbnailWidth}
-										height={comment.user.image.thumbnailHeight}
-										className="w-16 h-64 rounded-full"
-									/>
-								) : (
-									<VscAccount />
-								)}
+								<VscAccount />
 								{comment.user?.fullName}
 							</div>
 						))}

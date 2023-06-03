@@ -1,11 +1,9 @@
-import { IImage } from "@my/types";
 import { FC } from "react";
 
 interface IMainTitle {
 	experience_header_title?: string;
 	experience_header_subTitle?: string;
 	experience_header_button_text?: string;
-	experience_tips_image?: IImage;
 }
 
 const MainTitle: FC<IMainTitle> = ({

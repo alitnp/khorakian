@@ -20,6 +20,7 @@ interface IFreeHeightCard {
 	viewCount: number;
 	isLiked: boolean;
 	isCommented: boolean;
+	handleLike?: () => void;
 }
 
 const FreeHeightCard: FC<IFreeHeightCard> = ({
@@ -37,6 +38,7 @@ const FreeHeightCard: FC<IFreeHeightCard> = ({
 	detailPath,
 	isLiked,
 	isCommented,
+	handleLike,
 }) => {
 	return (
 		<article className="items-stretch w-full mb-6 overflow-hidden border shadow-md bg-k-bg-color rounded-xl shrink-0 ">
@@ -77,6 +79,7 @@ const FreeHeightCard: FC<IFreeHeightCard> = ({
 						commentCount={commentCount || 0}
 						isLiked={isLiked}
 						isCommented={isCommented}
+						handleLike={handleLike}
 					/>
 				</div>
 			</div>

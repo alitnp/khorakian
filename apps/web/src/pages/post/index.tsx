@@ -11,9 +11,10 @@ import {
 } from "@my/types";
 import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
 import {
 	dateObjectFormatter,
+	getContentLikeEndpoint,
 	getThumbnailFromContent,
 } from "@/global/utils/helperFunctions";
 import webRoutes from "@/global/constants/webRoutes";
@@ -29,6 +30,10 @@ import { useRouter } from "next/router";
 import queryString from "querystring";
 import AllItemsPageFloatingBox from "@/components/global/AllItemsPageFloatingBox/AllItemsPageFloatingBox";
 import MyMasonry from "@/components/global/Masonry/MyMasonry";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
+import { webApiCatch } from "@/global/utils/webApiThen";
 
 interface IPostsPage {
 	postCategories: IPostCategory[];
@@ -77,6 +82,9 @@ const PostsPage: FC<IPostsPage> = ({
 	defaultImages,
 	defaultTexts,
 }) => {
+	//states
+	const [, setFakeNumber] = useState<number>(1);
+
 	//hooks
 	const { push } = useRouter();
 
@@ -92,6 +100,20 @@ const PostsPage: FC<IPostsPage> = ({
 		[query]
 	);
 
+	const handleContentLike = async (
+		_id: string,
+		index: number
+	) => {
+		await WebApiService.post(
+			getContentLikeEndpoint("post", _id)
+		)
+			.then((res: any) => {
+				posts.data[index] = res.data;
+				setFakeNumber((prevState) => ++prevState);
+			})
+			.catch(() => webApiCatch(errorResponse));
+	};
+
 	return (
 		<>
 			<main>
@@ -102,7 +124,7 @@ const PostsPage: FC<IPostsPage> = ({
 				/>
 				<div className="min-h-[70vh] pt-12 k-container">
 					<MyMasonry>
-						{posts.data.map((post) => {
+						{posts.data.map((post, index) => {
 							const image = getThumbnailFromContent(post);
 							return (
 								<FreeHeightCard
@@ -124,6 +146,9 @@ const PostsPage: FC<IPostsPage> = ({
 									isVideo={image.isVideo}
 									detailPath={
 										webRoutes.postDetail.path + "/" + post._id
+									}
+									handleLike={() =>
+										handleContentLike(post._id, index)
 									}
 								/>
 							);
