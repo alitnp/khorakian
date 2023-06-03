@@ -7,7 +7,7 @@ import React, {
 import { Tabs } from "antd";
 import AllComments from "@/components/post/postDetail/comments/AllComments";
 import {
-	ApiDataResponse,
+	ApiDataListResponse,
 	IGlobalCommentRead,
 } from "@my/types";
 import WebApiService, {
@@ -15,13 +15,11 @@ import WebApiService, {
 } from "@/global/utils/WebApiService";
 import {
 	webApiCatch,
-	webApiThen,
+	webApiThenGeneric,
 } from "@/global/utils/webApiThen";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import FirstCommentBox from "@/components/post/postDetail/comments/FirstCommentBox";
-
-const { TabPane } = Tabs;
 
 interface IProps {
 	endPointUrlGetAllComments: string;
@@ -59,71 +57,51 @@ const AllCommentTabs: FC<IProps> = ({
 
 	//effect
 	useEffect(() => {
-		!comments && getComments();
-		!adminComments && getAllAdminComments();
-		!myComments && getAllMyComments();
-	}, []);
-
-	//func
-	const getComments = async () => {
-		setLoading(true);
-		await WebApiService.get(
-			endPointUrlGetAllComments +
-				"?pageSize=100&content=" +
-				parentId
-		)
-			.then((res: ApiDataResponse<IGlobalCommentRead>) =>
-				webApiThen({
-					res,
-					notifFail: false,
-					notifSuccess: false,
-					onSuccess: (res) => {
-						setComments(res.data);
-						// route && push(webRoutes.route.path), refetch && refetch, close;
-					},
-				})
-			)
-			.catch(() => webApiCatch(errorResponse));
-		setLoading(false);
-	};
-	const getAllAdminComments = async () => {
-		setLoading(true);
-		await WebApiService.get(
+		getComments(
 			endPointUrlGetAllAdminComments +
 				"?pageSize=50&content=" +
-				parentId
-		)
-			.then((res: ApiDataResponse<IGlobalCommentRead>) =>
-				webApiThen({
-					res,
-					notifFail: false,
-					notifSuccess: false,
-					onSuccess: (res) => {
-						setAdminComments(res.data);
-					},
-				})
-			)
-			.catch(() => webApiCatch(errorResponse));
-		setLoading(false);
-	};
-	const getAllMyComments = async () => {
+				parentId,
+			setAdminComments
+		);
+		getComments(
+			endPointUrlGetAllComments +
+				"?pageSize=100&content=" +
+				parentId,
+			setComments
+		);
+	}, []);
+	useEffect(() => {
+		user &&
+			getComments(
+				endPointUrlGetAllMyComments + "/" + parentId,
+				setMyComments
+			);
+	}, [user]);
+
+	//func
+	const getComments = async (
+		url: string,
+		callBack: React.Dispatch<
+			React.SetStateAction<IGlobalCommentRead[] | undefined>
+		>
+	) => {
 		setLoading(true);
-		await WebApiService.get(
-			endPointUrlGetAllMyComments + "/" + parentId
-		)
-			.then((res: ApiDataResponse<IGlobalCommentRead>) =>
-				webApiThen({
+		await WebApiService.get(url)
+			.then((res: ApiDataListResponse<IGlobalCommentRead>) =>
+				webApiThenGeneric<
+					ApiDataListResponse<IGlobalCommentRead>,
+					IGlobalCommentRead[]
+				>({
 					res,
 					notifFail: false,
 					notifSuccess: false,
-					onSuccess: (res) => {
-						setMyComments(res.data);
-					},
+					onSuccessData: callBack,
 				})
 			)
 			.catch(() => webApiCatch(errorResponse));
 		setLoading(false);
 	};
+
 	const onChange = (key: string) => {
 		console.log(key);
 	};
@@ -153,6 +131,26 @@ const AllCommentTabs: FC<IProps> = ({
 		return temptabComments;
 	}, [adminComments]);
 
+	const refetch = () => {
+		user &&
+			getComments(
+				endPointUrlGetAllMyComments + "/" + parentId,
+				setMyComments
+			);
+		getComments(
+			endPointUrlGetAllAdminComments +
+				"?pageSize=50&content=" +
+				parentId,
+			setAdminComments
+		);
+		getComments(
+			endPointUrlGetAllComments +
+				"?pageSize=100&content=" +
+				parentId,
+			setComments
+		);
+	};
+
 	const adminCommentTabs = useMemo(() => {
 		return tabComments.map((tabComment) => ({
 			label: tabComment.tabInfo.fullName,
@@ -169,12 +167,6 @@ const AllCommentTabs: FC<IProps> = ({
 		}));
 	}, [tabComments]);
 
-	const refetch = () => {
-		getAllAdminComments();
-		getAllMyComments();
-		getComments();
-	};
-
 	const commentsTabs = [
 		{
 			label: "همه",
@@ -189,84 +181,47 @@ const AllCommentTabs: FC<IProps> = ({
 				/>
 			),
 		},
-		{
-			label: "نظرات من",
-			key: "MYCOMMENT",
-			children: (
-				<AllComments
-					comments={myComments}
-					parentId={parentId}
-					refetch={refetch}
-					commentCreateUrl={commentCreateUrl}
-					commentReplyUrl={commentReplyUrl}
-				/>
-			),
-		},
-		{
-			label: "نظرات ادمین",
-			key: "ADMINCOMMENT",
-			children: (
-				<div>
-					<Tabs
-						onChange={onChange}
-						className="max-w-screen-lg m-auto "
-						type="card"
-					>
-						{adminCommentTabs?.map((tab) => (
-							<TabPane key={tab.key} tab={tab.label}>
-								{tab.children}
-							</TabPane>
-						))}
-					</Tabs>
-				</div>
-			),
-		},
+		...(user
+			? [
+					{
+						label: "نظرات من",
+						key: "MYCOMMENT",
+						children: (
+							<AllComments
+								comments={myComments}
+								parentId={parentId}
+								refetch={refetch}
+								commentCreateUrl={commentCreateUrl}
+								commentReplyUrl={commentReplyUrl}
+							/>
+						),
+					},
+			  ]
+			: []),
+		...adminCommentTabs,
 	];
+
+	if (
+		!comments?.length &&
+		!myComments?.length &&
+		!adminComments?.length
+	)
+		return (
+			<FirstCommentBox
+				refetch={refetch}
+				commentCreateUrl={commentCreateUrl}
+				parentId={parentId}
+			/>
+		);
+
 	return (
 		<>
-			{comments?.length ||
-			myComments?.length ||
-			adminComments?.length ? (
-				<>
-					<Tabs
-						onChange={onChange}
-						className="max-w-screen-lg m-auto "
-						type="card"
-					>
-						{comments?.length && (
-							<TabPane
-								key={commentsTabs[0].key}
-								tab={commentsTabs[0].label}
-							>
-								{commentsTabs[0].children}
-							</TabPane>
-						)}
-						{myComments?.length && user && (
-							<TabPane
-								key={commentsTabs[1].key}
-								tab={commentsTabs[1].label}
-							>
-								{commentsTabs[1].children}
-							</TabPane>
-						)}
-						{adminComments?.length && (
-							<TabPane
-								key={commentsTabs[2].key}
-								tab={commentsTabs[2].label}
-							>
-								{commentsTabs[2].children}
-							</TabPane>
-						)}
-					</Tabs>
-					{/* {adminComments?.length && commentsTabs[2]} */}
-				</>
-			) : (
-				<FirstCommentBox
-					refetch={refetch}
-					commentCreateUrl={commentCreateUrl}
-					parentId={parentId}
-				/>
-			)}
+			<Tabs
+				onChange={onChange}
+				className="max-w-screen-lg m-auto "
+				type="card"
+				items={commentsTabs}
+			/>
 		</>
 	);
 };

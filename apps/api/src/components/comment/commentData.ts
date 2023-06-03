@@ -1,10 +1,6 @@
 import { Model } from "mongoose";
 import { ApiDataListResponse, IUser } from "@my/types";
-import {
-  defaultSearchQueries,
-  getAllData,
-  paginationProps,
-} from "@/data/globalData";
+import { defaultSearchQueries, paginationProps } from "@/data/globalData";
 import { NotFoundError } from "@/helpers/error";
 
 class CommentData<commentModel> {
@@ -20,42 +16,56 @@ class CommentData<commentModel> {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.user) searchQuery.user = req.query.user;
     if (req.query.content) searchQuery.content = req.query.content;
-    const populate = ["replies.user"];
-    if (req.query.content) populate.push("user");
-    if (req.query.user) populate.push("content");
 
-    if (!req.query.content && !req.query.user)
-      populate.push(...["user", "content"]);
+    const {
+      fixedSearchQuery,
+      pageNumber,
+      pageSize,
+      totalItems,
+      totalPages,
+      sortBy,
+      desc,
+    } = await paginationProps(searchQuery, req, this.Comment);
 
-    return await getAllData<commentModel>(
-      searchQuery,
-      req,
-      this.Comment,
-      populate,
-    );
+    const data = await this.Comment.find(fixedSearchQuery)
+      .populate([
+        "user",
+        "replies.user",
+        { path: "user", populate: { path: "image", model: "Image" } },
+        { path: "replies.user", populate: { path: "image", model: "Image" } },
+      ])
+      .limit(pageSize)
+      .skip((pageNumber - 1) * pageSize)
+      .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 });
+
+    return {
+      data,
+      pageNumber,
+      pageSize,
+      totalItems,
+      totalPages,
+      sortBy,
+      desc: desc === -1 ? true : false,
+    };
   };
 
   get = async (id: string): Promise<commentModel> => {
     const comment = await this.Comment.findById(id).populate([
       "user",
+      "replies.user",
       "content",
+      { path: "user", populate: { path: "image", model: "Image" } },
+      { path: "replies.user", populate: { path: "image", model: "Image" } },
     ]);
     if (!comment) throw new NotFoundError("نظر یافت نشد.");
     return comment as commentModel;
   };
   getMyComments = async (
+    req: Req,
     userId: string,
-    contentId: string,
-  ): Promise<commentModel[]> => {
-    const searchQuery: Record<string, any> = {
-      user: userId,
-      content: contentId,
-    };
-
-    return await this.Comment.find(searchQuery).populate([
-      "replies.user",
-      "user",
-    ]);
+  ): Promise<ApiDataListResponse<commentModel>> => {
+    req.query.user = userId;
+    return this.getAll(req);
   };
 
   getAdminComments = async (
@@ -74,7 +84,12 @@ class CommentData<commentModel> {
           },
         },
       ],
-    }).populate(["user"]);
+    }).populate([
+      "user",
+      "replies.user",
+      { path: "user", populate: { path: "image", model: "Image" } },
+      { path: "replies.user", populate: { path: "image", model: "Image" } },
+    ]);
 
     return {
       data,
@@ -99,7 +114,13 @@ class CommentData<commentModel> {
           },
         },
       ],
-    }).populate(["user"]);
+    }).populate([
+      "user",
+      "replies.user",
+      "content",
+      { path: "user", populate: { path: "image", model: "Image" } },
+      { path: "replies.user", populate: { path: "image", model: "Image" } },
+    ]);
 
     return {
       data,

@@ -174,7 +174,7 @@ export const getFeaturedIdeas = async (
 ): Promise<IIdeaRead[]> => {
 	const items: ApiDataListResponse<IIdeaRead> =
 		await serverSideFetch(
-			webEndpointUrls.getAllIdeas +
+			webEndpointUrls.getApprovedIdeas +
 				"?pageSize=2&featured=true",
 			req
 		);

@@ -275,10 +275,10 @@ class PostData {
   };
 
   getMyComments = async (
+    req: Req,
     userId: string,
-    contentId: string,
-  ): Promise<IPostComment[]> => {
-    const comments = await this.PostComment.getMyComments(userId, contentId);
+  ): Promise<ApiDataListResponse<IPostComment>> => {
+    const comments = await this.PostComment.getMyComments(req, userId);
 
     return comments;
   };

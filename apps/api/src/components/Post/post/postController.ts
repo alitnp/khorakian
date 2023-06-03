@@ -20,14 +20,14 @@ class PostController {
   };
 
   getAdminComments = async (req: Req, res: Res) => {
-    const userId = getUserIdFromReq(req);
-    if (!userId) throw new UnauthenticatedError();
-    const result = await this.data.getMyComments(userId, req.params.id);
-    res.send(apiDataResponse<IPostComment[]>(result));
+    const result = await this.data.getAdminComments(req);
+    res.send(apiDataListResponse<IPostComment>(result));
   };
 
   getMyComments = async (req: Req, res: Res) => {
-    const result = await this.data.getAdminComments(req);
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new UnauthenticatedError();
+    const result = await this.data.getMyComments(req, userId);
     res.send(apiDataListResponse<IPostComment>(result));
   };
   getAllLikes = async (req: Req, res: Res) => {

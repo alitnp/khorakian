@@ -16,7 +16,7 @@ interface IHomeIdeaExpLink {
 	home_idea_text?: string;
 	home_idea_button?: string;
 	home_idea_image?: IImage;
-	featuredIdeas: IIdeaRead[];
+	featuredIdeas?: IIdeaRead[];
 }
 
 const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({

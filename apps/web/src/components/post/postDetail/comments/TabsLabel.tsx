@@ -22,14 +22,14 @@ const TabsLabel: FC<IProps> = ({ comments }) => (
               className="object-cover w-full aspect-video md:aspect-auto md:w-[355.55px] md:h-[200px] transition-transform duration-500 ease-out group-hover:scale-110"
             />
           ) : (
-            <div className="bg-teal-500 relative w-10 h-10 mx-1 rounded-full d-flex justify-center text-center items-center">
-              <span className="mx-auto m-2 absolute font-bold text-lg bottom-0 top-0 left-0 right-0 ">
+            <div className="relative flex items-center justify-center w-10 h-10 mx-1 text-center bg-teal-500 rounded-full">
+              <span className="absolute top-0 bottom-0 left-0 right-0 m-2 mx-auto text-lg font-bold ">
                 {item?.user?.fullName.charAt(0)}
               </span>
             </div>
           )}
           <div className="grid" key={item._id}>
-            <span className="font-bold text-base my-1">
+            <span className="my-1 text-base font-bold">
               {item?.user?.fullName}
             </span>
             <span className="!text-xs text-neutral-700">
