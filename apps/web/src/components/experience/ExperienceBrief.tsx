@@ -70,6 +70,11 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 							isLiked={experience.liked}
 							isCommented={false}
 							handleLike={handleLike}
+							detailPath={
+								webRoutes.experienceDetail.path +
+								"/" +
+								experience._id
+							}
 						/>
 					</div>
 				</div>

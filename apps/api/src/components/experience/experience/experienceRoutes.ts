@@ -50,6 +50,9 @@ router.get("/like", controller.getAllLikes);
 router.get("/comment", controller.getAllComments);
 router.get("/getAllWithComments", controller.getAllWithComments);
 router.get("/getAllWithAdminComments", controller.getAllWithAdminComments);
+//get all admin post comments
+router.get("/adminComments", controller.getAdminComments);
+router.get("/myComments/:content", auth, controller.getMyComments);
 // get a signgle Experience with id
 router.get("/:id", validate(getExperienceValidations), controller.get);
 // get a list of Experiences
@@ -68,9 +71,7 @@ router.post(
   [auth, ...validate(paramIdValidations)],
   controller.comment,
 );
-//get all admin post comments
-router.get("/adminComments", controller.getAdminComments);
-router.get("/myComments/:id", auth, controller.getMyComments);
+
 //like a post with Experience id and user id
 router.post(
   "/like/:id",

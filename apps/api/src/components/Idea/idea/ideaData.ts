@@ -187,7 +187,8 @@ class IdeaData {
     text,
     featured,
     user,
-  }: IIdea & { _id: string }): Promise<IIdeaRead> => {
+    isAdmin,
+  }: IIdea & { _id: string; isAdmin: boolean }): Promise<IIdeaRead> => {
     if (!user) throw new UnauthenticatedError();
     const existUser = await this.User.get(user);
     if (!existUser) throw new UnauthenticatedError();
@@ -196,7 +197,7 @@ class IdeaData {
     if (existIdea.user._id != user)
       throw new BadRequestError("شما دسترسی ویرایش این مورد را ندارید");
 
-    if (existIdea.isApprove)
+    if (existIdea.isApprove && !isAdmin)
       throw new BadRequestError("ایده های منتشر شده امکان ویرایش ندارند");
 
     if (!ideaCategory) throw new BadRequestError("دسته بندی ارسال نشده");
@@ -285,6 +286,23 @@ class IdeaData {
     req: Req,
   ): Promise<ApiDataListResponse<IIdeaComment>> => {
     const comments = await this.IdeaComment.getAll(req);
+
+    return comments;
+  };
+
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<IIdeaComment>> => {
+    const comments = await this.IdeaComment.getAdminComments(req);
+
+    return comments;
+  };
+
+  getMyComments = async (
+    req: Req,
+    userId: string,
+  ): Promise<ApiDataListResponse<IIdeaComment>> => {
+    const comments = await this.IdeaComment.getMyComments(req, userId);
 
     return comments;
   };

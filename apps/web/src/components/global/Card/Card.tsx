@@ -80,6 +80,7 @@ const Card: FC<ICard> = ({
 						isLiked={isLiked}
 						isCommented={isCommented}
 						handleLike={handleLike}
+						detailPath={detailPath}
 					/>
 				</div>
 			</div>

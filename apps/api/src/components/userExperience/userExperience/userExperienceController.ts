@@ -6,6 +6,7 @@ import {
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
 import UserExperienceData from "@/components/userExperience/userExperience/userExperienceData";
+import { UnauthenticatedError } from "@/helpers/error";
 
 class UserExperienceController {
   data: UserExperienceData;
@@ -31,7 +32,18 @@ class UserExperienceController {
     const result = await this.data.getAllComments(req);
     res.send(apiDataListResponse<IUserExperienceComment>(result));
   };
+  getAdminComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAdminComments(req);
+    res.send(apiDataListResponse<IUserExperienceComment>(result));
+  };
 
+  getMyComments = async (req: Req, res: Res) => {
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new UnauthenticatedError();
+    req.query.content = req.params.content;
+    const result = await this.data.getMyComments(req, userId);
+    res.send(apiDataListResponse<IUserExperienceComment>(result));
+  };
   getAllLikes = async (req: Req, res: Res) => {
     const result = await this.data.getAllLikes(req);
     res.send(apiDataListResponse<IUserExperienceLike>(result));

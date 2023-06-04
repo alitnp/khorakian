@@ -1,3 +1,4 @@
+
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
 import webConfig from "@/global/constants/webConfig";
 import Image from "next/image";
@@ -93,6 +94,7 @@ const WideCard: FC<IWideCard> = ({
 						isLiked={isLiked}
 						isCommented={isCommented}
 						handleLike={handleLike}
+						detailPath={detailPath}
 					/>
 				</div>
 			</div>

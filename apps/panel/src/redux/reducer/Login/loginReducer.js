@@ -4,7 +4,7 @@ import cookie from 'js-cookie';
 import { Redirect } from 'react-router-dom';
 import ProtectedRoute from '../../../Route/ProtectedRoute';
 
-const getToken = cookie.get('token');
+const getToken = cookie.get('34vf0fg_34fv_34sd');
 
 const initialStateValue = { userName: '', token: getToken, isLoggedIn: !!getToken, prevPath: '', expireIn: '' };
 export const loginSlice = createSlice({
@@ -15,7 +15,7 @@ export const loginSlice = createSlice({
       state.value = { ...state.value, isBranchUser: (cookie?.get('isBranchUser') && JSON.parse(cookie?.get('isBranchUser'))) || false, ...action.payload };
     },
     logout: (state) => {
-      cookie.remove('token');
+      cookie.remove('34vf0fg_34fv_34sd');
       cookie.remove('profile');
       cookie.remove('isBranchUser');
       const theme = localStorage.getItem('theme');

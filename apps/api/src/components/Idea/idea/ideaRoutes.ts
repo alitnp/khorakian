@@ -45,6 +45,9 @@ const controller = new IdeaController(data);
 router.get("/like", controller.getAllLikes);
 //get all idea comments
 router.get("/comment", controller.getAllComments);
+//get all admin post comments
+router.get("/adminComments", controller.getAdminComments);
+router.get("/myComments/:content", auth, controller.getMyComments);
 router.get("/getapproved", controller.getApproved);
 router.get("/getmy", auth, controller.getMy);
 router.get("/:id", validate(getIdeaValidations), controller.get);

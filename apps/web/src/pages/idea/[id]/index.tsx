@@ -125,19 +125,17 @@ const IdeaDetail: FC<{
 					<div className="w-full my-5">
 						<AllCommentTabs
 							endPointUrlGetAllComments={
-								webEndpointUrls.getAllPostComments
+								webEndpointUrls.ideaCommentsGetAll
 							}
 							endPointUrlGetAllAdminComments={
-								webEndpointUrls.getAllPostAdminComments
+								webEndpointUrls.ideaAdminCommentsGetAll
 							}
 							endPointUrlGetAllMyComments={
-								webEndpointUrls.getAllMyComments
+								webEndpointUrls.ideaMyCommentsGetAll
 							}
-							commentCreateUrl={webEndpointUrls.postCommentCreate}
+							commentCreateUrl={webEndpointUrls.ideaCommentCreate}
 							parentId={item?._id}
-							commentReplyUrl={
-								webEndpointUrls.experienceCommnetReply
-							}
+							commentReplyUrl={webEndpointUrls.ideaCommnetReply}
 						/>
 					</div>
 				</div>

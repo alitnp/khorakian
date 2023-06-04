@@ -16,7 +16,7 @@ interface IHomeIdeaExpLink {
 	home_idea_text?: string;
 	home_idea_button?: string;
 	home_idea_image?: IImage;
-	featuredIdeas?: IIdeaRead[];
+	// featuredIdeas?: IIdeaRead[];
 }
 
 const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
@@ -28,7 +28,7 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 	home_idea_text,
 	home_idea_button,
 	home_idea_image,
-	featuredIdeas,
+	// featuredIdeas,
 }) => {
 	return (
 		<div className="flex flex-col lg:flex-row">
@@ -102,16 +102,15 @@ const HomeIdeaExpLink: FC<IHomeIdeaExpLink> = ({
 							<BiArrowBack />
 						</MyButton>
 					</Link>
-					<div className="flex flex-col items-center gap-4 p-4 mt-6 rounded-lg sm:flex-row bg-k-bg-color text-k-text-color">
+					{/* <div className="flex flex-col items-center gap-4 p-4 mt-6 rounded-lg sm:flex-row bg-k-bg-color text-k-text-color">
 						{featuredIdeas?.map((idea) => (
 							<div key={idea._id} className="inline-flex gap-6 ">
 								<p className="w-[20ch] line-clamp-3 text-xs font-medium">
 									{idea.title}
 								</p>
-								{/* <div className="rounded-full w-14 h-14 bg-slate-800"></div> */}
 							</div>
 						))}
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>

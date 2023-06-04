@@ -43,7 +43,7 @@ const LoginForm: FC = () => {
                   message: 'حساب شما دسترسی به این سامانه ندارد.',
                 })
               );
-            cookie.set('token', 'Bearer ' + res.data.token);
+            cookie.set('34vf0fg_34fv_34sd', 'Bearer ' + res.data.token);
             dispatch(login({ isLoggedIn: true }));
           },
           notifFail: true,

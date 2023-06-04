@@ -1,14 +1,11 @@
 import DashboardPageTitle from "@/components/dashboard/DashboardPageTitle";
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
-import webRoutes from "@/global/constants/webRoutes";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
-import { serverSideFetch } from "@/global/utils/webFetch";
 import {
 	ApiDataResponse,
 	INotificationRead,
-	IUserRead,
 } from "@my/types";
-import { GetServerSideProps } from "next";
+
 import {
 	FC,
 	Fragment,
@@ -27,23 +24,7 @@ import NotificatoinIcon from "@/components/dashboard/dashboard/NotificatoinIcon"
 import Link from "next/link";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
 
-export const getServerSideProps: GetServerSideProps =
-	async (context) => {
-		const user = await serverSideFetch<
-			ApiDataResponse<IUserRead>
-		>(webEndpointUrls.userWhoAmI, context.req);
 
-		if (!user?.data)
-			return {
-				redirect: {
-					destination: webRoutes.login.path,
-					permanent: false,
-				},
-			};
-		return {
-			props: {},
-		};
-	};
 
 const Dashboard: FC = () => {
 	//states

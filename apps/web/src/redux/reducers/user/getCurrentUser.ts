@@ -8,10 +8,18 @@ import { AppDispatch } from "@/redux/store";
 
 export const getCurrentUser =
 	() => async (dispatch: AppDispatch) => {
-		await WebApiService.get(webEndpointUrls.userWhoAmI)
+		return await WebApiService.get(webEndpointUrls.userWhoAmI)
 			.then((res: any) => {
-				if (res.isSuccess) dispatch(setUser(res.data));
-				else dispatch(logout());
+				if (res.isSuccess) {
+					dispatch(setUser(res.data));
+					return res.data;
+				} else {
+					dispatch(logout());
+					return undefined;
+				}
 			})
-			.catch(() => dispatch(logout()));
+			.catch(() => {
+				dispatch(logout());
+				return undefined;
+			});
 	};

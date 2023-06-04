@@ -3,6 +3,9 @@ import DashboardUserIdea from "@/components/dashboard/dashboardIdea/DashboardUse
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
 import { FC, useCallback, useState } from "react";
 
+
+
+
 const DashboardIdea: FC = () => {
 	//state
 	const [showCreateModal, setShowCreateModal] =

@@ -39,7 +39,7 @@ type homeProps = {
 	socialMedias: ISocialMediaRead[];
 	histories: IHistory[];
 	timeLinePosts: IPostRead[];
-	featuredIdeas: IIdeaRead[];
+	// featuredIdeas: IIdeaRead[];
 };
 
 export const getServerSideProps: GetServerSideProps =
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps =
 		);
 		const histories = await getAllHistories(context.req);
 		const timeLinePosts = await getTimelinePosts(context.req);
-		const featuredIdeas = await getFeaturedIdeas(context.req);
+		// const featuredIdeas = await getFeaturedIdeas(context.req);
 
 		const props: homeProps = {
 			pageItems: pageItems.data,
@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps =
 			socialMedias,
 			histories,
 			timeLinePosts,
-			featuredIdeas,
+			// featuredIdeas,
 		};
 
 		return {
@@ -86,8 +86,8 @@ const Home = ({
 	socialMedias,
 	histories,
 	timeLinePosts,
-	featuredIdeas,
-}: homeProps) => {
+}: // featuredIdeas,
+homeProps) => {
 	const renderPageItems = useMemo(
 		() =>
 			pageItems.map((pageItem, index) => {
@@ -112,7 +112,7 @@ const Home = ({
 					return (
 						<HomeIdeaExpLink
 							key={pageItem._id}
-							featuredIdeas={featuredIdeas}
+							// featuredIdeas={featuredIdeas}
 							{...defaultTexts}
 							home_experience_image={
 								defaultImages?.home_experience_image

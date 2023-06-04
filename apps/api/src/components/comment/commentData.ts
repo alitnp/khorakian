@@ -16,7 +16,7 @@ class CommentData<commentModel> {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.user) searchQuery.user = req.query.user;
     if (req.query.content) searchQuery.content = req.query.content;
-
+    console.log("allcomment :", searchQuery);
     const {
       fixedSearchQuery,
       pageNumber,

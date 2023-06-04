@@ -47,7 +47,7 @@ export class WebApiService {
 		this.controller = new AbortController();
 		this.session = axios.create(defaultOptions);
 		this.session.interceptors.request.use((config) => {
-			const token = getCookie("token");
+			const token = getCookie(webConfig.cookieTokenName);
 			config.headers["Authorization"] = token;
 			config.params = Object.assign({}, config.params || {});
 

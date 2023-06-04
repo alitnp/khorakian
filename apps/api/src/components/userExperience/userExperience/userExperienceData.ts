@@ -81,6 +81,7 @@ class UserExperienceData {
       .populate<{ experienceCategory: IExperienceCategory; user: IUserRead }>([
         "experienceCategory",
         "user",
+        { path: "user", populate: { path: "image", model: "Image" } },
       ])
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
@@ -307,7 +308,25 @@ class UserExperienceData {
 
     return comments;
   };
+  getAdminComments = async (
+    req: Req,
+  ): Promise<ApiDataListResponse<IUserExperienceComment>> => {
+    const comments = await this.UserExperienceComment.getAdminComments(req);
 
+    return comments;
+  };
+
+  getMyComments = async (
+    req: Req,
+    userId: string,
+  ): Promise<ApiDataListResponse<IUserExperienceComment>> => {
+    const comments = await this.UserExperienceComment.getMyComments(
+      req,
+      userId,
+    );
+
+    return comments;
+  };
   comment = async (
     userExperienceId: string,
     userId: string | undefined,

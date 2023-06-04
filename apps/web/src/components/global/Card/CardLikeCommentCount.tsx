@@ -3,6 +3,7 @@ import { TbMessageCircle2Filled } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import { HiEye } from "react-icons/hi";
 import { replaceNumbersWithPersian } from "@/global/utils/helperFunctions";
+import Link from "next/link";
 
 interface ICardLikeCommentCount {
 	likeCount: number;
@@ -13,6 +14,7 @@ interface ICardLikeCommentCount {
 	lightColor?: boolean;
 	withText?: boolean;
 	handleLike?: () => void;
+	detailPath?: string;
 }
 
 const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
@@ -24,6 +26,7 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 	lightColor = false,
 	withText = false,
 	handleLike,
+	detailPath,
 }) => {
 	return (
 		<div
@@ -80,15 +83,29 @@ const CardLikeCommentCount: FC<ICardLikeCommentCount> = ({
 				<div className={`flex items-center gap-1 group`}>
 					<div className="flex items-center gap-1 ">
 						<div className="k-comment-icon">
-							<span
-								className={
-									isCommented
-										? "text-k-secondary-color"
-										: "group-hover:text-k-secondary-color"
-								}
-							>
-								<TbMessageCircle2Filled className="" />
-							</span>
+							{!detailPath && (
+								<span
+									className={
+										isCommented
+											? "text-k-secondary-color"
+											: "group-hover:text-k-secondary-color"
+									}
+								>
+									<TbMessageCircle2Filled className="" />
+								</span>
+							)}
+							{detailPath && (
+								<Link
+									href={detailPath}
+									className={
+										isCommented
+											? "text-k-secondary-color"
+											: "group-hover:text-k-secondary-color"
+									}
+								>
+									<TbMessageCircle2Filled className="" />
+								</Link>
+							)}
 						</div>
 						{withText && (
 							<span className="!drop-shadow-none !filter-none group-hover:text-k-secondary-color">

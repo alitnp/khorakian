@@ -25,6 +25,7 @@ import {
 	getHomeDefaultImages,
 	getHomeDefaultTexts,
 } from "@/components/home/homeFunctions";
+import AllCommentTabs from "@/components/post/postDetail/comments/AllCommentTabs";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -123,21 +124,26 @@ const IdeaDetail: FC<{
 					<UserExperienceDetailDescription
 						userExperience={item}
 					/>
-					{/* <div className="w-full my-5">
-				<AllCommentTabs
-				endPointUrlGetAllComments={
-					webEndpointUrls.getAllPostComments
-				}
-				endPointUrlGetAllAdminComments={
-					webEndpointUrls.getAllPostAdminComments
-					}
-					endPointUrlGetAllMyComments={
-						webEndpointUrls.getAllMyComments
-					}
-					commentCreateUrl={webEndpointUrls.postCommentCreate}
-					parentId={userExperience?._id}
-					/>
-				</div> */}
+					<div className="w-full my-5">
+						<AllCommentTabs
+							endPointUrlGetAllComments={
+								webEndpointUrls.userExperienceCommentsGetAll
+							}
+							endPointUrlGetAllAdminComments={
+								webEndpointUrls.userExperienceAdminCommentsGetAll
+							}
+							endPointUrlGetAllMyComments={
+								webEndpointUrls.userExperienceMyCommentsGetAll
+							}
+							commentCreateUrl={
+								webEndpointUrls.userExperienceCommentCreate
+							}
+							parentId={item?._id}
+							commentReplyUrl={
+								webEndpointUrls.userExperienceCommnetReply
+							}
+						/>
+					</div>
 				</div>
 			</main>
 			<div className="max-w-5xl mx-auto">

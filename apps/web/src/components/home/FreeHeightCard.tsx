@@ -80,6 +80,7 @@ const FreeHeightCard: FC<IFreeHeightCard> = ({
 						isLiked={isLiked}
 						isCommented={isCommented}
 						handleLike={handleLike}
+						detailPath={detailPath}
 					/>
 				</div>
 			</div>

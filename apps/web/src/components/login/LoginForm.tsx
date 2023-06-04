@@ -19,6 +19,7 @@ import {
 import { AppDispatch } from "@/redux/store";
 import { useRouter } from "next/router";
 import webRoutes from "@/global/constants/webRoutes";
+import webConfig from "@/global/constants/webConfig";
 
 type loginResponse = { user: IUserRead; token: string };
 
@@ -48,13 +49,13 @@ const LoginForm: FC = () => {
 					>({
 						res,
 						onSuccessData: (data) => {
-							setCookie("token", data.token);
-							dispatch(setUser(data.user));
+							setCookie(webConfig.cookieTokenName, data.token);
 							dispatch(setUserLoggedIn(true));
+							dispatch(setUser(data.user));
 							push(webRoutes.home.path);
 						},
 						notifFail: true,
-						notifSuccess: true,
+						notifSuccess: false,
 					})
 				)
 				.catch(() => webApiCatch(errorResponse));

@@ -20,6 +20,10 @@ const webRoutes: Record<
 		path: "/dashboard/profile",
 		private: true,
 	},
+	dashboardDirectMessage: {
+		path: "/dashboard/directmessage",
+		private: true,
+	},
 
 	//post
 	postAllContents: { path: "/post", private: false },

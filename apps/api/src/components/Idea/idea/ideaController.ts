@@ -2,6 +2,7 @@ import { IIdeaComment, IIdeaLike, IIdeaRead } from "@my/types";
 import { apiDataListResponse, apiDataResponse } from "@/helpers/apiResponse";
 import { getUserIdFromReq, getUserIsAdminFromReq } from "@/utils/util";
 import IdeaData from "@/components/Idea/idea/ideaData";
+import { UnauthenticatedError } from "@/helpers/error";
 
 class IdeaController {
   data: IdeaData;
@@ -27,7 +28,18 @@ class IdeaController {
     const result = await this.data.getAllComments(req);
     res.send(apiDataListResponse<IIdeaComment>(result));
   };
+  getAdminComments = async (req: Req, res: Res) => {
+    const result = await this.data.getAdminComments(req);
+    res.send(apiDataListResponse<IIdeaComment>(result));
+  };
 
+  getMyComments = async (req: Req, res: Res) => {
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new UnauthenticatedError();
+    req.query.content = req.params.content;
+    const result = await this.data.getMyComments(req, userId);
+    res.send(apiDataListResponse<IIdeaComment>(result));
+  };
   getAllLikes = async (req: Req, res: Res) => {
     const result = await this.data.getAllLikes(req);
     res.send(apiDataListResponse<IIdeaLike>(result));
@@ -56,6 +68,7 @@ class IdeaController {
       _id: req.params.id,
       ...req.body,
       user: getUserIdFromReq(req),
+      isAdmin: getUserIsAdminFromReq(req),
     });
     res.send(apiDataResponse<IIdeaRead>(result));
   };

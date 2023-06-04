@@ -63,6 +63,7 @@ const ImageOnlyCard: FC<IImageOnlyCard> = ({
 								isCommented={isCommented}
 								lightColor
 								handleLike={handleLike}
+								detailPath={detailPath}
 							/>
 						</div>
 						<div className="absolute right-0 bottom-2">

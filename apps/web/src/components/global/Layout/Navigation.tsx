@@ -1,26 +1,41 @@
 import routes from "@/global/constants/webRoutes";
+import { RootState } from "@/redux/store";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useMemo } from "react";
-
-const navigationItems = [
-	{ label: "خانه", route: routes.home.path },
-	{ label: "مطالب", route: routes.postAllContents.path },
-	{ label: "تجربیات", route: routes.experience.path },
-	{
-		label: "تجربه کاربران",
-		route: routes.userExperienceList.path,
-	},
-	{
-		label: "ایده‌ها و نظرها",
-		route: routes.idea.path,
-	},
-];
+import { useSelector } from "react-redux";
 
 const Navigation: FC<{ close?: () => void }> = ({
 	close,
 }) => {
+	const { user } = useSelector(
+		(state: RootState) => state.user
+	);
+
 	const { push } = useRouter();
+	//constants
+	const navigationItems = useMemo(
+		() => [
+			{ label: "خانه", route: routes.home.path },
+			{ label: "مطالب", route: routes.postAllContents.path },
+			{ label: "تجربیات", route: routes.experience.path },
+			{
+				label: "تجربه کاربران",
+				route: routes.userExperienceList.path,
+			},
+			{
+				label: "ایده‌ها و نظرها",
+				route: routes.idea.path,
+			},
+			{
+				label: "پیام به من",
+				route: user
+					? routes.dashboardDirectMessage.path
+					: routes.login.path,
+			},
+		],
+		[user]
+	);
 
 	const renderItems = useMemo(() => {
 		if (!close)
@@ -49,7 +64,7 @@ const Navigation: FC<{ close?: () => void }> = ({
 				))}
 			</ul>
 		);
-	}, []);
+	}, [navigationItems]);
 
 	return <nav>{renderItems}</nav>;
 };

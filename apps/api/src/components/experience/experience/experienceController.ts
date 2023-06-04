@@ -45,6 +45,7 @@ class ExperienceController {
   getMyComments = async (req: Req, res: Res) => {
     const userId = getUserIdFromReq(req);
     if (!userId) throw new UnauthenticatedError();
+    req.query.content = req.params.content;
     const result = await this.data.getMyComments(req, userId);
     res.send(apiDataListResponse<IExperienceComment>(result));
   };

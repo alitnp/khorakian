@@ -47,17 +47,30 @@ class DirectMessageData {
   ): Promise<IDirectMessageRead> => {
     if (!id) throw new BadRequestError("شناسه پیام ارسال نشده");
     if (!userId) throw new NotFoundError();
+
     const item = (await this.DirectMessage.findById(id).populate<{
       user: IUserRead;
     }>(["user", "replies.user"])) as IDirectMessageRead | null;
     if (!item) throw new NotFoundError();
 
     if (isAdmin) return item;
-    if (userId !== item.user._id) throw new NotFoundError();
+    if (!isAdmin && userId != item.user._id) throw new NotFoundError();
     return item;
   };
 
-  create = async (text: string, userId: string): Promise<IDirectMessage> => {
+  getMyMessages = async (userId: string): Promise<IDirectMessageRead> => {
+    const item = (await this.DirectMessage.findOne({ user: userId }).populate<{
+      user: IUserRead;
+    }>(["user", "replies.user"])) as IDirectMessageRead | null;
+    if (!item) throw new NotFoundError();
+
+    return item;
+  };
+
+  create = async (
+    text: string,
+    userId: string,
+  ): Promise<IDirectMessageRead> => {
     const user = await this.User.get(userId);
 
     if (!user) throw new NotFoundError("");
@@ -66,18 +79,18 @@ class DirectMessageData {
       text,
       replies: [],
     });
-
-    return await item.save();
+    const newItem = await item.save();
+    return await this.get(newItem._id + "", false, userId);
   };
 
   //only admin in route Handle
-  update = async (text: string) => {
+  update = async (text: string): Promise<IDirectMessageRead> => {
     const item = await this.DirectMessage.findByIdAndUpdate(
       { text },
       { new: true },
     );
     if (!item) throw new NotFoundError("پیام یافت نشد");
-    return item;
+    return await this.get(item._id + "", false, item.user);
   };
 
   remove = async (id: string) => {
@@ -90,21 +103,22 @@ class DirectMessageData {
     id: string,
     text: string,
     userId: string,
-  ): Promise<IDirectMessage> => {
+  ): Promise<IDirectMessageRead> => {
     const user = await this.User.get(userId);
     const item = await this.DirectMessage.findById(id);
     if (!item) throw new NotFoundError("پیام یافت نشد");
-    if (user?.isAdmin || userId === item.user) {
+
+    if (user?.isAdmin || userId == item.user) {
       const item = await this.DirectMessage.findByIdAndUpdate(
         id,
         {
           $push: { replies: { user: userId, text } },
         },
         { new: true },
-      ).populate(["user", "replies.user"]);
+      );
       if (!item) throw new NotFoundError();
 
-      return item;
+      return await this.get(id, user?.isAdmin, userId);
     }
     throw new BadRequestError("افزودن پیام برای شما امکان پذیر نیست.");
   };

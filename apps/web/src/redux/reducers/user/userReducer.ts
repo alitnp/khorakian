@@ -4,9 +4,9 @@ import {
 } from "@reduxjs/toolkit";
 import { IUserRead } from "@my/types";
 import { getCookie, deleteCookie } from "cookies-next";
-import { cookies } from "next/dist/client/components/headers";
+import webConfig from "@/global/constants/webConfig";
 
-const token = getCookie("token");
+const token = getCookie(webConfig.cookieTokenName);
 
 const initialState: {
 	user: IUserRead | undefined;
@@ -30,7 +30,7 @@ export const userReducer = createSlice({
 			state.loggedIn = action.payload;
 		},
 		logout: (state) => {
-			deleteCookie("token");
+			deleteCookie(webConfig.cookieTokenName);
 			state.user = undefined;
 			state.loggedIn = false;
 		},

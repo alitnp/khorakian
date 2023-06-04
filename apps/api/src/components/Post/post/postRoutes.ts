@@ -50,7 +50,7 @@ router.get("/like", controller.getAllLikes);
 router.get("/comment", controller.getAllComments);
 //get all admin post comments
 router.get("/adminComments", controller.getAdminComments);
-router.get("/myComments/:id", auth, controller.getMyComments);
+router.get("/myComments/:content", auth, controller.getMyComments);
 // get a signgle post with id
 router.get("/:id", validate(getPostValidations), controller.get);
 // get a list of posts

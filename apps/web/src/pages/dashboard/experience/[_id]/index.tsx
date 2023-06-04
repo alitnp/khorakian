@@ -11,7 +11,6 @@ import WebApiService, {
 import {
 	webApiCatch,
 	webApiThen,
-	webApiThenGeneric,
 } from "@/global/utils/webApiThen";
 import {
 	ApiDataResponse,
@@ -27,6 +26,9 @@ import {
 } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
+
+
+
 
 const DashboardExperienceDetail: FC = () => {
 	//state

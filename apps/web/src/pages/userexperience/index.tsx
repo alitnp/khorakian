@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import {
 	ApiDataListResponse,
+	ApiDataResponse,
 	IExperienceWithComments,
 	IUserExperienceRead,
 } from "@my/types";
@@ -13,11 +14,17 @@ import webRoutes from "@/global/constants/webRoutes";
 import { useSelector } from "react-redux";
 import { RootState, store } from "@/redux/store";
 import { useRouter } from "next/router";
-import WebApiService from "@/global/utils/WebApiService";
+import WebApiService, {
+	errorResponse,
+} from "@/global/utils/WebApiService";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import queryString from "querystring";
 import { getAllExperienceCategories } from "@/redux/reducers/categories/getAllExperienceCategories";
-import { webApiThen } from "@/global/utils/webApiThen";
+import {
+	webApiCatch,
+	webApiThen,
+	webApiThenGeneric,
+} from "@/global/utils/webApiThen";
 import UserExperienceBrief from "@/components/userExperience/UserExperienceBrief";
 import { Pagination, Select } from "antd";
 
@@ -132,10 +139,10 @@ const Experience = ({ experience }: props) => {
 
 	return (
 		<main>
-			<div className="relative h-[20rem] flex items-center justify-center w-full ">
-				<div className="relative flex flex-col items-center content-center ">
+			<div className="relative h-[14rem] k-container flex items-center justify-center w-full max-w-5xl mx-auto mt-6">
+				<div className="relative flex flex-col items-center content-center justify-center w-full h-full border rounded-xl">
 					<div
-						className="mx-auto mt-5 text-center"
+						className="mx-auto text-center"
 						style={{ width: "60%" }}
 					>
 						<h1 className="text-4xl font-bold">
@@ -189,7 +196,7 @@ const Experience = ({ experience }: props) => {
 						</div>
 					</div>
 				</div>
-				{list?.data.map((item) => (
+				{list?.data.map((item, index) => (
 					<UserExperienceBrief
 						key={item._id}
 						experience={item}

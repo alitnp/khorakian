@@ -1,10 +1,11 @@
 import React, {
 	FC,
+	useCallback,
 	useEffect,
 	useMemo,
 	useState,
 } from "react";
-import { Tabs } from "antd";
+import { Tabs, message } from "antd";
 import AllComments from "@/components/post/postDetail/comments/AllComments";
 import {
 	ApiDataListResponse,
@@ -20,6 +21,7 @@ import {
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import FirstCommentBox from "@/components/post/postDetail/comments/FirstCommentBox";
+import AddCommentModal from "@/components/post/postDetail/comments/AddCommentModal";
 
 interface IProps {
 	endPointUrlGetAllComments: string;
@@ -54,6 +56,8 @@ const AllCommentTabs: FC<IProps> = ({
 	const { user } = useSelector(
 		(state: RootState) => state.user
 	);
+	const [showCommentModel, setShowCommentModel] =
+		useState<boolean>(false);
 
 	//effect
 	useEffect(() => {
@@ -101,7 +105,13 @@ const AllCommentTabs: FC<IProps> = ({
 			.catch(() => webApiCatch(errorResponse));
 		setLoading(false);
 	};
-
+	const toggleCreateModal = useCallback(() => {
+		if (!showCommentModel && !user)
+			return message.error(
+				"لطفا ابتدا وارد حساب کاربری خود شوید."
+			);
+		setShowCommentModel((prevState) => !prevState);
+	}, [user, showCommentModel]);
 	const onChange = (key: string) => {
 		console.log(key);
 	};
@@ -159,9 +169,8 @@ const AllCommentTabs: FC<IProps> = ({
 				<AllComments
 					refetch={refetch}
 					comments={tabComment.tabBody}
-					parentId={parentId}
-					commentCreateUrl={commentCreateUrl}
 					commentReplyUrl={commentReplyUrl}
+					toggleCreateModal={toggleCreateModal}
 				/>
 			),
 		}));
@@ -174,10 +183,9 @@ const AllCommentTabs: FC<IProps> = ({
 			children: (
 				<AllComments
 					comments={comments}
-					parentId={parentId}
 					refetch={refetch}
-					commentCreateUrl={commentCreateUrl}
 					commentReplyUrl={commentReplyUrl}
+					toggleCreateModal={toggleCreateModal}
 				/>
 			),
 		},
@@ -189,10 +197,9 @@ const AllCommentTabs: FC<IProps> = ({
 						children: (
 							<AllComments
 								comments={myComments}
-								parentId={parentId}
 								refetch={refetch}
-								commentCreateUrl={commentCreateUrl}
 								commentReplyUrl={commentReplyUrl}
+								toggleCreateModal={toggleCreateModal}
 							/>
 						),
 					},
@@ -222,6 +229,16 @@ const AllCommentTabs: FC<IProps> = ({
 				type="card"
 				items={commentsTabs}
 			/>
+			{showCommentModel && (
+				<AddCommentModal
+					title=" ثبت نظر"
+					visible={showCommentModel}
+					close={toggleCreateModal}
+					endPointUrl={commentCreateUrl + "/" + parentId}
+					footer={false}
+					refetch={refetch}
+				/>
+			)}
 		</>
 	);
 };

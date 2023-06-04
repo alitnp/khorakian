@@ -24,6 +24,9 @@ import {
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 
+
+
+
 const DashboardIdeaDetail: FC = () => {
 	//state
 	const [detail, setDetail] = useState<IIdeaRead>();

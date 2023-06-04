@@ -60,7 +60,7 @@ export class ApiService {
     this.controller = new AbortController();
     this.session = axios.create(defaultOptions);
     this.session.interceptors.request.use((config) => {
-      const token = cookie.get('token');
+      const token = cookie.get('34vf0fg_34fv_34sd');
       config.headers['Authorization'] = token;
       config.params = Object.assign({}, config.params || {});
 

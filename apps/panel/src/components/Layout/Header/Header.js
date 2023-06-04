@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getWhoAmI } from 'redux/reducer/Profile/getWhoAmI';
-import useHasAccess from 'global/helperFunctions/useHasAccess';
 import HeaderLogout from 'components/Layout/Header/components/HeaderLogout';
 import cookie from 'js-cookie';
 import HeaderIconLink from 'components/Layout/Header/components/HeaderIconLink';
@@ -18,7 +17,7 @@ const TcHeader = () => {
 
   //effect
   useEffect(() => {
-    const getToken = cookie.get('token');
+    const getToken = cookie.get('34vf0fg_34fv_34sd');
     getToken && !userProfile && dispatch(getWhoAmI());
     // userName && dispatch(getUserProfile());
   }, []);

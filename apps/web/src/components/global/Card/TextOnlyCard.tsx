@@ -58,6 +58,7 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 						isLiked={isLiked}
 						isCommented={isCommented}
 						handleLike={handleLike}
+						detailPath={detailPath}
 					/>
 				</div>
 			</div>

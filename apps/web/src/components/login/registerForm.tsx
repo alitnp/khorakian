@@ -19,6 +19,7 @@ import {
 import { AppDispatch } from "@/redux/store";
 import { useRouter } from "next/router";
 import webRoutes from "@/global/constants/webRoutes";
+import webConfig from "@/global/constants/webConfig";
 
 type registerResponse = IUserRead & { token: string };
 type registerInputs = {
@@ -55,7 +56,7 @@ const RegisterForm: FC = () => {
 						res,
 						onSuccessData: (data) => {
 							const { token, ...user } = data;
-							setCookie("token", token);
+							setCookie(webConfig.cookieTokenName, token);
 							dispatch(setUser(user));
 							dispatch(setUserLoggedIn(true));
 							push(webRoutes.home.path);

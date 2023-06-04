@@ -113,6 +113,9 @@ const TimeLinePost: FC<ITimeListPost> = ({
 						isCommented={false}
 						lightColor
 						handleLike={handleLike}
+						detailPath={
+							webRoutes.postDetail.path + "/" + post._id
+						}
 					/>
 				</div>
 			</div>
