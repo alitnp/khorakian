@@ -8,6 +8,10 @@ import {
 } from "@/components/home/homeFunctions";
 import MyButton from "@/components/basicUi/MyButton";
 import IdeasTabs from "@/components/idea/IdeasTabs";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import Link from "next/link";
+import webRoutes from "@/global/constants/webRoutes";
 
 type props = {
 	defaultTextsObject: Record<string, string>;
@@ -30,6 +34,11 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Idea = ({ defaultTextsObject }: props) => {
+	//state
+	const { loggedIn } = useSelector(
+		(state: RootState) => state.user
+	);
+
 	return (
 		<main className="my-16 k-container ">
 			<div className="mx-auto max-w-7xl">
@@ -43,9 +52,17 @@ const Idea = ({ defaultTextsObject }: props) => {
 					<h3 className="max-w-md text-center sm:text-right">
 						{defaultTextsObject?.idea_submit_text}
 					</h3>
-					<MyButton type="primary" size="large">
-						ثبت ایده جدید
-					</MyButton>
+					<Link
+						href={
+							loggedIn
+								? webRoutes.dashboardIdea.path
+								: webRoutes.login.path
+						}
+					>
+						<MyButton type="primary" size="large">
+							ثبت ایده جدید
+						</MyButton>
+					</Link>
 				</div>
 			</div>
 			<IdeasTabs />

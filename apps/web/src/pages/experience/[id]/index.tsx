@@ -87,6 +87,7 @@ const ExperienceDetail: FC<{
 			<main>
 				<ContentDetailSlider
 					images={experience?.images || []}
+					videos={experience?.videos || []}
 				/>
 				<div className="max-w-2xl mx-auto k-container">
 					<div className="mb-4">

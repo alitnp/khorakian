@@ -22,6 +22,7 @@ export const userReducer = createSlice({
 	reducers: {
 		setUser: (state, action: PayloadAction<IUserRead>) => {
 			state.user = action.payload;
+			state.loggedIn = true;
 		},
 		setUserLoggedIn: (
 			state,

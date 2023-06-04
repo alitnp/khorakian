@@ -24,6 +24,9 @@ import {
 	getHomeDefaultImages,
 	getHomeDefaultTexts,
 } from "@/components/home/homeFunctions";
+import VideoPlayer from "@/components/global/VideoPlayer/VideoPlayer";
+import webConfig from "@/global/constants/webConfig";
+import VideoItem from "@/components/global/VideoPlayer/VideoItem";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -73,10 +76,14 @@ const PostDetail: FC<{
 			})
 			.catch(() => webApiCatch(errorResponse));
 	};
+
 	return (
 		<>
 			<main>
-				<ContentDetailSlider images={post?.images || []} />
+				<ContentDetailSlider
+					images={post?.images || []}
+					videos={post?.videos || []}
+				/>
 				<div className="max-w-screen-lg mx-auto mb-4 k-container">
 					<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
 						<span>
@@ -98,6 +105,9 @@ const PostDetail: FC<{
 							handleLike={handleLike}
 						/>
 					</div>
+					{/* {post.videos[0] && (
+						<VideoItem video={post.videos[0]} size="full" />
+					)} */}
 					<PostDetailDescription post={post} />
 					<div className="w-full my-5">
 						<AllCommentTabs

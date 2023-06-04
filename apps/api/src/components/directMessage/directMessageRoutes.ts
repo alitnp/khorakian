@@ -32,10 +32,7 @@ const data = new DirectMessageData(
 const controller = new DirectMessageController(data);
 
 //get
-router.get(
-  "/myMessages",
-  controller.getMyMessages,
-);
+router.get("/myMessages", controller.getMyMessages);
 // get a signgle  DirectMessage with id
 router.get("/:id", validate(getDirectMessageValidations), controller.get);
 // get a list of  DirectMessages

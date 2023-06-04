@@ -6,14 +6,19 @@ import "swiper/css/thumbs";
 import { FreeMode, Thumbs } from "swiper";
 import webConfig from "@/global/constants/webConfig";
 import Image from "next/image";
-import { IImage } from "@my/types";
+import { IImage, IVideoRead } from "@my/types";
 import KSwiper from "@/components/global/KSwipper/KSwiper";
+import VideoItem from "@/components/global/VideoPlayer/VideoItem";
 
 interface IProps extends SwiperProps {
 	images: IImage[];
+	videos: IVideoRead[];
 }
 
-const ContentDetailSlider: FC<IProps> = ({ images }) => {
+const ContentDetailSlider: FC<IProps> = ({
+	images,
+	videos,
+}) => {
 	//state
 	const [thumbsSwiper, setThumbsSwiper] = useState<any>();
 	const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -35,33 +40,40 @@ const ContentDetailSlider: FC<IProps> = ({ images }) => {
 				}}
 				modules={[FreeMode, Thumbs]}
 			>
-				{images?.length > 0 &&
-					images?.map((img) => (
-						<SwiperSlide
-							key={img._id}
-							className="relative w-full h-[300px] md:h-[500px] max-h-[80vh] overflow-hidden"
-						>
+				{videos?.map((vid) => (
+					<SwiperSlide
+						key={vid._id + ""}
+						className="relative w-full h-[300px] md:h-[500px] max-h-[80vh] overflow-hidden"
+					>
+						<VideoItem video={vid} size="full" />
+					</SwiperSlide>
+				))}
+				{images?.map((img) => (
+					<SwiperSlide
+						key={img._id + ""}
+						className="relative w-full h-[300px] md:h-[500px] max-h-[80vh] overflow-hidden"
+					>
+						<Image
+							className="z-0 object-cover object-center w-full h-[300px] md:h-[500px] max-h-[80vh] scale-110 brightness-50 blur-lg"
+							src={webConfig.domain + img.pathname}
+							width={img.width}
+							height={img.height}
+							alt={img.title}
+						/>
+						<div className="absolute top-0 left-0 z-20 w-full h-full ">
 							<Image
-								className="z-0 object-cover object-center w-full h-[300px] md:h-[500px] max-h-[80vh] scale-110 brightness-50 blur-lg"
+								className="object-contain shadow-lg w-full h-[300px] md:h-[500px] max-h-[80vh] object-center"
 								src={webConfig.domain + img.pathname}
 								width={img.width}
 								height={img.height}
 								alt={img.title}
 							/>
-							<div className="absolute top-0 left-0 z-20 w-full h-full ">
-								<Image
-									className="object-contain shadow-lg w-full h-[300px] md:h-[500px] max-h-[80vh] object-center"
-									src={webConfig.domain + img.pathname}
-									width={img.width}
-									height={img.height}
-									alt={img.title}
-								/>
-							</div>
-						</SwiperSlide>
-					))}
+						</div>
+					</SwiperSlide>
+				))}
 			</KSwiper>
 
-			{images?.length > 1 && (
+			{images?.length + videos?.length > 0 && (
 				<div className="!w-fit mx-auto">
 					<KSwiper
 						onSwiper={setThumbsSwiper}
@@ -75,11 +87,23 @@ const ContentDetailSlider: FC<IProps> = ({ images }) => {
 							dynamicBullets: true,
 						}}
 					>
-						{images?.map((img, index) => (
+						{videos?.map((vid, index) => (
 							<SwiperSlide
-								key={img._id}
+								key={vid._id + ""}
 								className={`h-[100px] max-h-[20vh] !w-fit border-2 rounded-lg overflow-hidden ${
 									index === activeIndex
+										? " border-k-secondary-color"
+										: "border-transparent"
+								}`}
+							>
+								<VideoItem video={vid} size="small" imageOnly />
+							</SwiperSlide>
+						))}
+						{images?.map((img, index) => (
+							<SwiperSlide
+								key={img._id + ""}
+								className={`h-[100px] max-h-[20vh] !w-fit border-2 rounded-lg overflow-hidden ${
+									index + videos.length === activeIndex
 										? " border-k-secondary-color"
 										: "border-transparent"
 								}`}

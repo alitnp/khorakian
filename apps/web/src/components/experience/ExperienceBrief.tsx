@@ -104,7 +104,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 					<span className="block text-xs text-k-grey-text-color">
 						پاسخ داده شده توسط :
 					</span>
-					<div className="flex gap-4 mt-2">
+					<div className="flex items-center gap-4 mt-2">
 						{experience.comments.slice(0, 3).map((comment) => (
 							<div
 								key={comment._id}
@@ -115,7 +115,7 @@ const ExperienceBrief: FC<IExperienceBrief> = ({
 							</div>
 						))}
 						{experience.commentCount > 3 && (
-							<span>
+							<span className="text-sm text-k-grey-text-color">
 								+ {experience.commentCount - 3} کاربر دیگر
 							</span>
 						)}
