@@ -24,6 +24,8 @@ import ImageData from "@/components/image/imageData";
 import { Image } from "@/components/image/imageModel";
 import FrontEndRouteData from "@/components/frontEndRoute/frontEndRouteData";
 import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
+import VideoData from "@/components/video/videoData";
+import { Video } from "@/components/video/videoModel";
 
 const router = Router();
 const data = new IdeaData(
@@ -36,6 +38,8 @@ const data = new IdeaData(
     new ImageData(Image),
     new FrontEndRouteData(FrontEndRoute),
   ),
+  new VideoData(Video, new ImageData(Image)),
+  new ImageData(Image),
 );
 
 const controller = new IdeaController(data);

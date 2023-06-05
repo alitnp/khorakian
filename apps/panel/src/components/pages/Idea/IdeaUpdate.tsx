@@ -13,18 +13,23 @@ import useQuery from 'global/helperFunctions/useQuery';
 import TcForm from 'components/UI/Form/TcForm';
 import TcFormWrapper from 'components/UI/FormWrapper/TcFormWrapper';
 import TcCoverLoading from 'components/UI/Loading/TcCoverLoading';
-import TcButton from 'components/UI/Button/TcButton';
 import { Form } from 'antd';
-import { ApiDataListResponse, ApiDataResponse, IIdeaRead } from '@my/types';
+import { ApiDataResponse, IIdeaRead, IImage, IVideoRead } from '@my/types';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
 import { getAllIdeaCategories } from 'redux/reducer/IdeaCategory/getAllIdeaCategories';
+import TcFormButtons from 'components/UI/FormButtons/TcFormButtons';
+import TcDevider from 'components/UI/Devider/TcDevider';
+import AddVideo from 'components/UI/Video/AddVideo';
+import AddImage from 'components/UI/Image/AddImage';
 
 const SurveyUpdate: FC = () => {
   //states
   const [loading, setLoading] = useState(true);
   const [_ideaDetail, setIdeaDetail] = useState<IIdeaRead>();
+  const [videos, setVideos] = useState<IVideoRead[]>([]);
+  const [images, setImages] = useState<IImage[]>([]);
 
   //hooks
 
@@ -51,6 +56,8 @@ const SurveyUpdate: FC = () => {
           onSuccessData: (data) => {
             form.setFieldsValue({ ...data, ideaCategory: data.ideaCategory?._id });
             setIdeaDetail(data);
+            setImages(data.images);
+            setVideos(data.videos);
           },
         })
       )
@@ -61,7 +68,7 @@ const SurveyUpdate: FC = () => {
   const handleEdit = async (values: any) => {
     if (!id) return;
     setLoading(true);
-    await ApiService.put(endpointUrls.ideaEdit(id), { ...values, _id: id })
+    await ApiService.put(endpointUrls.ideaEdit(id), { ...values, _id: id, videos: videos.map((vid) => vid._id), images: images.map((img) => img._id) })
       .then((res: any) =>
         handleApiThen({
           res,
@@ -103,12 +110,14 @@ const SurveyUpdate: FC = () => {
               <TcTextarea placeholder='متن' />
             </TcFormItem>
           </TcFormWrapper>
-          <div className='flex justify-end mt-6'>
-            <TcButton type='primary' htmlType='submit'>
-              ثبت تغییرات
-            </TcButton>
-          </div>
         </TcForm>
+        <TcDevider>ویدیو</TcDevider>
+        <AddVideo videos={videos} setVideos={setVideos} />
+
+        <TcDevider>عکس</TcDevider>
+        <AddImage images={images} setImages={setImages} />
+
+        <TcFormButtons noCancel submitButtonText='ویرایش' onSubmit={() => form.submit()} />
         {loading && <TcCoverLoading />}
       </TcCard>
     </>

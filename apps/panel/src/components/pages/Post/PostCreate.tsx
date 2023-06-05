@@ -33,11 +33,7 @@ const PostCreate = () => {
   const dispatch: AppDispatch = useDispatch();
   const { push } = useHistory();
 
-  //effect
-  useEffect(() => {}, []);
-
   //function
-
   const handleSubmit = async (values: any) => {
     if (videos.length + images.length === 0) return dispatch(setNotificationData({ type: 'warning', message: 'هیچ عکس یا ویدیویی انتخاب نشده' }));
     if (!!values.eventDate) values.eventDate = values.eventDate.unix * 1000;

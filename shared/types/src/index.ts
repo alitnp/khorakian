@@ -106,18 +106,21 @@ export interface IImage extends DefaultModelProperties {
 	width: number;
 	height: number;
 	title: string;
+	user?: string;
 }
 export interface IVideo extends DefaultModelProperties {
 	_id: string;
 	thumbnail?: string;
 	qualityVariations: qualityVariation[];
 	title: string;
+	user?: string;
 }
 export interface IVideoRead extends DefaultModelProperties {
 	_id: string;
 	thumbnail?: IImage;
 	qualityVariations: qualityVariation[];
 	title: string;
+	user?: string;
 }
 export type qualityVariation = {
 	fileName: string;
@@ -203,6 +206,8 @@ export interface IIdea extends DefaultModelProperties {
 	commentCount: number;
 	isAdminSubmitted: boolean;
 	isApprove: boolean;
+	images: string[];
+	videos: string[];
 	user?: string;
 }
 
@@ -226,6 +231,8 @@ export interface IIdeaRead extends DefaultModelProperties {
 	featured: boolean;
 	viewCount: number;
 	likeCount: number;
+	images: IImage[];
+	videos: IVideoRead[];
 	commentCount: number;
 	liked?: boolean;
 	isAdminSubmitted: boolean;

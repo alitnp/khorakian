@@ -78,7 +78,7 @@ class PostData {
     } = await paginationProps(searchQuery, req, this.Post);
 
     const data: IPostRead[] = await this.Post.find(fixedSearchQuery)
-      .populate<{ images: IImage[]; videos: IVideoRead[] }>({
+      .populate<{ videos: IVideoRead[] }>({
         path: "videos",
         populate: { path: "thumbnail" },
       })

@@ -5,9 +5,10 @@ import BadRequestError from "@/helpers/error/BadRequestError";
 import { fileForm } from "@/middlewares/fileForm";
 import { apiDataResponse } from "@/helpers/apiResponse";
 import { publicFolder } from "@/config";
-import { NotFoundError } from "@/helpers/error";
+import { NotFoundError, UnauthenticatedError } from "@/helpers/error";
 import { IData } from "@/data/globalData";
 import BaseController from "@/controller/globalControllers";
+import { getUserIdFromReq } from "@/utils/util";
 
 class VideoController extends BaseController<IVideo> {
   constructor(data: IData<IVideo>) {
@@ -53,6 +54,8 @@ class VideoController extends BaseController<IVideo> {
   };
 
   create = async (req: Req, res: Res) => {
+    const userId = getUserIdFromReq(req);
+    if (!userId) throw new UnauthenticatedError();
     const tempReq = req as Req & {
       file: fileForm;
     };
@@ -61,6 +64,7 @@ class VideoController extends BaseController<IVideo> {
       throw new BadRequestError("عنوان ویدیو تعیین نشد.");
     const video = await this.data.createVideoFile(
       tempReq.file,
+      userId,
       tempReq.body.title,
       tempReq.body.image,
     );

@@ -16,7 +16,7 @@ import {
 	webApiCatch,
 	webApiThenGeneric,
 } from "@/global/utils/webApiThen";
-import CommentUser from "@/components/post/postDetail/comments/CommentUser";
+import UserImageAndName from "@/components/post/postDetail/comments/UserImageAndName";
 
 interface IExperienceBrief {
 	experience: IUserExperienceRead;
@@ -54,7 +54,7 @@ const UserExperienceBrief: FC<IExperienceBrief> = ({
 			<div className="flex items-start justify-between gap-x-4">
 				<div className="flex flex-col gap-4 mb-2 sm:flex-row">
 					<div>
-						<CommentUser
+						<UserImageAndName
 							user={experience.user}
 							creationDate={experience.creationDate}
 						/>

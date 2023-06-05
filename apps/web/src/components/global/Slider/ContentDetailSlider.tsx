@@ -23,6 +23,8 @@ const ContentDetailSlider: FC<IProps> = ({
 	const [thumbsSwiper, setThumbsSwiper] = useState<any>();
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 
+	if (images.length === 0 && videos.length === 0)
+		return <></>;
 	return (
 		<div className="mb-6 select-none bg-k-text-color">
 			<KSwiper

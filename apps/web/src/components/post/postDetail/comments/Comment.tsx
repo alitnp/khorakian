@@ -2,7 +2,7 @@ import { IGlobalCommentRead } from "@my/types";
 import React, { FC, useState } from "react";
 import { BsReply } from "react-icons/bs";
 import AddCommentModal from "@/components/post/postDetail/comments/AddCommentModal";
-import CommentUser from "@/components/post/postDetail/comments/CommentUser";
+import UserImageAndName from "@/components/post/postDetail/comments/UserImageAndName";
 
 interface IProps {
 	item: IGlobalCommentRead;
@@ -27,7 +27,7 @@ const Comment: FC<IProps> = ({
 		<>
 			<div className="grid ">
 				<div className="flex justify-between" key={item._id}>
-					<CommentUser
+					<UserImageAndName
 						user={item.user}
 						creationDate={item.creationDate}
 					/>

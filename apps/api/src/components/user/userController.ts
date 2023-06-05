@@ -44,8 +44,8 @@ class UserController extends BaseController<IUserRead> {
     if (!userId) throw new NotFoundError("کاربر یافت نشد");
     const data = await this.data.uploadProfile(
       tempReq.file,
-      tempReq.body.title,
       userId,
+      tempReq.body.title,
     );
     return res.send(apiDataResponse(data));
   };

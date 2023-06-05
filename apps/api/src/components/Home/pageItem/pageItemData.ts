@@ -138,7 +138,14 @@ class PageItemData {
       }
       if (pi.type.title === "userExperience") {
         content = await UserExperience.find({ ...filters, isApprove: true })
-          .populate("experienceCategory")
+          .populate([
+            "experienceCategory",
+            {
+              path: "user",
+              select: "-notification",
+              populate: { path: "image", model: "Image" },
+            },
+          ])
           .sort(sort)
           .limit(10)
           .lean();
@@ -157,7 +164,14 @@ class PageItemData {
         content = await Idea.find({ isAdminSubmitted: true, ...filters })
           .sort(sort)
           .limit(10)
-          .populate(["ideaCategory"])
+          .populate([
+            "ideaCategory",
+            {
+              path: "user",
+              select: "-notification",
+              populate: { path: "image", model: "Image" },
+            },
+          ])
           .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];
@@ -181,7 +195,14 @@ class PageItemData {
         })
           .sort(sort)
           .limit(10)
-          .populate(["ideaCategory"])
+          .populate([
+            "ideaCategory",
+            {
+              path: "user",
+              select: "-notification",
+              populate: { path: "image", model: "Image" },
+            },
+          ])
           .lean();
         for (let i = 0; i < content.length; i++) {
           const item = content[i];

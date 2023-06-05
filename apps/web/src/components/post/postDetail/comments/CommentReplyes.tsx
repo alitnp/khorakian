@@ -1,4 +1,4 @@
-import CommentUser from "@/components/post/postDetail/comments/CommentUser";
+import UserImageAndName from "@/components/post/postDetail/comments/UserImageAndName";
 import { ICommentReplyRead } from "@my/types";
 import React, { FC } from "react";
 
@@ -10,7 +10,7 @@ interface IProps {
 const CommentReplyes: FC<IProps> = ({ reply }) => (
 	<>
 		<div className="grid mt-2 rounded-md">
-			<CommentUser
+			<UserImageAndName
 				user={reply.user}
 				creationDate={reply.creationDate}
 			/>

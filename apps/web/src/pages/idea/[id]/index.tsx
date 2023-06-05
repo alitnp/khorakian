@@ -26,6 +26,7 @@ import {
 	getHomeDefaultImages,
 	getHomeDefaultTexts,
 } from "@/components/home/homeFunctions";
+import ContentDetailSlider from "@/components/global/Slider/ContentDetailSlider";
 
 export const getServerSideProps: GetServerSideProps =
 	async (context) => {
@@ -79,6 +80,10 @@ const IdeaDetail: FC<{
 	return (
 		<>
 			<main>
+				<ContentDetailSlider
+					images={item?.images || []}
+					videos={item?.videos || []}
+				/>
 				<div className="max-w-5xl mx-auto my-4 k-container">
 					<div className="flex flex-col justify-between gap-2 pb-2 mb-2 text-sm border-b sm:flex-row text-k-grey-text-color">
 						<span>

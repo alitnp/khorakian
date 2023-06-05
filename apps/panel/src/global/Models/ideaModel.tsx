@@ -1,6 +1,7 @@
 import { IIdeaRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
 import TcFormItem from 'components/UI/Form/TcFormItem';
+import ImageItem from 'components/UI/Image/ImageItem';
 import TcDeleteIcon from 'components/UI/TableIcons/TcDeletIcon';
 import TcEditIcon from 'components/UI/TableIcons/TcEditIcon';
 import routes from 'global/Constants/routes';
@@ -44,6 +45,13 @@ const filterInputs = (
 
 const columns = (handleDelete?: (_id: string) => void) => {
   const columns: any[] = [
+    {
+      title: 'عکس',
+      key: 'video',
+      dataIndex: 'video',
+      width: 170,
+      render: (_text: string, record: IIdeaRead) => <ImageItem image={record?.videos[0]?.thumbnail ? record?.videos[0]?.thumbnail : record.images[0]} />,
+    },
     { title: 'عنوان', key: 'title', dataIndex: 'title' },
     {
       title: 'دسته بندی',
@@ -71,7 +79,18 @@ const columns = (handleDelete?: (_id: string) => void) => {
       dataIndex: 'commentCount',
     },
 
-    { title: 'وضعیت', render: (_text: any, record: Record<string, any>) => (record.isApprove ? 'تایید شده' : 'تایید نشده') },
+    {
+      title: 'عکس',
+      key: 'images',
+      dataIndex: 'images',
+      render: (_text: string, record: IIdeaRead) => (record.images?.length && record.images?.length > 0 ? record.images.length : 'ندارد'),
+    },
+    {
+      title: 'ویدیو',
+      key: 'videos',
+      dataIndex: 'videos',
+      render: (_text: string, record: IIdeaRead) => (record.videos.length && record.videos.length > 0 ? record.videos.length : 'ندارد'),
+    },
   ];
   handleDelete &&
     columns.push({

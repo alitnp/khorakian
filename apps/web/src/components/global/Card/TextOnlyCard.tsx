@@ -1,4 +1,6 @@
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
+import UserImageAndName from "@/components/post/postDetail/comments/UserImageAndName";
+import { IUserRead } from "@my/types";
 import Link from "next/link";
 import { FC, memo } from "react";
 
@@ -15,6 +17,7 @@ interface ITextOnlyCard {
 	isCommented: boolean;
 	handleLike?: () => void;
 	fullWidth?: boolean;
+	user?: IUserRead;
 }
 
 const TextOnlyCard: FC<ITextOnlyCard> = ({
@@ -30,6 +33,7 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 	isCommented,
 	handleLike,
 	fullWidth,
+	user,
 }) => {
 	return (
 		<article
@@ -38,14 +42,23 @@ const TextOnlyCard: FC<ITextOnlyCard> = ({
 			}`}
 		>
 			<div className="w-full px-4 py-2">
-				<span className="text-sm font-light text-k-grey-text-color">
-					{category}
-				</span>
-				<Link href={detailPath}>
-					<h2 className="mb-2 text-base font-medium line-clamp-1 hover:text-k-primary-color">
-						{title}
-					</h2>
-				</Link>
+				<div className="flex justify-between gap-16">
+					<div className="shrink-0">
+						<span className="text-sm font-light text-k-grey-text-color">
+							{category}
+						</span>
+						<Link href={detailPath}>
+							<h2 className="mb-2 text-base font-medium line-clamp-1 hover:text-k-primary-color">
+								{title}
+							</h2>
+						</Link>
+					</div>
+					{user && (
+						<div className="shrink-0">
+							<UserImageAndName user={user} size="small" />
+						</div>
+					)}
+				</div>
 				<p className="mb-2 text-sm line-clamp-4">{desc}</p>
 				<div className="flex items-center justify-between gap-4 pt-2 mt-4 border-t">
 					<span className="text-sm text-k-grey-text-color">

@@ -66,12 +66,15 @@ const DashboardIdeaList: FC<IDashboardIdeaList> = ({
 			);
 		return list.data.map((idea) => (
 			<div className="" key={idea._id}>
-				{idea.isApprove && (
-					<span className="text-xs text-k-success-color">
-						<BiCheck className="inline" />
-						توسط ادمین تایید و در سایت منتشر شده.
-					</span>
-				)}
+				<span
+					className={`text-xs text-k-success-color ${
+						idea.isApprove ? "opacity-100" : "opacity-0"
+					}`}
+				>
+					<BiCheck className="inline" />
+					توسط ادمین تایید و در سایت منتشر شده.
+				</span>
+
 				<TextOnlyCard
 					category={idea.ideaCategory.title}
 					commentCount={idea.commentCount}
@@ -86,6 +89,7 @@ const DashboardIdeaList: FC<IDashboardIdeaList> = ({
 					isLiked={!!idea.liked}
 					isCommented={false}
 					handleLike={() => handleIdeaLike(idea._id, refetch)}
+					user={idea?.user}
 				/>
 			</div>
 		));

@@ -99,6 +99,7 @@ const DashboardExperienceList: FC<
 					isLiked={!!exp.liked}
 					isCommented={false}
 					handleLike={() => handleLike(exp._id)}
+					user={exp?.user}
 				/>
 			</div>
 		));

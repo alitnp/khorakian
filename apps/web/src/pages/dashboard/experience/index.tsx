@@ -3,7 +3,6 @@ import DashboardUserExperience from "@/components/dashboard/dashboardExperience/
 import DashboardLayout from "@/components/global/Layout/components/DashboardLayout";
 import { FC, useCallback, useState } from "react";
 
-
 const DashboardExperience: FC = () => {
 	//state
 	const [showCreateModal, setShowCreateModal] =
@@ -21,7 +20,7 @@ const DashboardExperience: FC = () => {
 				title="تجربیات من"
 				moreContent={
 					<span
-						className="text-sm font-normal cursor-pointer text-k-primary-color"
+						className="px-2 py-1 text-sm font-normal rounded-lg cursor-pointer text-k-bg-color bg-k-primary-color"
 						onClick={toggleCreateModal}
 					>
 						+ ثبت تجربه جدید

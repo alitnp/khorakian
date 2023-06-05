@@ -6,7 +6,9 @@ import {
   IIdeaComment,
   IIdeaLike,
   IIdeaRead,
+  IImage,
   IUserRead,
+  IVideoRead,
 } from "@my/types";
 import LikeData from "@/components/Like/likeData";
 import CommentData from "@/components/comment/commentData";
@@ -17,6 +19,8 @@ import UnauthorizedError from "@/helpers/error/UnauthorizedError";
 import IdeaCategoryData from "@/components/Idea/ideaCategory/ideaCategoryData";
 import BadRequestError from "@/helpers/error/BadRequestError";
 import UserData from "@/components/user/userData";
+import VideoData from "@/components/video/videoData";
+import ImageData from "@/components/image/imageData";
 
 class IdeaData {
   Idea: Model<IIdea>;
@@ -24,6 +28,8 @@ class IdeaData {
   IdeaLike: LikeData<IIdeaLike>;
   IdeaComment: CommentData<IIdeaComment>;
   User: UserData;
+  Video: VideoData;
+  Image: ImageData;
 
   constructor(
     Idea: Model<IIdea>,
@@ -31,12 +37,16 @@ class IdeaData {
     IdeaLike: LikeData<IIdeaLike>,
     IdeaComment: CommentData<IIdeaComment>,
     User: UserData,
+    Video: VideoData,
+    Image: ImageData,
   ) {
     this.Idea = Idea;
     this.IdeaCategory = IdeaCategory;
     this.IdeaLike = IdeaLike;
     this.IdeaComment = IdeaComment;
     this.User = User;
+    this.Video = Video;
+    this.Image = Image;
   }
 
   getAll = async (
@@ -82,7 +92,13 @@ class IdeaData {
       .populate<{ ideaCategory: IIdeaCategory; user: IUserRead }>([
         "ideaCategory",
         "user",
+        { path: "user", populate: { path: "image", model: "Image" } },
       ])
+      .populate<{ videos: IVideoRead[] }>({
+        path: "videos",
+        populate: { path: "thumbnail" },
+      })
+      .populate<{ images: IImage[] }>("images")
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
       .sort(sortBy ? { [sortBy]: desc } : { creationDate: -1 })
@@ -135,6 +151,11 @@ class IdeaData {
         select: "-notification",
         populate: { path: "image", model: "Image" },
       })
+      .populate<{ images: IImage[] }>("images")
+      .populate<{ videos: IVideoRead[] }>({
+        path: "videos",
+        populate: { path: "thumbnail" },
+      })
       .lean();
 
     if (!idea) throw new NotFoundError();
@@ -154,6 +175,8 @@ class IdeaData {
     featured,
     isAdminSubmitted,
     user,
+    images = [],
+    videos = [],
   }: IIdea): Promise<IIdeaRead> => {
     if (!user) throw new UnauthenticatedError();
     const existUser = await this.User.get(user);
@@ -163,6 +186,20 @@ class IdeaData {
     const existingIdeaCategory = await this.IdeaCategory.get(ideaCategory);
     if (!existingIdeaCategory)
       throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
+
+    const existingImageIds = [];
+    for (let i = 0; i < images.length; i++) {
+      const imageId = images[i];
+      const existingImage = await this.Image.get(imageId);
+      if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
+
+    const existingVideoIds = [];
+    for (let i = 0; i < videos.length; i++) {
+      const videoId = videos[i];
+      const existingVideo = await this.Video.get(videoId);
+      if (!!existingVideo) existingVideoIds.push(existingVideo._id);
+    }
 
     const idea = new this.Idea({
       title,
@@ -175,6 +212,8 @@ class IdeaData {
       isApprove: isAdminSubmitted,
       isAdminSubmitted,
       user,
+      images: existingImageIds,
+      videos: existingVideoIds,
     });
     await idea.save();
     return await this.get(idea._id);
@@ -188,6 +227,8 @@ class IdeaData {
     featured,
     user,
     isAdmin,
+    images,
+    videos,
   }: IIdea & { _id: string; isAdmin: boolean }): Promise<IIdeaRead> => {
     if (!user) throw new UnauthenticatedError();
     const existUser = await this.User.get(user);
@@ -205,6 +246,20 @@ class IdeaData {
     if (!existingIdeaCategory)
       throw new NotFoundError("دسته بندی ای با این شناسه یافت نشد");
 
+    const existingImageIds = [];
+    for (let i = 0; i < images.length; i++) {
+      const imageId = images[i];
+      const existingImage = await this.Image.get(imageId);
+      if (!!existingImage) existingImageIds.push(existingImage._id);
+    }
+
+    const existingVideoIds = [];
+    for (let i = 0; i < videos.length; i++) {
+      const videoId = videos[i];
+      const existingVideo = await this.Video.get(videoId);
+      if (!!existingVideo) existingVideoIds.push(existingVideo._id);
+    }
+
     await this.Idea.findByIdAndUpdate(
       _id,
       {
@@ -213,6 +268,8 @@ class IdeaData {
           ideaCategory,
           text,
           featured: !!featured,
+          images: existingImageIds,
+          videos: existingVideoIds,
         },
       },
       { new: true },

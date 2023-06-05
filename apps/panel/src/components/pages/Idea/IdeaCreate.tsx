@@ -19,9 +19,15 @@ import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
 import { getAllIdeaCategories } from 'redux/reducer/IdeaCategory/getAllIdeaCategories';
+import { IImage, IVideoRead } from '@my/types';
+import TcDevider from 'components/UI/Devider/TcDevider';
+import AddVideo from 'components/UI/Video/AddVideo';
+import AddImage from 'components/UI/Image/AddImage';
 
 const IdeaCreate: FC = () => {
   //states
+  const [videos, setVideos] = useState<IVideoRead[]>([]);
+  const [images, setImages] = useState<IImage[]>([]);
   const [loading, setLoading] = useState(false);
 
   //hooks
@@ -33,7 +39,7 @@ const IdeaCreate: FC = () => {
   //functions
   const handelSubmit = async (values: any) => {
     setLoading(true);
-    await ApiService.post(endpointUrls.ideaCreate, { ...values, isAdminSubmitted: true })
+    await ApiService.post(endpointUrls.ideaCreate, { ...values, isAdminSubmitted: true, videos: videos.map((vid) => vid._id), images: images.map((img) => img._id) })
       .then((res: any) =>
         handleApiThen({
           res,
@@ -74,13 +80,18 @@ const IdeaCreate: FC = () => {
             <TcTextarea placeholder='متن' />
           </TcFormItem>
         </TcFormWrapper>
-
-        <div className='flex flex-row-reverse mt-6'>
-          <TcButton type='primary' htmlType='submit'>
-            ثبت
-          </TcButton>
-        </div>
       </TcForm>
+      <TcDevider>ویدیو</TcDevider>
+      <AddVideo videos={videos} setVideos={setVideos} />
+
+      <TcDevider>عکس</TcDevider>
+      <AddImage images={images} setImages={setImages} />
+
+      <div className='flex flex-row-reverse mt-6'>
+        <TcButton type='primary' onClick={() => form.submit()}>
+          ثبت
+        </TcButton>
+      </div>
       {loading && <TcCoverLoading />}
     </TcCard>
   );

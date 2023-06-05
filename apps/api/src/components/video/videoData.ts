@@ -47,12 +47,14 @@ class VideoData implements IData<IVideo> {
 
   createVideoFile = async (
     file: fileForm,
+    userId: string,
     title?: string,
     imageId?: string,
   ): Promise<IVideo> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const video = new this.Video({
       qualityVariations: [],
+      user: userId,
     });
     if (title) video.title = title;
 

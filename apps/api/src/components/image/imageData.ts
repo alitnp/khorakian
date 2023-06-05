@@ -62,13 +62,18 @@ class ImageData implements IData<IImage> {
     return image;
   };
 
-  createImageFile = async (file: fileForm, title?: string): Promise<IImage> => {
+  createImageFile = async (
+    file: fileForm,
+    userId: string,
+    title?: string,
+  ): Promise<IImage> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const imageFormat = file.mimetype.split("/")[1];
     const image = new this.Image({
       fileName: "temp",
       format: imageFormat,
       pathname: "temp",
+      user: userId,
     });
     if (title) image.title = title;
 

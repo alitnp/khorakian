@@ -13,6 +13,7 @@ import { ApiDataListResponse, IIdeaRead } from '@my/types';
 import TcPopconfirm from 'components/UI/Popconfirm/TcPopconfirm';
 import queryString from 'query-string';
 import useQuery from 'global/helperFunctions/useQuery';
+import ImageItem from 'components/UI/Image/ImageItem';
 
 const UserIdea: FC = () => {
   //state
@@ -85,8 +86,14 @@ const UserIdea: FC = () => {
   );
 
   const columns = [
+    {
+      title: 'عکس',
+      key: 'video',
+      dataIndex: 'video',
+      width: 170,
+      render: (_text: string, record: IIdeaRead) => <ImageItem image={record?.videos[0]?.thumbnail ? record?.videos[0]?.thumbnail : record.images[0]} />,
+    },
     { title: 'عنوان', key: 'title', dataIndex: 'title' },
-
     {
       title: 'وضعیت تایید',
       render: (_text: any, record: Record<string, any>) => (record?.isApprove === true ? <span className='text-t-success-color'>تایید شده</span> : 'در انتظار تایید'),
@@ -111,6 +118,18 @@ const UserIdea: FC = () => {
       title: 'تعداد نظر',
       key: 'commentCount',
       dataIndex: 'commentCount',
+    },
+    {
+      title: 'عکس',
+      key: 'images',
+      dataIndex: 'images',
+      render: (_text: string, record: IIdeaRead) => (record.images?.length && record.images?.length > 0 ? record.images.length : 'ندارد'),
+    },
+    {
+      title: 'ویدیو',
+      key: 'videos',
+      dataIndex: 'videos',
+      render: (_text: string, record: IIdeaRead) => (record.videos.length && record.videos.length > 0 ? record.videos.length : 'ندارد'),
     },
     {
       title: 'تایید ایده',

@@ -196,6 +196,7 @@ const IdeasTabs: FC<IIdeasTabs> = ({}) => {
 						key={idea._id}
 						fullWidth
 						handleLike={() => handleIdeaLike(idea._id, getList)}
+						user={idea?.user}
 					/>
 				))}
 			</div>

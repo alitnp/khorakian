@@ -12,6 +12,11 @@ export const imageSchema = new Schema<IImage>({
   title: String,
   height: Number,
   width: Number,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "شناسه فرد ثبت کننده ارسال نشده"],
+  },
   ...defaultSchemaProps,
 });
 

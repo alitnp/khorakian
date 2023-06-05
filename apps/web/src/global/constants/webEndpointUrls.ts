@@ -46,6 +46,8 @@ const webEndpointUrls = {
 	ideaMyCommentsGetAll: "/idea/myComments",
 	ideaCommentCreate: "/idea/comment",
 	ideaCommnetReply: "/idea/reply",
+	imageUpload: "/image/upload",
+	imageDelete: (id: string) => "/image/" + id,
 
 	//N
 	notificationGetAll: "/user/getMyNotifications",
@@ -73,6 +75,10 @@ const webEndpointUrls = {
 		"/userExperience/myComments",
 	userExperienceCommentCreate: "/userExperience/comment",
 	userExperienceCommnetReply: "/userExperience/reply",
+
+	//V
+	videoUpload: "/video/upload",
+	videoDelete: (id: string) => "/video/" + id,
 
 	//P
 	pageItemWithContent: "/pageItem/getWithContents",

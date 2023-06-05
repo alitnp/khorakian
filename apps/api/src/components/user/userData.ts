@@ -167,10 +167,10 @@ class UserData implements IData<IUserRead> {
 
   uploadProfile = async (
     file: fileForm,
+    userId: string,
     title?: string,
-    userId?: string,
   ): Promise<IUserRead> => {
-    const item = await this.Image.createImageFile(file, title);
+    const item = await this.Image.createImageFile(file, userId, title);
     const user = await this.User.findByIdAndUpdate(userId, { image: item._id });
     if (!user) throw new NotFoundError("کاربر یافت نشد");
     return this.get(user._id);
