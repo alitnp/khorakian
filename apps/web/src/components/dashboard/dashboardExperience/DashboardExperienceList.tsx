@@ -91,7 +91,9 @@ const DashboardExperienceList: FC<
 					creationDate={dateObjectFormatter(exp.creationDate)}
 					desc={exp.text}
 					detailPath={
-						webRoutes.dashboardExperience.path + "/" + exp._id
+						exp.isApprove
+							? webRoutes.userExperienceDetail.path + "/" + exp._id
+							: webRoutes.dashboardExperience.path + "/" + exp._id
 					}
 					title={exp.title}
 					likeCount={exp.likeCount}

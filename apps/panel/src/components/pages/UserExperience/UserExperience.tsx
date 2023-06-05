@@ -16,6 +16,8 @@ import useQuery from 'global/helperFunctions/useQuery';
 import TcSelectReduxSearch from 'components/UI/Form/Inputs/TcSelectReduxSearch';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import { getAllUserExperienceCategories } from 'redux/reducer/UserExperienceCategory/getAllUserExperienceCategories';
+import { Link } from 'react-router-dom';
+import routes from 'global/Constants/routes';
 
 const UserExperience: FC = () => {
   //state
@@ -134,20 +136,31 @@ const UserExperience: FC = () => {
       key: 'commentCount',
       dataIndex: 'commentCount',
     },
-    { title: 'وضعیت', render: (_text: any, record: Record<string, any>) => (record.isApprove ? 'تایید شده' : 'تایید نشده') },
+    {
+      title: 'جزئیات',
+      key: 'detail',
+      dataIndex: 'detail',
+      render: (_text: string, record: IUserExperienceRead) => (
+        <Link to={routes.userExperienceDetail.path + '/' + record._id} className='text-t-primary-color'>
+          نمایش جزئیات
+        </Link>
+      ),
+    },
+    {
+      title: 'وضعیت تایید',
+      render: (_text: any, record: Record<string, any>) => (record?.isApprove === true ? <span className='text-t-success-color'>تایید شده</span> : 'در انتظار تایید'),
+    },
     {
       title: 'تایید تجربه کاربر',
       render: (_text: any, record: Record<string, any>) =>
         record?.isApprove === true ? (
           <div>
-            <p>توسط ادمین تایید شده</p>
             <TcPopconfirm onConfirm={() => DisApproveUserExperience(record?._id)} title='تجربه ی کاربر رد تایید شود؟'>
               <span className='cursor-pointer text-t-secondary-color'>رد تجربه</span>
             </TcPopconfirm>
           </div>
         ) : (
           <div>
-            <p>در انتظار تایید ادمین</p>
             <TcPopconfirm onConfirm={() => ApproveUserExperience(record?._id)} title='تجربه ی کاربر تایید شود؟'>
               <span className='cursor-pointer text-t-secondary-color'>تایید تجربه کاربر</span>
             </TcPopconfirm>

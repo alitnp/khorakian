@@ -53,7 +53,7 @@ class UserExperienceData {
     if (req.query.title)
       searchQuery.title = { $regex: req.query.title, $options: "i" };
     if (req.query.text)
-      searchQuery.text = { $regex: req.query.text, $option: "i" };
+      searchQuery.text = { $regex: req.query.text, $options: "i" };
     if (req.query.experienceCategory) {
       searchQuery.experienceCategory._id = {
         $regex: req.query.experienceCategory,

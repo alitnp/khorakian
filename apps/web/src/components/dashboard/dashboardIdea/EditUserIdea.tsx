@@ -1,4 +1,5 @@
 import MyButton from "@/components/basicUi/MyButton";
+import ImageVideoAddRemove from "@/components/global/ImageVideoAddRemove/ImageVideoAddRemove";
 import Loading from "@/components/global/Loading/Loading";
 import ReduxSelect from "@/components/global/ReduxSelect/ReduxSelect";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
@@ -10,7 +11,12 @@ import {
 	webApiThen,
 } from "@/global/utils/webApiThen";
 import { getAllIdeaCategories } from "@/redux/reducers/categories/getAllIdeaCategories";
-import { ApiDataResponse, IIdeaRead } from "@my/types";
+import {
+	ApiDataResponse,
+	IIdeaRead,
+	IImage,
+	IVideoRead,
+} from "@my/types";
 import { Form, Input, Modal } from "antd";
 import { FC, useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
@@ -30,18 +36,27 @@ const EditUserIdea: FC<ICreateUserIdea> = ({
 }) => {
 	//state
 	const [loading, setLoading] = useState<boolean>(false);
+	const [images, setImages] = useState<IImage[]>([]);
+	const [videos, setVideos] = useState<IVideoRead[]>([]);
+	const [imageLoading, setImageLoading] =
+		useState<boolean>(false);
+	const [videoLoading, setVideoLoading] =
+		useState<boolean>(false);
 
 	//hooks
 	const [form] = Form.useForm();
 
 	//effects
 	useEffect(() => {
-		idea &&
+		if (idea) {
 			form.setFieldsValue({
 				title: idea.title,
 				text: idea.text,
 				ideaCategory: idea.ideaCategory._id + "",
 			});
+			setImages(idea.images);
+			setVideos(idea.videos);
+		}
 	}, [idea]);
 
 	//functions
@@ -49,7 +64,11 @@ const EditUserIdea: FC<ICreateUserIdea> = ({
 		setLoading(true);
 		await WebApiService.put(
 			webEndpointUrls.ideaEdit(idea._id),
-			values
+			{
+				...values,
+				videos: videos.map((vid) => vid._id),
+				images: images.map((img) => img._id),
+			}
 		)
 			.then((res: ApiDataResponse<IIdeaRead>) =>
 				webApiThen({
@@ -74,6 +93,15 @@ const EditUserIdea: FC<ICreateUserIdea> = ({
 			title="ویرایش ایده من"
 		>
 			<div className="pt-6">
+				<ImageVideoAddRemove
+					images={images}
+					setImages={setImages}
+					videos={videos}
+					setVideos={setVideos}
+					form={form}
+					setImageLoading={setImageLoading}
+					setVideoLoading={setVideoLoading}
+				/>
 				<Form
 					form={form}
 					onFinish={handleSubmit}
@@ -134,6 +162,8 @@ const EditUserIdea: FC<ICreateUserIdea> = ({
 				</Form>
 			</div>
 			{loading && <Loading />}
+			{imageLoading && <Loading text="درحال بارگزاری عکس" />}
+			{videoLoading && <Loading text="درحال بارگزاری ویدیو" />}
 		</Modal>
 	);
 };

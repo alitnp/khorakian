@@ -151,7 +151,7 @@ export const defaultSearchQueries = (
   searchQuery: Record<string, any>,
   req: Req,
 ): Record<string, any> => {
-  if (req.query._id) searchQuery._id = { $bt: req.query._id };
+  if (req.query._id) searchQuery._id = req.query._id;
   if (req.query.creationDateFrom)
     searchQuery.creationData = { $bt: req.query.creationDateFrom };
   if (req.query.creationDateTo)

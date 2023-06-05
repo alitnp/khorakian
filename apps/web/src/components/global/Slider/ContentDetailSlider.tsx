@@ -75,7 +75,7 @@ const ContentDetailSlider: FC<IProps> = ({
 				))}
 			</KSwiper>
 
-			{images?.length + videos?.length > 0 && (
+			{images?.length + videos?.length > 1 && (
 				<div className="!w-fit mx-auto">
 					<KSwiper
 						onSwiper={setThumbsSwiper}

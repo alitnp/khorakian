@@ -81,7 +81,9 @@ const DashboardIdeaList: FC<IDashboardIdeaList> = ({
 					creationDate={dateObjectFormatter(idea.creationDate)}
 					desc={idea.text}
 					detailPath={
-						webRoutes.dashboardIdea.path + "/" + idea._id
+						idea.isApprove
+							? webRoutes.idea.path + "/" + idea._id
+							: webRoutes.dashboardIdea.path + "/" + idea._id
 					}
 					title={idea.title}
 					likeCount={idea.likeCount}

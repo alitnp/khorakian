@@ -27,9 +27,6 @@ import {
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 
-
-
-
 const DashboardExperienceDetail: FC = () => {
 	//state
 	const [detail, setDetail] =
@@ -87,20 +84,25 @@ const DashboardExperienceDetail: FC = () => {
 				moreContent={
 					<div className="flex gap-2">
 						{!detail?.isApprove && (
-							<span
-								className="text-sm font-normal cursor-pointer text-k-secondary-color"
-								onClick={toggleEditModal}
-							>
-								<BiEdit className="inline ml-1" />
-								ویرایش
-							</span>
+							<>
+								<span
+									className="text-sm font-normal cursor-pointer text-k-secondary-color"
+									onClick={toggleEditModal}
+								>
+									<BiEdit className="inline ml-1" />
+									ویرایش
+								</span>
+								<Popconfirm
+									title="حذف شود؟"
+									onConfirm={handleDelete}
+								>
+									<span className="text-sm font-normal cursor-pointer text-k-error-color">
+										<AiOutlineDelete className="inline ml-1" />
+										حذف
+									</span>
+								</Popconfirm>
+							</>
 						)}
-						<Popconfirm title="حذف شود؟" onConfirm={handleDelete}>
-							<span className="text-sm font-normal cursor-pointer text-k-error-color">
-								<AiOutlineDelete className="inline ml-1" />
-								حذف
-							</span>
-						</Popconfirm>
 					</div>
 				}
 			/>
@@ -113,11 +115,12 @@ const DashboardExperienceDetail: FC = () => {
 								{detail.experienceCategory.title}
 							</span>
 						</div>
-						<CardLikeCommentCount
-							commentCount={detail.commentCount}
-							likeCount={detail.likeCount}
-							viewCount={detail.viewCount}
-						/>
+						<div className="w-full sm:max-w-[200px] p-2 text-xs border rounded-lg bg-k-grey-bg-1-color border-k-border-2-color">
+							در صورت تایید ادمین مطلب در سامانه منتشر خواهد شد.
+							<br />
+							توجه داشته باشید پس از تایید و انتشار، امکان ویرایش
+							یا حذف وجود نخواهد داشت.
+						</div>
 					</div>
 					<p className="my-6">{detail.text}</p>
 				</div>

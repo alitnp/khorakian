@@ -28,10 +28,13 @@ class DirectMessageData {
 
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (!isAdmin) {
-      searchQuery.user._id = userId;
+      searchQuery.user = userId;
     }
-    if (req.query.text)
-      searchQuery.text = { $regex: req.query.text, $option: "i" };
+
+    if (isAdmin && req.query.user) searchQuery.user = req.query.user;
+    if (isAdmin && req.query.text)
+      searchQuery.text = { $regex: req.query.text, $options: "i" };
+
     return await getAllData<IDirectMessage>(
       searchQuery,
       req,

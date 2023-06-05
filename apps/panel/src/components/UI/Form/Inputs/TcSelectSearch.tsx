@@ -2,6 +2,7 @@ import { SelectProps } from 'antd';
 import TcSelect from 'components/UI/Form/Inputs/TcSelect';
 import ApiService from 'config/API/ApiService';
 import { FC, useEffect, useState } from 'react';
+import queryString from 'query-string';
 
 interface ITcSelectSearch extends SelectProps {
   value?: string | number | undefined | null;
@@ -16,7 +17,7 @@ interface ITcSelectSearch extends SelectProps {
 const TcSelectSearch: FC<ITcSelectSearch> = ({
   value,
   searchEndpoint,
-  idPropertyName = 'id',
+  idPropertyName = '_id',
   parentPropertyName,
   labelPropertyName = 'title',
   onChangeFullInfo,
@@ -43,7 +44,7 @@ const TcSelectSearch: FC<ITcSelectSearch> = ({
   //functions
   const getById = async (id: string | number) => {
     setLoading(true);
-    await ApiService.post(searchEndpoint, { [idPropertyName]: id })
+    await ApiService.get(searchEndpoint + '?' + queryString.stringify({ [idPropertyName]: id }))
       .then((res: any) => {
         if (res.isSuccess) setOptionsList(res.data);
         else setOptionsList([]);
@@ -55,7 +56,7 @@ const TcSelectSearch: FC<ITcSelectSearch> = ({
   const handleSearch = async (input: string) => {
     if (!input || input.length < 1) return;
     setLoading(true);
-    await ApiService.post(searchEndpoint, { [labelPropertyName]: input })
+    await ApiService.get(searchEndpoint + '?' + queryString.stringify({ [labelPropertyName]: input }))
       .then((res: any) => {
         if (res.isSuccess) setOptionsList(res.data);
         else setOptionsList([]);
@@ -69,7 +70,7 @@ const TcSelectSearch: FC<ITcSelectSearch> = ({
     onChange && onChange(e);
     if (onChangeFullInfo) {
       const item = optionsList?.find((item: any) => item.id === e);
-      onChangeFullInfo({ ...item, label: item.title, value: item.id });
+      onChangeFullInfo({ ...item, label: item.title, value: item._id });
     }
   };
 
@@ -77,13 +78,12 @@ const TcSelectSearch: FC<ITcSelectSearch> = ({
     <TcSelect
       showSearch
       allowClear
-      value={value && +value}
       loading={loading}
       placeholder='تایپ کنید'
       optionFilterProp='children'
       onSearch={setSearchPhrase}
       filterOption={false}
-      options={optionsList?.map((item) => ({ label: parentPropertyName ? item[parentPropertyName][labelPropertyName] : item[labelPropertyName], value: item.id }))}
+      options={optionsList?.map((item) => ({ label: parentPropertyName ? item[parentPropertyName][labelPropertyName] : item[labelPropertyName], value: item._id }))}
       {...props}
       onChange={handleChange}
     />

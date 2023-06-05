@@ -14,6 +14,8 @@ import TcPopconfirm from 'components/UI/Popconfirm/TcPopconfirm';
 import queryString from 'query-string';
 import useQuery from 'global/helperFunctions/useQuery';
 import ImageItem from 'components/UI/Image/ImageItem';
+import { Link } from 'react-router-dom';
+import routes from 'global/Constants/routes';
 
 const UserIdea: FC = () => {
   //state
@@ -94,10 +96,7 @@ const UserIdea: FC = () => {
       render: (_text: string, record: IIdeaRead) => <ImageItem image={record?.videos[0]?.thumbnail ? record?.videos[0]?.thumbnail : record.images[0]} />,
     },
     { title: 'عنوان', key: 'title', dataIndex: 'title' },
-    {
-      title: 'وضعیت تایید',
-      render: (_text: any, record: Record<string, any>) => (record?.isApprove === true ? <span className='text-t-success-color'>تایید شده</span> : 'در انتظار تایید'),
-    },
+
     {
       title: 'دسته بندی',
       key: 'ideaCategory',
@@ -131,19 +130,32 @@ const UserIdea: FC = () => {
       dataIndex: 'videos',
       render: (_text: string, record: IIdeaRead) => (record.videos.length && record.videos.length > 0 ? record.videos.length : 'ندارد'),
     },
+
+    {
+      title: 'جزئیات',
+      key: 'detail',
+      dataIndex: 'detail',
+      render: (_text: string, record: IIdeaRead) => (
+        <Link to={routes.userIdeaDetail.path + '/' + record._id} className='text-t-primary-color'>
+          نمایش جزئیات
+        </Link>
+      ),
+    },
+    {
+      title: 'وضعیت تایید',
+      render: (_text: any, record: Record<string, any>) => (record?.isApprove === true ? <span className='text-t-success-color'>تایید شده</span> : 'در انتظار تایید'),
+    },
     {
       title: 'تایید ایده',
       render: (_text: any, record: Record<string, any>) =>
         record?.isApprove === true ? (
           <div>
-            <p>توسط ادمین تایید شده</p>
             <TcPopconfirm onConfirm={() => DisApproveUserIdea(record?._id)} title='ایده ی کاربر رد تایید شود؟'>
               <span className='cursor-pointer text-t-secondary-color'>رد ایده</span>
             </TcPopconfirm>
           </div>
         ) : (
           <div>
-            <p>در انتظار تایید ادمین</p>
             <TcPopconfirm onConfirm={() => ApproveUserIdea(record?._id)} title='ایده ی کاربر تایید شود؟'>
               <span className='cursor-pointer text-t-secondary-color'>تایید ایده</span>
             </TcPopconfirm>

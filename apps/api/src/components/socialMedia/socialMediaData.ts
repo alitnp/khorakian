@@ -36,7 +36,7 @@ class SocialMediaData {
       };
 
     if (req.query.url)
-      searchQuery.url = { $regex: req.query.url, $option: "i" };
+      searchQuery.url = { $regex: req.query.url, $options: "i" };
 
     const {
       fixedSearchQuery,

@@ -23,9 +23,7 @@ import {
 } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
-
-
-
+import ContentDetailSlider from "@/components/global/Slider/ContentDetailSlider";
 
 const DashboardIdeaDetail: FC = () => {
 	//state
@@ -80,25 +78,34 @@ const DashboardIdeaDetail: FC = () => {
 				moreContent={
 					<div className="flex gap-2">
 						{!detail?.isApprove && (
-							<span
-								className="text-sm font-normal cursor-pointer text-k-secondary-color"
-								onClick={toggleEditModal}
-							>
-								<BiEdit className="inline ml-1" />
-								ویرایش
-							</span>
+							<>
+								<span
+									className="text-sm font-normal cursor-pointer text-k-secondary-color"
+									onClick={toggleEditModal}
+								>
+									<BiEdit className="inline ml-1" />
+									ویرایش
+								</span>
+								<Popconfirm
+									title="حذف شود؟"
+									onConfirm={handleDelete}
+								>
+									<span className="text-sm font-normal cursor-pointer text-k-error-color">
+										<AiOutlineDelete className="inline ml-1" />
+										حذف
+									</span>
+								</Popconfirm>
+							</>
 						)}
-						<Popconfirm title="حذف شود؟" onConfirm={handleDelete}>
-							<span className="text-sm font-normal cursor-pointer text-k-error-color">
-								<AiOutlineDelete className="inline ml-1" />
-								حذف
-							</span>
-						</Popconfirm>
 					</div>
 				}
 			/>
 			{detail && (
 				<div>
+					<ContentDetailSlider
+						images={detail?.images || []}
+						videos={detail?.videos || []}
+					/>
 					<div className="flex flex-col items-start justify-between gap-2 sm:flex-row">
 						<div>
 							<h1 className="text-xl font-bold">{detail.title}</h1>
@@ -106,11 +113,12 @@ const DashboardIdeaDetail: FC = () => {
 								{detail.ideaCategory.title}
 							</span>
 						</div>
-						<CardLikeCommentCount
-							commentCount={detail.commentCount}
-							likeCount={detail.likeCount}
-							viewCount={detail.viewCount}
-						/>
+						<div className="w-full sm:max-w-[200px] p-2 text-xs border rounded-lg bg-k-grey-bg-1-color border-k-border-2-color">
+							در صورت تایید ادمین مطلب در سامانه منتشر خواهد شد.
+							<br />
+							توجه داشته باشید پس از تایید و انتشار، امکان ویرایش
+							یا حذف وجود نخواهد داشت.
+						</div>
 					</div>
 					<p className="my-6">{detail.text}</p>
 				</div>

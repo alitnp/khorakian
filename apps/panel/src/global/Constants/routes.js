@@ -57,6 +57,7 @@ const routes = {
   ideaEdit: { path: '/idea/edit', isPrivate: true },
   ideaDetail: { path: '/idea/detail', isPrivate: true },
   //user idea
+  userIdeaDetail: { path: '/userIdea/detail', isPrivate: true },
   userIdea: { path: '/userIdea', isPrivate: true },
 
   //Experience
@@ -66,6 +67,7 @@ const routes = {
 
   //UserExperience
   userExperience: { path: '/userExperience', isPrivate: true },
+  userExperienceDetail: { path: '/userExperience/detail', isPrivate: true },
   userExperienceCreate: { path: '/userExperience/create', isPrivate: true },
   userExperienceEdit: { path: '/userExperience/edit', isPrivate: true },
 

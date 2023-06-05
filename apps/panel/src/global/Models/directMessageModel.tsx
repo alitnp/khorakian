@@ -1,8 +1,10 @@
 import { IUserRead } from '@my/types';
 import TcInput from 'components/UI/Form/Inputs/TcInput';
+import TcSelectSearch from 'components/UI/Form/Inputs/TcSelectSearch';
 import TcTextarea from 'components/UI/Form/Inputs/TcTextarea';
 import TcFormItem from 'components/UI/Form/TcFormItem';
 import TcDetailIcon from 'components/UI/TableIcons/TcDetailIcon';
+import endpointUrls from 'global/Constants/endpointUrls';
 import routes from 'global/Constants/routes';
 
 const title = 'پیام های من';
@@ -18,8 +20,11 @@ const inputs = (
 
 const filterInputs = (
   <>
-    <TcFormItem name='userId' label='افراد'>
-      <TcInput placeholder='جستجو' />
+    <TcFormItem name='user' label='کاربر'>
+      <TcSelectSearch labelPropertyName='fullName' searchEndpoint={endpointUrls.userGetList} placeholder='نام کاربر' />
+    </TcFormItem>
+    <TcFormItem name='text' label='متن'>
+      <TcInput placeholder='متن' />
     </TcFormItem>
   </>
 );

@@ -8,7 +8,7 @@ const DirectMessage: FC = () => {
   return (
     <TcListPageWrapper
       columns={directMessageModel.columns}
-      createRoute={routes.directMessageCreate.path}
+      // createRoute={routes.directMessageCreate.path}
       // deleteEndpoint={endpointUrls.directMessageDelete}
       filterItems={directMessageModel.filterInputs}
       getListEndpoint={endpointUrls.directMessageGetList}
