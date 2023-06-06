@@ -38,7 +38,7 @@ class UserController extends BaseController<IUserRead> {
 
   uploadProfile = async (req: Req, res: Res) => {
     const tempReq = req as Req & { file: fileForm };
-    console.log(req.file);
+
     if (!tempReq.file) throw new BadRequestError("فایل عکس یافت نشد.");
     const userId = getUserIdFromReq(req);
     if (!userId) throw new NotFoundError("کاربر یافت نشد");

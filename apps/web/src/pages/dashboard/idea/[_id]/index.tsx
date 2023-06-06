@@ -101,7 +101,7 @@ const DashboardIdeaDetail: FC = () => {
 				}
 			/>
 			{detail && (
-				<div>
+				<div className="grid w-full grid-cols-1">
 					<ContentDetailSlider
 						images={detail?.images || []}
 						videos={detail?.videos || []}

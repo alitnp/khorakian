@@ -112,9 +112,7 @@ const AllCommentTabs: FC<IProps> = ({
 			);
 		setShowCommentModel((prevState) => !prevState);
 	}, [user, showCommentModel]);
-	const onChange = (key: string) => {
-		console.log(key);
-	};
+
 	//seprate admins tab
 	const tabComments = useMemo(() => {
 		const temptabComments: adminComment[] = [];
@@ -224,7 +222,6 @@ const AllCommentTabs: FC<IProps> = ({
 	return (
 		<>
 			<Tabs
-				onChange={onChange}
 				className="max-w-screen-lg m-auto "
 				type="card"
 				items={commentsTabs}

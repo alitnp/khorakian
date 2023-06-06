@@ -1,14 +1,12 @@
 import { FC, useState } from "react";
 import React from "react";
 import { SwiperSlide, SwiperProps } from "swiper/react";
-import "swiper/css/free-mode";
-import "swiper/css/thumbs";
-import { FreeMode, Thumbs } from "swiper";
 import webConfig from "@/global/constants/webConfig";
 import Image from "next/image";
 import { IImage, IVideoRead } from "@my/types";
 import KSwiper from "@/components/global/KSwipper/KSwiper";
 import VideoItem from "@/components/global/VideoPlayer/VideoItem";
+import SwiperInstance from "@/components/global/TimeLine/SwiperInstance";
 
 interface IProps extends SwiperProps {
 	images: IImage[];
@@ -20,7 +18,6 @@ const ContentDetailSlider: FC<IProps> = ({
 	videos,
 }) => {
 	//state
-	const [thumbsSwiper, setThumbsSwiper] = useState<any>();
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 
 	if (images.length === 0 && videos.length === 0)
@@ -28,19 +25,11 @@ const ContentDetailSlider: FC<IProps> = ({
 	return (
 		<div className="mb-6 select-none bg-k-text-color">
 			<KSwiper
-				observer
-				observeParents
 				spaceBetween={0}
-				onSlideChange={(swiper: any) =>
-					setActiveIndex(swiper.activeIndex)
-				}
-				thumbs={{
-					swiper:
-						thumbsSwiper && !thumbsSwiper.destroyed
-							? thumbsSwiper
-							: null,
+				onSlideChange={(swiper: any) => {
+					setActiveIndex(swiper.activeIndex);
 				}}
-				modules={[FreeMode, Thumbs]}
+				watchSlidesProgress={true}
 			>
 				{videos?.map((vid) => (
 					<SwiperSlide
@@ -73,21 +62,16 @@ const ContentDetailSlider: FC<IProps> = ({
 						</div>
 					</SwiperSlide>
 				))}
+				<SwiperInstance activeIndex={activeIndex} />
 			</KSwiper>
 
 			{images?.length + videos?.length > 1 && (
 				<div className="!w-fit mx-auto">
 					<KSwiper
-						onSwiper={setThumbsSwiper}
 						spaceBetween={8}
 						slidesPerView={"auto"}
 						watchSlidesProgress={true}
-						modules={[Thumbs]}
 						dir="rtl"
-						pagination={{
-							clickable: true,
-							dynamicBullets: true,
-						}}
 					>
 						{videos?.map((vid, index) => (
 							<SwiperSlide
@@ -97,6 +81,7 @@ const ContentDetailSlider: FC<IProps> = ({
 										? " border-k-secondary-color"
 										: "border-transparent"
 								}`}
+								onClick={() => setActiveIndex(index)}
 							>
 								<VideoItem video={vid} size="small" imageOnly />
 							</SwiperSlide>
@@ -109,6 +94,9 @@ const ContentDetailSlider: FC<IProps> = ({
 										? " border-k-secondary-color"
 										: "border-transparent"
 								}`}
+								onClick={() =>
+									setActiveIndex(videos.length + index)
+								}
 							>
 								<Image
 									className="object-contain w-fit h-[100px] max-h-[20vh] object-center"
@@ -119,6 +107,7 @@ const ContentDetailSlider: FC<IProps> = ({
 								/>
 							</SwiperSlide>
 						))}
+						<SwiperInstance activeIndex={activeIndex} />
 					</KSwiper>
 				</div>
 			)}
