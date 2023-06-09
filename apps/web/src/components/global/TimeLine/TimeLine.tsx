@@ -1,5 +1,5 @@
 import { FC, useState, useMemo } from "react";
-import Swiper, { Autoplay } from "swiper";
+import Swiper from "swiper";
 import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import KSwiper from "@/components/global/KSwipper/KSwiper";
@@ -51,14 +51,14 @@ const TimeLine: FC<ITimeLine> = ({
 			needYear =
 				dateObjectFormatter(slides[0].eventDate, "YYYY") !==
 				dateObjectFormatter(
-					array[index - 1].posts[0].eventDate,
+					postsArray[index - 1].posts[0].eventDate,
 					"YYYY"
 				);
 		} else {
 			needYear =
 				dateObjectFormatter(slides[0].eventDate, "YYYY") !==
 				dateObjectFormatter(
-					array[array.length - 1].posts[0].eventDate,
+					postsArray[postsArray.length - 1].posts[0].eventDate,
 					"YYYY"
 				);
 		}
@@ -74,18 +74,26 @@ const TimeLine: FC<ITimeLine> = ({
 		);
 	};
 
-	const array: any = chunkArray(multiplePosts(posts), 2).map(
-		(arr, index) => ({ posts: arr, index })
-	);
+	const postsArray: any = chunkArray(
+		multiplePosts(posts),
+		2
+	).map((arr, index) => ({ posts: arr, index }));
 
-	// console.log(array);
-	// console.log(activeIndex);
-	// console.log(
-	// 	dateObjectFormatter(
-	// 		array[activeIndex].posts[0].eventDate,
-	// 		"YYYY"
-	// 	)
-	// );
+	const yearsIndex = useMemo(() => {
+		if (!postsArray) return [];
+		const years: { year: string; index: number }[] = [];
+		postsArray.map(
+			(postIndex: { posts: IPostRead[]; index: number }) => {
+				const year = dateObjectFormatter(
+					postIndex.posts[0].eventDate,
+					"YYYY"
+				);
+				if (!years.some((item) => item.year === year))
+					years.push({ year, index: postIndex.index });
+			}
+		);
+		return years;
+	}, []);
 
 	const renderSlides = useMemo(
 		() =>
@@ -97,7 +105,7 @@ const TimeLine: FC<ITimeLine> = ({
 	const activeYear = useMemo(
 		() =>
 			dateObjectFormatter(
-				array[activeIndex].posts[0].eventDate,
+				postsArray[activeIndex].posts[0].eventDate,
 				"YYYY"
 			),
 		[activeIndex]
@@ -109,8 +117,12 @@ const TimeLine: FC<ITimeLine> = ({
 				title={title}
 				subTitle={subTitle}
 				year={activeYear}
+				yearsIndex={yearsIndex}
+				goToSlide={(index: number) =>
+					swiperInstance?.slideTo(index, 300)
+				}
 			/>
-			<div className="relative w-full py-24 overflow-hidden">
+			<div className="relative w-full py-32 overflow-hidden md:py-24">
 				<TimeLineYearShape
 					orientation="vertical"
 					year={activeYear}
@@ -130,9 +142,7 @@ const TimeLine: FC<ITimeLine> = ({
 						spaceBetween={0}
 						onSlideChange={(swiper: Swiper) => {
 							setActiveIndex(swiper.realIndex);
-							console.log(swiper);
 						}}
-						// centeredSlides={true}
 						loop={false}
 					>
 						{renderSlides}

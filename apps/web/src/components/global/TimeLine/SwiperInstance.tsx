@@ -25,7 +25,7 @@ const SwiperInstance: FC<ISwiperInstance> = ({
 			swiper?.slideTo !== undefined &&
 			activeIndex !== undefined
 		) {
-			swiper?.slideTo(activeIndex, 0.5);
+			swiper?.slideTo(activeIndex, 300);
 		}
 	}, [activeIndex, swiper]);
 

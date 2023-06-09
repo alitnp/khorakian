@@ -20,13 +20,13 @@ const TimeLineButtons: FC<ITimeLineButtons> = ({
 			<div className="absolute translate-x-1/2 bottom-6 right-1/2">
 				<div className="relative flex gap-8 py-6">
 					<div
-						className="flex items-center justify-center w-8 h-8 transition-shadow duration-300 border rounded-full shadow-none cursor-pointer select-none hover:shadow-lg"
+						className="flex items-center justify-center w-8 h-8 transition-shadow duration-300 border rounded-full shadow-none cursor-pointer select-none bg-k-bg-color hover:shadow-lg"
 						onClick={() => swiperInstance?.slidePrev()}
 					>
 						<IoIosArrowForward className="cursor-pointer select-none shadow-none transition-shadow hover:shadow-lg ml-[2px]" />
 					</div>
 					<div
-						className="flex items-center justify-center w-8 h-8 transition-shadow duration-300 border rounded-full shadow-none cursor-pointer select-none hover:shadow-lg"
+						className="flex items-center justify-center w-8 h-8 transition-shadow duration-300 border rounded-full shadow-none cursor-pointer select-none bg-k-bg-color hover:shadow-lg"
 						onClick={() => swiperInstance?.slideNext()}
 					>
 						<IoIosArrowBack className=" mr-[2px] select-none" />

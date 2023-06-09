@@ -1,5 +1,7 @@
+import webRoutes from "@/global/constants/webRoutes";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
 import { IPostRead } from "@my/types";
+import Link from "next/link";
 import {
 	FC,
 	ReactNode,
@@ -52,7 +54,7 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 							<div
 								className={`${
 									isActive ? "text-k-primary-color" : ""
-								} text-base font-medium line-clamp-1 whitespace-nowrap`}
+								} text-base font-medium line-clamp-1 max-w-[150px] md:max-w-[unset] whitespace-nowrap`}
 							>
 								{post.title}
 							</div>
@@ -72,9 +74,16 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 		<>
 			<div className="flex items-center justify-between px-4 py-2 border-b md:hidden bg-k-bg-color ">
 				<span className="font-medium">{title}</span>
-				<span className="cursor-pointer text-k-primary-color hover:underline">
+				<Link
+					href={
+						webRoutes.postAllContents.path +
+						"?postCategory=" +
+						(activeCategory || "")
+					}
+					className="cursor-pointer text-k-primary-color hover:underline"
+				>
 					نمایش همه
-				</span>
+				</Link>
 			</div>
 			<div className="relative flex flex-row md:flex-col md:w-44 lg:w-64 bg-k-bg-color shrink-0">
 				<div className="sticky top-0 left-0 z-40 hidden px-4 py-2 font-medium border-b md:block bg-k-bg-color">
@@ -86,9 +95,16 @@ const HomeFeaturedPosts: FC<IHomeFeaturedPosts> = ({
 				</div>
 
 				<div className="hidden px-4 py-2 mt-auto text-center border-t md:block text-k-primary-color ">
-					<span className="cursor-pointer hover:underline ">
+					<Link
+						href={
+							webRoutes.postAllContents.path +
+							"?postCategory=" +
+							(activeCategory || "")
+						}
+						className="cursor-pointer hover:underline "
+					>
 						نمایش همه
-					</span>
+					</Link>
 				</div>
 			</div>
 		</>

@@ -2,13 +2,11 @@ import { GetServerSideProps } from "next";
 import {
 	IAboutMeRead,
 	IHistory,
-	IIdeaRead,
 	IImage,
 	IPageItemConents,
 	IPostRead,
 	ISocialMediaRead,
 } from "@my/types";
-import webConfig from "@/global/constants/webConfig";
 import { memo, useMemo } from "react";
 import HomeSlider from "@/components/home/HomeSlider";
 import HomeCards from "@/components/home/HomeCards";
@@ -21,7 +19,6 @@ import HomeAboutMe from "@/components/home/HomeAboutMe";
 import {
 	getAllHistories,
 	getAllSocialMedias,
-	getFeaturedIdeas,
 	getHomeAboutMePosts,
 	getHomeDefaultImages,
 	getHomeDefaultTexts,

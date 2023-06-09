@@ -1,7 +1,9 @@
 import webConfig from "@/global/constants/webConfig";
+import webRoutes from "@/global/constants/webRoutes";
 import { getImageFromContent } from "@/global/utils/helperFunctions";
 import { IPostRead } from "@my/types";
 import Image from "next/image";
+import Link from "next/link";
 import { FC, useMemo } from "react";
 
 interface IHomeFeatureActivePost {
@@ -17,7 +19,10 @@ const HomeFeatureActivePost: FC<IHomeFeatureActivePost> = ({
 	);
 
 	return (
-		<div className="relative w-full h-[500px] overflow-hidden z-0">
+		<Link
+			href={webRoutes.postDetail.path + "/" + post._id}
+			className="relative w-full h-[500px] overflow-hidden z-0"
+		>
 			<div className="absolute top-0 left-0 z-10 w-full">
 				{image && (
 					<Image
@@ -39,12 +44,15 @@ const HomeFeatureActivePost: FC<IHomeFeatureActivePost> = ({
 			)}
 			<div className="absolute top-0 left-0 z-20 w-full h-full bg-slate-800/20">
 				<div className="relative w-full h-full">
-					<div className="absolute bottom-6 right-6 text-k-bg-color">
-						<span>{post.text}</span>
+					<div className="absolute bottom-6 right-6 left-6 text-k-bg-color">
+						<span className="text-lg font-bold">
+							{post.title}
+						</span>
+						<span className="line-clamp-1">{post.text}</span>
 					</div>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 
