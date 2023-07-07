@@ -28,7 +28,7 @@ function chunkArray(arr: any[], size: number): any[] {
 }
 const multiplePosts = (posts: IPostRead[]): IPostRead[] => {
 	const tempPosts: IPostRead[] = [];
-	[1, 2, 3, 4, 5].map((_) => {
+	[1].map((_) => {
 		posts.map((post) => tempPosts.push(post));
 	});
 	tempPosts.sort((a, b) => a.eventDate - b.eventDate);
