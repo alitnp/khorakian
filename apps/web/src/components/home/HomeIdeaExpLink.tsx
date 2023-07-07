@@ -1,7 +1,7 @@
 import MyButton from "@/components/basicUi/MyButton";
 import webRoutes from "@/global/constants/webRoutes";
 import webConfig from "@/global/constants/webConfig";
-import { IIdeaRead, IImage } from "@my/types";
+import { IImage } from "@my/types";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";

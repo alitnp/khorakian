@@ -17,7 +17,6 @@ import {
 	IVideoRead,
 } from "@my/types";
 import { Form, Input, Modal } from "antd";
-import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 import ImageVideoAddRemove from "@/components/global/ImageVideoAddRemove/ImageVideoAddRemove";
@@ -44,7 +43,6 @@ const CreateUserIdea: FC<ICreateUserIdea> = ({
 
 	//hooks
 	const [form] = Form.useForm();
-	const { push } = useRouter();
 
 	//functions
 	const handleSubmit = async (values: any) => {

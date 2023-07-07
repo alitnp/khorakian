@@ -3,8 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"start": "next dev",
+		"start": "next build & next start",
 		"build": "next build",
+		"dev": "next dev",
 		"service:start": "next start",
 		"lint": "next lint"
 	},
@@ -31,7 +32,7 @@
 		"@my/types": "1.0.0",
 		"@types/classnames": "^2.3.1",
 		"@types/node": "18.16.3",
-		"@types/react": "18.2.0",
+		"@types/react": "^18.2.14",
 		"@types/react-dom": "18.2.1",
 		"autoprefixer": "10.4.14",
 		"eslint": "8.39.0",
@@ -39,5 +40,8 @@
 		"postcss": "8.4.23",
 		"tailwindcss": "3.3.2",
 		"typescript": "5.0.4"
+	},
+	"resolutions": {
+		"@types/react": "^18.2.14"
 	}
 }

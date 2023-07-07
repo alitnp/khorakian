@@ -1,20 +1,9 @@
 import TextOnlyCard from "@/components/global/Card/TextOnlyCard";
 import { handleIdeaLike } from "@/components/idea/ideaFunctions";
-import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import webRoutes from "@/global/constants/webRoutes";
-import WebApiService, {
-	errorResponse,
-} from "@/global/utils/WebApiService";
 import { dateObjectFormatter } from "@/global/utils/helperFunctions";
-import {
-	webApiCatch,
-	webApiThen,
-} from "@/global/utils/webApiThen";
-import {
-	ApiDataListResponse,
-	ApiDataResponse,
-	IIdeaRead,
-} from "@my/types";
+
+import { ApiDataListResponse, IIdeaRead } from "@my/types";
 import { Checkbox, Pagination, Tooltip } from "antd";
 import {
 	FC,

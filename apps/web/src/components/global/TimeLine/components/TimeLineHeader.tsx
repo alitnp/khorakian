@@ -1,5 +1,4 @@
 import TimeLineYearShape from "@/components/global/TimeLine/components/TimeLineYearShape";
-import { yearShape } from "@/global/constants/icons";
 import { Select } from "antd";
 import { FC } from "react";
 

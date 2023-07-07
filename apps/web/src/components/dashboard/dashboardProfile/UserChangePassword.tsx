@@ -49,6 +49,7 @@ const UserChangePassword: FC = () => {
 			)
 			.catch(() => webApiCatch(errorResponse));
 		setLoading(false);
+		return;
 	};
 
 	return (

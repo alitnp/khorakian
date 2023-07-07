@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+//@ts-ignore
 import ReactPlayer from "react-player";
 
 interface IVideoPlayer {
@@ -26,6 +27,7 @@ const VideoPlayer: FC<IVideoPlayer> = ({ urls }) => {
 
 	return (
 		<div>
+			{/* @ts-ignore */}
 			<ReactPlayer
 				url={selectedUrl}
 				controls

@@ -1,9 +1,8 @@
 import MyButton from "@/components/basicUi/MyButton";
-import DashboardExperienceList from "@/components/dashboard/dashboardExperience/DashboardExperienceList";
 import webEndpointUrls from "@/global/constants/webEndpointUrls";
 import WebApiService from "@/global/utils/WebApiService";
 import { webApiThenGeneric } from "@/global/utils/webApiThen";
-import { IIdeaRead, IUserExperienceRead } from "@my/types";
+import { IIdeaRead } from "@my/types";
 import { ApiDataListResponse } from "@my/types";
 import {
 	FC,

@@ -4,9 +4,8 @@ import {
 	ICommentReplyRead,
 	IGlobalCommentRead,
 } from "@my/types";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import MyButton from "@/components/basicUi/MyButton";
-import AddCommentModal from "@/components/post/postDetail/comments/AddCommentModal";
 
 interface IProps {
 	comments?: IGlobalCommentRead[];
@@ -36,21 +35,23 @@ const AllComments: FC<IProps> = ({
 				{comments ? (
 					comments?.map((item: IGlobalCommentRead) => {
 						return (
-							<>
-								<div key={item._id} className="m-3  sm:p-3">
-									<Comment
-										commentReplyUrl={commentReplyUrl}
-										item={item}
-										refetch={refetch}
-									/>
-									<div className="my-2 mr-6">
-										{item.replies?.map((reply: ICommentReplyRead) => {
-											return <CommentReplyes reply={reply} />;
-										})}
-									</div>
-									<hr style={{ borderWidth: "1px" }} />
+							<div key={item._id} className="m-3 sm:p-3">
+								<Comment
+									commentReplyUrl={commentReplyUrl}
+									item={item}
+									refetch={refetch}
+								/>
+								<div className="my-2 mr-6">
+									{item.replies?.map(
+										(reply: ICommentReplyRead, index) => {
+											return (
+												<CommentReplyes reply={reply} key={index} />
+											);
+										}
+									)}
 								</div>
-							</>
+								<hr style={{ borderWidth: "1px" }} />
+							</div>
 						);
 					})
 				) : (

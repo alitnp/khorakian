@@ -15,7 +15,6 @@ import {
 	IUserExperience,
 } from "@my/types";
 import { Form, Input, Modal } from "antd";
-import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 
@@ -35,7 +34,6 @@ const CreateUserExperience: FC<ICreateUserExperience> = ({
 
 	//hooks
 	const [form] = Form.useForm();
-	const { push } = useRouter();
 
 	//functions
 	const handleSubmit = async (values: any) => {

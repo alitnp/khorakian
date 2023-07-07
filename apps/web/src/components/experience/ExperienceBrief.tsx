@@ -5,7 +5,7 @@ import {
 } from "@/global/utils/helperFunctions";
 import { IExperienceWithComments } from "@my/types";
 import Image from "next/image";
-import { FC, useMemo, memo } from "react";
+import { FC, memo } from "react";
 import CardLikeCommentCount from "@/components/global/Card/CardLikeCommentCount";
 import Link from "next/link";
 import webRoutes from "@/global/constants/webRoutes";
