@@ -1,7 +1,6 @@
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import morgan from "morgan";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import "express-async-errors";
@@ -42,9 +41,9 @@ export const createApp = (): express.Application => {
   );
   app.use(express.static(CONFIG.APP.STATIC_FILES_PATH));
 
-  if (CONFIG.APP.ENV !== "test") {
-    app.use(morgan("dev"));
-  }
+  // if (CONFIG.APP.ENV !== "test") {
+  //   app.use(morgan("dev"));
+  // }
 
   app.use(timeout(CONFIG.SERVER.TIMEOUT));
 

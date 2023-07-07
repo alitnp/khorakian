@@ -93,7 +93,7 @@ export const logErrorHandler = async (
   req: Req,
   resBody: Record<string, any>,
 ) => {
-  if (CONFIG.APP.ENV === "test") return;
+  // if (CONFIG.APP.ENV === "test") return;
 
   const folderPath = "src/logs";
   const filePath = `src/logs/${CONFIG.APP.ENV}.error.log`;
@@ -139,7 +139,7 @@ export const logErrorHandler = async (
 
 export const logInfoHandler = async (req: Req, _res: Res, next: NextFn) => {
   // if (err) return next();
-  if (CONFIG.APP.ENV === "test") return next();
+  // if (CONFIG.APP.ENV === "test") return next();
 
   const folderPath = "src/logs";
   const filePath = `src/logs/${CONFIG.APP.ENV}.info.log`;
