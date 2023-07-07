@@ -39,7 +39,7 @@ class ExperienceData {
     Image: ImageData,
     ExperienceLike: LikeData<IExperienceLike>,
     ExperienceComment: CommentData<IExperienceComment>,
-    User: UserData,
+    User: UserData
   ) {
     this.Experience = Experience;
     this.ExperienceCategory = ExperienceCategory;
@@ -52,7 +52,7 @@ class ExperienceData {
 
   getAll = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IExperienceRead>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
@@ -79,14 +79,14 @@ class ExperienceData {
 
     const data: IExperienceRead[] = await this.Experience.find(fixedSearchQuery)
       .populate<{ experienceCategory: IExperienceCategory }>(
-        "experienceCategory",
+        "experienceCategory"
       )
       .populate<{ images: IImage[]; videos: IVideoRead[] }>([
         "videos",
         "images",
       ])
       .populate<{ experienceCategory: IExperienceCategory }>(
-        "experienceCategory",
+        "experienceCategory"
       )
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize)
@@ -100,7 +100,7 @@ class ExperienceData {
       else
         data[i].liked = await this.ExperienceLike.isUserLiked(
           experience._id,
-          userId,
+          userId
         );
     }
 
@@ -117,7 +117,7 @@ class ExperienceData {
 
   getAllWithAdminComments = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IExperienceWithComments>> => {
     const result = await this.getAll(req, userId);
 
@@ -128,7 +128,7 @@ class ExperienceData {
     for (let i = 0; i < resultWithComments.data.length; i++) {
       const item = resultWithComments.data[i];
       const comments = await this.ExperienceComment.getAdminCommentsByContentId(
-        item._id,
+        item._id
       );
       item.comments = comments.data as unknown[] as IExperienceCommentRead[];
       resultWithComments.data[i] = item;
@@ -138,7 +138,7 @@ class ExperienceData {
 
   getAllWithComments = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IExperienceWithComments>> => {
     const result = await this.getAll(req, userId);
     const resultWithComments: ApiDataListResponse<IExperienceWithComments> = {
@@ -148,7 +148,7 @@ class ExperienceData {
     for (let i = 0; i < resultWithComments.data.length; i++) {
       const item = resultWithComments.data[i];
       const comments = await this.ExperienceComment.getCommentsByContentId(
-        item._id,
+        item._id
       );
       item.comments = comments.data as unknown[] as IExperienceCommentRead[];
       resultWithComments.data[i] = item;
@@ -159,7 +159,7 @@ class ExperienceData {
   get = async (
     id: string,
     userId?: string,
-    addView = false,
+    addView = false
   ): Promise<IExperienceRead> => {
     const experience = await this.Experience.findById(id)
       .populate<{ images: IImage[] }>("images")
@@ -168,7 +168,7 @@ class ExperienceData {
         populate: { path: "thumbnail" },
       })
       .populate<{ experienceCategory: IExperienceCategory }>(
-        "experienceCategory",
+        "experienceCategory"
       )
       .lean();
 
@@ -266,7 +266,7 @@ class ExperienceData {
           article,
         },
       },
-      { new: true },
+      { new: true }
     );
     if (!experience) throw new NotFoundError();
 
@@ -282,7 +282,7 @@ class ExperienceData {
 
   like = async (
     experienceId: string,
-    userId?: string,
+    userId?: string
   ): Promise<IExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
 
@@ -302,7 +302,7 @@ class ExperienceData {
 
   dislike = async (
     experienceId: string,
-    userId?: string,
+    userId?: string
   ): Promise<IExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
 
@@ -314,7 +314,7 @@ class ExperienceData {
       experienceId,
       {
         $inc: { likeCount: experience.likeCount > 0 ? -1 : 0 },
-      },
+      }
     );
     if (!updatedExperience) throw new NotFoundError();
 
@@ -322,7 +322,7 @@ class ExperienceData {
   };
 
   getAllLikes = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IExperienceLike>> => {
     const comments = await this.ExperienceLike.getAll(req);
 
@@ -330,7 +330,7 @@ class ExperienceData {
   };
 
   getAllComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IExperienceComment>> => {
     const comments = await this.ExperienceComment.getAll(req);
 
@@ -338,7 +338,7 @@ class ExperienceData {
   };
 
   getAdminComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IExperienceComment>> => {
     const comments = await this.ExperienceComment.getAdminComments(req);
 
@@ -347,7 +347,7 @@ class ExperienceData {
 
   getMyComments = async (
     req: Req,
-    userId: string,
+    userId: string
   ): Promise<ApiDataListResponse<IExperienceComment>> => {
     const comments = await this.ExperienceComment.getMyComments(req, userId);
 
@@ -357,7 +357,7 @@ class ExperienceData {
   comment = async (
     experienceId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 
@@ -376,7 +376,7 @@ class ExperienceData {
   reply = async (
     commentId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 

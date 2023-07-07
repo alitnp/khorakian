@@ -17,7 +17,7 @@ import { logErrorHandler } from "@/helpers/loggers";
 export const notFoundError = (
   req: Request,
   res: Response,
-  _next: NextFunction,
+  _next: NextFunction
 ) => {
   res.status(NOT_FOUND).json({
     error: {
@@ -39,7 +39,7 @@ export const genericErrorHandler = async (
   err: any,
   req: Request,
   res: Response,
-  _next: NextFunction,
+  _next: NextFunction
 ) => {
   // console.log("HANDLER CALLED");
   // console.log(err.name);

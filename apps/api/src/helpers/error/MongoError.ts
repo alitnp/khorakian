@@ -6,7 +6,7 @@ export const getMongoDbError = (errorObject: {
   const errorKeys = Object.keys(errorObject.errors);
   const errorDetail: Record<string, string> = {};
   errorKeys.map(
-    (key: string) => (errorDetail[key] = errorObject.errors[key].message),
+    (key: string) => (errorDetail[key] = errorObject.errors[key].message)
   );
 
   return {

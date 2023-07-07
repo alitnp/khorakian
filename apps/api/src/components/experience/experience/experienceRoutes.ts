@@ -35,11 +35,7 @@ const data = new ExperienceData(
   new ImageData(Image),
   new LikeData(ExperienceLike),
   new CommentData(ExperienceComment, User),
-  new UserData(
-    User,
-    new ImageData(Image),
-    new FrontEndRouteData(FrontEndRoute),
-  ),
+  new UserData(User, new ImageData(Image), new FrontEndRouteData(FrontEndRoute))
 );
 const controller = new ExperienceController(data);
 
@@ -63,32 +59,32 @@ router.get("/", controller.getAll);
 router.post(
   "/reply/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.reply,
+  controller.reply
 );
 //add a comment to post with Experience id and user id
 router.post(
   "/comment/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.comment,
+  controller.comment
 );
 
 //like a post with Experience id and user id
 router.post(
   "/like/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.like,
+  controller.like
 );
 //dislike a post with Experience id and user id
 router.post(
   "/dislike/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.disLike,
+  controller.disLike
 );
 //create a new Experience - admin only
 router.post(
   "/",
   [isAdmin, ...validate(createExperienceValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -96,7 +92,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updateExperienceValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -104,7 +100,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteExperienceValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

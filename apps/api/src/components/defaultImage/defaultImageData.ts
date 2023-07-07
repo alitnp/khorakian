@@ -30,7 +30,7 @@ class DefaultImageData {
       searchQuery,
       req,
       this.DefaultImage,
-      ["image"],
+      ["image"]
     );
   };
 

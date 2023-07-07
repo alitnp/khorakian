@@ -20,7 +20,7 @@ const controller = new FrontEndRouteController(data);
 router.get(
   "/:id",
   [isAdmin, ...validate(getFrontEndRouteValidations)],
-  controller.get,
+  controller.get
 );
 // get a list of DefaultText
 router.get("/", isAdmin, controller.getAll);
@@ -30,7 +30,7 @@ router.get("/", isAdmin, controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createFrontEndRouteValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -38,7 +38,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updateFrontEndRouteValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -46,7 +46,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteFrontEndRouteValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

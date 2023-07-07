@@ -14,5 +14,5 @@ export const experienceCategorySchema = new Schema<IExperienceCategory>({
 
 export const ExperienceCategory = model<IExperienceCategory>(
   "ExperienceCategory",
-  experienceCategorySchema,
+  experienceCategorySchema
 );

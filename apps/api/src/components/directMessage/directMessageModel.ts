@@ -12,5 +12,5 @@ export const directMessageSchema = new Schema<IDirectMessage>({
 
 export const DirectMessage = model<IDirectMessage>(
   "DirectMessage",
-  directMessageSchema,
+  directMessageSchema
 );

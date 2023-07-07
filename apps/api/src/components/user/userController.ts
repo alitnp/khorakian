@@ -24,7 +24,7 @@ class UserController extends BaseController<IUserRead> {
   login = async (req: Req, res: Res) => {
     const data = await this.data.login(
       req.body.mobileNumber,
-      req.body.password,
+      req.body.password
     );
     return res.send(apiDataResponse<{ token: string; user: IUserRead }>(data));
   };
@@ -45,7 +45,7 @@ class UserController extends BaseController<IUserRead> {
     const data = await this.data.uploadProfile(
       tempReq.file,
       userId,
-      tempReq.body.title,
+      tempReq.body.title
     );
     return res.send(apiDataResponse(data));
   };
@@ -91,7 +91,7 @@ class UserController extends BaseController<IUserRead> {
       });
 
     return res.send(
-      apiDataResponse<null>(null, "کد تایید برای شما ارسال گردید."),
+      apiDataResponse<null>(null, "کد تایید برای شما ارسال گردید.")
     );
   };
 
@@ -99,7 +99,7 @@ class UserController extends BaseController<IUserRead> {
     const result = await this.data.changePassword(
       req.body.currentPassword,
       req.body.newPassword,
-      getUserIdFromReq(req),
+      getUserIdFromReq(req)
     );
     return res.send(apiDataResponse(result));
   };

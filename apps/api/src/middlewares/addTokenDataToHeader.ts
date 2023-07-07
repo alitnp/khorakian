@@ -8,7 +8,7 @@ const addTokenDataToHeader = (req: Req, _res: Res, next: NextFn) => {
   try {
     const decoded = jwt.verify(
       token.replace("Bearer ", ""),
-      CONFIG.AUTH.ACCESS_TOKEN_SALT as string,
+      CONFIG.AUTH.ACCESS_TOKEN_SALT as string
     ) as { isAdmin: boolean; iat: number; _id: string };
 
     if (Date.now() / 1000 - decoded.iat > CONFIG.AUTH.ACCESS_TOKEN_EXPIRE)

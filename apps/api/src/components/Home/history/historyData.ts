@@ -44,7 +44,7 @@ class HistoryData implements IData<IHistory> {
       {
         $set: { title, from, to },
       },
-      { new: true },
+      { new: true }
     );
     if (!history) throw new NotFoundError();
 

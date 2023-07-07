@@ -23,21 +23,21 @@ router.get("/", controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createHistoryValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateHistoryValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteHistoryValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

@@ -45,7 +45,7 @@ class PageItemData {
     PostLike: LikeData<IPostLike>,
     ExperienceLike: LikeData<IExperienceLike>,
     UserExperienceLike: LikeData<IUserExperienceLike>,
-    IdeaLike: LikeData<IIdeaLike>,
+    IdeaLike: LikeData<IIdeaLike>
   ) {
     this.PageItem = PageItem;
     this.Type = PageItemType;
@@ -112,7 +112,7 @@ class PageItemData {
           else
             content[i].liked = await this.PostLike.isUserLiked(
               item._id,
-              userId,
+              userId
             );
         }
         totalItems = await Post.countDocuments(filters);
@@ -131,7 +131,7 @@ class PageItemData {
           else
             content[i].liked = await this.ExperienceLike.isUserLiked(
               item._id,
-              userId,
+              userId
             );
         }
         totalItems = await Experience.countDocuments(filters);
@@ -155,7 +155,7 @@ class PageItemData {
           else
             content[i].liked = await this.UserExperienceLike.isUserLiked(
               item._id,
-              userId,
+              userId
             );
         }
         totalItems = await UserExperience.countDocuments(filters);
@@ -179,7 +179,7 @@ class PageItemData {
           else
             content[i].liked = await this.IdeaLike.isUserLiked(
               item._id,
-              userId,
+              userId
             );
         }
         totalItems = await Idea.countDocuments({
@@ -210,7 +210,7 @@ class PageItemData {
           else
             content[i].liked = await this.IdeaLike.isUserLiked(
               item._id,
-              userId,
+              userId
             );
         }
         totalItems = await Idea.countDocuments({
@@ -304,7 +304,7 @@ class PageItemData {
     const item = await this.PageItem.findByIdAndUpdate(
       _id,
       { $set: { index } },
-      { new: true },
+      { new: true }
     ).populate<{
       type: IPageItemType;
       style: IPageItemStyle;

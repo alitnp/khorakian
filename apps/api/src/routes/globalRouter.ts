@@ -20,21 +20,21 @@ export const basicCrud = (controller: IBasicController, adminOnly = false) => {
   router.post(
     "/",
     [authenticator, ...validate(shortTitleValidations)],
-    controller.create,
+    controller.create
   );
 
   //put
   router.put(
     "/:id",
     [isAdmin, ...validate([...paramIdValidations, ...shortTitleValidations])],
-    controller.update,
+    controller.update
   );
 
   //delete
   router.delete(
     "/:id",
     [isAdmin, ...validate(paramIdValidations)],
-    controller.remove,
+    controller.remove
   );
 
   return router;

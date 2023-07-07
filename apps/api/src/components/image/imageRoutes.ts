@@ -26,21 +26,21 @@ router.get("/", controller.getAll);
 router.post(
   "/upload",
   [auth, ...imageForm(), ...validate(createImageValidations)],
-  controller.createImageFile,
+  controller.createImageFile
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateImageValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteImageValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

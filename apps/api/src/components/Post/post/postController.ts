@@ -40,7 +40,7 @@ class PostController {
     const result = await this.data.get(
       req.params.id,
       getUserIdFromReq(req),
-      true,
+      true
     );
     res.send(apiDataResponse<IPostRead>(result));
   };
@@ -64,7 +64,7 @@ class PostController {
     const result = await this.data.comment(
       req.params.id,
       getUserIdFromReq(req),
-      req.body.text,
+      req.body.text
     );
     res.send(apiDataResponse<IPostRead>(result));
   };
@@ -82,7 +82,7 @@ class PostController {
     const result = await this.data.reply(
       req.params.id,
       getUserIdFromReq(req),
-      req.body.text,
+      req.body.text
     );
     res.send(apiDataResponse<IPostRead>(result));
   };
@@ -95,7 +95,7 @@ class PostController {
   disLike = async (req: Req, res: Res) => {
     const result = await this.data.dislike(
       req.params.id,
-      getUserIdFromReq(req),
+      getUserIdFromReq(req)
     );
     res.send(apiDataResponse<IPostRead>(result));
   };

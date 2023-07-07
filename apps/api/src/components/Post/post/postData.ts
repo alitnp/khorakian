@@ -37,7 +37,7 @@ class PostData {
     Image: ImageData,
     PostLike: LikeData<IPostLike>,
     PostComment: CommentData<IPostComment>,
-    User: UserData,
+    User: UserData
   ) {
     this.Post = Post;
     this.PostCategory = PostCategory;
@@ -50,7 +50,7 @@ class PostData {
 
   getAll = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IPostRead>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
@@ -110,7 +110,7 @@ class PostData {
   get = async (
     id: string,
     userId?: string,
-    addView = false,
+    addView = false
   ): Promise<IPostRead> => {
     const post = (await this.Post.findById(id)
       .populate<{ images: IImage[] }>("images")
@@ -259,7 +259,7 @@ class PostData {
   };
 
   getAllComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IPostComment>> => {
     const comments = await this.PostComment.getAll(req);
 
@@ -267,7 +267,7 @@ class PostData {
   };
 
   getAdminComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IPostComment>> => {
     const comments = await this.PostComment.getAdminComments(req);
 
@@ -276,7 +276,7 @@ class PostData {
 
   getMyComments = async (
     req: Req,
-    userId: string,
+    userId: string
   ): Promise<ApiDataListResponse<IPostComment>> => {
     const comments = await this.PostComment.getMyComments(req, userId);
 
@@ -286,7 +286,7 @@ class PostData {
   comment = async (
     postId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 
@@ -319,7 +319,7 @@ class PostData {
   reply = async (
     commentId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 

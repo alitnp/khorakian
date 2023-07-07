@@ -23,7 +23,7 @@ const router = Router();
 router.get(
   "/getByKey/:key",
   validate(getByKeyDefaultImageValidations),
-  controller.getByKey,
+  controller.getByKey
 );
 router.get("/:id", validate(getDefaultImageValidations), controller.get);
 router.get("/", controller.getAll);
@@ -32,21 +32,21 @@ router.get("/", controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createDefaultImageValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateDefaultImageValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteDefaultImageValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

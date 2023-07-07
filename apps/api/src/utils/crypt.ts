@@ -20,7 +20,7 @@ export const hash = async (value: string): Promise<any> => {
  */
 export const compare = async (
   value: string,
-  hashedValue: string,
+  hashedValue: string
 ): Promise<boolean> => {
   return bcrypt.compare(value, hashedValue);
 };

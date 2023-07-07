@@ -14,12 +14,12 @@ const catchValidatorError = (req: Req, _: Res, next: NextFn): void => {
       .reduce(
         (
           obj: Record<string, string>,
-          error: Record<string, any>,
+          error: Record<string, any>
         ): Record<string, any> => {
           obj[error.param] = error.msg;
           return obj;
         },
-        {},
+        {}
       );
     throw new ValidationError(validationErrors);
   }
@@ -27,5 +27,5 @@ const catchValidatorError = (req: Req, _: Res, next: NextFn): void => {
 };
 
 export const validate = (
-  validator: (ValidationChain | MultiValidatorChain)[],
+  validator: (ValidationChain | MultiValidatorChain)[]
 ) => [...validator, catchValidatorError];

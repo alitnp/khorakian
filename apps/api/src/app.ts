@@ -25,19 +25,19 @@ export const createApp = (): express.Application => {
         "Content-Type, Authorization, Content-Length, X-Requested-With",
         "x-content-type-options",
       ],
-    }),
+    })
   );
   app.use(
     helmet({
       crossOriginResourcePolicy: false,
-    }),
+    })
   );
   app.use(cookieParser());
   app.use(express.json());
   app.use(
     express.urlencoded({
       extended: true,
-    }),
+    })
   );
   app.use(express.static(CONFIG.APP.STATIC_FILES_PATH));
 
@@ -60,7 +60,7 @@ export const createApp = (): express.Application => {
   app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(swaggerJsdoc(swaggerOptions), { explorer: true }),
+    swaggerUi.setup(swaggerJsdoc(swaggerOptions), { explorer: true })
   );
 
   // Error Middleware

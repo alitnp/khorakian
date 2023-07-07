@@ -19,7 +19,7 @@ class ImageController extends BaseController<IImage> {
     const image = await this.data.createImageFile(
       tempReq.file,
       userId,
-      tempReq.body.title,
+      tempReq.body.title
     );
     res.send(apiDataResponse<IImage>(image));
   };

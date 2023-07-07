@@ -38,7 +38,7 @@ class IdeaData {
     IdeaComment: CommentData<IIdeaComment>,
     User: UserData,
     Video: VideoData,
-    Image: ImageData,
+    Image: ImageData
   ) {
     this.Idea = Idea;
     this.IdeaCategory = IdeaCategory;
@@ -51,7 +51,7 @@ class IdeaData {
 
   getAll = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IIdeaRead>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query._id) {
@@ -63,7 +63,7 @@ class IdeaData {
       searchQuery.text = { $regex: req.query.text, $options: "i" };
     if (req.query.isAdminSubmitted !== undefined)
       searchQuery.isAdminSubmitted = stringToBoolean(
-        req.query.isAdminSubmitted,
+        req.query.isAdminSubmitted
       );
     if (req.query.ideaCategory) {
       searchQuery.ideaCategory = req.query.ideaCategory;
@@ -123,7 +123,7 @@ class IdeaData {
 
   getMy = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IIdeaRead>> => {
     req.query.user = userId;
     return this.getAll(req, userId);
@@ -131,7 +131,7 @@ class IdeaData {
 
   getApproved = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IIdeaRead>> => {
     req.query.isApprove = "true";
     return this.getAll(req, userId);
@@ -140,7 +140,7 @@ class IdeaData {
   get = async (
     id: string,
     userId?: string,
-    addView = false,
+    addView = false
   ): Promise<IIdeaRead> => {
     const idea = await this.Idea.findById(id)
       .populate<{
@@ -272,7 +272,7 @@ class IdeaData {
           videos: existingVideoIds,
         },
       },
-      { new: true },
+      { new: true }
     );
 
     return await this.get(existIdea._id);
@@ -281,7 +281,7 @@ class IdeaData {
   remove = async (
     id: string,
     isAdmin: boolean,
-    userId?: string,
+    userId?: string
   ): Promise<IIdeaRead> => {
     const item = await this.get(id);
 
@@ -340,7 +340,7 @@ class IdeaData {
   };
 
   getAllComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IIdeaComment>> => {
     const comments = await this.IdeaComment.getAll(req);
 
@@ -348,7 +348,7 @@ class IdeaData {
   };
 
   getAdminComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IIdeaComment>> => {
     const comments = await this.IdeaComment.getAdminComments(req);
 
@@ -357,7 +357,7 @@ class IdeaData {
 
   getMyComments = async (
     req: Req,
-    userId: string,
+    userId: string
   ): Promise<ApiDataListResponse<IIdeaComment>> => {
     const comments = await this.IdeaComment.getMyComments(req, userId);
 
@@ -367,7 +367,7 @@ class IdeaData {
   comment = async (
     ideaId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
     const item = await this.Idea.findById(ideaId);
@@ -391,7 +391,7 @@ class IdeaData {
   reply = async (
     commentId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 
@@ -420,7 +420,7 @@ class IdeaData {
       {
         $set: { isApprove: true },
       },
-      { new: true },
+      { new: true }
     );
     if (!item) throw new NotFoundError();
 
@@ -442,7 +442,7 @@ class IdeaData {
       {
         $set: { isApprove: false },
       },
-      { new: true },
+      { new: true }
     );
     if (!item) throw new NotFoundError();
 

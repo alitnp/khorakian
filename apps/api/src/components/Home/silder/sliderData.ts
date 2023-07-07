@@ -86,7 +86,7 @@ class SliderData implements IData<ISlider> {
     const item = await this.Slider.findByIdAndUpdate(
       _id,
       { $set: { index } },
-      { new: true },
+      { new: true }
     ).populate<{ image: IImage }>("image");
 
     if (!item) throw new NotFoundError();

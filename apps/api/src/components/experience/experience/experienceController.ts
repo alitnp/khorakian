@@ -20,14 +20,14 @@ class ExperienceController {
   getAllWithComments = async (req: Req, res: Res) => {
     const result = await this.data.getAllWithComments(
       req,
-      getUserIdFromReq(req),
+      getUserIdFromReq(req)
     );
     res.send(apiDataListResponse<IExperienceRead>(result));
   };
   getAllWithAdminComments = async (req: Req, res: Res) => {
     const result = await this.data.getAllWithAdminComments(
       req,
-      getUserIdFromReq(req),
+      getUserIdFromReq(req)
     );
     res.send(apiDataListResponse<IExperienceRead>(result));
   };
@@ -59,7 +59,7 @@ class ExperienceController {
     const result = await this.data.get(
       req.params.id,
       getUserIdFromReq(req),
-      true,
+      true
     );
     res.send(apiDataResponse<IExperienceRead>(result));
   };
@@ -83,7 +83,7 @@ class ExperienceController {
     const result = await this.data.comment(
       req.params.id,
       getUserIdFromReq(req),
-      req.body.text,
+      req.body.text
     );
     res.send(apiDataResponse<IExperienceRead>(result));
   };
@@ -92,7 +92,7 @@ class ExperienceController {
     const result = await this.data.reply(
       req.params.id,
       getUserIdFromReq(req),
-      req.body.text,
+      req.body.text
     );
     res.send(apiDataResponse<IExperienceRead>(result));
   };
@@ -105,7 +105,7 @@ class ExperienceController {
   disLike = async (req: Req, res: Res) => {
     const result = await this.data.dislike(
       req.params.id,
-      getUserIdFromReq(req),
+      getUserIdFromReq(req)
     );
     res.send(apiDataResponse<IExperienceRead>(result));
   };

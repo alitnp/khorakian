@@ -11,5 +11,5 @@ export const defaultTextSchemas = new Schema<IDefaultText>({
 
 export const DefaultText = model<IDefaultText>(
   "DefaultText",
-  defaultTextSchemas,
+  defaultTextSchemas
 );

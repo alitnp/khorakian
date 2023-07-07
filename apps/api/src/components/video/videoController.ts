@@ -66,7 +66,7 @@ class VideoController extends BaseController<IVideo> {
       tempReq.file,
       userId,
       tempReq.body.title,
-      tempReq.body.image,
+      tempReq.body.image
     );
     res.send(apiDataResponse<IVideo>(video));
   };

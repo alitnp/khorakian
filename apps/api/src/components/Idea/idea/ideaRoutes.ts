@@ -36,10 +36,10 @@ const data = new IdeaData(
   new UserData(
     User,
     new ImageData(Image),
-    new FrontEndRouteData(FrontEndRoute),
+    new FrontEndRouteData(FrontEndRoute)
   ),
   new VideoData(Video, new ImageData(Image)),
-  new ImageData(Image),
+  new ImageData(Image)
 );
 
 const controller = new IdeaController(data);
@@ -62,38 +62,38 @@ router.get("/", isAdmin, controller.getAll);
 router.post(
   "/reply/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.reply,
+  controller.reply
 );
 //add a comment to idea with idea id and user id
 router.post(
   "/comment/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.comment,
+  controller.comment
 );
 //like a idea with idea id and user id
 router.post(
   "/like/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.like,
+  controller.like
 );
 //dislike a idea with idea id and user id
 router.post(
   "/dislike/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.disLike,
+  controller.disLike
 );
 
 //approve a idea -admin only
 router.post(
   "/approve/:id",
   [isAdmin, ...validate(paramIdValidations)],
-  controller.approve,
+  controller.approve
 );
 //disapprove a idea -admin only
 router.post(
   "/disapprove/:id",
   [isAdmin, ...validate(paramIdValidations)],
-  controller.disApprove,
+  controller.disApprove
 );
 //create a new idea - admin only
 router.post("/", [auth, ...validate(createIdeaValidations)], controller.create);
@@ -103,7 +103,7 @@ router.post("/", [auth, ...validate(createIdeaValidations)], controller.create);
 router.put(
   "/:id",
   [auth, ...validate(updateIdeaValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -111,7 +111,7 @@ router.put(
 router.delete(
   "/:id",
   [auth, ...validate(deleteIdeaValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

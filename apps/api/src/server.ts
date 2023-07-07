@@ -21,7 +21,7 @@ export const startServer = (app: e.Application): Server => {
     process.stdout.write(`⚙️ Application Environment: ${CONFIG.APP.ENV}\n`);
     process.stdout.write(`⏱ Started on: ${Date.now()}\n`);
     process.stdout.write(
-      `🚀 @my/API Server ready at http://localhost:${CONFIG.APP.PORT}\n`,
+      `🚀 @my/API Server ready at http://localhost:${CONFIG.APP.PORT}\n`
     );
   });
 };

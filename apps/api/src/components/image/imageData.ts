@@ -65,7 +65,7 @@ class ImageData implements IData<IImage> {
   createImageFile = async (
     file: fileForm,
     userId: string,
-    title?: string,
+    title?: string
   ): Promise<IImage> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const imageFormat = file.mimetype.split("/")[1];
@@ -87,7 +87,7 @@ class ImageData implements IData<IImage> {
     //rename temp file created by multer to _id and add original file format
     await fileRename(
       imageDir + file.filename,
-      imageDir + newOriginFormatFileName,
+      imageDir + newOriginFormatFileName
     );
 
     //detect if converting and resizing image was successfull
@@ -96,7 +96,7 @@ class ImageData implements IData<IImage> {
     try {
       imageData = await convertImageToWebp(
         imageDir + newOriginFormatFileName,
-        imageDir + webpFileName,
+        imageDir + webpFileName
       );
     } catch (error) {
       console.log("sharp crash : ", error);
@@ -110,7 +110,7 @@ class ImageData implements IData<IImage> {
       try {
         smallImageData = await convertImageToSmallWebp(
           imageDir + webpFileName,
-          imageDir + smallWebpFileName,
+          imageDir + smallWebpFileName
         );
       } catch (error) {
         console.log("sharp crash : ", error);

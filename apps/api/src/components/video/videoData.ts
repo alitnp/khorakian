@@ -49,7 +49,7 @@ class VideoData implements IData<IVideo> {
     file: fileForm,
     userId: string,
     title?: string,
-    imageId?: string,
+    imageId?: string
   ): Promise<IVideo> => {
     //create a temp mongoose object from multer file to generate a valid _id
     const video = new this.Video({
@@ -72,7 +72,7 @@ class VideoData implements IData<IVideo> {
     //rename temp file created by multer to _id and add original file format
     await fileRename(
       videoDir + file.filename,
-      videoDir + newOriginFormatFileName,
+      videoDir + newOriginFormatFileName
     );
     const originVideoPath = videoDir + newOriginFormatFileName;
     const originVideoHeight = await getVideoHeight(originVideoPath);
@@ -88,7 +88,7 @@ class VideoData implements IData<IVideo> {
         const result = await changeVideoSize(
           originVideoPath,
           size,
-          publicFolder.path + "\\video\\" + outputFilename,
+          publicFolder.path + "\\video\\" + outputFilename
         );
         if (result)
           video.qualityVariations.push({

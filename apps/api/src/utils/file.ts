@@ -2,7 +2,7 @@ import fs from "fs";
 
 export const fileRename = async (
   originPathname: string,
-  destinationPathname: string,
+  destinationPathname: string
 ) => {
   const correctOriginPathname = originPathname.replaceAll("/", "\\");
   const correctDestinationPathname = destinationPathname.replaceAll("/", "\\");
@@ -16,7 +16,7 @@ export const fileRename = async (
           return reject(error.message);
         }
         return resolve();
-      },
+      }
     );
   });
 };

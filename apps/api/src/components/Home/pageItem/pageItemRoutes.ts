@@ -30,7 +30,7 @@ const data = new PageItemData(
   new LikeData(PostLike),
   new LikeData(ExperienceLike),
   new LikeData(UserExperienceLike),
-  new LikeData(IdeaLike),
+  new LikeData(IdeaLike)
 );
 const controller = new PageItemController(data);
 
@@ -45,26 +45,26 @@ router.get("/", controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createPageItemValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
 router.put(
   "/setIndex/:id",
   [isAdmin, ...validate(updatePageItemValidations)],
-  controller.setIndex,
+  controller.setIndex
 );
 router.put(
   "/:id",
   [isAdmin, ...validate(updatePageItemValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deletePageItemValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

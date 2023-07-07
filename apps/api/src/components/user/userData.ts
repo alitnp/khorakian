@@ -32,7 +32,7 @@ class UserData implements IData<IUserRead> {
   constructor(
     User: Model<IUser, {}, IUserMethods>,
     Image: ImageData,
-    FrontEndRouteData: FrontEndRouteData,
+    FrontEndRouteData: FrontEndRouteData
   ) {
     this.User = User;
     this.Image = Image;
@@ -99,7 +99,7 @@ class UserData implements IData<IUserRead> {
 
   addNotification = async (
     userId: string,
-    notification: INotificationCreate,
+    notification: INotificationCreate
   ): Promise<INotificationRead[]> => {
     const user = await this.User.findByIdAndUpdate(userId, {
       $push: { notification: { $each: [notification], $position: 0 } },
@@ -168,7 +168,7 @@ class UserData implements IData<IUserRead> {
   uploadProfile = async (
     file: fileForm,
     userId: string,
-    title?: string,
+    title?: string
   ): Promise<IUserRead> => {
     const item = await this.Image.createImageFile(file, userId, title);
     const user = await this.User.findByIdAndUpdate(userId, { image: item._id });
@@ -197,7 +197,7 @@ class UserData implements IData<IUserRead> {
 
   login = async (
     mobileNumber: string,
-    password: string,
+    password: string
   ): Promise<{ token: string; user: IUserRead }> => {
     const user = await this.User.findOne({ mobileNumber }).populate<{
       image: IImage;
@@ -224,7 +224,7 @@ class UserData implements IData<IUserRead> {
   changePassword = async (
     currentPassword: string,
     newPassword: string,
-    userId?: string,
+    userId?: string
   ): Promise<IUser> => {
     if (!userId) throw new UnauthenticatedError();
     const user = await this.User.findById(userId);
@@ -256,7 +256,7 @@ class UserData implements IData<IUserRead> {
   }) => {
     let notifText = text;
     const frontEndRoute = await this.FrontEndRouteData.getByTitle(
-      frontEndRouteTitle,
+      frontEndRouteTitle
     );
     if (!frontEndRoute) return;
 
@@ -266,7 +266,7 @@ class UserData implements IData<IUserRead> {
     if (creatorUser)
       notifText = text.replace(
         "user",
-        creatorUser.isAdmin ? "ادمین" : creatorUser.fullName,
+        creatorUser.isAdmin ? "ادمین" : creatorUser.fullName
       );
 
     const notifUser = await this.User.findById(notifUserId);

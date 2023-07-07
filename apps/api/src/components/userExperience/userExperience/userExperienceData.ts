@@ -33,7 +33,7 @@ class UserExperienceData {
     ExperienceCategory: ExperienceCategoryData,
     UserExperienceLike: LikeData<IUserExperienceLike>,
     UserExperienceComment: CommentData<IUserExperienceComment>,
-    User: UserData,
+    User: UserData
   ) {
     this.UserExperience = UserExperience;
     this.ExperienceCategory = ExperienceCategory;
@@ -44,7 +44,7 @@ class UserExperienceData {
 
   getAll = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IUserExperienceRead>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query._id) {
@@ -76,7 +76,7 @@ class UserExperienceData {
     } = await paginationProps(searchQuery, req, this.UserExperience);
 
     const data: IUserExperienceRead[] = await this.UserExperience.find(
-      fixedSearchQuery,
+      fixedSearchQuery
     )
       .populate<{ experienceCategory: IExperienceCategory; user: IUserRead }>([
         "experienceCategory",
@@ -95,7 +95,7 @@ class UserExperienceData {
       else
         data[i].liked = await this.UserExperienceLike.isUserLiked(
           userExperience._id,
-          userId,
+          userId
         );
     }
     return {
@@ -111,7 +111,7 @@ class UserExperienceData {
 
   getMy = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IUserExperienceRead>> => {
     req.query.user = userId;
     return this.getAll(req, userId);
@@ -119,7 +119,7 @@ class UserExperienceData {
 
   getApproved = async (
     req: Req,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IUserExperienceRead>> => {
     req.query.isApprove = "true";
     return this.getAll(req, userId);
@@ -128,7 +128,7 @@ class UserExperienceData {
   get = async (
     id: string,
     userId?: string,
-    addView = false,
+    addView = false
   ): Promise<IUserExperienceRead> => {
     const userExperience = await this.UserExperience.findById(id)
       .populate<{
@@ -154,7 +154,7 @@ class UserExperienceData {
     if (userId)
       userExperienceRead.liked = await this.UserExperienceLike.isUserLiked(
         id,
-        userId,
+        userId
       );
 
     return userExperienceRead;
@@ -172,7 +172,7 @@ class UserExperienceData {
     await this.User.get(user);
     if (!experienceCategory) throw new NotFoundError();
     const existingExperienceCategory = await this.ExperienceCategory.get(
-      experienceCategory,
+      experienceCategory
     );
     if (!existingExperienceCategory)
       throw new BadRequestError("دسته بندی با این شناسه یافت نشد.");
@@ -204,7 +204,7 @@ class UserExperienceData {
     await this.User.get(user);
     if (!experienceCategory) throw new NotFoundError();
     const existingExperienceCategory = await this.ExperienceCategory.get(
-      experienceCategory,
+      experienceCategory
     );
     const userExpt = await this.get(_id);
     if (userExpt.user._id != user)
@@ -223,7 +223,7 @@ class UserExperienceData {
           featured: !!featured,
         },
       },
-      { new: true },
+      { new: true }
     );
     if (!userExperience) throw new NotFoundError();
 
@@ -233,7 +233,7 @@ class UserExperienceData {
   remove = async (
     id: string,
     isAdmin: boolean,
-    userId?: string,
+    userId?: string
   ): Promise<IUserExperienceRead> => {
     const item = await this.get(id, userId);
 
@@ -245,7 +245,7 @@ class UserExperienceData {
 
   like = async (
     userExperienceId: string,
-    userId?: string,
+    userId?: string
   ): Promise<IUserExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
 
@@ -259,7 +259,7 @@ class UserExperienceData {
       userExperienceId,
       {
         $inc: { likeCount: 1 },
-      },
+      }
     ).populate<{ user: IUserRead }>("user");
 
     updatedItem &&
@@ -278,7 +278,7 @@ class UserExperienceData {
 
   dislike = async (
     userExperienceId: string,
-    userId?: string,
+    userId?: string
   ): Promise<IUserExperienceRead> => {
     if (!userId) throw new UnauthorizedError();
     await this.UserExperienceLike.disLike(userExperienceId, userId);
@@ -287,7 +287,7 @@ class UserExperienceData {
       userExperienceId,
       {
         $inc: { likeCount: item.likeCount > 0 ? -1 : 0 },
-      },
+      }
     );
     if (!updatedUserExperience) throw new NotFoundError();
 
@@ -295,21 +295,21 @@ class UserExperienceData {
   };
 
   getAllLikes = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IUserExperienceLike>> => {
     const comments = await this.UserExperienceLike.getAll(req);
     return comments;
   };
 
   getAllComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IUserExperienceComment>> => {
     const comments = await this.UserExperienceComment.getAll(req);
 
     return comments;
   };
   getAdminComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IUserExperienceComment>> => {
     const comments = await this.UserExperienceComment.getAdminComments(req);
 
@@ -318,11 +318,11 @@ class UserExperienceData {
 
   getMyComments = async (
     req: Req,
-    userId: string,
+    userId: string
   ): Promise<ApiDataListResponse<IUserExperienceComment>> => {
     const comments = await this.UserExperienceComment.getMyComments(
       req,
-      userId,
+      userId
     );
 
     return comments;
@@ -330,7 +330,7 @@ class UserExperienceData {
   comment = async (
     userExperienceId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 
@@ -361,14 +361,14 @@ class UserExperienceData {
   reply = async (
     commentId: string,
     userId: string | undefined,
-    text: string,
+    text: string
   ) => {
     if (!userId) throw new UnauthorizedError();
 
     const comment = await this.UserExperienceComment.reply(
       commentId,
       userId,
-      text,
+      text
     );
 
     const item = await this.get(comment.content as string);
@@ -394,7 +394,7 @@ class UserExperienceData {
       {
         $set: { isApprove: true },
       },
-      { new: true },
+      { new: true }
     );
     if (!item) throw new NotFoundError();
 
@@ -416,7 +416,7 @@ class UserExperienceData {
       {
         $set: { isApprove: false },
       },
-      { new: true },
+      { new: true }
     );
     if (!item) throw new NotFoundError();
 

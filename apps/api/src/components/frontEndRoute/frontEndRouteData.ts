@@ -24,7 +24,7 @@ class FrontEndRouteData {
     return await getAllData<IFrontEndRoute>(
       searchQuery,
       req,
-      this.FrontEndRoute,
+      this.FrontEndRoute
     );
   };
 

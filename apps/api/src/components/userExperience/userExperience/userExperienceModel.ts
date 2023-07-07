@@ -34,5 +34,5 @@ export const userExperienceSchema = new Schema<IUserExperience>({
 
 export const UserExperience = model<IUserExperience>(
   "UserExperience",
-  userExperienceSchema,
+  userExperienceSchema
 );

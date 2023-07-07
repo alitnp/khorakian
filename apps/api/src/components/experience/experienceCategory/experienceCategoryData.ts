@@ -11,7 +11,7 @@ class ExperienceCategoryData implements IData<IExperienceCategory> {
   }
 
   getAll = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<IExperienceCategory>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.title)
@@ -21,7 +21,7 @@ class ExperienceCategoryData implements IData<IExperienceCategory> {
     return await getAllData<IExperienceCategory>(
       searchQuery,
       req,
-      this.ExperienceCategory,
+      this.ExperienceCategory
     );
   };
 

@@ -17,5 +17,5 @@ export const pageItemTypeSchema = new Schema<IPageItemType>({
 
 export const PageItemType = model<IPageItemType>(
   "PageItemType",
-  pageItemTypeSchema,
+  pageItemTypeSchema
 );

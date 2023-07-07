@@ -5,7 +5,7 @@ import persian_fa from "react-date-object/locales/persian_fa";
 export const dateObjectFormatter = (
   date: string | DateObject | number,
   format = "YYYY/MM/DD",
-  inputFormat?: string,
+  inputFormat?: string
 ) =>
   new DateObject({
     date,

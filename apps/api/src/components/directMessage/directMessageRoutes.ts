@@ -23,11 +23,7 @@ import { FrontEndRoute } from "@/components/frontEndRoute/frontEndRouteModel";
 const router = Router();
 const data = new DirectMessageData(
   DirectMessage,
-  new UserData(
-    User,
-    new ImageData(Image),
-    new FrontEndRouteData(FrontEndRoute),
-  ),
+  new UserData(User, new ImageData(Image), new FrontEndRouteData(FrontEndRoute))
 );
 const controller = new DirectMessageController(data);
 
@@ -43,7 +39,7 @@ router.get("/", controller.getAll);
 router.post(
   "/reply/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.reply,
+  controller.reply
 );
 //add a DirectMessage to post with  DirectMessage id and user id
 // router.post(
@@ -56,7 +52,7 @@ router.post(
 router.post(
   "/",
   [auth, ...validate(createDirectMessageValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -64,7 +60,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updateDirectMessageValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -72,7 +68,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteDirectMessageValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

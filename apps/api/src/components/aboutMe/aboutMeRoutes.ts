@@ -39,9 +39,9 @@ const data = new AboutMeData(
     new UserData(
       User,
       new ImageData(Image),
-      new FrontEndRouteData(FrontEndRoute),
-    ),
-  ),
+      new FrontEndRouteData(FrontEndRoute)
+    )
+  )
 );
 
 const controller = new AboutMeController(data);
@@ -56,7 +56,7 @@ router.get("/", controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createAboutMeValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -66,7 +66,7 @@ router.put(
     isAdmin,
     ...validate([...createAboutMeValidations, ...getAboutMeValidations]),
   ],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -74,7 +74,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteAboutMeValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

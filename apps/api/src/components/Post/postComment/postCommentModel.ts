@@ -13,5 +13,5 @@ export const postCommentSchema = new Schema<IPostComment>({
 
 export const PostComment = model<IPostComment>(
   "PostComment",
-  postCommentSchema,
+  postCommentSchema
 );

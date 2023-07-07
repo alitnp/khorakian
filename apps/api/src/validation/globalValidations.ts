@@ -21,7 +21,7 @@ export const paramIdValidations = [
 ];
 export const bodyIdValidations = (
   propertyName = "_id",
-  persianName = "شناسه",
+  persianName = "شناسه"
 ) => [
   body(propertyName, `${persianName} ارسال نشده`)
     .isString()
@@ -58,19 +58,19 @@ export const existsStringValidation = ({
       validations.push(
         body(key, `${name} باید حداقل ${minLength} کاراکتر باشد.`).isLength({
           min: minLength,
-        }),
+        })
       );
     if (source.includes("param"))
       validations.push(
         param(key, `${name} باید حداقل ${minLength} کاراکتر باشد.`).isLength({
           min: minLength,
-        }),
+        })
       );
     if (source.includes("query"))
       validations.push(
         query(key, `${name} باید حداقل ${minLength} کاراکتر باشد.`).isLength({
           min: minLength,
-        }),
+        })
       );
   }
   if (maxLength) {
@@ -78,19 +78,19 @@ export const existsStringValidation = ({
       validations.push(
         body(key, `${name} باید حداکثر ${maxLength} کاراکتر باشد.`).isLength({
           max: maxLength,
-        }),
+        })
       );
     if (source.includes("param"))
       validations.push(
         param(key, `${name} باید حداکثر ${maxLength} کاراکتر باشد.`).isLength({
           max: maxLength,
-        }),
+        })
       );
     if (source.includes("query"))
       validations.push(
         query(key, `${name} باید حداکثر ${maxLength} کاراکتر باشد.`).isLength({
           max: maxLength,
-        }),
+        })
       );
   }
 
@@ -99,19 +99,19 @@ export const existsStringValidation = ({
       validations.push(
         body(key, `${name} ارسال نشده است.`)
           .exists({ checkFalsy: true })
-          .isString(),
+          .isString()
       );
     if (source.includes("param"))
       validations.push(
         param(key, `${name} ارسال نشده است.`)
           .exists({ checkFalsy: true })
-          .isString(),
+          .isString()
       );
     if (source.includes("query"))
       validations.push(
         query(key, `${name} ارسال نشده است.`)
           .exists({ checkFalsy: true })
-          .isString(),
+          .isString()
       );
   }
 

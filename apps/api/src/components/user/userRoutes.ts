@@ -26,7 +26,7 @@ const router = Router();
 const data = new UserData(
   User,
   new ImageData(Image),
-  new FrontEndRouteData(FrontEndRoute),
+  new FrontEndRouteData(FrontEndRoute)
 );
 const controller = new UserController(data);
 
@@ -40,7 +40,7 @@ router.get("/", isAdmin, controller.getAll);
 router.post(
   "/toggleUserAdminAccess/:id",
   [isAdmin, ...validate(paramIdValidations)],
-  controller.toggleUserAdminAccess,
+  controller.toggleUserAdminAccess
 );
 router.post("/login", validate(loginValidations), controller.login);
 router.post("/iforgot", validate(mobileNumberValidations), controller.iForgot);
@@ -51,19 +51,19 @@ router.post("/", validate(createUserValidations), controller.create);
 router.put(
   "/changePassword",
   [auth, ...validate(changePasswordValidations)],
-  controller.changePassword,
+  controller.changePassword
 );
 router.put(
   "/:id",
   [isAdmin, ...validate(updateUserValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(paramIdValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

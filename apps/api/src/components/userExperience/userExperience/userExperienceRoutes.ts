@@ -31,11 +31,7 @@ const data = new UserExperienceData(
   new ExperienceCategoryData(ExperienceCategory),
   new LikeData(UserExperienceLike),
   new CommentData(UserExperienceComment, User),
-  new UserData(
-    User,
-    new ImageData(Image),
-    new FrontEndRouteData(FrontEndRoute),
-  ),
+  new UserData(User, new ImageData(Image), new FrontEndRouteData(FrontEndRoute))
 );
 
 const controller = new UserExperienceController(data);
@@ -58,44 +54,44 @@ router.get("/", controller.getAll);
 router.post(
   "/reply/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.reply,
+  controller.reply
 );
 //add a comment to userExperience with userExperience id and user id
 router.post(
   "/comment/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.comment,
+  controller.comment
 );
 //like a userExperience with userExperience id and user id
 router.post(
   "/like/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.like,
+  controller.like
 );
 //dislike a userExperience with userExperience id and user id
 router.post(
   "/dislike/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.disLike,
+  controller.disLike
 );
 //create a new userExperience - admin only
 router.post(
   "/",
   [auth, ...validate(createUserExperienceValidations)],
-  controller.create,
+  controller.create
 );
 
 //approve a userExperience -admin only
 router.post(
   "/approve/:id",
   [isAdmin, ...validate(paramIdValidations)],
-  controller.approve,
+  controller.approve
 );
 //disapprove a userExperience -admin only
 router.post(
   "/disapprove/:id",
   [isAdmin, ...validate(paramIdValidations)],
-  controller.disApprove,
+  controller.disApprove
 );
 
 //put
@@ -103,7 +99,7 @@ router.post(
 router.put(
   "/:id",
   [auth, ...validate(updateUserExperienceValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -111,7 +107,7 @@ router.put(
 router.delete(
   "/:id",
   [auth, ...validate(deleteUserExperienceValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

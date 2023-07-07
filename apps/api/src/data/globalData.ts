@@ -44,7 +44,7 @@ export class BasicData<entityModel> implements IData<entityModel> {
     const existingItem = await this.model.findOne({ title });
     if (!!existingItem)
       throw new ConflictError(
-        `یک ${this.persianName} با این نام قبلا ثبت شده.`,
+        `یک ${this.persianName} با این نام قبلا ثبت شده.`
       );
     const item = new this.model({
       title,
@@ -63,13 +63,13 @@ export class BasicData<entityModel> implements IData<entityModel> {
     console.log("existing Item : ", existingItem);
     if (!!existingItem)
       throw new ConflictError(
-        `یک ${this.persianName} با این نام قبلا ثبت شده.`,
+        `یک ${this.persianName} با این نام قبلا ثبت شده.`
       );
 
     const item = await this.model.findByIdAndUpdate(
       _id,
       { $set: { title } },
-      { new: true },
+      { new: true }
     );
     if (!item) throw new NotFoundError();
 
@@ -88,7 +88,7 @@ export const getAllData = async <T>(
   searchQuery: any,
   req: Req,
   model: Model<T>,
-  populate?: any,
+  populate?: any
 ): Promise<ApiDataListResponse<T>> => {
   const {
     fixedSearchQuery,
@@ -121,7 +121,7 @@ export const getAllData = async <T>(
 export const paginationProps = async <T>(
   searchQuery: any,
   req: Req,
-  model: Model<T>,
+  model: Model<T>
 ) => {
   let pageNumber = getPageNumber(req);
   const pageSize = getPageSize(req);
@@ -149,7 +149,7 @@ export const paginationProps = async <T>(
 
 export const defaultSearchQueries = (
   searchQuery: Record<string, any>,
-  req: Req,
+  req: Req
 ): Record<string, any> => {
   if (req.query._id) searchQuery._id = req.query._id;
   if (req.query.creationDateFrom)

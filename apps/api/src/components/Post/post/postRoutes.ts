@@ -35,11 +35,7 @@ const data = new PostData(
   new ImageData(Image),
   new LikeData(PostLike),
   new CommentData(PostComment, User),
-  new UserData(
-    User,
-    new ImageData(Image),
-    new FrontEndRouteData(FrontEndRoute),
-  ),
+  new UserData(User, new ImageData(Image), new FrontEndRouteData(FrontEndRoute))
 );
 const controller = new PostController(data);
 
@@ -61,31 +57,31 @@ router.get("/", controller.getAll);
 router.post(
   "/reply/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.reply,
+  controller.reply
 );
 //add a comment to post with post id and user id
 router.post(
   "/comment/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.comment,
+  controller.comment
 );
 //like a post with post id and user id
 router.post(
   "/like/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.like,
+  controller.like
 );
 //dislike a post with post id and user id
 router.post(
   "/dislike/:id",
   [auth, ...validate(paramIdValidations)],
-  controller.disLike,
+  controller.disLike
 );
 //create a new post - admin only
 router.post(
   "/",
   [isAdmin, ...validate(createPostValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -93,7 +89,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updatePostValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -101,7 +97,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deletePostValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

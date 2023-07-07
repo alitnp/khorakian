@@ -16,5 +16,5 @@ export const pageItemSortingSchema = new Schema<IPageItemSorting>({
 
 export const PageItemSorting = model<IPageItemSorting>(
   "PageItemSorting",
-  pageItemSortingSchema,
+  pageItemSortingSchema
 );

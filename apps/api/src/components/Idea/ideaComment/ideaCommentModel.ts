@@ -13,5 +13,5 @@ export const ideaCommentSchema = new Schema<IIdeaComment>({
 
 export const IdeaComment = model<IIdeaComment>(
   "IdeaComment",
-  ideaCommentSchema,
+  ideaCommentSchema
 );

@@ -16,5 +16,5 @@ export const ideaCategorySchema = new Schema<IIdeaCategory>({
 
 export const IdeaCategory = model<IIdeaCategory>(
   "IdeaCategory",
-  ideaCategorySchema,
+  ideaCategorySchema
 );

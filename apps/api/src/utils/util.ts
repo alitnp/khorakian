@@ -1,6 +1,6 @@
 export const getPropertyFromRequest = (
   req: Req,
-  propertyName: string,
+  propertyName: string
 ): string | number | undefined => {
   return (
     req.query[propertyName] ||
@@ -40,7 +40,7 @@ export const stringToBoolean = (string: any): boolean => {
 export const englishNumberOnly = (
   input: string,
   allowCammaAndDot?: boolean,
-  allowDot?: boolean,
+  allowDot?: boolean
 ) => {
   if (input === null || input === undefined) return "";
   input = input.toString();
@@ -87,7 +87,7 @@ export const englishNumber = (input: string) => {
 export const separator = (
   input: string,
   seperater = ",",
-  seperateLength = 3,
+  seperateLength = 3
 ) => {
   if (input === null || input === undefined) return "";
   input = input.toString();

@@ -14,5 +14,5 @@ const socialMediaSchema = new Schema<ISocialMedia>({
 
 export const SocialMedia = model<ISocialMedia>(
   "SocialMedia",
-  socialMediaSchema,
+  socialMediaSchema
 );

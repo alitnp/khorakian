@@ -13,5 +13,5 @@ export const experienceCommentSchema = new Schema<IExperienceComment>({
 
 export const ExperienceComment = model<IExperienceComment>(
   "ExperienceComment",
-  experienceCommentSchema,
+  experienceCommentSchema
 );

@@ -15,7 +15,7 @@ class SocialMediaData {
   Image: ImageData;
   constructor(
     SocialMedia: Model<ISocialMedia, {}, {}, {}, any>,
-    Image: ImageData,
+    Image: ImageData
   ) {
     this.SocialMedia = SocialMedia;
     this.Image = Image;
@@ -49,7 +49,7 @@ class SocialMediaData {
     } = await paginationProps(searchQuery, req, this.SocialMedia);
 
     const data: ISocialMediaRead[] = await this.SocialMedia.find(
-      fixedSearchQuery,
+      fixedSearchQuery
     )
       .populate<{ image: IImage }>("image")
       .limit(pageSize)
@@ -117,7 +117,7 @@ class SocialMediaData {
           image: existingImage,
         },
       },
-      { new: true },
+      { new: true }
     );
     if (!socialMedia) throw new NotFoundError();
 

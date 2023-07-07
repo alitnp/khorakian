@@ -13,5 +13,5 @@ export const defaultImageSchema = new Schema<IDefaultImage>({
 
 export const DefaultImage = model<IDefaultImage>(
   "DefaultImage",
-  defaultImageSchema,
+  defaultImageSchema
 );

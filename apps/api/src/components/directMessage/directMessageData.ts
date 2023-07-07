@@ -22,7 +22,7 @@ class DirectMessageData {
   getAll = async (
     req: Req,
     isAdmin?: boolean,
-    userId?: string,
+    userId?: string
   ): Promise<ApiDataListResponse<IDirectMessage>> => {
     if (!userId) throw new NotFoundError();
 
@@ -39,14 +39,14 @@ class DirectMessageData {
       searchQuery,
       req,
       this.DirectMessage,
-      ["user", "replies.user"],
+      ["user", "replies.user"]
     );
   };
 
   get = async (
     id: string,
     isAdmin?: boolean,
-    userId?: string,
+    userId?: string
   ): Promise<IDirectMessageRead> => {
     if (!id) throw new BadRequestError("شناسه پیام ارسال نشده");
     if (!userId) throw new NotFoundError();
@@ -72,7 +72,7 @@ class DirectMessageData {
 
   create = async (
     text: string,
-    userId: string,
+    userId: string
   ): Promise<IDirectMessageRead> => {
     const user = await this.User.get(userId);
 
@@ -90,7 +90,7 @@ class DirectMessageData {
   update = async (text: string): Promise<IDirectMessageRead> => {
     const item = await this.DirectMessage.findByIdAndUpdate(
       { text },
-      { new: true },
+      { new: true }
     );
     if (!item) throw new NotFoundError("پیام یافت نشد");
     return await this.get(item._id + "", false, item.user);
@@ -105,7 +105,7 @@ class DirectMessageData {
   reply = async (
     id: string,
     text: string,
-    userId: string,
+    userId: string
   ): Promise<IDirectMessageRead> => {
     const user = await this.User.get(userId);
     const item = await this.DirectMessage.findById(id);
@@ -117,7 +117,7 @@ class DirectMessageData {
         {
           $push: { replies: { user: userId, text } },
         },
-        { new: true },
+        { new: true }
       );
       if (!item) throw new NotFoundError();
 
@@ -129,14 +129,14 @@ class DirectMessageData {
   updateReply = async (
     directMessageId: string,
     replyId: string,
-    text: string,
+    text: string
   ) => {
     const item = await this.DirectMessage.updateOne(
       {
         _id: directMessageId,
         "replies._id": replyId,
       },
-      { $set: { "replies.$.text": text } },
+      { $set: { "replies.$.text": text } }
     );
     if (!item) throw new NotFoundError("پیام یافت نشد");
 

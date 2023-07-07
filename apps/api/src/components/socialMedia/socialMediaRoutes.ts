@@ -28,7 +28,7 @@ router.get("/", controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createSocialMediaValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -36,7 +36,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updateSocialMediaValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -44,7 +44,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteSocialMediaValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

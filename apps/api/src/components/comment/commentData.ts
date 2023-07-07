@@ -62,14 +62,14 @@ class CommentData<commentModel> {
   };
   getMyComments = async (
     req: Req,
-    userId: string,
+    userId: string
   ): Promise<ApiDataListResponse<commentModel>> => {
     req.query.user = userId;
     return this.getAll(req);
   };
 
   getAdminComments = async (
-    req: Req,
+    req: Req
   ): Promise<ApiDataListResponse<commentModel>> => {
     const searchQuery: Record<string, any> = defaultSearchQueries({}, req);
     if (req.query.content) searchQuery.content = req.query.content;
@@ -103,7 +103,7 @@ class CommentData<commentModel> {
   };
 
   getAdminCommentsByContentId = async (
-    _id: string,
+    _id: string
   ): Promise<ApiDataListResponse<commentModel>> => {
     const data = await this.Comment.find({
       $and: [
@@ -134,7 +134,7 @@ class CommentData<commentModel> {
   };
 
   getCommentsByContentId = async (
-    _id: string,
+    _id: string
   ): Promise<ApiDataListResponse<commentModel>> => {
     const data = await this.Comment.find({
       content: _id,
@@ -155,7 +155,7 @@ class CommentData<commentModel> {
 
   isUserCommented = async (
     contentId: string,
-    userId: string,
+    userId: string
   ): Promise<boolean> => {
     if (!userId || !contentId) return false;
 
@@ -169,7 +169,7 @@ class CommentData<commentModel> {
   create = async (
     contentId: string,
     userId: string,
-    text: string,
+    text: string
   ): Promise<commentModel> => {
     const comment = new this.Comment({
       content: contentId,
@@ -185,7 +185,7 @@ class CommentData<commentModel> {
     const comment = await this.Comment.findByIdAndUpdate(
       commentId,
       { text },
-      { new: true },
+      { new: true }
     );
     if (!comment) throw new NotFoundError("نظر یافت نشد");
     return comment;
@@ -211,7 +211,7 @@ class CommentData<commentModel> {
         _id: commentId,
         "replies._id": replyId,
       },
-      { $set: { "replies.$.text": text } },
+      { $set: { "replies.$.text": text } }
     );
     if (!comment) throw new NotFoundError("نظر یافت نشد");
 

@@ -20,7 +20,7 @@ const controller = new DefaultTextController(data);
 router.get(
   "/getByKey/:key",
   validate(getByKeyDefaultTextValidations),
-  controller.getByKey,
+  controller.getByKey
 );
 // get a signgle DefaultText with id
 router.get("/:id", validate(getDefaultTextValidations), controller.get);
@@ -32,7 +32,7 @@ router.get("/", controller.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createDefaultTextValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
@@ -40,7 +40,7 @@ router.post(
 router.put(
   "/:id",
   [isAdmin, ...validate(updateDefaultTextValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
@@ -48,7 +48,7 @@ router.put(
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteDefaultTextValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

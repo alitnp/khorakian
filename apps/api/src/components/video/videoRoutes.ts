@@ -30,21 +30,21 @@ router.get("/", auth, controller.getAll);
 router.post(
   "/upload",
   [auth, ...videoForm(), ...validate(createVideoValidations)],
-  controller.create,
+  controller.create
 );
 
 //put
 router.put(
   "/:id",
   [isAdmin, ...validate(updateVideoValidations)],
-  controller.update,
+  controller.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteVideoValidations)],
-  controller.remove,
+  controller.remove
 );
 
 export default router;

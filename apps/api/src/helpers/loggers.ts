@@ -91,7 +91,7 @@ const getIpFromRequest = (req: Req): string => {
 
 export const logErrorHandler = async (
   req: Req,
-  resBody: Record<string, any>,
+  resBody: Record<string, any>
 ) => {
   // if (CONFIG.APP.ENV === "test") return;
 
@@ -132,7 +132,7 @@ export const logErrorHandler = async (
     fs.appendFile(
       filePath,
       content,
-      (err) => err && console.log(JSON.stringify(err)),
+      (err) => err && console.log(JSON.stringify(err))
     );
   }
 };
@@ -175,7 +175,7 @@ export const logInfoHandler = async (req: Req, _res: Res, next: NextFn) => {
     fs.appendFile(
       `src/logs/${CONFIG.APP.ENV}.info.log`,
       content,
-      (err) => err && console.log(JSON.stringify(err)),
+      (err) => err && console.log(JSON.stringify(err))
     );
   }
 

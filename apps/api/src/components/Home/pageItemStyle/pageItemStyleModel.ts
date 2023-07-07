@@ -16,5 +16,5 @@ export const pageItemStyleSchema = new Schema<IPageItemStyle>({
 
 export const PageItemStyle = model<IPageItemStyle>(
   "PageItemStyle",
-  pageItemStyleSchema,
+  pageItemStyleSchema
 );

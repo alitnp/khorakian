@@ -11,5 +11,5 @@ export const experienceLikeSchema = new Schema<IExperienceLike>({
 
 export const ExperienceLike = model<IExperienceLike>(
   "ExperienceLike",
-  experienceLikeSchema,
+  experienceLikeSchema
 );

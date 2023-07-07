@@ -14,5 +14,5 @@ export const postCategorySchema = new Schema<IPostCategory>({
 
 export const PostCategory = model<IPostCategory>(
   "PostCategory",
-  postCategorySchema,
+  postCategorySchema
 );

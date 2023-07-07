@@ -44,7 +44,7 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     { _id: this._id, isAdmin: this.isAdmin },
-    CONFIG.AUTH.ACCESS_TOKEN_SALT as string,
+    CONFIG.AUTH.ACCESS_TOKEN_SALT as string
   );
 
   return token;

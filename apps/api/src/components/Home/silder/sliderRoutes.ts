@@ -23,26 +23,26 @@ router.get("/", sliderController.getAll);
 router.post(
   "/",
   [isAdmin, ...validate(createSliderValidations)],
-  sliderController.create,
+  sliderController.create
 );
 
 //put
 router.put(
   "/setIndex/:id",
   [isAdmin, ...validate(updateSliderValidations)],
-  sliderController.setIndex,
+  sliderController.setIndex
 );
 router.put(
   "/:id",
   [isAdmin, ...validate(updateSliderValidations)],
-  sliderController.update,
+  sliderController.update
 );
 
 //delete
 router.delete(
   "/:id",
   [isAdmin, ...validate(deleteSliderValidations)],
-  sliderController.remove,
+  sliderController.remove
 );
 
 export default router;

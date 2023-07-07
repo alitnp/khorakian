@@ -10,5 +10,5 @@ export const frontEndRouteSchemas = new Schema<IFrontEndRoute>({
 
 export const FrontEndRoute = model<IFrontEndRoute>(
   "FrontEndRoute",
-  frontEndRouteSchemas,
+  frontEndRouteSchemas
 );

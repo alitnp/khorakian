@@ -3,7 +3,7 @@ import { ApiDataListResponse, ApiDataResponse } from "@my/types";
 
 export const apiDataResponse = <T>(
   data: T,
-  message?: string,
+  message?: string
 ): ApiDataResponse<T> => {
   return {
     status: OK,
