@@ -4,8 +4,8 @@ export const fileRename = async (
   originPathname: string,
   destinationPathname: string
 ) => {
-  const correctOriginPathname = originPathname.replaceAll("/", "\\");
-  const correctDestinationPathname = destinationPathname.replaceAll("/", "\\");
+  const correctOriginPathname = originPathname.replaceAll("/", "/");
+  const correctDestinationPathname = destinationPathname.replaceAll("/", "/");
   return new Promise((resolve: any, reject: any) => {
     fs.rename(
       correctOriginPathname,
@@ -22,7 +22,7 @@ export const fileRename = async (
 };
 
 export const fileDelete = async (pathname: string) => {
-  const correctPathname = pathname.replaceAll("/", "\\");
+  const correctPathname = pathname.replaceAll("/", "/");
 
   return new Promise((resolve: any, reject: any) => {
     fs.rm(correctPathname, { recursive: true, force: true }, (error: any) => {
