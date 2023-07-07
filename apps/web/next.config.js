@@ -2,8 +2,8 @@
 const nextConfig = {
 	reactStrictMode: true,
 	env: {
-		baseUrl: process.env.API_BASE_URL,
-		domain: process.env.DOMAIN_BASE_URL,
+		baseUrl: "http://185.116.160.30:4000/api/v1",
+		domain: "http://185.116.160.30:4000",
 	},
 	images: {
 		remotePatterns: [

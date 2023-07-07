@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+ admin-main:
+  image: ${DOCKER_REGISTRY}-admin
+  container_name: ${SCIENCE_WHISPER_CONTAINER_NAME}
+  ports:
+   - ${SCIENCE_WHISPER_PORT}:3000
+  networks:
+   - private
+   - public
+   - nginxcertbot_reverse-proxy
+  build:
+   context: .
+   dockerfile: Dockerfile
+
+networks:
+ public:
+  driver: overlay
+ private:
+  driver: overlay
+ nginxcertbot_reverse-proxy:
+  external: true
