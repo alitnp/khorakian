@@ -11,7 +11,11 @@ interface ILayout {
 
 const Layout: FC<ILayout> = ({ children }) => {
 	return (
-		<div>
+		<div
+			className={`
+		// ${iranSans.variable}
+		font-iransans`}
+		>
 			<ConfigProvider
 				locale={fa}
 				direction="rtl"
