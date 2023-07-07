@@ -26,7 +26,6 @@ export const getServerSideProps: GetServerSideProps =
 			props: {
 				image: image?.data?.image || null,
 			},
-			revalidate: webConfig.dataRevalidateTime,
 		};
 	};
 

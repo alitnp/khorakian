@@ -42,7 +42,6 @@ export const getServerSideProps: GetServerSideProps =
 
 		return {
 			props,
-			revalidate: webConfig.dataRevalidateTime,
 		};
 	};
 
