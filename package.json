@@ -17,12 +17,14 @@
 		"hoistingLimits": "workspaces"
 	},
 	"scripts": {
-		"start": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/panel start\" \"yarn workspace @my/web start\"",
+		"start": "concurrently \"yarn workspace @my/api startserver\" \"yarn workspace @my/panel start\" \"yarn workspace @my/web start\"",
 		"start:back-web": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/web start\"",
 		"start:back-panel": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/panel start\"",
 		"start:back": "yarn workspace @my/api start",
 		"start:web": "yarn workspace @my/web start",
 		"web:build": "yarn workspace @my/web build",
+		"api:build": "yarn workspace @my/api build",
+		"api:startserver": "yarn workspace @my/api startserver",
 		"web:start": "yarn workspace @my/web service:start",
 		"start:panel": "yarn workspace @my/panel start"
 	},
