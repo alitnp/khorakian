@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import {
 	ApiDataListResponse,
 	ApiDataResponse,
@@ -32,18 +32,19 @@ type props = {
 	experience: ApiDataListResponse<IExperienceWithComments>;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-	const experience = await getExperienceListWithComments();
+export const getServerSideProps: GetServerSideProps =
+	async () => {
+		const experience = await getExperienceListWithComments();
 
-	const props: props = {
-		experience,
-	};
+		const props: props = {
+			experience,
+		};
 
-	return {
-		props,
-		revalidate: webConfig.dataRevalidateTime,
+		return {
+			props,
+			revalidate: webConfig.dataRevalidateTime,
+		};
 	};
-};
 
 const Experience = ({ experience }: props) => {
 	//state

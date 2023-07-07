@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { IImage } from "@my/types";
 import webConfig from "@/global/constants/webConfig";
 import { memo } from "react";
@@ -18,20 +18,21 @@ type props = {
 	defaultImagesObject: Record<string, IImage>;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-	const defaultTextsObject = await getHomeDefaultTexts();
-	const defaultImagesObject = await getHomeDefaultImages();
+export const getServerSideProps: GetServerSideProps =
+	async () => {
+		const defaultTextsObject = await getHomeDefaultTexts();
+		const defaultImagesObject = await getHomeDefaultImages();
 
-	const props: props = {
-		defaultImagesObject,
-		defaultTextsObject,
-	};
+		const props: props = {
+			defaultImagesObject,
+			defaultTextsObject,
+		};
 
-	return {
-		props,
-		revalidate: webConfig.dataRevalidateTime,
+		return {
+			props,
+			revalidate: webConfig.dataRevalidateTime,
+		};
 	};
-};
 
 const Idea = ({ defaultTextsObject }: props) => {
 	//state
