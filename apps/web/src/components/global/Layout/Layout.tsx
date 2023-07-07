@@ -1,9 +1,9 @@
-import { iranSans } from "@/assets/fonts/iranSansFont";
 import { FC, ReactNode } from "react";
 import fa from "antd/lib/locale/fa_IR";
 import { ConfigProvider } from "antd";
 import InitialInfo from "@/components/global/InitialInfo/InitialInfo";
 import LayoutHeader from "@/components/global/Layout/components/LayoutHeader";
+import { iranSans } from "@/assets/fonts/iranSansFont";
 
 interface ILayout {
 	children: ReactNode;
@@ -11,11 +11,7 @@ interface ILayout {
 
 const Layout: FC<ILayout> = ({ children }) => {
 	return (
-		<div
-			className={`
-		// ${iranSans.variable}
-		font-iransans`}
-		>
+		<div>
 			<ConfigProvider
 				locale={fa}
 				direction="rtl"

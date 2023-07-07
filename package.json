@@ -4,12 +4,17 @@
 	"main": "index.js",
 	"license": "MIT",
 	"private": true,
-	"workspaces": [
-		"apps/*",
-		"shared/*"
-	],
+	"workspaces": {
+		"packages": [
+			"apps/*",
+			"shared/*"
+		]
+	},
 	"devDependencies": {
 		"concurrently": "^7.6.0"
+	},
+	"installConfig": {
+		"hoistingLimits": "workspaces"
 	},
 	"scripts": {
 		"start": "concurrently \"yarn workspace @my/api start\" \"yarn workspace @my/panel start\" \"yarn workspace @my/web start\"",
@@ -20,5 +25,6 @@
 		"web:build": "yarn workspace @my/web build",
 		"web:start": "yarn workspace @my/web service:start",
 		"start:panel": "yarn workspace @my/panel start"
-	}
+	},
+	"packageManager": "yarn@3.6.1"
 }
