@@ -1,12 +1,5 @@
 import pkg from "../../package.json";
 
-// https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
-
-console.log("------", process.env.NODE_ENV);
-console.log("------", process.env.APP_HOST);
-
 export const appRoot = { path: "" };
 export const publicFolder = { path: "" };
 export const setAppRoot = (path: string) => {
@@ -23,31 +16,30 @@ const CONFIG = {
     VER: `v${pkg.version[0]}`,
     DESCRIPTION: pkg.description,
     AUTHORS: pkg.users,
-    HOST: process.env.APP_HOST,
+    HOST: "127.0.0.1",
     BASE_URL: process.env.API_BASE_URL,
-    PORT: process.env.NODE_ENV === "test" ? 8888 : process.env.PORT || 8080,
-    ENV: process.env.NODE_ENV,
+    PORT: 4000,
+    ENV: "production",
     STATIC_FILES_PATH: "public",
     APPROOT: "",
   },
   DATABASE: {
-    DB_HOST: process.env.DB_HOST,
+    DB_HOST: "mongodb://127.0.0.1:27017/Khorakian",
   },
   SERVER: {
     TIMEOUT: 180000, // 3m
   },
   LOG: {
-    PATH: process.env.LOGGING_DIR || "logs",
-    LEVEL: process.env.LOGGING_LEVEL || "info",
-    MAX_FILES: process.env.LOGGING_MAX_FILES || 5,
+    PATH: "logs",
+    LEVEL: "info",
+    MAX_FILES: 5,
   },
   AUTH: {
-    SALT_ROUNDS: process.env.SALT_ROUNDS || "11",
-    ACCESS_TOKEN_EXPIRE:
-      parseInt(process.env.ACCESS_TOKEN_DURATION || "0") || 2629746, //a month
-    REFRESH_TOKEN_EXPIRE: process.env.REFRESH_TOKEN_DURATION || "86400000",
-    ACCESS_TOKEN_SALT: process.env.ACCESS_TOKEN_SALT,
-    REFRESH_TOKEN_SALT: process.env.REFRESH_TOKEN_SALT,
+    SALT_ROUNDS: "11",
+    ACCESS_TOKEN_EXPIRE: 2629746, //a month
+    REFRESH_TOKEN_EXPIRE: "86400000",
+    ACCESS_TOKEN_SALT: "<SALT_FOR_ACCESS_TOKEN>",
+    REFRESH_TOKEN_SALT: "<SALT_FOR_REFRESH_TOKEN>",
   },
   AWS: {
     ACCESS_KEY: process.env.AWS_ACCESS_KEY,
