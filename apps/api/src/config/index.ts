@@ -4,9 +4,9 @@ export const appRoot = { path: "" };
 export const publicFolder = { path: "" };
 export const setAppRoot = (path: string) => {
   appRoot.path = path;
-  const appRootArr = path.split("\\");
+  const appRootArr = path.split("/");
   appRootArr.pop();
-  publicFolder.path = appRootArr.join("\\") + "\\public";
+  publicFolder.path = appRootArr.join("/") + "/public";
 };
 
 const CONFIG = {
